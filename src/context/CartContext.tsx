@@ -12,6 +12,8 @@ interface CartContextType {
   updateCartQty: (productId: number, newQty: number) => void;
   clearCart: () => void;
   cartCount: number;
+  toastMessage: string | null;
+  clearToast: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -40,6 +42,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
     }
   });
 
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   useEffect(() => {
     try {
       window.localStorage.setItem('cart', JSON.stringify(cart));
@@ -61,15 +65,18 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
       }
       return [...prevCart, { ...productToAdd, qty: 1 }];
     });
+
+    // Show success toast
+    setToastMessage(`${productToAdd.name} ajouté au panier`);
   };
 
   const removeFromCart = (productId: number) => {
     setCart(prevCart => {
-        const newCart = prevCart.filter(item => item.id !== productId);
-        return newCart;
+      const newCart = prevCart.filter(item => item.id !== productId);
+      return newCart;
     });
   };
-  
+
   const updateCartQty = (productId: number, newQty: number) => {
     if (newQty <= 0) {
       removeFromCart(productId);
@@ -79,7 +86,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
   };
 
   const clearCart = () => {
-      setCart([]);
+    setCart([]);
+  };
+
+  const clearToast = () => {
+    setToastMessage(null);
   };
 
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -91,6 +102,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
     updateCartQty,
     clearCart,
     cartCount,
+    toastMessage,
+    clearToast,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

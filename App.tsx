@@ -10,6 +10,7 @@ import Cart from './components/Cart';
 import ProductDetailModal from './components/ProductDetailModal';
 import CheckoutModal from './components/CheckoutModal';
 import PromoOverlay from './components/PromoOverlay';
+import Toast from './components/Toast';
 
 import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
@@ -88,6 +89,60 @@ const App: React.FC = () => {
 
   return (
     <CartProvider products={products}>
+      <AppContent
+        products={products}
+        siteConfig={siteConfig}
+        isCartOpen={isCartOpen}
+        setIsCartOpen={setIsCartOpen}
+        isCheckoutOpen={isCheckoutOpen}
+        setIsCheckoutOpen={setIsCheckoutOpen}
+        selectedProduct={selectedProduct}
+        openProductModal={openProductModal}
+        closeProductModal={closeProductModal}
+        buyNow={buyNow}
+        appliedPromo={appliedPromo}
+        applyPromo={applyPromo}
+        isPromoOverlayOpen={isPromoOverlayOpen}
+        setIsPromoOverlayOpen={setIsPromoOverlayOpen}
+      />
+    </CartProvider>
+  );
+};
+
+const AppContent: React.FC<{
+  products: Product[];
+  siteConfig: any;
+  isCartOpen: boolean;
+  setIsCartOpen: (isOpen: boolean) => void;
+  isCheckoutOpen: boolean;
+  setIsCheckoutOpen: (isOpen: boolean) => void;
+  selectedProduct: Product | null;
+  openProductModal: (id: number) => void;
+  closeProductModal: () => void;
+  buyNow: (id: number) => void;
+  appliedPromo: number | null;
+  applyPromo: (code: string) => boolean;
+  isPromoOverlayOpen: boolean;
+  setIsPromoOverlayOpen: (isOpen: boolean) => void;
+}> = ({
+  products,
+  siteConfig,
+  isCartOpen,
+  setIsCartOpen,
+  isCheckoutOpen,
+  setIsCheckoutOpen,
+  selectedProduct,
+  openProductModal,
+  closeProductModal,
+  buyNow,
+  appliedPromo,
+  applyPromo,
+  isPromoOverlayOpen,
+  setIsPromoOverlayOpen,
+}) => {
+    const { toastMessage, clearToast } = useCart();
+
+    return (
       <div className="bg-white text-gray-800 antialiased font-sans">
         <Header
           onCartClick={() => setIsCartOpen(true)}
@@ -145,9 +200,12 @@ const App: React.FC = () => {
             onClose={() => setIsPromoOverlayOpen(false)}
           />
         )}
+
+        {toastMessage && (
+          <Toast message={toastMessage} onClose={clearToast} />
+        )}
       </div>
-    </CartProvider>
-  );
-};
+    );
+  };
 
 export default App;

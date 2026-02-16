@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
             </h5>
             <div className="flex gap-4 text-lg">
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/spidi8_8/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-black transition transform hover:scale-110"
@@ -65,12 +65,12 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
                 <i className="fa-brands fa-instagram"></i>
               </a>
               <a
-                href="https://www.tiktok.com/"
+                href="https://wa.me/21273011872"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-black transition transform hover:scale-110"
               >
-                <i className="fa-brands fa-tiktok"></i>
+                <i className="fa-brands fa-whatsapp"></i>
               </a>
               <a
                 href="https://www.youtube.com/"
