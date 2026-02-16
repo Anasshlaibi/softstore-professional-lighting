@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../src/context/CartContext';
-import DarkModeToggle from './DarkModeToggle';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -22,7 +21,7 @@ const Header: React.FC<HeaderProps> = React.memo(
 
     return (
       <header
-        className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 dark:bg-gray-900/90 backdrop-blur-md shadow-sm' : 'bg-transparent dark:bg-gray-900/50'}`}
+        className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}
       >
         <div className="container mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
           <div
@@ -33,7 +32,7 @@ const Header: React.FC<HeaderProps> = React.memo(
               <i className="fa-solid fa-bolt text-sm"></i>
             </div>
             <span
-              className={`text-lg md:text-xl font-bold tracking-tight ${isScrolled ? 'text-black dark:text-white' : 'text-white'}`}
+              className={`text-lg md:text-xl font-bold tracking-tight ${isScrolled ? 'text-black' : 'text-white'}`}
             >
               {siteConfig.brandName}
             </span>
@@ -61,9 +60,6 @@ const Header: React.FC<HeaderProps> = React.memo(
           </nav>
 
           <div className="flex items-center gap-3 md:gap-5">
-            {/* Dark Mode Toggle */}
-            <DarkModeToggle />
-
             <button
               onClick={onCartClick}
               className="relative group p-1"
