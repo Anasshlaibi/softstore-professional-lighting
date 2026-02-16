@@ -11,10 +11,12 @@ import ProductDetailModal from './components/ProductDetailModal';
 import CheckoutModal from './components/CheckoutModal';
 import PromoOverlay from './components/PromoOverlay';
 import Toast from './components/Toast';
+import LoadingSpinner from './components/LoadingSpinner';
 
 import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
 import { CartProvider, useCart } from './src/context/CartContext';
+import { fetchProductsFromGoogleSheets } from './src/utils/fetchProducts';
 
 export interface Product {
   id: number;
@@ -38,13 +40,51 @@ export interface CartItem extends Product {
 }
 
 const App: React.FC = () => {
-  const [products] = useState<Product[]>(defaultProducts);
+  const [products, setProducts] = useState<Product[]>(defaultProducts);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [siteConfig] = useState(defaultSiteConfig);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [appliedPromo, setAppliedPromo] = useState<number | null>(null);
   const [isPromoOverlayOpen, setIsPromoOverlayOpen] = useState(false);
+
+  // Fetch products from Google Sheets on mount
+  useEffect(() => {
+    const loadProducts = async () => {
+      const googleSheetsUrl = process.env.GOOGLE_SHEETS_CSV_URL;
+
+      // If no Google Sheets URL configured, use hardcoded products
+      if (!googleSheetsUrl) {
+        console.info('No Google Sheets URL configured, using hardcoded products');
+        setProducts(defaultProducts);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        console.log('Fetching products from Google Sheets...');
+        const fetchedProducts = await fetchProductsFromGoogleSheets(googleSheetsUrl);
+
+        if (fetchedProducts.length > 0) {
+          setProducts(fetchedProducts);
+          console.log(`Successfully loaded ${fetchedProducts.length} products from Google Sheets`);
+        } else {
+          throw new Error('No products found in Google Sheets');
+        }
+      } catch (err) {
+        console.error('Failed to load products from Google Sheets:', err);
+        setError('Impossible de charger les produits depuis Google Sheets');
+        // Fallback to hardcoded products
+        setProducts(defaultProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
 
   useEffect(() => {
     // Show promo overlay after 1.5s if active and not seen
@@ -91,6 +131,8 @@ const App: React.FC = () => {
     <CartProvider products={products}>
       <AppContent
         products={products}
+        loading={loading}
+        error={error}
         siteConfig={siteConfig}
         isCartOpen={isCartOpen}
         setIsCartOpen={setIsCartOpen}
@@ -111,6 +153,8 @@ const App: React.FC = () => {
 
 const AppContent: React.FC<{
   products: Product[];
+  loading: boolean;
+  error: string | null;
   siteConfig: any;
   isCartOpen: boolean;
   setIsCartOpen: (isOpen: boolean) => void;
@@ -126,6 +170,8 @@ const AppContent: React.FC<{
   setIsPromoOverlayOpen: (isOpen: boolean) => void;
 }> = ({
   products,
+  loading,
+  error,
   siteConfig,
   isCartOpen,
   setIsCartOpen,
@@ -150,11 +196,28 @@ const AppContent: React.FC<{
         />
         <main>
           <Hero siteConfig={siteConfig} />
-          <Products
-            products={products}
-            onProductClick={openProductModal}
-            siteConfig={siteConfig}
-          />
+
+          {/* Show error message if Google Sheets failed */}
+          {error && !loading && (
+            <div className="container mx-auto px-6 py-4">
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+                <i className="fa-solid fa-exclamation-triangle mr-2"></i>
+                {error}. Affichage des produits par défaut.
+              </div>
+            </div>
+          )}
+
+          {/* Show loading spinner or products */}
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <Products
+              products={products}
+              onProductClick={openProductModal}
+              siteConfig={siteConfig}
+            />
+          )}
+
           <VideoShowcase siteConfig={siteConfig} />
           <WhyUs siteConfig={siteConfig} />
         </main>
