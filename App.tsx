@@ -53,7 +53,7 @@ const App: React.FC = () => {
   // Fetch products from Google Sheets on mount
   useEffect(() => {
     const loadProducts = async () => {
-      const googleSheetsUrl = process.env.GOOGLE_SHEETS_CSV_URL;
+      const googleSheetsUrl = import.meta.env.VITE_GOOGLE_SHEETS_CSV_URL;
 
       // If no Google Sheets URL configured, use hardcoded products
       if (!googleSheetsUrl) {

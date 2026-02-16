@@ -13,7 +13,7 @@ export const defaultSiteConfig = {
     "Nos solutions d'éclairage ZSYB sont conçues pour les créateurs exigeants. Une fidélité des couleurs exceptionnelle (CRI 97+) pour sublimer chaque détail.",
   whyImg:
     'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
-  video1: 'rHW_MSVGHLA',
+  video1: 'LcdLz8-JmI0',
   video2: 'VhNBOGkg3k0',
   phone: '+212673011873',
   displayPhone: '+212 6.73.01.18.73',
