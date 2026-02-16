@@ -17,7 +17,7 @@ export const defaultSiteConfig = {
   video2: 'VhNBOGkg3k0',
   phone: '+212673011873',
   displayPhone: '+212 6.73.01.18.73',
-  email: 'contact@softstore.ma',
+  email: 'professionalanass@gmail.com',
   promo: {
     active: true,
     title: "Promo\nFin d'année.",
