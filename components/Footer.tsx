@@ -65,20 +65,12 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
                 <i className="fa-brands fa-instagram"></i>
               </a>
               <a
-                href="https://wa.me/21273011872"
+                href="https://wa.me/212673011873"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-black transition transform hover:scale-110"
               >
                 <i className="fa-brands fa-whatsapp"></i>
-              </a>
-              <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-black transition transform hover:scale-110"
-              >
-                <i className="fa-brands fa-youtube"></i>
               </a>
             </div>
           </div>

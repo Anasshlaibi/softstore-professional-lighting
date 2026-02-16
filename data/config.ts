@@ -25,6 +25,6 @@ export const defaultSiteConfig = {
     discount: 15,
     image:
       'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg',
-    endDate: '2025-12-30',
+    endDate: '2026-12-31',
   },
 };
