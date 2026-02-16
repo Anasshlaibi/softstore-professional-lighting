@@ -116,7 +116,7 @@ const Products: React.FC<ProductsProps> = ({
             Notre Collection.
           </h2>
           <p className="text-gray-500 text-sm md:text-base">
-            Des solutions d'éclairage pour chaque projet.
+            Des solutions d&apos;éclairage pour chaque projet.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ const Products: React.FC<ProductsProps> = ({
               Aucun produit trouvé
             </h3>
             <p className="text-gray-500 mb-6">
-              Essayez d'ajuster vos filtres ou votre recherche
+              Essayez d&apos;ajuster vos filtres ou votre recherche
             </p>
             <button
               onClick={() => {

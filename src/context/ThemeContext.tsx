@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 interface ThemeContextType {
     isDark: boolean;
@@ -13,16 +13,14 @@ const ThemeContext = createContext<ThemeContextType>({
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isDark, setIsDark] = useState(false);
-
-    // Load theme preference from localStorage on mount
-    useEffect(() => {
+    const [isDark, setIsDark] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
-            setIsDark(true);
             document.documentElement.classList.add('dark');
+            return true;
         }
-    }, []);
+        return false;
+    });
 
     const toggleTheme = () => {
         console.log('Toggle theme clicked! Current isDark:', isDark);

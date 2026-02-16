@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Product } from '../App';
 import { useCart } from '../src/context/CartContext';
 
-interface Promo {
-  active: boolean;
-  endDate: string;
-}
-
 interface ProductDetailModalProps {
   product: Product;
   onClose: () => void;
   buyNow: (id: number) => void;
-  siteConfig: { currency: string; phone: string; promo: Promo };
+  siteConfig: { currency: string; phone: string };
 }
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
@@ -28,73 +23,27 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   const { addToCart } = useCart();
 
-  const [activeTab, setActiveTab] = useState('desc');
+  const [activeTab, setActiveTab] = useState(() => product.video ? 'video' : 'desc');
 
   const [currentImage, setCurrentImage] = useState(product.image);
 
-  const [countdown, setCountdown] = useState<string>('');
 
 
-
-  useEffect(() => {
-
+  // Sync currentImage and activeTab when product changes
+  const [prevProductId, setPrevProductId] = useState(product.id);
+  if (prevProductId !== product.id) {
+    setPrevProductId(product.id);
     setCurrentImage(product.image);
-
     if (product.video) {
-
       setActiveTab('video');
-
+    } else {
+      setActiveTab('desc');
     }
-
-  }, [product]);
-
+  }
 
 
-  useEffect(() => {
 
-    if (siteConfig.promo.active && siteConfig.promo.endDate) {
 
-      const end = new Date(siteConfig.promo.endDate).getTime();
-
-      const interval = setInterval(() => {
-
-        const now = new Date().getTime();
-
-        const distance = end - now;
-
-        if (distance < 0) {
-
-          setCountdown('TERMINÉ');
-
-          clearInterval(interval);
-
-        } else {
-
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-          const hours = Math.floor(
-
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-
-          );
-
-          const minutes = Math.floor(
-
-            (distance % (1000 * 60 * 60)) / (1000 * 60)
-
-          );
-
-          setCountdown(`${days}j ${hours}h ${minutes}m`);
-
-        }
-
-      }, 1000);
-
-      return () => clearInterval(interval);
-
-    }
-
-  }, [siteConfig.promo]);
 
 
 
@@ -164,9 +113,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
       ? Math.round(
 
-          ((product.oldPrice - product.price) / product.oldPrice) * 100
+        ((product.oldPrice - product.price) / product.oldPrice) * 100
 
-        )
+      )
 
       : 0;
 
@@ -212,23 +161,6 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
         <div className="bg-white w-full max-w-6xl mx-auto md:rounded-3xl md:shadow-2xl md:border border-gray-100 overflow-hidden flex flex-col md:flex-row min-h-screen md:min-h-0 relative pb-20 md:pb-0">
 
-          {/* Flash Sale Banner */}
-
-          {siteConfig.promo.active && (
-
-            <div className="absolute top-0 left-0 w-full bg-red-600 text-white text-center py-2 z-20 shadow-md">
-
-              <p className="text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2">
-
-                <i className="fa-solid fa-bolt animate-pulse"></i> Offre Flash:{' '}
-
-                <span className="font-mono text-sm">{countdown}</span>
-
-              </p>
-
-            </div>
-
-          )}
 
 
 

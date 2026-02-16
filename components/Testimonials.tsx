@@ -88,7 +88,7 @@ const Testimonials: React.FC = () => {
 
                             {/* Quote */}
                             <blockquote className="text-xl md:text-2xl font-light text-gray-800 leading-relaxed mb-8">
-                                "{testimonials[activeIndex].text}"
+                                &ldquo;{testimonials[activeIndex].text}&rdquo;
                             </blockquote>
 
                             {/* Author */}
@@ -110,8 +110,8 @@ const Testimonials: React.FC = () => {
                                 key={index}
                                 onClick={() => setActiveIndex(index)}
                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeIndex
-                                        ? 'bg-black w-8'
-                                        : 'bg-gray-300 hover:bg-gray-400'
+                                    ? 'bg-black w-8'
+                                    : 'bg-gray-300 hover:bg-gray-400'
                                     }`}
                                 aria-label={`Témoignage ${index + 1}`}
                             ></button>

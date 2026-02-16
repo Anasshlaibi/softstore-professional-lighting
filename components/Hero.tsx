@@ -19,6 +19,9 @@ const Hero: React.FC<HeroProps> = ({ siteConfig }) => {
         src={siteConfig.heroImg}
         alt="Background"
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
+        width={1920}
+        height={1080}
+        fetchPriority="high"
       />
 
       {/* Dark Overlay */}
@@ -28,7 +31,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig }) => {
       <div className="container mx-auto px-6 relative z-10 text-center text-white mt-16">
         <div className="max-w-4xl mx-auto animate-fade-in">
           <span className="inline-block py-1 px-3 rounded-full bg-white/10 text-white text-xs font-bold mb-6 tracking-wide border border-white/20 backdrop-blur-sm">
-            Nouvelle Collection 2025
+            Nouvelle Collection 2026
           </span>
 
           <h1 className="text-5xl md:text-8xl font-bold text-white mb-6 tracking-tight leading-tight">

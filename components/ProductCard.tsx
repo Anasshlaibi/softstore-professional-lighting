@@ -6,7 +6,7 @@ interface ProductCardProps {
   onProductClick: (id: number) => void;
   siteConfig: { currency: string; phone: string };
   openWhatsappReserve: (productName: string) => void;
-  generateStars: (rating: number) => JSX.Element[];
+  generateStars: (rating: number) => React.ReactElement[];
   addToCart: (productId: number) => void;
 }
 
@@ -53,6 +53,8 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             alt={product.name}
             className={`w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm group-hover:drop-shadow-xl mix-blend-multiply ${!product.inStock ? 'grayscale opacity-80' : ''}`}
             loading="lazy"
+            width={400}
+            height={400}
           />
         </div>
 

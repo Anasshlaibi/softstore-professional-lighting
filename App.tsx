@@ -12,7 +12,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Cart from './components/Cart';
 import ProductDetailModal from './components/ProductDetailModal';
 import CheckoutModal from './components/CheckoutModal';
-import PromoOverlay from './components/PromoOverlay';
+
 import Toast from './components/Toast';
 import LoadingSpinner from './components/LoadingSpinner';
 
@@ -52,7 +52,7 @@ const App: React.FC = () => {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [appliedPromo, setAppliedPromo] = useState<number | null>(null);
-  const [isPromoOverlayOpen, setIsPromoOverlayOpen] = useState(false);
+
 
   // Fetch products from Google Sheets on mount
   useEffect(() => {
@@ -90,19 +90,7 @@ const App: React.FC = () => {
     loadProducts();
   }, []);
 
-  useEffect(() => {
-    // Show promo overlay after 1.5s if active and not seen
-    if (siteConfig.promo.active) {
-      const hasSeen = sessionStorage.getItem('hasSeenPromo');
-      if (!hasSeen) {
-        const timer = setTimeout(() => {
-          setIsPromoOverlayOpen(true);
-          sessionStorage.setItem('hasSeenPromo', 'true');
-        }, 1500);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [siteConfig.promo.active]);
+
 
   const openProductModal = (productId: number) => {
     const product = products.find((p) => p.id === productId);
@@ -113,7 +101,7 @@ const App: React.FC = () => {
     setSelectedProduct(null);
   };
 
-  const buyNow = (productId: number) => {
+  const buyNow = (_productId: number) => {
     // This function will be updated to use the cart context
     closeProductModal();
     setTimeout(() => setIsCheckoutOpen(true), 300);
@@ -148,8 +136,7 @@ const App: React.FC = () => {
         buyNow={buyNow}
         appliedPromo={appliedPromo}
         applyPromo={applyPromo}
-        isPromoOverlayOpen={isPromoOverlayOpen}
-        setIsPromoOverlayOpen={setIsPromoOverlayOpen}
+
       />
     </CartProvider>
   );
@@ -159,7 +146,7 @@ const AppContent: React.FC<{
   products: Product[];
   loading: boolean;
   error: string | null;
-  siteConfig: any;
+  siteConfig: typeof defaultSiteConfig;
   isCartOpen: boolean;
   setIsCartOpen: (isOpen: boolean) => void;
   isCheckoutOpen: boolean;
@@ -170,8 +157,7 @@ const AppContent: React.FC<{
   buyNow: (id: number) => void;
   appliedPromo: number | null;
   applyPromo: (code: string) => boolean;
-  isPromoOverlayOpen: boolean;
-  setIsPromoOverlayOpen: (isOpen: boolean) => void;
+
 }> = ({
   products,
   loading,
@@ -187,8 +173,7 @@ const AppContent: React.FC<{
   buyNow,
   appliedPromo,
   applyPromo,
-  isPromoOverlayOpen,
-  setIsPromoOverlayOpen,
+
 }) => {
     const { toastMessage, clearToast } = useCart();
 
@@ -264,12 +249,6 @@ const AppContent: React.FC<{
           />
         )}
 
-        {isPromoOverlayOpen && (
-          <PromoOverlay
-            siteConfig={siteConfig}
-            onClose={() => setIsPromoOverlayOpen(false)}
-          />
-        )}
 
         {toastMessage && (
           <Toast message={toastMessage} onClose={clearToast} />
