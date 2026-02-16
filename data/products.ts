@@ -4,7 +4,7 @@ export const defaultProducts: Product[] = [
   {
     id: 1,
     name: 'YM 350',
-    price: 2700,
+    price: 3000,
     oldPrice: 3200,
     rentPrice: 450,
     category: 'studio',
@@ -60,7 +60,7 @@ export const defaultProducts: Product[] = [
   {
     id: 6,
     name: 'YB-100R ',
-    price: 1800,
+    price: 1900,
     oldPrice: 2300,
     rentPrice: 350,
     category: 'portable',
@@ -87,7 +87,7 @@ export const defaultProducts: Product[] = [
   {
     id: 7,
     name: 'S100 W portable',
-    price: 1950,
+    price: 1999,
     oldPrice: 2500,
     rentPrice: 300,
     category: 'portable',
