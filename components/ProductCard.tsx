@@ -7,6 +7,7 @@ interface ProductCardProps {
   siteConfig: { currency: string; phone: string };
   openWhatsappReserve: (productName: string) => void;
   generateStars: (rating: number) => JSX.Element[];
+  addToCart: (productId: number) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = React.memo(
@@ -16,12 +17,13 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
     siteConfig,
     openWhatsappReserve,
     generateStars,
+    addToCart,
   }) => {
     const discount =
       product.oldPrice && product.oldPrice > product.price
         ? Math.round(
-            ((product.oldPrice - product.price) / product.oldPrice) * 100
-          )
+          ((product.oldPrice - product.price) / product.oldPrice) * 100
+        )
         : 0;
 
     return (
@@ -105,7 +107,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
                 if (!product.inStock) {
                   openWhatsappReserve(product.name);
                 } else {
-                  onProductClick(product.id); // Or add to cart directly, but modal is better UX for details
+                  addToCart(product.id);
                 }
               }}
             >

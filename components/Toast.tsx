@@ -16,7 +16,7 @@ const Toast: React.FC<ToastProps> = ({ message, onClose, duration = 3000 }) => {
     }, [onClose, duration]);
 
     return (
-        <div className="fixed top-4 right-4 z-50 animate-slide-in-down">
+        <div className="fixed top-4 right-4 z-[9999] animate-slide-in-down">
             <div className="bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl flex items-center gap-3 min-w-[300px] max-w-md">
                 <div className="flex-shrink-0">
                     <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">

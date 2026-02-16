@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../App';
 import ProductCard from './ProductCard';
+import { useCart } from '../src/context/CartContext';
 
 interface ProductsProps {
   products: Product[];
@@ -14,6 +15,7 @@ const Products: React.FC<ProductsProps> = ({
   siteConfig,
 }) => {
   const [filter, setFilter] = useState('all');
+  const { addToCart } = useCart();
 
   const filteredProducts =
     filter === 'all' ? products : products.filter((p) => p.category === filter);
@@ -36,9 +38,8 @@ const Products: React.FC<ProductsProps> = ({
     return Array.from({ length: 5 }, (_, i) => (
       <i
         key={i}
-        className={`fa-solid fa-star text-[10px] ${
-          i < rating ? 'text-[#ff3b30]' : 'text-gray-200'
-        }`}
+        className={`fa-solid fa-star text-[10px] ${i < rating ? 'text-[#ff3b30]' : 'text-gray-200'
+          }`}
       ></i>
     ));
   };
@@ -62,11 +63,10 @@ const Products: React.FC<ProductsProps> = ({
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`text-xs md:text-sm font-medium px-4 py-2 rounded-full transition whitespace-nowrap snap-center ${
-                  filter === cat
-                    ? 'bg-gray-100 text-black'
-                    : 'text-gray-500 hover:text-black bg-transparent'
-                }`}
+                className={`text-xs md:text-sm font-medium px-4 py-2 rounded-full transition whitespace-nowrap snap-center ${filter === cat
+                  ? 'bg-gray-100 text-black'
+                  : 'text-gray-500 hover:text-black bg-transparent'
+                  }`}
               >
                 {cat.charAt(0).toUpperCase() + cat.slice(1)}
               </button>
@@ -89,6 +89,7 @@ const Products: React.FC<ProductsProps> = ({
                 siteConfig={siteConfig}
                 openWhatsappReserve={openWhatsappReserve}
                 generateStars={generateStars}
+                addToCart={addToCart}
               />
             ))}
           </div>
