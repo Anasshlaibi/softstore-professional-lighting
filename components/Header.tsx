@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../src/context/CartContext';
+import DarkModeToggle from './DarkModeToggle';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -60,6 +61,9 @@ const Header: React.FC<HeaderProps> = React.memo(
           </nav>
 
           <div className="flex items-center gap-3 md:gap-5">
+            {/* Dark Mode Toggle */}
+            <DarkModeToggle />
+
             <button
               onClick={onCartClick}
               className="relative group p-1"

@@ -16,6 +16,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
 import { CartProvider, useCart } from './src/context/CartContext';
+import { ThemeProvider } from './src/context/ThemeContext';
 import { fetchProductsFromGoogleSheets } from './src/utils/fetchProducts';
 
 export interface Product {
@@ -189,7 +190,7 @@ const AppContent: React.FC<{
     const { toastMessage, clearToast } = useCart();
 
     return (
-      <div className="bg-white text-gray-800 antialiased font-sans">
+      <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
         <Header
           onCartClick={() => setIsCartOpen(true)}
           siteConfig={siteConfig}
@@ -272,3 +273,13 @@ const AppContent: React.FC<{
   };
 
 export default App;
+
+// Wrap with ThemeProvider
+const AppWithTheme = () => (
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
+
+export { AppWithTheme };
+
