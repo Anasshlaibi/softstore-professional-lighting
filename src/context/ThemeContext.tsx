@@ -25,14 +25,18 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }, []);
 
     const toggleTheme = () => {
+        console.log('Toggle theme clicked! Current isDark:', isDark);
         setIsDark((prev) => {
             const newTheme = !prev;
+            console.log('New theme will be:', newTheme ? 'dark' : 'light');
             if (newTheme) {
                 document.documentElement.classList.add('dark');
                 localStorage.setItem('theme', 'dark');
+                console.log('Added dark class to html element');
             } else {
                 document.documentElement.classList.remove('dark');
                 localStorage.setItem('theme', 'light');
+                console.log('Removed dark class from html element');
             }
             return newTheme;
         });
