@@ -52,7 +52,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             <div className="flex flex-col lg:flex-row lg:items-center gap-4">
                 {/* Category Filter */}
                 <div className="flex-1">
-                    <label className="block text-xs font-medium text-gray-600 mb-2 uppercase tracking-wide">
+                    <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wide">
                         Catégorie
                     </label>
                     <div className="flex flex-wrap gap-2">
@@ -61,8 +61,8 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                                 key={cat}
                                 onClick={() => handleCategoryChange(cat)}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filters.category === cat
-                                        ? 'bg-black text-white shadow-md'
-                                        : 'bg-white text-gray-700 hover:bg-gray-100'
+                                    ? 'bg-black text-white shadow-md'
+                                    : 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-200'
                                     }`}
                             >
                                 {cat === 'all' ? 'Tous' : cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -73,13 +73,13 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
 
                 {/* Sort Dropdown */}
                 <div className="w-full lg:w-56">
-                    <label className="block text-xs font-medium text-gray-600 mb-2 uppercase tracking-wide">
+                    <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wide">
                         Trier par
                     </label>
                     <select
                         value={filters.sortBy}
                         onChange={handleSortChange}
-                        className="w-full px-4 py-2 pr-8 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-sm"
+                        className="w-full px-4 py-2 pr-8 bg-white text-gray-900 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-sm font-medium"
                     >
                         <option value="name-asc">Nom (A → Z)</option>
                         <option value="name-desc">Nom (Z → A)</option>
@@ -97,7 +97,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                             onChange={handleStockToggle}
                             className="w-4 h-4 text-black bg-white border-gray-300 rounded focus:ring-black focus:ring-2 cursor-pointer"
                         />
-                        <span className="ml-2 text-sm font-medium text-gray-700">En stock uniquement</span>
+                        <span className="ml-2 text-sm font-medium text-gray-900">En stock uniquement</span>
                     </label>
                 </div>
             </div>
@@ -125,7 +125,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                     </div>
                     <button
                         onClick={clearFilters}
-                        className="text-sm text-gray-600 hover:text-black font-medium transition-colors"
+                        className="text-sm text-gray-700 hover:text-black font-medium transition-colors"
                     >
                         Effacer tous les filtres
                     </button>

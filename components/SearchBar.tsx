@@ -23,20 +23,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
     };
 
     return (
-        <div className="relative w-full max-w-2xl mx-auto mb-6">
+        <div className="relative w-full max-w-xl mx-auto mb-6">
             <div className="relative">
                 {/* Search Icon */}
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <i className="fa-solid fa-search text-gray-400"></i>
+                    <i className="fa-solid fa-search text-gray-400 text-sm"></i>
                 </div>
 
-                {/* Search Input */}
+                {/* Search Input - Smaller and cooler */}
                 <input
                     type="text"
                     value={searchQuery}
                     onChange={handleChange}
                     placeholder={placeholder}
-                    className="w-full pl-12 pr-12 py-3 md:py-4 text-base border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
+                    className="w-full pl-11 pr-10 py-2.5 text-sm text-gray-900 bg-white border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all shadow-sm hover:shadow-md placeholder-gray-400"
                 />
 
                 {/* Clear Button */}
@@ -46,17 +46,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
                         className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-black transition-colors"
                         aria-label="Effacer"
                     >
-                        <i className="fa-solid fa-times"></i>
+                        <i className="fa-solid fa-times text-sm"></i>
                     </button>
                 )}
             </div>
 
-            {/* Search Result Count (optional - can be passed as prop) */}
-            {searchQuery && (
-                <div className="mt-2 text-sm text-gray-500 text-center">
-                    Recherche: "{searchQuery}"
-                </div>
-            )}
+
         </div>
     );
 };
