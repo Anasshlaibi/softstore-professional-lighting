@@ -4,6 +4,9 @@ import Hero from './components/Hero';
 import Products from './components/Products';
 import WhyUs from './components/WhyUs';
 import VideoShowcase from './components/VideoShowcase';
+import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
+import TrustBadges from './components/TrustBadges';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Cart from './components/Cart';
@@ -219,8 +222,11 @@ const AppContent: React.FC<{
             />
           )}
 
+          <TrustBadges />
           <VideoShowcase siteConfig={siteConfig} />
           <WhyUs siteConfig={siteConfig} />
+          <Testimonials />
+          <FAQ />
         </main>
         <Footer siteConfig={siteConfig} />
         <FloatingWhatsApp siteConfig={siteConfig} />

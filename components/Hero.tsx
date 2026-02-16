@@ -49,15 +49,20 @@ const Hero: React.FC<HeroProps> = ({ siteConfig }) => {
               id="hero-btn-primary"
               className="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition text-base shadow-xl transform hover:-translate-y-1"
             >
-              {siteConfig.btnText}
+              Découvrir la Collection
             </a>
             <a
               href="#videos"
               id="hero-btn-secondary"
-              className="w-full sm:w-auto px-8 py-4 text-white bg-transparent border border-white rounded-full hover:bg-white/10 transition text-base font-medium flex justify-center items-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 text-white bg-transparent border border-white rounded-full hover :bg-white/10 transition text-base font-medium flex justify-center items-center gap-2"
             >
               <i className="fa-solid fa-play text-xs"></i> Regarder
             </a>
+          </div>
+
+          {/* Trust Message */}
+          <div className="mt-6 text-white/80 text-sm">
+            Livraison gratuite • Garantie 1 an • Retour 14 jours
           </div>
         </div>
       </div>
