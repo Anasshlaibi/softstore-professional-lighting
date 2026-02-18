@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
           </div>
         )}
         {product.rentPrice && product.rentPrice > 0 && (
-          <div className="absolute bottom-24 right-2 md:bottom-auto md:top-2 md:left-auto md:right-2 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm z-20">
+          <div className="absolute bottom-24 right-2 md:bottom-auto md:top-2 md:left-auto md:right-2 bg-gray-100 text-[#666666] text-xs font-bold px-2 py-1 rounded shadow-sm z-20">
             <i className="fa-solid fa-calendar-check mr-1"></i> Location
           </div>
         )}
@@ -69,7 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             {product.category}
           </p>
           {product.inStock && (
-            <div className="flex items-center gap-2 text-xs text-green-600 mb-2">
+            <div className="flex items-center gap-2 text-xs text-[#666666] mb-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -81,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
           <div className="mt-auto pt-3 border-t border-gray-50 flex items-center justify-between">
             <div className="flex flex-col">
               <div className="flex items-center">
-                <span className="text-green-600 font-bold text-sm md:text-lg">
+                <span className="text-[#2D5A27] font-bold text-sm md:text-lg">
                   {product.price}{' '}
                   <span className="text-xs">{siteConfig.currency}</span>
                 </span>
@@ -97,7 +97,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
                 </span>
               )}
               {product.rentPrice && product.rentPrice > 0 && (
-                <span className="text-[10px] text-blue-500 font-medium mt-1">
+                <span className="text-xs text-[#666666] font-medium mt-1">
                   Loc: {product.rentPrice} {siteConfig.currency}/j
                 </span>
               )}

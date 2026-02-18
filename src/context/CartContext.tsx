@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+
 import { Product } from '../../App';
 
 export interface CartItem extends Product {
@@ -68,6 +69,17 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
 
     // Show success toast
     setToastMessage(`${productToAdd.name} ajouté au panier`);
+
+    // Track AddToCart
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'AddToCart', {
+        content_name: productToAdd.name,
+        content_ids: [productToAdd.id],
+        content_type: 'product',
+        value: productToAdd.price,
+        currency: 'MAD'
+      });
+    }
   };
 
   const removeFromCart = (productId: number) => {

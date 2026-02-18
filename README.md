@@ -8,6 +8,8 @@ This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/drive/1BF7I_1qsqIBclGQ6MyQPccLstxp8Hk5E
 
+**Live Demo:** https://softstore-professional-lighting.vercel.app
+
 ## Run Locally
 
 **Prerequisites:** Node.js
@@ -17,3 +19,17 @@ View your app in AI Studio: https://ai.studio/apps/drive/1BF7I_1qsqIBclGQ6MyQPcc
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Deploy to Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+To deploy manually inside this directory:
+1. Initialize a git repository if you haven't already:
+   `git init && git add . && git commit -m "Initial commit"`
+2. Install Vercel CLI:
+   `npm i -g vercel`
+3. Deploy:
+   `vercel`

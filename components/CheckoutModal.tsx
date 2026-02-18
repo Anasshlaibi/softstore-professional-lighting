@@ -99,6 +99,17 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
       console.error('Error sending to CRM:', error);
     }
 
+    // Track Purchase
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Purchase', {
+        value: total,
+        currency: siteConfig.currency || 'MAD',
+        content_ids: cartItems.map(i => i.id),
+        content_name: 'WhatsApp Order',
+        num_items: cartItems.reduce((acc, i) => acc + i.qty, 0)
+      });
+    }
+
     const phoneNum = "212673011873";
     window.open(
       `https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`,

@@ -178,7 +178,7 @@ const AppContent: React.FC<{
     const { toastMessage, clearToast } = useCart();
 
     return (
-      <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
+      <div className="bg-amber-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
         <Header
           onCartClick={() => setIsCartOpen(true)}
           siteConfig={siteConfig}

@@ -47,6 +47,19 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
 
 
+  // Track ViewContent on mount
+  useEffect(() => {
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'ViewContent', {
+        content_name: product.name,
+        content_ids: [product.id],
+        content_type: 'product',
+        value: product.price,
+        currency: siteConfig.currency || 'MAD'
+      });
+    }
+  }, [product, siteConfig.currency]);
+
   const getYoutubeEmbedUrl = (urlOrId?: string) => {
 
     if (!urlOrId) return null;
@@ -159,7 +172,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
       <div className="container mx-auto min-h-screen flex items-center justify-center p-0 md:p-6">
 
-        <div className="bg-white w-full max-w-6xl mx-auto md:rounded-3xl md:shadow-2xl md:border border-gray-100 overflow-hidden flex flex-col md:flex-row min-h-screen md:min-h-0 relative pb-20 md:pb-0">
+        <div className="bg-white w-full max-w-6xl mx-auto md:rounded-3xl md:shadow-2xl md:border border-gray-100 overflow-hidden flex flex-col md:flex-row min-h-screen md:min-h-0 relative pb-[120px] md:pb-0">
 
 
 
@@ -280,7 +293,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 </span>
 
-                <span className="text-3xl font-bold text-green-600">
+                <span className="text-3xl font-bold text-[#2D5A27]">
 
                   {product.price} {siteConfig.currency}
 
@@ -314,16 +327,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 <div className="flex items-baseline gap-3 mb-4">
 
-                  <span className="text-xs text-blue-500 uppercase tracking-wider font-bold">
-
+                  <span className="text-xs text-[#666666] uppercase tracking-wider font-bold">
                     Location:
-
                   </span>
-
-                  <span className="text-xl font-bold text-blue-600">
-
+                  <span className="text-xl font-bold text-[#666666]">
                     {product.rentPrice} {siteConfig.currency}
-
                   </span>
 
                   <span className="text-xs text-gray-500">/ jour</span>
@@ -441,15 +449,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               {activeTab === 'desc' && (
 
-                <p
-
-                  dangerouslySetInnerHTML={{
-
-                    __html: product.desc.replace(/\n/g, '<br>'),
-
-                  }}
-
-                ></p>
+                <p className="whitespace-pre-line leading-[1.6]">
+                  {product.desc}
+                </p>
 
               )}
 
@@ -551,7 +553,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Mobile Sticky Footer */}
 
-          <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] z-50 flex flex-col gap-2">
+          <div className="md:hidden fixed bottom-0 left-0 w-full bg-white/85 backdrop-blur-[10px] border-t border-gray-100 p-4 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] z-50 flex flex-col gap-2">
 
             <div className="flex justify-between items-center w-full">
 
@@ -559,7 +561,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 <div className="flex items-center gap-2">
 
-                  <span className="text-xl font-bold text-green-600 leading-tight">
+                  <span className="text-xl font-bold text-[#2D5A27] leading-tight">
 
                     {product.price} {siteConfig.currency}
 
@@ -593,7 +595,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 <div className="text-right">
 
-                  <span className="text-sm font-bold text-blue-600">
+                  <span className="text-sm font-bold text-[#666666]">
 
                     {product.rentPrice} {siteConfig.currency}
 
