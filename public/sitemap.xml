@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gearshop.ma/</loc>
     <lastmod>2026-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://gearshop.ma/#collection</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg</image:loc>
+      <image:title>YM 350 - Éclairage Studio Professionnel Maroc - كشاف تصوير</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg</image:loc>
+      <image:title>YB-300R - LED RGB Portable TikTok - إضاءة تيك توك</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319173149416DF92390F5C3A7_b.webp</image:loc>
+      <image:title>YB-100R - Projecteur LED Handheld - معدات تصوير</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.jpg</image:loc>
+      <image:title>S100 W Portable - Kit Éclairage YouTube - كشاف يوتيوب</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319171843802F1E3F22F87FE6_b.webp</image:loc>
+      <image:title>Y300S - Softbox 300W ZSYB Casablanca - سفت بوكس</image:title>
+    </image:image>
   </url>
 </urlset>
