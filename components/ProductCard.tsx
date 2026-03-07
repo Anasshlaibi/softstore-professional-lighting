@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
         <div className="h-auto aspect-[4/5] md:aspect-square bg-white flex items-center justify-center p-0 relative overflow-hidden group-hover:bg-gray-50 transition-colors duration-500">
           <img
             src={product.image}
-            alt={product.name}
+            alt={`${product.name} - ${product.category}`}
             className={`w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm group-hover:drop-shadow-xl mix-blend-multiply ${!product.inStock ? 'grayscale opacity-80' : ''}`}
             loading="lazy"
             width={400}
@@ -104,7 +104,8 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               )}
             </div>
             <button
-              className={`text-xs font-bold py-2 rounded-full transition shadow-lg flex items-center gap-2 transform active:scale-95 duration-200 ${!product.inStock ? 'bg-orange-500 text-white hover:bg-orange-600 px-3' : 'bg-black text-white hover:bg-gray-800 px-4'}`}
+              className={`min-w-[44px] min-h-[44px] text-xs font-bold py-2 rounded-full transition shadow-lg flex items-center justify-center gap-2 transform active:scale-95 duration-200 ${!product.inStock ? 'bg-orange-500 text-white hover:bg-orange-600 px-3' : 'bg-black text-white hover:bg-gray-800 px-4'}`}
+              aria-label={!product.inStock ? `Réserver ${product.name}` : `Ajouter ${product.name} au panier`}
               onClick={(e) => {
                 e.stopPropagation();
                 if (!product.inStock) {
@@ -116,11 +117,11 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             >
               {!product.inStock ? (
                 <>
-                  <i className="fa-solid fa-clock"></i> Réserver
+                  <i className="fa-solid fa-clock" aria-hidden="true"></i> Réserver
                 </>
               ) : (
                 <>
-                  <i className="fa-solid fa-plus"></i>
+                  <i className="fa-solid fa-plus" aria-hidden="true"></i>
                 </>
               )}
             </button>

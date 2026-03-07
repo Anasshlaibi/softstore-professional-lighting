@@ -17,7 +17,7 @@ const WhyUs: React.FC<WhyUsProps> = ({ siteConfig }) => {
             <img
               src={siteConfig.whyImg}
               loading="lazy"
-              alt="SoftStore product in action"
+              alt="GearShop.ma professional lighting equipment in action"
               className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-700"
             />
           </div>

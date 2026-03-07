@@ -69,16 +69,16 @@ const Header: React.FC<HeaderProps> = React.memo(
           <div className="flex items-center gap-2 md:gap-5">
             <button
               onClick={onCartClick}
-              className="relative group p-1"
-              aria-label="Panier"
+              className="relative group p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label={`Voir le panier (${cartCount} articles)`}
             >
               <div
-                className={`p-2 rounded-full transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-gray-100 text-black hover:bg-black hover:text-white' : 'bg-white/20 text-white hover:bg-white/30'}`}
+                className={`p-2.5 rounded-full transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-gray-100 text-black hover:bg-black hover:text-white' : 'bg-white/20 text-white hover:bg-white/30'}`}
               >
-                <i className="fa-solid fa-bag-shopping text-lg block"></i>
+                <i className="fa-solid fa-bag-shopping text-xl block"></i>
               </div>
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
                   {cartCount}
                 </span>
               )}
@@ -87,13 +87,13 @@ const Header: React.FC<HeaderProps> = React.memo(
             {/* Hamburger Menu Toggle */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden relative group p-1"
-              aria-label="Menu"
+              className="md:hidden relative group p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             >
               <div
-                className={`p-2 rounded-full transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-gray-100 text-black hover:bg-black hover:text-white' : 'bg-white/20 text-white hover:bg-white/30'}`}
+                className={`p-2.5 rounded-full transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-gray-100 text-black hover:bg-black hover:text-white' : 'bg-white/20 text-white hover:bg-white/30'}`}
               >
-                <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-lg block`}></i>
+                <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl block`}></i>
               </div>
             </button>
           </div>

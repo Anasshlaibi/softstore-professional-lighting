@@ -17,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig }) => {
       <img
         id="hero-img"
         src={siteConfig.heroImg}
-        alt="Background"
+        alt={`${siteConfig.hero1} ${siteConfig.hero2} - GearShop.ma background`}
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
         width={1920}
         height={1080}
