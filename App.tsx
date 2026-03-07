@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Products from './components/Products';
-import WhyUs from './components/WhyUs';
-import Comparison from './components/Comparison';
-import VideoShowcase from './components/VideoShowcase';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import TrustBadges from './components/TrustBadges';
-import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
-import Cart from './components/Cart';
-import ProductDetailModal from './components/ProductDetailModal';
-import CheckoutModal from './components/CheckoutModal';
+
+// Lazy load below-the-fold components
+const WhyUs = lazy(() => import('./components/WhyUs'));
+const Comparison = lazy(() => import('./components/Comparison'));
+const VideoShowcase = lazy(() => import('./components/VideoShowcase'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const FAQ = lazy(() => import('./components/FAQ'));
+const TrustBadges = lazy(() => import('./components/TrustBadges'));
+const Footer = lazy(() => import('./components/Footer'));
+const FloatingWhatsApp = lazy(() => import('./components/FloatingWhatsApp'));
+const Cart = lazy(() => import('./components/Cart'));
+const ProductDetailModal = lazy(() => import('./components/ProductDetailModal'));
+const CheckoutModal = lazy(() => import('./components/CheckoutModal'));
 
 import Toast from './components/Toast';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -202,50 +204,53 @@ const AppContent: React.FC<{
             />
           )}
 
-          {/* Main Sections */}
-          <TrustBadges />
-          <VideoShowcase siteConfig={siteConfig} />
-          <WhyUs siteConfig={siteConfig} />
-          <Comparison />
-          <Testimonials />
-          <FAQ />
+          <Suspense fallback={<div className="h-20" />}>
+            {/* Main Sections */}
+            <TrustBadges />
+            <VideoShowcase siteConfig={siteConfig} />
+            <WhyUs siteConfig={siteConfig} />
+            <Comparison />
+            <Testimonials />
+            <FAQ />
+          </Suspense>
         </main>
-        <Footer siteConfig={siteConfig} />
-        <FloatingWhatsApp siteConfig={siteConfig} />
 
-        <Cart
-          isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
-          siteConfig={siteConfig}
-          openCheckout={() => {
-            setIsCartOpen(false);
-            setIsCheckoutOpen(true);
-          }}
-          applyPromo={applyPromo}
-          appliedPromo={appliedPromo}
-        />
+        <Suspense fallback={null}>
+          <Footer siteConfig={siteConfig} />
+          <FloatingWhatsApp siteConfig={siteConfig} />
 
-        {isCheckoutOpen && (
-          <CheckoutModal
-            onClose={() => setIsCheckoutOpen(false)}
+          <Cart
+            isOpen={isCartOpen}
+            onClose={() => setIsCartOpen(false)}
             siteConfig={siteConfig}
+            applyPromo={applyPromo}
             appliedPromo={appliedPromo}
-            onSuccess={() => {
-              // This function will be updated to use the cart context
-              setIsCheckoutOpen(false);
+            openCheckout={() => {
+              setIsCartOpen(false);
+              setIsCheckoutOpen(true);
             }}
           />
-        )}
 
-        {selectedProduct && (
-          <ProductDetailModal
-            product={selectedProduct}
-            onClose={closeProductModal}
-            buyNow={buyNow}
-            siteConfig={siteConfig}
-          />
-        )}
+          {isCheckoutOpen && (
+            <CheckoutModal
+              onClose={() => setIsCheckoutOpen(false)}
+              siteConfig={siteConfig}
+              appliedPromo={appliedPromo}
+              onSuccess={() => {
+                setIsCheckoutOpen(false);
+              }}
+            />
+          )}
 
+          {selectedProduct && (
+            <ProductDetailModal
+              product={selectedProduct}
+              onClose={closeProductModal}
+              buyNow={buyNow}
+              siteConfig={siteConfig}
+            />
+          )}
+        </Suspense>
 
         {toastMessage && (
           <Toast message={toastMessage} onClose={clearToast} />
