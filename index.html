@@ -84,21 +84,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   
-  <!-- Preload Critical Assets -->
+  <!-- Preload Critical Assets (LCP + First Products) -->
   <link rel="preload" as="image" href="https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg" fetchpriority="high">
 
-  <!-- Critical CSS: Minimal styles to render Header and Hero immediately -->
-  <style>
-    :root { font-display: swap; }
-    body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: #000; color: #fff; }
-    header { position: fixed; top: 0; width: 100%; z-index: 50; height: 64px; transition: background 0.3s; }
-    .hero-section { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; }
-    .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-    @font-face { font-family: 'Inter'; font-display: swap; src: local('Inter'); }
-  </style>
-
-  <!-- Non-blocking Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <!-- Optimized Font Loading: Only necessary weights -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

@@ -87,7 +87,7 @@ const FAQ: React.FC = () => {
                                         className={`flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-black text-white transition-transform duration-300 ${openId === faq.id ? 'rotate-180' : ''
                                             }`}
                                     >
-                                        <i className="fa-solid fa-chevron-down text-xs"></i>
+                                        <i className="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>
                                     </div>
                                 </button>
 

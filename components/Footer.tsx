@@ -61,24 +61,25 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-black transition transform hover:scale-110"
+                aria-label="Suivez-nous sur Instagram"
               >
-                <i className="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-instagram" aria-hidden="true"></i>
               </a>
               <a
                 href="https://wa.me/212673011873"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-black transition transform hover:scale-110"
+                aria-label="Contactez-nous sur WhatsApp"
               >
-                <i className="fa-brands fa-whatsapp"></i>
+                <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
         <div className="border-t border-gray-100 mt-16 pt-8 text-center text-gray-400">
           <p>
-            &copy; {new Date().getFullYear()} SoftStore Inc. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} GearShop.ma. Tous droits réservés.
           </p>
         </div>
       </div>
