@@ -1,0 +1,18 @@
+/*
+Theme Name: SoftStore
+Theme URI: https://softstore-professional-lighting.vercel.app
+Author: SoftStore Team
+Author URI: https://softstore-professional-lighting.vercel.app
+Description: Custom WordPress theme converted from React/Tailwind.
+Version: 1.0.0
+Text Domain: softstore
+*/
+
+/* Import Compiled Tailwind CSS */
+@import url('assets/css/app.css');
+
+/* Additional Custom Adjustments if needed */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
