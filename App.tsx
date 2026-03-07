@@ -9,6 +9,7 @@ const Comparison = lazy(() => import('./components/Comparison'));
 const VideoShowcase = lazy(() => import('./components/VideoShowcase'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
 const FAQ = lazy(() => import('./components/FAQ'));
+const TechnicalSEO = lazy(() => import('./components/TechnicalSEO'));
 const TrustBadges = lazy(() => import('./components/TrustBadges'));
 const Footer = lazy(() => import('./components/Footer'));
 const FloatingWhatsApp = lazy(() => import('./components/FloatingWhatsApp'));
@@ -217,6 +218,7 @@ const AppContent: React.FC<{
         </main>
 
         <Suspense fallback={null}>
+          <TechnicalSEO />
           <Footer siteConfig={siteConfig} />
           <FloatingWhatsApp siteConfig={siteConfig} />
           <InstallPWA />
