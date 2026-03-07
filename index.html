@@ -61,21 +61,72 @@
   }
   </script>
 
+  <!-- Advanced Geo-AI & AI-Ready Schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org/",
-    "@type": "LocalBusiness",
-    "name": "GearShop.ma",
-    "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp",
-    "priceRange": "MAD",
-    "telephone": "+212673011873",
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "GearShop Morocco",
+    "url": "https://gearshop.ma",
+    "logo": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp",
+    "description": "Morocco's leading provider of professional photography lighting, studio gear, and videography equipment.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Bouskoura",
       "addressLocality": "Casablanca",
+      "addressRegion": "Casablanca-Settat",
       "addressCountry": "MA"
     },
-    "description": "Spécialiste en éclairage studio ZSYB, Softbox 300W et caméras Canon au Maroc."
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "33.4489", 
+      "longitude": "-7.6486"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Photography Lighting & Gear",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Studio Lighting Kits"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Softboxes and Modifiers"
+          }
+        }
+      ]
+    },
+    "areaServed": "Morocco",
+    "telephone": "+212673011873" 
+  }
+  </script>
+
+  <!-- FAQPage Schema for AI Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Quels sont les délais de livraison à Casablanca?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Livraison sous 24h à Casablanca et 48h partout au Maroc depuis notre entrepôt à Bouskoura."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Proposez-vous le paiement à la livraison?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, nous acceptons le paiement en espèces (Cash on Delivery) partout au Maroc."
+      }
+    }]
   }
   </script>
 
