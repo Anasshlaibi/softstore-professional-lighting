@@ -202,6 +202,7 @@ const AppContent: React.FC<{
             />
           )}
 
+          {/* Main Sections */}
           <TrustBadges />
           <VideoShowcase siteConfig={siteConfig} />
           <WhyUs siteConfig={siteConfig} />
