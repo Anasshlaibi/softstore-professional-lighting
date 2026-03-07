@@ -1,9 +1,11 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import TrustBanner from './components/TrustBanner';
 import Products from './components/Products';
 
 // Lazy load below-the-fold components
+const UsageSelector = lazy(() => import('./components/UsageSelector'));
 const WhyUs = lazy(() => import('./components/WhyUs'));
 const Comparison = lazy(() => import('./components/Comparison'));
 const VideoShowcase = lazy(() => import('./components/VideoShowcase'));
@@ -184,6 +186,7 @@ const AppContent: React.FC<{
         />
         <main>
           <Hero siteConfig={siteConfig} />
+          <TrustBanner />
 
           {/* Show error message if Google Sheets failed */}
           {error && !loading && (
@@ -194,6 +197,10 @@ const AppContent: React.FC<{
               </div>
             </div>
           )}
+
+          <Suspense fallback={null}>
+            <UsageSelector />
+          </Suspense>
 
           {/* Show loading spinner or products */}
           {loading ? (
