@@ -13,6 +13,7 @@ const TrustBadges = lazy(() => import('./components/TrustBadges'));
 const Footer = lazy(() => import('./components/Footer'));
 const FloatingWhatsApp = lazy(() => import('./components/FloatingWhatsApp'));
 const Cart = lazy(() => import('./components/Cart'));
+const InstallPWA = lazy(() => import('./components/InstallPWA'));
 const ProductDetailModal = lazy(() => import('./components/ProductDetailModal'));
 const CheckoutModal = lazy(() => import('./components/CheckoutModal'));
 
@@ -218,6 +219,7 @@ const AppContent: React.FC<{
         <Suspense fallback={null}>
           <Footer siteConfig={siteConfig} />
           <FloatingWhatsApp siteConfig={siteConfig} />
+          <InstallPWA />
 
           <Cart
             isOpen={isCartOpen}
