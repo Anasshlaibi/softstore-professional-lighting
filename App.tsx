@@ -20,7 +20,8 @@ import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
 import { CartProvider, useCart } from './src/context/CartContext';
 import { ThemeProvider } from './src/context/ThemeContext';
-import { fetchProductsFromGoogleSheets } from './src/utils/fetchProducts';
+// Import the new caching function
+import { fetchProductsFromGoogleSheets, getCachedProducts } from './src/utils/fetchProducts';
 
 export interface Product {
   id: number;
@@ -44,8 +45,18 @@ export interface CartItem extends Product {
 }
 
 const App: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>(defaultProducts);
-  const [loading, setLoading] = useState(true);
+  // Instantly load from cache if available, otherwise use defaults
+  const [products, setProducts] = useState<Product[]>(() => {
+    const cached = getCachedProducts();
+    return cached && cached.length > 0 ? cached : defaultProducts;
+  });
+  
+  // Set loading to false initially if we already have cached products
+  const [loading, setLoading] = useState(() => {
+    const cached = getCachedProducts();
+    return !(cached && cached.length > 0);
+  });
+  
   const [error, setError] = useState<string | null>(null);
   const [siteConfig] = useState(defaultSiteConfig);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -54,34 +65,35 @@ const App: React.FC = () => {
   const [appliedPromo, setAppliedPromo] = useState<number | null>(null);
 
 
-  // Fetch products from Google Sheets on mount
+  // Fetch products from Google Sheets on mount (Background Sync)
   useEffect(() => {
     const loadProducts = async () => {
       const googleSheetsUrl = import.meta.env.VITE_GOOGLE_SHEETS_CSV_URL;
 
-      // If no Google Sheets URL configured, use hardcoded products
+      // If no Google Sheets URL configured, use whatever is in state
       if (!googleSheetsUrl) {
-        console.info('No Google Sheets URL configured, using hardcoded products');
-        setProducts(defaultProducts);
+        console.info('No Google Sheets URL configured, using current state');
         setLoading(false);
         return;
       }
 
       try {
-        console.log('Fetching products from Google Sheets...');
+        console.log('Syncing products from Google Sheets in background...');
         const fetchedProducts = await fetchProductsFromGoogleSheets(googleSheetsUrl);
 
         if (fetchedProducts.length > 0) {
           setProducts(fetchedProducts);
-          console.log(`Successfully loaded ${fetchedProducts.length} products from Google Sheets`);
+          console.log(`Successfully synced ${fetchedProducts.length} products from Google Sheets`);
         } else {
           throw new Error('No products found in Google Sheets');
         }
       } catch (err) {
-        console.error('Failed to load products from Google Sheets:', err);
-        setError('Impossible de charger les produits depuis Google Sheets');
-        // Fallback to hardcoded products
-        setProducts(defaultProducts);
+        console.error('Failed to sync products from Google Sheets:', err);
+        // Only show error if we also failed to load from cache
+        if (!products || products.length === 0 || products === defaultProducts) {
+          setError('Impossible de charger les produits depuis Google Sheets');
+          setProducts(defaultProducts);
+        }
       } finally {
         setLoading(false);
       }
@@ -136,7 +148,6 @@ const App: React.FC = () => {
         buyNow={buyNow}
         appliedPromo={appliedPromo}
         applyPromo={applyPromo}
-
       />
     </CartProvider>
   );
@@ -186,7 +197,7 @@ const AppContent: React.FC<{
         <main>
           <Hero siteConfig={siteConfig} />
 
-          {/* Show error message if Google Sheets failed */}
+          {/* Show error message if Google Sheets failed AND no cache exists */}
           {error && !loading && (
             <div className="container mx-auto px-6 py-4">
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
@@ -196,7 +207,7 @@ const AppContent: React.FC<{
             </div>
           )}
 
-          {/* Show loading spinner or products */}
+          {/* Show loading spinner only on very first load ever */}
           {loading ? (
             <LoadingSpinner />
           ) : (
@@ -267,4 +278,3 @@ const AppWithTheme = () => (
 );
 
 export { AppWithTheme };
-

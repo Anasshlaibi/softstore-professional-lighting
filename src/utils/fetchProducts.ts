@@ -1,5 +1,22 @@
 import { Product } from '../../App';
 
+const CACHE_KEY = 'gearshop_products_cache';
+
+/**
+ * Gets cached products from localStorage for instant loading
+ */
+export function getCachedProducts(): Product[] | null {
+    try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+            return JSON.parse(cached) as Product[];
+        }
+    } catch (error) {
+        console.warn('Failed to read from cache:', error);
+    }
+    return null;
+}
+
 /**
  * Fetches products from a published Google Sheets CSV URL
  * @param csvUrl - The published CSV URL from Google Sheets
@@ -16,7 +33,16 @@ export async function fetchProductsFromGoogleSheets(
         }
 
         const csvText = await response.text();
-        return parseCSVToProducts(csvText);
+        const products = parseCSVToProducts(csvText);
+        
+        // Save fresh data to the user's browser for instant loading next time
+        try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify(products));
+        } catch (cacheError) {
+            console.warn('Could not save to cache:', cacheError);
+        }
+
+        return products;
     } catch (error) {
         console.error('Error fetching products from Google Sheets:', error);
         throw error;
