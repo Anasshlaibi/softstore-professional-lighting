@@ -8,7 +8,7 @@ on:
 
 jobs:
   update-seo:
-    runs-name: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3

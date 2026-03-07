@@ -2,8 +2,8 @@ import json
 from openai import OpenAI
 
 # --- CONFIGURATION ---
-# Your OpenRouter API Key
-OPENROUTER_API_KEY = "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"
+# Use environment variable for security. Do NOT hardcode keys in public repos.
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 BRAND_NAME = "GearShop.ma"
 LOCATION = "Casablanca, Morocco"
 

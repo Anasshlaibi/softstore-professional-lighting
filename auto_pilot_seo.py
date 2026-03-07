@@ -4,7 +4,7 @@ import datetime
 from openai import OpenAI
 
 # --- CONFIGURATION ---
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=OPENROUTER_API_KEY)
 
 # This is where the AI will save the new content on your website
