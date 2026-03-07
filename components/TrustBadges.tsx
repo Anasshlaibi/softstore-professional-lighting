@@ -49,10 +49,9 @@ const TrustBadges: React.FC = () => {
                         Ils nous font confiance
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:opacity-100 transition-all duration-500">
-                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter">SIEMENS</span>
-                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter italic">Marsa Maroc</span>
-                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter underline underline-offset-4">HIT RADIO</span>
-                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter">SNRT</span>
+                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter">OMAR BINFO</span>
+                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter italic">AKABIL SHOP</span>
+                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter underline underline-offset-4">INFLUENCERS</span>
                     </div>
                 </div>
             </div>
