@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
         <div className="h-auto aspect-[4/5] md:aspect-square bg-white flex items-center justify-center p-0 relative overflow-hidden group-hover:bg-gray-50 transition-colors duration-500">
           <img
             src={product.image}
-            alt={`${product.name} - Éclairage Studio Softbox ZSYB Maroc - كشاف تصوير - ${product.category}`}
+            alt={`${product.name} - ${product.desc_fr || product.desc.split('\n')[0]} disponible à Casablanca Maroc`}
             className={`w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm group-hover:drop-shadow-xl mix-blend-multiply ${!product.inStock ? 'grayscale opacity-80' : ''}`}
             loading="lazy"
             width={400}

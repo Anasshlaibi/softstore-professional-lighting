@@ -209,7 +209,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 src={currentImage}
 
-                alt={product.name}
+                alt={`${product.name} - ${product.desc_fr || product.desc.split('\n')[0]} disponible à Casablanca Maroc`}
 
                 className="max-w-full max-h-full object-contain mix-blend-multiply transition-all duration-300 drop-shadow-lg"
 
@@ -228,6 +228,8 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   key={idx}
 
                   src={img}
+
+                  alt={`${product.name} vue ${idx + 1} - Éclairage professionnel à Casablanca`}
 
                   onClick={() => setCurrentImage(img)}
 

@@ -14,7 +14,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, siteConfig }) => {
     <div className="flex gap-4 items-center bg-gray-50 p-3 rounded-lg">
       <img
         src={item.image}
-        alt={item.name}
+        alt={`${item.name} - Équipement professionnel disponible à Casablanca Maroc`}
         className="w-16 h-16 object-contain mix-blend-multiply bg-white rounded-md p-1 border border-gray-100"
       />
       <div className="flex-1">
