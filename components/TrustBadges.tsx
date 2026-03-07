@@ -42,6 +42,19 @@ const TrustBadges: React.FC = () => {
                         </div>
                     ))}
                 </div>
+
+                {/* Social Proof Bar */}
+                <div className="mt-12 pt-8 border-t border-gray-50 text-center">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold mb-6">
+                        Ils nous font confiance
+                    </p>
+                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:opacity-100 transition-all duration-500">
+                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter">SIEMENS</span>
+                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter italic">Marsa Maroc</span>
+                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter underline underline-offset-4">HIT RADIO</span>
+                        <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter">SNRT</span>
+                    </div>
+                </div>
             </div>
         </section>
     );

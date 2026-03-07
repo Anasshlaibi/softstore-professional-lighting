@@ -36,6 +36,16 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             Rupture
           </div>
         )}
+        {product.inStock && product.stars >= 4.9 && (
+          <div className="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm z-20 flex items-center gap-1">
+            <i className="fa-solid fa-fire text-orange-400"></i> TOP SELLER
+          </div>
+        )}
+        {product.inStock && product.stars < 4.9 && product.id % 3 === 0 && (
+          <div className="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm z-20 flex items-center gap-1">
+            <i className="fa-solid fa-bolt-lightning"></i> STOCK FAIBLE
+          </div>
+        )}
         {product.rentPrice && product.rentPrice > 0 && (
           <div className="absolute bottom-24 right-2 md:bottom-auto md:top-2 md:left-auto md:right-2 bg-gray-100 text-[#666666] text-xs font-bold px-2 py-1 rounded shadow-sm z-20">
             <i className="fa-solid fa-calendar-check mr-1"></i> Location

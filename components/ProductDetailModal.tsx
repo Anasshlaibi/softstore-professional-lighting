@@ -423,13 +423,13 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
             {/* Tabs */}
 
-            <div className="flex gap-8 border-b border-gray-100 mb-6 sticky top-0 bg-white z-10 pt-2">
+            <div className="flex gap-8 border-b border-gray-100 mb-6 sticky top-0 bg-white z-10 pt-2 overflow-x-auto no-scrollbar">
 
               <button
 
                 onClick={() => setActiveTab('desc')}
 
-                className={`pb-2 text-sm font-medium transition ${activeTab === 'desc' ? 'border-b-2 border-black text-black' : 'text-gray-500'}`}
+                className={`pb-2 text-sm font-medium transition whitespace-nowrap ${activeTab === 'desc' ? 'border-b-2 border-black text-black' : 'text-gray-500'}`}
 
               >
 
@@ -441,11 +441,23 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 onClick={() => setActiveTab('specs')}
 
-                className={`pb-2 text-sm font-medium transition ${activeTab === 'specs' ? 'border-b-2 border-black text-black' : 'text-gray-500'}`}
+                className={`pb-2 text-sm font-medium transition whitespace-nowrap ${activeTab === 'specs' ? 'border-b-2 border-black text-black' : 'text-gray-500'}`}
 
               >
 
                 Spécifications
+
+              </button>
+
+              <button
+
+                onClick={() => setActiveTab('faq')}
+
+                className={`pb-2 text-sm font-medium transition whitespace-nowrap ${activeTab === 'faq' ? 'border-b-2 border-black text-black' : 'text-gray-500'}`}
+
+              >
+
+                Questions
 
               </button>
 
@@ -455,7 +467,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                   onClick={() => setActiveTab('video')}
 
-                  className={`pb-2 text-sm font-medium transition ${activeTab === 'video' ? 'border-b-2 border-black text-black' : 'text-gray-500'}`}
+                  className={`pb-2 text-sm font-medium transition whitespace-nowrap ${activeTab === 'video' ? 'border-b-2 border-black text-black' : 'text-gray-500'}`}
 
                 >
 
@@ -472,6 +484,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             <div className="text-gray-600 text-sm leading-relaxed pb-4 text-justify flex-grow overflow-y-auto">
 
               {activeTab === 'desc' && (
+// ... (rest of the desc code)
 
                 <div className="space-y-4">
                   <p className="whitespace-pre-line font-medium text-gray-800 leading-[1.6]">
@@ -567,6 +580,27 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 </table>
 
+              )}
+
+              {activeTab === 'faq' && (
+                <div className="space-y-6">
+                  <div className="bg-gray-50 p-4 rounded-xl">
+                    <h4 className="font-bold text-black mb-2">Wach disponible f’Casablanca?</h4>
+                    <p className="text-sm">Oui, tout notre matériel est stocké à Bouskoura. Vous pouvez être livré en moins de 24h à Casablanca et 48h partout au Maroc.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-xl">
+                    <h4 className="font-bold text-black mb-2">Comment installer mon kit ZSYB?</h4>
+                    <p className="text-sm">Tous nos projecteurs utilisent la monture Bowens standard. Il suffit de clipser la softbox et de brancher sur une prise secteur standard 220V.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-xl">
+                    <h4 className="font-bold text-black mb-2">Y a-t-il une garantie?</h4>
+                    <p className="text-sm">GearShop.ma offre une garantie locale de 1 an sur les défauts de fabrication. Notre SAV est basé à Casablanca.</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-xl">
+                    <h4 className="font-bold text-black mb-2">Puis-je payer à la livraison?</h4>
+                    <p className="text-sm">Absolument. Le paiement se fait en espèces au livreur une fois que vous avez reçu votre matériel.</p>
+                  </div>
+                </div>
               )}
 
               {activeTab === 'video' && videoUrl && (
