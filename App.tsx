@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Products from './components/Products';
 import WhyUs from './components/WhyUs';
+import Comparison from './components/Comparison';
 import VideoShowcase from './components/VideoShowcase';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
@@ -37,6 +38,12 @@ export interface Product {
   specs: string[];
   inStock: boolean;
   promoEligible?: boolean;
+  // Multilang fields
+  desc_fr?: string;
+  desc_ar?: string;
+  desc_en?: string;
+  desc_darija?: string;
+  keywords?: string[];
 }
 
 export interface CartItem extends Product {
@@ -45,7 +52,7 @@ export interface CartItem extends Product {
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>(defaultProducts);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [siteConfig] = useState(defaultSiteConfig);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -54,36 +61,24 @@ const App: React.FC = () => {
   const [appliedPromo, setAppliedPromo] = useState<number | null>(null);
 
 
-  // Fetch products from Google Sheets on mount
+  // Fetch products from Google Sheets on mount (Background sync)
   useEffect(() => {
     const loadProducts = async () => {
       const googleSheetsUrl = import.meta.env.VITE_GOOGLE_SHEETS_CSV_URL;
 
-      // If no Google Sheets URL configured, use hardcoded products
       if (!googleSheetsUrl) {
-        console.info('No Google Sheets URL configured, using hardcoded products');
-        setProducts(defaultProducts);
-        setLoading(false);
         return;
       }
 
       try {
-        console.log('Fetching products from Google Sheets...');
         const fetchedProducts = await fetchProductsFromGoogleSheets(googleSheetsUrl);
 
         if (fetchedProducts.length > 0) {
           setProducts(fetchedProducts);
-          console.log(`Successfully loaded ${fetchedProducts.length} products from Google Sheets`);
-        } else {
-          throw new Error('No products found in Google Sheets');
         }
       } catch (err) {
-        console.error('Failed to load products from Google Sheets:', err);
-        setError('Impossible de charger les produits depuis Google Sheets');
-        // Fallback to hardcoded products
-        setProducts(defaultProducts);
-      } finally {
-        setLoading(false);
+        console.error('Failed to background sync products from Google Sheets:', err);
+        // We don't set global error here to not disturb the user if we have default products
       }
     };
 
@@ -210,6 +205,7 @@ const AppContent: React.FC<{
           <TrustBadges />
           <VideoShowcase siteConfig={siteConfig} />
           <WhyUs siteConfig={siteConfig} />
+          <Comparison />
           <Testimonials />
           <FAQ />
         </main>

@@ -61,6 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
         <div className="p-3 md:p-6 flex flex-col flex-grow">
           <div className="flex items-center gap-1 mb-1 md:mb-2">
             {generateStars(product.stars)}
+            <span className="text-[10px] text-gray-400 font-bold ml-1">{product.stars.toFixed(1)}</span>
           </div>
           <h3 className="text-sm md:text-lg font-bold text-black mb-1 leading-tight line-clamp-2">
             {product.name}

@@ -1,7 +1,7 @@
 export const defaultSiteConfig = {
   currency: 'DH',
   btnText: 'Acheter maintenant',
-  brandName: 'SoftStore',
+  brandName: 'GearShop.ma',
   hero1: 'Lumière',
   hero2: 'Cinéma.',
   heroDesc:

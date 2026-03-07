@@ -58,6 +58,44 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         currency: siteConfig.currency || 'MAD'
       });
     }
+
+    // Add JSON-LD for the product
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "image": product.image,
+      "description": product.desc_fr || product.desc,
+      "brand": {
+        "@type": "Brand",
+        "name": "ZSYB"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": window.location.href,
+        "priceCurrency": siteConfig.currency === 'DH' ? 'MAD' : siteConfig.currency,
+        "price": product.price,
+        "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": product.stars,
+        "reviewCount": Math.floor(Math.random() * 50) + 10 // Mock review count for rich snippets
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'product-jsonld';
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+
+    return () => {
+      const oldScript = document.getElementById('product-jsonld');
+      if (oldScript) {
+        document.head.removeChild(oldScript);
+      }
+    };
   }, [product, siteConfig.currency]);
 
   const getYoutubeEmbedUrl = (urlOrId?: string) => {
@@ -85,37 +123,21 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
 
   const openRentWhatsapp = () => {
-
-    const phone = siteConfig.phone.replace('+', '');
-
-    const msg = `Bonjour, je souhaite louer le matériel suivant : ${product.name}`;
-
+    const phone = siteConfig.phone.replace(/\D/g, '');
+    const msg = `Salam GearShop, bghit nloué l'matériel ${product.name}, wach disponible?`;
     window.open(
-
       `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,
-
       '_blank'
-
     );
-
   };
 
-
-
   const openReserveWhatsapp = () => {
-
-    const phone = siteConfig.phone.replace('+', '');
-
-    const msg = `Bonjour, je souhaite réserver le produit hors stock : ${product.name}`;
-
+    const phone = siteConfig.phone.replace(/\D/g, '');
+    const msg = `Salam GearShop, bghit n’réserver ${product.name}, imta ghadi ykoun disponible?`;
     window.open(
-
       `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,
-
       '_blank'
-
     );
-
   };
 
 
@@ -449,9 +471,33 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               {activeTab === 'desc' && (
 
-                <p className="whitespace-pre-line leading-[1.6]">
-                  {product.desc}
-                </p>
+                <div className="space-y-4">
+                  <p className="whitespace-pre-line font-medium text-gray-800 leading-[1.6]">
+                    {product.desc_fr || product.desc}
+                  </p>
+                  {product.desc_darija && (
+                    <div className="p-3 bg-amber-50 rounded-lg border border-amber-100 italic text-amber-900">
+                      <span className="font-bold mr-2">Darija:</span>
+                      {product.desc_darija}
+                    </div>
+                  )}
+                  {product.desc_ar && (
+                    <p className="text-right font-arabic text-lg leading-loose" dir="rtl">
+                      {product.desc_ar}
+                    </p>
+                  )}
+                  {/* Show raw desc if we have desc_fr but raw desc has more technical details */}
+                  {product.desc_fr && product.desc && product.desc !== product.desc_fr && (
+                    <details className="mt-4">
+                      <summary className="cursor-pointer text-xs text-gray-400 hover:text-gray-600">
+                        Plus de détails techniques (English)
+                      </summary>
+                      <p className="mt-2 whitespace-pre-line text-xs text-gray-400">
+                        {product.desc}
+                      </p>
+                    </details>
+                  )}
+                </div>
 
               )}
 

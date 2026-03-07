@@ -18,6 +18,11 @@ export const defaultProducts: Product[] = [
     ],
     video: '',
     desc: 'MODEL：YM350\n\nINPUTVOLTAGE：AC200-220V\n\nOUTPUT POWER：350W\n\nCRI：≥95\n\nCCT：2700-6500K\n\nPRODUCT WEIGHT：1560G\n\nPRODUCT SIZE：219.7*147*114.5MM\n\nLUMINOUS FLUX：18000LM / 26000LM\n\nNOISE：30dB\n\nBARE LAMP：6500LUX / /8800LUX\n\nLIGHT ANGLE：120°\n\nDIMMING：0-100%\n\nLAMP BODY COLOR：BLACK / WHITE',
+    desc_fr: 'Projecteur LED professionnel 350W avec une fidélité de couleur exceptionnelle (CRI 95+). Idéal pour les studios photo et vidéo exigeants.',
+    desc_ar: 'كشاف ليد احترافي 350 واط بدقة ألوان عالية. مثالي لاستوديوهات التصوير الفوتوغرافي والفيديو.',
+    desc_en: 'Professional 350W LED spotlight with exceptional color accuracy (CRI 95+). Perfect for demanding photo and video studios.',
+    desc_darija: 'Spot d’éclairage dyal 350W, mzyan bzzaf l’studio. Lumière dyalo nqiya w qwiya.',
+    keywords: ['softbox rkhis', 'éclairage studio maroc', 'zsyb ym350', 'lumière youtube'],
     stars: 5,
     specs: [
       'OUTPUT POWER：350W',
@@ -46,6 +51,11 @@ export const defaultProducts: Product[] = [
     ],
     video: '',
     desc: "MODEL：YB-300R\n\nCHARGING PORT：DC, Type-C\n\nINPUT VOLTAGE：20V 3A\n\nRGB SCENARIOS FX：14 Scenarios FX\n\nOUTPUT POWER：25w\n\nLED QUANTITY：192pcs\n\nCRI：95+\n\nPOWER SUPPLY：NP-F\n\nCCT：2700-7500K+200K\n\nFIXED INTERFACE：1/4' Screw interface\n\nLAMP BODY COLOR：BLACK\n\nDIMMING：0-100%\n\nPACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/PACKING BOX",
+    desc_fr: 'Lampe LED RGB portable avec 14 effets de scène. Parfait pour les créateurs de contenu TikTok et Reels.',
+    desc_ar: 'مصباح LED RGB محمول مع 14 تأثيراً للمشهد. مثالي لصانعي محتوى تيك توك و ريلز.',
+    desc_en: 'Portable RGB LED light with 14 scene effects. Perfect for TikTok and Reels content creators.',
+    desc_darija: 'Lumière RGB sghira w khfifa, fiha bzzaf dyal les effets. Mzyana l’TikTok w Reels.',
+    keywords: ['rgb light maroc', 'éclairage tiktok rkhis', 'zsyb yb300r', 'led portable'],
     stars: 5,
     specs: [
       'MODEL：YB-300R',

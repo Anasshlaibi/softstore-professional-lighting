@@ -48,7 +48,12 @@ const Products: React.FC<ProductsProps> = ({
       filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(query) ||
         p.desc.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query)
+        p.category.toLowerCase().includes(query) ||
+        (p.desc_fr && p.desc_fr.toLowerCase().includes(query)) ||
+        (p.desc_ar && p.desc_ar.toLowerCase().includes(query)) ||
+        (p.desc_en && p.desc_en.toLowerCase().includes(query)) ||
+        (p.desc_darija && p.desc_darija.toLowerCase().includes(query)) ||
+        (p.keywords && p.keywords.some(k => k.toLowerCase().includes(query)))
       );
     }
 
