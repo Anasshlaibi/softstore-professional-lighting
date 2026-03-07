@@ -61,24 +61,29 @@
   }
   </script>
 
+  <!-- Optimized Font Loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   
   <!-- Preload LCP Image -->
   <link rel="preload" as="image" href="https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp" fetchpriority="high">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   
   <!-- Load FontAwesome with media trick to prevent render blocking -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
   <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </noscript>
   <style>
+    :root {
+      font-display: swap;
+    }
     body {
       font-family: 'Inter', sans-serif;
       background-color: #ffffff;
       color: #1d1d1f;
+      font-display: swap;
     }
 
     @keyframes slide-in-down {

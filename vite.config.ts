@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
       react(),
       VitePWA({
         registerType: 'autoUpdate',
+        injectRegister: 'inline', // Inline the registration script to avoid an extra blocking request
         includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
         manifest: {
           name: 'GearShop.ma - Éclairage Professionnel',
