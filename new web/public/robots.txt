@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gearshop.ma/sitemap.xml

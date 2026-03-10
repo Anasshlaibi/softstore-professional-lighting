@@ -33,7 +33,7 @@ const testimonials: Testimonial[] = [
         rating: 5,
         text: "Nous recommandons GearShop à tous nos partenaires. Le service client à Casablanca est exceptionnel et le matériel est au top.",
         image: null
-  }
+    }
 ];
 
 const Testimonials: React.FC = () => {

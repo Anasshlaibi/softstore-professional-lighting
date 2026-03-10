@@ -13,6 +13,8 @@ interface CartContextType {
   updateCartQty: (productId: number, newQty: number) => void;
   clearCart: () => void;
   cartCount: number;
+  // Kept for backward compatibility if needed, though Toaster handles it now
+  clearToast: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -63,9 +65,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
       return [...prevCart, { ...productToAdd, qty: 1 }];
     });
 
-    // Show success toast with sonner
+    // Show success toast
     toast.success(`${productToAdd.name} ajouté au panier`, {
-      description: 'Vous pouvez finaliser votre commande dans le panier.',
+      description: 'Prêt pour la commande.',
     });
 
     // Track AddToCart
@@ -82,14 +84,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
 
   const removeFromCart = (productId: number) => {
     setCart(prevCart => {
-      const itemToRemove = prevCart.find(item => item.id === productId);
-      const newCart = prevCart.filter(item => item.id !== productId);
-      
-      if (itemToRemove) {
-        toast.info(`${itemToRemove.name} retiré du panier`);
+      const item = prevCart.find(item => item.id === productId);
+      if (item) {
+        toast.info(`${item.name} retiré`);
       }
-      
-      return newCart;
+      return prevCart.filter(item => item.id !== productId);
     });
   };
 
@@ -103,7 +102,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
 
   const clearCart = () => {
     setCart([]);
-    toast.info('Le panier a été vidé');
+    toast.info('Panier vidé');
+  };
+
+  const clearToast = () => {
+    // No-op as we use sonner
   };
 
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -115,6 +118,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
     updateCartQty,
     clearCart,
     cartCount,
+    clearToast
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

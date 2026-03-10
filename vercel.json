@@ -1,4 +1,5 @@
 {
+    "outputDirectory": "new web/dist",
     "rewrites": [
         {
             "source": "/(.*)",

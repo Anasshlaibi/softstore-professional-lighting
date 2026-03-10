@@ -53,8 +53,7 @@ const TrustBadges: React.FC = () => {
                         <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter italic">Akbali</span>
                         <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter underline underline-offset-4">Influencers</span>
                         <span className="text-lg md:text-xl font-black text-gray-800 tracking-tighter">SNRT</span>
-                    </div>
-                </div>
+                    </div>                </div>
             </div>
         </section>
     );

@@ -13,7 +13,7 @@ import Cart from './components/Cart';
 import ProductDetailModal from './components/ProductDetailModal';
 import CheckoutModal from './components/CheckoutModal';
 
-import Toast from './components/Toast';
+import { Toaster } from 'sonner';
 import LoadingSpinner from './components/LoadingSpinner';
 
 import { defaultProducts } from './data/products';
@@ -186,10 +186,11 @@ const AppContent: React.FC<{
   applyPromo,
 
 }) => {
-    const { toastMessage, clearToast } = useCart();
+    const { clearToast } = useCart();
 
     return (
       <div className="bg-amber-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
+        <Toaster position="top-center" richColors />
         <Header
           onCartClick={() => setIsCartOpen(true)}
           siteConfig={siteConfig}
@@ -260,10 +261,6 @@ const AppContent: React.FC<{
           />
         )}
 
-
-        {toastMessage && (
-          <Toast message={toastMessage} onClose={clearToast} />
-        )}
       </div>
     );
   };
