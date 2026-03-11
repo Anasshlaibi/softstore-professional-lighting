@@ -2,7 +2,7 @@ export const defaultSiteConfig = {
   currency: 'DH',
   btnText: 'Acheter maintenant',
   brandName: 'GearShop.ma',
-  logo: '/logo.png',
+  logo: '/logo.webp',
   hero1: 'Lumière',
   hero2: 'Cinéma.',
   heroDesc:
@@ -25,7 +25,7 @@ export const defaultSiteConfig = {
     code: 'CODE2025',
     discount: 15,
     image:
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.webp',
     endDate: '2026-12-31',
   },
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../src/context/CartContext';
+import { ShoppingBag, X, ShoppingBasket } from 'lucide-react';
 import CartItem from './CartItem';
 import CartSummary from './CartSummary';
 
@@ -38,20 +39,20 @@ const Cart: React.FC<CartProps> = ({
       >
         <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/80 backdrop-blur-md sticky top-0 z-10">
           <h2 className="text-xl font-bold flex items-center gap-2">
-            <i className="fa-solid fa-bag-shopping"></i> Votre Panier
+            <ShoppingBag className="w-6 h-6" /> Votre Panier
           </h2>
           <button
             onClick={onClose}
             className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition"
             aria-label="Fermer"
           >
-            <i className="fa-solid fa-xmark text-sm"></i>
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {cart.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
-            <i className="fa-solid fa-basket-shopping text-4xl mb-4 opacity-20"></i>
+            <ShoppingBasket className="w-16 h-16 mb-4 opacity-20" />
             Votre panier est vide.
           </div>
         ) : (

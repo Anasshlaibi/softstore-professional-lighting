@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useCart } from '../src/context/CartContext';
+import { ArrowRight } from 'lucide-react';
 
 interface CartSummaryProps {
   siteConfig: { currency: string };
@@ -98,7 +99,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({
         onClick={openCheckout}
         className="w-full bg-black text-white py-4 rounded-xl font-bold text-sm hover:bg-gray-800 transition shadow-lg flex justify-center items-center gap-2 transform active:scale-95 duration-200"
       >
-        Commander <i className="fa-solid fa-arrow-right"></i>
+        Commander <ArrowRight size={16} />
       </button>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { X } from 'lucide-react';
 
 export interface FilterState {
     category: string;
@@ -110,7 +111,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                             <span className="inline-flex items-center gap-1 px-3 py-1 bg-black text-white text-xs rounded-full">
                                 {filters.category}
                                 <button onClick={() => handleCategoryChange('all')} className="ml-1 hover:text-gray-300">
-                                    <i className="fa-solid fa-times text-xs"></i>
+                                    <X className="w-3 h-3" />
                                 </button>
                             </span>
                         )}
@@ -118,7 +119,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                             <span className="inline-flex items-center gap-1 px-3 py-1 bg-black text-white text-xs rounded-full">
                                 En stock
                                 <button onClick={handleStockToggle} className="ml-1 hover:text-gray-300">
-                                    <i className="fa-solid fa-times text-xs"></i>
+                                    <X className="w-3 h-3" />
                                 </button>
                             </span>
                         )}

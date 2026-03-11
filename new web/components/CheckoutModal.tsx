@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../src/context/CartContext';
 import { supabase } from '../src/utils/supabase';
+import { X, Truck, Loader2, MessageCircle } from 'lucide-react';
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx.../exec'; // REPLACE WITH ACTUAL URL
 
@@ -162,10 +163,10 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             onClick={onClose}
             className="absolute top-6 right-6 text-gray-400 hover:text-black transition"
           >
-            <i className="fa-solid fa-xmark text-xl"></i>
+            <X className="w-6 h-6" />
           </button>
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <i className="fa-solid fa-truck-fast"></i> Livraison
+            <Truck className="w-6 h-6" /> Livraison
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -304,12 +305,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             >
               {isSubmitting ? (
                 <>
-                  <i className="fa-solid fa-circle-notch fa-spin"></i>{' '}
+                  <Loader2 className="w-5 h-5 animate-spin" />{' '}
                   Traitement...
                 </>
               ) : (
                 <>
-                  <i className="fa-brands fa-whatsapp text-2xl"></i> Confirmer
+                  <MessageCircle className="w-6 h-6" fill="currentColor" /> Confirmer
                 </>
               )}
             </button>

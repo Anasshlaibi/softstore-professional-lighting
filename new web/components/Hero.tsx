@@ -1,4 +1,5 @@
 import React from 'react';
+import { Play, ChevronDown } from 'lucide-react';
 
 interface HeroProps {
   siteConfig: {
@@ -59,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig }) => {
               id="hero-btn-secondary"
               className="w-full sm:w-auto px-8 py-4 text-white bg-transparent border border-white rounded-full hover :bg-white/10 transition text-base font-medium flex justify-center items-center gap-2"
             >
-              <i className="fa-solid fa-play text-xs"></i> Regarder
+              <Play size={14} fill="currentColor" /> Regarder
             </a>
           </div>
 
@@ -72,7 +73,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig }) => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <i className="fa-solid fa-chevron-down text-2xl"></i>
+        <ChevronDown size={32} />
       </div>
 
       <style>{`

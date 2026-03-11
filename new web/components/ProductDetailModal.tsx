@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { X, Star, Plus, ArrowRight, Play, CalendarCheck } from 'lucide-react';
 import { Product } from '../App';
 import { useCart } from '../src/context/CartContext';
 
@@ -177,17 +178,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     >
 
       <button
-
         onClick={onClose}
-
         className="fixed top-4 right-4 z-50 bg-gray-100 dark:bg-zinc-800 p-3 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition shadow-sm"
-
         aria-label="Fermer"
-
       >
-
-        <i className="fa-solid fa-xmark text-xl text-black dark:text-white"></i>
-
+        <X className="w-5 h-5 text-black dark:text-white" />
       </button>
 
 
@@ -264,23 +259,15 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
 
             <div className="flex items-center gap-2 mb-6 text-black dark:text-white">
-
               <div className="flex text-apple-red text-sm">
-
                 {Array.from({ length: 5 }, (_, i) => (
-
-                  <i
-
+                  <Star
                     key={i}
-
-                    className={`fa-solid fa-star ${i < product.stars ? 'text-[#ff3b30]' : 'text-gray-200 dark:text-zinc-800'}`}
-
-                  ></i>
-
+                    size={14}
+                    className={i < product.stars ? 'text-[#ff3b30] fill-[#ff3b30]' : 'text-gray-200 dark:text-zinc-800'}
+                  />
                 ))}
-
               </div>
-
               <span className="text-xs text-gray-400 dark:text-zinc-500">(Avis Clients)</span>
 
               {product.inStock ? (
@@ -372,7 +359,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   disabled={!product.inStock}
                   className="flex-1 px-6 py-4 bg-gray-100 dark:bg-zinc-800 text-black dark:text-white font-bold rounded-xl hover:bg-gray-200 dark:hover:bg-zinc-700 transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <i className="fa-solid fa-plus"></i>{' '}
+                  <Plus className="w-5 h-5" />
                   {product.inStock ? 'Panier' : 'Indisponible'}
                 </button>
                 <button
@@ -387,14 +374,14 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   className={`flex-1 px-6 py-4 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 ${product.inStock ? 'bg-black dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200' : 'bg-orange-500 hover:bg-orange-600'}`}
                 >
                   {product.inStock ? 'Acheter' : 'Réserver'}{' '}
-                  <i className="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
                 {videoUrl && (
                   <button
                     onClick={() => setActiveTab('video')}
                     className="px-6 py-4 bg-red-500 text-white font-bold rounded-xl hover:bg-red-600 transition flex items-center justify-center gap-2"
                   >
-                    <i className="fa-solid fa-play"></i> Play Video
+                    <Play className="w-5 h-5" /> Play Video
                   </button>
                 )}
               </div>
@@ -409,7 +396,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 >
 
-                  <i className="fa-regular fa-calendar-check"></i> Louer sur
+                  <CalendarCheck className="w-5 h-5" /> Louer sur
 
                   WhatsApp
 
@@ -702,7 +689,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 disabled={!product.inStock}
                 className="w-12 h-12 bg-gray-100 dark:bg-zinc-800 rounded-xl flex items-center justify-center text-black dark:text-white hover:bg-gray-200 dark:hover:bg-zinc-700 disabled:opacity-50"
               >
-                <i className="fa-solid fa-plus"></i>
+                <Plus className="w-5 h-5" />
               </button>
               <button
                 onClick={() => {
@@ -722,7 +709,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   onClick={() => setActiveTab('video')}
                   className="w-12 h-12 bg-red-500 text-white rounded-xl flex items-center justify-center"
                 >
-                  <i className="fa-solid fa-play"></i>
+                  <Play className="w-5 h-5" />
                 </button>
               )}
             </div>
@@ -737,7 +724,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               >
 
-                <i className="fa-regular fa-calendar-check mr-2"></i> Louer
+                <CalendarCheck className="w-4 h-4 mr-2" /> Louer
 
               </button>
 

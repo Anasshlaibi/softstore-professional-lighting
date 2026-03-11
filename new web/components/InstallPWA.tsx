@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Zap, X, Download } from 'lucide-react';
 
 const InstallPWA: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
@@ -53,7 +54,7 @@ const InstallPWA: React.FC = () => {
       <div className="bg-black text-white p-4 rounded-2xl shadow-2xl border border-white/10 backdrop-blur-md">
         <div className="flex items-center gap-4 mb-3">
           <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-black shadow-inner shrink-0">
-             <i className="fa-solid fa-bolt text-xl"></i>
+             <Zap className="w-6 h-6 fill-current" />
           </div>
           <div>
             <h4 className="font-bold text-sm">Installer GearShop.ma</h4>
@@ -63,14 +64,14 @@ const InstallPWA: React.FC = () => {
             onClick={() => setIsVisible(false)}
             className="ml-auto text-gray-500 hover:text-white p-1"
           >
-            <i className="fa-solid fa-xmark"></i>
+            <X className="w-5 h-5" />
           </button>
         </div>
         <button
           onClick={handleInstallClick}
           className="w-full py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition text-sm flex items-center justify-center gap-2"
         >
-          <i className="fa-solid fa-download text-xs"></i>
+          <Download className="w-4 h-4" />
           Installer maintenant
         </button>
       </div>

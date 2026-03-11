@@ -1,4 +1,5 @@
 import React from 'react';
+import { X } from 'lucide-react';
 
 interface Promo {
   image: string;
@@ -28,7 +29,7 @@ const PromoOverlay: React.FC<PromoOverlayProps> = ({ siteConfig, onClose }) => {
           onClick={onClose}
           className="absolute top-4 right-4 z-20 bg-white/50 hover:bg-white rounded-full p-2 transition text-black shadow-sm"
         >
-          <i className="fa-solid fa-xmark text-xl"></i>
+          <X className="w-6 h-6" />
         </button>
 
         {/* Image Side */}

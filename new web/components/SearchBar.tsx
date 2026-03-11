@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Search, X } from 'lucide-react';
 
 interface SearchBarProps {
     onSearch: (query: string) => void;
@@ -27,7 +28,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
             <div className="relative">
                 {/* Search Icon */}
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <i className="fa-solid fa-search text-gray-400 text-sm"></i>
+                    <Search className="w-4 h-4 text-gray-400" />
                 </div>
 
                 {/* Search Input - Smaller and cooler */}
@@ -46,7 +47,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                         className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-black transition-colors"
                         aria-label="Effacer"
                     >
-                        <i className="fa-solid fa-times text-sm"></i>
+                        <X className="w-4 h-4" />
                     </button>
                 )}
             </div>

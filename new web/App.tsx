@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Products from './components/Products';
+import { AlertTriangle } from 'lucide-react';
 
 // Lazy load below-the-fold components
 const WhyUs = lazy(() => import('./components/WhyUs'));
@@ -71,8 +72,36 @@ const App: React.FC = () => {
   const [sessionId] = useState(() => Math.random().toString(36).substring(7));
 
 
-  // TRACK LIVE VISITORS
+  // 1. TRACK LIVE VISITORS & SESSIONS
   useEffect(() => {
+    // Session Recording
+    const recordSession = async () => {
+      try {
+        // Detect city/source
+        let city = 'Casablanca';
+        let source = 'Direct';
+        
+        try {
+          const res = await fetch('https://ipapi.co/json/');
+          const data = await res.json();
+          if (data.city) city = data.city;
+        } catch (e) { /* Fallback to Casablanca */ }
+
+        if (document.referrer.includes('facebook')) source = 'Social';
+        else if (document.referrer.includes('google')) source = 'Search';
+        else if (window.location.search.includes('utm_')) source = 'Ads';
+
+        await supabase.from('sessions_gearshop').insert([{
+          session_id: sessionId,
+          city: city,
+          source: source,
+          created_at: new Date().toISOString()
+        }]);
+      } catch (err) { /* Silent fail */ }
+    };
+
+    recordSession();
+
     const channel = supabase.channel('online-users', {
       config: { presence: { key: sessionId } }
     });
@@ -107,6 +136,7 @@ const App: React.FC = () => {
 
       try {
         await supabase.from('clicks_gearshop').insert([{
+          session_id: sessionId,
           x_percent: xPercent,
           y_percent: yPercent,
           element_tag: target.tagName.toLowerCase()
@@ -118,7 +148,7 @@ const App: React.FC = () => {
 
     window.addEventListener('click', handleGlobalClick);
     return () => window.removeEventListener('click', handleGlobalClick);
-  }, []);
+  }, [sessionId]);
 
 
   // Fetch products from Google Sheets or Supabase on mount
@@ -253,15 +283,15 @@ const AppContent: React.FC<{
         <main>
           <Hero siteConfig={siteConfig} />
           
-          <Suspense fallback={<div className="h-40" />}>
+          <Suspense fallback={<div className="h-64 w-full max-w-2xl mx-auto my-8 bg-gray-200 dark:bg-gray-800 animate-pulse rounded-2xl" />}>
             <Questionnaire />
           </Suspense>
 
           {/* Show error message if Google Sheets failed */}
           {error && !loading && (
             <div className="container mx-auto px-6 py-4">
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
-                <i className="fa-solid fa-exclamation-triangle mr-2"></i>
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800 flex items-center">
+                <AlertTriangle size={16} className="mr-2" />
                 {error}. Affichage des produits par défaut.
               </div>
             </div>
@@ -278,7 +308,7 @@ const AppContent: React.FC<{
             />
           )}
 
-          <Suspense fallback={<div className="h-20" />}>
+          <Suspense fallback={<div className="h-[800px] w-full bg-gray-100 dark:bg-gray-800/50 animate-pulse" />}>
             {/* Main Sections */}
             <TrustBadges />
             <VideoShowcase siteConfig={siteConfig} />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ChevronDown, MessageCircle, Mail } from 'lucide-react';
 
 interface FAQItem {
     id: number;
@@ -87,7 +88,7 @@ const FAQ: React.FC = () => {
                                         className={`flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-black text-white transition-transform duration-300 ${openId === faq.id ? 'rotate-180' : ''
                                             }`}
                                     >
-                                        <i className="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>
+                                        <ChevronDown className="w-4 h-4" />
                                     </div>
                                 </button>
 
@@ -115,14 +116,14 @@ const FAQ: React.FC = () => {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors font-medium"
                             >
-                                <i className="fa-brands fa-whatsapp"></i>
+                                <MessageCircle className="w-5 h-5" />
                                 Contactez-nous sur WhatsApp
                             </a>
                             <a
                                 href="mailto:professionalanass@gmail.com"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium"
                             >
-                                <i className="fa-solid fa-envelope"></i>
+                                <Mail className="w-5 h-5" />
                                 Envoyer un email
                             </a>
                         </div>

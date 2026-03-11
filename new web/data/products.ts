@@ -9,12 +9,12 @@ export const defaultProducts: Product[] = [
     rentPrice: 450,
     category: 'studio',
     image:
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.webp',
     gallery: [
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202506061717046AA969B2BE885D7F_b.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617171272C2B93DEC43C244_b.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20250606171712BD60DD160467603F_b.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20250606171714E28D623AD516B18A_b.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202506061717046AA969B2BE885D7F_b.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617171272C2B93DEC43C244_b.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20250606171712BD60DD160467603F_b.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20250606171714E28D623AD516B18A_b.webp',
     ],
     video: '',
     desc: 'MODEL：YM350\n\nINPUTVOLTAGE：AC200-220V\n\nOUTPUT POWER：350W\n\nCRI：≥95\n\nCCT：2700-6500K\n\nPRODUCT WEIGHT：1560G\n\nPRODUCT SIZE：219.7*147*114.5MM\n\nLUMINOUS FLUX：18000LM / 26000LM\n\nNOISE：30dB\n\nBARE LAMP：6500LUX / /8800LUX\n\nLIGHT ANGLE：120°\n\nDIMMING：0-100%\n\nLAMP BODY COLOR：BLACK / WHITE',
@@ -41,13 +41,13 @@ export const defaultProducts: Product[] = [
     rentPrice: 300,
     category: 'portable',
     image:
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.webp',
     gallery: [
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025072613243722508E20CE329007_b.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324371D89EE7D5F4080C4_b.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324397DA1435A93EE5128_b.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025072613243997E168E1EDCE8C76_b.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025072613243722508E20CE329007_b.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324371D89EE7D5F4080C4_b.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324397DA1435A93EE5128_b.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025072613243997E168E1EDCE8C76_b.webp',
     ],
     video: '',
     desc: "MODEL：YB-300R\n\nCHARGING PORT：DC, Type-C\n\nINPUT VOLTAGE：20V 3A\n\nRGB SCENARIOS FX：14 Scenarios FX\n\nOUTPUT POWER：25w\n\nLED QUANTITY：192pcs\n\nCRI：95+\n\nPOWER SUPPLY：NP-F\n\nCCT：2700-7500K+200K\n\nFIXED INTERFACE：1/4' Screw interface\n\nLAMP BODY COLOR：BLACK\n\nDIMMING：0-100%\n\nPACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/PACKING BOX",
@@ -102,10 +102,10 @@ export const defaultProducts: Product[] = [
     rentPrice: 300,
     category: 'portable',
     image:
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.webp',
     gallery: [
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202410/202410161549185be597.jpg',
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2024101615494029C62ADDFF00F262_b.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202410/202410161549185be597.webp',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2024101615494029C62ADDFF00F262_b.webp',
     ],
     video: 'VhNBOGkg3k0',
     desc: 'MODEL: S100\nLIFETIME: 50,000 HOURS\nINPUT VOLTAGE: 200‑240V\nNUMBER OF LAMP BEADS: 1 PC\nOUTPUT POWER: 100W\nLUX AT 1 METER: 35,801 LUX\nCRI: ≥96\nCCT: 2700‑6500K ±200K\nMATERIAL: METAL\nLAMP BODY COLOR: WHITE / BLUE\nPRODUCT WEIGHT: 367G\nDIMMING: 0‑100%',
@@ -172,9 +172,9 @@ export const defaultProducts: Product[] = [
     rentPrice: 0,
     category: 'portable',
     image:
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.webp',
     gallery: [
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.webp',
     ],
     video: '',
     desc: "Spotlight focalisable pour un contrôle précis du faisceau. Parfait pour l'éclairage de cheveux ou les accents.",
@@ -190,9 +190,9 @@ export const defaultProducts: Product[] = [
     rentPrice: 0,
     category: 'studio',
     image:
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.webp',
     gallery: [
-      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.jpg',
+      'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.webp',
     ],
     video: '',
     desc: 'Polyvalence absolue avec température de couleur ajustable de 2700K à 6500K. Ventilateur silencieux pour la vidéo.',

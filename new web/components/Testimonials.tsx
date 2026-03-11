@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Star } from 'lucide-react';
 
 interface Testimonial {
     id: number;
@@ -49,11 +50,11 @@ const Testimonials: React.FC = () => {
 
     const renderStars = (rating: number) => {
         return Array.from({ length: 5 }, (_, i) => (
-            <i
+            <Star
                 key={i}
-                className={`fa-solid fa-star text-sm ${i < rating ? 'text-yellow-400' : 'text-gray-200'
+                className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-200'
                     }`}
-            ></i>
+            />
         ));
     };
 

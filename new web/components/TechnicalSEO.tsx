@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronRight } from 'lucide-react';
 
 const TechnicalSEO: React.FC = () => {
   return (
@@ -6,7 +7,7 @@ const TechnicalSEO: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <details className="group">
           <summary className="list-none cursor-pointer text-[12px] text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-2 outline-none">
-            <i className="fa-solid fa-chevron-right group-open:rotate-90 transition-transform duration-200"></i>
+            <ChevronRight className="w-4 h-4 group-open:rotate-90 transition-transform duration-200" />
             Spécifications Techniques & Guide d'Achat
           </summary>
           

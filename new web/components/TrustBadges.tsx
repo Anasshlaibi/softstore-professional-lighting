@@ -1,24 +1,25 @@
 import React from 'react';
+import { Truck, ShieldCheck, RotateCcw, Lock } from 'lucide-react';
 
 const TrustBadges: React.FC = () => {
     const badges = [
         {
-            icon: 'fa-truck-fast',
+            icon: Truck,
             title: 'Livraison Gratuite',
             subtitle: 'Dès 500 DH'
         },
         {
-            icon: 'fa-shield -check',
+            icon: ShieldCheck,
             title: 'Garantie 1 An',
             subtitle: 'Sur tous nos produits'
         },
         {
-            icon: 'fa-rotate-left',
+            icon: RotateCcw,
             title: 'Retour 14 Jours',
             subtitle: 'Satisfait ou remboursé'
         },
         {
-            icon: 'fa-lock',
+            icon: Lock,
             title: 'Paiement Sécurisé',
             subtitle: 'Transactions protégées'
         }
@@ -31,7 +32,7 @@ const TrustBadges: React.FC = () => {
                     {badges.map((badge, index) => (
                         <div key={index} className="text-center">
                             <div className="inline-flex items-center justify-center w-14 h-14 bg-gray-50 rounded-full mb-3">
-                                <i className={`fa-solid ${badge.icon} text-xl text-black`}></i>
+                                <badge.icon className="w-5 h-5 text-black" />
                             </div>
                             <h3 className="text-sm md:text-base font-bold text-black mb-1">
                                 {badge.title}

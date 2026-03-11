@@ -4,6 +4,7 @@ import ProductCard from './ProductCard';
 import SearchBar from './SearchBar';
 import ProductFilters, { FilterState } from './ProductFilters';
 import { useCart } from '../src/context/CartContext';
+import { Star, Search } from 'lucide-react';
 
 interface ProductsProps {
     products: Product[];
@@ -99,11 +100,11 @@ const Products: React.FC<ProductsProps> = ({
 
     const generateStars = (rating: number) => {
         return Array.from({ length: 5 }, (_, i) => (
-            <i
+            <Star
                 key={i}
-                className={`fa-solid fa-star text-[10px] ${i < rating ? 'text-[#ff3b30]' : 'text-gray-200'
+                className={`w-2.5 h-2.5 ${i < rating ? 'text-[#ff3b30] fill-[#ff3b30]' : 'text-gray-200'
                     }`}
-            ></i>
+            />
         ));
     };
 
@@ -157,7 +158,7 @@ const Products: React.FC<ProductsProps> = ({
                 ) : (
                     <div className="text-center py-16">
                         <div className="text-gray-400 mb-4">
-                            <i className="fa-solid fa-search text-6xl"></i>
+                            <Search className="w-16 h-16 mx-auto" />
                         </div>
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">
                             Aucun produit trouvé

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useCart } from '../src/context/CartContext';
+import { ShoppingBag, X, Menu, Zap } from 'lucide-react';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -56,23 +57,11 @@ const Header: React.FC<HeaderProps> = React.memo(
             className="flex items-center gap-2 cursor-pointer group"
             onClick={handleLogoClick}
           >
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform border border-gray-100">
-              <img 
-                src={siteConfig.logo} 
-                alt={`${siteConfig.brandName} Logo`}
-                className="w-full h-full object-contain p-1"
-                onError={(e) => {
-                  // Fallback if logo fails to load
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  target.parentElement!.innerHTML = '<i class="fa-solid fa-bolt text-black text-sm"></i>';
-                }}
-              />
-            </div>
+            <Zap size={24} fill="white" className="text-white" />
             <span
-              className={`text-lg md:text-xl font-bold tracking-tight ${isScrolled || isMobileMenuOpen ? 'text-black' : 'text-white'}`}
+              className={`text-2xl font-bold tracking-tight ${isScrolled || isMobileMenuOpen ? 'text-black' : 'text-white'}`}
             >
-              {siteConfig.brandName}
+              GearShop.ma
             </span>
           </div>
 
@@ -106,7 +95,7 @@ const Header: React.FC<HeaderProps> = React.memo(
               <div
                 className={`p-2.5 rounded-full transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-gray-100 text-black hover:bg-black hover:text-white' : 'bg-white/20 text-white hover:bg-white/30'}`}
               >
-                <i className="fa-solid fa-bag-shopping text-xl block"></i>
+                <ShoppingBag size={20} />
               </div>
               {cartCount > 0 && (
                 <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
@@ -124,7 +113,7 @@ const Header: React.FC<HeaderProps> = React.memo(
               <div
                 className={`p-2.5 rounded-full transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-gray-100 text-black hover:bg-black hover:text-white' : 'bg-white/20 text-white hover:bg-white/30'}`}
               >
-                <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl block`}></i>
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </div>
             </button>
           </div>
