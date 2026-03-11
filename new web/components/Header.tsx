@@ -4,7 +4,7 @@ import { useCart } from '../src/context/CartContext';
 interface HeaderProps {
   onCartClick: () => void;
   onAdminClick: () => void;
-  siteConfig: { brandName: string };
+  siteConfig: { brandName: string; logo: string };
 }
 
 const Header: React.FC<HeaderProps> = React.memo(
@@ -56,8 +56,18 @@ const Header: React.FC<HeaderProps> = React.memo(
             className="flex items-center gap-2 cursor-pointer group"
             onClick={handleLogoClick}
           >
-            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
-              <i className="fa-solid fa-bolt text-sm"></i>
+            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden shadow-md group-hover:scale-105 transition-transform border border-gray-100">
+              <img 
+                src={siteConfig.logo} 
+                alt={`${siteConfig.brandName} Logo`}
+                className="w-full h-full object-contain p-1"
+                onError={(e) => {
+                  // Fallback if logo fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.parentElement!.innerHTML = '<i class="fa-solid fa-bolt text-black text-sm"></i>';
+                }}
+              />
             </div>
             <span
               className={`text-lg md:text-xl font-bold tracking-tight ${isScrolled || isMobileMenuOpen ? 'text-black' : 'text-white'}`}

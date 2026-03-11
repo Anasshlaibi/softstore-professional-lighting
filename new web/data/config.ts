@@ -2,6 +2,7 @@ export const defaultSiteConfig = {
   currency: 'DH',
   btnText: 'Acheter maintenant',
   brandName: 'GearShop.ma',
+  logo: '/logo.png',
   hero1: 'Lumière',
   hero2: 'Cinéma.',
   heroDesc:

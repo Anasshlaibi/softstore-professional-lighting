@@ -1,8 +1,8 @@
 import React from 'react';
-
 interface FooterProps {
   siteConfig: {
     brandName: string;
+    logo: string;
     displayPhone: string;
     phone: string;
     email: string;
@@ -18,9 +18,18 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-gray-500">
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-black font-bold text-lg mb-4 flex items-center gap-2">
-              <i className="fa-solid fa-bolt"></i> {siteConfig.brandName}
-            </h4>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-white rounded flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm">
+                <img 
+                  src={siteConfig.logo} 
+                  alt={siteConfig.brandName} 
+                  className="w-full h-full object-contain p-1"
+                />
+              </div>
+              <h4 className="text-black font-bold text-lg">
+                {siteConfig.brandName}
+              </h4>
+            </div>
             <p className="max-w-md leading-relaxed mb-6">
               L&apos;excellence de l&apos;éclairage. Casablanca, Maroc.
             </p>
