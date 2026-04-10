@@ -171,6 +171,17 @@ const Dashboard: React.FC<DashboardProps> = ({ onClose, realLiveCount, products 
         return { ...p, topCity, inStock: productInfo?.inStock ?? true };
     }).sort((a, b) => b.revenue - a.revenue);
 
+    // Heatmap Insights
+    const elementMap: Record<string, number> = {};
+    clicks.forEach(c => {
+        const tag = c.element_tag || 'Other';
+        elementMap[tag] = (elementMap[tag] || 0) + 1;
+    });
+    const topElements = Object.entries(elementMap)
+        .map(([name, count]) => ({ name, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 6);
+
     return { 
         revenue, 
         avgOrder, 
@@ -178,13 +189,14 @@ const Dashboard: React.FC<DashboardProps> = ({ onClose, realLiveCount, products 
         cityData, 
         channelData,
         bestSellers,
+        topElements,
         totalOrders: completed.length,
         conversion,
         todaySessions: todaySessions.length,
         peakConcurrent: Math.max(...visitorHistory.map(h => h.count), realLiveCount),
         pending: orders.filter(o => o.status === 'pending').length
     };
-  }, [orders, sessions, realLiveCount, visitorHistory, products]);
+  }, [orders, sessions, realLiveCount, visitorHistory, products, clicks]);
 
   const filteredOrders = useMemo(() => {
   return orders.filter(o => 

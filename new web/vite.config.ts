@@ -14,8 +14,8 @@ export default defineConfig(({ mode }) => {
       react(),
       VitePWA({
         registerType: 'autoUpdate',
-        injectRegister: 'inline', // Inline the registration script to avoid an extra blocking request
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+        injectRegister: 'inline', 
+        includeAssets: ['icon.webp'],
         manifest: {
           name: 'GearShop.ma - Éclairage Professionnel',
           short_name: 'GearShop',
@@ -23,14 +23,16 @@ export default defineConfig(({ mode }) => {
           theme_color: '#000000',
           icons: [
             {
-              src: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
+              src: '/icon.webp',
               sizes: '192x192',
-              type: 'image/webp'
+              type: 'image/webp',
+              purpose: 'any'
             },
             {
-              src: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
+              src: '/icon.webp',
               sizes: '512x512',
-              type: 'image/webp'
+              type: 'image/webp',
+              purpose: 'maskable'
             }
           ]
         }

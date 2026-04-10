@@ -72,10 +72,13 @@ const App: React.FC = () => {
   const [sessionId] = useState(() => Math.random().toString(36).substring(7));
 
 
-  // 1. TRACK LIVE VISITORS & SESSIONS
+  // 1. TRACK LIVE VISITORS & SESSIONS (DEFERRED)
   useEffect(() => {
-    // Session Recording
+    // Session Recording - Deferred to not block main thread
     const recordSession = async () => {
+      // Delay recording by 3 seconds to prioritize initial load
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
       try {
         // Detect city/source
         let city = 'Casablanca';
@@ -100,7 +103,11 @@ const App: React.FC = () => {
       } catch (err) { /* Silent fail */ }
     };
 
-    recordSession();
+    if (window.requestIdleCallback) {
+        window.requestIdleCallback(() => recordSession());
+    } else {
+        recordSession();
+    }
 
     const channel = supabase.channel('online-users', {
       config: { presence: { key: sessionId } }
@@ -127,28 +134,12 @@ const App: React.FC = () => {
   }, [sessionId]);
 
 
-  // 2. TRACK REAL-TIME CLICKS FOR HEATMAP
+  // 2. TRACK REAL-TIME CLICKS (DISABLED FOR PERFORMANCE)
+  /*
   useEffect(() => {
-    const handleGlobalClick = async (e: MouseEvent) => {
-      const xPercent = (e.clientX / window.innerWidth) * 100;
-      const yPercent = (e.clientY / window.innerHeight) * 100;
-      const target = e.target as HTMLElement;
-
-      try {
-        await supabase.from('clicks_gearshop').insert([{
-          session_id: sessionId,
-          x_percent: xPercent,
-          y_percent: yPercent,
-          element_tag: target.tagName.toLowerCase()
-        }]);
-      } catch (err) {
-        // Silent fail to not disturb user
-      }
-    };
-
-    window.addEventListener('click', handleGlobalClick);
-    return () => window.removeEventListener('click', handleGlobalClick);
-  }, [sessionId]);
+    // Click tracking removed to improve TBT
+  }, []);
+  */
 
 
   // Fetch products from Google Sheets or Supabase on mount

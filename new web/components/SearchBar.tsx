@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, X } from 'lucide-react';
+import { Zap, X } from 'lucide-react';
 
 interface SearchBarProps {
     onSearch: (query: string) => void;
@@ -26,9 +26,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
     return (
         <div className="relative w-full max-w-xl mx-auto mb-6">
             <div className="relative">
-                {/* Search Icon */}
+                {/* Search Icon - Replaced with Brand Zap */}
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <Search className="w-4 h-4 text-gray-400" />
+                    <Zap className="w-4 h-4 text-black fill-current" />
                 </div>
 
                 {/* Search Input - Smaller and cooler */}

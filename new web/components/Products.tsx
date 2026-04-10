@@ -162,8 +162,8 @@ const Products: React.FC<ProductsProps> = ({
           </div>
         ) : (
           <div className="text-center py-16">
-            <div className="text-gray-400 mb-4">
-              <Search className="w-16 h-16 mx-auto" />
+            <div className="text-gray-200 mb-4">
+              <Zap className="w-16 h-16 mx-auto" />
             </div>
             <h3 className="text-2xl font-bold text-gray-800 mb-2">
               Aucun produit trouvé

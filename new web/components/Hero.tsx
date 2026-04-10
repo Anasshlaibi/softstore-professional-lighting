@@ -14,15 +14,22 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ siteConfig }) => {
   return (
     <section className="relative h-[100dvh] min-h-[600px] flex items-center justify-center overflow-hidden bg-black reveal">
-      {/* Background Image */}
+      {/* Background Image - Optimized for LCP */}
       <img
         id="hero-img"
         src={siteConfig.heroImg}
+        srcSet={`
+          ${siteConfig.heroImg}?w=640 640w,
+          ${siteConfig.heroImg}?w=1024 1024w,
+          ${siteConfig.heroImg} 1920w
+        `}
+        sizes="100vw"
         alt={`${siteConfig.hero1} ${siteConfig.hero2} - GearShop.ma background`}
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
         width={1920}
         height={1080}
         fetchPriority="high"
+        loading="eager"
       />
 
       {/* Dark Overlay */}

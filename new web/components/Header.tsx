@@ -57,7 +57,11 @@ const Header: React.FC<HeaderProps> = React.memo(
             className="flex items-center gap-2 cursor-pointer group"
             onClick={handleLogoClick}
           >
-            <Zap size={24} fill="white" className="text-white" />
+            <Zap 
+              size={24} 
+              fill={isScrolled || isMobileMenuOpen ? "black" : "white"} 
+              className={isScrolled || isMobileMenuOpen ? "text-black" : "text-white"} 
+            />
             <span
               className={`text-2xl font-bold tracking-tight ${isScrolled || isMobileMenuOpen ? 'text-black' : 'text-white'}`}
             >

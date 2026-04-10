@@ -2,34 +2,44 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# GearShop.ma - SoftStore
 
-This contains everything you need to run your app locally.
+Équipement d'éclairage professionnel pour studios photo/vidéo au Maroc.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1BF7I_1qsqIBclGQ6MyQPccLstxp8Hk5E
+**Live Demo:** [https://gearshop.ma](https://gearshop.ma)
 
-**Live Demo:** https://softstore-professional-lighting.vercel.app
+## Structure du Projet
+- **/** : Projet racine (Version ancienne)
+- **/new web/** : Version actuelle du site (Vite + React)
 
-## Run Locally
+## Développement Local
 
-**Prerequisites:** Node.js
+**Prérequis :** Node.js
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. Installer les dépendances :
+   ```bash
+   npm install
+   ```
+2. Configurer les variables d'environnement :
+   Créez un fichier `.env` dans le dossier `new web/` (utilisez `.env.example` comme modèle) et ajoutez votre `GEMINI_API_KEY`.
+3. Lancer l'application :
+   ```bash
+   npm run dev
+   ```
 
-## Deploy to Vercel
+## Déploiement sur Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Cette application est configurée pour être déployée sur Vercel à partir de la racine.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Configuration Vercel :
+- **Framework Preset :** Vite (ou Other)
+- **Build Command :** `npm run build`
+- **Output Directory :** `new web/dist`
+- **Install Command :** `npm install`
 
-To deploy manually inside this directory:
-1. Initialize a git repository if you haven't already:
-   `git init && git add . && git commit -m "Initial commit"`
-2. Install Vercel CLI:
-   `npm i -g vercel`
-3. Deploy:
-   `vercel`
+### Variables d'environnement nécessaires sur Vercel :
+- `GEMINI_API_KEY`
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `VITE_GA_MEASUREMENT_ID` (G-PQKHW2XKCT)
+
