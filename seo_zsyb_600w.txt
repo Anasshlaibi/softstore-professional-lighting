@@ -1,0 +1,41 @@
+OK, here's the requested product information for the ZSYB 600W studio light, tailored for GearShop.ma customers:
+
+**1. French Product Description:**
+
+Boostez votre créativité avec le ZSYB 600W, la solution d'éclairage studio idéale pour les créateurs marocains ! Que vous soyez un influenceur TikTok en herbe, un vidéaste YouTube chevronné, ou un professionnel de la vidéo de mariage, ce projecteur puissant de 600W vous offre une lumière impeccable pour des résultats professionnels. Finies les vidéos sombres et mal éclairées ! Le ZSYB 600W vous permet de contrôler précisément l'intensité de la lumière pour sublimer vos sujets et créer des ambiances uniques. Facile à utiliser et incroyablement performant, il est l'outil indispensable pour des vidéos de qualité studio, directement chez vous. **Acheter ZSYB 600W Maroc** n'a jamais été aussi simple chez GearShop.ma. Profitez du **meilleur prix Studio Lighting Casablanca** et passez à la vitesse supérieure ! Améliorez l'esthétique de vos vidéos et impressionnez votre audience.
+
+**2. Moroccan Darija Sentence:**
+
+هاذ الضوء ديال الخدمة، مغاديش تندم عليه وبيه غادي تزيد تصورك يكونوا واعرين بزاف.
+
+(Had d-dou dial l-khdma, maghadish tndem alih obih ghadi tzid tswarak ykunu wa3rin bzzaf.)
+
+Translation: This light is for work, you won't regret it, and with it your photos will be much better.
+**3. JSON-LD Schema (Product):**
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "ZSYB 600W Studio Lighting",
+  "image": "URL_TO_PRODUCT_IMAGE_HERE",
+  "description": "Boostez votre créativité avec le ZSYB 600W, la solution d'éclairage studio idéale pour les créateurs marocains ! ... (full description from above)",
+  "brand": "ZSYB",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "MAD",
+    "price": "1500",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "url": "URL_TO_PRODUCT_PAGE_ON_GEARSHOP.MA"
+  }
+}
+```
+
+**4. SEO Keywords:**
+
+*   Acheter ZSYB 600W Maroc
+*   Meilleur prix Studio Lighting Casablanca
+*   Eclairage studio vidéo Maroc
+*   Projecteur LED 600W
+*   Lumière studio mariage Maroc
