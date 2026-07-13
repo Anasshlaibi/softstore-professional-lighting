@@ -44,12 +44,11 @@ const Products: React.FC<ProductsProps> = ({
 
     // Search filter
     if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(query) ||
-        p.desc.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query)
-      );
+      const searchTerms = searchQuery.toLowerCase().split(/\s+/).filter(Boolean);
+      filtered = filtered.filter(p => {
+        const searchableText = `${p.name} ${p.desc} ${p.category}`.toLowerCase();
+        return searchTerms.every(term => searchableText.includes(term));
+      });
     }
 
     // Category filter
