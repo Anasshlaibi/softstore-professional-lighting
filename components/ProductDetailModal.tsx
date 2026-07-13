@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Product } from '../App';
 import { useCart } from '../src/context/CartContext';
 import richDescriptions from '../src/data/richDescriptions.json';
@@ -123,6 +124,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/60 z-[80] overflow-y-auto backdrop-blur-sm" aria-hidden="false">
+      <Helmet>
+        <title>{product.name} | Buy in Morocco - SoftStore</title>
+        <meta name="description" content={`Order the ${product.name} at SoftStore Morocco. Professional gear with fast delivery.`} />
+        {validGallery.length > 0 && <meta property="og:image" content={validGallery[0]} />}
+      </Helmet>
       <div className="min-h-screen flex items-center justify-center p-0 md:p-6 md:py-12">
         <div className="bg-white w-full max-w-[1400px] mx-auto md:rounded-3xl shadow-2xl overflow-hidden relative pb-24 md:pb-0 flex flex-col">
           
@@ -194,7 +200,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         src={img} 
                         onError={() => handleImageError(img)}
                         className="w-full h-full object-contain mix-blend-multiply p-1" 
-                        alt={`Thumbnail ${idx + 1}`} 
+                        alt={`${product.name} - Vue ${idx + 1}`} 
                       />
                     </button>
                   ))}

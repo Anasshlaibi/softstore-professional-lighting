@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://softstore.ma/sitemap.xml

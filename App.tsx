@@ -24,6 +24,8 @@ import { defaultSiteConfig } from './data/config';
 import { CartProvider, useCart } from './src/context/CartContext';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { fetchSupabaseProducts } from './src/utils/fetchSupabaseProducts';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export interface Product {
   id: number;
@@ -58,6 +60,9 @@ const App: React.FC = () => {
   const [isPromoOverlayOpen, setIsPromoOverlayOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -83,6 +88,22 @@ const App: React.FC = () => {
     loadProducts();
   }, []);
 
+  // Sync modal with URL
+  useEffect(() => {
+    if (products.length > 0) {
+      const pathParts = location.pathname.split('/');
+      if (pathParts[1] === 'product' && pathParts[2]) {
+        const idFromUrl = parseInt(pathParts[2].split('-')[0], 10);
+        const product = products.find(p => p.id === idFromUrl);
+        if (product && (!selectedProduct || selectedProduct.id !== product.id)) {
+          setSelectedProduct(product);
+        }
+      } else if (selectedProduct) {
+        setSelectedProduct(null);
+      }
+    }
+  }, [location.pathname, products]);
+
   useEffect(() => {
     if (siteConfig.promo.active) {
       const hasSeen = sessionStorage.getItem('hasSeenPromo');
@@ -96,13 +117,21 @@ const App: React.FC = () => {
     }
   }, [siteConfig.promo.active]);
 
+  const slugify = (text: string) => {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  };
+
   const openProductModal = (productId: number) => {
     const product = products.find((p) => p.id === productId);
-    if (product) setSelectedProduct(product);
+    if (product) {
+      setSelectedProduct(product);
+      navigate(`/product/${product.id}-${slugify(product.name)}`);
+    }
   };
 
   const closeProductModal = () => {
     setSelectedProduct(null);
+    navigate('/');
   };
 
   const buyNow = (productId: number) => {
@@ -191,6 +220,12 @@ const AppContent: React.FC<{
     
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
+        {!selectedProduct && (
+          <Helmet>
+            <title>SoftStore | Professional Lighting & Lenses in Morocco</title>
+            <meta name="description" content="Shop professional 7Artisans lenses, cinema lenses, and studio lighting equipment in Morocco with fast delivery." />
+          </Helmet>
+        )}
         <Header
           onCartClick={() => setIsCartOpen(true)}
           siteConfig={siteConfig}
@@ -199,7 +234,7 @@ const AppContent: React.FC<{
         />
         
         <main>
-          <StructuredData />
+          <StructuredData product={selectedProduct} />
           <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
           <NewArrivals products={products} siteConfig={siteConfig} />
 
