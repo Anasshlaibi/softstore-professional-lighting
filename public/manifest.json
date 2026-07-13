@@ -1,0 +1,35 @@
+{
+  "name": "SoftStore Maroc",
+  "short_name": "SoftStore",
+  "description": "Seul revendeur au Maroc d'objectifs 7Artisans, lentilles cinéma, Canon, Nikon Z et Sony E.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "lang": "fr",
+  "scope": "/",
+  "orientation": "portrait",
+  "categories": ["shopping", "photography"],
+  "icons": [
+    {
+      "src": "/logo_7artisans.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/logo_7artisans.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/banner_7artisans.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "label": "Objectifs 7Artisans - SoftStore Maroc"
+    }
+  ]
+}

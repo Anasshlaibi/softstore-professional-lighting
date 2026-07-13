@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface WhyUsProps {
   siteConfig: {
@@ -52,3 +52,4 @@ const WhyUs: React.FC<WhyUsProps> = ({ siteConfig }) => {
 };
 
 export default WhyUs;
+

@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://softstore.ma/sitemap.xml
+# Sitemaps
+Sitemap: https://gearshop.ma/sitemap.xml
+
+# Crawl-delay for bots
+Crawl-delay: 1

@@ -4,16 +4,16 @@ export const defaultSiteConfig = {
   logoTextAccent: '',
   currency: 'DH',
   btnText: 'Acheter maintenant',
-  brandName: 'SoftStore',
+  brandName: 'GearShop',
   hero1: 'Lumière',
   hero2: 'Cinéma.',
   heroDesc:
-    'La référence pour les studios professionnels. Puissance, précision, perfection.',
+    'Le seul revendeur officiel d\'objectifs 7Artisans au Maroc. Canon, Nikon Z, Sony E.',
   heroImg:
     'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
-  whyTitle: 'Qualité Professionnelle.',
+  whyTitle: 'Le Seul Revendeur Officiel 7Artisans au Maroc.',
   whyText:
-    "Nos solutions d'éclairage ZSYB sont conçues pour les créateurs exigeants. Une fidélité des couleurs exceptionnelle (CRI 97+) pour sublimer chaque détail.",
+    "GearShop est votre partenaire exclusif au Maroc pour les objectifs 7Artisans. Lentilles cinéma T2.0, objectifs autofocus plein format, filtres professionnels pour Canon EOS-R, Nikon Z et Sony E. Livraison rapide dans tout le Maroc.",
   whyImg:
     'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
   video1: 'LcdLz8-JmI0',
@@ -31,3 +31,4 @@ export const defaultSiteConfig = {
     endDate: '2026-12-31',
   },
 };
+

@@ -11,6 +11,7 @@ import Hero from './components/Hero';
 import NewArrivals from './components/NewArrivals';
 import StructuredData from './components/StructuredData';
 import Products from './components/Products';
+import SEOContentSection from './components/SEOContentSection';
 import WhyUs from './components/WhyUs';
 import VideoShowcase from './components/VideoShowcase';
 import Testimonials from './components/Testimonials';
@@ -222,8 +223,8 @@ const AppContent: React.FC<{
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
         {!selectedProduct && (
           <Helmet>
-            <title>SoftStore | Professional Lighting & Lenses in Morocco</title>
-            <meta name="description" content="Shop professional 7Artisans lenses, cinema lenses, and studio lighting equipment in Morocco with fast delivery." />
+            <title>GearShop Maroc | Objectifs 7Artisans, Lentilles Cinéma Canon Nikon Sony</title>
+            <meta name="description" content="GearShop est le seul revendeur au Maroc d'objectifs 7Artisans pour Canon EOS-R, Nikon Z et Sony E. Lentilles cinéma professionnelles avec livraison rapide dans tout le Maroc." />
           </Helmet>
         )}
         <Header
@@ -259,6 +260,7 @@ const AppContent: React.FC<{
             />
           )}
 
+          <SEOContentSection />
           <TrustBadges />
           <VideoShowcase siteConfig={siteConfig} />
           <WhyUs siteConfig={siteConfig} />

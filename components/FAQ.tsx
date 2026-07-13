@@ -1,53 +1,12 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
+import { faqSchemaData } from './StructuredData';
 
-interface FAQItem {
-    id: number;
-    question: string;
-    answer: string;
-}
-
-const faqData: FAQItem[] = [
-    {
-        id: 1,
-        question: "Quels sont les délais de livraison?",
-        answer: "Livraison sous 24-48h à Casablanca. Pour les autres villes du Maroc, comptez 2-4 jours ouvrables. Livraison gratuite dès 500 DH d'achat."
-    },
-    {
-        id: 2,
-        question: "Proposez-vous de la location d'équipement?",
-        answer: "Oui! Nous proposons la location pour certain produits. Les tarifs de location sont indiqués sur les fiches produits. Contactez-nous sur WhatsApp pour plus d'informations."
-    },
-    {
-        id: 3,
-        question: "Quelle est votre politique de retour?",
-        answer: "Retour sous 14 jours si le produit est dans son emballage d'origine et en parfait état. Les frais de retour sont à la charge du client sauf en cas de produit défectueux."
-    },
-    {
-        id: 4,
-        question: "Les produits sont-ils garantis?",
-        answer: "Tous nos produits bénéficient d'une garantie constructeur de 1 an. En cas de problème, nous assurons le service après-vente et les réparations."
-    },
-    {
-        id: 5,
-        question: "Quels modes de paiement acceptez-vous?",
-        answer: "Nous acceptons: paiement à la livraison (Cash), virement bancaire, et paiement par carte bancaire. Pour les entreprises, nous proposons des facilités de paiement."
-    },
-    {
-        id: 6,
-        question: "Puis-je obtenir des conseils techniques?",
-        answer: "Absolument! Notre équipe d'experts est disponible pour vous conseiller sur le choix de votre matériel. Contactez-nous via WhatsApp ou email."
-    },
-    {
-        id: 7,
-        question: "Effectuez-vous l'installation du matériel?",
-        answer: "Oui, nous proposons un service d'installation et de configuration pour les studios professionnels. Tarifs sur devis."
-    },
-    {
-        id: 8,
-        question: "Les produits sont-ils neufs ou reconditionnés?",
-        answer: "Tous nos produits sont 100% neufs avec garantie constructeur. Nous ne vendons pas de matériel reconditionné."
-    }
-];
+// Use the same FAQ data as the schema (single source of truth)
+const faqData = faqSchemaData.map((item, index) => ({
+  id: index + 1,
+  question: item.question,
+  answer: item.answer
+}));
 
 const FAQ: React.FC = () => {
     const [openId, setOpenId] = useState<number | null>(null);
@@ -57,30 +16,45 @@ const FAQ: React.FC = () => {
     };
 
     return (
-        <section className="py-16 md:py-24 bg-white">
+        <section
+          id="faq"
+          className="py-16 md:py-24 bg-white"
+          aria-label="Questions fréquentes sur les objectifs 7Artisans et la livraison au Maroc"
+          itemScope
+          itemType="https://schema.org/FAQPage"
+        >
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-10 md:mb-16">
                     <h2 className="text-2xl md:text-4xl font-bold text-black mb-2 md:mb-4">
                         Questions Fréquentes.
                     </h2>
                     <p className="text-gray-500 text-sm md:text-base">
-                        Trouvez rapidement les réponses à vos questions.
+                        Tout ce que vous devez savoir sur nos objectifs 7Artisans et notre service au Maroc.
                     </p>
                 </div>
 
                 <div className="max-w-3xl mx-auto">
-                    <div className="space-y-4">
+                    <div className="space-y-4" role="list">
                         {faqData.map((faq) => (
                             <div
                                 key={faq.id}
                                 className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 transition-all"
+                                role="listitem"
+                                itemScope
+                                itemProp="mainEntity"
+                                itemType="https://schema.org/Question"
                             >
                                 <button
                                     onClick={() => toggleFAQ(faq.id)}
                                     className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none group"
                                     aria-expanded={openId === faq.id}
+                                    aria-controls={`faq-answer-${faq.id}`}
+                                    id={`faq-question-${faq.id}`}
                                 >
-                                    <span className="text-base md:text-lg font-medium text-black pr-4">
+                                    <span
+                                      className="text-base md:text-lg font-medium text-black pr-4"
+                                      itemProp="name"
+                                    >
                                         {faq.question}
                                     </span>
                                     <div
@@ -92,10 +66,19 @@ const FAQ: React.FC = () => {
                                 </button>
 
                                 <div
+                                    id={`faq-answer-${faq.id}`}
+                                    role="region"
+                                    aria-labelledby={`faq-question-${faq.id}`}
                                     className={`overflow-hidden transition-all duration-300 ${openId === faq.id ? 'max-h-96' : 'max-h-0'
                                         }`}
+                                    itemScope
+                                    itemProp="acceptedAnswer"
+                                    itemType="https://schema.org/Answer"
                                 >
-                                    <div className="px-6 pb-5 text-gray-600 leading-relaxed">
+                                    <div
+                                      className="px-6 pb-5 text-gray-600 leading-relaxed"
+                                      itemProp="text"
+                                    >
                                         {faq.answer}
                                     </div>
                                 </div>
@@ -114,6 +97,7 @@ const FAQ: React.FC = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors font-medium"
+                                aria-label="Contacter GearShop Maroc sur WhatsApp"
                             >
                                 <i className="fa-brands fa-whatsapp"></i>
                                 Contactez-nous sur WhatsApp
@@ -121,6 +105,7 @@ const FAQ: React.FC = () => {
                             <a
                                 href="mailto:professionalanass@gmail.com"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium"
+                                aria-label="Envoyer un email à GearShop Maroc"
                             >
                                 <i className="fa-solid fa-envelope"></i>
                                 Envoyer un email
@@ -134,3 +119,4 @@ const FAQ: React.FC = () => {
 };
 
 export default FAQ;
+

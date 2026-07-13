@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
 
@@ -15,16 +15,31 @@ interface HeroProps {
   };
 }
 
-const Hero: React.FC<HeroProps> = () => {
-  // The 3 hero images requested by the user
-  const heroImages = [
-    '/AF135_2-2.webp',
-    '/cine_lens.jpg',
-    '/photo_lens.jpg',
-  ];
+// Each hero image needs descriptive, keyword-rich alt text for Google Image Search
+const heroImages = [
+  {
+    src: '/AF135_2-2.webp',
+    alt: 'Objectif 7Artisans AF135mm F1.8 - Lentille autofocus plein format disponible au Maroc chez GearShop',
+    title: 'Objectif 7Artisans AF135mm F1.8 Nikon Z - GearShop Maroc'
+  },
+  {
+    src: '/cine_lens.jpg',
+    alt: 'Lentilles cinéma 7Artisans T2.0 - Cine Lens disponibles au Maroc pour Canon, Nikon Z et Sony E',
+    title: 'Lentilles Cinéma 7Artisans - GearShop Casablanca'
+  },
+  {
+    src: '/photo_lens.jpg',
+    alt: 'Objectifs photo 7Artisans pour appareil Canon, Nikon et Sony - Seul revendeur au Maroc',
+    title: 'Objectifs Photo 7Artisans Maroc - GearShop'
+  },
+];
 
+const Hero: React.FC<HeroProps> = () => {
   return (
-    <section className="relative h-[100dvh] min-h-[600px] flex items-end justify-center overflow-hidden bg-[#0A0A0A]">
+    <section
+      className="relative h-[100dvh] min-h-[600px] flex items-end justify-center overflow-hidden bg-[#0A0A0A]"
+      aria-label="Objectifs 7Artisans et Lentilles Cinéma au Maroc - GearShop"
+    >
       
       <div className="absolute inset-0 z-0 w-full h-full">
         <Swiper
@@ -32,15 +47,21 @@ const Hero: React.FC<HeroProps> = () => {
           effect="fade"
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop={true}
-          allowTouchMove={false} // Disable dragging for a purely cinematic background
+          allowTouchMove={false}
           className="w-full h-full"
         >
-          {heroImages.map((src, index) => (
+          {heroImages.map((img, index) => (
             <SwiperSlide key={index}>
               <img
-                src={src}
-                alt={`Featured Product ${index + 1}`}
+                src={img.src}
+                alt={img.alt}
+                title={img.title}
                 className="w-full h-full object-cover object-center scale-105"
+                // First image loads eagerly for LCP performance (Google Core Web Vitals)
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                width={1920}
+                height={1080}
                 style={{
                   animation: 'kenburns 15s ease-out infinite alternate'
                 }}
@@ -76,3 +97,4 @@ const Hero: React.FC<HeroProps> = () => {
 };
 
 export default Hero;
+

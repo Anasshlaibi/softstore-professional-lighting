@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- ===== HOMEPAGE ===== -->
+  <url>
+    <loc>https://gearshop.ma/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://gearshop.ma/banner_7artisans.jpg</image:loc>
+      <image:title>Objectifs 7Artisans au Maroc - SoftStore Casablanca</image:title>
+      <image:caption>SoftStore Maroc - Seul revendeur officiel d'objectifs 7Artisans, lentilles cinÃ©ma Canon Nikon Sony au Maroc</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://gearshop.ma/AF135_2-2.webp</image:loc>
+      <image:title>7Artisans AF135mm F1.8 - Objectif plein format Maroc</image:title>
+      <image:caption>7Artisans AF135mm F1.8 objectif autofocus plein format disponible au Maroc</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://gearshop.ma/cine_lens.jpg</image:loc>
+      <image:title>Lentilles CinÃ©ma 7Artisans - Cine Lens Maroc</image:title>
+      <image:caption>Objectifs cinÃ©ma 7Artisans T2.0 disponibles au Maroc pour Canon, Nikon Z, Sony E</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://gearshop.ma/photo_lens.jpg</image:loc>
+      <image:title>Objectifs Photo 7Artisans Maroc - Lentilles Photographiques</image:title>
+      <image:caption>Collection complÃ¨te d'objectifs photo 7Artisans pour photographes professionnels au Maroc</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ===== CATEGORY: Objectifs pour Canon ===== -->
+  <url>
+    <loc>https://gearshop.ma/?category=canon</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://gearshop.ma/photo_lens.jpg</image:loc>
+      <image:title>Objectifs 7Artisans pour Canon EOS-R - Maroc</image:title>
+      <image:caption>Objectifs 7Artisans compatibles Canon EOS-R Mount disponibles au Maroc</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ===== CATEGORY: Objectifs pour Nikon Z ===== -->
+  <url>
+    <loc>https://gearshop.ma/?category=nikon</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://gearshop.ma/AF135_2-2.webp</image:loc>
+      <image:title>Objectifs 7Artisans pour Nikon Z - Maroc</image:title>
+      <image:caption>Objectifs 7Artisans compatibles Nikon Z Mount disponibles au Maroc</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ===== CATEGORY: Objectifs pour Sony E ===== -->
+  <url>
+    <loc>https://gearshop.ma/?category=sony</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://gearshop.ma/photo_lens.jpg</image:loc>
+      <image:title>Objectifs 7Artisans pour Sony E Mount - Maroc</image:title>
+      <image:caption>Objectifs 7Artisans compatibles Sony E Mount disponibles au Maroc</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ===== CATEGORY: Lentilles CinÃ©ma ===== -->
+  <url>
+    <loc>https://gearshop.ma/?category=cine</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://gearshop.ma/cine_lens.jpg</image:loc>
+      <image:title>Lentilles CinÃ©ma 7Artisans T2.0 - Cine Lens Maroc</image:title>
+      <image:caption>Lentilles cinÃ©ma professionnelles 7Artisans T2.0 disponibles au Maroc pour productions cinÃ©matographiques</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ===== CATEGORY: Filtres ===== -->
+  <url>
+    <loc>https://gearshop.ma/?category=filtres</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
+

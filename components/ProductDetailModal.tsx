@@ -125,9 +125,17 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   return (
     <div className="fixed inset-0 bg-black/60 z-[80] overflow-y-auto backdrop-blur-sm" aria-hidden="false">
       <Helmet>
-        <title>{product.name} | Buy in Morocco - SoftStore</title>
-        <meta name="description" content={`Order the ${product.name} at SoftStore Morocco. Professional gear with fast delivery.`} />
-        {validGallery.length > 0 && <meta property="og:image" content={validGallery[0]} />}
+        <title>{product.name} | Acheter au Maroc - GearShop</title>
+        <meta name="description" content={`Achetez le ${product.name} chez GearShop Maroc - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH. Livraison rapide dans tout le Maroc depuis Casablanca.`} />
+        <meta property="og:title" content={`${product.name} | GearShop Maroc`} />
+        <meta property="og:description" content={`${product.name} disponible chez GearShop - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH. Livraison rapide.`} />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" content={`https://gearshop.ma/product/${product.id}`} />
+        {galleryImages.length > 0 && <meta property="og:image" content={galleryImages[0]} />}
+        {galleryImages.length > 0 && <meta property="og:image:alt" content={`${product.name} - GearShop Maroc`} />}
+        <meta property="product:price:amount" content={product.price.toString()} />
+        <meta property="product:price:currency" content="MAD" />
+        <link rel="canonical" href={`https://gearshop.ma/product/${product.id}`} />
       </Helmet>
       <div className="min-h-screen flex items-center justify-center p-0 md:p-6 md:py-12">
         <div className="bg-white w-full max-w-[1400px] mx-auto md:rounded-3xl shadow-2xl overflow-hidden relative pb-24 md:pb-0 flex flex-col">
@@ -455,3 +463,4 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 };
 
 export default ProductDetailModal;
+
