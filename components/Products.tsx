@@ -68,9 +68,12 @@ const Products: React.FC<ProductsProps> = ({
     );
 
     // Sorting
+    const invoiceIds = [1027, 1002, 1004, 1035, 1021, 1019, 1018, 1030, 1015, 1023, 1043];
     const sorted = [...filtered].sort((a, b) => {
-      const isANew = (a.id && a.id <= 14);
-      const isBNew = (b.id && b.id <= 14);
+      const aIndex = invoiceIds.indexOf(a.id || 0);
+      const bIndex = invoiceIds.indexOf(b.id || 0);
+      const isANew = aIndex !== -1;
+      const isBNew = bIndex !== -1;
       
       switch (filters.sortBy) {
         case 'price-asc':
@@ -85,6 +88,7 @@ const Products: React.FC<ProductsProps> = ({
         default:
           if (isANew && !isBNew) return -1;
           if (!isANew && isBNew) return 1;
+          if (isANew && isBNew) return aIndex - bIndex;
           return (a.id || 0) - (b.id || 0); // Keep original ID order
       }
     });
