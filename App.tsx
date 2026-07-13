@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import NewArrivals from './components/NewArrivals';
+import StructuredData from './components/StructuredData';
 import Products from './components/Products';
 import WhyUs from './components/WhyUs';
 import VideoShowcase from './components/VideoShowcase';
@@ -20,7 +22,7 @@ import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
 import { CartProvider, useCart } from './src/context/CartContext';
 import { ThemeProvider } from './src/context/ThemeContext';
-import { fetchProductsFromGoogleSheets } from './src/utils/fetchProducts';
+import { fetchSupabaseProducts } from './src/utils/fetchSupabaseProducts';
 
 export interface Product {
   id: number;
@@ -54,32 +56,23 @@ const App: React.FC = () => {
   const [appliedPromo, setAppliedPromo] = useState<number | null>(null);
   const [isPromoOverlayOpen, setIsPromoOverlayOpen] = useState(false);
 
-  // Fetch products from Google Sheets on mount
+  // Fetch products from Supabase on mount
   useEffect(() => {
     const loadProducts = async () => {
-      const googleSheetsUrl = import.meta.env.VITE_GOOGLE_SHEETS_CSV_URL;
-
-      // If no Google Sheets URL configured, use hardcoded products
-      if (!googleSheetsUrl) {
-        console.info('No Google Sheets URL configured, using hardcoded products');
-        setProducts(defaultProducts);
-        setLoading(false);
-        return;
-      }
-
       try {
-        console.log('Fetching products from Google Sheets...');
-        const fetchedProducts = await fetchProductsFromGoogleSheets(googleSheetsUrl);
+        console.log('Fetching products from Supabase...');
+        const fetchedProducts = await fetchSupabaseProducts();
 
         if (fetchedProducts.length > 0) {
           setProducts(fetchedProducts);
-          console.log(`Successfully loaded ${fetchedProducts.length} products from Google Sheets`);
+          console.log(`Successfully loaded ${fetchedProducts.length} products from Supabase`);
         } else {
-          throw new Error('No products found in Google Sheets');
+          console.log('No products found in Supabase (or missing credentials). Using hardcoded products.');
+          setProducts(defaultProducts);
         }
       } catch (err) {
-        console.error('Failed to load products from Google Sheets:', err);
-        setError('Impossible de charger les produits depuis Google Sheets');
+        console.error('Failed to load products from Supabase:', err);
+        setError('Impossible de charger les produits depuis la base de données');
         // Fallback to hardcoded products
         setProducts(defaultProducts);
       } finally {
@@ -191,6 +184,9 @@ const AppContent: React.FC<{
   setIsPromoOverlayOpen,
 }) => {
     const { toastMessage, clearToast } = useCart();
+    
+    // Pagination State for products grid
+    const [displayLimit, setDisplayLimit] = React.useState(12);
 
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
@@ -199,7 +195,9 @@ const AppContent: React.FC<{
           siteConfig={siteConfig}
         />
         <main>
-          <Hero siteConfig={siteConfig} />
+          <StructuredData />
+          <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
+          <NewArrivals />
 
           {/* Show error message if Google Sheets failed */}
           {error && !loading && (
@@ -216,10 +214,22 @@ const AppContent: React.FC<{
             <LoadingSpinner />
           ) : (
             <Products
-              products={products}
+              products={products.slice(0, displayLimit)}
               onProductClick={openProductModal}
               siteConfig={siteConfig}
             />
+          )}
+          
+          {/* Load More Button */}
+          {!loading && displayLimit < products.length && (
+            <div className="flex justify-center pb-16 bg-white w-full">
+              <button 
+                onClick={() => setDisplayLimit(prev => prev + 12)}
+                className="px-8 py-3.5 bg-black text-white text-sm font-bold tracking-widest uppercase rounded-none hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
+                Load More
+              </button>
+            </div>
           )}
 
           <TrustBadges />

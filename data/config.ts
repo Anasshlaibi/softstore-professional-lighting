@@ -1,4 +1,7 @@
 export const defaultSiteConfig = {
+  name: 'Gear Shop',
+  logoText: 'GEAR SHOP',
+  logoTextAccent: '',
   currency: 'DH',
   btnText: 'Acheter maintenant',
   brandName: 'SoftStore',
@@ -19,7 +22,7 @@ export const defaultSiteConfig = {
   displayPhone: '+212 6.73.01.18.73',
   email: 'professionalanass@gmail.com',
   promo: {
-    active: true,
+    active: false,
     title: "Promo\nFin d'année.",
     code: 'CODE2025',
     discount: 15,
