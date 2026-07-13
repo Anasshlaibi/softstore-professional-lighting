@@ -69,6 +69,9 @@ const Products: React.FC<ProductsProps> = ({
 
     // Sorting
     const sorted = [...filtered].sort((a, b) => {
+      const isANew = (a.id && a.id <= 14);
+      const isBNew = (b.id && b.id <= 14);
+      
       switch (filters.sortBy) {
         case 'price-asc':
           return a.price - b.price;
@@ -80,7 +83,9 @@ const Products: React.FC<ProductsProps> = ({
           return a.name.localeCompare(b.name);
         case 'default':
         default:
-          return (a.id || 0) - (b.id || 0); // Keep original ID order where invoice matches are first (1000, 1001, etc)
+          if (isANew && !isBNew) return -1;
+          if (!isANew && isBNew) return 1;
+          return (a.id || 0) - (b.id || 0); // Keep original ID order
       }
     });
 
