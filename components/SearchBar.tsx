@@ -3,18 +3,27 @@ import React, { useState } from 'react';
 interface SearchBarProps {
     onSearch: (query: string) => void;
     placeholder?: string;
+    value?: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
     onSearch,
-    placeholder = "Rechercher un produit..."
+    placeholder = "Rechercher un produit...",
+    value = ""
 }) => {
-    const [searchQuery, setSearchQuery] = useState('');
+    // If value is provided, use it, else use internal state.
+    // To keep it simple, let's sync internal state with value prop.
+    const [searchQuery, setSearchQuery] = useState(value);
+
+    // Sync with external value if it changes
+    React.useEffect(() => {
+        setSearchQuery(value);
+    }, [value]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        setSearchQuery(value);
-        onSearch(value); // Live search as user types
+        const val = e.target.value;
+        setSearchQuery(val);
+        onSearch(val);
     };
 
     const handleClear = () => {

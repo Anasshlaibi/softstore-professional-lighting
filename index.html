@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO Meta Tags -->
-  <title>SoftStore - Éclairage Professionnel Cinéma | Casablanca, Maroc</title>
+  <title>SoftStore | Cinema Lenses for Seven Artisans & Professional Lighting</title>
   <meta name="description"
-    content="Équipement d'éclairage professionnel ZSYB pour studios photo/vidéo. CRI 97+, livraison rapide au Maroc. Projecteurs, LED portables, accessoires. Conseils d'experts à Casablanca.">
+    content="Discover the best cinema lenses for Seven Artisans at SoftStore. Premium professional optics, cine lenses, and lighting equipment for photo and video studios. Fast delivery in Morocco.">
   <meta name="keywords"
-    content="éclairage studio, softbox, LED professionnel, ZSYB, Casablanca, Maroc, matériel cinéma, éclairage vidéo, projecteur LED">
+    content="cinema lenses for seven artisans, seven artisans cine lens, professional lighting, ZSYB, Casablanca, Maroc, matériel cinéma, éclairage vidéo, 7artisans lenses">
   <meta name="author" content="SoftStore">
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SoftStore - Éclairage Professionnel pour Studios">
+  <meta property="og:title" content="SoftStore | Cinema Lenses for Seven Artisans & Professional Lighting">
   <meta property="og:description"
-    content="Équipement d'éclairage professionnel ZSYB. CRI 97+, qualité cinéma. Livraison rapide au Maroc.">
+    content="Discover the best cinema lenses for Seven Artisans. Premium professional optics and lighting equipment for photo and video studios.">
   <meta property="og:image"
     content="https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp">
   <meta property="og:url" content="https://softstore-professional-lighting.vercel.app">
@@ -25,8 +25,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SoftStore - Éclairage Professionnel">
-  <meta name="twitter:description" content="Équipement d'éclairage professionnel ZSYB pour studios photo/vidéo">
+  <meta name="twitter:title" content="SoftStore | Cinema Lenses for Seven Artisans">
+  <meta name="twitter:description" content="Discover the best cinema lenses for Seven Artisans at SoftStore. Premium professional optics.">
   <meta name="twitter:image"
     content="https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp">
 
@@ -36,7 +36,7 @@
     "@context": "https://schema.org",
     "@type": "Store",
     "name": "SoftStore",
-    "description": "Éclairage professionnel pour studios photo et vidéo",
+    "description": "Premium provider of Cinema Lenses for Seven Artisans and Professional Lighting equipment.",
     "url": "https://softstore-professional-lighting.vercel.app",
     "telephone": "+212673011873",
     "email": "professionalanass@gmail.com",
@@ -46,7 +46,24 @@
       "addressCountry": "MA"
     },
     "priceRange": "$$",
-    "openingHours": "Mo-Sa 09:00-18:00"
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cinema Lenses",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Cinema Lenses for Seven Artisans",
+            "brand": {
+              "@type": "Brand",
+              "name": "7Artisans"
+            }
+          }
+        }
+      ]
+    }
   }
   </script>
 
@@ -76,6 +93,45 @@
 
     .animate-slide-in-down {
       animation: slide-in-down 0.3s ease-out;
+    }
+
+    /* Override scraped HTML styles for rich descriptions */
+    .rich-description-content * {
+      color: #1a1a1a !important;
+      background-color: transparent !important;
+    }
+
+    /* Remove empty spacers from scraped HTML */
+    .rich-description-content p:empty,
+    .rich-description-content div:empty,
+    .rich-description-content span:empty {
+      display: none !important;
+    }
+
+    /* Reset heights that cause empty spaces */
+    .rich-description-content [style*="height"] {
+      height: auto !important;
+      min-height: 0 !important;
+    }
+    
+    .rich-description-content [style*="margin"] {
+      margin: 0 !important;
+    }
+
+    /* Fix giant SVGs from Shopify */
+    .rich-description-content svg {
+      max-width: 24px !important;
+      max-height: 24px !important;
+      height: auto !important;
+      width: auto !important;
+    }
+
+    /* Hide Shopify collapsibles/accordions (Shipping, Returns, etc) */
+    .rich-description-content details,
+    .rich-description-content .accordion,
+    .rich-description-content .collapsible,
+    .rich-description-content summary {
+      display: none !important;
     }
   </style>
   <script type="importmap">

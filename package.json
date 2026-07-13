@@ -15,8 +15,10 @@
     "@supabase/supabase-js": "^2.110.2",
     "csv-parser": "^3.2.1",
     "csv-writer": "^1.6.0",
+    "fuse.js": "^7.4.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
+    "react-router-dom": "^7.18.1",
     "swiper": "^14.0.5",
     "xlsx": "^0.18.5"
   },
@@ -25,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^8.55.0",
     "@typescript-eslint/parser": "^8.55.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "cheerio": "^1.2.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",

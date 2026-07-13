@@ -4,10 +4,12 @@ import { useCart } from '../src/context/CartContext';
 interface HeaderProps {
   onCartClick: () => void;
   siteConfig: { brandName: string };
+  globalSearchQuery: string;
+  setGlobalSearchQuery: (q: string) => void;
 }
 
 const Header: React.FC<HeaderProps> = React.memo(
-  ({ onCartClick, siteConfig }) => {
+  ({ onCartClick, siteConfig, globalSearchQuery, setGlobalSearchQuery }) => {
     const { cartCount } = useCart();
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -18,6 +20,16 @@ const Header: React.FC<HeaderProps> = React.memo(
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setGlobalSearchQuery(e.target.value);
+      if (e.target.value && window.location.hash !== '#collection') {
+        const el = document.getElementById('collection');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
 
     return (
       <header
@@ -60,6 +72,17 @@ const Header: React.FC<HeaderProps> = React.memo(
           </nav>
 
           <div className="flex items-center gap-3 md:gap-5">
+            {/* Global Search */}
+            <div className={`hidden md:flex relative items-center transition-all duration-300 ${isScrolled ? 'text-black' : 'text-white'}`}>
+              <i className="fa-solid fa-search absolute left-3 text-sm opacity-70"></i>
+              <input 
+                type="text" 
+                placeholder="Rechercher..."
+                value={globalSearchQuery}
+                onChange={handleSearch}
+                className={`pl-9 pr-4 py-1.5 rounded-full text-sm outline-none transition-all duration-300 bg-black/10 placeholder-current/70 border border-transparent focus:border-current/30 focus:w-48 w-36 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 focus:bg-white text-black' : 'bg-white/20 hover:bg-white/30 text-white'}`}
+              />
+            </div>
             <button
               onClick={onCartClick}
               className="relative group p-1"

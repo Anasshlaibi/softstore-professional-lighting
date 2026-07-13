@@ -40,7 +40,7 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
     };
 
     // Map Supabase rows to our Product interface
-    return data.map((row: any, index: number): Product => {
+    const mappedProducts = data.map((row: any, index: number): Product => {
       const gallery = parseArraySafe(row.gallery);
       const specs = parseArraySafe(row.specs);
 
@@ -61,6 +61,36 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
         promoEligible: row.promoEligible === true || row.promoeligible === true || row.promoeligible === 'TRUE' || row.promoeligible === 'true',
       };
     });
+
+    // Featured products that should appear first on the homepage
+    const featuredNames = [
+      'AF135mm F1.8 Nikon (Z Mount) - Black',
+      '35mm T2.0 Nikon (Z Mount) - Black',
+      '50mm T2.0 Sony (E Mount) - Black',
+      '50mm F1.2 Nikon (Z Mount) - Black',
+      'AF40mm F2.5 Sony (E Mount) - Black',
+      'AF35mm F1.8 Nikon (Z Mount) - Black',
+      'AF35mm F1.8 Sony (E Mount) - Black',
+      '35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black',
+      'AF24mm F1.8 Sony (E Mount) - Black',
+      'AF50mm F1.8 Nikon (Z Mount) - Black',
+      'Autofocus adapter for Canon EF - Nikon Z - Black',
+      'PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver',
+      '77mm True Color VND6-9 Filter - Black',
+      '55mm 1/8 Black Mist Filter - Black'
+    ];
+
+    mappedProducts.sort((a, b) => {
+      const aIndex = featuredNames.indexOf(a.name);
+      const bIndex = featuredNames.indexOf(b.name);
+      
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex; // Both featured, sort by array order
+      if (aIndex !== -1) return -1; // A is featured, B is not
+      if (bIndex !== -1) return 1; // B is featured, A is not
+      return 0; // Neither is featured, keep original ID order
+    });
+
+    return mappedProducts;
   } catch (err) {
     console.error('Failed to fetch from Supabase:', err);
     throw err;

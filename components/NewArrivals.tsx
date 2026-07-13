@@ -1,38 +1,36 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Product } from '../App'; // adjust path if needed
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const NewArrivals: React.FC = () => {
-  const slides = [
-    {
-      id: 1,
-      name: 'AF 135mm F1.8 MAX',
-      label: 'NEW ARRIVAL',
-      desc: 'Le nouvel objectif phare 7Artisans. Une compression sublime et un piqué exceptionnel d\'un bord à l\'autre. Conçu pour les professionnels.',
-      features: ['Full Frame', 'Auto Focus', 'Sony E / Nikon Z'],
-      image: '/AF135_2-2.webp',
-    },
-    {
-      id: 2,
-      name: 'AF 24mm F1.4',
-      label: 'LATEST ANNOUNCEMENT',
-      desc: 'Capturez la scène dans son intégralité. Idéal pour l\'astrophotographie et le paysage urbain grâce à son ouverture ultra-lumineuse.',
-      features: ['Full Frame', 'Auto Focus', 'F1.4 Ultra Lumineux'],
-      image: 'https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=800',
-    },
-    {
-      id: 3,
-      name: 'AF 50mm F1.8',
-      label: 'NEW ARRIVAL',
-      desc: 'L\'objectif standard réinventé. Le 50mm offre une polyvalence absolue pour la rue, le portrait et la vidéo quotidienne.',
-      features: ['Full Frame', 'Auto Focus', 'Compact & Léger'],
-      image: 'https://images.unsplash.com/photo-1502982720700-bfff97f2ec04?auto=format&fit=crop&q=80&w=800',
-    }
-  ];
+interface NewArrivalsProps {
+  products: Product[];
+  siteConfig?: any;
+}
+
+const NewArrivals: React.FC<NewArrivalsProps> = ({ products, siteConfig }) => {
+  const slides = useMemo(() => {
+    if (!products) return [];
+    const invoiceIds = [1027, 1002, 1004, 1035, 1021, 1019, 1018, 1030, 1015, 1023, 1043, 1060, 1061, 1062];
+    // Filter the products that are in the invoice list
+    return products
+      .filter(p => invoiceIds.includes(p.id))
+      .slice(0, 5) // Show top 5 in carousel to not overwhelm
+      .map(p => ({
+        id: p.id,
+        name: p.name,
+        label: 'AVAILABLE NOW',
+        desc: p.desc || 'Découvrez ce nouveau produit exceptionnel.',
+        features: ['In Stock', p.category || 'Accessory', 'Ready to Ship'],
+        image: p.image || 'https://images.unsplash.com/photo-1502982720700-bfff97f2ec04?auto=format&fit=crop&q=80&w=800',
+      }));
+  }, [products]);
+
+  if (slides.length === 0) return null;
 
   return (
     <section className="py-24" style={{ backgroundColor: '#050505' }}>

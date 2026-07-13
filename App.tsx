@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
+import Cart from './components/Cart';
+import CheckoutModal from './components/CheckoutModal';
+import PromoOverlay from './components/PromoOverlay';
+import Toast from './components/Toast';
+
 import Hero from './components/Hero';
 import NewArrivals from './components/NewArrivals';
 import StructuredData from './components/StructuredData';
@@ -9,14 +16,8 @@ import VideoShowcase from './components/VideoShowcase';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import TrustBadges from './components/TrustBadges';
-import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
-import Cart from './components/Cart';
-import ProductDetailModal from './components/ProductDetailModal';
-import CheckoutModal from './components/CheckoutModal';
-import PromoOverlay from './components/PromoOverlay';
-import Toast from './components/Toast';
 import LoadingSpinner from './components/LoadingSpinner';
+import ProductDetailModal from './components/ProductDetailModal';
 
 import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
@@ -55,8 +56,8 @@ const App: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [appliedPromo, setAppliedPromo] = useState<number | null>(null);
   const [isPromoOverlayOpen, setIsPromoOverlayOpen] = useState(false);
+  const [globalSearchQuery, setGlobalSearchQuery] = useState('');
 
-  // Fetch products from Supabase on mount
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -73,7 +74,6 @@ const App: React.FC = () => {
       } catch (err) {
         console.error('Failed to load products from Supabase:', err);
         setError('Impossible de charger les produits depuis la base de données');
-        // Fallback to hardcoded products
         setProducts(defaultProducts);
       } finally {
         setLoading(false);
@@ -84,7 +84,6 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Show promo overlay after 1.5s if active and not seen
     if (siteConfig.promo.active) {
       const hasSeen = sessionStorage.getItem('hasSeenPromo');
       if (!hasSeen) {
@@ -107,7 +106,6 @@ const App: React.FC = () => {
   };
 
   const buyNow = (productId: number) => {
-    // This function will be updated to use the cart context
     closeProductModal();
     setTimeout(() => setIsCheckoutOpen(true), 300);
   };
@@ -135,14 +133,16 @@ const App: React.FC = () => {
         setIsCartOpen={setIsCartOpen}
         isCheckoutOpen={isCheckoutOpen}
         setIsCheckoutOpen={setIsCheckoutOpen}
-        selectedProduct={selectedProduct}
-        openProductModal={openProductModal}
-        closeProductModal={closeProductModal}
         buyNow={buyNow}
         appliedPromo={appliedPromo}
         applyPromo={applyPromo}
         isPromoOverlayOpen={isPromoOverlayOpen}
         setIsPromoOverlayOpen={setIsPromoOverlayOpen}
+        globalSearchQuery={globalSearchQuery}
+        setGlobalSearchQuery={setGlobalSearchQuery}
+        openProductModal={openProductModal}
+        closeProductModal={closeProductModal}
+        selectedProduct={selectedProduct}
       />
     </CartProvider>
   );
@@ -157,14 +157,16 @@ const AppContent: React.FC<{
   setIsCartOpen: (isOpen: boolean) => void;
   isCheckoutOpen: boolean;
   setIsCheckoutOpen: (isOpen: boolean) => void;
-  selectedProduct: Product | null;
-  openProductModal: (id: number) => void;
-  closeProductModal: () => void;
   buyNow: (id: number) => void;
   appliedPromo: number | null;
   applyPromo: (code: string) => boolean;
   isPromoOverlayOpen: boolean;
   setIsPromoOverlayOpen: (isOpen: boolean) => void;
+  globalSearchQuery: string;
+  setGlobalSearchQuery: (q: string) => void;
+  openProductModal: (id: number) => void;
+  closeProductModal: () => void;
+  selectedProduct: Product | null;
 }> = ({
   products,
   loading,
@@ -174,32 +176,33 @@ const AppContent: React.FC<{
   setIsCartOpen,
   isCheckoutOpen,
   setIsCheckoutOpen,
-  selectedProduct,
-  openProductModal,
-  closeProductModal,
   buyNow,
   appliedPromo,
   applyPromo,
   isPromoOverlayOpen,
   setIsPromoOverlayOpen,
+  globalSearchQuery,
+  setGlobalSearchQuery,
+  openProductModal,
+  closeProductModal,
+  selectedProduct,
 }) => {
     const { toastMessage, clearToast } = useCart();
     
-    // Pagination State for products grid
-    const [displayLimit, setDisplayLimit] = React.useState(12);
-
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
         <Header
           onCartClick={() => setIsCartOpen(true)}
           siteConfig={siteConfig}
+          globalSearchQuery={globalSearchQuery}
+          setGlobalSearchQuery={setGlobalSearchQuery}
         />
+        
         <main>
           <StructuredData />
           <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
-          <NewArrivals />
+          <NewArrivals products={products} siteConfig={siteConfig} />
 
-          {/* Show error message if Google Sheets failed */}
           {error && !loading && (
             <div className="container mx-auto px-6 py-4">
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
@@ -209,27 +212,16 @@ const AppContent: React.FC<{
             </div>
           )}
 
-          {/* Show loading spinner or products */}
           {loading ? (
             <LoadingSpinner />
           ) : (
             <Products
-              products={products.slice(0, displayLimit)}
+              products={products}
               onProductClick={openProductModal}
               siteConfig={siteConfig}
+              globalSearchQuery={globalSearchQuery}
+              setGlobalSearchQuery={setGlobalSearchQuery}
             />
-          )}
-          
-          {/* Load More Button */}
-          {!loading && displayLimit < products.length && (
-            <div className="flex justify-center pb-16 bg-white w-full">
-              <button 
-                onClick={() => setDisplayLimit(prev => prev + 12)}
-                className="px-8 py-3.5 bg-black text-white text-sm font-bold tracking-widest uppercase rounded-none hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
-              >
-                Load More
-              </button>
-            </div>
           )}
 
           <TrustBadges />
@@ -238,6 +230,7 @@ const AppContent: React.FC<{
           <Testimonials />
           <FAQ />
         </main>
+
         <Footer siteConfig={siteConfig} />
         <FloatingWhatsApp siteConfig={siteConfig} />
 
@@ -259,7 +252,6 @@ const AppContent: React.FC<{
             siteConfig={siteConfig}
             appliedPromo={appliedPromo}
             onSuccess={() => {
-              // This function will be updated to use the cart context
               setIsCheckoutOpen(false);
             }}
           />
@@ -269,7 +261,7 @@ const AppContent: React.FC<{
           <ProductDetailModal
             product={selectedProduct}
             onClose={closeProductModal}
-            buyNow={buyNow}
+            buyNow={() => buyNow(selectedProduct.id)}
             siteConfig={siteConfig}
           />
         )}
@@ -288,14 +280,10 @@ const AppContent: React.FC<{
     );
   };
 
-export default App;
-
-// Wrap with ThemeProvider
-const AppWithTheme = () => (
+export const AppWithTheme = () => (
   <ThemeProvider>
     <App />
   </ThemeProvider>
 );
 
-export { AppWithTheme };
-
+export default AppWithTheme;

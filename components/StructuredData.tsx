@@ -4,12 +4,14 @@ const StructuredData: React.FC = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Store",
-    "name": "GearShop.ma",
-    "description": "Premium retailer of high-end videography lighting, studio LEDs, and precision cinema optics including full-frame primes and anamorphic lenses.",
-    "url": "https://gearshop.ma",
-    "telephone": "+212000000000",
+    "name": "SoftStore",
+    "description": "Premium retailer of high-end videography lighting, studio LEDs, and precision Seven Artisans cinema lenses including full-frame primes and anamorphic lenses.",
+    "url": "https://softstore-professional-lighting.vercel.app",
+    "telephone": "+212673011873",
+    "email": "professionalanass@gmail.com",
     "address": {
       "@type": "PostalAddress",
+      "addressLocality": "Casablanca",
       "addressCountry": "MA"
     },
     "sameAs": [
@@ -18,11 +20,11 @@ const StructuredData: React.FC = () => {
     "department": [
       {
         "@type": "Store",
-        "name": "Videography Lighting"
+        "name": "Seven Artisans Cinema Lenses"
       },
       {
         "@type": "Store",
-        "name": "Cinema Optics"
+        "name": "Videography Lighting"
       }
     ]
   };
