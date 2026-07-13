@@ -4,7 +4,7 @@ import { Product } from '../../App';
 export async function fetchSupabaseProducts(): Promise<Product[]> {
   try {
     const fetchPromise = supabase
-      .from('products_gearshop')
+      .from('products gearshop')
       .select('*')
       .order('id', { ascending: true });
 
