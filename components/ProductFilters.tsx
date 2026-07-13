@@ -37,7 +37,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             category: 'all',
             priceRange: [0, maxPrice],
             inStockOnly: false,
-            sortBy: 'name-asc'
+            sortBy: 'default'
         });
     };
 
@@ -81,6 +81,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                         onChange={handleSortChange}
                         className="w-full px-4 py-2 pr-8 bg-white text-gray-900 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-sm font-medium"
                     >
+                        <option value="default">Recommandé</option>
                         <option value="name-asc">Nom (A → Z)</option>
                         <option value="name-desc">Nom (Z → A)</option>
                         <option value="price-asc">Prix (Bas → Élevé)</option>

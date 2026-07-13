@@ -29,7 +29,7 @@ const Products: React.FC<ProductsProps> = ({
     category: 'all',
     priceRange: [0, maxPrice],
     inStockOnly: false,
-    sortBy: 'name-asc'
+    sortBy: 'default'
   });
 
   // Get unique categories
@@ -77,8 +77,10 @@ const Products: React.FC<ProductsProps> = ({
         case 'name-desc':
           return b.name.localeCompare(a.name);
         case 'name-asc':
-        default:
           return a.name.localeCompare(b.name);
+        case 'default':
+        default:
+          return (a.id || 0) - (b.id || 0); // Keep original ID order where invoice matches are first (1000, 1001, etc)
       }
     });
 
