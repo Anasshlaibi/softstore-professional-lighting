@@ -8,17 +8,19 @@ import PromoOverlay from './components/PromoOverlay';
 import Toast from './components/Toast';
 
 import Hero from './components/Hero';
-import NewArrivals from './components/NewArrivals';
 import StructuredData from './components/StructuredData';
-import Products from './components/Products';
-import SEOContentSection from './components/SEOContentSection';
-import WhyUs from './components/WhyUs';
-import VideoShowcase from './components/VideoShowcase';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import TrustBadges from './components/TrustBadges';
 import LoadingSpinner from './components/LoadingSpinner';
-import ProductDetailModal from './components/ProductDetailModal';
+
+// Lazy loaded components for better FCP
+const NewArrivals = React.lazy(() => import('./components/NewArrivals'));
+const Products = React.lazy(() => import('./components/Products'));
+const SEOContentSection = React.lazy(() => import('./components/SEOContentSection'));
+const WhyUs = React.lazy(() => import('./components/WhyUs'));
+const VideoShowcase = React.lazy(() => import('./components/VideoShowcase'));
+const Testimonials = React.lazy(() => import('./components/Testimonials'));
+const FAQ = React.lazy(() => import('./components/FAQ'));
+const TrustBadges = React.lazy(() => import('./components/TrustBadges'));
+const ProductDetailModal = React.lazy(() => import('./components/ProductDetailModal'));
 
 import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
@@ -27,8 +29,9 @@ import { ThemeProvider } from './src/context/ThemeContext';
 import { fetchSupabaseProducts } from './src/utils/fetchSupabaseProducts';
 import { useNavigate, useLocation, Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import CinemaLensesMaroc from './src/pages/CinemaLensesMaroc';
-import LocalStoreCasablanca from './src/pages/LocalStoreCasablanca';
+
+const CinemaLensesMaroc = React.lazy(() => import('./src/pages/CinemaLensesMaroc'));
+const LocalStoreCasablanca = React.lazy(() => import('./src/pages/LocalStoreCasablanca'));
 
 export interface Product {
   id: number;
@@ -239,40 +242,51 @@ const AppContent: React.FC<{
         <main>
           <StructuredData product={selectedProduct} />
           <Routes>
-            <Route path="/cinema-lenses-maroc" element={<CinemaLensesMaroc products={products} onProductClick={openProductModal} />} />
-            <Route path="/magasin-casablanca" element={<LocalStoreCasablanca />} />
+            <Route path="/cinema-lenses-maroc" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <CinemaLensesMaroc products={products} onProductClick={openProductModal} />
+              </React.Suspense>
+            } />
+            <Route path="/magasin-casablanca" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <LocalStoreCasablanca />
+              </React.Suspense>
+            } />
             <Route path="*" element={
               <>
                 <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
-                <NewArrivals products={products} siteConfig={siteConfig} />
+                
+                <React.Suspense fallback={<LoadingSpinner />}>
+                  <NewArrivals products={products} siteConfig={siteConfig} />
 
-                {error && !loading && (
-                  <div className="container mx-auto px-6 py-4">
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
-                      <i className="fa-solid fa-exclamation-triangle mr-2"></i>
-                      {error}. Affichage des produits par défaut.
+                  {error && !loading && (
+                    <div className="container mx-auto px-6 py-4">
+                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+                        <i className="fa-solid fa-exclamation-triangle mr-2"></i>
+                        {error}. Affichage des produits par défaut.
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {loading ? (
-                  <LoadingSpinner />
-                ) : (
-                  <Products
-                    products={products}
-                    onProductClick={openProductModal}
-                    siteConfig={siteConfig}
-                    globalSearchQuery={globalSearchQuery}
-                    setGlobalSearchQuery={setGlobalSearchQuery}
-                  />
-                )}
+                  {loading ? (
+                    <LoadingSpinner />
+                  ) : (
+                    <Products
+                      products={products}
+                      onProductClick={openProductModal}
+                      siteConfig={siteConfig}
+                      globalSearchQuery={globalSearchQuery}
+                      setGlobalSearchQuery={setGlobalSearchQuery}
+                    />
+                  )}
 
-                <SEOContentSection />
-                <TrustBadges />
-                <VideoShowcase siteConfig={siteConfig} />
-                <WhyUs siteConfig={siteConfig} />
-                <Testimonials />
-                <FAQ />
+                  <SEOContentSection />
+                  <TrustBadges />
+                  <VideoShowcase siteConfig={siteConfig} />
+                  <WhyUs siteConfig={siteConfig} />
+                  <Testimonials />
+                  <FAQ />
+                </React.Suspense>
               </>
             } />
           </Routes>
