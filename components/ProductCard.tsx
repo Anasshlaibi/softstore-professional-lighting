@@ -50,9 +50,12 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
         <div className="h-auto aspect-[4/5] md:aspect-square bg-white flex items-center justify-center p-4 relative overflow-hidden group-hover:bg-gray-50 transition-colors duration-500">
           <img
             src={product.image}
-            alt={product.name}
+            alt={`7Artisans ${product.name} - ${product.category} disponible au Maroc chez GearShop`}
+            title={`${product.name} - GearShop Maroc`}
             className={`w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm group-hover:drop-shadow-xl ${!product.inStock ? 'grayscale opacity-80' : ''}`}
             loading="lazy"
+            width={400}
+            height={400}
           />
         </div>
 
@@ -80,10 +83,13 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             <div className="flex flex-col">
               <div className="flex items-center">
                 <span className="text-green-600 font-bold text-sm md:text-lg">
-                  {product.price}{' '}
-                  <span className="text-xs">{siteConfig.currency}</span>
+                  {product.price > 0 ? (
+                    <>{product.price}{' '}<span className="text-xs">{siteConfig.currency}</span></>
+                  ) : (
+                    <span className="text-gray-400 text-sm">Prix sur demande</span>
+                  )}
                 </span>
-                {discount > 0 && (
+                {product.price > 0 && discount > 0 && (
                   <span className="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-1 rounded ml-2">
                     -{discount}%
                   </span>

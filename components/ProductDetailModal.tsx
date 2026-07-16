@@ -246,18 +246,37 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               {/* Pricing */}
               <div className="mb-8 pb-8 border-b border-gray-100">
                 <div className="flex items-end gap-3 mb-2 flex-wrap">
-                  <span className="text-4xl font-black text-green-600 leading-none">
-                    {product.price} {siteConfig.currency}
-                  </span>
-                  {product.oldPrice && (
-                    <span className="text-lg text-gray-400 line-through mb-1">
-                      {product.oldPrice} {siteConfig.currency}
-                    </span>
-                  )}
-                  {discount > 0 && (
-                    <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded mb-1">
-                      -{discount}%
-                    </span>
+                  {product.price > 0 ? (
+                    <>
+                      <span className="text-4xl font-black text-green-600 leading-none">
+                        {product.price} {siteConfig.currency}
+                      </span>
+                      {product.oldPrice && (
+                        <span className="text-lg text-gray-400 line-through mb-1">
+                          {product.oldPrice} {siteConfig.currency}
+                        </span>
+                      )}
+                      {discount > 0 && (
+                        <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded mb-1">
+                          -{discount}%
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    <div className="flex flex-col gap-2">
+                      <span className="text-2xl font-black text-gray-500">
+                        Prix sur demande
+                      </span>
+                      <a
+                        href={`https://wa.me/212673011873?text=Bonjour, je suis intéressé par: ${product.name}. Quel est le prix?`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm text-green-600 font-semibold hover:underline"
+                      >
+                        <i className="fa-brands fa-whatsapp"></i>
+                        Demander le prix sur WhatsApp
+                      </a>
+                    </div>
                   )}
                 </div>
 
