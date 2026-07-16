@@ -25,8 +25,10 @@ import { defaultSiteConfig } from './data/config';
 import { CartProvider, useCart } from './src/context/CartContext';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { fetchSupabaseProducts } from './src/utils/fetchSupabaseProducts';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import CinemaLensesMaroc from './src/pages/CinemaLensesMaroc';
+import LocalStoreCasablanca from './src/pages/LocalStoreCasablanca';
 
 export interface Product {
   id: number;
@@ -236,36 +238,44 @@ const AppContent: React.FC<{
         
         <main>
           <StructuredData product={selectedProduct} />
-          <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
-          <NewArrivals products={products} siteConfig={siteConfig} />
+          <Routes>
+            <Route path="/cinema-lenses-maroc" element={<CinemaLensesMaroc products={products} onProductClick={openProductModal} />} />
+            <Route path="/magasin-casablanca" element={<LocalStoreCasablanca />} />
+            <Route path="*" element={
+              <>
+                <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
+                <NewArrivals products={products} siteConfig={siteConfig} />
 
-          {error && !loading && (
-            <div className="container mx-auto px-6 py-4">
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
-                <i className="fa-solid fa-exclamation-triangle mr-2"></i>
-                {error}. Affichage des produits par défaut.
-              </div>
-            </div>
-          )}
+                {error && !loading && (
+                  <div className="container mx-auto px-6 py-4">
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+                      <i className="fa-solid fa-exclamation-triangle mr-2"></i>
+                      {error}. Affichage des produits par défaut.
+                    </div>
+                  </div>
+                )}
 
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <Products
-              products={products}
-              onProductClick={openProductModal}
-              siteConfig={siteConfig}
-              globalSearchQuery={globalSearchQuery}
-              setGlobalSearchQuery={setGlobalSearchQuery}
-            />
-          )}
+                {loading ? (
+                  <LoadingSpinner />
+                ) : (
+                  <Products
+                    products={products}
+                    onProductClick={openProductModal}
+                    siteConfig={siteConfig}
+                    globalSearchQuery={globalSearchQuery}
+                    setGlobalSearchQuery={setGlobalSearchQuery}
+                  />
+                )}
 
-          <SEOContentSection />
-          <TrustBadges />
-          <VideoShowcase siteConfig={siteConfig} />
-          <WhyUs siteConfig={siteConfig} />
-          <Testimonials />
-          <FAQ />
+                <SEOContentSection />
+                <TrustBadges />
+                <VideoShowcase siteConfig={siteConfig} />
+                <WhyUs siteConfig={siteConfig} />
+                <Testimonials />
+                <FAQ />
+              </>
+            } />
+          </Routes>
         </main>
 
         <Footer siteConfig={siteConfig} />

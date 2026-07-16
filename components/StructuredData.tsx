@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Product } from '../App';
 
 interface StructuredDataProps {
@@ -96,6 +96,11 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product }) => {
       "https://gearshop.ma/photo_lens.jpg"
     ],
     "logo": "https://gearshop.ma/logo_7artisans.png",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Objectifs Cinéma et Lentilles 7Artisans",
+      "url": "https://gearshop.ma/cinema-lenses-maroc"
+    },
     "sameAs": [
       "https://www.instagram.com/spidi8_8/",
       "https://wa.me/212673011873"
