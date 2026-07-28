@@ -1,6 +1,6 @@
 {
-  "name": "SoftStore Maroc",
-  "short_name": "SoftStore",
+  "name": "GearShop Maroc",
+  "short_name": "GearShop",
   "description": "Seul revendeur au Maroc d'objectifs 7Artisans, lentilles cinéma, Canon, Nikon Z et Sony E.",
   "start_url": "/",
   "display": "standalone",
@@ -12,13 +12,13 @@
   "categories": ["shopping", "photography"],
   "icons": [
     {
-      "src": "/logo_7artisans.png",
+      "src": "/favicon.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/logo_7artisans.png",
+      "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
