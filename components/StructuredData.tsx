@@ -50,7 +50,7 @@ export const faqSchemaData = [
   }
 ];
 
-const StructuredData: React.FC<StructuredDataProps> = ({ product }) => {
+const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts }) => {
   // ===== 1. LocalBusiness / Store Schema =====
   const storeSchema = {
     "@context": "https://schema.org",
