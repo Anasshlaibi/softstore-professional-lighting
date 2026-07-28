@@ -470,7 +470,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <p
                       className="text-gray-600 leading-relaxed"
                       dangerouslySetInnerHTML={{
-                        __html: product.desc.replace(/\n/g, '<br>'),
+                        __html: (product.desc || '').replace(/\n/g, '<br>'),
                       }}
                     ></p>
                   )}
@@ -481,7 +481,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm text-left border-collapse">
                     <tbody>
-                      {product.specs.map((spec, i) => {
+                      {(product.specs || []).map((spec, i) => {
                         const parts = spec.includes(':') || spec.includes('：') ? spec.split(/[:：]/) : [spec];
                         return (
                           <tr key={i} className="hover:bg-gray-50 transition">
