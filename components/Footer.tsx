@@ -121,14 +121,14 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
 
             {/* Quick SEO links */}
             <h5 className="text-black font-bold mb-3 uppercase tracking-wider text-xs">
-              Objectifs par marque
+              Liens Rapides
             </h5>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#collection" className="hover:text-black transition">Objectifs Canon EOS-R</a></li>
-              <li><a href="#collection" className="hover:text-black transition">Objectifs Nikon Z</a></li>
-              <li><a href="#collection" className="hover:text-black transition">Objectifs Sony E</a></li>
-              <li><a href="#collection" className="hover:text-black transition">Lentilles Cinéma</a></li>
-              <li><a href="#collection" className="hover:text-black transition">Filtres 7Artisans</a></li>
+              <li><a href="/" className="hover:text-black transition">Accueil</a></li>
+              <li><a href="/cinema-lenses-maroc" className="hover:text-black transition">Lentilles Cinéma Maroc</a></li>
+              <li><a href="/magasin-casablanca" className="hover:text-black transition">Magasin à Casablanca</a></li>
+              <li><a href="/#collection" className="hover:text-black transition">Tous les Objectifs</a></li>
+              <li><a href="/#guide-objectifs" className="hover:text-black transition">Guide 7Artisans</a></li>
             </ul>
           </div>
         </div>

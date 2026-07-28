@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 /**
  * SEOContentSection - Rich keyword-targeted content for Google & AI search ranking.
@@ -8,6 +8,8 @@
  * a tab or in a modal), so Google and AI crawlers can fully index it.
  * 
  * Target keywords:
+ * - "lens camera casa"
+ * - "lens camera maroc"
  * - "objectifs 7artisans maroc"
  * - "lentilles cinéma maroc"
  * - "objectif canon nikon sony maroc"
@@ -88,18 +90,18 @@ const SEOContentSection: React.FC = () => {
         {/* Section Header — Rich in keywords for Google */}
         <div className="text-center mb-14">
           <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
-            Seul Revendeur Officiel au Maroc
+            Meilleur Lens Camera Maroc & Casa
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-black mb-5 leading-tight">
             Objectifs 7Artisans &amp; Lentilles Cinéma
             <br className="hidden md:block" />
-            <span className="text-gray-400 text-2xl md:text-3xl font-normal"> disponibles au Maroc</span>
+            <span className="text-gray-400 text-2xl md:text-3xl font-normal"> pour votre Lens Camera Casa & Maroc</span>
           </h2>
           <p className="text-gray-500 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
-            GearShop Casablanca est le <strong className="text-black">seul revendeur officiel au Maroc</strong> d'objectifs{' '}
+            GearShop Casablanca est le <strong className="text-black">seul revendeur officiel au Maroc</strong> pour trouver le meilleur <strong className="text-black">lens camera au Maroc</strong>. Spécialiste des objectifs{' '}
             <strong className="text-black">7Artisans</strong> pour <strong className="text-black">Canon EOS-R</strong>,{' '}
             <strong className="text-black">Nikon Z</strong> et <strong className="text-black">Sony E</strong>.
-            Livraison rapide dans tout le Maroc — Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir et plus.
+            Votre destination numéro 1 pour tout achat de <strong className="text-black">lens camera Casa</strong> (Casablanca) avec livraison rapide partout au Maroc.
           </p>
         </div>
 

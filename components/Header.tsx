@@ -12,13 +12,31 @@ const Header: React.FC<HeaderProps> = React.memo(
   ({ onCartClick, siteConfig, globalSearchQuery, setGlobalSearchQuery }) => {
     const { cartCount } = useCart();
     const [isScrolled, setIsScrolled] = useState(false);
+    const [placeholderIndex, setPlaceholderIndex] = useState(0);
+
+    const placeholders = [
+      "Rechercher un objectif Canon...",
+      "Search Sony Lens...",
+      "ابحث عن عدسة كانون...",
+      "7Artisans Lenses Morocco...",
+      "ابحث عن عدسة سوني...",
+      "Rechercher un objectif Sony..."
+    ];
 
     useEffect(() => {
       const handleScroll = () => {
         setIsScrolled(window.scrollY > 10);
       };
       window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+      
+      const interval = setInterval(() => {
+        setPlaceholderIndex(prev => (prev + 1) % placeholders.length);
+      }, 3000);
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        clearInterval(interval);
+      };
     }, []);
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,9 +58,7 @@ const Header: React.FC<HeaderProps> = React.memo(
             className="flex items-center gap-2 cursor-pointer group"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white shadow-md">
-              <i className="fa-solid fa-bolt text-sm"></i>
-            </div>
+            <img src="/logo_7artisans.png" alt="GearShop Logo" className={`h-8 md:h-10 w-auto object-contain transition-all duration-300 ${!isScrolled && 'brightness-0 invert'}`} />
             <span
               className={`text-lg md:text-xl font-bold tracking-tight ${isScrolled ? 'text-black' : 'text-white'}`}
             >
@@ -52,13 +68,19 @@ const Header: React.FC<HeaderProps> = React.memo(
 
           <nav className="hidden md:flex items-center space-x-10 text-sm font-medium">
             <a
-              href="#collection"
+              href="/#collection"
               className={`relative ${isScrolled ? 'text-gray-600 hover:text-black' : 'text-gray-200 hover:text-white'} transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 ${isScrolled ? 'after:bg-black' : 'after:bg-white'} after:transition-all after:duration-300 hover:after:w-full`}
             >
               Produits
             </a>
             <a
-              href="#videos"
+              href="/cinema-lenses-maroc"
+              className={`relative ${isScrolled ? 'text-gray-600 hover:text-black' : 'text-gray-200 hover:text-white'} transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 ${isScrolled ? 'after:bg-black' : 'after:bg-white'} after:transition-all after:duration-300 hover:after:w-full`}
+            >
+              Cinéma
+            </a>
+            <a
+              href="/#videos"
               className={`relative ${isScrolled ? 'text-gray-600 hover:text-black' : 'text-gray-200 hover:text-white'} transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 ${isScrolled ? 'after:bg-black' : 'after:bg-white'} after:transition-all after:duration-300 hover:after:w-full`}
             >
               Vidéos
@@ -77,10 +99,10 @@ const Header: React.FC<HeaderProps> = React.memo(
               <i className="fa-solid fa-search absolute left-3 text-sm opacity-70"></i>
               <input 
                 type="text" 
-                placeholder="Rechercher..."
+                placeholder={placeholders[placeholderIndex]}
                 value={globalSearchQuery}
                 onChange={handleSearch}
-                className={`pl-9 pr-4 py-1.5 rounded-full text-sm outline-none transition-all duration-300 bg-black/10 placeholder-current/70 border border-transparent focus:border-current/30 focus:w-48 w-36 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 focus:bg-white text-black' : 'bg-white/20 hover:bg-white/30 text-white'}`}
+                className={`pl-9 pr-4 py-1.5 rounded-full text-sm outline-none transition-all duration-500 bg-black/10 placeholder-current/70 border border-transparent focus:border-current/30 md:focus:w-64 md:w-56 w-36 ${isScrolled ? 'bg-gray-100 hover:bg-gray-200 focus:bg-white text-black' : 'bg-white/20 hover:bg-white/30 text-white'}`}
               />
             </div>
             <button

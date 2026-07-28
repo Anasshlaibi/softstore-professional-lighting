@@ -12,6 +12,22 @@ interface NewArrivalsProps {
   siteConfig?: any;
 }
 
+// Strip HTML tags and return clean plain text for use in carousel previews
+const stripHtml = (html: string): string => {
+  if (!html) return '';
+  return html
+    .replace(/<[^>]*>/g, ' ')      // Remove all HTML tags
+    .replace(/&nbsp;/g, ' ')        // Replace HTML entities
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, ' ')           // Collapse multiple spaces
+    .trim()
+    .slice(0, 200)                  // Limit to 200 chars for carousel
+    + (html.length > 200 ? '...' : '');
+};
+
 const NewArrivals: React.FC<NewArrivalsProps> = ({ products, siteConfig }) => {
   const slides = useMemo(() => {
     if (!products) return [];
@@ -24,7 +40,7 @@ const NewArrivals: React.FC<NewArrivalsProps> = ({ products, siteConfig }) => {
         id: p.id,
         name: p.name,
         label: 'AVAILABLE NOW',
-        desc: p.desc || 'Découvrez ce nouveau produit exceptionnel.',
+        desc: stripHtml(p.desc || 'Découvrez ce nouveau produit exceptionnel.'),
         features: ['In Stock', p.category || 'Accessory', 'Ready to Ship'],
         image: p.image || 'https://images.unsplash.com/photo-1502982720700-bfff97f2ec04?auto=format&fit=crop&q=80&w=800',
       }));

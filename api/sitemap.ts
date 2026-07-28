@@ -16,11 +16,13 @@ export default async function handler(req: Request) {
   const protocol = host.includes('localhost') ? 'http' : 'https';
   const baseUrl = `${protocol}://${host}`;
 
+  const today = new Date().toISOString().split('T')[0];
+
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>${baseUrl}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${today}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -38,6 +40,18 @@ export default async function handler(req: Request) {
       <image:title>Objectifs Photo 7Artisans Maroc</image:title>
       <image:caption>Objectifs photo 7Artisans pour Canon, Nikon Z et Sony E disponibles chez GearShop Maroc</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>${baseUrl}/cinema-lenses-maroc</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/magasin-casablanca</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>`;
 
   try {

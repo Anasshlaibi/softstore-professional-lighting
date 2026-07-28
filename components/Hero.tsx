@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
 
@@ -72,25 +72,56 @@ const Hero: React.FC<HeroProps> = () => {
       </div>
       
       {/* Very Subtle Dark Overlay for Button Contrast (10-20%) */}
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent z-0 pointer-events-none"></div>
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-0 pointer-events-none"></div>
 
-      {/* Content: Just the buttons, elegant and minimal */}
-      <div className="relative z-10 w-full pb-24 md:pb-32 px-6 flex flex-col sm:flex-row gap-6 justify-center items-center">
-        {/* Primary CTA */}
-        <a
-          href="#collection"
-          className="w-full sm:w-auto px-10 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all duration-300 text-sm uppercase tracking-widest shadow-lg hover:shadow-white/20 transform hover:-translate-y-1 text-center"
-        >
-          Explore Collection
-        </a>
+      {/* Content */}
+      <div className="relative z-10 w-full pb-24 md:pb-32 px-6 flex flex-col items-center">
         
-        {/* Secondary Outlined CTA */}
-        <a
-          href="#videos"
-          className="w-full sm:w-auto px-10 py-4 text-white border border-white/50 bg-black/10 backdrop-blur-sm rounded-full hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold uppercase tracking-widest transform hover:-translate-y-1 text-center"
-        >
-          Learn More
-        </a>
+        {/* Animated Multilingual H1 (SEO Friendly) */}
+        <div className="mb-10 text-center w-full max-w-4xl mx-auto overflow-hidden h-[120px] md:h-[150px] relative">
+          <style>{`
+            @keyframes slideUpFade {
+              0%, 20% { opacity: 1; transform: translateY(0); }
+              25%, 100% { opacity: 0; transform: translateY(-20px); }
+            }
+            .hero-text-1 { animation: slideUpFade 12s infinite; }
+            .hero-text-2 { animation: slideUpFade 12s infinite 4s; opacity: 0; }
+            .hero-text-3 { animation: slideUpFade 12s infinite 8s; opacity: 0; }
+          `}</style>
+          
+          <h1 className="hero-text-1 absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight">Objectifs professionnels</span>
+            <span className="text-lg md:text-2xl text-gray-300">au Maroc 🇲🇦</span>
+          </h1>
+          
+          <h1 className="hero-text-2 absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight">Professional Camera Lenses</span>
+            <span className="text-lg md:text-2xl text-gray-300">in Morocco 🇲🇦</span>
+          </h1>
+          
+          <h1 className="hero-text-3 absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight font-arabic" dir="rtl">عدسات كاميرات احترافية</span>
+            <span className="text-lg md:text-2xl text-gray-300" dir="rtl">في المغرب 🇲🇦</span>
+          </h1>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full">
+          {/* Primary CTA */}
+          <a
+            href="#collection"
+            className="w-full sm:w-auto px-10 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all duration-300 text-sm uppercase tracking-widest shadow-lg hover:shadow-white/20 transform hover:-translate-y-1 text-center"
+          >
+            Explore Collection
+          </a>
+          
+          {/* Secondary Outlined CTA */}
+          <a
+            href="#videos"
+            className="w-full sm:w-auto px-10 py-4 text-white border border-white/50 bg-black/10 backdrop-blur-sm rounded-full hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold uppercase tracking-widest transform hover:-translate-y-1 text-center"
+          >
+            Learn More
+          </a>
+        </div>
       </div>
     </section>
   );

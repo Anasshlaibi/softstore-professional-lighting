@@ -99,6 +99,41 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
       console.error('Error sending to CRM:', error);
     }
 
+    // --- TRACKING: Push 'purchase' event for GTM/GA4 and Meta Pixel ---
+    try {
+      const win = window as any;
+      
+      // 1. Google Tag Manager / GA4 DataLayer
+      win.dataLayer = win.dataLayer || [];
+      win.dataLayer.push({
+        event: 'purchase',
+        ecommerce: {
+          transaction_id: commandId.toString(),
+          value: total,
+          currency: siteConfig.currency,
+          items: cartItems.map(item => ({
+            item_name: item.name,
+            item_id: item.id.toString(),
+            price: item.price,
+            quantity: item.qty
+          }))
+        }
+      });
+
+      // 2. Meta Pixel (Facebook)
+      if (typeof win.fbq === 'function') {
+        win.fbq('track', 'Purchase', {
+          value: total,
+          currency: siteConfig.currency,
+          content_ids: cartItems.map(i => i.id.toString()),
+          content_type: 'product'
+        });
+      }
+    } catch (err) {
+      console.error('Tracking error:', err);
+    }
+    // ------------------------------------------------------------------
+
     const phoneNum = "212673011873";
     window.open(
       `https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`,

@@ -3,48 +3,49 @@ import { Product } from '../App';
 
 interface StructuredDataProps {
   product?: Product | null;
+  allProducts?: Product[];
 }
 
-// FAQ data â€” exported for use in FAQPage schema
+// FAQ data — exported for use in FAQPage schema
 export const faqSchemaData = [
   {
-    question: "Quels sont les dÃ©lais de livraison?",
-    answer: "Livraison sous 24-48h Ã  Casablanca. Pour les autres villes du Maroc, comptez 2-4 jours ouvrables. Livraison gratuite dÃ¨s 500 DH d'achat."
+    question: "Quels sont les délais de livraison?",
+    answer: "Livraison sous 24-48h à Casablanca. Pour les autres villes du Maroc, comptez 2-4 jours ouvrables. Livraison gratuite dès 500 DH d'achat."
   },
   {
-    question: "Proposez-vous de la location d'Ã©quipement?",
-    answer: "Oui! Nous proposons la location pour certains produits. Les tarifs de location sont indiquÃ©s sur les fiches produits. Contactez-nous sur WhatsApp pour plus d'informations."
+    question: "Proposez-vous de la location d'équipement?",
+    answer: "Oui! Nous proposons la location pour certains produits. Les tarifs de location sont indiqués sur les fiches produits. Contactez-nous sur WhatsApp pour plus d'informations."
   },
   {
     question: "Quelle est votre politique de retour?",
-    answer: "Retour sous 14 jours si le produit est dans son emballage d'origine et en parfait Ã©tat. Les frais de retour sont Ã  la charge du client sauf en cas de produit dÃ©fectueux."
+    answer: "Retour sous 14 jours si le produit est dans son emballage d'origine et en parfait état. Les frais de retour sont à la charge du client sauf en cas de produit défectueux."
   },
   {
     question: "Les produits sont-ils garantis?",
-    answer: "Tous nos produits bÃ©nÃ©ficient d'une garantie constructeur de 1 an. En cas de problÃ¨me, nous assurons le service aprÃ¨s-vente et les rÃ©parations."
+    answer: "Tous nos produits bénéficient d'une garantie constructeur de 1 an. En cas de problème, nous assurons le service après-vente et les réparations."
   },
   {
     question: "Quels modes de paiement acceptez-vous?",
-    answer: "Nous acceptons: paiement Ã  la livraison (Cash), virement bancaire, et paiement par carte bancaire. Pour les entreprises, nous proposons des facilitÃ©s de paiement."
+    answer: "Nous acceptons: paiement à la livraison (Cash), virement bancaire, et paiement par carte bancaire. Pour les entreprises, nous proposons des facilités de paiement."
   },
   {
     question: "Puis-je obtenir des conseils techniques?",
-    answer: "Absolument! Notre Ã©quipe d'experts est disponible pour vous conseiller sur le choix de votre matÃ©riel. Contactez-nous via WhatsApp ou email."
+    answer: "Absolument! Notre équipe d'experts est disponible pour vous conseiller sur le choix de votre matériel. Contactez-nous via WhatsApp ou email."
   },
   {
     question: "GearShop est-il le seul revendeur d'objectifs 7Artisans au Maroc?",
-    answer: "Oui, GearShop est le revendeur exclusif et officiel des objectifs 7Artisans au Maroc, incluant les lentilles cinÃ©ma, les objectifs pour Canon EOS-R, Nikon Z et Sony E Mount."
+    answer: "Oui, GearShop est le revendeur exclusif et officiel des objectifs 7Artisans au Maroc, incluant les lentilles cinéma, les objectifs pour Canon EOS-R, Nikon Z et Sony E Mount."
   },
   {
     question: "Livrez-vous partout au Maroc?",
-    answer: "Oui! Nous livrons dans toutes les villes du Maroc: Casablanca, Rabat, Marrakech, FÃ¨s, Tanger, Agadir, MeknÃ¨s et toutes les autres villes. Livraison rapide et sÃ©curisÃ©e."
+    answer: "Oui! Nous livrons dans toutes les villes du Maroc: Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir, Meknès et toutes les autres villes. Livraison rapide et sécurisée."
   },
   {
     question: "Quels objectifs 7Artisans sont compatibles avec mon appareil?",
-    answer: "Nous proposons des objectifs 7Artisans pour tous les boÃ®tiers populaires: Canon EOS-R Mount, Nikon Z Mount, Sony E Mount. Contactez-nous avec le modÃ¨le de votre appareil pour une recommandation personnalisÃ©e."
+    answer: "Nous proposons des objectifs 7Artisans pour tous les boîtiers populaires: Canon EOS-R Mount, Nikon Z Mount, Sony E Mount. Contactez-nous avec le modèle de votre appareil pour une recommandation personnalisée."
   },
   {
-    question: "Effectuez-vous l'installation du matÃ©riel?",
+    question: "Effectuez-vous l'installation du matériel?",
     answer: "Oui, nous proposons un service d'installation et de configuration pour les studios professionnels. Tarifs sur devis."
   }
 ];
@@ -57,7 +58,36 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product }) => {
     "@id": "https://gearshop.ma/#business",
     "name": "GearShop Maroc",
     "alternateName": ["GearShop", "Soft Store Maroc", "GearShop Casablanca"],
-    "description": "GearShop est le seul revendeur officiel au Maroc d'objectifs 7Artisans, de lentilles cinÃ©ma professionnelles, et d'objectifs photo pour Canon EOS-R, Nikon Z et Sony E. Livraison rapide dans tout le Maroc depuis Casablanca.",
+    "description": "GearShop est le seul revendeur officiel au Maroc d'objectifs 7Artisans, de lentilles cinéma professionnelles, et le meilleur endroit pour acheter votre lens camera au Maroc (Canon EOS-R, Nikon Z et Sony E). Livraison rapide dans tout le Maroc et à Casa (Casablanca).",
+    "knowsAbout": [
+      "Canon",
+      "Sony",
+      "Nikon",
+      "Sigma",
+      "Tamron",
+      "7Artisans",
+      "Viltrox",
+      "DJI",
+      "Godox",
+      "SmallRig",
+      "Sirui",
+      "Zhiyun",
+      "Nanlite",
+      "Aputure",
+      "Lexar",
+      "SanDisk",
+      "Angelbird",
+      "Peak Design",
+      "Mirrorless Cameras",
+      "DSLR Cameras",
+      "Cinema Cameras",
+      "Photography",
+      "Videography",
+      "Filmmaking",
+      "Camera Accessories",
+      "Studio Lighting",
+      "Drones"
+    ],
     "url": "https://gearshop.ma",
     "telephone": "+212673011873",
     "email": "professionalanass@gmail.com",
@@ -118,19 +148,19 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product }) => {
         "@type": "Review",
         "author": { "@type": "Person", "name": "Mohamed A." },
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "QualitÃ© exceptionnelle! Mon studio n'a jamais Ã©tÃ© aussi bien Ã©quipÃ©. Les objectifs 7Artisans sont parfaits."
+        "reviewBody": "Qualité exceptionnelle! Mon studio n'a jamais été aussi bien équipé. Les objectifs 7Artisans sont parfaits."
       },
       {
         "@type": "Review",
         "author": { "@type": "Person", "name": "Fatima Z." },
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "MatÃ©riel professionnel, livraison rapide et excellent service client. Je recommande vivement!"
+        "reviewBody": "Matériel professionnel, livraison rapide et excellent service client. Je recommande vivement!"
       },
       {
         "@type": "Review",
         "author": { "@type": "Person", "name": "Youssef K." },
         "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Les objectifs cinÃ©ma sont parfaits pour mes tournages. QualitÃ© cinÃ©matographique professionnelle!"
+        "reviewBody": "Les objectifs cinéma sont parfaits pour mes tournages. Qualité cinématographique professionnelle!"
       }
     ]
   };
@@ -159,7 +189,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product }) => {
       product.image,
       ...(Array.isArray(product.gallery) ? product.gallery.slice(0, 4) : [])
     ].filter(Boolean),
-    "description": `Achetez le ${product.name} au Maroc chez GearShop - Seul revendeur officiel 7Artisans au Maroc. Livraison rapide Ã  Casablanca et dans tout le Maroc.`,
+    "description": `Achetez le ${product.name} au Maroc chez GearShop - Seul revendeur officiel 7Artisans au Maroc. Livraison rapide à Casablanca et dans tout le Maroc.`,
     "sku": product.id.toString(),
     "mpn": `7A-${product.id}`,
     "brand": {
@@ -227,7 +257,15 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product }) => {
       "bestRating": "5",
       "worstRating": "1",
       "reviewCount": "15"
-    }
+    },
+    "isRelatedTo": allProducts ? allProducts
+      .filter(p => p.id !== product.id && p.category === product.category)
+      .slice(0, 4)
+      .map(p => ({
+        "@type": "Product",
+        "name": p.name,
+        "url": `https://gearshop.ma/product/${p.id}`
+      })) : []
   } : null;
 
   // ===== 4. BreadcrumbList (when a product is selected) =====
@@ -283,5 +321,3 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product }) => {
 };
 
 export default StructuredData;
-
-

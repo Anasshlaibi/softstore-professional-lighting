@@ -226,10 +226,24 @@ const AppContent: React.FC<{
     
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
-        {!selectedProduct && (
+        {selectedProduct ? (
           <Helmet>
-            <title>GearShop Maroc | Objectifs 7Artisans, Lentilles Cinéma Canon Nikon Sony</title>
-            <meta name="description" content="GearShop est le seul revendeur au Maroc d'objectifs 7Artisans pour Canon EOS-R, Nikon Z et Sony E. Lentilles cinéma professionnelles avec livraison rapide dans tout le Maroc." />
+            <title>{selectedProduct.name} | GearShop Maroc - Achat au Maroc</title>
+            <meta
+              name="description"
+              content={`Achetez le ${selectedProduct.name} au Maroc chez GearShop. Prix: ${selectedProduct.price.toLocaleString('fr-MA')} MAD. ${selectedProduct.inStock ? 'En stock' : 'Sur commande'}. Livraison rapide à Casablanca et dans tout le Maroc.`}
+            />
+            <link rel="canonical" href={`https://gearshop.ma/product/${selectedProduct.id}-${selectedProduct.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} />
+            <meta property="og:title" content={`${selectedProduct.name} | GearShop Maroc`} />
+            <meta property="og:description" content={`Achetez le ${selectedProduct.name} au Maroc. Prix: ${selectedProduct.price.toLocaleString('fr-MA')} MAD. Livraison rapide partout au Maroc.`} />
+            {selectedProduct.image && <meta property="og:image" content={selectedProduct.image} />}
+            <meta property="og:url" content={`https://gearshop.ma/product/${selectedProduct.id}`} />
+            <meta property="og:type" content="product" />
+          </Helmet>
+        ) : (
+          <Helmet>
+            <title>GearShop Maroc | Objectifs 7Artisans & Lentilles Cinéma</title>
+            <meta name="description" content="GearShop: Revendeur officiel au Maroc d'objectifs 7Artisans et lentilles cinéma. Livraison rapide d'objectifs photo pour Canon, Nikon Z et Sony E." />
           </Helmet>
         )}
         <Header
@@ -240,7 +254,7 @@ const AppContent: React.FC<{
         />
         
         <main>
-          <StructuredData product={selectedProduct} />
+          <StructuredData product={selectedProduct} allProducts={products} />
           <Routes>
             <Route path="/cinema-lenses-maroc" element={
               <React.Suspense fallback={<LoadingSpinner />}>

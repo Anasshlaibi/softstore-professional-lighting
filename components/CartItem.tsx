@@ -15,6 +15,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, siteConfig }) => {
       <img
         src={item.image}
         alt={item.name}
+        title={item.name}
         className="w-16 h-16 object-contain mix-blend-multiply bg-white rounded-md p-1 border border-gray-100"
       />
       <div className="flex-1">

@@ -136,6 +136,30 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <meta property="product:price:amount" content={product.price.toString()} />
         <meta property="product:price:currency" content="MAD" />
         <link rel="canonical" href={`https://gearshop.ma/product/${product.id}`} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": product.name,
+            "image": galleryImages,
+            "description": `Achetez le ${product.name} chez GearShop Maroc - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH.`,
+            "brand": {
+              "@type": "Brand",
+              "name": "7Artisans"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": `https://gearshop.ma/product/${product.id}`,
+              "priceCurrency": "MAD",
+              "price": product.price,
+              "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+              "seller": {
+                "@type": "Organization",
+                "name": "GearShop Maroc"
+              }
+            }
+          })}
+        </script>
       </Helmet>
       <div className="min-h-screen flex items-center justify-center p-0 md:p-6 md:py-12">
         <div className="bg-white w-full max-w-[1400px] mx-auto md:rounded-3xl shadow-2xl overflow-hidden relative pb-24 md:pb-0 flex flex-col">
@@ -165,7 +189,8 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 {currentImage ? (
                   <img
                     src={currentImage}
-                    alt={product.name}
+                    alt={`${product.name} - GearShop Maroc`}
+                    title={`${product.name} - GearShop Maroc`}
                     onError={() => handleImageError(currentImage)}
                     className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-125"
                   />
@@ -208,7 +233,8 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         src={img} 
                         onError={() => handleImageError(img)}
                         className="w-full h-full object-contain mix-blend-multiply p-1" 
-                        alt={`${product.name} - Vue ${idx + 1}`} 
+                        alt={`${product.name} - Vue ${idx + 1} - GearShop Maroc`} 
+                        title={`${product.name} - Vue ${idx + 1}`}
                       />
                     </button>
                   ))}
