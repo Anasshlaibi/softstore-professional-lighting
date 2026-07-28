@@ -137,28 +137,63 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <meta property="product:price:currency" content="MAD" />
         <link rel="canonical" href={`https://gearshop.ma/product/${product.id}`} />
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "Product",
-            "name": product.name,
-            "image": galleryImages,
-            "description": `Achetez le ${product.name} chez GearShop Maroc - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH.`,
-            "brand": {
-              "@type": "Brand",
-              "name": "7Artisans"
-            },
-            "offers": {
-              "@type": "Offer",
-              "url": `https://gearshop.ma/product/${product.id}`,
-              "priceCurrency": "MAD",
-              "price": product.price,
-              "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-              "seller": {
-                "@type": "Organization",
-                "name": "GearShop Maroc"
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              "name": product.name,
+              "image": galleryImages,
+              "description": `Achetez le ${product.name} chez GearShop Maroc - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH.`,
+              "brand": {
+                "@type": "Brand",
+                "name": "7Artisans"
+              },
+              "review": {
+                "@type": "Review",
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                },
+                "author": {
+                  "@type": "Person",
+                  "name": "Anass Hlaibi",
+                  "jobTitle": "Expert Vidéo & Photo"
+                },
+                "reviewBody": "Excellent rapport qualité-prix. Un équipement robuste et professionnel, idéal pour les créateurs de contenu au Maroc."
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": `https://gearshop.ma/product/${product.id}`,
+                "priceCurrency": "MAD",
+                "price": product.price,
+                "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+                "seller": {
+                  "@type": "Organization",
+                  "name": "GearShop Maroc"
+                }
               }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": `Est-ce que le ${product.name} est sous garantie au Maroc ?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui, en tant que distributeur officiel, nous offrons une garantie constructeur d'un an sur ce produit chez GearShop Maroc."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Faites-vous la livraison sur Casablanca et hors Casablanca ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolument. Nous expédions sous 24h partout au Maroc, avec possibilité de récupération directe dans notre point de vente à Casablanca."
+                }
+              }]
             }
-          })}
+          ])}
         </script>
       </Helmet>
       <div className="min-h-screen flex items-center justify-center p-0 md:p-6 md:py-12">
@@ -364,13 +399,19 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               
               {/* Trust badges */}
               <div className="mt-8 pt-6 border-t border-gray-100 grid grid-cols-2 gap-4">
-                 <div className="flex items-center gap-3 text-sm text-gray-600">
-                    <i className="fa-solid fa-truck-fast text-gray-400 text-lg"></i>
-                    <span>Livraison rapide partout au Maroc</span>
+                 <div className="flex items-start gap-3 text-sm text-gray-600">
+                    <i className="fa-solid fa-truck-fast text-gray-400 text-lg mt-1"></i>
+                    <div>
+                      <span className="font-bold text-gray-800 block">Expédition sous 24h</span>
+                      <span className="text-xs">Livraison rapide partout au Maroc</span>
+                    </div>
                  </div>
-                 <div className="flex items-center gap-3 text-sm text-gray-600">
-                    <i className="fa-solid fa-shield-halved text-gray-400 text-lg"></i>
-                    <span>Garantie constructeur officielle</span>
+                 <div className="flex items-start gap-3 text-sm text-gray-600">
+                    <i className="fa-solid fa-shield-halved text-gray-400 text-lg mt-1"></i>
+                    <div>
+                      <span className="font-bold text-gray-800 block">Garantie 1 an</span>
+                      <span className="text-xs">Distributeur officiel certifié</span>
+                    </div>
                  </div>
               </div>
 
@@ -400,11 +441,24 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   Vidéo
                 </button>
               )}
+              <button
+                onClick={() => setActiveTab('faq')}
+                className={`pb-4 text-sm font-bold transition uppercase tracking-wider ${activeTab === 'faq' ? 'border-b-2 border-black text-black' : 'text-gray-400 hover:text-gray-600'}`}
+              >
+                Questions Fréquentes
+              </button>
             </div>
 
             <div className="max-w-5xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
               {activeTab === 'desc' && (
                 <div>
+                  <div className="flex items-center gap-4 bg-gray-50 border border-gray-100 p-4 rounded-xl mb-6">
+                    <img src="https://ui-avatars.com/api/?name=Anass+Hlaibi&background=0D8ABC&color=fff&size=128" alt="Anass Hlaibi" className="w-12 h-12 rounded-full shadow-sm" />
+                    <div>
+                      <p className="text-sm font-bold text-gray-900">Testé et approuvé par Anass Hlaibi</p>
+                      <p className="text-xs text-gray-500">Expert Vidéo & Photo chez GearShop</p>
+                    </div>
+                  </div>
                   {(richDescriptions as Record<string, string>)[product.id.toString()] ? (
                     <div 
                       dangerouslySetInnerHTML={{ 
@@ -463,6 +517,23 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     allowFullScreen
                     className="w-full h-full absolute inset-0"
                   ></iframe>
+                </div>
+              )}
+
+              {activeTab === 'faq' && (
+                <div className="max-w-3xl mx-auto space-y-6">
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <h3 className="font-bold text-lg text-gray-900 mb-2">Est-ce que le {product.name} est sous garantie au Maroc ?</h3>
+                    <p className="text-gray-600">Oui, en tant que distributeur officiel, nous offrons une garantie constructeur d'un an sur ce produit chez GearShop Maroc.</p>
+                  </div>
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <h3 className="font-bold text-lg text-gray-900 mb-2">Faites-vous la livraison sur Casablanca et hors Casablanca ?</h3>
+                    <p className="text-gray-600">Absolument. Nous expédions sous 24h partout au Maroc, avec possibilité de récupération directe dans notre point de vente à Casablanca.</p>
+                  </div>
+                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                    <h3 className="font-bold text-lg text-gray-900 mb-2">Puis-je tester ce produit avant l'achat ?</h3>
+                    <p className="text-gray-600">Oui, vous pouvez passer à notre magasin à Casablanca pour tester ce matériel avec votre propre boîtier avant de vous décider.</p>
+                  </div>
                 </div>
               )}
             </div>
