@@ -12,89 +12,56 @@ const Logo: React.FC<LogoProps> = ({ theme = 'light', className = '' }) => {
 
   useEffect(() => {
     // Check session storage to prevent animation fatigue on page navigation
-    const hasPlayed = sessionStorage.getItem('gearShopLogoPlayed');
+    const hasPlayed = sessionStorage.getItem('cineLogoPlayed');
     if (!hasPlayed) {
       setPlayAnimation(true);
-      sessionStorage.setItem('gearShopLogoPlayed', 'true');
+      sessionStorage.setItem('cineLogoPlayed', 'true');
     }
   }, []);
 
   const themeClass = theme === 'dark' ? 'logo-theme-dark' : 'logo-theme-light';
 
   return (
-    <div className={`logo-wrapper ${themeClass} ${playAnimation ? 'play-logo' : ''} ${className}`}>
+    <div className={`logo-wrapper ${themeClass} ${playAnimation ? 'play-logo' : ''} ${className}`} aria-label="GearShop Maroc logo">
       <svg
         className="logo-svg"
-        viewBox="0 0 420 120"
+        viewBox="0 0 460 120"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label="GearShop Maroc Logo"
       >
-        <defs>
-          {/* Master Blade Profile: Heavy, geometric, premium */}
-          <path id="blade" d="M 60,18 L 88,26 L 76,46 L 52,40 Z" fill="var(--icon-main)" />
-        </defs>
+        <g className="cine-gear">
+          <circle className="anim-gear-draw" cx="50" cy="50" r="46" stroke="var(--icon-dim)" strokeWidth="4" strokeDasharray="3 4" fill="none" />
+          <circle className="anim-gear-draw" cx="50" cy="50" r="41" stroke="var(--icon-main)" strokeWidth="2" fill="none" style={{ animationDelay: '0.2s' }} />
 
-        {/* Aperture Icon Group */}
-        {/* The inner group handles the hover rotation separately from the load animation */}
-        <g className="anim-group anim-aperture">
-          <g className="icon-rotate">
-            {/* Outer Heavy Lens Barrel */}
-            <circle cx="60" cy="60" r="46" stroke="var(--icon-main)" strokeWidth="12" fill="none" />
-
-            {/* 6 Perfectly Symmetrical Blades */}
-            <use href="#blade" transform="rotate(0 60 60)" />
-            <use href="#blade" transform="rotate(60 60 60)" />
-            <use href="#blade" transform="rotate(120 60 60)" />
-            <use href="#blade" transform="rotate(180 60 60)" />
-            <use href="#blade" transform="rotate(240 60 60)" />
-            <use href="#blade" transform="rotate(300 60 60)" />
-
-            {/* The "Hidden G" Crossbar (Minimal Red Accent) */}
-            <rect className="anim-red-accent" x="62" y="54" width="22" height="12" fill="var(--brand-red)" rx="2" />
+          <g className="anim-guides" stroke="var(--icon-dim)" strokeWidth="2" fill="none">
+            <path d="M 32 28 L 26 28 L 26 34" />
+            <path d="M 68 28 L 74 28 L 74 34" />
+            <path d="M 32 72 L 26 72 L 26 66" />
+            <path d="M 68 72 L 74 72 L 74 66" />
           </g>
+
+          <path className="anim-glass-g" d="M 66 32 A 22 22 0 1 0 70 64 L 50 64 L 50 50 L 56 50" fill="none" stroke="var(--icon-main)" strokeWidth="6" strokeLinecap="square" />
+
+          <circle className="anim-tally-light" cx="60" cy="50" r="4" fill="var(--brand-red)" />
         </g>
 
-        {/* Typography Group */}
-        {/* Using Manrope for a wide, stable, tech-forward stance */}
-        <text
-          className="anim-group anim-text-1"
-          x="140"
-          y="72"
-          fontSize="52"
-          fontFamily="'Manrope', sans-serif"
-          fontWeight="800"
-          fill="var(--text-main)"
-          letterSpacing="-1"
-        >
-          GEAR
-        </text>
+        <g transform="translate(125, 65)">
+          <text className="anim-text" x="0" y="0" fontSize="52" fontFamily="'Manrope', sans-serif" fontWeight="800" fill="var(--text-main)" letterSpacing="-1">
+            GEAR
+          </text>
 
-        <text
-          className="anim-group anim-text-2"
-          x="282"
-          y="72"
-          fontSize="52"
-          fontFamily="'Manrope', sans-serif"
-          fontWeight="300"
-          fill="var(--text-main)"
-          letterSpacing="1"
-        >
-          SHOP
-        </text>
+          <text className="anim-text" x="145" y="0" fontSize="52" fontFamily="'Manrope', sans-serif" fontWeight="300" fill="var(--text-main)" letterSpacing="1" style={{ animationDelay: '1.3s' }}>
+            SHOP
+          </text>
 
-        <text
-          className="anim-group anim-maroc"
-          x="144"
-          y="98"
-          fontSize="16"
-          fontFamily="'Manrope', sans-serif"
-          fontWeight="700"
-          fill="var(--text-sub)"
-          letterSpacing="14"
-        >
-          MAROC
-        </text>
+          <text className="anim-text" x="5" y="28" fontSize="14" fontFamily="'Manrope', sans-serif" fontWeight="800" fill="var(--text-sub)" letterSpacing="14" style={{ animationDelay: '1.4s' }}>
+            MAROC
+          </text>
+
+          <text className="anim-text" x="148" y="28" fontSize="10" fontFamily="'Manrope', sans-serif" fontWeight="600" fill="var(--brand-red)" letterSpacing="3" style={{ animationDelay: '1.5s' }}>
+            CINE / DISTRIBUTION
+          </text>
+        </g>
       </svg>
     </div>
   );
