@@ -32,6 +32,7 @@ import { Helmet } from 'react-helmet-async';
 
 const CinemaLensesMaroc = React.lazy(() => import('./src/pages/CinemaLensesMaroc'));
 const LocalStoreCasablanca = React.lazy(() => import('./src/pages/LocalStoreCasablanca'));
+const BrandCluster = React.lazy(() => import('./src/pages/BrandCluster'));
 
 export interface Product {
   id: number;
@@ -264,6 +265,11 @@ const AppContent: React.FC<{
             <Route path="/magasin-casablanca" element={
               <React.Suspense fallback={<LoadingSpinner />}>
                 <LocalStoreCasablanca />
+              </React.Suspense>
+            } />
+            <Route path="/marque/:brand" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <BrandCluster products={products} onProductClick={openProductModal} />
               </React.Suspense>
             } />
             <Route path="*" element={

@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-apple-gray: #f5f5f7;
+  --color-apple-red: #e3000f;
+}
+
+@layer utilities {
+  .animate-slide-in-down {
+    animation: slide-in-down 0.3s ease-out;
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Override scraped HTML styles for rich descriptions */
+.rich-description-content * {
+  color: #1a1a1a !important;
+  background-color: transparent !important;
+}
+
+/* Remove empty spacers from scraped HTML */
+.rich-description-content p:empty,
+.rich-description-content div:empty,
+.rich-description-content span:empty {
+  display: none !important;
+}
+
+/* Reset heights that cause empty spaces */
+.rich-description-content [style*="height"] {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.rich-description-content [style*="margin"] {
+  margin: 0 !important;
+}
+
+/* Fix giant SVGs from Shopify */
+.rich-description-content svg {
+  max-width: 24px !important;
+  max-height: 24px !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+/* Hide Shopify collapsibles/accordions (Shipping, Returns, etc) */
+.rich-description-content details,
+.rich-description-content .accordion,
+.rich-description-content .collapsible,
+.rich-description-content summary {
+  display: none !important;
+}
