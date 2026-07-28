@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = React.memo(
             className="flex items-center gap-2 cursor-pointer group"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/logo_gearshop.png" alt="GearShop Logo" className={`h-12 md:h-16 w-auto object-contain transition-all duration-300 ${!isScrolled && 'brightness-0 invert'}`} />
+            <img src="/logo_gearshop.png" alt="GearShop Logo" className="h-12 md:h-16 w-auto object-contain rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-105" />
           </div>
 
           <nav className="hidden md:flex items-center space-x-10 text-sm font-medium">
