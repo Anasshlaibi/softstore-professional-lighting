@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../src/context/CartContext';
+import Logo from './Logo';
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -55,10 +56,10 @@ const Header: React.FC<HeaderProps> = React.memo(
       >
         <div className="container mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
           <div
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/logo_gearshop.png" alt="GearShop Logo" className={`h-12 md:h-16 w-auto object-contain transition-all duration-300 ${!isScrolled && 'brightness-0 invert'}`} />
+            <Logo theme={isScrolled ? 'light' : 'dark'} className="h-10 md:h-12 w-auto" />
           </div>
 
           <nav className="hidden md:flex items-center space-x-10 text-sm font-medium">

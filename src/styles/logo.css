@@ -1,0 +1,51 @@
+/* =========================================
+   logo.css 
+   Base styles and interactive rules
+   ========================================= */
+
+.logo-theme-light {
+  --text-main: #111111;
+  --text-sub: #666666;
+  --icon-main: #111111;
+  --brand-red: #E30613;
+}
+
+.logo-theme-dark {
+  --text-main: #ffffff;
+  --text-sub: #a0a0a0;
+  --icon-main: #ffffff;
+  --brand-red: #E30613;
+}
+
+.logo-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* smooth transition for colors */
+  transition: all 0.3s ease;
+}
+
+.logo-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- HOVER EFFECTS (Always active) --- */
+.logo-wrapper:hover .icon-rotate {
+  /* Smooth mechanical rotation on hover */
+  transform: rotate(6deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.icon-rotate {
+  transform-origin: 60px 60px; /* Center of the aperture */
+  transition: transform 0.4s ease-out;
+}
+
+/* Optional scale on hover for the wrapper */
+.logo-wrapper:hover {
+  transform: scale(1.02);
+}
