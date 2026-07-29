@@ -3,14 +3,35 @@ import { Helmet } from 'react-helmet-async';
 import { Product } from '../../App';
 import ProductCard from '../../components/ProductCard';
 import { useParams } from 'react-router-dom';
+import { useCart } from '../../src/context/CartContext';
 
 interface BrandClusterProps {
   products: Product[];
   onProductClick: (id: number) => void;
+  siteConfig: { currency: string; phone: string };
 }
 
-const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick }) => {
+const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, siteConfig }) => {
   const { brand } = useParams<{ brand: string }>();
+  const { addToCart } = useCart();
+
+  const openWhatsappReserve = (productName: string) => {
+    const phone = siteConfig.phone.replace('+212', '212');
+    const msg = `Bonjour, je souhaite réserver le produit hors stock : ${productName}`;
+    window.open(
+      `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,
+      '_blank'
+    );
+  };
+
+  const generateStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <i
+        key={i}
+        className={`fa-solid fa-star text-[10px] ${i < rating ? 'text-[#ff3b30]' : 'text-gray-200'}`}
+      ></i>
+    ));
+  };
   
   // Format brand name for display and matching
   const formattedBrand = brand 
@@ -19,8 +40,8 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick })
 
   // Filter products by brand (assuming name or description contains brand)
   const brandProducts = products.filter(p => 
-    p.name.toLowerCase().includes(formattedBrand.toLowerCase()) ||
-    p.desc.toLowerCase().includes(formattedBrand.toLowerCase())
+    p.name?.toLowerCase().includes(formattedBrand.toLowerCase()) ||
+    p.desc?.toLowerCase().includes(formattedBrand.toLowerCase())
   );
 
   return (
@@ -48,7 +69,11 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick })
               <ProductCard
                 key={product.id}
                 product={product}
-                onClick={onProductClick}
+                onProductClick={onProductClick}
+                siteConfig={siteConfig}
+                openWhatsappReserve={openWhatsappReserve}
+                generateStars={generateStars}
+                addToCart={addToCart}
               />
             ))}
           </div>

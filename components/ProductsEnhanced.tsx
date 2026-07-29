@@ -46,9 +46,9 @@ const Products: React.FC<ProductsProps> = ({
         if (searchQuery.trim()) {
             const query = searchQuery.toLowerCase();
             filtered = filtered.filter(p =>
-                p.name.toLowerCase().includes(query) ||
-                p.desc.toLowerCase().includes(query) ||
-                p.category.toLowerCase().includes(query)
+                p.name?.toLowerCase().includes(query) ||
+                p.desc?.toLowerCase().includes(query) ||
+                p.category?.toLowerCase().includes(query)
             );
         }
 

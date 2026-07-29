@@ -133,7 +133,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <meta property="og:url" content={`https://gearshop.ma/product/${product.id}`} />
         {galleryImages.length > 0 && <meta property="og:image" content={galleryImages[0]} />}
         {galleryImages.length > 0 && <meta property="og:image:alt" content={`${product.name} - GearShop Maroc`} />}
-        <meta property="product:price:amount" content={product.price.toString()} />
+        <meta property="product:price:amount" content={(product.price || 0).toString()} />
         <meta property="product:price:currency" content="MAD" />
         <link rel="canonical" href={`https://gearshop.ma/product/${product.id}`} />
         <script type="application/ld+json">

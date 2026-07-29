@@ -125,7 +125,7 @@ const App: React.FC = () => {
   }, [siteConfig.promo.active]);
 
   const slugify = (text: string) => {
-    return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    return text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '';
   };
 
   const openProductModal = (productId: number) => {
@@ -232,11 +232,11 @@ const AppContent: React.FC<{
             <title>{selectedProduct.name} | GearShop Maroc - Achat au Maroc</title>
             <meta
               name="description"
-              content={`Achetez le ${selectedProduct.name} au Maroc chez GearShop. Prix: ${selectedProduct.price.toLocaleString('fr-MA')} MAD. ${selectedProduct.inStock ? 'En stock' : 'Sur commande'}. Livraison rapide à Casablanca et dans tout le Maroc.`}
+              content={`Achetez le ${selectedProduct.name} au Maroc chez GearShop. Prix: ${(selectedProduct.price || 0).toLocaleString('fr-MA')} MAD. ${selectedProduct.inStock ? 'En stock' : 'Sur commande'}. Livraison rapide à Casablanca et dans tout le Maroc.`}
             />
-            <link rel="canonical" href={`https://gearshop.ma/product/${selectedProduct.id}-${selectedProduct.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} />
+            <link rel="canonical" href={`https://gearshop.ma/product/${selectedProduct.id}-${selectedProduct.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} />
             <meta property="og:title" content={`${selectedProduct.name} | GearShop Maroc`} />
-            <meta property="og:description" content={`Achetez le ${selectedProduct.name} au Maroc. Prix: ${selectedProduct.price.toLocaleString('fr-MA')} MAD. Livraison rapide partout au Maroc.`} />
+            <meta property="og:description" content={`Achetez le ${selectedProduct.name} au Maroc. Prix: ${(selectedProduct.price || 0).toLocaleString('fr-MA')} MAD. Livraison rapide partout au Maroc.`} />
             {selectedProduct.image && <meta property="og:image" content={selectedProduct.image} />}
             <meta property="og:url" content={`https://gearshop.ma/product/${selectedProduct.id}`} />
             <meta property="og:type" content="product" />
@@ -259,7 +259,7 @@ const AppContent: React.FC<{
           <Routes>
             <Route path="/cinema-lenses-maroc" element={
               <React.Suspense fallback={<LoadingSpinner />}>
-                <CinemaLensesMaroc products={products} onProductClick={openProductModal} />
+                <CinemaLensesMaroc products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
               </React.Suspense>
             } />
             <Route path="/magasin-casablanca" element={
@@ -269,7 +269,7 @@ const AppContent: React.FC<{
             } />
             <Route path="/marque/:brand" element={
               <React.Suspense fallback={<LoadingSpinner />}>
-                <BrandCluster products={products} onProductClick={openProductModal} />
+                <BrandCluster products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
               </React.Suspense>
             } />
             <Route path="*" element={

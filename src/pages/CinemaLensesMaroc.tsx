@@ -2,19 +2,40 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Product } from '../../App';
 import ProductCard from '../../components/ProductCard';
+import { useCart } from '../../src/context/CartContext';
 
 interface CinemaLensesMarocProps {
   products: Product[];
   onProductClick: (id: number) => void;
+  siteConfig: { currency: string; phone: string };
 }
 
-const CinemaLensesMaroc: React.FC<CinemaLensesMarocProps> = ({ products, onProductClick }) => {
+const CinemaLensesMaroc: React.FC<CinemaLensesMarocProps> = ({ products, onProductClick, siteConfig }) => {
+  const { addToCart } = useCart();
+
+  const openWhatsappReserve = (productName: string) => {
+    const phone = siteConfig.phone.replace('+212', '212');
+    const msg = `Bonjour, je souhaite réserver le produit hors stock : ${productName}`;
+    window.open(
+      `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,
+      '_blank'
+    );
+  };
+
+  const generateStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <i
+        key={i}
+        className={`fa-solid fa-star text-[10px] ${i < rating ? 'text-[#ff3b30]' : 'text-gray-200'}`}
+      ></i>
+    ));
+  };
   // Filter for cinema lenses. Adjust logic based on category keywords
   const cinemaLenses = products.filter(
-    p => p.name.toLowerCase().includes('t2.0') || 
-         p.name.toLowerCase().includes('t1.05') ||
-         p.category.toLowerCase().includes('cine') ||
-         p.name.toLowerCase().includes('cine')
+    p => p.name?.toLowerCase().includes('t2.0') || 
+         p.name?.toLowerCase().includes('t1.05') ||
+         p.category?.toLowerCase().includes('cine') ||
+         p.name?.toLowerCase().includes('cine')
   );
 
   return (
@@ -63,7 +84,11 @@ const CinemaLensesMaroc: React.FC<CinemaLensesMarocProps> = ({ products, onProdu
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onClick={() => onProductClick(product.id)}
+                  onProductClick={onProductClick}
+                  siteConfig={siteConfig}
+                  openWhatsappReserve={openWhatsappReserve}
+                  generateStars={generateStars}
+                  addToCart={addToCart}
                 />
               ))}
             </div>
