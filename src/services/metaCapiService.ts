@@ -32,7 +32,7 @@ interface MetaCapiEventOptions {
 export async function sendMetaCapiEvent(options: MetaCapiEventOptions): Promise<boolean> {
   const eventId = options.eventId || generateEventId();
   const pixelId = import.meta.env.VITE_META_PIXEL_ID || '13684036354444670';
-  const token = import.meta.env.VITE_META_CAPI_TOKEN || localStorage.getItem('gearshop_capi_token') || '';
+  const token = import.meta.env.VITE_META_CAPI_TOKEN || localStorage.getItem('gearshop_capi_token') || 'EAAVT0R8Y7JUBSKxzZBaUbDZCGnFsmN3bCLJsp9e0PZCHhng5SLJfmxOuNy19XIJ0tUhSOVmv9TsHaGHqbzm3IV4pnKY9SMfJZBtoZCdDgItClPv3BZCgFuEidwZA94AYk2n7yOKLTbO3aOfZAYyQCYfx0ZCGOI81rPhVE86TaixyZBYdhnZCK1ZBKHM3QrdF6ZCiA4wZDZD';
 
   // 1. Client-Side Meta Pixel dispatch (if loaded in window)
   if (typeof window !== 'undefined' && (window as any).fbq) {

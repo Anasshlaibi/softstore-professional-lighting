@@ -42,7 +42,7 @@ const AdminDashboard: React.FC = () => {
 
   // Settings State
   const [pixelIdInput, setPixelIdInput] = useState('13684036354444670');
-  const [capiTokenInput, setCapiTokenInput] = useState('');
+  const [capiTokenInput, setCapiTokenInput] = useState('EAAVT0R8Y7JUBSKxzZBaUbDZCGnFsmN3bCLJsp9e0PZCHhng5SLJfmxOuNy19XIJ0tUhSOVmv9TsHaGHqbzm3IV4pnKY9SMfJZBtoZCdDgItClPv3BZCgFuEidwZA94AYk2n7yOKLTbO3aOfZAYyQCYfx0ZCGOI81rPhVE86TaixyZBYdhnZCK1ZBKHM3QrdF6ZCiA4wZDZD');
 
   const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ const AdminDashboard: React.FC = () => {
       setIsAuthenticated(true);
       fetchData();
     }
-    setCapiTokenInput(localStorage.getItem('gearshop_capi_token') || '');
+    setCapiTokenInput(localStorage.getItem('gearshop_capi_token') || 'EAAVT0R8Y7JUBSKxzZBaUbDZCGnFsmN3bCLJsp9e0PZCHhng5SLJfmxOuNy19XIJ0tUhSOVmv9TsHaGHqbzm3IV4pnKY9SMfJZBtoZCdDgItClPv3BZCgFuEidwZA94AYk2n7yOKLTbO3aOfZAYyQCYfx0ZCGOI81rPhVE86TaixyZBYdhnZCK1ZBKHM3QrdF6ZCiA4wZDZD');
   }, []);
 
   const handleLogin = (e: React.FormEvent) => {
