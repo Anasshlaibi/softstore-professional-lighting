@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../src/context/CartContext';
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx.../exec'; // REPLACE WITH ACTUAL URL
@@ -17,6 +17,22 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   onSuccess,
 }) => {
   const { cart: cartItems } = useCart();
+
+  // Fire InitiateCheckout when modal opens
+  useEffect(() => {
+    const win = window as any;
+    if (typeof win.fbq === 'function') {
+      const cartTotal = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+      win.fbq('track', 'InitiateCheckout', {
+        value: cartTotal,
+        currency: 'MAD',
+        num_items: cartItems.reduce((sum, item) => sum + item.qty, 0),
+        content_ids: cartItems.map(i => i.id.toString()),
+        content_type: 'product'
+      });
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -120,11 +136,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
         }
       });
 
-      // 2. Meta Pixel (Facebook)
+      // 2. Meta Pixel (Facebook) - Lead event when order sent to WhatsApp
       if (typeof win.fbq === 'function') {
-        win.fbq('track', 'Purchase', {
+        win.fbq('track', 'Lead', {
           value: total,
-          currency: siteConfig.currency,
+          currency: 'MAD',
+          content_name: 'WhatsApp Order',
           content_ids: cartItems.map(i => i.id.toString()),
           content_type: 'product'
         });
