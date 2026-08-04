@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Commercial Development Proposal & Quote</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+    
+    @page {
+      size: A4;
+      margin: 16mm 14mm 16mm 14mm;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1e293b;
+      background-color: #ffffff;
+      line-height: 1.5;
+      font-size: 12px;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 6px;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      page-break-after: avoid;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2563eb;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      page-break-after: avoid;
+    }
+
+    p { margin-top: 0; margin-bottom: 8px; }
+    ul, ol { margin-top: 0; margin-bottom: 10px; padding-left: 18px; }
+    li { margin-bottom: 3px; }
+
+    code {
+      font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+      font-size: 10px;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    pre {
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 10px;
+      line-height: 1.4;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .table-wrapper {
+      margin-top: 10px;
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    th {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-weight: 600;
+      text-align: left;
+      padding: 7px 10px;
+      border: 1px solid #0f172a;
+    }
+
+    td {
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td { background-color: #f8fafc; }
+
+    hr { border: 0; height: 1px; background: #e2e8f0; margin: 18px 0; }
+
+    .header-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .header-box h1 {
+      color: #ffffff;
+      border-bottom: none;
+      margin: 0 0 6px 0;
+      padding: 0;
+      font-size: 22px;
+    }
+
+    .header-box p { color: #94a3b8; margin: 0; font-size: 12px; }
+
+    .badge {
+      display: inline-block;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-box">
+    <div class="badge">Commercial Development Proposal</div>
+    <h1>SoftStore / GearShop E-Commerce Project Proposal</h1>
+    <p>Itemized Scope of Work, Deliverable Timelines & Cost Estimate</p>
+  </div>
+  <h1>COMMERCIAL DEVELOPMENT PROPOSAL &amp; ITEMIZED QUOTE</h1>
+<p><strong>Project Name:</strong> SoftStore / GearShop - High-Performance E-Commerce Engine  </p>
+<p><strong>Prepared For:</strong> Executive Client Team  </p>
+<p><strong>Prepared By:</strong> Lead Senior Full-Stack Developer  </p>
+<p><strong>Document Type:</strong> Formal Client Proposal &amp; Commercial Scope of Work  </p>
+
+<hr />
+
+<h2>1. EXECUTIVE SUMMARY</h2>
+
+<p>We propose to design, build, and deploy a custom, high-performance e-commerce platform engineered specifically for professional photography, videography, and lighting equipment sales. </p>
+
+<p>Unlike off-the-shelf platforms (Shopify/WooCommerce) which suffer from slow loading times, monthly plugin subscription fees, and complex checkout friction, this custom solution is built with <strong>React 19, Vite, TypeScript, and Supabase</strong>. It features <strong>1-click WhatsApp Cash-on-Delivery (COD) checkout</strong>, <strong>automated Google Sheets CRM synchronization</strong>, <strong>sub-second fuzzy search</strong>, and a <strong>custom build-time SSG pre-renderer</strong> ensuring 100% Google search indexing.</p>
+
+<hr />
+
+<h2>2. ITEMIZED DELIVERABLES &amp; INVESTMENT BREAKDOWN</h2>
+
+<p>The scope of work is broken down into 9 concrete engineering modules. Pricing is itemized below based on realistic senior freelance development rates ($30–$50 / hour):</p>
+
+<div class="table-wrapper"><table>
+<thead><tr><th>Deliverable Module</th><th>Scope &amp; Technical Execution</th><th>Dev Hours</th><th>Standard Rate ($35/hr)</th><th>Premium Rate ($50/hr)</th></tr></thead><tbody>
+<tr><td><strong>1. Frontend Core Build</strong></td><td>React 19 + Vite + TypeScript setup, Tailwind CSS v4 design system, dark/light theme engine, React Router v7, product grid, Fuse.js fuzzy search, Swiper carousels, and filter drawers.</td><td>35–45 hrs</td><td>$1,225 – $1,575</td><td>$1,750 – $2,250</td></tr>
+<tr><td><strong>2. Database &amp; Fail-Safe Engine</strong></td><td>Supabase Cloud PostgreSQL setup, typed schema, client initialization, and 5-second timeout fail-safe logic with hardcoded local fallback data to guarantee 99.99% uptime.</td><td>8–12 hrs</td><td>$280 – $420</td><td>$400 – $600</td></tr>
+<tr><td><strong>3. SSG Pre-Rendering Engine</strong></td><td>Custom Node.js build script (<code>prerender.cjs</code>) converting SPA product routes into pre-rendered static HTML with injected titles, meta tags, canonicals, and crawler text blocks.</td><td>10–15 hrs</td><td>$350 – $525</td><td>$500 – $750</td></tr>
+<tr><td><strong>4. Complete SEO &amp; Geo-Targeting Suite</strong></td><td>JSON-LD Structured Data (<code>StructuredData.tsx</code> covering Store, Product, FAQ, Breadcrumbs), dynamic XML sitemap with image metadata, and regional landing pages (<code>/cinema-lenses-maroc</code>, <code>/magasin-casablanca</code>).</td><td>15–20 hrs</td><td>$525 – $700</td><td>$750 – $1,000</td></tr>
+<tr><td><strong>5. Google Merchant Center Feed</strong></td><td>Automated Node.js RSS 2.0 XML generator (<code>generate_merchant_feed.cjs</code>) for Google Shopping Ads and Free Product Listings.</td><td>5–8 hrs</td><td>$175 – $280</td><td>$250 – $400</td></tr>
+<tr><td><strong>6. CRO &amp; Frictionless Checkout</strong></td><td>1-Click WhatsApp Cash-on-Delivery checkout modal, Google Apps Script CRM Webhook synchronization to Google Sheets, dynamic free shipping bar, and contextual up-sells.</td><td>15–20 hrs</td><td>$525 – $700</td><td>$750 – $1,000</td></tr>
+<tr><td><strong>7. Analytics &amp; Ad Attribution</strong></td><td>Full tracking setup: GA4 (<code>G-4P6XT6VMP7</code>), Google Tag Manager dataLayer purchase events, and Meta Pixel (<code>fbq('track', 'Purchase')</code>).</td><td>4–6 hrs</td><td>$140 – $210</td><td>$200 – $300</td></tr>
+<tr><td><strong>8. QA, Testing &amp; Deployment</strong></td><td>Environment variable configuration (<code>.env.local</code>), Vercel/Netlify deployment setup, cross-browser/mobile QA testing, and domain/SSL linking.</td><td>8–12 hrs</td><td>$280 – $420</td><td>$400 – $600</td></tr>
+<tr><td><strong>9. Documentation &amp; Team Handoff</strong></td><td>Complete technical blueprint manual, developer onboarding guide, and operational maintenance scripts (<code>backup_db.cjs</code>, <code>fix_images.cjs</code>).</td><td>5–8 hrs</td><td>$175 – $280</td><td>$250 – $400</td></tr>
+<tr><td><strong>TOTAL PROJECT ESTIMATE</strong></td><td><strong>Complete Turnkey Platform Build</strong></td><td><strong>105–146 hrs</strong></td><td><strong>$3,675 – $5,110</strong></td><td><strong>$5,250 – $7,300</strong></td></tr>
+</tbody></table></div>
+
+<hr />
+
+<h2>3. PROJECT PACKAGES &amp; PRICING OPTIONS</h2>
+
+<p>To fit your business requirements and budget, we offer three commercial packages:</p>
+
+<pre><code class="language-text">┌───────────────────────────┐   ┌───────────────────────────┐   ┌───────────────────────────┐
+│     ESSENTIAL BUILD       │   │    PROFESSIONAL BUILD     │   │     ENTERPRISE BUNDLE     │
+│       $3,500 USD          │   │        $5,500 USD         │   │        $7,200 USD         │
+│       (35,000 MAD)        │   │        (55,000 MAD)       │   │        (72,000 MAD)       │
+├───────────────────────────┤   ├───────────────────────────┤   ├───────────────────────────┤
+│ • Full Frontend &amp; React 19│   │ • Everything in Essential │   │ • Everything in Pro       │
+│ • Supabase DB &amp; Fail-safe │   │ • Build-Time SSG Engine   │   │ • 3 Geo Landing Pages     │
+│ • WhatsApp COD Checkout   │   │ • Full JSON-LD SEO Suite  │   │ • GA4 + GTM + Pixel Tracking│
+│ • Google Sheets CRM Sync  │   │ • Google Merchant Feed    │   │ • 1 Year Priority Support │
+│ • 1 Month Bug Warranty    │   │ • 3 Months Support        │   │ • Team Onboarding Session │
+└───────────────────────────┘   └───────────────────────────┘   └───────────────────────────┘</code></pre>
+
+<hr />
+
+<h2>4. VALUE PROPOSITION &amp; COST SAVINGS</h2>
+
+<h3>A. Zero Monthly Server Fees (Saves $1,800+/year)</h3>
+<p>Traditional Shopify or Magento setups incur heavy monthly app fees (Shopify plan $39/mo + SEO app $20/mo + Search app $30/mo + Reviews $25/mo + WhatsApp app $15/mo = <strong>$150+/month</strong> or <strong>$1,800+/year</strong>).</p>
+
+<p>Our solution runs on <strong>serverless infrastructure</strong>:</p>
+<ul><li><strong>Frontend Hosting (Vercel):</strong> $0 / month (Free tier due to SSG static rendering).</li>
+<li><strong>Database (Supabase):</strong> $0 / month (Free tier handles up to 500MB &amp; 50,000 users).</li>
+<li><strong>CRM Synchronization (Google Sheets):</strong> $0 / month.</li>
+<li><strong>Total Monthly Infrastructure Expense:</strong> <strong>$0 – $20 / month</strong> max.</li></ul>
+
+<h3>B. Conversion Rate Advantage</h3>
+<ul><li><strong>0.6s Loading Time:</strong> Every 1-second reduction in page load speed increases conversions by <strong>27%</strong>.</li>
+<li><strong>WhatsApp COD Flow:</strong> Increases checkout completion by <strong>35% to 50%</strong> in North African and MENA e-commerce markets compared to mandatory credit card checkouts.</li></ul>
+
+<hr />
+
+<h2>5. PROJECT TIMELINE &amp; MILESTONES</h2>
+
+<p>The project will be completed within <strong>4 to 6 weeks</strong> following initial kickoff:</p>
+
+<pre><code class="language-text">Week 1: Architecture, Supabase Database Setup &amp; Design Tokens
+Week 2: Core Frontend Component Development &amp; Product Catalog Integration
+Week 3: SSG Pre-rendering Engine, Sitemap &amp; Google Merchant Feed Scripts
+Week 4: WhatsApp COD Checkout, CRM Webhooks &amp; Pixel Tracking Integration
+Week 5: QA Testing, Cross-Device Polish &amp; Vercel Deployment
+Week 6: Team Training, Technical Handoff &amp; Final Sign-off</code></pre>
+
+<hr />
+
+<h2>6. PAYMENT TERMS &amp; SCHEDULE</h2>
+
+<ul><li><strong>40% Initial Deposit:</strong> Required upon project kickoff and agreement signature.</li>
+<li><strong>40% Midpoint Milestone:</strong> Paid upon completion of core catalog, database, and checkout flow on staging environment.</li>
+<li><strong>20% Final Handoff:</strong> Paid upon final production deployment, domain connection, and documentation delivery.</li></ul>
+
+<hr />
+
+<h2>ACCEPTANCE &amp; APPROVAL</h2>
+
+<p>To accept this proposal and initiate development, please sign below:</p>
+
+<p><strong>Client Representative:</strong> ___________________________  </p>
+<p><strong>Date:</strong> ________________________  </p>
+
+<p><strong>Lead Developer:</strong> _______________________________  </p>
+<p><strong>Date:</strong> ________________________  </p>
+
+</body>
+</html>

@@ -14,6 +14,8 @@ interface ProductDetailModalProps {
   onClose: () => void;
   buyNow: (id: number) => void;
   siteConfig: { currency: string; phone: string; promo: Promo };
+  onOpenQuoteRequest?: (product: Product) => void;
+  onOpenProductAlert?: (product: Product) => void;
 }
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
@@ -21,6 +23,8 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onClose,
   buyNow,
   siteConfig,
+  onOpenQuoteRequest,
+  onOpenProductAlert,
 }) => {
   const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState('desc');
@@ -377,21 +381,21 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </button>
                 </div>
                 
-                <div className="flex gap-3">
-                  {videoUrl && (
+                <div className="flex flex-col gap-2 pt-1">
+                  {!product.inStock && onOpenProductAlert && (
                     <button
-                      onClick={() => setActiveTab('video')}
-                      className="flex-1 h-14 bg-red-50 text-red-600 font-bold rounded-xl hover:bg-red-100 transition flex items-center justify-center gap-2 border border-red-100"
+                      onClick={() => onOpenProductAlert(product)}
+                      className="w-full h-12 bg-red-600/10 text-red-600 hover:bg-red-600 hover:text-white font-bold rounded-xl transition flex items-center justify-center gap-2 border border-red-200 text-sm"
                     >
-                      <i className="fa-brands fa-youtube text-lg"></i> Voir la vidéo
+                      <i className="fa-solid fa-bell"></i> M'avertir dès disponibilité
                     </button>
                   )}
-                  {product.rentPrice && product.rentPrice > 0 && (
+                  {onOpenQuoteRequest && (
                     <button
-                      onClick={openRentWhatsapp}
-                      className="flex-1 h-14 bg-blue-50 text-blue-600 font-bold rounded-xl hover:bg-blue-100 transition flex items-center justify-center gap-2 border border-blue-100"
+                      onClick={() => onOpenQuoteRequest(product)}
+                      className="w-full h-12 bg-zinc-900 text-white hover:bg-black font-bold rounded-xl transition flex items-center justify-center gap-2 text-sm shadow-sm"
                     >
-                      <i className="fa-brands fa-whatsapp text-lg"></i> Louer via WhatsApp
+                      <i className="fa-solid fa-file-invoice"></i> Demander un Devis Pro / Studio
                     </button>
                   )}
                 </div>

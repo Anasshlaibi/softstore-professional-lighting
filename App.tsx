@@ -33,6 +33,14 @@ import { Helmet } from 'react-helmet-async';
 const CinemaLensesMaroc = React.lazy(() => import('./src/pages/CinemaLensesMaroc'));
 const LocalStoreCasablanca = React.lazy(() => import('./src/pages/LocalStoreCasablanca'));
 const BrandCluster = React.lazy(() => import('./src/pages/BrandCluster'));
+const AdminDashboard = React.lazy(() => import('./src/pages/AdminDashboard'));
+
+import Newsletter from './src/components/Newsletter';
+import CookieConsentBanner from './src/components/CookieConsentBanner';
+import LeadPopup from './src/components/LeadPopup';
+import ProductRequestModal from './src/components/ProductRequestModal';
+import QuoteRequestModal from './src/components/QuoteRequestModal';
+import ProductAlertModal from './src/components/ProductAlertModal';
 
 export interface Product {
   id: number;
@@ -225,6 +233,16 @@ const AppContent: React.FC<{
 }) => {
     const { toastMessage, clearToast } = useCart();
     
+    // Marketing Lead Modals state
+    const [isProductRequestOpen, setIsProductRequestOpen] = useState(false);
+    const [isQuoteRequestOpen, setIsQuoteRequestOpen] = useState(false);
+    const [quoteProduct, setQuoteProduct] = useState<Product | null>(null);
+    const [isProductAlertOpen, setIsProductAlertOpen] = useState(false);
+    const [alertProduct, setAlertProduct] = useState<Product | null>(null);
+    
+    const location = useLocation();
+    const isAdminRoute = location.pathname === '/admin';
+    
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
         {selectedProduct ? (
@@ -247,16 +265,24 @@ const AppContent: React.FC<{
             <meta name="description" content="GearShop: Revendeur officiel au Maroc d'objectifs 7Artisans et lentilles cinéma. Livraison rapide d'objectifs photo pour Canon, Nikon Z et Sony E." />
           </Helmet>
         )}
-        <Header
-          onCartClick={() => setIsCartOpen(true)}
-          siteConfig={siteConfig}
-          globalSearchQuery={globalSearchQuery}
-          setGlobalSearchQuery={setGlobalSearchQuery}
-        />
+        {!isAdminRoute && (
+          <Header
+            onCartClick={() => setIsCartOpen(true)}
+            siteConfig={siteConfig}
+            globalSearchQuery={globalSearchQuery}
+            setGlobalSearchQuery={setGlobalSearchQuery}
+            onOpenProductRequest={() => setIsProductRequestOpen(true)}
+          />
+        )}
         
         <main>
           <StructuredData product={selectedProduct} allProducts={products} />
           <Routes>
+            <Route path="/admin" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <AdminDashboard />
+              </React.Suspense>
+            } />
             <Route path="/cinema-lenses-maroc" element={
               <React.Suspense fallback={<LoadingSpinner />}>
                 <CinemaLensesMaroc products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
@@ -306,14 +332,19 @@ const AppContent: React.FC<{
                   <WhyUs siteConfig={siteConfig} />
                   <Testimonials />
                   <FAQ />
+                  <Newsletter />
                 </React.Suspense>
               </>
             } />
           </Routes>
         </main>
 
-        <Footer siteConfig={siteConfig} />
-        <FloatingWhatsApp siteConfig={siteConfig} />
+        {!isAdminRoute && (
+          <>
+            <Footer siteConfig={siteConfig} />
+            <FloatingWhatsApp siteConfig={siteConfig} />
+          </>
+        )}
 
         <Cart
           isOpen={isCartOpen}
@@ -344,8 +375,42 @@ const AppContent: React.FC<{
             onClose={closeProductModal}
             buyNow={() => buyNow(selectedProduct.id)}
             siteConfig={siteConfig}
+            onOpenQuoteRequest={(prod) => {
+              setQuoteProduct(prod);
+              setIsQuoteRequestOpen(true);
+            }}
+            onOpenProductAlert={(prod) => {
+              setAlertProduct(prod);
+              setIsProductAlertOpen(true);
+            }}
           />
         )}
+
+        <ProductRequestModal
+          isOpen={isProductRequestOpen}
+          onClose={() => setIsProductRequestOpen(false)}
+        />
+
+        <QuoteRequestModal
+          isOpen={isQuoteRequestOpen}
+          product={quoteProduct}
+          onClose={() => {
+            setIsQuoteRequestOpen(false);
+            setQuoteProduct(null);
+          }}
+        />
+
+        <ProductAlertModal
+          isOpen={isProductAlertOpen}
+          product={alertProduct}
+          onClose={() => {
+            setIsProductAlertOpen(false);
+            setAlertProduct(null);
+          }}
+        />
+
+        <CookieConsentBanner />
+        <LeadPopup />
 
         {isPromoOverlayOpen && (
           <PromoOverlay

@@ -125,7 +125,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       "https://gearshop.ma/cine_lens.jpg",
       "https://gearshop.ma/photo_lens.jpg"
     ],
-    "logo": "https://gearshop.ma/logo_7artisans.png",
+    "logo": "https://gearshop.ma/logo.png",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Objectifs Cinéma et Lentilles 7Artisans",

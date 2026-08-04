@@ -7,10 +7,11 @@ interface HeaderProps {
   siteConfig: { brandName: string };
   globalSearchQuery: string;
   setGlobalSearchQuery: (q: string) => void;
+  onOpenProductRequest?: () => void;
 }
 
 const Header: React.FC<HeaderProps> = React.memo(
-  ({ onCartClick, siteConfig, globalSearchQuery, setGlobalSearchQuery }) => {
+  ({ onCartClick, siteConfig, globalSearchQuery, setGlobalSearchQuery, onOpenProductRequest }) => {
     const { cartCount } = useCart();
     const [isScrolled, setIsScrolled] = useState(false);
     const [placeholderIndex, setPlaceholderIndex] = useState(0);
@@ -81,12 +82,12 @@ const Header: React.FC<HeaderProps> = React.memo(
             >
               Vidéos
             </a>
-            <a
-              href="#whyus"
-              className={`relative ${isScrolled ? 'text-gray-600 hover:text-black' : 'text-gray-200 hover:text-white'} transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 ${isScrolled ? 'after:bg-black' : 'after:bg-white'} after:transition-all after:duration-300 hover:after:w-full`}
+            <button
+              onClick={onOpenProductRequest}
+              className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition flex items-center gap-1.5 ${isScrolled ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-600 hover:text-white' : 'bg-red-600/30 text-white border-red-400/50 hover:bg-red-600'}`}
             >
-              À Propos
-            </a>
+              <span>🔍</span> Demander un Matériel
+            </button>
           </nav>
 
           <div className="flex items-center gap-3 md:gap-5">
