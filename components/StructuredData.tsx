@@ -208,7 +208,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       "@id": `https://gearshop.ma/product/${product.id}#offer`,
       "url": `https://gearshop.ma/product/${product.id}`,
       "priceCurrency": "MAD",
-      "price": product.price.toString(),
+      "price": (product.price || 0).toString(),
       "priceValidUntil": "2027-01-01",
       "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
       "itemCondition": "https://schema.org/NewCondition",
