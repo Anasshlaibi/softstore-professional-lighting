@@ -41,7 +41,7 @@ const AdminDashboard: React.FC = () => {
   const [activeBreakdown, setActiveBreakdown] = useState<Record<string, number> | null>(null);
 
   // Settings State
-  const [pixelIdInput, setPixelIdInput] = useState('1030771603130215');
+  const [pixelIdInput, setPixelIdInput] = useState('13684036354444670');
   const [capiTokenInput, setCapiTokenInput] = useState('');
 
   const navigate = useNavigate();

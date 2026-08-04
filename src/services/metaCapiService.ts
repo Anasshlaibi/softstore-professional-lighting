@@ -31,7 +31,7 @@ interface MetaCapiEventOptions {
 
 export async function sendMetaCapiEvent(options: MetaCapiEventOptions): Promise<boolean> {
   const eventId = options.eventId || generateEventId();
-  const pixelId = import.meta.env.VITE_META_PIXEL_ID || '1030771603130215';
+  const pixelId = import.meta.env.VITE_META_PIXEL_ID || '13684036354444670';
   const token = import.meta.env.VITE_META_CAPI_TOKEN || localStorage.getItem('gearshop_capi_token') || '';
 
   // 1. Client-Side Meta Pixel dispatch (if loaded in window)
