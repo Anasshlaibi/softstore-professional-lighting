@@ -1,4 +1,7 @@
 import { supabase } from '../lib/supabase';
+import { getAttributionData, AttributionData } from './attributionTracker';
+import { calculateLeadScore, ScoreResult } from './leadScoringEngine';
+import { trackLead, sendOfflinePurchaseEvent } from './metaCapiService';
 
 export interface Subscriber {
   id: number;
@@ -14,6 +17,11 @@ export interface ProductRequestItem {
   budget?: string;
   notes?: string;
   email: string;
+  fbclid?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  landing_page?: string;
   created_at: string;
 }
 
@@ -27,6 +35,21 @@ export interface QuoteRequestItem {
   company?: string;
   quantity: number;
   message?: string;
+  score: number;
+  score_label: 'Hot' | 'Warm' | 'Cold';
+  score_breakdown?: Record<string, number>;
+  status: 'New' | 'Contacted' | 'Negotiating' | 'Waiting' | 'Won' | 'Lost';
+  deal_value: number;
+  fbclid?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+  landing_page?: string;
+  referrer?: string;
+  whatsapp_clicked?: boolean;
+  time_to_close_days?: number;
   created_at: string;
 }
 
@@ -45,7 +68,18 @@ export interface ContactLeadItem {
   email: string;
   phone?: string;
   message?: string;
-  status: 'New' | 'Contacted' | 'Closed';
+  score: number;
+  score_label: 'Hot' | 'Warm' | 'Cold';
+  score_breakdown?: Record<string, number>;
+  status: 'New' | 'Contacted' | 'Negotiating' | 'Waiting' | 'Won' | 'Lost';
+  deal_value: number;
+  fbclid?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  landing_page?: string;
+  whatsapp_clicked?: boolean;
+  time_to_close_days?: number;
   created_at: string;
 }
 
@@ -66,7 +100,6 @@ export async function subscribeNewsletter(email: string): Promise<{ success: boo
     throw new Error('Adresse email invalide');
   }
 
-  // Check if subscriber exists
   const { data: existing } = await supabase
     .from('newsletter_subscribers')
     .select('id')
@@ -86,6 +119,7 @@ export async function subscribeNewsletter(email: string): Promise<{ success: boo
     throw new Error('Erreur lors de l\'inscription à la newsletter');
   }
 
+  trackLead('Newsletter', cleanEmail);
   return { success: true, message: 'Inscription réussie!' };
 }
 
@@ -109,10 +143,7 @@ export async function getSubscribers(): Promise<Subscriber[]> {
     .select('*')
     .order('created_at', { ascending: false });
 
-  if (error) {
-    console.error('Error fetching subscribers:', error);
-    throw new Error('Impossible de charger les abonnés depuis la base de données');
-  }
+  if (error) throw new Error('Impossible de charger les abonnés');
   return (data || []).map(row => ({
     ...row,
     interests: Array.isArray(row.interests) ? row.interests : []
@@ -120,15 +151,8 @@ export async function getSubscribers(): Promise<Subscriber[]> {
 }
 
 export async function deleteSubscriber(id: number): Promise<boolean> {
-  const { error } = await supabase
-    .from('newsletter_subscribers')
-    .delete()
-    .eq('id', id);
-
-  if (error) {
-    console.error('Error deleting subscriber:', error);
-    throw error;
-  }
+  const { error } = await supabase.from('newsletter_subscribers').delete().eq('id', id);
+  if (error) throw error;
   return true;
 }
 
@@ -140,37 +164,33 @@ export async function createProductRequest(data: {
   notes?: string;
   email: string;
 }): Promise<boolean> {
-  const { error } = await supabase
-    .from('product_requests')
-    .insert([{
-      product_name: data.productName,
-      brand: data.brand || '',
-      budget: data.budget || '',
-      notes: data.notes || '',
-      email: data.email.trim().toLowerCase()
-    }]);
+  const attr = getAttributionData();
+  const { error } = await supabase.from('product_requests').insert([{
+    product_name: data.productName,
+    brand: data.brand || '',
+    budget: data.budget || '',
+    notes: data.notes || '',
+    email: data.email.trim().toLowerCase(),
+    fbclid: attr.fbclid,
+    utm_source: attr.utm_source,
+    utm_medium: attr.utm_medium,
+    utm_campaign: attr.utm_campaign,
+    landing_page: attr.landing_page,
+    referrer: attr.referrer
+  }]);
 
-  if (error) {
-    console.error('Error creating product request:', error);
-    throw new Error('Erreur lors de l\'envoi de la demande de matériel');
-  }
+  if (error) throw new Error('Erreur lors de l\'envoi de la demande');
+  trackLead('ProductRequest', data.email);
   return true;
 }
 
 export async function getProductRequests(): Promise<ProductRequestItem[]> {
-  const { data, error } = await supabase
-    .from('product_requests')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching product requests:', error);
-    throw new Error('Impossible de charger les demandes de produits');
-  }
+  const { data, error } = await supabase.from('product_requests').select('*').order('created_at', { ascending: false });
+  if (error) throw new Error('Impossible de charger les demandes de produits');
   return data || [];
 }
 
-// ===== 3. QUOTE REQUESTS =====
+// ===== 3. QUOTE REQUESTS WITH LEAD SCORING & ATTRIBUTION =====
 export async function createQuoteRequest(data: {
   productId?: number;
   productName: string;
@@ -181,71 +201,75 @@ export async function createQuoteRequest(data: {
   quantity?: number;
   message?: string;
 }): Promise<boolean> {
-  const { error } = await supabase
-    .from('quote_requests')
-    .insert([{
-      product_id: data.productId || null,
-      product_name: data.productName,
-      name: data.name,
-      email: data.email.trim().toLowerCase(),
+  const attr = getAttributionData();
+  const scoring = calculateLeadScore(
+    {
+      email: data.email,
       phone: data.phone,
-      company: data.company || '',
-      quantity: data.quantity || 1,
-      message: data.message || ''
-    }]);
+      company: data.company,
+      quantity: data.quantity,
+      productName: data.productName
+    },
+    attr
+  );
 
-  if (error) {
-    console.error('Error creating quote request:', error);
-    throw new Error('Erreur lors de l\'envoi de la demande de devis');
-  }
+  const { error } = await supabase.from('quote_requests').insert([{
+    product_id: data.productId || null,
+    product_name: data.productName,
+    name: data.name,
+    email: data.email.trim().toLowerCase(),
+    phone: data.phone,
+    company: data.company || '',
+    quantity: data.quantity || 1,
+    message: data.message || '',
+    score: scoring.score,
+    score_label: scoring.score_label,
+    score_breakdown: scoring.score_breakdown,
+    status: 'New',
+    deal_value: 0,
+    fbclid: attr.fbclid,
+    utm_source: attr.utm_source,
+    utm_medium: attr.utm_medium,
+    utm_campaign: attr.utm_campaign,
+    utm_content: attr.utm_content,
+    utm_term: attr.utm_term,
+    landing_page: attr.landing_page,
+    referrer: attr.referrer,
+    whatsapp_clicked: attr.whatsapp_clicked
+  }]);
+
+  if (error) throw new Error('Erreur lors de la demande de devis');
+  trackLead('QuoteRequest', data.email, data.phone);
   return true;
 }
 
 export async function getQuoteRequests(): Promise<QuoteRequestItem[]> {
-  const { data, error } = await supabase
-    .from('quote_requests')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching quote requests:', error);
-    throw new Error('Impossible de charger les demandes de devis');
-  }
+  const { data, error } = await supabase.from('quote_requests').select('*').order('created_at', { ascending: false });
+  if (error) throw new Error('Impossible de charger les demandes de devis');
   return data || [];
 }
 
-// ===== 4. PRODUCT ALERTS (BACK IN STOCK) =====
+// ===== 4. PRODUCT ALERTS =====
 export async function createProductAlert(data: {
   productId?: number;
   productName: string;
   email: string;
 }): Promise<boolean> {
-  const { error } = await supabase
-    .from('product_alerts')
-    .insert([{
-      product_id: data.productId || null,
-      product_name: data.productName,
-      email: data.email.trim().toLowerCase(),
-      status: 'pending'
-    }]);
+  const { error } = await supabase.from('product_alerts').insert([{
+    product_id: data.productId || null,
+    product_name: data.productName,
+    email: data.email.trim().toLowerCase(),
+    status: 'pending'
+  }]);
 
-  if (error) {
-    console.error('Error creating product alert:', error);
-    throw new Error('Erreur lors de l\'inscription à l\'alerte stock');
-  }
+  if (error) throw new Error('Erreur lors de l\'inscription à l\'alerte');
+  trackLead('StockAlert', data.email);
   return true;
 }
 
 export async function getProductAlerts(): Promise<ProductAlertItem[]> {
-  const { data, error } = await supabase
-    .from('product_alerts')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching product alerts:', error);
-    throw new Error('Impossible de charger les alertes produit');
-  }
+  const { data, error } = await supabase.from('product_alerts').select('*').order('created_at', { ascending: false });
+  if (error) throw new Error('Impossible de charger les alertes produit');
   return data || [];
 }
 
@@ -256,72 +280,92 @@ export async function createContactLead(data: {
   phone?: string;
   message?: string;
 }): Promise<boolean> {
-  const { error } = await supabase
-    .from('contact_leads')
-    .insert([{
-      name: data.name,
-      email: data.email.trim().toLowerCase(),
-      phone: data.phone || '',
-      message: data.message || '',
-      status: 'New'
-    }]);
+  const attr = getAttributionData();
+  const scoring = calculateLeadScore({ email: data.email, phone: data.phone }, attr);
 
-  if (error) {
-    console.error('Error saving contact lead:', error);
-    throw new Error('Erreur lors de l\'enregistrement du contact');
-  }
+  const { error } = await supabase.from('contact_leads').insert([{
+    name: data.name,
+    email: data.email.trim().toLowerCase(),
+    phone: data.phone || '',
+    message: data.message || '',
+    score: scoring.score,
+    score_label: scoring.score_label,
+    score_breakdown: scoring.score_breakdown,
+    status: 'New',
+    deal_value: 0,
+    fbclid: attr.fbclid,
+    utm_source: attr.utm_source,
+    utm_medium: attr.utm_medium,
+    utm_campaign: attr.utm_campaign,
+    landing_page: attr.landing_page,
+    whatsapp_clicked: attr.whatsapp_clicked
+  }]);
+
+  if (error) throw new Error('Erreur lors de l\'enregistrement du contact');
+  trackLead('ContactForm', data.email, data.phone);
   return true;
 }
 
 export async function getContactLeads(): Promise<ContactLeadItem[]> {
-  const { data, error } = await supabase
-    .from('contact_leads')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching contact leads:', error);
-    throw new Error('Impossible de charger les contacts');
-  }
+  const { data, error } = await supabase.from('contact_leads').select('*').order('created_at', { ascending: false });
+  if (error) throw new Error('Impossible de charger les contacts');
   return data || [];
 }
 
-export async function updateContactLeadStatus(id: number, status: 'New' | 'Contacted' | 'Closed'): Promise<boolean> {
+// ===== 6. PIPELINE STATUS & OFFLINE CAPI PURCHASE TRIGGER =====
+export async function updateQuoteStatusAndValue(
+  id: number,
+  status: 'New' | 'Contacted' | 'Negotiating' | 'Waiting' | 'Won' | 'Lost',
+  dealValueMAD: number = 0,
+  quoteItem?: QuoteRequestItem
+): Promise<boolean> {
+  const closed_at = status === 'Won' || status === 'Lost' ? new Date().toISOString() : null;
+
+  let time_to_close_days = 0;
+  if (closed_at && quoteItem && quoteItem.created_at) {
+    const start = new Date(quoteItem.created_at).getTime();
+    const end = new Date(closed_at).getTime();
+    time_to_close_days = Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)));
+  }
+
   const { error } = await supabase
-    .from('contact_leads')
-    .update({ status })
+    .from('quote_requests')
+    .update({
+      status,
+      deal_value: dealValueMAD,
+      closed_at,
+      time_to_close_days
+    })
     .eq('id', id);
 
-  if (error) {
-    console.error('Error updating lead status:', error);
-    throw error;
+  if (error) throw error;
+
+  // OFFLINE CONVERSION EVENT: Dispatch Purchase CAPI ONLY if status is Won
+  if (status === 'Won' && quoteItem) {
+    sendOfflinePurchaseEvent(
+      { email: quoteItem.email, phone: quoteItem.phone, productName: quoteItem.product_name },
+      dealValueMAD
+    );
   }
+
   return true;
 }
 
-// ===== 6. COOKIE CONSENTS =====
+// ===== 7. COOKIE CONSENTS =====
 export async function saveCookieConsent(accepted: boolean, marketingAllowed: boolean): Promise<boolean> {
   try {
     localStorage.setItem('gearshop_cookie_consent', JSON.stringify({ accepted, marketingAllowed, date: new Date().toISOString() }));
     await supabase.from('cookie_consents').insert([{ consent_given: accepted, marketing_allowed: marketingAllowed }]);
     return true;
   } catch (err) {
-    console.warn('Cookie consent save note:', err);
     return true;
   }
 }
 
-// ===== 7. EMAIL CAMPAIGNS & RESEND =====
+// ===== 8. EMAIL CAMPAIGNS =====
 export async function getEmailCampaigns(): Promise<EmailCampaignItem[]> {
-  const { data, error } = await supabase
-    .from('email_campaigns')
-    .select('*')
-    .order('sent_at', { ascending: false });
-
-  if (error) {
-    console.warn('Could not fetch campaigns from DB:', error);
-    return [];
-  }
+  const { data, error } = await supabase.from('email_campaigns').select('*').order('sent_at', { ascending: false });
+  if (error) return [];
   return data || [];
 }
 
@@ -332,7 +376,6 @@ export async function sendEmailCampaign(data: {
   body: string;
   resendApiKey?: string;
 }): Promise<{ success: boolean; recipientCount: number; message: string }> {
-  // Fetch recipients from subscribers based on segment
   const subscribers = await getSubscribers();
   let recipients = subscribers;
 
@@ -344,7 +387,6 @@ export async function sendEmailCampaign(data: {
 
   const recipientCount = recipients.length;
 
-  // Store campaign record in Supabase
   await supabase.from('email_campaigns').insert([{
     subject: data.subject,
     segment: data.segment,
@@ -353,7 +395,6 @@ export async function sendEmailCampaign(data: {
     recipient_count: recipientCount
   }]);
 
-  // If Resend API Key is available, trigger API call
   const apiKey = data.resendApiKey || import.meta.env.VITE_RESEND_API_KEY;
   if (apiKey && recipients.length > 0) {
     try {
@@ -366,19 +407,17 @@ export async function sendEmailCampaign(data: {
         },
         body: JSON.stringify({
           from: 'GearShop Maroc <newsletter@gearshop.ma>',
-          to: emailList.slice(0, 50), // Batch limits
+          to: emailList.slice(0, 50),
           subject: data.subject,
           html: `<div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">${data.body.replace(/\n/g, '<br/>')}</div>`
         })
       });
-    } catch (err) {
-      console.warn('Resend API call error:', err);
-    }
+    } catch (err) {}
   }
 
   return {
     success: true,
     recipientCount,
-    message: `Campagne "${data.subject}" enregistrée pour ${recipientCount} abonnés (${data.segment})!`
+    message: `Campagne "${data.subject}" enregistrée pour ${recipientCount} abonnés!`
   };
 }

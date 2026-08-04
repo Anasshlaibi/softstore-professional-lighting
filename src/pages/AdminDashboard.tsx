@@ -5,7 +5,8 @@ import {
   getProductRequests,
   getQuoteRequests,
   getContactLeads,
-  updateContactLeadStatus,
+  updateQuoteStatusAndValue,
+  updateSubscriberInterests,
   sendEmailCampaign,
   Subscriber,
   ProductRequestItem,
@@ -14,14 +15,14 @@ import {
 } from '../services/leadService';
 import { useNavigate } from 'react-router-dom';
 
-const ADMIN_PASS = 'gearshop2026'; // Default admin password
+const ADMIN_PASS = 'gearshop2026';
 
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState(false);
 
-  const [activeTab, setActiveTab] = useState<'overview' | 'subscribers' | 'product_requests' | 'quotes' | 'leads' | 'campaigns'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'subscribers' | 'product_requests' | 'quotes' | 'attribution' | 'audiences' | 'settings'>('overview');
 
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [productRequests, setProductRequests] = useState<ProductRequestItem[]>([]);
@@ -32,13 +33,16 @@ const AdminDashboard: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedInterestFilter, setSelectedInterestFilter] = useState('All');
 
-  // Campaign state
-  const [campaignSubject, setCampaignSubject] = useState('');
-  const [campaignSegment, setCampaignSegment] = useState('All');
-  const [campaignType, setCampaignType] = useState('Promotions');
-  const [campaignBody, setCampaignBody] = useState('');
-  const [resendApiKey, setResendApiKey] = useState('');
-  const [campaignStatus, setCampaignStatus] = useState<string | null>(null);
+  // Won Deal Modal State (for CAPI Offline Purchase)
+  const [wonModalItem, setWonModalItem] = useState<QuoteRequestItem | null>(null);
+  const [wonDealValueInput, setWonDealValueInput] = useState('0');
+
+  // Score Breakdown Modal State
+  const [activeBreakdown, setActiveBreakdown] = useState<Record<string, number> | null>(null);
+
+  // Settings State
+  const [pixelIdInput, setPixelIdInput] = useState('1030771603130215');
+  const [capiTokenInput, setCapiTokenInput] = useState('');
 
   const navigate = useNavigate();
 
@@ -48,6 +52,7 @@ const AdminDashboard: React.FC = () => {
       setIsAuthenticated(true);
       fetchData();
     }
+    setCapiTokenInput(localStorage.getItem('gearshop_capi_token') || '');
   }, []);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -76,7 +81,7 @@ const AdminDashboard: React.FC = () => {
       setQuoteRequests(quotes);
       setContactLeads(leads);
     } catch (err) {
-      console.error('Error fetching admin dashboard data:', err);
+      console.error('Error fetching dashboard data:', err);
     } finally {
       setLoading(false);
     }
@@ -92,76 +97,103 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  const handleStatusChange = async (id: number, status: 'New' | 'Contacted' | 'Closed') => {
-    try {
-      await updateContactLeadStatus(id, status);
-      setContactLeads(prev => prev.map(l => l.id === id ? { ...l, status } : l));
-    } catch (err) {
-      alert('Erreur lors de la mise à jour du statut');
+  const handleStatusSelect = async (quote: QuoteRequestItem, newStatus: 'New' | 'Contacted' | 'Negotiating' | 'Waiting' | 'Won' | 'Lost') => {
+    if (newStatus === 'Won') {
+      // Open deal valuation modal for offline CAPI Purchase dispatch
+      setWonModalItem(quote);
+      setWonDealValueInput(quote.deal_value ? quote.deal_value.toString() : '15000');
+    } else {
+      try {
+        await updateQuoteStatusAndValue(quote.id, newStatus, 0, quote);
+        setQuoteRequests(prev => prev.map(q => q.id === quote.id ? { ...q, status: newStatus } : q));
+      } catch (err) {
+        alert('Erreur de mise à jour');
+      }
     }
   };
 
+  const handleConfirmWonDeal = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!wonModalItem) return;
+    const valueNum = parseFloat(wonDealValueInput) || 0;
+
+    try {
+      await updateQuoteStatusAndValue(wonModalItem.id, 'Won', valueNum, wonModalItem);
+      setQuoteRequests(prev => prev.map(q => q.id === wonModalItem.id ? { ...q, status: 'Won', deal_value: valueNum } : q));
+      alert(`Vente confirmée! Conversion hors-ligne de ${valueNum} MAD envoyée à Meta CAPI.`);
+      setWonModalItem(null);
+    } catch (err) {
+      alert('Erreur lors de la validation de la vente');
+    }
+  };
+
+  const saveCapiSettings = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem('gearshop_capi_token', capiTokenInput);
+    alert('Clé Meta CAPI enregistrée!');
+  };
+
+  // CSV Exporters
   const exportSubscribersCSV = () => {
     if (subscribers.length === 0) return alert('Aucun abonné à exporter');
-    const headers = 'ID,Email,Interests,Date Subscribed\n';
+    const headers = 'Email,Interests,Date Subscribed\n';
     const rows = subscribers.map(s =>
-      `"${s.id}","${s.email}","${(s.interests || []).join(';') || 'General'}","${s.created_at || ''}"`
+      `"${s.email}","${(s.interests || []).join(';') || 'General'}","${s.created_at || ''}"`
     ).join('\n');
+    downloadCSV(headers + rows, 'gearshop_subscribers.csv');
+  };
 
-    const blob = new Blob([headers + rows], { type: 'text/csv;charset=utf-8;' });
+  const exportMetaCustomAudience = (segmentName: string) => {
+    let list: string[] = [];
+    if (segmentName === 'QuoteNotPurchased') {
+      list = quoteRequests.filter(q => q.status !== 'Won').map(q => q.email);
+    } else if (segmentName === 'Canon') {
+      list = subscribers.filter(s => (s.interests || []).includes('Canon')).map(s => s.email);
+    } else if (segmentName === 'CinemaLenses') {
+      list = subscribers.filter(s => (s.interests || []).includes('Cinema Lenses')).map(s => s.email);
+    } else if (segmentName === 'HotLeads') {
+      list = quoteRequests.filter(q => q.score >= 80).map(q => q.email);
+    }
+
+    if (list.length === 0) return alert('Aucun contact dans ce segment');
+    const headers = 'email,country\n';
+    const rows = list.map(em => `"${em}","MA"`).join('\n');
+    downloadCSV(headers + rows, `meta_audience_${segmentName}.csv`);
+  };
+
+  const downloadCSV = (content: string, filename: string) => {
+    const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', `gearshop_subscribers_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute('download', filename);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
-  const handleSendCampaign = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!campaignSubject || !campaignBody) return alert('Veuillez remplir le sujet et le contenu');
+  // Attribution Revenue Calculations
+  const calculateCampaignAttribution = () => {
+    const campaigns: Record<string, { count: number; wonCount: number; revenue: number; source: string }> = {};
 
-    setLoading(true);
-    setCampaignStatus(null);
-    try {
-      const res = await sendEmailCampaign({
-        subject: campaignSubject,
-        segment: campaignSegment,
-        type: campaignType,
-        body: campaignBody,
-        resendApiKey
-      });
-      setCampaignStatus(res.message);
-      setCampaignSubject('');
-      setCampaignBody('');
-    } catch (err: any) {
-      setCampaignStatus(`Erreur: ${err?.message || 'Impossible d\'envoyer'}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Analytics helper for Top Requested Products & Brands
-  const getTopProducts = () => {
-    const counts: Record<string, number> = {};
-    productRequests.forEach(r => {
-      const key = r.product_name.trim().toLowerCase();
-      counts[key] = (counts[key] || 0) + 1;
-    });
-    return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 5);
-  };
-
-  const getTopBrands = () => {
-    const counts: Record<string, number> = {};
-    productRequests.forEach(r => {
-      if (r.brand) {
-        const key = r.brand.trim().toUpperCase();
-        counts[key] = (counts[key] || 0) + 1;
+    quoteRequests.forEach(q => {
+      const campaignName = q.utm_campaign || 'Direct / Unknown';
+      if (!campaigns[campaignName]) {
+        campaigns[campaignName] = { count: 0, wonCount: 0, revenue: 0, source: q.utm_source || 'direct' };
+      }
+      campaigns[campaignName].count += 1;
+      if (q.status === 'Won') {
+        campaigns[campaignName].wonCount += 1;
+        campaigns[campaignName].revenue += (q.deal_value || 0);
       }
     });
-    return Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+
+    return Object.entries(campaigns).map(([name, data]) => ({ name, ...data }));
   };
+
+  const totalWonRevenue = quoteRequests
+    .filter(q => q.status === 'Won')
+    .reduce((sum, q) => sum + (q.deal_value || 0), 0);
 
   // Auth Guard Screen
   if (!isAuthenticated) {
@@ -173,7 +205,7 @@ const AdminDashboard: React.FC = () => {
               🔒
             </div>
             <h1 className="text-2xl font-extrabold tracking-tight">GearShop Admin Panel</h1>
-            <p className="text-xs text-zinc-400">Espace d'administration réservé pour la gestion des leads</p>
+            <p className="text-xs text-zinc-400">Plateforme d'attribution de leads & Meta CAPI</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -202,10 +234,7 @@ const AdminDashboard: React.FC = () => {
           </form>
 
           <div className="text-center">
-            <button
-              onClick={() => navigate('/')}
-              className="text-xs text-zinc-500 hover:text-zinc-300"
-            >
+            <button onClick={() => navigate('/')} className="text-xs text-zinc-500 hover:text-zinc-300">
               ← Retour au site public
             </button>
           </div>
@@ -229,7 +258,9 @@ const AdminDashboard: React.FC = () => {
             <span className="w-8 h-8 rounded-xl bg-red-600 text-white font-bold flex items-center justify-center text-sm shadow-md">
               GS
             </span>
-            <span className="font-extrabold text-lg tracking-tight">GearShop <span className="text-red-500">Marketing Hub</span></span>
+            <span className="font-extrabold text-lg tracking-tight">
+              GearShop <span className="text-red-500">B2B Lead Engine</span>
+            </span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -237,14 +268,10 @@ const AdminDashboard: React.FC = () => {
               onClick={fetchData}
               disabled={loading}
               className="p-2 text-zinc-400 hover:text-white bg-zinc-800 rounded-lg text-xs flex items-center gap-1.5 transition"
-              title="Rafraîchir les données"
             >
               <span>🔄</span> {loading ? 'Chargement...' : 'Actualiser'}
             </button>
-            <button
-              onClick={() => navigate('/')}
-              className="px-3.5 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-lg transition"
-            >
+            <button onClick={() => navigate('/')} className="px-3.5 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-lg transition">
               Voir le Site
             </button>
             <button
@@ -266,11 +293,11 @@ const AdminDashboard: React.FC = () => {
         <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-zinc-800 scrollbar-none">
           {[
             { id: 'overview', label: '📊 Vue d\'ensemble' },
+            { id: 'quotes', label: `📝 Pipeline Devis & Leads (${quoteRequests.length})` },
             { id: 'subscribers', label: `📧 Abonnés (${subscribers.length})` },
-            { id: 'product_requests', label: `📦 Demandes Produits (${productRequests.length})` },
-            { id: 'quotes', label: `📝 Devis (${quoteRequests.length})` },
-            { id: 'leads', label: `📞 Contacts Leads (${contactLeads.length})` },
-            { id: 'campaigns', label: '🚀 Campagnes Resend' }
+            { id: 'attribution', label: '💰 Attribution Chiffre d\'Affaires' },
+            { id: 'audiences', label: '🎯 Meta Custom Audiences' },
+            { id: 'settings', label: '⚙️ Meta CAPI & Config' }
           ].map(tab => (
             <button
               key={tab.id}
@@ -293,145 +320,124 @@ const AdminDashboard: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-2">
                 <div className="flex items-center justify-between text-zinc-400 text-xs font-medium">
+                  <span>Chiffre d'Affaires Gagné (Won)</span>
+                  <span className="text-emerald-400 text-base">💰</span>
+                </div>
+                <div className="text-3xl font-black text-emerald-400">
+                  {totalWonRevenue.toLocaleString('fr-MA')} <span className="text-sm font-normal text-zinc-400">MAD</span>
+                </div>
+                <div className="text-[11px] text-zinc-500">Conversions hors-ligne CAPI confirmées</div>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-2">
+                <div className="flex items-center justify-between text-zinc-400 text-xs font-medium">
+                  <span>Hot Leads (Score 80+)</span>
+                  <span className="text-red-400 text-base">🔥</span>
+                </div>
+                <div className="text-3xl font-black text-white">
+                  {quoteRequests.filter(q => q.score >= 80).length}
+                </div>
+                <div className="text-[11px] text-zinc-500">Priorité de contact maximale</div>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-2">
+                <div className="flex items-center justify-between text-zinc-400 text-xs font-medium">
+                  <span>Total Demandes de Devis</span>
+                  <span className="text-red-400 text-base">📋</span>
+                </div>
+                <div className="text-3xl font-black text-white">{quoteRequests.length}</div>
+                <div className="text-[11px] text-zinc-500">Événements Meta Lead générés</div>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-2">
+                <div className="flex items-center justify-between text-zinc-400 text-xs font-medium">
                   <span>Total Abonnés Newsletter</span>
                   <span className="text-red-400 text-base">✉️</span>
                 </div>
                 <div className="text-3xl font-black text-white">{subscribers.length}</div>
-                <div className="text-[11px] text-zinc-500">Collectés via le site & popups</div>
-              </div>
-
-              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-2">
-                <div className="flex items-center justify-between text-zinc-400 text-xs font-medium">
-                  <span>Demandes de Matériel</span>
-                  <span className="text-red-400 text-base">📦</span>
-                </div>
-                <div className="text-3xl font-black text-white">{productRequests.length}</div>
-                <div className="text-[11px] text-zinc-500">Intention d'achat explicite</div>
-              </div>
-
-              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-2">
-                <div className="flex items-center justify-between text-zinc-400 text-xs font-medium">
-                  <span>Demandes de Devis Pro</span>
-                  <span className="text-red-400 text-base">📋</span>
-                </div>
-                <div className="text-3xl font-black text-white">{quoteRequests.length}</div>
-                <div className="text-[11px] text-zinc-500">Grosses commandes & studios</div>
-              </div>
-
-              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-2">
-                <div className="flex items-center justify-between text-zinc-400 text-xs font-medium">
-                  <span>Leads Formulaire Contact</span>
-                  <span className="text-red-400 text-base">📞</span>
-                </div>
-                <div className="text-3xl font-black text-white">{contactLeads.length}</div>
-                <div className="text-[11px] text-zinc-500">Missions & prospects</div>
+                <div className="text-[11px] text-zinc-500">Segmentés par intérêt matériel</div>
               </div>
             </div>
 
-            {/* Demand Insights Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-4">
-                <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                  <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                    <span>🔥</span> Matériels les plus demandés
-                  </h3>
-                  <span className="text-xs text-zinc-500">Analyse des requêtes</span>
-                </div>
+            {/* Quick Leads List */}
+            <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-4">
+              <h3 className="font-bold text-sm text-white flex items-center gap-2">
+                <span>🔥</span> Leads récents à contacter en priorité
+              </h3>
 
-                {getTopProducts().length === 0 ? (
-                  <p className="text-xs text-zinc-500 py-4 text-center">Aucune demande de produit enregistrée pour l'instant.</p>
-                ) : (
-                  <div className="space-y-3">
-                    {getTopProducts().map(([name, count], i) => (
-                      <div key={name} className="flex items-center justify-between text-xs bg-zinc-800/50 p-3 rounded-xl">
-                        <div className="flex items-center gap-3">
-                          <span className="w-5 h-5 rounded-full bg-red-600/20 text-red-400 font-bold flex items-center justify-center text-[10px]">
-                            {i + 1}
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs text-zinc-300">
+                  <thead className="bg-zinc-800/80 text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">
+                    <tr>
+                      <th className="px-4 py-3">Score Lead</th>
+                      <th className="px-4 py-3">Client</th>
+                      <th className="px-4 py-3">Produit demandé</th>
+                      <th className="px-4 py-3">Attribution (Source / Campagne)</th>
+                      <th className="px-4 py-3">Statut Pipeline</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-zinc-800">
+                    {quoteRequests.slice(0, 5).map(q => (
+                      <tr key={q.id} className="hover:bg-zinc-800/40 transition">
+                        <td className="px-4 py-3">
+                          <button
+                            onClick={() => setActiveBreakdown(q.score_breakdown || null)}
+                            className={`px-2.5 py-1 rounded-full text-[11px] font-bold border transition ${
+                              q.score >= 80
+                                ? 'bg-red-600/20 border-red-500 text-red-400'
+                                : q.score >= 50
+                                ? 'bg-amber-600/20 border-amber-500 text-amber-400'
+                                : 'bg-zinc-800 border-zinc-700 text-zinc-400'
+                            }`}
+                          >
+                            {q.score >= 80 ? '🔥 Hot' : q.score >= 50 ? '🟡 Warm' : '⚪ Cold'} ({q.score} pts)
+                          </button>
+                        </td>
+                        <td className="px-4 py-3 font-bold text-white">
+                          {q.name}
+                          <div className="text-[11px] font-mono text-red-400">{q.phone}</div>
+                        </td>
+                        <td className="px-4 py-3 text-zinc-200">{q.product_name}</td>
+                        <td className="px-4 py-3 text-zinc-400">
+                          <span className="px-2 py-0.5 bg-zinc-800 rounded font-mono text-[10px] text-zinc-300">
+                            {q.utm_source || 'direct'}
                           </span>
-                          <span className="font-semibold text-zinc-200 capitalize">{name}</span>
-                        </div>
-                        <span className="px-2.5 py-1 bg-red-600/20 text-red-400 font-bold rounded-lg text-[11px]">
-                          {count} demande{count > 1 ? 's' : ''}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-4">
-                <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                  <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                    <span>🏷️</span> Marques les plus recherchées
-                  </h3>
-                  <span className="text-xs text-zinc-500">Tendances d'importation</span>
-                </div>
-
-                {getTopBrands().length === 0 ? (
-                  <p className="text-xs text-zinc-500 py-4 text-center">Aucune marque spécifique mentionnée.</p>
-                ) : (
-                  <div className="space-y-3">
-                    {getTopBrands().map(([brand, count], i) => (
-                      <div key={brand} className="flex items-center justify-between text-xs bg-zinc-800/50 p-3 rounded-xl">
-                        <div className="flex items-center gap-3">
-                          <span className="w-5 h-5 rounded-full bg-zinc-700 text-zinc-300 font-bold flex items-center justify-center text-[10px]">
-                            {i + 1}
+                          {q.utm_campaign && (
+                            <span className="block text-[10px] text-zinc-500 truncate max-w-xs">{q.utm_campaign}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-3 font-semibold">
+                          <span className={`px-2.5 py-1 rounded-lg text-[11px] ${
+                            q.status === 'Won' ? 'bg-emerald-600/20 text-emerald-400 border border-emerald-500/30' : 'bg-zinc-800 text-zinc-300'
+                          }`}>
+                            {q.status}
                           </span>
-                          <span className="font-semibold text-zinc-200">{brand}</span>
-                        </div>
-                        <span className="px-2.5 py-1 bg-zinc-800 border border-zinc-700 text-zinc-300 font-bold rounded-lg text-[11px]">
-                          {count} recherche{count > 1 ? 's' : ''}
-                        </span>
-                      </div>
+                        </td>
+                      </tr>
                     ))}
-                  </div>
-                )}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         )}
 
-        {/* TAB 2: SUBSCRIBERS */}
-        {activeTab === 'subscribers' && (
+        {/* TAB 2: PIPELINE & DEALS */}
+        {activeTab === 'quotes' && (
           <div className="space-y-6 animate-fadeIn">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-lg font-extrabold">Liste des Abonnés Newsletter</h3>
-                <p className="text-xs text-zinc-400">Segmentés par intérêts pour ciblage Resend</p>
+                <h3 className="text-lg font-extrabold">Gestion du Pipeline Devis & Leads</h3>
+                <p className="text-xs text-zinc-400">Le statut "Won" déclenche automatiquement la conversion CAPI Purchase</p>
               </div>
 
-              <div className="flex items-center gap-3">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                  placeholder="Rechercher par email..."
-                  className="px-3.5 py-2 bg-zinc-900 border border-zinc-800 rounded-xl text-xs text-white outline-none focus:border-red-500 w-64"
-                />
-                <button
-                  onClick={exportSubscribersCSV}
-                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl shadow transition flex items-center gap-1.5"
-                >
-                  <span>📥</span> Exporter CSV
-                </button>
-              </div>
-            </div>
-
-            {/* Interest Filter Badges */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              {['All', 'Canon', 'Sony', 'Nikon', 'Cinema Lenses', 'Lighting', 'Audio', 'Drones', 'Accessories'].map(f => (
-                <button
-                  key={f}
-                  onClick={() => setSelectedInterestFilter(f)}
-                  className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold transition ${
-                    selectedInterestFilter === f
-                      ? 'bg-red-600 text-white'
-                      : 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white'
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                placeholder="Rechercher par nom, email ou produit..."
+                className="px-3.5 py-2 bg-zinc-900 border border-zinc-800 rounded-xl text-xs text-white outline-none focus:border-red-500 w-64"
+              />
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
@@ -439,207 +445,71 @@ const AdminDashboard: React.FC = () => {
                 <table className="w-full text-left text-xs text-zinc-300">
                   <thead className="bg-zinc-800/80 text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">
                     <tr>
-                      <th className="px-4 py-3">ID</th>
-                      <th className="px-4 py-3">Email</th>
-                      <th className="px-4 py-3">Centres d'intérêt</th>
-                      <th className="px-4 py-3">Date d'inscription</th>
-                      <th className="px-4 py-3 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-zinc-800">
-                    {filteredSubscribers.length === 0 ? (
-                      <tr>
-                        <td colSpan={5} className="px-4 py-8 text-center text-zinc-500">
-                          Aucun abonné trouvé.
-                        </td>
-                      </tr>
-                    ) : (
-                      filteredSubscribers.map(sub => (
-                        <tr key={sub.id} className="hover:bg-zinc-800/40 transition">
-                          <td className="px-4 py-3 font-mono text-zinc-500">#{sub.id}</td>
-                          <td className="px-4 py-3 font-bold text-white">{sub.email}</td>
-                          <td className="px-4 py-3">
-                            {sub.interests && sub.interests.length > 0 ? (
-                              <div className="flex flex-wrap gap-1">
-                                {sub.interests.map(i => (
-                                  <span key={i} className="px-2 py-0.5 bg-red-950/60 border border-red-800/50 text-red-300 rounded-md text-[10px]">
-                                    {i}
-                                  </span>
-                                ))}
-                              </div>
-                            ) : (
-                              <span className="text-zinc-500 italic">Général</span>
-                            )}
-                          </td>
-                          <td className="px-4 py-3 text-zinc-400">
-                            {sub.created_at ? new Date(sub.created_at).toLocaleDateString('fr-FR') : '—'}
-                          </td>
-                          <td className="px-4 py-3 text-right">
-                            <button
-                              onClick={() => handleDeleteSubscriber(sub.id)}
-                              className="px-2.5 py-1 bg-red-950/40 hover:bg-red-600 text-red-400 hover:text-white rounded-lg transition text-[11px]"
-                            >
-                              Supprimer
-                            </button>
-                          </td>
-                        </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 3: PRODUCT REQUESTS */}
-        {activeTab === 'product_requests' && (
-          <div className="space-y-6 animate-fadeIn">
-            <div>
-              <h3 className="text-lg font-extrabold">Demandes de Matériel Introuvable</h3>
-              <p className="text-xs text-zinc-400">Demandes de clients cherchant du matériel non listé</p>
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-zinc-300">
-                  <thead className="bg-zinc-800/80 text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">
-                    <tr>
-                      <th className="px-4 py-3">Produit demandé</th>
-                      <th className="px-4 py-3">Marque</th>
-                      <th className="px-4 py-3">Budget</th>
-                      <th className="px-4 py-3">Client Email</th>
-                      <th className="px-4 py-3">Notes</th>
-                      <th className="px-4 py-3">Date</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-zinc-800">
-                    {productRequests.length === 0 ? (
-                      <tr>
-                        <td colSpan={6} className="px-4 py-8 text-center text-zinc-500">
-                          Aucune demande enregistrée.
-                        </td>
-                      </tr>
-                    ) : (
-                      productRequests.map(r => (
-                        <tr key={r.id} className="hover:bg-zinc-800/40 transition">
-                          <td className="px-4 py-3 font-bold text-white">{r.product_name}</td>
-                          <td className="px-4 py-3 text-red-400 font-semibold">{r.brand || '—'}</td>
-                          <td className="px-4 py-3 font-mono text-zinc-300">{r.budget || '—'}</td>
-                          <td className="px-4 py-3 text-zinc-200">{r.email}</td>
-                          <td className="px-4 py-3 text-zinc-400 max-w-xs truncate">{r.notes || '—'}</td>
-                          <td className="px-4 py-3 text-zinc-500">
-                            {r.created_at ? new Date(r.created_at).toLocaleDateString('fr-FR') : '—'}
-                          </td>
-                        </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 4: QUOTE REQUESTS */}
-        {activeTab === 'quotes' && (
-          <div className="space-y-6 animate-fadeIn">
-            <div>
-              <h3 className="text-lg font-extrabold">Demandes de Devis Studio & Pro</h3>
-              <p className="text-xs text-zinc-400">Demandes de devis personnalisés avec coordonnées complètes</p>
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-zinc-300">
-                  <thead className="bg-zinc-800/80 text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">
-                    <tr>
-                      <th className="px-4 py-3">Produit</th>
+                      <th className="px-4 py-3">Score & Signal</th>
                       <th className="px-4 py-3">Client</th>
-                      <th className="px-4 py-3">Téléphone</th>
-                      <th className="px-4 py-3">Email</th>
-                      <th className="px-4 py-3">Société</th>
-                      <th className="px-4 py-3">Qté</th>
-                      <th className="px-4 py-3">Message</th>
+                      <th className="px-4 py-3">Produit</th>
+                      <th className="px-4 py-3">Contact</th>
+                      <th className="px-4 py-3">Attribution (Source / fbclid)</th>
+                      <th className="px-4 py-3">Statut Pipeline</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-zinc-800">
                     {quoteRequests.length === 0 ? (
                       <tr>
-                        <td colSpan={7} className="px-4 py-8 text-center text-zinc-500">
-                          Aucune demande de devis enregistrée.
-                        </td>
+                        <td colSpan={6} className="px-4 py-8 text-center text-zinc-500">Aucune demande enregistrée.</td>
                       </tr>
                     ) : (
                       quoteRequests.map(q => (
                         <tr key={q.id} className="hover:bg-zinc-800/40 transition">
-                          <td className="px-4 py-3 font-bold text-white">{q.product_name}</td>
-                          <td className="px-4 py-3 font-semibold text-zinc-200">{q.name}</td>
-                          <td className="px-4 py-3 text-red-400 font-mono">{q.phone}</td>
-                          <td className="px-4 py-3 text-zinc-300">{q.email}</td>
-                          <td className="px-4 py-3 text-zinc-400">{q.company || '—'}</td>
-                          <td className="px-4 py-3 font-bold text-white">{q.quantity}</td>
-                          <td className="px-4 py-3 text-zinc-400 max-w-xs truncate">{q.message || '—'}</td>
-                        </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 5: CONTACT LEADS */}
-        {activeTab === 'leads' && (
-          <div className="space-y-6 animate-fadeIn">
-            <div>
-              <h3 className="text-lg font-extrabold">Pipeline des Contacts & Prospect Leads</h3>
-              <p className="text-xs text-zinc-400">Gestion de statut (Nouveau, Contacté, Conclu)</p>
-            </div>
-
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-zinc-300">
-                  <thead className="bg-zinc-800/80 text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">
-                    <tr>
-                      <th className="px-4 py-3">Nom</th>
-                      <th className="px-4 py-3">Email</th>
-                      <th className="px-4 py-3">Téléphone</th>
-                      <th className="px-4 py-3">Message</th>
-                      <th className="px-4 py-3">Statut Pipeline</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-zinc-800">
-                    {contactLeads.length === 0 ? (
-                      <tr>
-                        <td colSpan={5} className="px-4 py-8 text-center text-zinc-500">
-                          Aucun lead de contact enregistré.
-                        </td>
-                      </tr>
-                    ) : (
-                      contactLeads.map(l => (
-                        <tr key={l.id} className="hover:bg-zinc-800/40 transition">
-                          <td className="px-4 py-3 font-bold text-white">{l.name}</td>
-                          <td className="px-4 py-3 text-zinc-300">{l.email}</td>
-                          <td className="px-4 py-3 text-zinc-400 font-mono">{l.phone || '—'}</td>
-                          <td className="px-4 py-3 text-zinc-400 max-w-xs truncate">{l.message || '—'}</td>
+                          <td className="px-4 py-3">
+                            <button
+                              onClick={() => setActiveBreakdown(q.score_breakdown || null)}
+                              className={`px-2.5 py-1 rounded-full text-[10px] font-bold border transition ${
+                                q.score >= 80 ? 'bg-red-600/20 border-red-500 text-red-400' : 'bg-zinc-800 border-zinc-700 text-zinc-400'
+                              }`}
+                            >
+                              {q.score_label} ({q.score} pts)
+                            </button>
+                          </td>
+                          <td className="px-4 py-3 font-bold text-white">
+                            {q.name}
+                            {q.company && <div className="text-[10px] text-zinc-400 font-normal">{q.company}</div>}
+                          </td>
+                          <td className="px-4 py-3 text-zinc-200 font-semibold">{q.product_name}</td>
+                          <td className="px-4 py-3">
+                            <div className="font-mono text-red-400">{q.phone}</div>
+                            <div className="text-[10px] text-zinc-400">{q.email}</div>
+                          </td>
+                          <td className="px-4 py-3 text-zinc-400">
+                            <span className="px-2 py-0.5 bg-zinc-800 rounded font-mono text-[10px] text-zinc-300">
+                              {q.utm_source || 'direct'}
+                            </span>
+                            {q.fbclid && <span className="block text-[9px] text-emerald-400 font-mono">fbclid: ✓</span>}
+                          </td>
                           <td className="px-4 py-3">
                             <select
-                              value={l.status}
-                              onChange={e => handleStatusChange(l.id, e.target.value as any)}
+                              value={q.status}
+                              onChange={e => handleStatusSelect(q, e.target.value as any)}
                               className={`px-3 py-1.5 rounded-lg text-xs font-bold outline-none cursor-pointer border ${
-                                l.status === 'New'
-                                  ? 'bg-red-950/60 border-red-600 text-red-300'
-                                  : l.status === 'Contacted'
-                                  ? 'bg-amber-950/60 border-amber-600 text-amber-300'
-                                  : 'bg-emerald-950/60 border-emerald-600 text-emerald-300'
+                                q.status === 'Won'
+                                  ? 'bg-emerald-950/80 border-emerald-500 text-emerald-300'
+                                  : q.status === 'Lost'
+                                  ? 'bg-zinc-800 border-zinc-700 text-zinc-500'
+                                  : 'bg-zinc-900 border-zinc-700 text-zinc-300'
                               }`}
                             >
                               <option value="New">🔴 Nouveau</option>
                               <option value="Contacted">🟡 Contacté</option>
-                              <option value="Closed">🟢 Conclu</option>
+                              <option value="Negotiating">🟠 En Négociation</option>
+                              <option value="Waiting">⏳ En Attente</option>
+                              <option value="Won">🟢 Gagné (Won) + CAPI Purchase</option>
+                              <option value="Lost">❌ Perdu (Lost)</option>
                             </select>
+                            {q.status === 'Won' && (
+                              <div className="text-[11px] font-bold text-emerald-400 mt-1">
+                                Deal: {q.deal_value} MAD
+                              </div>
+                            )}
                           </td>
                         </tr>
                       ))
@@ -651,117 +521,260 @@ const AdminDashboard: React.FC = () => {
           </div>
         )}
 
-        {/* TAB 6: EMAIL CAMPAIGNS */}
-        {activeTab === 'campaigns' && (
+        {/* TAB 3: ATTRIBUTION REPORT */}
+        {activeTab === 'attribution' && (
           <div className="space-y-6 animate-fadeIn">
             <div>
-              <h3 className="text-lg font-extrabold">Gestionnaire de Campagnes Resend</h3>
-              <p className="text-xs text-zinc-400">Envoyez des emails ciblés par centres d'intérêt</p>
+              <h3 className="text-lg font-extrabold">Attribution du Chiffre d'Affaires par Campagne</h3>
+              <p className="text-xs text-zinc-400">Rapport de rentabilité exacte des campagnes marketing</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Form */}
-              <div className="lg:col-span-2 bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-4">
-                <form onSubmit={handleSendCampaign} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-zinc-300 mb-1">Sujet de l'email</label>
-                    <input
-                      type="text"
-                      required
-                      value={campaignSubject}
-                      onChange={e => setCampaignSubject(e.target.value)}
-                      placeholder="ex: 🔥 Arrivage 7Artisans 35mm T2.0 disponible à Casa!"
-                      className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-sm text-white outline-none"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-semibold text-zinc-300 mb-1">Segment Ciblé</label>
-                      <select
-                        value={campaignSegment}
-                        onChange={e => setCampaignSegment(e.target.value)}
-                        className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-xs text-white outline-none"
-                      >
-                        <option value="All">Tous les abonnés ({subscribers.length})</option>
-                        <option value="Canon">Abonnés intéressés par Canon</option>
-                        <option value="Sony">Abonnés intéressés par Sony</option>
-                        <option value="Nikon">Abonnés intéressés par Nikon</option>
-                        <option value="Cinema Lenses">Abonnés Lentilles Cinéma</option>
-                        <option value="Lighting">Abonnés Éclairage Studio</option>
-                        <option value="Drones">Abonnés Drones DJI</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-zinc-300 mb-1">Type de Campagne</label>
-                      <select
-                        value={campaignType}
-                        onChange={e => setCampaignType(e.target.value)}
-                        className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-xs text-white outline-none"
-                      >
-                        <option value="Promotions">Promotion / Solde</option>
-                        <option value="New arrivals">Nouveaux arrivages</option>
-                        <option value="Back in stock">Retour en Stock</option>
-                        <option value="New products">Lancement Produit</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-zinc-300 mb-1">Contenu de l'email (HTML ou Texte)</label>
-                    <textarea
-                      rows={6}
-                      required
-                      value={campaignBody}
-                      onChange={e => setCampaignBody(e.target.value)}
-                      placeholder="Bonjour, Nous avons le plaisir de vous informer que les nouveaux objectifs sont arrivés..."
-                      className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-xs text-white outline-none font-mono resize-none"
-                    />
-                  </div>
-
-                  {campaignStatus && (
-                    <div className="p-3 bg-zinc-800 border border-zinc-700 rounded-xl text-xs font-semibold text-zinc-200">
-                      {campaignStatus}
-                    </div>
-                  )}
-
-                  <div className="pt-2 flex justify-end">
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="px-6 py-3 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-lg shadow-red-950/50 flex items-center gap-2"
-                    >
-                      <span>🚀</span>
-                      <span>{loading ? 'Envoi...' : 'Enregistrer & Envoyer'}</span>
-                    </button>
-                  </div>
-                </form>
-              </div>
-
-              {/* Resend Config info */}
-              <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-4">
-                <h4 className="font-bold text-sm text-white flex items-center gap-2">
-                  <span>⚙️</span> Clé API Resend
-                </h4>
-                <p className="text-xs text-zinc-400">
-                  Saisissez votre clé API Resend pour activer l'envoi d'emails automatiques.
-                </p>
-                <input
-                  type="password"
-                  value={resendApiKey}
-                  onChange={e => setResendApiKey(e.target.value)}
-                  placeholder="re_123456789..."
-                  className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-xs text-white outline-none font-mono"
-                />
-                <p className="text-[11px] text-zinc-500">
-                  Ou configurez <code className="text-red-400">VITE_RESEND_API_KEY</code> dans votre fichier <code className="text-zinc-400">.env.local</code> ou sur Vercel.
-                </p>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs text-zinc-300">
+                  <thead className="bg-zinc-800/80 text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">
+                    <tr>
+                      <th className="px-4 py-3">Campagne Marketing</th>
+                      <th className="px-4 py-3">Source Traffic</th>
+                      <th className="px-4 py-3">Leads Générés</th>
+                      <th className="px-4 py-3">Ventes Gagnées (Won)</th>
+                      <th className="px-4 py-3">Taux de Conversion</th>
+                      <th className="px-4 py-3 text-right">Chiffre d'Affaires (MAD)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-zinc-800">
+                    {calculateCampaignAttribution().map(c => {
+                      const convRate = c.count > 0 ? ((c.wonCount / c.count) * 100).toFixed(1) : '0';
+                      return (
+                        <tr key={c.name} className="hover:bg-zinc-800/40 transition">
+                          <td className="px-4 py-3 font-bold text-white">{c.name}</td>
+                          <td className="px-4 py-3 font-mono text-zinc-400">{c.source}</td>
+                          <td className="px-4 py-3 font-bold text-white">{c.count}</td>
+                          <td className="px-4 py-3 text-emerald-400 font-bold">{c.wonCount}</td>
+                          <td className="px-4 py-3 text-zinc-300">{convRate}%</td>
+                          <td className="px-4 py-3 text-right font-black text-emerald-400 text-sm">
+                            {c.revenue.toLocaleString('fr-MA')} MAD
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         )}
+
+        {/* TAB 4: META CUSTOM AUDIENCES */}
+        {activeTab === 'audiences' && (
+          <div className="space-y-6 animate-fadeIn">
+            <div>
+              <h3 className="text-lg font-extrabold">Exportation d'Audiences sur Mesure pour Meta Ads</h3>
+              <p className="text-xs text-zinc-400">Téléchargez des fichiers CSV formatés pour l'import dans Meta Ads Manager</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-sm">Devis non finalisés</h4>
+                  <p className="text-xs text-zinc-400 mt-1">Prospects ayant demandé un devis mais pas encore achetés</p>
+                </div>
+                <button
+                  onClick={() => exportMetaCustomAudience('QuoteNotPurchased')}
+                  className="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow transition"
+                >
+                  Télécharger CSV Meta
+                </button>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-sm">Intéressés par Canon</h4>
+                  <p className="text-xs text-zinc-400 mt-1">Abonnés ayant coché la marque Canon</p>
+                </div>
+                <button
+                  onClick={() => exportMetaCustomAudience('Canon')}
+                  className="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow transition"
+                >
+                  Télécharger CSV Meta
+                </button>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-sm">Lentilles Cinéma</h4>
+                  <p className="text-xs text-zinc-400 mt-1">Directeurs photo et réalisateurs ciblés</p>
+                </div>
+                <button
+                  onClick={() => exportMetaCustomAudience('CinemaLenses')}
+                  className="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow transition"
+                >
+                  Télécharger CSV Meta
+                </button>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-3 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-sm">Hot Leads (Score 80+)</h4>
+                  <p className="text-xs text-zinc-400 mt-1">Audience prioritaire pour Lookalike Meta</p>
+                </div>
+                <button
+                  onClick={() => exportMetaCustomAudience('HotLeads')}
+                  className="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow transition"
+                >
+                  Télécharger CSV Meta
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 5: SUBSCRIBERS */}
+        {activeTab === 'subscribers' && (
+          <div className="space-y-6 animate-fadeIn">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="text-lg font-extrabold">Abonnés Newsletter</h3>
+                <p className="text-xs text-zinc-400">Exportation et gestion de liste</p>
+              </div>
+              <button
+                onClick={exportSubscribersCSV}
+                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl shadow transition flex items-center gap-1.5"
+              >
+                <span>📥</span> Exporter Tous (CSV)
+              </button>
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs text-zinc-300">
+                  <thead className="bg-zinc-800/80 text-zinc-400 font-semibold uppercase tracking-wider text-[10px]">
+                    <tr>
+                      <th className="px-4 py-3">Email</th>
+                      <th className="px-4 py-3">Centres d'intérêt</th>
+                      <th className="px-4 py-3">Date</th>
+                      <th className="px-4 py-3 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-zinc-800">
+                    {subscribers.map(s => (
+                      <tr key={s.id} className="hover:bg-zinc-800/40 transition">
+                        <td className="px-4 py-3 font-bold text-white">{s.email}</td>
+                        <td className="px-4 py-3 text-zinc-400">{(s.interests || []).join(', ') || 'Général'}</td>
+                        <td className="px-4 py-3 text-zinc-500">{s.created_at ? new Date(s.created_at).toLocaleDateString('fr-FR') : '—'}</td>
+                        <td className="px-4 py-3 text-right">
+                          <button onClick={() => handleDeleteSubscriber(s.id)} className="px-2.5 py-1 bg-red-950/40 text-red-400 rounded hover:bg-red-600 hover:text-white transition">
+                            Supprimer
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 6: SETTINGS */}
+        {activeTab === 'settings' && (
+          <div className="space-y-6 animate-fadeIn max-w-2xl">
+            <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-4">
+              <h3 className="font-bold text-base text-white">Paramètres Meta Conversions API</h3>
+              <form onSubmit={saveCapiSettings} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Meta Pixel ID</label>
+                  <input
+                    type="text"
+                    value={pixelIdInput}
+                    onChange={e => setPixelIdInput(e.target.value)}
+                    className="w-full px-3.5 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-xs text-white font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Meta CAPI Access Token</label>
+                  <textarea
+                    rows={3}
+                    value={capiTokenInput}
+                    onChange={e => setCapiTokenInput(e.target.value)}
+                    placeholder="EAAG..."
+                    className="w-full px-3.5 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-xs text-white font-mono resize-none"
+                  />
+                </div>
+                <button type="submit" className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow">
+                  Enregistrer la configuration Meta CAPI
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* CONFIRM WON DEAL MODAL (Triggers CAPI Purchase) */}
+      {wonModalItem && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
+          <div className="relative w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl text-white space-y-4">
+            <h3 className="text-xl font-bold flex items-center gap-2">
+              <span>🟢</span> Valider la Vente (Conversion CAPI)
+            </h3>
+            <p className="text-xs text-zinc-400">
+              Veuillez saisir le montant réel de la vente pour <strong className="text-white">{wonModalItem.product_name}</strong>. Un événement CAPI Purchase sera envoyé à Meta avec ce montant.
+            </p>
+
+            <form onSubmit={handleConfirmWonDeal} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-300 mb-1">Montant final de la vente (MAD)</label>
+                <input
+                  type="number"
+                  required
+                  value={wonDealValueInput}
+                  onChange={e => setWonDealValueInput(e.target.value)}
+                  className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-lg font-bold text-emerald-400 outline-none"
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setWonModalItem(null)}
+                  className="px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white"
+                >
+                  Annuler
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg"
+                >
+                  Envoyer Conversion CAPI & Valider
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* SCORE BREAKDOWN MODAL */}
+      {activeBreakdown && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
+          <div className="relative w-full max-w-sm bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl text-white space-y-4">
+            <h3 className="text-lg font-bold">Détail du Score Lead</h3>
+            <div className="space-y-2">
+              {Object.entries(activeBreakdown).map(([k, v]) => (
+                <div key={k} className="flex justify-between text-xs border-b border-zinc-800 pb-1.5">
+                  <span className="text-zinc-300">{k}</span>
+                  <span className="font-bold text-red-400">+{v} pts</span>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={() => setActiveBreakdown(null)}
+              className="w-full py-2 bg-zinc-800 hover:bg-zinc-700 text-xs font-bold rounded-xl"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

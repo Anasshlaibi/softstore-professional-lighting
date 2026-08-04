@@ -42,6 +42,9 @@ import ProductRequestModal from './src/components/ProductRequestModal';
 import QuoteRequestModal from './src/components/QuoteRequestModal';
 import ProductAlertModal from './src/components/ProductAlertModal';
 
+import { initAttributionTracker, recordProductView } from './src/services/attributionTracker';
+import { trackViewContent, trackSearch } from './src/services/metaCapiService';
+
 export interface Product {
   id: number;
   name: string;
@@ -101,6 +104,7 @@ const App: React.FC = () => {
     };
 
     loadProducts();
+    initAttributionTracker();
   }, []);
 
   // Sync modal with URL
@@ -112,6 +116,8 @@ const App: React.FC = () => {
         const product = products.find(p => p.id === idFromUrl);
         if (product && (!selectedProduct || selectedProduct.id !== product.id)) {
           setSelectedProduct(product);
+          recordProductView(product.name);
+          trackViewContent(product.name, product.price || 0, product.category || 'Gear');
         }
       } else if (selectedProduct) {
         setSelectedProduct(null);
