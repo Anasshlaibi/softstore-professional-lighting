@@ -21,7 +21,7 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
       <meta itemProp="name" content="GearShop Maroc" />
       <meta itemProp="url" content="https://gearshop.ma" />
       <meta itemProp="telephone" content="+212673011873" />
-      <meta itemProp="email" content="professionalanass@gmail.com" />
+      <meta itemProp="email" content="contact@gearshop.ma" />
       <meta itemProp="priceRange" content="$$" />
       <meta itemProp="image" content="https://gearshop.ma/banner_7artisans.jpg" />
       <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress" className="hidden">

@@ -48,7 +48,7 @@ const LocalStoreCasablanca: React.FC = () => {
               <i className="fa-solid fa-envelope mt-1 w-6 text-indigo-600 dark:text-indigo-400"></i>
               <div>
                 <p className="font-semibold">Email :</p>
-                <p>professionalanass@gmail.com</p>
+                <p>contact@gearshop.ma</p>
               </div>
             </div>
 

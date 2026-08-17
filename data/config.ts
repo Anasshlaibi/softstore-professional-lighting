@@ -20,7 +20,7 @@ export const defaultSiteConfig = {
   video2: 'VhNBOGkg3k0',
   phone: '+212673011873',
   displayPhone: '+212 6.73.01.18.73',
-  email: 'professionalanass@gmail.com',
+  email: 'contact@gearshop.ma',
   promo: {
     active: false,
     title: "Promo\nFin d'année.",

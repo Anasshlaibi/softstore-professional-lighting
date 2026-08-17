@@ -90,7 +90,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     ],
     "url": "https://gearshop.ma",
     "telephone": "+212673011873",
-    "email": "professionalanass@gmail.com",
+    "email": "contact@gearshop.ma",
     "foundingDate": "2019",
     "address": {
       "@type": "PostalAddress",

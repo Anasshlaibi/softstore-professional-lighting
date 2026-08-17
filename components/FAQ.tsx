@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { faqSchemaData } from './StructuredData';
 
 // Use the same FAQ data as the schema (single source of truth)
@@ -103,7 +103,7 @@ const FAQ: React.FC = () => {
                                 Contactez-nous sur WhatsApp
                             </a>
                             <a
-                                href="mailto:professionalanass@gmail.com"
+                                href="mailto:contact@gearshop.ma"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors font-medium"
                                 aria-label="Envoyer un email à GearShop Maroc"
                             >
