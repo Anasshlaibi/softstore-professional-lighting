@@ -179,34 +179,56 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     }))
   };
 
+  const slugify = (text: string) => {
+    return text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '';
+  };
+
+  const productUrl = product ? `https://gearshop.ma/product/${product.id}-${slugify(product.name)}` : '';
+  
+  // Brand detection for rich snippets
+  const getProductBrand = (p: Product) => {
+    if (p.brand) return p.brand;
+    const t = `${p.name || ''} ${p.category || ''}`.toLowerCase();
+    if (t.includes('k&f') || t.includes('concept') || t.includes('kf')) return 'K&F Concept';
+    if (t.includes('godox')) return 'Godox';
+    if (t.includes('sony')) return 'Sony';
+    if (t.includes('canon')) return 'Canon';
+    if (t.includes('nikon')) return 'Nikon';
+    if (t.includes('rode') || t.includes('røde')) return 'Røde';
+    if (t.includes('sandisk')) return 'SanDisk';
+    return '7Artisans';
+  };
+
+  const resolvedBrand = product ? getProductBrand(product) : '7Artisans';
+
   // ===== 3. Product Schema (when a product is selected) =====
   const productSchema = product ? {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "@id": `https://gearshop.ma/product/${product.id}`,
+    "@id": productUrl,
     "name": product.name,
     "image": [
       product.image,
       ...(Array.isArray(product.gallery) ? product.gallery.slice(0, 4) : [])
     ].filter(Boolean),
-    "description": `Achetez le ${product.name} au Maroc chez GearShop - Seul revendeur officiel 7Artisans au Maroc. Livraison rapide à Casablanca et dans tout le Maroc.`,
+    "description": `Achetez le ${product.name} (${resolvedBrand}) au Maroc chez GearShop. Matériel garanti avec livraison rapide à Casablanca et dans tout le Maroc.`,
     "sku": product.id.toString(),
-    "mpn": `7A-${product.id}`,
+    "mpn": `${resolvedBrand.slice(0, 3).toUpperCase()}-${product.id}`,
     "brand": {
       "@type": "Brand",
-      "name": "7Artisans"
+      "name": resolvedBrand
     },
     "manufacturer": {
       "@type": "Organization",
-      "name": "7Artisans"
+      "name": resolvedBrand
     },
     "seller": {
       "@id": "https://gearshop.ma/#business"
     },
     "offers": {
       "@type": "Offer",
-      "@id": `https://gearshop.ma/product/${product.id}#offer`,
-      "url": `https://gearshop.ma/product/${product.id}`,
+      "@id": `${productUrl}#offer`,
+      "url": productUrl,
       "priceCurrency": "MAD",
       "price": (product.price || 0).toString(),
       "priceValidUntil": "2027-01-01",
@@ -264,7 +286,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       .map(p => ({
         "@type": "Product",
         "name": p.name,
-        "url": `https://gearshop.ma/product/${p.id}`
+        "url": `https://gearshop.ma/product/${p.id}-${slugify(p.name)}`
       })) : []
   } : null;
 
@@ -289,7 +311,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
         "@type": "ListItem",
         "position": 3,
         "name": product.name,
-        "item": `https://gearshop.ma/product/${product.id}`
+        "item": productUrl
       }
     ]
   } : null;

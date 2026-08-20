@@ -14,6 +14,9 @@ import {
   ContactLeadItem
 } from '../services/leadService';
 import { useNavigate } from 'react-router-dom';
+import { Product } from '../App';
+import { fetchAdminProducts, createProductRecord, updateProductRecord, toggleProductStockStatus, deleteProductRecord, ProductFormData } from '../services/productService';
+import { ProductEditorModal } from '../components/Admin/ProductEditorModal';
 
 const ADMIN_PASS = 'gearshop2026';
 
@@ -22,12 +25,18 @@ const AdminDashboard: React.FC = () => {
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState(false);
 
-  const [activeTab, setActiveTab] = useState<'overview' | 'subscribers' | 'product_requests' | 'quotes' | 'attribution' | 'audiences' | 'settings'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'subscribers' | 'product_requests' | 'quotes' | 'attribution' | 'audiences' | 'settings'>('overview');
 
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [productRequests, setProductRequests] = useState<ProductRequestItem[]>([]);
   const [quoteRequests, setQuoteRequests] = useState<QuoteRequestItem[]>([]);
   const [contactLeads, setContactLeads] = useState<ContactLeadItem[]>([]);
+
+  // Product Management State
+  const [adminProducts, setAdminProducts] = useState<Product[]>([]);
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [isProductEditorOpen, setIsProductEditorOpen] = useState(false);
+  const [productCategoryFilter, setProductCategoryFilter] = useState('All');
 
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -70,20 +79,63 @@ const AdminDashboard: React.FC = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const [subs, reqs, quotes, leads] = await Promise.all([
+      const [subs, reqs, quotes, leads, prods] = await Promise.all([
         getSubscribers().catch(() => []),
         getProductRequests().catch(() => []),
         getQuoteRequests().catch(() => []),
-        getContactLeads().catch(() => [])
+        getContactLeads().catch(() => []),
+        fetchAdminProducts().catch(() => [])
       ]);
       setSubscribers(subs);
       setProductRequests(reqs);
       setQuoteRequests(quotes);
       setContactLeads(leads);
+      setAdminProducts(prods);
     } catch (err) {
       console.error('Error fetching dashboard data:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCreateProduct = () => {
+    setEditingProduct(null);
+    setIsProductEditorOpen(true);
+  };
+
+  const handleEditProduct = (prod: Product) => {
+    setEditingProduct(prod);
+    setIsProductEditorOpen(true);
+  };
+
+  const handleSaveProduct = async (formData: ProductFormData) => {
+    if (editingProduct) {
+      await updateProductRecord(editingProduct.id, formData);
+      setAdminProducts(prev => prev.map(p => p.id === editingProduct.id ? { ...p, ...formData } as Product : p));
+    } else {
+      const created = await createProductRecord(formData);
+      setAdminProducts(prev => [created, ...prev]);
+    }
+    setIsProductEditorOpen(false);
+    setEditingProduct(null);
+  };
+
+  const handleToggleStock = async (prod: Product) => {
+    try {
+      const newStatus = await toggleProductStockStatus(prod.id, prod.inStock);
+      setAdminProducts(prev => prev.map(p => p.id === prod.id ? { ...p, inStock: newStatus } : p));
+    } catch (err) {
+      alert('Erreur lors du changement de statut de stock');
+    }
+  };
+
+  const handleDeleteProduct = async (prod: Product) => {
+    if (!confirm(`Voulez-vous vraiment supprimer "${prod.name}" de la base Supabase ?`)) return;
+    try {
+      await deleteProductRecord(prod.id);
+      setAdminProducts(prev => prev.filter(p => p.id !== prod.id));
+    } catch (err) {
+      alert('Erreur lors de la suppression du produit');
     }
   };
 
@@ -293,6 +345,7 @@ const AdminDashboard: React.FC = () => {
         <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-zinc-800 scrollbar-none">
           {[
             { id: 'overview', label: '📊 Vue d\'ensemble' },
+            { id: 'products', label: `📦 Catalogue Produits (${adminProducts.length})` },
             { id: 'quotes', label: `📝 Pipeline Devis & Leads (${quoteRequests.length})` },
             { id: 'subscribers', label: `📧 Abonnés (${subscribers.length})` },
             { id: 'attribution', label: '💰 Attribution Chiffre d\'Affaires' },
@@ -708,7 +761,149 @@ const AdminDashboard: React.FC = () => {
             </div>
           </div>
         )}
+
+        {/* PRODUCTS CATALOG MANAGEMENT TAB */}
+        {activeTab === 'products' && (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800">
+              <div>
+                <h2 className="text-xl font-bold flex items-center gap-2">
+                  <i className="fa-solid fa-boxes-stacked text-red-500"></i> Gestion du Catalogue Produits Supabase
+                </h2>
+                <p className="text-xs text-zinc-400 mt-1">
+                  Créez, modifiez et gérez les produits en direct sur la base de données Supabase.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <input
+                  type="text"
+                  placeholder="Rechercher un produit..."
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  className="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-xs text-white outline-none focus:border-red-500 w-48 sm:w-64"
+                />
+                <select
+                  value={productCategoryFilter}
+                  onChange={e => setProductCategoryFilter(e.target.value)}
+                  className="px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-xs text-white outline-none"
+                >
+                  <option value="All">Toutes les catégories</option>
+                  <option value="Objectifs Photo">Objectifs Photo</option>
+                  <option value="Lentilles Cinéma">Lentilles Cinéma</option>
+                  <option value="Matériel Studio">Matériel Studio</option>
+                  <option value="Éclairage Portable">Éclairage Portable</option>
+                  <option value="Accessoires">Accessoires</option>
+                  <option value="Occasion">Occasion / Seconde Main</option>
+                </select>
+                <button
+                  onClick={handleCreateProduct}
+                  className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl shadow-lg transition flex items-center gap-2"
+                >
+                  <i className="fa-solid fa-plus"></i> + Nouveau Produit
+                </button>
+              </div>
+            </div>
+
+            {/* Products Table */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-zinc-800/80 text-zinc-400 uppercase tracking-wider font-semibold border-b border-zinc-700">
+                    <tr>
+                      <th className="py-3.5 px-4">Produit</th>
+                      <th className="py-3.5 px-4">Catégorie / Monture</th>
+                      <th className="py-3.5 px-4 text-right">Prix Vente</th>
+                      <th className="py-3.5 px-4 text-center">Stock</th>
+                      <th className="py-3.5 px-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-zinc-800 text-zinc-200">
+                    {adminProducts
+                      .filter(p => {
+                        const matchesQuery = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.category.toLowerCase().includes(searchQuery.toLowerCase());
+                        const matchesCat = productCategoryFilter === 'All' || p.category === productCategoryFilter;
+                        return matchesQuery && matchesCat;
+                      })
+                      .map(product => (
+                        <tr key={product.id} className="hover:bg-zinc-800/50 transition">
+                          <td className="py-3 px-4 flex items-center gap-3 min-w-[240px]">
+                            <div className="w-12 h-12 rounded-xl bg-white p-1 border border-zinc-700 overflow-hidden shrink-0 flex items-center justify-center">
+                              <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                            </div>
+                            <div>
+                              <div className="font-bold text-white text-sm line-clamp-1">{product.name}</div>
+                              <div className="text-[10px] text-zinc-400">ID: #{product.id} • {(product as any).brand || '7Artisans'}</div>
+                            </div>
+                          </td>
+
+                          <td className="py-3 px-4">
+                            <span className="px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 font-semibold text-[10px] inline-block mb-1">
+                              {product.category}
+                            </span>
+                            {product.mount && (
+                              <div className="text-[10px] text-blue-400 font-medium">
+                                Monture: {product.mount}
+                              </div>
+                            )}
+                          </td>
+
+                          <td className="py-3 px-4 text-right font-black text-emerald-400 text-sm whitespace-nowrap">
+                            {product.price > 0 ? `${product.price} MAD` : 'Sur demande'}
+                            {product.oldPrice && (
+                              <div className="text-[10px] text-zinc-500 line-through font-normal">
+                                {product.oldPrice} MAD
+                              </div>
+                            )}
+                          </td>
+
+                          <td className="py-3 px-4 text-center">
+                            <button
+                              onClick={() => handleToggleStock(product)}
+                              className={`px-3 py-1 rounded-full text-[10px] font-bold transition ${
+                                product.inStock
+                                  ? 'bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30'
+                                  : 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/30'
+                              }`}
+                            >
+                              {product.inStock ? '✓ En Stock' : '⏱ Rupture'}
+                            </button>
+                          </td>
+
+                          <td className="py-3 px-4 text-right whitespace-nowrap">
+                            <button
+                              onClick={() => handleEditProduct(product)}
+                              className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white rounded-lg text-xs font-semibold mr-2 transition"
+                            >
+                              ✏️ Éditer
+                            </button>
+                            <button
+                              onClick={() => handleDeleteProduct(product)}
+                              className="px-2.5 py-1.5 bg-red-950/50 hover:bg-red-600 text-red-400 hover:text-white rounded-lg text-xs font-semibold transition"
+                            >
+                              🗑️
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* PRODUCT EDITOR MODAL */}
+      <ProductEditorModal
+        isOpen={isProductEditorOpen}
+        product={editingProduct}
+        onClose={() => {
+          setIsProductEditorOpen(false);
+          setEditingProduct(null);
+        }}
+        onSave={handleSaveProduct}
+      />
 
       {/* CONFIRM WON DEAL MODAL (Triggers CAPI Purchase) */}
       {wonModalItem && (

@@ -1,78 +1,44 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
   <channel>
-    <title>GearShop Maroc</title>
+    <title>GearShop Maroc - Google Merchant Feed</title>
     <link>https://gearshop.ma</link>
-    <description>Matériel Photo &amp; Vidéo Professionnel au Maroc</description>
+    <description>Distribution de Matériel Photo, Optiques Cinéma &amp; Accessoires Professionnels au Maroc</description>
     <item>
       <g:id>1</g:id>
       <g:title>YM 350</g:title>
-      <g:description>MODEL：YM350
-
-INPUTVOLTAGE：AC200-220V
-
-OUTPUT POWER：350W
-
-CRI：≥95
-
-CCT：2700-6500K
-
-PRODUCT WEIGHT：1560G
-
-PRODUCT SIZE：219.7*147*114.5MM
-
-LUMINOUS FLUX：18000LM / 26000LM
-
-NOISE：30dB
-
-BARE LAMP：6500LUX / /8800LUX
-
-LIGHT ANGLE：120°
-
-DIMMING：0-100%
-
-LAMP BODY COLOR：BLACK / WHITE</g:description>
+      <g:description>MODEL：YM350 INPUTVOLTAGE：AC200-220V OUTPUT POWER：350W CRI：≥95 CCT：2700-6500K PRODUCT WEIGHT：1560G PRODUCT SIZE：219.7*147*114.5MM LUMINOUS FLUX：18000LM / 26000LM NOISE：30dB BARE LAMP：6500LUX / /8800LUX LIGHT ANGLE：120° DIMMING：0-100% LAMP BODY COLOR：BLACK / WHITE</g:description>
       <g:link>https://gearshop.ma/product/1-ym-350</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>3000.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Photography &gt; Lighting &amp; Studio</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>2</g:id>
       <g:title>YB-300R</g:title>
-      <g:description>MODEL：YB-300R
-
-CHARGING PORT：DC, Type-C
-
-INPUT VOLTAGE：20V 3A
-
-RGB SCENARIOS FX：14 Scenarios FX
-
-OUTPUT POWER：25w
-
-LED QUANTITY：192pcs
-
-CRI：95+
-
-POWER SUPPLY：NP-F
-
-CCT：2700-7500K+200K
-
-FIXED INTERFACE：1/4&apos; Screw interface
-
-LAMP BODY COLOR：BLACK
-
-DIMMING：0-100%
-
-PACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/PACKING BOX</g:description>
+      <g:description>MODEL：YB-300R CHARGING PORT：DC, Type-C INPUT VOLTAGE：20V 3A RGB SCENARIOS FX：14 Scenarios FX OUTPUT POWER：25w LED QUANTITY：192pcs CRI：95+ POWER SUPPLY：NP-F CCT：2700-7500K+200K FIXED INTERFACE：1/4&apos; Screw interface LAMP BODY COLOR：BLACK DIMMING：0-100% PACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/PACKING BOX</g:description>
       <g:link>https://gearshop.ma/product/2-yb-300r</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>1000.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>3</g:id>
@@ -81,9 +47,16 @@ PACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/PACKING BOX</g:description>
       <g:link>https://gearshop.ma/product/3-bkl400bi-bi-color</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.jpg</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
+      <g:availability>out_of_stock</g:availability>
       <g:price>2850.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Photography &gt; Lighting &amp; Studio</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>4</g:id>
@@ -92,54 +65,52 @@ PACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/PACKING BOX</g:description>
       <g:link>https://gearshop.ma/product/4-panel-p-500</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319170443F599C75DE4A68CC2_s.webp</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
+      <g:availability>out_of_stock</g:availability>
       <g:price>1150.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>6</g:id>
       <g:title>YB-100R </g:title>
-      <g:description>Output power: 100 watts full brightness, RGB 50 watts
-
-Color temperature: 2700-7500K
-
-Color rendering index: 90
-
-Number of LED beads: 72 PCS white/warm, 96 PCS RGB
-
-RGB color tone: 0-360 (full color)
-
-Dimming brightness adjustment: 0-100%
-
-Input voltage: 19V=5A</g:description>
+      <g:description>Output power: 100 watts full brightness, RGB 50 watts Color temperature: 2700-7500K Color rendering index: 90 Number of LED beads: 72 PCS white/warm, 96 PCS RGB RGB color tone: 0-360 (full color) Dimming brightness adjustment: 0-100% Input voltage: 19V=5A</g:description>
       <g:link>https://gearshop.ma/product/6-yb-100r</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319173149416DF92390F5C3A7_b.webp</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>1900.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>7</g:id>
       <g:title>S100 W portable</g:title>
-      <g:description>MODEL: S100
-LIFETIME: 50,000 HOURS
-INPUT VOLTAGE: 200‑240V
-NUMBER OF LAMP BEADS: 1 PC
-OUTPUT POWER: 100W
-LUX AT 1 METER: 35,801 LUX
-CRI: ≥96
-CCT: 2700‑6500K ±200K
-MATERIAL: METAL
-LAMP BODY COLOR: WHITE / BLUE
-PRODUCT WEIGHT: 367G
-DIMMING: 0‑100%</g:description>
+      <g:description>MODEL: S100 LIFETIME: 50,000 HOURS INPUT VOLTAGE: 200‑240V NUMBER OF LAMP BEADS: 1 PC OUTPUT POWER: 100W LUX AT 1 METER: 35,801 LUX CRI: ≥96 CCT: 2700‑6500K ±200K MATERIAL: METAL LAMP BODY COLOR: WHITE / BLUE PRODUCT WEIGHT: 367G DIMMING: 0‑100%</g:description>
       <g:link>https://gearshop.ma/product/7-s100-w-portable</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.jpg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>1999.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>8</g:id>
@@ -148,87 +119,70 @@ DIMMING: 0‑100%</g:description>
       <g:link>https://gearshop.ma/product/8-p-60s-spotlight</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.jpg</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
+      <g:availability>out_of_stock</g:availability>
       <g:price>1380.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Photography &gt; Lighting &amp; Studio</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1002</g:id>
       <g:title>35mm T2.0 Nikon (Z Mount) - Black</g:title>
-      <g:description>MODEL: C403B\nUPC: 6971835483754\n35mm T2.0 Nikon (Z Mount)
-
-  Lentille Cinéma 35mm T2.0 pour Z Mount - Disponible au Maroc
-  
-    Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0, conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casablanca), vous propose cette optique incontournable pour les montures Z Mount.
-  
-  
-    Rendu Cinématographique : Un T-stop de T2.0 permettant de filmer en conditions de basse lumière avec un bokeh crémeux et naturel, parfait pour les tournages au Maroc.
-    Conception Professionnelle : Bagues d&apos;ouverture et de mise au point crantées (0.8 MOD) compatibles avec tous les systèmes de Follow Focus standards du marché.
-    Focus Breathing Minime : Idéal pour les transitions de point fluides sans déformation du cadre lors de vos vidéos commerciales ou documentaires.
-  
-  
-    📍 Testez cet objectif dans notre boutique à Casablanca ou profitez de la livraison express partout au Maroc (Rabat, Marrakech, Tanger, etc.).
-  
-
-</g:description>
+      <g:description>MODEL: C403B\nUPC: 6971835483754\n35mm T2.0 Nikon (Z Mount) Lentille Cinéma 35mm T2.0 pour Z Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casablanca), vous propose cette optique incontournable pour les montures Z Mount . Rendu Cinématographique : Un T-stop de T2.0 permettant de filmer en conditions de basse lumière avec un bokeh crémeux et naturel, parfait pour les tournages au Maroc. Conception Professionnelle : Bagues d&apos;ouverture et de mise au point crantées (0.8 MOD) compatibles avec tous les systèmes de Follow Focus standards du marché. Focus Breathing Minime : Idéal pour les transitions de point fluides sans déformation du cadre lors de vos vidéos commerciales ou documentaires. 📍 Testez cet objectif dans notre boutique à Casablanca ou profitez de la livraison express partout au Maroc (Rabat, Marrakech, Tanger, etc.).</g:description>
       <g:link>https://gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black</g:link>
       <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>4500.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1003</g:id>
       <g:title>35mm T2.0 Canon (EOS-R Mount) - Black</g:title>
-      <g:description>MODEL: C404B\nUPC: 6971835483846\n35mm T2.0 Canon (EOS-R Mount)
-
-  Lentille Cinéma 35mm T2.0 pour EOS-R Mount - Disponible au Maroc
-  
-    Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0, conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casablanca), vous propose cette optique incontournable pour les montures EOS-R Mount.
-  
-  
-    Rendu Cinématographique : Un T-stop de T2.0 permettant de filmer en conditions de basse lumière avec un bokeh crémeux et naturel, parfait pour les tournages au Maroc.
-    Conception Professionnelle : Bagues d&apos;ouverture et de mise au point crantées (0.8 MOD) compatibles avec tous les systèmes de Follow Focus standards du marché.
-    Focus Breathing Minime : Idéal pour les transitions de point fluides sans déformation du cadre lors de vos vidéos commerciales ou documentaires.
-  
-  
-    📍 Testez cet objectif dans notre boutique à Casablanca ou profitez de la livraison express partout au Maroc (Rabat, Marrakech, Tanger, etc.).
-  
-
-</g:description>
+      <g:description>MODEL: C404B\nUPC: 6971835483846\n35mm T2.0 Canon (EOS-R Mount) Lentille Cinéma 35mm T2.0 pour EOS-R Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casablanca), vous propose cette optique incontournable pour les montures EOS-R Mount . Rendu Cinématographique : Un T-stop de T2.0 permettant de filmer en conditions de basse lumière avec un bokeh crémeux et naturel, parfait pour les tournages au Maroc. Conception Professionnelle : Bagues d&apos;ouverture et de mise au point crantées (0.8 MOD) compatibles avec tous les systèmes de Follow Focus standards du marché. Focus Breathing Minime : Idéal pour les transitions de point fluides sans déformation du cadre lors de vos vidéos commerciales ou documentaires. 📍 Testez cet objectif dans notre boutique à Casablanca ou profitez de la livraison express partout au Maroc (Rabat, Marrakech, Tanger, etc.).</g:description>
       <g:link>https://gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black</g:link>
       <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>4500.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1004</g:id>
       <g:title>50mm T2.0 Sony (E Mount) - Black</g:title>
-      <g:description>MODEL: C501B\nUPC: 6971835483761\n50mm T2.0 Sony (E Mount)
-
-  Lentille Cinéma 50mm T2.0 pour E Mount - Disponible au Maroc
-  
-    Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0, conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casablanca), vous propose cette optique incontournable pour les montures E Mount.
-  
-  
-    Rendu Cinématographique : Un T-stop de T2.0 permettant de filmer en conditions de basse lumière avec un bokeh crémeux et naturel, parfait pour les tournages au Maroc.
-    Conception Professionnelle : Bagues d&apos;ouverture et de mise au point crantées (0.8 MOD) compatibles avec tous les systèmes de Follow Focus standards du marché.
-    Focus Breathing Minime : Idéal pour les transitions de point fluides sans déformation du cadre lors de vos vidéos commerciales ou documentaires.
-  
-  
-    📍 Testez cet objectif dans notre boutique à Casablanca ou profitez de la livraison express partout au Maroc (Rabat, Marrakech, Tanger, etc.).
-  
-
-</g:description>
+      <g:description>MODEL: C501B\nUPC: 6971835483761\n50mm T2.0 Sony (E Mount) Lentille Cinéma 50mm T2.0 pour E Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casablanca), vous propose cette optique incontournable pour les montures E Mount . Rendu Cinématographique : Un T-stop de T2.0 permettant de filmer en conditions de basse lumière avec un bokeh crémeux et naturel, parfait pour les tournages au Maroc. Conception Professionnelle : Bagues d&apos;ouverture et de mise au point crantées (0.8 MOD) compatibles avec tous les systèmes de Follow Focus standards du marché. Focus Breathing Minime : Idéal pour les transitions de point fluides sans déformation du cadre lors de vos vidéos commerciales ou documentaires. 📍 Testez cet objectif dans notre boutique à Casablanca ou profitez de la livraison express partout au Maroc (Rabat, Marrakech, Tanger, etc.).</g:description>
       <g:link>https://gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black</g:link>
       <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>4500.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1015</g:id>
@@ -239,7 +193,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>3999.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Sony</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1016</g:id>
@@ -250,7 +211,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>4200.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Nikon</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1017</g:id>
@@ -261,7 +229,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>3899.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Panasonic</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1018</g:id>
@@ -272,7 +247,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>3899.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Sony</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1019</g:id>
@@ -281,9 +263,16 @@ DIMMING: 0‑100%</g:description>
       <g:link>https://gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black</g:link>
       <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
+      <g:availability>out_of_stock</g:availability>
       <g:price>4000.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Nikon</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1020</g:id>
@@ -294,7 +283,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>4000.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Panasonic</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1021</g:id>
@@ -305,7 +301,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>1999.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Sony</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1025</g:id>
@@ -316,7 +319,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>7500.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Sony</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1026</g:id>
@@ -327,7 +337,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>7500.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Panasonic</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1027</g:id>
@@ -338,7 +355,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>7500.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Nikon</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1035</g:id>
@@ -349,7 +373,14 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>1200.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Nikon</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1036</g:id>
@@ -360,18 +391,32 @@ DIMMING: 0‑100%</g:description>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>1200.00 MAD</g:price>
-      <g:brand>7Artisans</g:brand>
+      <g:brand>Sony</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1060</g:id>
       <g:title>PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver</g:title>
       <g:description>PL 4-in-1 Lens Adapter compatible with E/L/RF/Z mount</g:description>
       <g:link>https://gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver</g:link>
-      <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/3_bda76ecb-5d6f-412a-9599-94b748d3cf55.jpg?v=1773039123</g:image_link>
+      <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_a309bf99-2e99-4d89-a5bc-28f48cded8a4.jpg?v=1772606130</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>3000.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Lens &amp; Filter Adapters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1061</g:id>
@@ -383,41 +428,229 @@ DIMMING: 0‑100%</g:description>
       <g:availability>in_stock</g:availability>
       <g:price>1.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1062</g:id>
       <g:title>55mm 1/8 Black Mist Filter - Black</g:title>
-      <g:description>55mm 1/8 Black Mist Filter</g:description>
+      <g:description>Filtre 7Artisans 55mm Black Mist 1/8 pour un rendu cinématique doux et une réduction subtile des hautes lumières.</g:description>
       <g:link>https://gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black</g:link>
-      <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/5514-2.jpg?v=1666173803</g:image_link>
+      <g:image_link>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1-8.jpg?v=1781605231</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>1.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2001</g:id>
+      <g:title>K&amp;F Concept 82mm 3-in-1 ND2-32 &amp; CPL &amp; Black Mist 1/4 Filter (Nano-Xcel)</g:title>
+      <g:description>Filtre 3-en-1 polyvalent K&amp;F Concept 82mm combinant un filtre ND variable (ND2-32), un polarisant circulaire (CPL) et un filtre de diffusion Black Mist 1/4. Verre optique Nano-Xcel traité multicouches avec levier orange de réglage précis sans croix noire.</g:description>
+      <g:link>https://gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1200.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2002</g:id>
+      <g:title>K&amp;F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)</g:title>
+      <g:description>Filtre de diffusion cinématographique Black Mist 1/4 K&amp;F Concept 82mm Nano-X. Adoucit les hautes lumières, lisse les tons chair et crée un halo cinématographique tout en préservant le piqué de l&apos;image.</g:description>
+      <g:link>https://gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/products/us/KF01.1064/KF01.1064-1-327x327.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>700.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2003</g:id>
+      <g:title>K&amp;F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)</g:title>
+      <g:description>Filtre polarisant circulaire ultra-mince K&amp;F Concept 82mm. Élimine les reflets indésirables sur l&apos;eau, le verre et le feuillage tout en saturant les ciels et les couleurs naturelles.</g:description>
+      <g:link>https://gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2004</g:id>
+      <g:title>K&amp;F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter</g:title>
+      <g:description>Filtre combiné 2-en-1 K&amp;F Concept 82mm regroupant un polarisant circulaire CPL et un filtre à densité neutre variable ND2 à ND32 (1 à 5 stops). Idéal pour la vidéo et la photographie de paysage.</g:description>
+      <g:link>https://gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1050.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2005</g:id>
+      <g:title>K&amp;F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)</g:title>
+      <g:description>Filtre de protection UV multicouches K&amp;F Concept 82mm en verre optique japonais de haute précision. Protège votre objectif contre les rayures, la poussière et les chocs sans perte de piqué.</g:description>
+      <g:link>https://gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/category/image/36-327x327.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>400.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2006</g:id>
+      <g:title>K&amp;F Concept Kit 18pcs Bagues d&apos;Adaptation Step Up / Step Down (37mm - 82mm)</g:title>
+      <g:description>Kit complet de 18 bagues d&apos;adaptation K&amp;F Concept en alliage d&apos;aluminium aéronautique anodisé. Permet d&apos;utiliser vos filtres 82mm ou autres tailles sur tous vos objectifs de 37mm à 82mm.</g:description>
+      <g:link>https://gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/category/image/70-327x327.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>350.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Lens &amp; Filter Adapters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2007</g:id>
+      <g:title>K&amp;F Concept Kit de Nettoyage Professionnel Optique 3-en-1</g:title>
+      <g:description>Kit d&apos;entretien professionnel pour optiques et boîtiers K&amp;F Concept. Comprend un stylo de nettoyage double face à pointe carbone, un souffleur d&apos;air en silicone anti-poussière et un chiffon microfibre scellé sous vide.</g:description>
+      <g:link>https://gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/category/799-327x327.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>200.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Care &amp; Cleaning</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2008</g:id>
+      <g:title>K&amp;F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)</g:title>
+      <g:description>Projecteur LED de poche ultra-puissant K&amp;F Concept RGB. Température réglable de 2500K à 9900K, rendu de couleur exceptionnel CRI 96+, spectre complet 360° HSI et 21 effets d&apos;éclairage créatifs pour vidéo et vlogging.</g:description>
+      <g:link>https://gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/category/583-327x327.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>500.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Photography &gt; Lighting &amp; Studio</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2009</g:id>
+      <g:title>K&amp;F Concept Sac Bandoulière Photo Étanche pour Caméra &amp; Accessoires</g:title>
+      <g:description>Sac d&apos;épaule bandoulière ergonomique et imperméable K&amp;F Concept. Compartiment rembourré personnalisable pour un boîtier reflex ou hybride avec objectif monté, batteries, filtres et accessoires.</g:description>
+      <g:link>https://gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/category/image/65-327x327.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Bags &amp; Cases</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>2010</g:id>
+      <g:title>K&amp;F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)</g:title>
+      <g:description>Filtre ND variable de précision K&amp;F Concept 82mm Nano-Xcel Pro. Réduction d&apos;exposition de 1 à 5 stops (ND2-32) avec verre optique haute résolution traité 28 couches pour une clarté optique irréprochable sans croix noire.</g:description>
+      <g:link>https://gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro</g:link>
+      <g:image_link>https://img.kfconcept.com/cache/catalog/products/us/KF01.1996/KF01.1996-1-327x327.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1370.00 MAD</g:price>
+      <g:brand>K&amp;F Concept</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
     <item>
       <g:id>1765907057061</g:id>
       <g:title>Y300S</g:title>
-      <g:description>Y300S
-300W dual color temperature
-
-Luminous flux (ML): 33000
-
-Color temperature (K): 2700-6500
-
-1 meter illuminance (with standard cover) lux: 98000
-
-1 meter illuminance (bare light) lux: 10800
-
-Input voltage: 200-220v
-
-Output power: 310w</g:description>
+      <g:description>Y300S 300W dual color temperature Luminous flux (ML): 33000 Color temperature (K): 2700-6500 1 meter illuminance (with standard cover) lux: 98000 1 meter illuminance (bare light) lux: 10800 Input voltage: 200-220v Output power: 310w</g:description>
       <g:link>https://gearshop.ma/product/1765907057061-y300s</g:link>
       <g:image_link>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319171843802F1E3F22F87FE6_b.webp</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>3200.00 MAD</g:price>
       <g:brand>7Artisans</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Photography &gt; Lighting &amp; Studio</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
     </item>
   </channel>
 </rss>

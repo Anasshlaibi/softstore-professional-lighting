@@ -20,6 +20,8 @@ const VideoShowcase = React.lazy(() => import('./components/VideoShowcase'));
 const Testimonials = React.lazy(() => import('./components/Testimonials'));
 const FAQ = React.lazy(() => import('./components/FAQ'));
 const TrustBadges = React.lazy(() => import('./components/TrustBadges'));
+const ShopCategories = React.lazy(() => import('./components/ShopCategories'));
+const BrandLogos = React.lazy(() => import('./components/BrandLogos'));
 const ProductDetailModal = React.lazy(() => import('./components/ProductDetailModal'));
 
 import { defaultProducts } from './data/products';
@@ -34,6 +36,7 @@ const CinemaLensesMaroc = React.lazy(() => import('./src/pages/CinemaLensesMaroc
 const LocalStoreCasablanca = React.lazy(() => import('./src/pages/LocalStoreCasablanca'));
 const BrandCluster = React.lazy(() => import('./src/pages/BrandCluster'));
 const AdminDashboard = React.lazy(() => import('./src/pages/AdminDashboard'));
+const AboutAndPartners = React.lazy(() => import('./src/pages/AboutAndPartners'));
 
 import Newsletter from './src/components/Newsletter';
 import CookieConsentBanner from './src/components/CookieConsentBanner';
@@ -41,6 +44,7 @@ import LeadPopup from './src/components/LeadPopup';
 import ProductRequestModal from './src/components/ProductRequestModal';
 import QuoteRequestModal from './src/components/QuoteRequestModal';
 import ProductAlertModal from './src/components/ProductAlertModal';
+import { SearchModal } from './src/components/Search/SearchModal';
 
 import { initAttributionTracker, recordProductView } from './src/services/attributionTracker';
 import { trackViewContent, trackSearch } from './src/services/metaCapiService';
@@ -60,6 +64,10 @@ export interface Product {
   specs: string[];
   inStock: boolean;
   promoEligible?: boolean;
+  // Enriched fields from Supabase DB (populated from DB columns, not text-sniffing)
+  brand?: string;
+  mount?: string;
+  product_group?: string; // 'new' | 'used' | 'rental'
 }
 
 export interface CartItem extends Product {
@@ -77,6 +85,9 @@ const App: React.FC = () => {
   const [appliedPromo, setAppliedPromo] = useState<number | null>(null);
   const [isPromoOverlayOpen, setIsPromoOverlayOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
+  const [isNewArrivalsOpen, setIsNewArrivalsOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedBrand, setSelectedBrand] = useState<string>('all');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -193,6 +204,12 @@ const App: React.FC = () => {
         openProductModal={openProductModal}
         closeProductModal={closeProductModal}
         selectedProduct={selectedProduct}
+        isNewArrivalsOpen={isNewArrivalsOpen}
+        setIsNewArrivalsOpen={setIsNewArrivalsOpen}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        selectedBrand={selectedBrand}
+        setSelectedBrand={setSelectedBrand}
       />
     </CartProvider>
   );
@@ -217,6 +234,12 @@ const AppContent: React.FC<{
   openProductModal: (id: number) => void;
   closeProductModal: () => void;
   selectedProduct: Product | null;
+  isNewArrivalsOpen: boolean;
+  setIsNewArrivalsOpen: (isOpen: boolean) => void;
+  selectedCategory: string;
+  setSelectedCategory: (cat: string) => void;
+  selectedBrand: string;
+  setSelectedBrand: (brand: string) => void;
 }> = ({
   products,
   loading,
@@ -236,10 +259,17 @@ const AppContent: React.FC<{
   openProductModal,
   closeProductModal,
   selectedProduct,
+  isNewArrivalsOpen,
+  setIsNewArrivalsOpen,
+  selectedCategory,
+  setSelectedCategory,
+  selectedBrand,
+  setSelectedBrand,
 }) => {
     const { toastMessage, clearToast } = useCart();
     
-    // Marketing Lead Modals state
+    // Marketing Lead & Search Modals state
+    const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
     const [isProductRequestOpen, setIsProductRequestOpen] = useState(false);
     const [isQuoteRequestOpen, setIsQuoteRequestOpen] = useState(false);
     const [quoteProduct, setQuoteProduct] = useState<Product | null>(null);
@@ -262,7 +292,7 @@ const AppContent: React.FC<{
             <meta property="og:title" content={`${selectedProduct.name} | GearShop Maroc`} />
             <meta property="og:description" content={`Achetez le ${selectedProduct.name} au Maroc. Prix: ${(selectedProduct.price || 0).toLocaleString('fr-MA')} MAD. Livraison rapide partout au Maroc.`} />
             {selectedProduct.image && <meta property="og:image" content={selectedProduct.image} />}
-            <meta property="og:url" content={`https://gearshop.ma/product/${selectedProduct.id}`} />
+            <meta property="og:url" content={`https://gearshop.ma/product/${selectedProduct.id}-${selectedProduct.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} />
             <meta property="og:type" content="product" />
           </Helmet>
         ) : (
@@ -278,6 +308,8 @@ const AppContent: React.FC<{
             globalSearchQuery={globalSearchQuery}
             setGlobalSearchQuery={setGlobalSearchQuery}
             onOpenProductRequest={() => setIsProductRequestOpen(true)}
+            onOpenSearchModal={() => setIsSearchModalOpen(true)}
+            onOpenNewArrivals={() => setIsNewArrivalsOpen(true)}
           />
         )}
         
@@ -304,12 +336,17 @@ const AppContent: React.FC<{
                 <BrandCluster products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
               </React.Suspense>
             } />
+            <Route path="/a-propos" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <AboutAndPartners />
+              </React.Suspense>
+            } />
             <Route path="*" element={
               <>
                 <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
                 
                 <React.Suspense fallback={<LoadingSpinner />}>
-                  <NewArrivals products={products} siteConfig={siteConfig} />
+                  <TrustBadges />
 
                   {error && !loading && (
                     <div className="container mx-auto px-6 py-4">
@@ -329,15 +366,28 @@ const AppContent: React.FC<{
                       siteConfig={siteConfig}
                       globalSearchQuery={globalSearchQuery}
                       setGlobalSearchQuery={setGlobalSearchQuery}
+                      initialCategory={selectedCategory}
+                      onCategoryConsumed={() => setSelectedCategory('all')}
+                      initialBrand={selectedBrand}
+                      onBrandConsumed={() => setSelectedBrand('all')}
                     />
                   )}
 
-                  <SEOContentSection />
-                  <TrustBadges />
+                  {/* Brand logos strip — positioned after Products */}
+                  <BrandLogos
+                    onBrandSelect={(brand) => {
+                      setSelectedBrand(brand);
+                      setTimeout(() => {
+                        const el = document.getElementById('products');
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 100);
+                    }}
+                  />
+
                   <VideoShowcase siteConfig={siteConfig} />
-                  <WhyUs siteConfig={siteConfig} />
                   <Testimonials />
                   <FAQ />
+                  <SEOContentSection />
                   <Newsletter />
                 </React.Suspense>
               </>
@@ -412,6 +462,25 @@ const AppContent: React.FC<{
           onClose={() => {
             setIsProductAlertOpen(false);
             setAlertProduct(null);
+          }}
+        />
+
+        <SearchModal
+          isOpen={isSearchModalOpen}
+          products={products}
+          onClose={() => setIsSearchModalOpen(false)}
+          onSelectProduct={(id) => openProductModal(id)}
+          siteConfig={siteConfig}
+        />
+
+        {/* New Arrivals Drawer */}
+        <NewArrivals
+          isOpen={isNewArrivalsOpen}
+          onClose={() => setIsNewArrivalsOpen(false)}
+          products={products}
+          onProductClick={(id) => {
+            setIsNewArrivalsOpen(false);
+            openProductModal(id);
           }}
         />
 

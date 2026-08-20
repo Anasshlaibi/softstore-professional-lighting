@@ -206,6 +206,36 @@ async function prerender() {
   let successCount = 0;
   let errorCount = 0;
 
+  // Pre-render brand cluster pages
+  const brandList = [
+    { slug: 'lumix', name: 'Panasonic Lumix (L-Mount & M43)' },
+    { slug: 'panasonic', name: 'Panasonic Lumix (L-Mount & M43)' },
+    { slug: 'fujifilm', name: 'Fujifilm (X-Mount & FX)' },
+    { slug: 'fuji', name: 'Fujifilm (X-Mount & FX)' },
+    { slug: 'sony', name: 'Sony (E-Mount & Full Frame)' },
+    { slug: 'nikon', name: 'Nikon (Z-Mount)' },
+    { slug: 'canon', name: 'Canon (EOS-R & RF-Mount)' },
+    { slug: 'kf-concept', name: 'K&F Concept (Filtres & Accessoires)' },
+    { slug: '7artisans', name: '7Artisans (Objectifs Photo & Cinéma)' }
+  ];
+
+  for (const b of brandList) {
+    const brandDir = path.join(distDir, 'marque', b.slug);
+    try {
+      fs.mkdirSync(brandDir, { recursive: true });
+      let bHtml = baseTemplate;
+      bHtml = bHtml.replace(/<title>.*?<\/title>/i, `<title>Objectifs ${b.name} au Maroc | GearShop Casablanca</title>`);
+      bHtml = bHtml.replace(/<meta name="description" content=".*?"/i, `<meta name="description" content="Achetez vos objectifs et accessoires pour ${b.name} au Maroc chez GearShop. Stock disponible à Casablanca avec livraison rapide partout au Maroc."`);
+      fs.writeFileSync(path.join(brandDir, 'index.html'), bHtml, 'utf-8');
+      console.log(`  ✅ /marque/${b.slug}`);
+      successCount++;
+    } catch (err) {
+      console.error(`  ❌ /marque/${b.slug}: ${err.message}`);
+      errorCount++;
+    }
+  }
+
+  // Pre-render product pages
   for (const product of products) {
     if (!product.id || !product.name) continue;
 
@@ -225,9 +255,9 @@ async function prerender() {
   }
 
   console.log(`\n🎉 Pre-rendering complete!`);
-  console.log(`   ✅ ${successCount} pages pre-rendered`);
+  console.log(`   ✅ ${successCount} pages pre-rendered (Products & Brand Clusters)`);
   if (errorCount > 0) console.log(`   ❌ ${errorCount} pages failed`);
-  console.log('\n   Google will now be able to read real product content on each page.');
+  console.log('\n   Google will now be able to read real product and brand content on each page.');
   console.log('   Expected time for Google to index: 1-4 weeks after deployment.\n');
 }
 

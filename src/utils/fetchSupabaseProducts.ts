@@ -59,6 +59,10 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
         specs: specs,
         inStock: row.inStock !== false && row.instock !== false && row.instock !== 'FALSE' && row.instock !== 'false',
         promoEligible: row.promoEligible === true || row.promoeligible === true || row.promoeligible === 'TRUE' || row.promoeligible === 'true',
+        // Enriched fields from Supabase DB columns (added via migration 20260820_nextgen_schema.sql)
+        brand: row.brand ? String(row.brand) : undefined,
+        mount: row.mount ? String(row.mount) : undefined,
+        product_group: row.product_group ? String(row.product_group) : undefined,
       };
     });
 

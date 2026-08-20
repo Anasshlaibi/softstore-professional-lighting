@@ -77,32 +77,14 @@ const Hero: React.FC<HeroProps> = () => {
       {/* Content */}
       <div className="relative z-10 w-full pb-24 md:pb-32 px-6 flex flex-col items-center">
         
-        {/* Animated Multilingual H1 (SEO Friendly) */}
-        <div className="mb-10 text-center w-full max-w-4xl mx-auto overflow-hidden h-[120px] md:h-[150px] relative">
-          <style>{`
-            @keyframes slideUpFade {
-              0%, 20% { opacity: 1; transform: translateY(0); }
-              25%, 100% { opacity: 0; transform: translateY(-20px); }
-            }
-            .hero-text-1 { animation: slideUpFade 12s infinite; }
-            .hero-text-2 { animation: slideUpFade 12s infinite 4s; opacity: 0; }
-            .hero-text-3 { animation: slideUpFade 12s infinite 8s; opacity: 0; }
-          `}</style>
-          
-          <h1 className="hero-text-1 absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight">Objectifs professionnels</span>
-            <span className="text-lg md:text-2xl text-gray-300">au Maroc 🇲🇦</span>
+        {/* Stable SEO-friendly Single H1 */}
+        <div className="mb-10 text-center w-full max-w-4xl mx-auto flex flex-col items-center justify-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-3 tracking-tight drop-shadow-md">
+            Objectifs Photo & Cinéma Professionnels au Maroc
           </h1>
-          
-          <h1 className="hero-text-2 absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight">Professional Camera Lenses</span>
-            <span className="text-lg md:text-2xl text-gray-300">in Morocco 🇲🇦</span>
-          </h1>
-          
-          <h1 className="hero-text-3 absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight font-arabic" dir="rtl">عدسات كاميرات احترافية</span>
-            <span className="text-lg md:text-2xl text-gray-300" dir="rtl">في المغرب 🇲🇦</span>
-          </h1>
+          <p className="text-lg md:text-2xl text-gray-300 font-medium">
+            Revendeur officiel 7Artisans • Livraison rapide dans tout le Maroc 🇲🇦
+          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full">

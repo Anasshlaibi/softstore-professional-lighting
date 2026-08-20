@@ -8,7 +8,7 @@
   --text-sub: #666666;
   --icon-main: #111111;
   --icon-dim: #cccccc;
-  --brand-red: #E30613;
+  --brand-red: #c53030;
 }
 
 .logo-theme-dark {
@@ -16,7 +16,7 @@
   --text-sub: #a0a0a0;
   --icon-main: #ffffff;
   --icon-dim: #444444;
-  --brand-red: #E30613;
+  --brand-red: #c53030;
 }
 
 .logo-wrapper {

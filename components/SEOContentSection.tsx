@@ -1,21 +1,4 @@
-import React, { useState } from 'react';
-
-/**
- * SEOContentSection - Rich keyword-targeted content for Google & AI search ranking.
- * 
- * This section provides detailed, informative content about 7Artisans products
- * targeting Morocco searches. Content is rendered as real HTML text (not behind
- * a tab or in a modal), so Google and AI crawlers can fully index it.
- * 
- * Target keywords:
- * - "lens camera casa"
- * - "lens camera maroc"
- * - "objectifs 7artisans maroc"
- * - "lentilles cinéma maroc"
- * - "objectif canon nikon sony maroc"
- * - "cine lens maroc casablanca"
- * - "revendeur 7artisans maroc"
- */
+import React from 'react';
 
 interface GuideItem {
   id: string;
@@ -29,213 +12,134 @@ interface GuideItem {
 
 const guides: GuideItem[] = [
   {
-    id: 'nikon-z',
-    icon: '🎯',
-    title: 'Objectifs 7Artisans pour Nikon Z',
-    subtitle: 'La gamme complète pour boîtiers Nikon Z6, Z7, Z50, Z8, Z9',
-    content: 'GearShop Maroc propose la gamme complète des objectifs 7Artisans compatibles avec le mount Nikon Z. Que vous soyez cinéaste ou photographe professionnel, nous disposons de tous les focales: du grand angle 24mm aux téléobjectifs 135mm. Nos objectifs autofocus (AF) et manuels sont disponibles en stock à Casablanca avec livraison rapide dans tout le Maroc. Les objectifs 7Artisans pour Nikon Z offrent une qualité optique exceptionnelle à un prix accessible pour le marché marocain.',
-    tags: ['AF24mm F1.8', 'AF35mm F1.8', 'AF50mm F1.8', 'AF135mm F1.8', '35mm T2.0 Ciné'],
-    mounts: ['Nikon Z']
+    id: 'lumix-panasonic',
+    icon: '⚡',
+    title: 'Objectifs pour Panasonic Lumix (L-Mount & Micro 4/3)',
+    subtitle: 'Pour Lumix S5, S5II, S5IIX, S1H (Plein Format) & GH5, GH6, G9 (M43)',
+    content: 'GearShop Maroc est la première référence pour équiper vos appareils Panasonic Lumix au Maroc. Nous proposons une sélection complète d\'objectifs autofocus F1.8 plein format en monture L-Mount (AF24mm, AF35mm, AF50mm, AF135mm), des optiques cinéma plein format T2.0 (35mm, 50mm) ainsi que les optiques ciné grand angle Micro 4/3 (10mm T2.1, 16mm T2.1). Idéal pour les vidéastes, documentaristes et photographes utilisant la gamme Lumix S et Lumix GH à Casablanca, Rabat et partout au Maroc.',
+    tags: ['AF24mm F1.8 L-Mount', 'AF35mm F1.8 L-Mount', 'AF50mm F1.8 L-Mount', 'AF135mm F1.8 L-Mount', '35mm T2.0 Ciné L-Mount', '10mm T2.1 M43', '16mm T2.1 M43', '50mm F1.2 M43'],
+    mounts: ['L Mount', 'M43 (Panasonic Lumix)']
+  },
+  {
+    id: 'fujifilm-x',
+    icon: '📷',
+    title: 'Objectifs pour Fujifilm X-Series & Hybrides Fuji',
+    subtitle: 'Pour Fujifilm X-T5, X-T4, X-H2, X-H2S, X-T30, X-S20 (FX Mount)',
+    content: 'Découvrez la gamme d\'optiques haute performance pour boîtiers Fujifilm au Maroc. GearShop propose les nouveaux objectifs autofocus lumineux (AF35mm F1.4, AF35mm F1.8, AF50mm F1.8) et les focales fixes manuelles ultra-lumineuses (50mm F1.2, 35mm F1.4, 50mm F1.8) ainsi que les objectifs cinéma grand angle (10mm T2.1, 16mm T2.1). Obtenez le rendu argentique inimitable et le piqué maximal sur vos capteurs X-Trans Fujifilm.',
+    tags: ['AF35mm F1.4 Fuji FX', 'AF35mm F1.8 Fuji FX', 'AF50mm F1.8 Fuji FX', '50mm F1.2 Fuji FX', '10mm T2.1 Ciné FX', '16mm T2.1 Ciné FX'],
+    mounts: ['Fuji FX (X-Mount)']
   },
   {
     id: 'sony-e',
     icon: '📸',
-    title: 'Objectifs 7Artisans pour Sony E Mount',
-    subtitle: 'Compatibles Sony A7 III, A7 IV, A7R V, ZV-E1, FX3, FX30',
-    content: 'Pour les utilisateurs de boîtiers Sony plein format et APS-C, GearShop est votre seul partenaire officiel au Maroc pour les objectifs 7Artisans E Mount. Notre sélection comprend les objectifs autofocus haute performance (AF40mm F2.5, AF35mm F1.8, AF50mm F1.8) et les lentilles cinéma T2.0 pour productions professionnelles. Idéaux pour la photographie de portrait, de mariage, de mode et la production vidéo au Maroc.',
-    tags: ['AF40mm F2.5', 'AF35mm F1.8', 'AF50mm F1.8', 'AF24mm F1.8', '50mm T2.0 Ciné'],
-    mounts: ['Sony E']
+    title: 'Objectifs pour Sony E-Mount (Alpha, FX3, FX30)',
+    subtitle: 'Pour Sony A7 III, A7 IV, A7R V, A7C, ZV-E1, FX3, FX30',
+    content: 'Pour les utilisateurs de boîtiers Sony plein format et APS-C au Maroc, GearShop est votre partenaire officiel pour les objectifs 7Artisans E-Mount. Notre sélection comprend les objectifs autofocus haute performance (AF24mm F1.8, AF35mm F1.8, AF40mm F2.5, AF50mm F1.8, AF135mm F1.8) et les lentilles cinéma T2.0 / T2.1 pour productions professionnelles.',
+    tags: ['AF24mm F1.8', 'AF35mm F1.8', 'AF40mm F2.5', 'AF50mm F1.8', 'AF135mm F1.8', '35mm T2.0 Ciné', '50mm T2.0 Ciné', '10mm T2.1 Ciné'],
+    mounts: ['Sony E (Plein Format & APS-C)']
+  },
+  {
+    id: 'nikon-z',
+    icon: '🎯',
+    title: 'Objectifs pour Nikon Z-Mount (Z5, Z6, Z7, Z8, Z9, Z50)',
+    subtitle: 'Pour boîtiers hybrides Nikon Z plein format et APS-C',
+    content: 'GearShop Maroc propose la gamme complète des objectifs compatibles Nikon Z. Que vous soyez cinéaste ou photographe professionnel, nous disposons de toutes les focales: du grand angle AF24mm aux téléobjectifs AF135mm F1.8, ainsi que les focales fixes cinéma T2.0. Disponibles en stock immédiat à Casablanca avec livraison rapide partout au Maroc.',
+    tags: ['AF24mm F1.8', 'AF35mm F1.8', 'AF50mm F1.8', 'AF135mm F1.8', '50mm F1.2', '35mm T2.0 Ciné', '50mm T2.0 Ciné'],
+    mounts: ['Nikon Z']
   },
   {
     id: 'canon-rf',
     icon: '🎬',
-    title: 'Objectifs 7Artisans pour Canon EOS-R',
-    subtitle: 'Pour Canon R5, R6, R3, R50, R100, R7, R10',
-    content: 'Les utilisateurs Canon EOS-R au Maroc peuvent désormais accéder à la gamme premium 7Artisans via GearShop. Nos objectifs Canon RF Mount (EOS-R) incluent des focales fixes de haute qualité: 35mm F1.4 plein format Mark III et les lentilles cinéma T2.0. Ces objectifs sont parfaits pour la photographie créative et la réalisation vidéo professionnelle au Maroc. Obtenez des images avec un bokeh cinématographique exceptionnel.',
-    tags: ['35mm F1.4 FF', '50mm T2.0 Ciné', '35mm T2.0 Ciné', 'Adaptateur PL 4-en-1'],
-    mounts: ['Canon RF']
+    title: 'Objectifs pour Canon EOS-R & RF-Mount',
+    subtitle: 'Pour Canon R5, R6, R6 II, R3, R50, R100, R7, R10, C70',
+    content: 'Les créateurs sur Canon EOS-R au Maroc peuvent équiper leurs caméras avec les optiques 7Artisans en monture native RF (EOS-R): focales fixes haute résolution (35mm F1.4 Mark III FF, 35mm F1.4) et lentilles cinéma professionnelles (10mm T2.1, 16mm T2.1, 35mm T2.0, 50mm T2.0).',
+    tags: ['35mm F1.4 Mark III FF', '35mm T2.0 Ciné RF', '50mm T2.0 Ciné RF', '10mm T2.1 RF', '16mm T2.1 RF', 'Adaptateur EF-EOS R'],
+    mounts: ['Canon RF (EOS-R)']
   },
   {
-    id: 'cine',
+    id: 'kf-filters',
+    icon: '💎',
+    title: 'Filtres Optiques K&F Concept (VND, Black Mist, CPL & Bagues)',
+    subtitle: 'Verre Optique Japonais Nano-Xcel, Nano-X & Nano-C (Diamètres 49mm à 95mm)',
+    content: 'Premier distributeur officiel K&F Concept au Maroc, GearShop propose la gamme complète de filtres optiques professionnels: filtres ND variables True Color sans croix noire (ND2-32, ND2-400, ND8-2000), filtres de diffusion Black Mist 1/4 & 1/8 pour rendu cinématographique doux, filtres polarisants CPL et kits de bagues d\'adaptation métalliques Step-Up & Step-Down 37mm-82mm.',
+    tags: ['82mm 3-in-1 VND+CPL+Black Mist', '82mm Black Diffusion 1/4', '82mm CPL Slim', '82mm VND ND2-32 Nano-Xcel Pro', 'Kit 18pcs Bagues Step-Up/Down', 'Kit Nettoyage 3-en-1'],
+    mounts: ['Tous Diamètres (49mm à 95mm)']
+  },
+  {
+    id: 'cine-series',
     icon: '🎥',
-    title: 'Lentilles Cinéma 7Artisans — Cine Lenses Maroc',
-    subtitle: 'Objectifs T2.0 pour productions cinématographiques professionnelles',
-    content: 'GearShop est le seul fournisseur au Maroc de lentilles cinéma 7Artisans T2.0. Ces objectifs sont conçus spécifiquement pour la production cinématographique et vidéo professionnelle: bagues de mise au point longues et lisses, ouverture T-stop calibrée, rendu cinématographique authentique. Disponibles en mount Nikon Z, Sony E et Canon RF. Parfaits pour les cinéastes marocains, réalisateurs, vidéastes et studios de production basés à Casablanca, Rabat, Marrakech et dans tout le Maroc.',
-    tags: ['35mm T2.0', '50mm T2.0', '75mm T2.0', 'Série Ciné Complète'],
-    mounts: ['Nikon Z', 'Sony E', 'Canon RF']
-  },
-  {
-    id: 'filters',
-    icon: '🔮',
-    title: 'Filtres & Accessoires 7Artisans',
-    subtitle: 'Filtres VND, Black Mist, adaptateurs PL — disponibles au Maroc',
-    content: 'Complétez votre kit optique avec nos filtres et accessoires 7Artisans disponibles chez GearShop Maroc. Notre gamme comprend: filtres True Color VND (6-9 stops) pour le contrôle parfait de l\'exposition, filtres Black Mist 1/8 pour un effet cinématographique doux, et l\'adaptateur PL 4-en-1 universel compatible avec les mounts E, L, RF et Z. Tous disponibles en stock à Casablanca avec livraison rapide dans tout le Maroc.',
-    tags: ['VND 6-9 Stops', 'Black Mist 1/8', 'Adaptateur PL 4-en-1', 'Adaptateur Canon EF-NZ'],
-    mounts: ['Universel']
+    title: 'Lentilles Cinéma Professionnelles au Maroc (Vision & Spectrum Series)',
+    subtitle: 'Premier importateur d\'optiques cinéma au Maroc (Ouverture T2.0 & T2.1)',
+    content: 'Découvrez la série cinéma professionnelle 7Artisans Vision et Spectrum Series avec ouverture constante T2.0 et T2.1. Conçues pour le cinéma, les clips musicaux et les séries télévisées au Maroc avec engrenages de mise au point 0.8 MOD, bagues de diaphragme fluides sans clic et piqué cinématographique.',
+    tags: ['10mm T2.1', '16mm T2.1', '35mm T2.0', '50mm T2.0', 'Adaptateur PL 4-en-1'],
+    mounts: ['Sony E', 'Nikon Z', 'Canon RF', 'L Mount (Lumix)', 'M43 (Lumix)', 'Fuji FX']
   }
 ];
 
 const SEOContentSection: React.FC = () => {
-  const [activeGuide, setActiveGuide] = useState<string>(guides[0].id);
-  const current = guides.find(g => g.id === activeGuide) || guides[0];
-
   return (
-    <section
-      id="guide-objectifs"
-      className="py-20 md:py-28 bg-gray-50"
-      aria-label="Guide complet des objectifs 7Artisans disponibles au Maroc"
-    >
-      <div className="container mx-auto px-4 md:px-6">
-
-        {/* Section Header — Rich in keywords for Google */}
-        <div className="text-center mb-14">
-          <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
-            Meilleur Lens Camera Maroc & Casa
+    <section className="py-14 bg-gray-50 border-t border-gray-100" aria-label="Guide et Compatibilité Optique">
+      <div className="container mx-auto px-4 md:px-6 max-w-5xl">
+        {/* Accordion Header */}
+        <div className="text-center mb-8">
+          <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#b91c1c] mb-1.5">
+            GUIDE TECHNIQUE &amp; COMPATIBILITÉ BOÎTIERS
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-5 leading-tight">
-            Objectifs 7Artisans &amp; Lentilles Cinéma
-            <br className="hidden md:block" />
-            <span className="text-gray-400 text-2xl md:text-3xl font-normal"> pour votre Lens Camera Casa & Maroc</span>
+          <h2 className="text-xl md:text-2xl font-black text-gray-900 tracking-tight">
+            Compatibilité Optique par Marque &amp; Monture au Maroc
           </h2>
-          <p className="text-gray-500 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
-            GearShop Casablanca est le <strong className="text-black">seul revendeur officiel au Maroc</strong> pour trouver le meilleur <strong className="text-black">lens camera au Maroc</strong>. Spécialiste des objectifs{' '}
-            <strong className="text-black">7Artisans</strong> pour <strong className="text-black">Canon EOS-R</strong>,{' '}
-            <strong className="text-black">Nikon Z</strong> et <strong className="text-black">Sony E</strong>.
-            Votre destination numéro 1 pour tout achat de <strong className="text-black">lens camera Casa</strong> (Casablanca) avec livraison rapide partout au Maroc.
+          <p className="text-xs text-gray-500 mt-1 max-w-2xl mx-auto">
+            Trouvez les meilleurs objectifs photo et cinéma pour Panasonic Lumix, Fujifilm, Sony, Nikon, Canon et les filtres K&amp;F Concept en stock à Casablanca.
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
+        {/* Collapsible SEO Accordions */}
+        <div className="space-y-3">
           {guides.map((guide) => (
-            <button
+            <details
               key={guide.id}
-              onClick={() => setActiveGuide(guide.id)}
-              aria-pressed={activeGuide === guide.id}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
-                activeGuide === guide.id
-                  ? 'bg-black text-white shadow-lg'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-400 hover:text-black'
-              }`}
+              className="group bg-white rounded-2xl border border-gray-200/80 shadow-sm overflow-hidden transition-all duration-300 open:border-red-400 open:shadow-md"
             >
-              <span>{guide.icon}</span>
-              <span className="hidden sm:inline">{guide.mounts[0]}</span>
-              <span className="sm:hidden">{guide.mounts[0]}</span>
-            </button>
+              <summary className="flex items-center justify-between p-4 md:p-5 cursor-pointer select-none list-none group-hover:bg-gray-50/70 transition-colors">
+                <div className="flex items-center gap-3 md:gap-4 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-lg shrink-0 group-open:bg-red-50">
+                    {guide.icon}
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-sm md:text-base font-bold text-gray-900 group-open:text-[#b91c1c] transition-colors leading-tight">
+                      {guide.title}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-0.5 truncate hidden sm:block">
+                      {guide.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0 ml-3">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full hidden sm:inline-block">
+                    {guide.mounts.join(', ')}
+                  </span>
+                  <i className="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition-transform duration-300" />
+                </div>
+              </summary>
+
+              <div className="px-5 pb-5 pt-2 border-t border-gray-100 text-xs md:text-sm text-gray-600 leading-relaxed space-y-3">
+                <p>{guide.content}</p>
+                <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-wider mr-1">Modèles disponibles :</span>
+                  {guide.tags.map((tag, idx) => (
+                    <span key={idx} className="bg-gray-100 text-gray-800 px-2 py-0.5 rounded-md text-[11px] font-bold">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </details>
           ))}
         </div>
-
-        {/* Content Card */}
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="flex flex-col md:flex-row">
-            
-            {/* Left: Info */}
-            <div className="md:w-3/5 p-8 md:p-12">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-4xl">{current.icon}</span>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-black">{current.title}</h3>
-                  <p className="text-sm text-gray-500 mt-1">{current.subtitle}</p>
-                </div>
-              </div>
-
-              <p className="text-gray-600 leading-relaxed mb-8 text-sm md:text-base">
-                {current.content}
-              </p>
-
-              {/* Mount badges */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {current.mounts.map(mount => (
-                  <span key={mount} className="px-3 py-1 bg-black text-white text-xs font-bold rounded-full">
-                    {mount} Mount
-                  </span>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <a
-                href="#collection"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
-              >
-                <i className="fa-solid fa-magnifying-glass"></i>
-                Voir les {current.mounts[0]} objectifs
-              </a>
-            </div>
-
-            {/* Right: Product Tags */}
-            <div className="md:w-2/5 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-100 p-8 md:p-12">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-5">
-                Produits Disponibles
-              </h4>
-              <ul className="space-y-3" role="list">
-                {current.tags.map((tag, i) => (
-                  <li key={i}>
-                    <a
-                      href="#collection"
-                      className="flex items-center gap-3 group"
-                    >
-                      <span className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs font-bold text-gray-600 shrink-0 group-hover:border-black group-hover:text-black transition-colors">
-                        {i + 1}
-                      </span>
-                      <span className="text-sm text-gray-700 group-hover:text-black transition-colors font-medium">
-                        7Artisans {tag}
-                      </span>
-                      <i className="fa-solid fa-arrow-right text-xs text-gray-300 group-hover:text-black transition-colors ml-auto"></i>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Availability badge */}
-              <div className="mt-8 p-4 bg-green-50 rounded-2xl border border-green-100">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-xs font-bold text-green-700 uppercase tracking-wider">En Stock</span>
-                </div>
-                <p className="text-xs text-green-600">
-                  Disponible à Casablanca. Livraison 24-48h.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Text — Pure SEO keyword content */}
-        <div className="mt-16 max-w-4xl mx-auto prose prose-gray">
-          <h3 className="text-xl font-bold text-center text-black mb-6">
-            Pourquoi choisir GearShop pour vos objectifs 7Artisans au Maroc?
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose">
-            {[
-              {
-                icon: '🏆',
-                title: 'Revendeur Exclusif',
-                desc: 'Seul distributeur officiel et agréé d\'objectifs 7Artisans au Maroc. Authenticité garantie sur tous nos produits.'
-              },
-              {
-                icon: '🚚',
-                title: 'Livraison Maroc',
-                desc: 'Livraison rapide dans toutes les villes: Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir, Meknès et plus.'
-              },
-              {
-                icon: '🛡️',
-                title: 'Garantie Officielle',
-                desc: 'Tous les objectifs 7Artisans sont vendus avec garantie constructeur officielle de 1 an et service après-vente.'
-              }
-            ].map((item, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h4 className="font-bold text-black mb-2 text-sm">{item.title}</h4>
-                <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   );
 };
 
 export default SEOContentSection;
-
