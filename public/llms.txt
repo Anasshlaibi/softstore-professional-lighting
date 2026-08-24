@@ -4,8 +4,9 @@
 
 ---
 
-## Points d'Accès Machine-Readable (Endpoints JSON pour IA)
+## Points d'Accès Machine-Readable (Endpoints JSON & Markdown pour IA)
 
+- **Catalogue Markdown Complet (Full LLM Text)**: `https://gearshop.ma/llms-full.txt`
 - **Vue d'Ensemble du Catalogue**: `https://gearshop.ma/ai/catalog.json`
 - **Catalogue Produits Complet**: `https://gearshop.ma/ai/products.json`
 - **Catégories & Taxonomie**: `https://gearshop.ma/ai/categories.json`

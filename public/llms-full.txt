@@ -1,0 +1,785 @@
+# GearShop Maroc — Full Technical Catalog & Entity Knowledge Base (llms-full.txt)
+
+> **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's primary specialized retailer and official distributor for photography, filmmaking, cinema lenses, and studio equipment. Located in Casablanca, Morocco, GearShop provides official 1-year manufacturer warranties, express 24h delivery in Casablanca, and 2-4 days nationwide delivery across all Moroccan cities.
+> **Date of Catalog Compilation**: 2026-08-24
+> **Primary Currency**: MAD (Moroccan Dirham)
+> **Direct Contact**: WhatsApp / Phone: +212 673 011 873 | Email: contact@gearshop.ma
+> **Physical Store Location**: Casablanca, Morocco (Showroom & Testing Available)
+
+---
+
+## Store Policies & Logistics
+
+- **Warranty**: 1-year official warranty on all new camera and lighting gear with local service in Casablanca.
+- **Delivery in Morocco**:
+  - Casablanca: 24 to 48 hours express delivery.
+  - Nationwide (Rabat, Marrakech, Tangier, Fez, Agadir, Oujda, Meknes, etc.): 2 to 4 business days.
+  - Free Shipping threshold: Free for orders of 500 MAD and above.
+- **Payment Methods**:
+  - Cash on Delivery (Paiement à la livraison en espèces)
+  - Bank Transfer (Virement bancaire professionnel avec facture)
+  - Credit Card (Paiement par carte bancaire sécurisé)
+
+---
+
+## Machine-Readable AI Endpoints
+
+- Overview: `https://gearshop.ma/ai/catalog.json`
+- Full Products JSON: `https://gearshop.ma/ai/products.json`
+- Categories Index: `https://gearshop.ma/ai/categories.json`
+- Brands Index: `https://gearshop.ma/ai/brands.json`
+- Single Product Schema: `https://gearshop.ma/ai/product/{slug}.json`
+- XML Sitemap: `https://gearshop.ma/sitemap.xml`
+
+---
+
+## Comprehensive Product Catalog (82 Products)
+
+### Catégorie : STUDIO (3 articles)
+
+#### YM 350
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 3.000 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: MODEL：YM350 INPUTVOLTAGE：AC200-220V OUTPUT POWER：350W CRI：≥95 CCT：2700-6500K PRODUCT WEIGHT：1560G PRODUCT SIZE：219.7*147*114.5MM LUMINOUS FLUX：18000LM / 26000LM NOISE：30dB BARE LAMP：6500LUX / /8800LUX LIGHT ANGLE：120° DIMMING：0-100% LAMP BODY COLOR：BLACK / WHITE
+- **Lien Officiel**: [YM 350](https://gearshop.ma/product/1-ym-350)
+
+#### BKL400Bi Bi-Color
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 2.850 MAD
+- **Disponibilité / Stock**: Sur commande
+- **Spécifications**: Standards constructeur
+- **Description**: Polyvalence absolue avec température de couleur ajustable de 2700K à 6500K. Ventilateur silencieux pour la vidéo.
+- **Lien Officiel**: [BKL400Bi Bi-Color](https://gearshop.ma/product/3-bkl400bi-bi-color)
+
+#### Y300S
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 3.200 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Y300S 300W dual color temperature Luminous flux (ML): 33000 Color temperature (K): 2700-6500 1 meter illuminance (with standard cover) lux: 98000 1 meter illuminance (bare light) lux: 10800 Input voltage: 200-220v Output power: 310w
+- **Lien Officiel**: [Y300S](https://gearshop.ma/product/1765907057061-y300s)
+
+### Catégorie : PORTABLE (6 articles)
+
+#### YB-300R
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.000 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: MODEL：YB-300R CHARGING PORT：DC, Type-C INPUT VOLTAGE：20V 3A RGB SCENARIOS FX：14 Scenarios FX OUTPUT POWER：25w LED QUANTITY：192pcs CRI：95+ POWER SUPPLY：NP-F CCT：2700-7500K+200K FIXED INTERFACE：1/4' Screw interface LAMP BODY COLOR：BLACK DIMMING：0-100% PACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/
+- **Lien Officiel**: [YB-300R](https://gearshop.ma/product/2-yb-300r)
+
+#### YB-100R 
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.900 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Output power: 100 watts full brightness, RGB 50 watts Color temperature: 2700-7500K Color rendering index: 90 Number of LED beads: 72 PCS white/warm, 96 PCS RGB RGB color tone: 0-360 (full color) Dimming brightness adjustment: 0-100% Input voltage: 19V=5A
+- **Lien Officiel**: [YB-100R ](https://gearshop.ma/product/6-yb-100r)
+
+#### S100 W portable
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.999 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: MODEL: S100 LIFETIME: 50,000 HOURS INPUT VOLTAGE: 200‑240V NUMBER OF LAMP BEADS: 1 PC OUTPUT POWER: 100W LUX AT 1 METER: 35,801 LUX CRI: ≥96 CCT: 2700‑6500K ±200K MATERIAL: METAL LAMP BODY COLOR: WHITE / BLUE PRODUCT WEIGHT: 367G DIMMING: 0‑100%
+- **Lien Officiel**: [S100 W portable](https://gearshop.ma/product/7-s100-w-portable)
+
+#### P-60S Spotlight
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.380 MAD
+- **Disponibilité / Stock**: Sur commande
+- **Spécifications**: Standards constructeur
+- **Description**: Spotlight focalisable pour un contrôle précis du faisceau. Parfait pour l'éclairage de cheveux ou les accents.
+- **Lien Officiel**: [P-60S Spotlight](https://gearshop.ma/product/8-p-60s-spotlight)
+
+#### K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 500 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Projecteur LED de poche ultra-puissant K&F Concept RGB. Température réglable de 2500K à 9900K, rendu de couleur exceptionnel CRI 96+, spectre complet 360° HSI et 21 effets d'éclairage créatifs pour vidéo et vlogging.
+- **Lien Officiel**: [K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)](https://gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah)
+
+#### DJI Osmo Pocket 4 Pro
+- **Marque / Brand**: DJI
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 8.000 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Statut: Précommande, Marque: DJI, Capteur principal: CMOS 1 pouce (17 Stops de dynamique), Objectif Portrait: 60mm f/1.8 (Zoom optique 3×, étendu 12×), Profil couleur: D-Log 2 10-bit (Plus de 1 milliard de couleurs), Stabilisation: Nacelle mécanique 3 axes, Suivi intelligent: ActiveTrack 8.0, Mode Ralenti: Jusqu'à 10× Ultra-HD (4K / 240fps), Résolution vidéo: 4K / 240fps (Grand-angle), 4K / 200fps (Médium-télé), Stockage interne: 103 Go (Transfert USB 3.1 jusqu'à 800 Mo/s), Photo: 37 MP & 4K Live Photo, Fonctionnalités Pro: Synchronisation Timecode & Mode Webcam, Écran: Tactile 2 pouces rotatif, Connectivité: Bluetooth, Wi-Fi, USB-C, Garantie: 1 An GearShop Maroc
+- **Description**: Le DJI Osmo Pocket 4 Pro (Osmo Pocket 4P) est une caméra vlog 4K d'exception dotée d'un capteur CMOS grand-angle 1 pouce offrant 17 stops de plage dynamique et le profil couleur D-Log 2. Elle intègre un second objectif téléobjectif moyen 60mm à ouverture f/1.8 idéal pour les portraits naturels. Équi
+- **Lien Officiel**: [DJI Osmo Pocket 4 Pro](https://gearshop.ma/product/3001-dji-osmo-pocket-4-pro)
+
+### Catégorie : ACCESSORIES (10 articles)
+
+#### Panel P-500
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.150 MAD
+- **Disponibilité / Stock**: Sur commande
+- **Spécifications**: Standards constructeur
+- **Description**: Panneau LED ultra-fin pour une lumière douce et diffuse. Idéal pour les interviews et le portrait.
+- **Lien Officiel**: [Panel P-500](https://gearshop.ma/product/4-panel-p-500)
+
+#### K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.200 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Filtre 3-en-1 polyvalent K&F Concept 82mm combinant un filtre ND variable (ND2-32), un polarisant circulaire (CPL) et un filtre de diffusion Black Mist 1/4. Verre optique Nano-Xcel traité multicouches avec levier orange de réglage précis sans croix noire.
+- **Lien Officiel**: [K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)](https://gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel)
+
+#### K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 700 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Filtre de diffusion cinématographique Black Mist 1/4 K&F Concept 82mm Nano-X. Adoucit les hautes lumières, lisse les tons chair et crée un halo cinématographique tout en préservant le piqué de l'image.
+- **Lien Officiel**: [K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)](https://gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x)
+
+#### K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 600 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Filtre polarisant circulaire ultra-mince K&F Concept 82mm. Élimine les reflets indésirables sur l'eau, le verre et le feuillage tout en saturant les ciels et les couleurs naturelles.
+- **Lien Officiel**: [K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)](https://gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated)
+
+#### K&F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.050 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Filtre combiné 2-en-1 K&F Concept 82mm regroupant un polarisant circulaire CPL et un filtre à densité neutre variable ND2 à ND32 (1 à 5 stops). Idéal pour la vidéo et la photographie de paysage.
+- **Lien Officiel**: [K&F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter](https://gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter)
+
+#### K&F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 400 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Filtre de protection UV multicouches K&F Concept 82mm en verre optique japonais de haute précision. Protège votre objectif contre les rayures, la poussière et les chocs sans perte de piqué.
+- **Lien Officiel**: [K&F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)](https://gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics)
+
+#### K&F Concept Kit 18pcs Bagues d'Adaptation Step Up / Step Down (37mm - 82mm)
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 350 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Kit complet de 18 bagues d'adaptation K&F Concept en alliage d'aluminium aéronautique anodisé. Permet d'utiliser vos filtres 82mm ou autres tailles sur tous vos objectifs de 37mm à 82mm.
+- **Lien Officiel**: [K&F Concept Kit 18pcs Bagues d'Adaptation Step Up / Step Down (37mm - 82mm)](https://gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm)
+
+#### K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 200 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Kit d'entretien professionnel pour optiques et boîtiers K&F Concept. Comprend un stylo de nettoyage double face à pointe carbone, un souffleur d'air en silicone anti-poussière et un chiffon microfibre scellé sous vide.
+- **Lien Officiel**: [K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1](https://gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1)
+
+#### K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 600 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Sac d'épaule bandoulière ergonomique et imperméable K&F Concept. Compartiment rembourré personnalisable pour un boîtier reflex ou hybride avec objectif monté, batteries, filtres et accessoires.
+- **Lien Officiel**: [K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires](https://gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires)
+
+#### K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1.370 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Filtre ND variable de précision K&F Concept 82mm Nano-Xcel Pro. Réduction d'exposition de 1 à 5 stops (ND2-32) avec verre optique haute résolution traité 28 couches pour une clarté optique irréprochable sans croix noire.
+- **Lien Officiel**: [K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)](https://gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro)
+
+### Catégorie : LENSES (60 articles)
+
+#### 35mm T2.0 Sony (E Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
+- **Description**: MODEL: C401B UPC: 6971835483730 35mm T2.0 Sony (E Mount) Lentille Cinéma 35mm T2.0 pour E Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au
+- **Lien Officiel**: [35mm T2.0 Sony (E Mount) - Black](https://gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black)
+
+#### 35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
+- **Description**: MODEL: C402B UPC: 6971835483747 35mm T2.0 Panasonic/Leica/Sigma (L Mount) Lentille Cinéma 35mm T2.0 pour L Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre reve
+- **Lien Officiel**: [35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black)
+
+#### 35mm T2.0 Nikon (Z Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: 4.500 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
+- **Description**: MODEL: C403B UPC: 6971835483754 35mm T2.0 Nikon (Z Mount) Lentille Cinéma 35mm T2.0 pour Z Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel a
+- **Lien Officiel**: [35mm T2.0 Nikon (Z Mount) - Black](https://gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black)
+
+#### 35mm T2.0 Canon (EOS-R Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: 4.500 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
+- **Description**: MODEL: C404B UPC: 6971835483846 35mm T2.0 Canon (EOS-R Mount) Lentille Cinéma 35mm T2.0 pour EOS-R Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur of
+- **Lien Officiel**: [35mm T2.0 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black)
+
+#### 50mm T2.0 Sony (E Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Sony E
+- **Prix / Price**: 4.500 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
+- **Description**: MODEL: C501B UPC: 6971835483761 50mm T2.0 Sony (E Mount) Lentille Cinéma 50mm T2.0 pour E Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au
+- **Lien Officiel**: [50mm T2.0 Sony (E Mount) - Black](https://gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black)
+
+#### 50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
+- **Description**: MODEL: C502B UPC: 6971835483785 50mm T2.0 Panasonic/Leica/Sigma (L Mount) Lentille Cinéma 50mm T2.0 pour L Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre reve
+- **Lien Officiel**: [50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1005-50mm-t2-0-panasonic-leica-sigma-l-mount-black)
+
+#### 50mm T2.0 Canon (EOS-R Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
+- **Description**: MODEL: C503B UPC: 6971835483778 50mm T2.0 Canon (EOS-R Mount) Lentille Cinéma 50mm T2.0 pour EOS-R Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur of
+- **Lien Officiel**: [50mm T2.0 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1006-50mm-t2-0-canon-eos-r-mount-black)
+
+#### 50mm T2.0 Nikon (Z Mount) - Black
+- **Marque / Brand**: K&F Concept
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
+- **Description**: MODEL: C504B UPC: 6971835483792 50mm T2.0 Nikon (Z Mount) Lentille Cinéma 50mm T2.0 pour Z Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel a
+- **Lien Officiel**: [50mm T2.0 Nikon (Z Mount) - Black](https://gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black)
+
+#### AF35mm F1.4 Fuji (FX Mount) - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: APS-C, Net Weight: 184g, Weight with box: 396g, Box size: 100*100*105mm
+- **Description**: MODEL: AF35F14B-FX UPC: 6971835487608 AF35mm F1.4 Fuji (FX Mount)
+- **Lien Officiel**: [AF35mm F1.4 Fuji (FX Mount) - Black](https://gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black)
+
+#### AF35mm F1.8 Sony (E Mount) APS-C - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
+- **Description**: MODEL: AF35F18B-E APS-C UPC: 6971835489091 AF35mm F1.8 Sony (E Mount) APS-C
+- **Lien Officiel**: [AF35mm F1.8 Sony (E Mount) APS-C - Black](https://gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black)
+
+#### AF35mm F1.8 Fuji (FX Mount) APS-C - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
+- **Description**: MODEL: AF35F18B-X APS-C UPC: 6971835489152 AF35mm F1.8 Fuji (FX Mount) APS-C
+- **Lien Officiel**: [AF35mm F1.8 Fuji (FX Mount) APS-C - Black](https://gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black)
+
+#### AF35mm F1.8 Nikon (Z Mount) APS-C - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
+- **Description**: MODEL: AF35F18B-Z APS-C UPC: 6971835489411 AF35mm F1.8 Nikon (Z Mount) APS-C
+- **Lien Officiel**: [AF35mm F1.8 Nikon (Z Mount) APS-C - Black](https://gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black)
+
+#### AF50mm F1.8 Sony (E Mount) APS-C - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
+- **Description**: MODEL: AF50F18B-E APS-C UPC: 6971835489107 AF50mm F1.8 Sony (E Mount) APS-C
+- **Lien Officiel**: [AF50mm F1.8 Sony (E Mount) APS-C - Black](https://gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black)
+
+#### AF50mm F1.8 Fuji (FX Mount) APS-C - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
+- **Description**: MODEL: AF50F18B-X APS-C UPC: 6971835489183 AF50mm F1.8 Fuji (FX Mount) APS-C
+- **Lien Officiel**: [AF50mm F1.8 Fuji (FX Mount) APS-C - Black](https://gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black)
+
+#### AF50mm F1.8 Nikon (Z Mount) APS-C - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
+- **Description**: MODEL: AF50F18B-Z APS-C UPC: 6971835489428 AF50mm F1.8 Nikon (Z Mount) APS-C
+- **Lien Officiel**: [AF50mm F1.8 Nikon (Z Mount) APS-C - Black](https://gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black)
+
+#### AF24mm F1.8 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: 3.999 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 424g, Weight with box: 730g, Box size: 140*120*105mm
+- **Description**: MODEL: AF24F18B-E UPC: 6971835487929 AF24mm F1.8 Sony (E Mount)
+- **Lien Officiel**: [AF24mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black)
+
+#### AF24mm F1.8 Nikon (Z Mount) - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: 4.200 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 424g, Weight with box: 730g, Box size: 140*120*105mm
+- **Description**: MODEL: AF24F18B-Z UPC: 6971835488612 AF24mm F1.8 Nikon (Z Mount)
+- **Lien Officiel**: [AF24mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black)
+
+#### AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: 3.899 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 424g, Weight with box: 730g, Box size: 140*120*105mm
+- **Description**: MODEL: AF24F18B-L UPC: 6971835488629 AF24mm F1.8 Panasonic/Leica/Sigma (L Mount)
+- **Lien Officiel**: [AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black)
+
+#### AF35mm F1.8 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: 3.899 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 426g, Weight with box: 721g, Box size: 140*120*105mm
+- **Description**: MODEL: AF35F18B-E UPC: 6971835488643 AF35mm F1.8 Sony (E Mount)
+- **Lien Officiel**: [AF35mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black)
+
+#### AF35mm F1.8 Nikon (Z Mount) - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: 4.000 MAD
+- **Disponibilité / Stock**: Sur commande
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 426g, Weight with box: 721g, Box size: 140*120*105mm
+- **Description**: MODEL: AF35F18B-Z UPC: 6971835488780 AF35mm F1.8 Nikon (Z Mount)
+- **Lien Officiel**: [AF35mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black)
+
+#### AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: 4.000 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 426g, Weight with box: 721g, Box size: 140*120*105mm
+- **Description**: MODEL: AF35F18B-L UPC: 6971835488773 AF35mm F1.8 Panasonic/Leica/Sigma (L Mount)
+- **Lien Officiel**: [AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black)
+
+#### AF40mm F2.5 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: 1.999 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 97g, Weight with box: 228g, Box size: 100*100*90mm
+- **Description**: MODEL: AF40F25B-E UPC: 6971835489213 AF40mm F2.5 Sony (E Mount)
+- **Lien Officiel**: [AF40mm F2.5 Sony (E Mount) - Black](https://gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black)
+
+#### AF50mm F1.8 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
+- **Description**: MODEL: AF101B UPC: 6971835485116 AF50mm F1.8 Sony (E Mount)
+- **Lien Officiel**: [AF50mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1022-af50mm-f1-8-sony-e-mount-black)
+
+#### AF50mm F1.8 Nikon (Z Mount) - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
+- **Description**: MODEL: AF102B UPC: 6971835485482 AF50mm F1.8 Nikon (Z Mount)
+- **Lien Officiel**: [AF50mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black)
+
+#### AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
+- **Description**: MODEL: AF50F18-L UPC: 6971835487264 AF50mm F1.8 Panasonic/Leica/Sigma (L Mount)
+- **Lien Officiel**: [AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black)
+
+#### AF135mm F1.8 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: 7.500 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 1014g, Weight with box: 1550g, Box size: 190*140*130mm
+- **Description**: MODEL: AF135F18B-E UPC: 6971835489374 AF135mm F1.8 Sony (E Mount)
+- **Lien Officiel**: [AF135mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1025-af135mm-f1-8-sony-e-mount-black)
+
+#### AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: 7.500 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 1014g, Weight with box: 1550g, Box size: 190*140*130mm
+- **Description**: MODEL: AF135F18B-L UPC: 6971835489398 AF135mm F1.8 Panasonic/Leica/Sigma (L Mount)
+- **Lien Officiel**: [AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black)
+
+#### AF135mm F1.8 Nikon (Z Mount) - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: 7.500 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 1014g, Weight with box: 1550g, Box size: 190*140*130mm
+- **Description**: MODEL: AF135F18B-Z UPC: 6971835489381 AF135mm F1.8 Nikon (Z Mount)
+- **Lien Officiel**: [AF135mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1027-af135mm-f1-8-nikon-z-mount-black)
+
+#### 35mm F1.4 Sony (E Mount) mark iii FF - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
+- **Description**: MODEL: 35F14B-E UPC: 6971835486243 35mm F1.4 Sony (E Mount) mark iii FF
+- **Lien Officiel**: [35mm F1.4 Sony (E Mount) mark iii FF - Black](https://gearshop.ma/product/1028-35mm-f1-4-sony-e-mount-mark-iii-ff-black)
+
+#### 35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
+- **Description**: MODEL: 35F14B-L UPC: 6971835486250 35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF
+- **Lien Officiel**: [35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black](https://gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black)
+
+#### 35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black
+- **Marque / Brand**: Canon
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
+- **Description**: MODEL: 35F14B-R UPC: 6971835486267 35mm F1.4 Canon (EOS-R Mount) mark iii FF
+- **Lien Officiel**: [35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black](https://gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black)
+
+#### 35mm F1.4 Nikon (Z Mount) mark iii FF - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
+- **Description**: MODEL: 35F14B-Z UPC: 6971835486236 35mm F1.4 Nikon (Z Mount) mark iii FF
+- **Lien Officiel**: [35mm F1.4 Nikon (Z Mount) mark iii FF - Black](https://gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black)
+
+#### 50mm F1.2 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
+- **Description**: MODEL: 50F12B-E UPC: 6971835488933 50mm F1.2 Sony (E Mount)
+- **Lien Officiel**: [50mm F1.2 Sony (E Mount) - Black](https://gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black)
+
+#### 50mm F1.2 Fuji (FX Mount) - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
+- **Description**: MODEL: 50F12B-X UPC: 6971835488940 50mm F1.2 Fuji (FX Mount)
+- **Lien Officiel**: [50mm F1.2 Fuji (FX Mount) - Black](https://gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black)
+
+#### 50mm F1.2 M43 (Panasonic Olympus) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
+- **Description**: MODEL: 50F12B-M UPC: 6971835488957 50mm F1.2 M43 (Panasonic Olympus)
+- **Lien Officiel**: [50mm F1.2 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black)
+
+#### 50mm F1.2 Nikon (Z Mount) - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: 1.200 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
+- **Description**: MODEL: 50F12B-Z UPC: 6971835488964 50mm F1.2 Nikon (Z Mount)
+- **Lien Officiel**: [50mm F1.2 Nikon (Z Mount) - Black](https://gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black)
+
+#### 50mm F1.8 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: 1.200 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, APS-C, Net Weight: 168g, Weight with box: 365g, Box size: 100*100*68mm
+- **Description**: MODEL: A701B UPC: 6971835480203 50mm F1.8 Sony (E Mount)
+- **Lien Officiel**: [50mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black)
+
+#### 50mm F1.8 Fuji (FX Mount) - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, APS-C, Net Weight: 168g, Weight with box: 365g, Box size: 100*100*68mm
+- **Description**: MODEL: A703B UPC: 6971835480210 50mm F1.8 Fuji (FX Mount)
+- **Lien Officiel**: [50mm F1.8 Fuji (FX Mount) - Black](https://gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black)
+
+#### 35mm/F1.4 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
+- **Description**: MODEL: A010B-E UPC: 6971835482191 35mm/F1.4 Sony (E Mount)
+- **Lien Officiel**: [35mm/F1.4 Sony (E Mount) - Black](https://gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black)
+
+#### 35mm/F1.4 Fuji (FX Mount) - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
+- **Description**: MODEL: A010B-X UPC: 6971835482221 35mm/F1.4 Fuji (FX Mount)
+- **Lien Officiel**: [35mm/F1.4 Fuji (FX Mount) - Black](https://gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black)
+
+#### 35mm/F1.4 M43 (Panasonic Olympus) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
+- **Description**: MODEL: A010B-M UPC: 6971835482214 35mm/F1.4 M43 (Panasonic Olympus)
+- **Lien Officiel**: [35mm/F1.4 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black)
+
+#### 35mm/F1.4 Nikon (Z Mount) - Black
+- **Marque / Brand**: Nikon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
+- **Description**: MODEL: A010B-Z UPC: 6971835482207 35mm/F1.4 Nikon (Z Mount)
+- **Lien Officiel**: [35mm/F1.4 Nikon (Z Mount) - Black](https://gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black)
+
+#### 35mm/F1.4 Canon (EOS-R Mount) - Black
+- **Marque / Brand**: Canon
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
+- **Description**: MODEL: A010B-R UPC: 6971835484188 35mm/F1.4 Canon (EOS-R Mount)
+- **Lien Officiel**: [35mm/F1.4 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black)
+
+#### Autofocus adapter for Canon EF - Nikon Z - Black
+- **Marque / Brand**: Canon
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: MODEL: EF-Z UPC: 6971835484324 Autofocus adapter for Canon EF - Nikon Z
+- **Lien Officiel**: [Autofocus adapter for Canon EF - Nikon Z - Black](https://gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black)
+
+#### 10mm T2.1 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21B-E UPC: 6971835485598 10mm T2.1 Sony (E Mount)
+- **Lien Officiel**: [10mm T2.1 Sony (E Mount) - Black](https://gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black)
+
+#### 10mm T2.1 Fuji (FX Mount) - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21B-X UPC: 6971835485574 10mm T2.1 Fuji (FX Mount)
+- **Lien Officiel**: [10mm T2.1 Fuji (FX Mount) - Black](https://gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black)
+
+#### 10mm T2.1 M43 (Panasonic Olympus) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21B-M UPC: 6971835485536 10mm T2.1 M43 (Panasonic Olympus)
+- **Lien Officiel**: [10mm T2.1 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black)
+
+#### 10mm T2.1 Canon (EOS-R Mount) - Black
+- **Marque / Brand**: Canon
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21B-R UPC: 6971835485550 10mm T2.1 Canon (EOS-R Mount)
+- **Lien Officiel**: [10mm T2.1 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black)
+
+#### 10mm T2.1 Sony (E Mount) - Titanium Gray
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21TG-E UPC: 6971835485604 10mm T2.1 Sony (E Mount)
+- **Lien Officiel**: [10mm T2.1 Sony (E Mount) - Titanium Gray](https://gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray)
+
+#### 10mm T2.1 Fuji (FX Mount) - Titanium Gray
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21TG-X UPC: 6971835485581 10mm T2.1 Fuji (FX Mount)
+- **Lien Officiel**: [10mm T2.1 Fuji (FX Mount) - Titanium Gray](https://gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray)
+
+#### 10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21TG-M UPC: 6971835485543 10mm T2.1 M43 (Panasonic Olympus)
+- **Lien Officiel**: [10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray)
+
+#### 10mm T2.1 Canon (EOS-R Mount) - Titanium Gray
+- **Marque / Brand**: Canon
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
+- **Description**: MODEL: 10T21TG-R UPC: 6971835485567 10mm T2.1 Canon (EOS-R Mount)
+- **Lien Officiel**: [10mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray)
+
+#### 16mm T2.1 Sony (E Mount) - Black
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21B-E UPC: 6971835485680 16mm T2.1 Sony (E Mount)
+- **Lien Officiel**: [16mm T2.1 Sony (E Mount) - Black](https://gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black)
+
+#### 16mm T2.1 Fuji (FX Mount) - Black
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21B-X UPC: 6971835485666 16mm T2.1 Fuji (FX Mount)
+- **Lien Officiel**: [16mm T2.1 Fuji (FX Mount) - Black](https://gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black)
+
+#### 16mm T2.1 M43 (Panasonic Olympus) - Black
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21B-M UPC: 6971835485628 16mm T2.1 M43 (Panasonic Olympus)
+- **Lien Officiel**: [16mm T2.1 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black)
+
+#### 16mm T2.1 Canon (EOS-R Mount) - Black
+- **Marque / Brand**: Canon
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21B-R UPC: 6971835485642 16mm T2.1 Canon (EOS-R Mount)
+- **Lien Officiel**: [16mm T2.1 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black)
+
+#### 16mm T2.1 Sony (E Mount) - Titanium Gray
+- **Marque / Brand**: Sony
+- **Monture / Mount**: Sony E
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21TG-E UPC: 6971835485673 16mm T2.1 Sony (E Mount)
+- **Lien Officiel**: [16mm T2.1 Sony (E Mount) - Titanium Gray](https://gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray)
+
+#### 16mm T2.1 Fuji (FX Mount) - Titanium Gray
+- **Marque / Brand**: Fujifilm
+- **Monture / Mount**: Fujifilm X
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21TG-X UPC: 6971835485659 16mm T2.1 Fuji (FX Mount)
+- **Lien Officiel**: [16mm T2.1 Fuji (FX Mount) - Titanium Gray](https://gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray)
+
+#### 16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray
+- **Marque / Brand**: Panasonic
+- **Monture / Mount**: L-Mount
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21TG-M UPC: 6971835485611 16mm T2.1 M43 (Panasonic Olympus)
+- **Lien Officiel**: [16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray)
+
+#### 16mm T2.1 Canon (EOS-R Mount) - Titanium Gray
+- **Marque / Brand**: Canon
+- **Monture / Mount**: Canon RF
+- **Prix / Price**: Prix sur demande
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
+- **Description**: MODEL: 16T21TG-R UPC: 6971835485635 16mm T2.1 Canon (EOS-R Mount)
+- **Lien Officiel**: [16mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray)
+
+### Catégorie : ACCESSORIES (3 articles)
+
+#### PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Nikon Z
+- **Prix / Price**: 3.000 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: PL 4-in-1 Lens Adapter compatible with E/L/RF/Z mount
+- **Lien Officiel**: [PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver](https://gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver)
+
+#### 77mm True Color VND6-9 Filter - Black
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: 77mm True Color VND6-9 Filter
+- **Lien Officiel**: [77mm True Color VND6-9 Filter - Black](https://gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black)
+
+#### 55mm 1/8 Black Mist Filter - Black
+- **Marque / Brand**: 7Artisans
+- **Monture / Mount**: Standard / Universel
+- **Prix / Price**: 1 MAD
+- **Disponibilité / Stock**: En stock à Casablanca
+- **Spécifications**: Standards constructeur
+- **Description**: Filtre 7Artisans 55mm Black Mist 1/8 pour un rendu cinématique doux et une réduction subtile des hautes lumières.
+- **Lien Officiel**: [55mm 1/8 Black Mist Filter - Black](https://gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black)
+
