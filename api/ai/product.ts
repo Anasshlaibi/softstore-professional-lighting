@@ -2,15 +2,12 @@
  * /api/ai/product.ts — Vercel Edge Function
  *
  * Returns rich machine-readable JSON for a single product.
- * Called via:
- *   /ai/product/[slug].json -> rewritten to /api/ai/product?slug=[slug]
- *   /api/ai/product?id=[id]
- *   /api/ai/product?slug=[slug]
  */
 
-import { createClient } from '@supabase/supabase-js';
-
 export const config = { runtime: 'edge' };
+
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
+const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
 
 function slugify(text: string): string {
   return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -66,25 +63,21 @@ export default async function handler(req: Request) {
   // Strip .json if present in slug parameter
   slug = slug.replace(/\.json$/i, '');
 
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || '';
-  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
-
-  if (!supabaseUrl || !supabaseKey) {
-    return new Response(JSON.stringify({ error: 'Database unavailable' }), {
-      status: 503,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
   try {
-    const supabase = createClient(supabaseUrl, supabaseKey);
-    const { data: allProducts, error } = await supabase
-      .from('products gearshop')
-      .select('*')
-      .order('id', { ascending: true });
+    const url = `${SUPABASE_URL}/rest/v1/products%20gearshop?select=*&order=id.asc`;
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    });
 
-    if (error) throw error;
+    if (!res.ok) {
+      throw new Error(`Supabase error ${res.status}`);
+    }
 
+    const allProducts = await res.json();
     let targetProduct: any = null;
 
     if (idParam) {
@@ -112,7 +105,7 @@ export default async function handler(req: Request) {
     if (!targetProduct) {
       return new Response(JSON.stringify({ error: 'Product not found', requested_slug: slug }), {
         status: 404,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
       });
     }
 
@@ -227,15 +220,15 @@ export default async function handler(req: Request) {
     return new Response(JSON.stringify(payload, null, 2), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
         'Cache-Control': 'public, max-age=60, s-maxage=120, stale-while-revalidate=300',
         'Access-Control-Allow-Origin': '*',
       },
     });
   } catch (err: any) {
-    return new Response(JSON.stringify({ error: 'Failed to retrieve product', details: err.message }), {
+    return new Response(JSON.stringify({ error: 'Failed to retrieve product', message: err.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
     });
   }
 }

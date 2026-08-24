@@ -5,30 +5,27 @@
  * store policies, available brands, categories, and AI discovery endpoints.
  */
 
-import { createClient } from '@supabase/supabase-js';
-
 export const config = { runtime: 'edge' };
 
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
+const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
+
 export default async function handler(req: Request) {
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || '';
-  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
-
-  if (!supabaseUrl || !supabaseKey) {
-    return new Response(JSON.stringify({ error: 'Catalog unavailable' }), {
-      status: 503,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
   try {
-    const supabase = createClient(supabaseUrl, supabaseKey);
-    const { data: products, error } = await supabase
-      .from('products gearshop')
-      .select('id, name, category, brand, price, inStock')
-      .order('id', { ascending: true });
+    const url = `${SUPABASE_URL}/rest/v1/products%20gearshop?select=id,name,category,brand,price,inStock&order=id.asc`;
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    });
 
-    if (error) throw error;
+    if (!res.ok) {
+      throw new Error(`Supabase error ${res.status}`);
+    }
 
+    const products = await res.json();
     const baseUrl = 'https://gearshop.ma';
     const now = new Date().toISOString();
 
@@ -101,15 +98,15 @@ export default async function handler(req: Request) {
     return new Response(JSON.stringify(catalogOverview, null, 2), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'public, max-age=60, s-maxage=120, stale-while-revalidate=300',
         'Access-Control-Allow-Origin': '*',
       },
     });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: 'Failed to load catalog overview' }), {
+  } catch (err: any) {
+    return new Response(JSON.stringify({ error: 'Failed to load catalog overview', message: err.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
     });
   }
 }

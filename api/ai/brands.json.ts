@@ -1,137 +1,127 @@
 /**
  * /api/ai/brands.json.ts — Vercel Edge Function
  *
- * Returns a machine-readable brand index with product counts, 
- * categories, mount systems — all derived from live catalog.
+ * Machine-readable index of supported brands, mount systems, and product offerings.
  */
-
-import { createClient } from '@supabase/supabase-js';
 
 export const config = { runtime: 'edge' };
 
-function slugify(text: string): string {
-  return (text || '').toLowerCase().replace(/[&]/g, '-and-').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-}
-
-function detectBrand(row: any): string {
-  if (row.brand) return row.brand;
-  const text = `${row.name || ''} ${row.category || ''}`.toLowerCase();
-  if (text.includes('k&f') || text.includes('concept') || text.includes('kf')) return 'K&F Concept';
-  if (text.includes('7artisans')) return '7Artisans';
-  if (text.includes('godox')) return 'Godox';
-  if (text.includes('sony')) return 'Sony';
-  if (text.includes('canon')) return 'Canon';
-  if (text.includes('nikon')) return 'Nikon';
-  if (text.includes('fuji') || text.includes('fujifilm')) return 'Fujifilm';
-  if (text.includes('panasonic') || text.includes('lumix')) return 'Panasonic';
-  if (text.includes('dji')) return 'DJI';
-  if (text.includes('rode') || text.includes('røde')) return 'Røde';
-  return '7Artisans';
-}
-
-function detectMount(row: any): string | null {
-  const text = `${row.name || ''} ${row.desc || ''}`.toLowerCase();
-  if (text.includes('sony e') || text.includes('e mount') || text.includes('e-mount')) return 'Sony E';
-  if (text.includes('canon rf') || text.includes('eos-r') || text.includes('rf mount')) return 'Canon RF';
-  if (text.includes('nikon z') || text.includes('z mount') || text.includes('z-mount')) return 'Nikon Z';
-  if (text.includes('fuji') || text.includes('fx mount') || text.includes('x mount')) return 'Fujifilm X';
-  if (text.includes('l mount') || text.includes('l-mount')) return 'L-Mount';
-  if (text.includes('m43') || text.includes('micro 4/3')) return 'Micro 4/3';
-  return null;
-}
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
+const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
 
 export default async function handler(req: Request) {
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || '';
-  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
-
-  if (!supabaseUrl || !supabaseKey) {
-    return new Response(JSON.stringify({ error: 'Catalog unavailable' }), {
-      status: 503,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
   try {
-    const supabase = createClient(supabaseUrl, supabaseKey);
-    const { data: products, error } = await supabase
-      .from('products gearshop')
-      .select('id, name, category, brand, desc, price, inStock');
-
-    if (error) throw error;
-
-    const brandMap = new Map<string, {
-      categories: Set<string>;
-      mounts: Set<string>;
-      count: number;
-      inStockCount: number;
-      minPrice: number;
-      maxPrice: number;
-    }>();
-
-    (products || []).forEach((row: any) => {
-      const brand = detectBrand(row);
-      const mount = detectMount(row);
-      const cat = (row.category || 'accessories').toLowerCase().trim();
-      const price = Number(row.price) || 0;
-      const inStock = row.inStock !== false;
-
-      if (!brandMap.has(brand)) {
-        brandMap.set(brand, {
-          categories: new Set(),
-          mounts: new Set(),
-          count: 0,
-          inStockCount: 0,
-          minPrice: Infinity,
-          maxPrice: 0,
-        });
-      }
-      const entry = brandMap.get(brand)!;
-      entry.count++;
-      entry.categories.add(cat);
-      if (mount) entry.mounts.add(mount);
-      if (price > 0 && price < entry.minPrice) entry.minPrice = price;
-      if (price > entry.maxPrice) entry.maxPrice = price;
-      if (inStock) entry.inStockCount++;
+    const url = `${SUPABASE_URL}/rest/v1/products%20gearshop?select=id,name,category,brand,mount,price,inStock&order=id.asc`;
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+      },
     });
 
-    const brands = Array.from(brandMap.entries()).map(([name, data]) => ({
-      name,
-      slug: slugify(name),
-      url: `https://gearshop.ma/marque/${slugify(name)}`,
-      product_count: data.count,
-      in_stock_count: data.inStockCount,
-      categories: Array.from(data.categories).sort(),
-      mount_systems: Array.from(data.mounts).sort(),
-      price_range: {
-        min: data.minPrice === Infinity ? 0 : data.minPrice,
-        max: data.maxPrice,
-        currency: 'MAD',
-      },
-    })).sort((a, b) => b.product_count - a.product_count);
+    if (!res.ok) {
+      throw new Error(`Supabase error ${res.status}`);
+    }
 
-    const result = {
-      store: {
-        name: 'GearShop Maroc',
-        url: 'https://gearshop.ma',
-        location: 'Casablanca, Morocco',
+    const products = await res.json();
+    const baseUrl = 'https://gearshop.ma';
+
+    const brandDetails: Record<string, any> = {
+      '7artisans': {
+        name: '7Artisans',
+        role: 'Official Direct Distributor in Morocco',
+        description: 'Manufacturer of high-performance autofocus F1.8 primes and T2.0 cinema lenses for Sony E, Canon RF, Nikon Z, Lumix L, Fuji FX.',
+        popular_series: ['Autofocus F1.8 Series', 'Spectrum Cinema T2.0', 'Vision Cinema T2.1', 'Manual Fast Primes (F1.2, F1.4)'],
+        mounts_supported: ['Sony E', 'Canon RF (EOS-R)', 'Nikon Z', 'Panasonic Lumix (L-Mount)', 'Micro 4/3', 'Fujifilm X (FX)'],
       },
+      'kf-concept': {
+        name: 'K&F Concept',
+        role: 'Official Authorized Retailer in Morocco',
+        description: 'Premium photographic filters, Variable ND filters, Black Diffusion Black Mist filters, CPL polarizers, and precision step-up rings.',
+        popular_series: ['Nano-Xcel True Color VND', 'Black Mist 1/4 & 1/8 Diffusion', 'Slim CPL Polarizing', 'Step-Up Adapter Ring Sets'],
+        mounts_supported: ['All Filter Thread Diameters (37mm to 95mm)'],
+      },
+      'sony': {
+        name: 'Sony E-Mount Ecosystem',
+        role: 'Compatible Systems',
+        description: 'Full-frame and APS-C lenses and accessories engineered for Sony Alpha (A7 IV, A7R V, A7C II, FX3, FX30, ZV-E1).',
+        popular_series: ['AF 24mm F1.8', 'AF 35mm F1.8', 'AF 50mm F1.8', 'AF 135mm F1.8', '35mm T2.0 Cine', '50mm T2.0 Cine'],
+        mounts_supported: ['Sony E (Full Frame & APS-C)'],
+      },
+      'canon': {
+        name: 'Canon RF / EOS-R Ecosystem',
+        role: 'Compatible Systems',
+        description: 'Native RF-Mount lenses for Canon EOS R system cameras (R5, R6 II, R8, R7, C70).',
+        popular_series: ['35mm F1.4 Mark III FF', '35mm T2.0 Cine RF', '50mm T2.0 Cine RF', '10mm T2.1 RF', '16mm T2.1 RF'],
+        mounts_supported: ['Canon RF (EOS-R)'],
+      },
+      'nikon': {
+        name: 'Nikon Z-Mount Ecosystem',
+        role: 'Compatible Systems',
+        description: 'High resolution autofocus and cinema prime lenses for Nikon Z mirrorless cameras (Z5, Z6 II/III, Z7 II, Z8, Z9, Zf).',
+        popular_series: ['AF 24mm F1.8 Z', 'AF 35mm F1.8 Z', 'AF 50mm F1.8 Z', 'AF 135mm F1.8 Z', '35mm T2.0 Cine Z', '50mm T2.0 Cine Z'],
+        mounts_supported: ['Nikon Z'],
+      },
+      'panasonic': {
+        name: 'Panasonic Lumix (L-Mount & M43)',
+        role: 'Compatible Systems',
+        description: 'L-Mount full-frame autofocus lenses and Micro 4/3 cine primes for Lumix S5, S5II, S1H, GH5, GH6.',
+        popular_series: ['AF 24mm F1.8 L', 'AF 35mm F1.8 L', 'AF 50mm F1.8 L', 'AF 135mm F1.8 L', '10mm T2.1 M43', '16mm T2.1 M43'],
+        mounts_supported: ['Leica/Panasonic L-Mount', 'Micro 4/3 (M43)'],
+      },
+      'fujifilm': {
+        name: 'Fujifilm X-Mount',
+        role: 'Compatible Systems',
+        description: 'Autofocus and fast manual prime lenses tuned for Fuji X-Trans APS-C cameras (X-T5, X-T4, X-H2S, X-T30).',
+        popular_series: ['AF 35mm F1.4 FX', 'AF 35mm F1.8 FX', 'AF 50mm F1.8 FX', '50mm F1.2 FX', '10mm T2.1 Cine FX'],
+        mounts_supported: ['Fujifilm X (FX)'],
+      },
+      'dji': {
+        name: 'DJI',
+        role: 'Authorized Retailer',
+        description: 'Pocket vlogging cameras, gimbals, and action accessories in Morocco.',
+        popular_series: ['DJI Osmo Pocket 4 Pro', 'Osmo Action', 'DJI Wireless Mics'],
+        mounts_supported: ['DJI Proprietary / Universal'],
+      },
+      'godox': {
+        name: 'Godox',
+        role: 'Authorized Retailer',
+        description: 'Studio COB LED continuous lighting, on-camera RGB video torches, and portable modifiers in Morocco.',
+        popular_series: ['LED COB Spotlights', 'RGB Tube & Pocket Lights', 'Parabolic Softboxes'],
+        mounts_supported: ['Bowens Mount / 1/4" Thread / Cold Shoe'],
+      },
+    };
+
+    const brands = Object.entries(brandDetails).map(([slug, details]) => ({
+      slug,
+      name: details.name,
+      role_in_morocco: details.role,
+      description: details.description,
+      url: `${baseUrl}/marque/${slug}`,
+      popular_series: details.popular_series,
+      mounts_supported: details.mounts_supported,
+      warranty: '1 year local Moroccan warranty backed by GearShop Casablanca',
+    }));
+
+    return new Response(JSON.stringify({
+      '@context': 'https://schema.org',
+      store: 'GearShop Maroc',
       updated_at: new Date().toISOString(),
       total_brands: brands.length,
       brands,
-    };
-
-    return new Response(JSON.stringify(result, null, 2), {
+    }, null, 2), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600, s-maxage=3600',
         'Access-Control-Allow-Origin': '*',
       },
     });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: 'Failed to load brands' }), {
+  } catch (err: any) {
+    return new Response(JSON.stringify({ error: 'Failed to load brands', message: err.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
     });
   }
 }
