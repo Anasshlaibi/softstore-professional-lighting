@@ -52,7 +52,7 @@ export function slugify(text: string): string {
     .replace(/(^-|-$)+/g, '');
 }
 
-export function getProductBrand(product: Product): string {
+export function getProductBrand(product: Product): string | undefined {
   if (product.brand && product.brand.trim()) return product.brand.trim();
   const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
   if (text.includes('7artisans')) return '7Artisans';
@@ -69,7 +69,7 @@ export function getProductBrand(product: Product): string {
   if (text.includes('sirui')) return 'Sirui';
   if (text.includes('zhiyun')) return 'Zhiyun';
   if (text.includes('aputure') || text.includes('amaran')) return 'Aputure';
-  return 'GearShop';
+  return undefined;
 }
 
 export function getProductMount(product: Product): string | undefined {
@@ -294,6 +294,7 @@ export function generateProductSEOPackage(
     ? product.gallery
     : (product.image ? [product.image] : []);
 
+  const hasRealPrice = product.price && Number(product.price) > 0;
   const productSchema: Record<string, any> = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
@@ -301,16 +302,18 @@ export function generateProductSEOPackage(
     'name': product.name,
     'image': productImages,
     'description': metaDescription,
-    'brand': {
-      '@type': 'Brand',
-      'name': brand
-    },
+    ...(brand ? {
+      'brand': {
+        '@type': 'Brand',
+        'name': brand
+      }
+    } : {}),
     'offers': {
       '@type': 'Offer',
       '@id': `${canonicalUrl}#offer`,
       'url': canonicalUrl,
       'priceCurrency': 'MAD',
-      'price': (product.price || 0).toString(),
+      ...(hasRealPrice ? { 'price': product.price.toString() } : {}),
       'availability': offerAvailability,
       'itemCondition': product.product_group === 'used' ? 'https://schema.org/UsedCondition' : 'https://schema.org/NewCondition',
       'seller': {
@@ -333,8 +336,8 @@ export function generateProductSEOPackage(
       {
         '@type': 'ListItem',
         'position': 2,
-        'name': product.category || 'Boutique',
-        'item': `https://gearshop.ma/?category=${encodeURIComponent(product.category || '')}`
+        'name': product.category || 'Matériel',
+        'item': `https://gearshop.ma/categorie/${slugify(product.category || 'objectifs')}`
       },
       {
         '@type': 'ListItem',

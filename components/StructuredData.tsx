@@ -67,7 +67,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     "@id": `${baseUrl}/#business`,
     "name": "GearShop Maroc",
     "alternateName": ["GearShop", "Soft Store Maroc", "GearShop Casablanca"],
-    "description": "GearShop est le distributeur officiel au Maroc d'objectifs photo & cinéma 7Artisans, de filtres optiques K&F Concept, de matériel DJI et d'éclairage studio professionnel. Magasin à Casablanca et livraison partout au Maroc.",
+    "description": "GearShop est distributeur et revendeur au Maroc d'objectifs photo & cinéma 7Artisans, de filtres optiques K&F Concept, de matériel DJI et d'éclairage studio professionnel. Showroom à Casablanca et livraison partout au Maroc.",
     "knowsAbout": [
       "Sony E-Mount Lenses",
       "Canon RF Lenses",
@@ -78,7 +78,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       "K&F Concept Variable ND Filters",
       "DJI Osmo Pocket",
       "Studio Lighting & LED Panels",
-      "Filmmaking Equipment Morocco"
+      "Cameras & Filmmaking Equipment Morocco"
     ],
     "url": baseUrl,
     "telephone": "+212673011873",
@@ -142,27 +142,30 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     return text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '';
   };
 
-  const getProductBrand = (p: Product) => {
-    if (p.brand) return p.brand;
-    const t = `${p.name || ''} ${p.category || ''}`.toLowerCase();
+  const getProductBrand = (p: Product): string | undefined => {
+    if (p.brand && p.brand.trim()) return p.brand.trim();
+    const t = `${p.name || ''} ${p.category || ''} ${p.desc || ''}`.toLowerCase();
     if (t.includes('k&f') || t.includes('concept') || t.includes('kf')) return 'K&F Concept';
     if (t.includes('godox')) return 'Godox';
     if (t.includes('sony')) return 'Sony';
     if (t.includes('canon')) return 'Canon';
     if (t.includes('nikon')) return 'Nikon';
     if (t.includes('dji')) return 'DJI';
-    if (t.includes('fuji')) return 'Fujifilm';
+    if (t.includes('fuji') || t.includes('fujifilm')) return 'Fujifilm';
     if (t.includes('lumix') || t.includes('panasonic')) return 'Panasonic';
     if (t.includes('rode') || t.includes('røde')) return 'Røde';
     if (t.includes('sandisk')) return 'SanDisk';
-    return '7Artisans';
+    if (t.includes('7artisans')) return '7Artisans';
+    return undefined;
   };
 
-  const resolvedBrand = product ? getProductBrand(product) : '7Artisans';
+  const resolvedBrand = product ? getProductBrand(product) : undefined;
   const productUrl = product ? `${baseUrl}/product/${product.id}-${slugify(product.name)}` : '';
 
   // ===== 4. Product Schema (when a product is selected) =====
   const isPreorder = product?.isPreorder === true;
+  const hasRealPrice = product && product.price && product.price > 0;
+
   const productSchema = product ? {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -172,24 +175,19 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       product.image,
       ...(Array.isArray(product.gallery) ? product.gallery.slice(0, 4) : [])
     ].filter(Boolean),
-    "description": product.meta_description || product.desc || `Achetez ${product.name} chez GearShop Maroc. Produit officiel garanti 1 an avec livraison rapide à Casablanca et partout au Maroc.`,
-    "sku": `GS-${product.id}`,
-    "mpn": `${resolvedBrand.slice(0, 3).toUpperCase()}-${product.id}`,
-    "brand": {
-      "@type": "Brand",
-      "name": resolvedBrand
-    },
-    "manufacturer": {
-      "@type": "Organization",
-      "name": resolvedBrand
-    },
+    "description": product.meta_description || product.desc || `Achetez ${product.name} chez GearShop Maroc. Produit garanti 1 an avec livraison rapide à Casablanca et partout au Maroc.`,
+    ...(resolvedBrand ? {
+      "brand": {
+        "@type": "Brand",
+        "name": resolvedBrand
+      }
+    } : {}),
     "offers": {
       "@type": "Offer",
       "@id": `${productUrl}#offer`,
       "url": productUrl,
       "priceCurrency": "MAD",
-      "price": (product.price || 0).toString(),
-      "priceValidUntil": "2027-12-31",
+      ...(hasRealPrice ? { "price": product.price.toString() } : {}),
       "availability": isPreorder 
         ? "https://schema.org/PreOrder" 
         : product.inStock 
@@ -262,7 +260,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
         "@type": "ListItem",
         "position": 2,
         "name": product.category || "Matériel",
-        "item": `${baseUrl}/categorie/${slugify(product.category || 'lenses')}`
+        "item": `${baseUrl}/categorie/${slugify(product.category || 'objectifs')}`
       },
       {
         "@type": "ListItem",

@@ -46,8 +46,8 @@ async function generateSitemap() {
   console.log('\n🗺️  Sitemap generator starting...\n');
 
   const env = loadEnv();
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL;
-  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY;
+  const supabaseUrl = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
+  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
   const baseUrl = 'https://gearshop.ma';
   const today = new Date().toISOString().split('T')[0];
 
@@ -55,7 +55,7 @@ async function generateSitemap() {
 
   if (supabaseUrl && supabaseKey) {
     try {
-      const url = `${supabaseUrl}/rest/v1/products%20gearshop?select=id,name,image,gallery&order=id.asc&limit=500`;
+      const url = `${supabaseUrl}/rest/v1/products%20gearshop?select=id,name,image,gallery&order=id.asc`;
       const response = await fetch(url, {
         headers: {
           'apikey': supabaseKey,

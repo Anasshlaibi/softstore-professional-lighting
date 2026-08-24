@@ -2,8 +2,8 @@
  * prerender.cjs
  *
  * Pre-renders all product, brand, category, guide, and landing pages to static HTML
- * so search engines (Google, Bing) and AI crawlers can index real HTML with meta tags
- * and JSON-LD structured data.
+ * so search engines (Google, Bing) and AI crawlers can index real HTML with meta tags,
+ * semantic H1/specs/breadcrumbs, and JSON-LD structured data.
  *
  * Usage: Called automatically via `npm run build`
  */
@@ -36,7 +36,7 @@ function slugify(text) {
 }
 
 async function fetchProducts(supabaseUrl, supabaseKey) {
-  const url = `${supabaseUrl}/rest/v1/products%20gearshop?select=*&order=id.asc&limit=500`;
+  const url = `${supabaseUrl}/rest/v1/products%20gearshop?select=*&order=id.asc`;
   const response = await fetch(url, {
     headers: {
       'apikey': supabaseKey,
@@ -61,9 +61,10 @@ function generateProductHTML(product, baseTemplate) {
     fullJsonStr.includes('preorder');
 
   const inStock = product.inStock !== false && product.inStock !== 'FALSE' && product.inStock !== 'false';
-  const price = Number(product.price || 0).toLocaleString('fr-MA');
+  const hasRealPrice = product.price && Number(product.price) > 0;
+  const priceFormatted = hasRealPrice ? `${Number(product.price).toLocaleString('fr-MA')} DH` : 'Sur demande';
 
-  // Brand extraction
+  // Brand extraction without defaulting unknown to 7Artisans
   let brand = product.brand;
   if (!brand) {
     const nameLower = (product.name || '').toLowerCase();
@@ -71,12 +72,16 @@ function generateProductHTML(product, baseTemplate) {
     else if (nameLower.includes('sony') || fullJsonStr.includes('sony')) brand = 'Sony';
     else if (nameLower.includes('canon') || fullJsonStr.includes('canon')) brand = 'Canon';
     else if (nameLower.includes('nikon') || fullJsonStr.includes('nikon')) brand = 'Nikon';
-    else if (nameLower.includes('k&f') || nameLower.includes('kf concept')) brand = 'K&F Concept';
-    else brand = '7Artisans';
+    else if (nameLower.includes('k&f') || nameLower.includes('kf concept') || nameLower.includes('concept')) brand = 'K&F Concept';
+    else if (nameLower.includes('7artisans')) brand = '7Artisans';
+    else if (nameLower.includes('godox')) brand = 'Godox';
+    else if (nameLower.includes('fuji') || nameLower.includes('fujifilm')) brand = 'Fujifilm';
+    else if (nameLower.includes('lumix') || nameLower.includes('panasonic')) brand = 'Panasonic';
+    else if (nameLower.includes('rode') || nameLower.includes('røde')) brand = 'Røde';
   }
 
   const title = product.seo_title || `${product.name} | ${product.category || 'GearShop'} Maroc`;
-  const description = product.meta_description || `Achetez le ${product.name} chez GearShop Maroc. Prix: ${price} DH. ${isPreorder ? 'Disponible en précommande chez GearShop Maroc' : inStock ? 'En stock à Casablanca' : 'Sur commande'}. Garantie 1 an.`;
+  const description = product.meta_description || `Achetez ${product.name} chez GearShop Maroc. Prix: ${priceFormatted}. ${isPreorder ? 'Disponible en précommande chez GearShop Maroc' : inStock ? 'En stock à Casablanca' : 'Sur commande'}. Garantie 1 an.`;
   const canonicalUrl = `https://gearshop.ma/product/${product.id}-${slugify(product.name)}`;
 
   let availability = 'https://schema.org/InStock';
@@ -120,22 +125,24 @@ function generateProductHTML(product, baseTemplate) {
     }
   }
 
-  // Inject JSON-LD into the head
+  // Inject JSON-LD into head without fabricated SKUs or 0 MAD price
   const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": product.name,
     "image": galleryImages,
     "description": description,
-    "brand": {
-      "@type": "Brand",
-      "name": brand
-    },
+    ...(brand ? {
+      "brand": {
+        "@type": "Brand",
+        "name": brand
+      }
+    } : {}),
     "offers": {
       "@type": "Offer",
       "url": canonicalUrl,
       "priceCurrency": "MAD",
-      "price": product.price,
+      ...(hasRealPrice ? { "price": product.price.toString() } : {}),
       "availability": availability,
       "seller": {
         "@type": "Organization",
@@ -149,6 +156,22 @@ function generateProductHTML(product, baseTemplate) {
     `  <script type="application/ld+json">\n${JSON.stringify(jsonLd)}\n  </script>\n</head>`
   );
 
+  // Inject semantic HTML content inside <body> for zero-JS crawlers
+  const specsList = Array.isArray(product.specs) ? product.specs.map(s => `<li>${s}</li>`).join('') : '';
+  const semanticBodyHtml = `
+  <div id="prerendered-product-seo" style="display:none;" aria-hidden="true">
+    <h1>${product.name}</h1>
+    <p>${description}</p>
+    <p>Prix : ${priceFormatted}</p>
+    <p>Disponibilité : ${isPreorder ? 'Précommande' : inStock ? 'En stock à Casablanca' : 'Rupture temporaire'}</p>
+    ${brand ? `<p>Marque : ${brand}</p>` : ''}
+    ${product.category ? `<p>Catégorie : ${product.category}</p>` : ''}
+    ${specsList ? `<ul>${specsList}</ul>` : ''}
+  </div>
+`;
+
+  html = html.replace('</body>', `${semanticBodyHtml}\n</body>`);
+
   return html;
 }
 
@@ -156,8 +179,8 @@ async function prerender() {
   console.log('\n🔍 Pre-renderer starting...\n');
 
   const env = loadEnv();
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL;
-  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY;
+  const supabaseUrl = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
+  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
 
   const distDir = path.join(__dirname, '..', 'dist');
   const indexHtmlPath = path.join(distDir, 'index.html');
