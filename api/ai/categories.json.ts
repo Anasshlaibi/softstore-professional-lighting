@@ -11,7 +11,7 @@ const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_
 
 export default async function handler(req: Request) {
   try {
-    const url = `${SUPABASE_URL}/rest/v1/products%20gearshop?select=id,name,category,price,inStock&order=id.asc`;
+    const url = `${SUPABASE_URL}/rest/v1/products%20gearshop?select=*&order=id.asc`;
     const res = await fetch(url, {
       headers: {
         'apikey': SUPABASE_KEY,
