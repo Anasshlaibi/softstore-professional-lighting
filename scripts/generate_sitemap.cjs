@@ -81,6 +81,15 @@ async function generateSitemap() {
             }
           }
 
+          // Helper to get absolute image URL
+          const getAbsoluteImageUrl = (img) => {
+            if (!img) return '';
+            if (img.startsWith('http')) return img;
+            if (img.startsWith('//')) return 'https:' + img;
+            if (img.startsWith('/cdn/')) return 'https://7artisans.store' + img;
+            return baseUrl + (img.startsWith('/') ? img : '/' + img);
+          };
+
           productUrls += `
   <url>
     <loc>${productUrl}</loc>
@@ -88,12 +97,12 @@ async function generateSitemap() {
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     ${product.image ? `<image:image>
-      <image:loc>${escapeXml(product.image)}</image:loc>
+      <image:loc>${escapeXml(getAbsoluteImageUrl(product.image))}</image:loc>
       <image:title>${escapeXml(product.name)} - GearShop Maroc</image:title>
       <image:caption>Achetez ${escapeXml(product.name)} chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
     </image:image>` : ''}
     ${gallery.slice(0, 2).map(img => `<image:image>
-      <image:loc>${escapeXml(img)}</image:loc>
+      <image:loc>${escapeXml(getAbsoluteImageUrl(img))}</image:loc>
       <image:title>${escapeXml(product.name)} - Vue supplémentaire - GearShop Maroc</image:title>
     </image:image>`).join('\n    ')}
   </url>`;
