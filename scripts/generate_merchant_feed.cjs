@@ -60,6 +60,7 @@ function detectBrand(product) {
   if (text.includes('sandisk')) return 'SanDisk';
   if (text.includes('insta360')) return 'Insta360';
   if (text.includes('yongnuo')) return 'Yongnuo';
+  if (text.includes('dji')) return 'DJI';
   return '7Artisans';
 }
 
