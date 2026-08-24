@@ -139,6 +139,12 @@ async function generateSitemap() {
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>${baseUrl}/dji-osmo-pocket-4-pro</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>${baseUrl}/magasin-casablanca</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
