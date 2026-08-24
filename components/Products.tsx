@@ -157,7 +157,8 @@ const Products: React.FC<ProductsProps> = ({
       (p) => p.price >= filters.priceRange[0] && p.price <= filters.priceRange[1]
     );
 
-    const invoiceIds = [1027, 1002, 1004, 1035, 1021, 1019, 1018, 1030, 1015, 1023, 1043, 1060, 1061, 1062];
+    // Mix of different categories for the default "En Vedette" sort to show catalog variety
+    const invoiceIds = [3001, 1027, 4, 2001, 1002, 2009, 3, 1004, 2008, 1035, 1060, 1021, 8, 2006, 1019, 1018, 1030, 1015, 1023, 1043, 1061, 1062];
     const sorted = [...filtered].sort((a, b) => {
       const aIndex = invoiceIds.indexOf(a.id || 0);
       const bIndex = invoiceIds.indexOf(b.id || 0);
