@@ -2,7 +2,8 @@
  * generate_sitemap.cjs
  *
  * Fetches all products from Supabase and regenerates public/sitemap.xml
- * so the static sitemap is always up to date with real product data.
+ * so the static sitemap is always up to date with real product, brand,
+ * category, and use-case landing page URLs.
  *
  * Run: node scripts/generate_sitemap.cjs
  * Called automatically during: npm run build
@@ -29,7 +30,7 @@ function loadEnv() {
 }
 
 function slugify(text) {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 }
 
 function escapeXml(str) {
@@ -99,7 +100,7 @@ async function generateSitemap() {
     ${product.image ? `<image:image>
       <image:loc>${escapeXml(getAbsoluteImageUrl(product.image))}</image:loc>
       <image:title>${escapeXml(product.name)} - GearShop Maroc</image:title>
-      <image:caption>Achetez ${escapeXml(product.name)} chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez ${escapeXml(product.name)} chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>` : ''}
     ${gallery.slice(0, 2).map(img => `<image:image>
       <image:loc>${escapeXml(getAbsoluteImageUrl(img))}</image:loc>
@@ -108,15 +109,60 @@ async function generateSitemap() {
   </url>`;
         }
       } else {
-        console.warn(`⚠️  Supabase returned ${response.status} — using empty product list`);
+        console.warn(`⚠️  Supabase returned ${response.status} — using static catalog urls`);
       }
     } catch (err) {
       console.warn(`⚠️  Failed to fetch from Supabase: ${err.message}`);
-      console.warn('    Sitemap will be generated without dynamic product URLs.');
     }
-  } else {
-    console.warn('⚠️  No Supabase credentials found — generating sitemap without products');
   }
+
+  const staticLandingPages = [
+    { url: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
+    { url: `${baseUrl}/camera-maroc`, priority: '0.98', changefreq: 'daily' },
+    { url: `${baseUrl}/cinema-lenses-maroc`, priority: '0.9', changefreq: 'weekly' },
+    { url: `${baseUrl}/dji-osmo-pocket-4-pro`, priority: '0.95', changefreq: 'daily' },
+    { url: `${baseUrl}/magasin-casablanca`, priority: '0.85', changefreq: 'monthly' },
+    { url: `${baseUrl}/a-propos`, priority: '0.8', changefreq: 'monthly' },
+  ];
+
+  const brandPages = [
+    '7artisans', 'kf-concept', 'sony', 'canon', 'nikon', 'panasonic', 'lumix', 'fujifilm', 'dji', 'godox', 'rode'
+  ].map(b => ({
+    url: `${baseUrl}/marque/${b}`,
+    priority: '0.85',
+    changefreq: 'weekly',
+  }));
+
+  const categoryPages = [
+    'objectifs', 'filtres', 'eclairage-studio', 'eclairage-portable', 'accessoires', 'occasion'
+  ].map(c => ({
+    url: `${baseUrl}/categorie/${c}`,
+    priority: '0.85',
+    changefreq: 'weekly',
+  }));
+
+  const guidePages = [
+    'filmmakers', 'videographers', 'content-creators', 'photographers', 'interviews', 'weddings'
+  ].map(g => ({
+    url: `${baseUrl}/guide/${g}`,
+    priority: '0.8',
+    changefreq: 'weekly',
+  }));
+
+  const allStructuredPages = [
+    ...staticLandingPages,
+    ...categoryPages,
+    ...brandPages,
+    ...guidePages,
+  ];
+
+  const staticXmlEntries = allStructuredPages.map(page => `
+  <url>
+    <loc>${page.url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`).join('');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -124,107 +170,7 @@ async function generateSitemap() {
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <url>
-    <loc>${baseUrl}/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>${baseUrl}/banner_7artisans.jpg</image:loc>
-      <image:title>GearShop Maroc - Objectifs 7Artisans et Lentilles Cinéma au Maroc</image:title>
-      <image:caption>Seul revendeur officiel d'objectifs 7Artisans au Maroc - Canon, Nikon Z, Sony E</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>${baseUrl}/cinema-lenses-maroc</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/a-propos</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/dji-osmo-pocket-4-pro</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/magasin-casablanca</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/7artisans</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/lumix</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/panasonic</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/fujifilm</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/fuji</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/kf-concept</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/sony</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/canon</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/nikon</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/godox</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/marque/rode</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>${productUrls}
+  ${staticXmlEntries.trim()}${productUrls}
 </urlset>`;
 
   const sitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
@@ -232,10 +178,10 @@ async function generateSitemap() {
 
   const productCount = (productUrls.match(/<url>/g) || []).length;
   console.log(`✅ Sitemap written to public/sitemap.xml`);
-  console.log(`   📄 3 static pages + ${productCount} product pages = ${3 + productCount} total URLs\n`);
+  console.log(`   📄 ${allStructuredPages.length} landing/category/brand pages + ${productCount} product pages = ${allStructuredPages.length + productCount} total URLs\n`);
 }
 
 generateSitemap().catch(err => {
   console.error('Sitemap generation error:', err);
-  process.exit(0); // Don't break the build
+  process.exit(0);
 });

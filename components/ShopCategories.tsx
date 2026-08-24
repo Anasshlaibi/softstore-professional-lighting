@@ -7,18 +7,18 @@ interface ShopCategoriesProps {
 }
 
 const CATEGORY_DISPLAY_NAMES: Record<string, string> = {
-  'lenses': 'Objectifs Photo & Ciné',
-  'cameras': 'Caméras & Boîtiers',
-  'studio': 'Éclairage Studio',
-  'portable': 'Éclairage Portable',
-  'accessories': 'Accessoires & Filtres',
-  'Objectifs': 'Objectifs Photo & Ciné',
-  'Caméras & Boîtiers': 'Caméras & Boîtiers',
-  'Éclairage & Studio': 'Éclairage Studio',
-  'Stabilisateurs & Gimbals': 'Stabilisateurs & Gimbals',
-  'Occasions / Seconde Main': 'Occasions Certifiées',
-  'Location de Matériel': 'Location de Matériel',
-  'Accessoires & Produits Divers': 'Accessoires & Filtres',
+  'lenses': 'cameras',
+  'cameras': 'cameras',
+  'studio': 'eclairage',
+  'portable': 'objectifs',
+  'accessories': 'accessoires',
+  'Objectifs': 'objectifs',
+  'Caméras & Boîtiers': 'cameras',
+  'Éclairage & Studio': 'eclairage',
+  'Stabilisateurs & Gimbals': 'stabilisateurs',
+  'Occasions / Seconde Main': 'occasions',
+  'Location de Matériel': 'location',
+  'Accessoires & Produits Divers': 'accessoires',
 };
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -39,13 +39,13 @@ const CATEGORY_ICONS: Record<string, string> = {
 const ShopCategories: React.FC<ShopCategoriesProps> = ({ products, onCategorySelect }) => {
   const categoryData = useMemo(() => {
     const counts: Record<string, { count: number; image: string | null }> = {};
-    products.forEach(p => {
+    products.forEach((p) => {
       if (!p.category || p.category === 'all') return;
       if (!counts[p.category]) {
         counts[p.category] = { count: 0, image: null };
       }
       counts[p.category].count += 1;
-      if (!counts[p.category].image && p.image && p.image.startsWith('http')) {
+      if (!counts[p.category].image && p.image && (p.image.startsWith('http') || p.image.startsWith('/'))) {
         counts[p.category].image = p.image;
       }
     });
@@ -53,7 +53,7 @@ const ShopCategories: React.FC<ShopCategoriesProps> = ({ products, onCategorySel
     return Object.entries(counts)
       .map(([rawCat, data]) => ({
         rawCategory: rawCat,
-        displayName: CATEGORY_DISPLAY_NAMES[rawCat] || rawCat,
+        displayName: CATEGORY_DISPLAY_NAMES[rawCat] || rawCat.toLowerCase(),
         icon: CATEGORY_ICONS[rawCat] || 'fa-tag',
         count: data.count,
         image: data.image,
@@ -64,60 +64,52 @@ const ShopCategories: React.FC<ShopCategoriesProps> = ({ products, onCategorySel
   if (categoryData.length === 0) return null;
 
   return (
-    <section className="py-8 md:py-12 bg-white">
+    <section className="py-6 sm:py-8 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800" aria-label="Catégories principales">
       <div className="container mx-auto px-4 md:px-6">
-
         {/* Section Header */}
-        <div className="flex items-end justify-between mb-6 pb-3 border-b border-gray-100">
-          <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-red-600 mb-1">
-              RAYONS &amp; CATÉGORIES PRINCIPALES
-            </p>
-            <h2 className="text-xl md:text-2xl font-black text-gray-900 tracking-tight">
-              Explorer par Gamme de Matériel
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-5 bg-red-600 rounded-full" />
+            <h2 className="text-base sm:text-lg font-black text-gray-900 dark:text-white uppercase tracking-wider">
+              Catégories &amp; Rayons
             </h2>
           </div>
-          <a
-            href="#products"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-red-600 transition-colors"
-          >
-            Tout le catalogue
-            <i className="fa-solid fa-arrow-right text-[10px]" />
-          </a>
+          <span className="text-[11px] font-bold text-gray-400 md:hidden">
+            Faire défiler ➔
+          </span>
         </div>
 
-        {/* Category Cards Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4">
+        {/* Responsive Container: Horizontal swipe on phone (<768px), Grid on PC (>=768px) */}
+        <div className="flex md:grid md:grid-cols-4 lg:grid-cols-7 items-center gap-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth no-scrollbar pb-3 md:pb-0 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0">
           {categoryData.map(({ rawCategory, displayName, icon, count, image }) => (
             <button
               key={rawCategory}
+              type="button"
               onClick={() => onCategorySelect(rawCategory)}
-              className="group flex flex-col bg-white border border-gray-200/90 rounded-2xl overflow-hidden hover:border-red-500 hover:shadow-lg transition-all duration-300 text-left cursor-pointer"
+              className="snap-start shrink-0 w-32 sm:w-40 md:w-auto aspect-square bg-white dark:bg-gray-800 border border-gray-200/90 dark:border-gray-700/80 rounded-2xl p-3 flex flex-col items-center justify-between shadow-sm hover:border-red-600 dark:hover:border-red-600 hover:shadow-md active:scale-95 transition-all cursor-pointer group min-h-[44px] min-w-[44px]"
             >
-              {/* Product preview image */}
-              <div className="w-full h-28 bg-gray-50 flex items-center justify-center p-3 overflow-hidden relative border-b border-gray-100 group-hover:bg-red-50/20 transition-colors">
+              {/* Centered Image/Icon */}
+              <div className="w-full flex-1 flex items-center justify-center p-2 rounded-xl bg-gray-50 dark:bg-gray-900/60 group-hover:bg-red-50/40 dark:group-hover:bg-red-950/20 transition overflow-hidden">
                 {image ? (
                   <img
                     src={image}
                     alt={displayName}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition duration-300"
                     loading="lazy"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-xl bg-gray-200/80 flex items-center justify-center">
-                    <i className={`fa-solid ${icon} text-xl text-gray-600`} />
-                  </div>
+                  <i className={`fa-solid ${icon} text-2xl text-gray-500 group-hover:text-red-600`} />
                 )}
               </div>
 
-              {/* Title and Count */}
-              <div className="p-3 bg-white flex flex-col justify-between flex-1">
-                <p className="text-xs font-black text-gray-900 leading-snug group-hover:text-red-600 transition-colors line-clamp-2">
+              {/* Title & Subtitle Count */}
+              <div className="text-center mt-2 w-full">
+                <span className="block text-xs font-black text-gray-900 dark:text-white group-hover:text-red-600 transition truncate capitalize">
                   {displayName}
-                </p>
-                <p className="text-[10px] text-gray-500 font-bold mt-1">
-                  {count} article{count > 1 ? 's' : ''}
-                </p>
+                </span>
+                <span className="block text-[10px] font-bold text-gray-400 dark:text-gray-500">
+                  {count} produit{count > 1 ? 's' : ''}
+                </span>
               </div>
             </button>
           ))}

@@ -41,27 +41,23 @@ const Header: React.FC<HeaderProps> = React.memo(
       return () => window.removeEventListener('keydown', handleKey);
     }, []);
 
-    const navLinkClass = `relative transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:transition-all after:duration-300 hover:after:w-full text-sm font-medium ${
-      isScrolled
-        ? 'text-gray-600 hover:text-black after:bg-black'
-        : 'text-gray-200 hover:text-white after:bg-white'
-    }`;
+    const navLinkClass = `relative transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:transition-all after:duration-300 hover:after:w-full text-sm font-medium text-gray-600 hover:text-black after:bg-black`;
 
     return (
       <>
         <header
-          className={`fixed w-full z-50 transition-all duration-300 ${
-            isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+          className={`fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm ${
+            isScrolled ? 'py-2' : 'py-3'
           }`}
         >
-          <div className="container mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+          <div className="container mx-auto px-4 md:px-6 h-16 md:h-16 flex items-center justify-between transition-all duration-300">
 
             {/* Logo */}
             <div
               className="flex items-center cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <Logo theme={isScrolled ? 'light' : 'dark'} className="h-10 md:h-12 w-auto" />
+              <Logo theme="light" className="h-10 md:h-12 w-auto" />
             </div>
 
             {/* Desktop Nav */}
@@ -74,11 +70,7 @@ const Header: React.FC<HeaderProps> = React.memo(
               {/* New In badge */}
               <button
                 onClick={onOpenNewArrivals}
-                className={`relative flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border transition-all duration-200 ${
-                  isScrolled
-                    ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-600 hover:text-white hover:border-red-600'
-                    : 'bg-red-600/20 text-red-300 border-red-500/40 hover:bg-red-600 hover:text-white hover:border-red-600'
-                }`}
+                className="relative flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border transition-all duration-200 bg-red-50 text-red-600 border-red-200 hover:bg-red-600 hover:text-white hover:border-red-600"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping absolute -top-0.5 -right-0.5" />
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 absolute -top-0.5 -right-0.5" />
@@ -87,11 +79,7 @@ const Header: React.FC<HeaderProps> = React.memo(
 
               <button
                 onClick={onOpenProductRequest}
-                className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition flex items-center gap-1.5 ${
-                  isScrolled
-                    ? 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-black hover:text-white hover:border-black'
-                    : 'bg-white/10 text-white border-white/20 hover:bg-white hover:text-black'
-                }`}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full border transition flex items-center gap-1.5 bg-gray-100 text-gray-700 border-gray-200 hover:bg-black hover:text-white hover:border-black"
               >
                 <span>🔍</span> Demander un Matériel
               </button>
@@ -102,9 +90,7 @@ const Header: React.FC<HeaderProps> = React.memo(
               {/* Desktop Search */}
               <div
                 onClick={() => onOpenSearchModal?.()}
-                className={`hidden md:flex relative items-center cursor-pointer transition-all duration-300 ${
-                  isScrolled ? 'text-black' : 'text-white'
-                }`}
+                className="hidden md:flex relative items-center cursor-pointer transition-all duration-300 text-black"
               >
                 <i className="fa-solid fa-search absolute left-3 text-sm opacity-70" />
                 <input
@@ -112,20 +98,14 @@ const Header: React.FC<HeaderProps> = React.memo(
                   readOnly
                   placeholder="Rechercher..."
                   value={globalSearchQuery}
-                  className={`pl-9 pr-4 py-1.5 rounded-full text-sm outline-none cursor-pointer transition-all duration-500 border border-transparent focus:border-current/30 md:w-52 w-36 ${
-                    isScrolled
-                      ? 'bg-gray-100 hover:bg-gray-200 text-black'
-                      : 'bg-white/15 hover:bg-white/25 text-white placeholder:text-white/60'
-                  }`}
+                  className="pl-9 pr-4 py-1.5 rounded-full text-sm outline-none cursor-pointer transition-all duration-500 border border-transparent focus:border-current/30 md:w-52 w-36 bg-gray-100 hover:bg-gray-200 text-black"
                 />
               </div>
 
               {/* Mobile Search Icon */}
               <button
                 onClick={() => onOpenSearchModal?.()}
-                className={`md:hidden p-2 rounded-full transition-colors ${
-                  isScrolled ? 'bg-gray-100 text-black' : 'bg-white/15 text-white'
-                }`}
+                className="md:hidden p-2 rounded-full transition-colors bg-gray-100 text-black"
                 aria-label="Rechercher"
               >
                 <i className="fa-solid fa-search text-sm" />
@@ -138,11 +118,7 @@ const Header: React.FC<HeaderProps> = React.memo(
                 aria-label="Panier"
               >
                 <div
-                  className={`p-2 rounded-full transition-colors duration-300 ${
-                    isScrolled
-                      ? 'bg-gray-100 text-black hover:bg-black hover:text-white'
-                      : 'bg-white/15 text-white hover:bg-white/30'
-                  }`}
+                  className="p-2 rounded-full transition-colors duration-300 bg-gray-100 text-black hover:bg-black hover:text-white"
                 >
                   <i className="fa-solid fa-bag-shopping text-lg block" />
                 </div>
@@ -156,9 +132,7 @@ const Header: React.FC<HeaderProps> = React.memo(
               {/* Mobile Hamburger */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className={`md:hidden p-2 rounded-full transition-colors ${
-                  isScrolled ? 'bg-gray-100 text-black' : 'bg-white/15 text-white'
-                }`}
+                className="md:hidden p-2 rounded-full transition-colors bg-gray-100 text-black"
                 aria-label="Menu"
               >
                 <i className="fa-solid fa-bars text-base" />

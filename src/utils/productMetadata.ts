@@ -42,6 +42,7 @@ export function extractProductAttributes(p: Product): ProductAttributes {
     else if (fullText.includes('sandisk')) brand = 'SanDisk';
     else if (fullText.includes('insta360')) brand = 'Insta360';
     else if (fullText.includes('yongnuo')) brand = 'Yongnuo';
+    else if (fullText.includes('dji')) brand = 'DJI';
     else brand = '7Artisans'; // Default primary brand
   }
 

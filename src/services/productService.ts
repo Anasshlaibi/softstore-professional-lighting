@@ -1,5 +1,5 @@
 import { supabase } from '../lib/supabase';
-import { Product } from '../App';
+import { Product } from '../../App';
 
 export interface ProductFormData {
   id?: number;
@@ -15,11 +15,18 @@ export interface ProductFormData {
   image: string;
   gallery?: string[];
   inStock: boolean;
+  isPreorder?: boolean;
   desc?: string;
   stars?: number;
   condition_rating?: string;
   technical_specs?: Record<string, any>;
   used_attributes?: Record<string, any>;
+  seo_title?: string;
+  meta_description?: string;
+  seo_intro?: string;
+  seo_description?: string;
+  custom_faq?: Array<{ question: string; answer: string }>;
+  search_aliases?: string[];
   active?: boolean;
 }
 
@@ -50,10 +57,8 @@ export const fetchAdminProducts = async (): Promise<Product[]> => {
     inStock: item.inStock !== false,
     desc: item.desc || '',
     stars: item.stars || 5,
-    condition_rating: item.condition_rating,
-    technical_specs: item.technical_specs || {},
-    used_attributes: item.used_attributes || {},
-    active: item.active !== false
+    specs: Array.isArray(item.specs) ? item.specs : [],
+    isPreorder: item.isPreorder === true
   }));
 };
 
@@ -108,10 +113,8 @@ export const createProductRecord = async (formData: ProductFormData): Promise<Pr
     inStock: created.inStock !== false,
     desc: created.desc,
     stars: created.stars || 5,
-    condition_rating: created.condition_rating,
-    technical_specs: created.technical_specs || {},
-    used_attributes: created.used_attributes || {},
-    active: created.active !== false
+    specs: Array.isArray(created.specs) ? created.specs : [],
+    isPreorder: created.isPreorder === true
   };
 };
 

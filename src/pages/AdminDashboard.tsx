@@ -14,9 +14,10 @@ import {
   ContactLeadItem
 } from '../services/leadService';
 import { useNavigate } from 'react-router-dom';
-import { Product } from '../App';
+import { Product } from '../../App';
 import { fetchAdminProducts, createProductRecord, updateProductRecord, toggleProductStockStatus, deleteProductRecord, ProductFormData } from '../services/productService';
 import { ProductEditorModal } from '../components/Admin/ProductEditorModal';
+import { generateProductSEOPackage } from '../utils/seoGenerator';
 
 const ADMIN_PASS = 'gearshop2026';
 
@@ -815,6 +816,7 @@ const AdminDashboard: React.FC = () => {
                       <th className="py-3.5 px-4">Catégorie / Monture</th>
                       <th className="py-3.5 px-4 text-right">Prix Vente</th>
                       <th className="py-3.5 px-4 text-center">Stock</th>
+                      <th className="py-3.5 px-4 text-center">Score SEO</th>
                       <th className="py-3.5 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
@@ -825,7 +827,11 @@ const AdminDashboard: React.FC = () => {
                         const matchesCat = productCategoryFilter === 'All' || p.category === productCategoryFilter;
                         return matchesQuery && matchesCat;
                       })
-                      .map(product => (
+                      .map(product => {
+                        const seoPkg = generateProductSEOPackage(product);
+                        const seoScore = seoPkg.seoQuality.score;
+
+                        return (
                         <tr key={product.id} className="hover:bg-zinc-800/50 transition">
                           <td className="py-3 px-4 flex items-center gap-3 min-w-[240px]">
                             <div className="w-12 h-12 rounded-xl bg-white p-1 border border-zinc-700 overflow-hidden shrink-0 flex items-center justify-center">
@@ -866,8 +872,23 @@ const AdminDashboard: React.FC = () => {
                                   : 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/30'
                               }`}
                             >
-                              {product.inStock ? '✓ En Stock' : '⏱ Rupture'}
+                              {product.isPreorder || (product as any).status === 'Précommande' ? '⏱ Précommande' : product.inStock ? '✓ En Stock' : '⏱ Rupture'}
                             </button>
+                          </td>
+
+                          <td className="py-3 px-4 text-center">
+                            <span
+                              title={`Score SEO: ${seoScore}/100. Checks: ${seoPkg.seoQuality.passedChecks.join(', ')}`}
+                              className={`px-2.5 py-1 rounded-full text-[10px] font-bold cursor-help border ${
+                                seoScore >= 90
+                                  ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
+                                  : seoScore >= 70
+                                  ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
+                                  : 'bg-red-500/20 text-red-400 border-red-500/30'
+                              }`}
+                            >
+                              SEO {seoScore}/100
+                            </span>
                           </td>
 
                           <td className="py-3 px-4 text-right whitespace-nowrap">
@@ -885,7 +906,8 @@ const AdminDashboard: React.FC = () => {
                             </button>
                           </td>
                         </tr>
-                      ))}
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>

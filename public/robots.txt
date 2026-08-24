@@ -1,9 +1,63 @@
+# robots.txt for GearShop.ma
 User-agent: *
 Allow: /
-Disallow: /api/
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
 
-# Sitemaps
+# Dedicated AI crawler allowances
+User-agent: GPTBot
+Allow: /
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
+
+User-agent: Google-Extended
+Allow: /
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
+
+User-agent: CCBot
+Allow: /
+Allow: /ai/
+Allow: /api/ai/
+Allow: /llms.txt
+Disallow: /admin
+
+# Sitemaps & AI Catalog Index
 Sitemap: https://gearshop.ma/sitemap.xml
 
-# Crawl-delay for bots
+# Crawl delay
 Crawl-delay: 1

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Product } from '../../App';
+import { Product } from '../../../App';
+import { matchProductWithQuery } from '../../utils/textNormalization';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -39,14 +40,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   if (!isOpen) return null;
 
-  // Filter products using intelligent keyword matching
-  const searchTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  
-  const results = searchTerms.length > 0
-    ? products.filter(p => {
-        const fullText = `${p.name} ${p.category} ${(p as any).brand || ''} ${p.mount || ''} ${p.desc || ''}`.toLowerCase();
-        return searchTerms.every(term => fullText.includes(term));
-      })
+  // Filter products using shared intelligent keyword & alias matching
+  const results = query.trim().length > 0
+    ? products.filter(p => matchProductWithQuery(p, query))
     : [];
 
   return (
@@ -87,7 +83,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
         {/* Results Container */}
         <div className="p-4 max-h-[60vh] overflow-y-auto space-y-2">
-          {searchTerms.length > 0 ? (
+          {query.trim().length > 0 ? (
             results.length > 0 ? (
               <>
                 <div className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-2 mb-2 flex justify-between">
@@ -122,7 +118,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                             {product.mount}
                           </span>
                         )}
-                        {product.inStock ? (
+                        {product.isPreorder || (product as any).status === 'Précommande' ? (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 ml-auto">
+                            Précommande
+                          </span>
+                        ) : product.inStock ? (
                           <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-50 text-green-700 ml-auto">
                             En Stock
                           </span>

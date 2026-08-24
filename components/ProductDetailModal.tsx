@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Product } from '../App';
 import { useCart } from '../src/context/CartContext';
 import richDescriptions from '../src/data/richDescriptions.json';
+import { ProductSEOSection } from './ProductSEOSection';
+import { generateProductSEOPackage } from '../src/utils/seoGenerator';
+import { findCompatibleAccessories, findAlternativeProducts, slugify } from '../src/utils/catalogEngine';
+import { Link } from 'react-router-dom';
 
 interface Promo {
   active: boolean;
@@ -11,20 +15,24 @@ interface Promo {
 
 interface ProductDetailModalProps {
   product: Product;
+  allProducts?: Product[];
   onClose: () => void;
   buyNow: (id: number) => void;
   siteConfig: { currency: string; phone: string; promo: Promo };
   onOpenQuoteRequest?: (product: Product) => void;
   onOpenProductAlert?: (product: Product) => void;
+  onSelectProduct?: (id: number) => void;
 }
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   product,
+  allProducts = [],
   onClose,
   buyNow,
   siteConfig,
   onOpenQuoteRequest,
   onOpenProductAlert,
+  onSelectProduct,
 }) => {
   const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState('desc');
@@ -100,138 +108,81 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [siteConfig.promo]);
+  }, [siteConfig]);
 
-  const getYoutubeEmbedUrl = (urlOrId?: string) => {
-    if (!urlOrId) return null;
-    if (/^[a-zA-Z0-9_-]{11}$/.test(urlOrId)) return `https://www.youtube.com/embed/${urlOrId}`;
-    const regExp = /(?:v=|\/embed\/|\.be\/|youtu\.be\/|\/v\/)([^#\&\?]*).*/;
-    const match = urlOrId.match(regExp);
-    return match && match[1].length === 11 ? `https://www.youtube.com/embed/${match[1]}` : null;
-  };
-  const videoUrl = getYoutubeEmbedUrl(product.video);
-
-  const openRentWhatsapp = () => {
-    const phone = siteConfig.phone.replace('+', '');
-    const msg = `Bonjour, je souhaite louer le matériel suivant : ${product.name}`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-  };
+  const discount =
+    product.oldPrice && product.oldPrice > product.price
+      ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+      : 0;
 
   const openReserveWhatsapp = () => {
-    const phone = siteConfig.phone.replace('+', '');
-    const msg = `Bonjour, je souhaite réserver le produit hors stock : ${product.name}`;
+    const phone = siteConfig.phone.replace('+212', '212').replace(/\s+/g, '');
+    const msg = `Bonjour, je souhaite réserver le produit : ${product.name} (Réf: ${product.id}) au prix de ${product.price > 0 ? `${product.price} DH` : 'sur demande'}`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
-  const discount = product.oldPrice && product.oldPrice > product.price
-    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) : 0;
+  const videoUrl = product.video;
+
+  // Cross-sell & alternative accessories
+  const compatibleAccessories = useMemo(() => {
+    return findCompatibleAccessories(allProducts, product);
+  }, [allProducts, product]);
+
+  const alternativeProducts = useMemo(() => {
+    return findAlternativeProducts(allProducts, product);
+  }, [allProducts, product]);
+
+  const categorySlug = slugify(product.category || 'lenses');
+  const brandSlug = slugify(product.brand || '7artisans');
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-[80] overflow-y-auto backdrop-blur-sm" aria-hidden="false">
-      <Helmet>
-        <title>{product.name} | Acheter au Maroc - GearShop</title>
-        <meta name="description" content={`Achetez le ${product.name} chez GearShop Maroc - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH. Livraison rapide dans tout le Maroc depuis Casablanca.`} />
-        <meta property="og:title" content={`${product.name} | GearShop Maroc`} />
-        <meta property="og:description" content={`${product.name} disponible chez GearShop - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH. Livraison rapide.`} />
-        <meta property="og:type" content="product" />
-        <meta property="og:url" content={`https://gearshop.ma/product/${product.id}`} />
-        {galleryImages.length > 0 && <meta property="og:image" content={galleryImages[0]} />}
-        {galleryImages.length > 0 && <meta property="og:image:alt" content={`${product.name} - GearShop Maroc`} />}
-        <meta property="product:price:amount" content={(product.price || 0).toString()} />
-        <meta property="product:price:currency" content="MAD" />
-        <link rel="canonical" href={`https://gearshop.ma/product/${product.id}`} />
-        <script type="application/ld+json">
-          {JSON.stringify([
-            {
-              "@context": "https://schema.org/",
-              "@type": "Product",
-              "name": product.name,
-              "image": galleryImages,
-              "description": `Achetez le ${product.name} chez GearShop Maroc - Seul revendeur officiel 7Artisans au Maroc. Prix: ${product.price} DH.`,
-              "brand": {
-                "@type": "Brand",
-                "name": "7Artisans"
-              },
-              "review": {
-                "@type": "Review",
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "5",
-                  "bestRating": "5"
-                },
-                "author": {
-                  "@type": "Person",
-                  "name": "Anass Hlaibi",
-                  "jobTitle": "Expert Vidéo & Photo"
-                },
-                "reviewBody": "Excellent rapport qualité-prix. Un équipement robuste et professionnel, idéal pour les créateurs de contenu au Maroc."
-              },
-              "offers": {
-                "@type": "Offer",
-                "url": `https://gearshop.ma/product/${product.id}`,
-                "priceCurrency": "MAD",
-                "price": product.price,
-                "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-                "seller": {
-                  "@type": "Organization",
-                  "name": "GearShop Maroc"
-                }
-              }
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [{
-                "@type": "Question",
-                "name": `Est-ce que le ${product.name} est sous garantie au Maroc ?`,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Oui, en tant que distributeur officiel, nous offrons une garantie constructeur d'un an sur ce produit chez GearShop Maroc."
-                }
-              }, {
-                "@type": "Question",
-                "name": "Faites-vous la livraison sur Casablanca et hors Casablanca ?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Absolument. Nous expédions sous 24h partout au Maroc, avec possibilité de récupération directe dans notre point de vente à Casablanca."
-                }
-              }]
-            }
-          ])}
-        </script>
-      </Helmet>
-      <div className="min-h-screen flex items-center justify-center p-0 md:p-6 md:py-12">
-        <div className="bg-white w-full max-w-[1400px] mx-auto md:rounded-3xl shadow-2xl overflow-hidden relative pb-24 md:pb-0 flex flex-col">
-          
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-50 bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition shadow-sm"
-            aria-label="Fermer"
-          >
-            <i className="fa-solid fa-xmark text-xl text-black"></i>
-          </button>
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-md flex items-center justify-center p-0 md:p-6 animate-fade-in">
+      <div
+        className="bg-white w-full max-w-6xl min-h-screen md:min-h-0 md:max-h-[92vh] md:rounded-3xl shadow-2xl flex flex-col overflow-hidden relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Top Floating Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 w-10 h-10 bg-gray-100 hover:bg-black hover:text-white text-gray-700 rounded-full flex items-center justify-center transition shadow-md"
+          aria-label="Fermer la modal"
+        >
+          <i className="fa-solid fa-xmark text-lg"></i>
+        </button>
 
-          {siteConfig.promo.active && (
-            <div className="w-full bg-red-600 text-white text-center py-2 z-20 shadow-md sticky top-0">
-              <p className="text-xs font-bold tracking-widest uppercase flex justify-center items-center gap-2">
-                <i className="fa-solid fa-bolt animate-pulse"></i> Offre Flash: <span className="font-mono text-sm">{countdown}</span>
-              </p>
-            </div>
-          )}
+        {/* Scrollable Container */}
+        <div className="overflow-y-auto flex-grow">
+          {/* Breadcrumb Header */}
+          <div className="bg-gray-50 px-6 py-3 border-b border-gray-100 flex items-center gap-2 text-xs text-gray-500 overflow-x-auto whitespace-nowrap">
+            <Link to="/" onClick={onClose} className="hover:text-red-600 font-medium">Accueil</Link>
+            <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
+            <Link to={`/categorie/${categorySlug}`} onClick={onClose} className="hover:text-red-600 font-medium capitalize">
+              {product.category || 'Catégorie'}
+            </Link>
+            {product.brand && (
+              <>
+                <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
+                <Link to={`/marque/${brandSlug}`} onClick={onClose} className="hover:text-red-600 font-medium">
+                  {product.brand}
+                </Link>
+              </>
+            )}
+            <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
+            <span className="text-gray-900 font-bold truncate max-w-xs">{product.name}</span>
+          </div>
 
-          {/* TOP SECTION: Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-[minmax(500px,_1fr)_minmax(450px,_500px)] gap-8 lg:gap-12 p-6 md:p-12 items-start">
-            
-            {/* Left Column: Gallery */}
-            <div className="flex flex-col gap-4 w-full">
-              <div className="w-full aspect-square md:aspect-[4/3] bg-gray-50 rounded-2xl flex items-center justify-center relative group overflow-hidden border border-gray-100">
+          {/* MAIN TWO-COLUMN LAYOUT */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-10">
+            {/* Left Column: Image Gallery */}
+            <div className="flex flex-col gap-4">
+              <div className="relative aspect-square bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 flex items-center justify-center p-6 group">
                 {currentImage ? (
                   <img
                     src={currentImage}
-                    alt={`${product.name} - GearShop Maroc`}
+                    alt={`${product.name} - Vue principale`}
                     title={`${product.name} - GearShop Maroc`}
                     onError={() => handleImageError(currentImage)}
-                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-125"
+                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex flex-col items-center justify-center text-gray-400">
@@ -272,7 +223,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         src={img} 
                         onError={() => handleImageError(img)}
                         className="w-full h-full object-contain mix-blend-multiply p-1" 
-                        alt={`${product.name} - Vue ${idx + 1} - GearShop Maroc`} 
+                        alt={`${product.name} - Vue ${idx + 1}`} 
                         title={`${product.name} - Vue ${idx + 1}`}
                       />
                     </button>
@@ -283,10 +234,23 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
             {/* Right Column: Info & Actions */}
             <div className="flex flex-col bg-white">
-              <span className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2 capitalize">
-                {product.category}
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4 leading-tight">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-gray-400 text-xs font-bold uppercase tracking-widest capitalize">
+                  {product.category}
+                </span>
+                {product.brand && (
+                  <span className="bg-red-50 text-red-700 px-2 py-0.5 rounded text-[11px] font-bold">
+                    {product.brand}
+                  </span>
+                )}
+                {product.mount && (
+                  <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-[11px] font-bold">
+                    {product.mount}
+                  </span>
+                )}
+              </div>
+
+              <h2 className="text-2xl lg:text-3xl font-black text-black mb-3 leading-tight">
                 {product.name}
               </h2>
 
@@ -296,29 +260,30 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <i key={i} className={`fa-solid fa-star ${i < product.stars ? 'text-[#ff3b30]' : 'text-gray-200'}`}></i>
                   ))}
                 </div>
-                <span className="text-xs text-gray-400">(Avis Clients)</span>
+                <span className="text-xs text-gray-400 font-medium">({product.stars || 4.9} / 5)</span>
                 {product.inStock ? (
-                  <span className="ml-auto text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700">
-                    En Stock
+                  <span className="ml-auto text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse"></span>
+                    En Stock Casablanca
                   </span>
                 ) : (
                   <span className="ml-auto text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-600">
-                    Rupture
+                    Sur commande
                   </span>
                 )}
               </div>
 
               {/* Pricing */}
-              <div className="mb-8 pb-8 border-b border-gray-100">
+              <div className="mb-6 pb-6 border-b border-gray-100">
                 <div className="flex items-end gap-3 mb-2 flex-wrap">
                   {product.price > 0 ? (
                     <>
-                      <span className="text-4xl font-black text-green-600 leading-none">
-                        {product.price} {siteConfig.currency}
+                      <span className="text-3xl md:text-4xl font-black text-green-600 leading-none">
+                        {product.price.toLocaleString('fr-MA')} {siteConfig.currency}
                       </span>
                       {product.oldPrice && (
                         <span className="text-lg text-gray-400 line-through mb-1">
-                          {product.oldPrice} {siteConfig.currency}
+                          {product.oldPrice.toLocaleString('fr-MA')} {siteConfig.currency}
                         </span>
                       )}
                       {discount > 0 && (
@@ -333,7 +298,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         Prix sur demande
                       </span>
                       <a
-                        href={`https://wa.me/212673011873?text=Bonjour, je suis intéressé par: ${product.name}. Quel est le prix?`}
+                        href={`https://wa.me/212673011873?text=${encodeURIComponent(`Bonjour, je souhaite connaître le prix de : ${product.name}`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm text-green-600 font-semibold hover:underline"
@@ -346,7 +311,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 </div>
 
                 {product.rentPrice && product.rentPrice > 0 && (
-                  <div className="flex items-baseline gap-2 mt-4 text-blue-600 bg-blue-50 w-fit px-4 py-2 rounded-lg">
+                  <div className="flex items-baseline gap-2 mt-4 text-gray-800 bg-gray-100 w-fit px-4 py-2 rounded-lg">
                     <i className="fa-solid fa-tags text-sm"></i>
                     <span className="text-sm font-bold uppercase">Location:</span>
                     <span className="text-lg font-black">{product.rentPrice} {siteConfig.currency}</span>
@@ -362,6 +327,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     onClick={() => addToCart(product.id)}
                     disabled={!product.inStock}
                     className="w-16 h-16 bg-gray-100 text-black font-bold rounded-xl hover:bg-gray-200 transition flex items-center justify-center shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                    title="Ajouter au panier"
                   >
                     <i className="fa-solid fa-cart-plus text-xl"></i>
                   </button>
@@ -374,7 +340,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         openReserveWhatsapp();
                       }
                     }}
-                    className={`flex-1 h-16 text-white font-bold rounded-xl transition flex items-center justify-center gap-3 text-lg ${product.inStock ? 'bg-black hover:bg-gray-800' : 'bg-orange-500 hover:bg-orange-600'}`}
+                    className={`flex-1 h-16 text-white font-bold rounded-xl transition flex items-center justify-center gap-3 text-base md:text-lg ${product.inStock ? 'bg-black hover:bg-gray-800' : 'bg-orange-500 hover:bg-orange-600'}`}
                   >
                     {product.inStock ? 'Acheter Maintenant' : 'Réserver sur WhatsApp'}
                     {product.inStock && <i className="fa-solid fa-arrow-right"></i>}
@@ -402,28 +368,27 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </div>
               
               {/* Trust badges */}
-              <div className="mt-8 pt-6 border-t border-gray-100 grid grid-cols-2 gap-4">
+              <div className="mt-6 pt-6 border-t border-gray-100 grid grid-cols-2 gap-4">
                  <div className="flex items-start gap-3 text-sm text-gray-600">
                     <i className="fa-solid fa-truck-fast text-gray-400 text-lg mt-1"></i>
                     <div>
-                      <span className="font-bold text-gray-800 block">Expédition sous 24h</span>
-                      <span className="text-xs">Livraison rapide partout au Maroc</span>
+                      <span className="font-bold text-gray-800 block text-xs md:text-sm">Expédition sous 24h</span>
+                      <span className="text-xs text-gray-500">Livraison rapide partout au Maroc</span>
                     </div>
                  </div>
                  <div className="flex items-start gap-3 text-sm text-gray-600">
                     <i className="fa-solid fa-shield-halved text-gray-400 text-lg mt-1"></i>
                     <div>
-                      <span className="font-bold text-gray-800 block">Garantie 1 an</span>
-                      <span className="text-xs">Distributeur officiel certifié</span>
+                      <span className="font-bold text-gray-800 block text-xs md:text-sm">Garantie 1 an</span>
+                      <span className="text-xs text-gray-500">Distributeur officiel certifié</span>
                     </div>
                  </div>
               </div>
-
             </div>
           </div>
 
           {/* BOTTOM SECTION: Full Width Description & Specs */}
-          <div className="bg-gray-50 border-t border-gray-100 p-6 md:p-12 flex-grow">
+          <div className="bg-gray-50 border-t border-gray-100 p-6 md:p-10 flex-grow">
             <div className="flex gap-8 border-b border-gray-200 mb-8 max-w-5xl mx-auto">
               <button
                 onClick={() => setActiveTab('desc')}
@@ -453,14 +418,14 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </button>
             </div>
 
-            <div className="max-w-5xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            <div className="max-w-5xl mx-auto bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 mb-8">
               {activeTab === 'desc' && (
                 <div>
                   <div className="flex items-center gap-4 bg-gray-50 border border-gray-100 p-4 rounded-xl mb-6">
                     <img src="https://ui-avatars.com/api/?name=Anass+Hlaibi&background=0D8ABC&color=fff&size=128" alt="Anass Hlaibi" className="w-12 h-12 rounded-full shadow-sm" />
                     <div>
                       <p className="text-sm font-bold text-gray-900">Testé et approuvé par Anass Hlaibi</p>
-                      <p className="text-xs text-gray-500">Expert Vidéo & Photo chez GearShop</p>
+                      <p className="text-xs text-gray-500">Expert Vidéo & Photo chez GearShop Maroc</p>
                     </div>
                   </div>
                   {(richDescriptions as Record<string, string>)[product.id.toString()] ? (
@@ -468,7 +433,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       dangerouslySetInnerHTML={{ 
                         __html: (richDescriptions as Record<string, string>)[product.id.toString()] 
                       }} 
-                      className="prose prose-sm md:prose-base max-w-none prose-img:rounded-xl prose-img:mx-auto prose-headings:font-bold prose-a:text-blue-600 rich-description-content"
+                      className="prose prose-sm md:prose-base max-w-none prose-img:rounded-xl prose-img:mx-auto prose-headings:font-bold prose-a:text-red-600 rich-description-content"
                     />
                   ) : (
                     <p
@@ -512,15 +477,27 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               )}
 
               {activeTab === 'video' && videoUrl && (
-                <div className="aspect-video bg-black rounded-xl overflow-hidden relative shadow-lg max-w-4xl mx-auto">
-                  <iframe
-                    src={videoUrl}
-                    title={product.name}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full absolute inset-0"
-                  ></iframe>
+                <div className="aspect-video bg-black rounded-xl overflow-hidden relative shadow-lg max-w-4xl mx-auto flex items-center justify-center">
+                  {videoUrl.endsWith('.mp4') || videoUrl.startsWith('/') ? (
+                    <video
+                      src={videoUrl}
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <iframe
+                      src={videoUrl}
+                      title={product.name}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full absolute inset-0"
+                    ></iframe>
+                  )}
                 </div>
               )}
 
@@ -532,26 +509,67 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </div>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                     <h3 className="font-bold text-lg text-gray-900 mb-2">Faites-vous la livraison sur Casablanca et hors Casablanca ?</h3>
-                    <p className="text-gray-600">Absolument. Nous expédions sous 24h partout au Maroc, avec possibilité de récupération directe dans notre point de vente à Casablanca.</p>
+                    <p className="text-gray-600">Absolument. Nous expédions sous 24h à Casablanca et 2-4 jours dans tout le Maroc, avec livraison gratuite dès 500 DH.</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                     <h3 className="font-bold text-lg text-gray-900 mb-2">Puis-je tester ce produit avant l'achat ?</h3>
-                    <p className="text-gray-600">Oui, vous pouvez passer à notre magasin à Casablanca pour tester ce matériel avec votre propre boîtier avant de vous décider.</p>
+                    <p className="text-gray-600">Oui, vous pouvez passer à notre magasin physique à Casablanca pour tester ce matériel avec votre propre boîtier avant de vous décider.</p>
                   </div>
                 </div>
               )}
             </div>
+
+            {/* Compatible Accessories Cross-Sell */}
+            {compatibleAccessories.length > 0 && (
+              <div className="max-w-5xl mx-auto mb-8 bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                <h3 className="text-base font-black text-gray-900 mb-4 flex items-center gap-2">
+                  <i className="fa-solid fa-puzzle-piece text-red-600"></i>
+                  Accessoires compatibles recommandés
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {compatibleAccessories.map(acc => (
+                    <div
+                      key={acc.id}
+                      onClick={() => onSelectProduct && onSelectProduct(acc.id)}
+                      className="group border border-gray-100 hover:border-black rounded-xl p-3 bg-gray-50 hover:bg-white transition cursor-pointer flex flex-col justify-between"
+                    >
+                      <div className="aspect-square bg-white rounded-lg p-2 mb-2 flex items-center justify-center">
+                        <img
+                          src={acc.image}
+                          alt={acc.name}
+                          className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition"
+                        />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">{acc.category}</span>
+                        <h4 className="text-xs font-bold text-gray-900 group-hover:text-red-600 transition line-clamp-2">{acc.name}</h4>
+                        <span className="text-xs font-black text-green-700 mt-2 block">{acc.price.toLocaleString('fr-MA')} DH</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Comprehensive SEO & Internal Linking Section */}
+            <div className="max-w-5xl mx-auto">
+              <ProductSEOSection
+                product={product}
+                allProducts={allProducts}
+                onSelectProduct={onSelectProduct}
+              />
+            </div>
           </div>
 
-          {/* Mobile Sticky Footer (Kept from original but styled better) */}
+          {/* Mobile Sticky Footer */}
           <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] z-50 flex items-center gap-3">
             <div className="flex-1 flex flex-col justify-center">
               <span className="text-xl font-black text-black leading-tight">
-                {product.price} {siteConfig.currency}
+                {product.price.toLocaleString('fr-MA')} {siteConfig.currency}
               </span>
               {product.oldPrice && (
                 <span className="text-xs text-gray-400 line-through">
-                  {product.oldPrice} {siteConfig.currency}
+                  {product.oldPrice.toLocaleString('fr-MA')} {siteConfig.currency}
                 </span>
               )}
             </div>
@@ -583,4 +601,3 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 };
 
 export default ProductDetailModal;
-

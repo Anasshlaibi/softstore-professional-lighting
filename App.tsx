@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import BottomNav from './components/BottomNav';
 import Cart from './components/Cart';
 import CheckoutModal from './components/CheckoutModal';
 import PromoOverlay from './components/PromoOverlay';
@@ -29,14 +30,19 @@ import { defaultSiteConfig } from './data/config';
 import { CartProvider, useCart } from './src/context/CartContext';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { fetchSupabaseProducts } from './src/utils/fetchSupabaseProducts';
-import { useNavigate, useLocation, Routes, Route } from 'react-router-dom';
+import { generateProductSEOPackage } from './src/utils/seoGenerator';
+import { useNavigate, useLocation, Routes, Route, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const CinemaLensesMaroc = React.lazy(() => import('./src/pages/CinemaLensesMaroc'));
 const LocalStoreCasablanca = React.lazy(() => import('./src/pages/LocalStoreCasablanca'));
 const BrandCluster = React.lazy(() => import('./src/pages/BrandCluster'));
+const CategoryPage = React.lazy(() => import('./src/pages/CategoryPage'));
+const UseCaseGuide = React.lazy(() => import('./src/pages/UseCaseGuide'));
 const AdminDashboard = React.lazy(() => import('./src/pages/AdminDashboard'));
 const AboutAndPartners = React.lazy(() => import('./src/pages/AboutAndPartners'));
+const OsmoPocket4Page = React.lazy(() => import('./src/pages/OsmoPocket4Page'));
+const CameraMarocPage = React.lazy(() => import('./src/pages/CameraMarocPage'));
 
 import Newsletter from './src/components/Newsletter';
 import CookieConsentBanner from './src/components/CookieConsentBanner';
@@ -63,11 +69,20 @@ export interface Product {
   stars: number;
   specs: string[];
   inStock: boolean;
+  isPreorder?: boolean;
   promoEligible?: boolean;
   // Enriched fields from Supabase DB (populated from DB columns, not text-sniffing)
   brand?: string;
   mount?: string;
   product_group?: string; // 'new' | 'used' | 'rental'
+  product_type?: string;
+  // Admin SEO Overrides & Aliases
+  seo_title?: string;
+  meta_description?: string;
+  seo_intro?: string;
+  seo_description?: string;
+  custom_faq?: Array<{ question: string; answer: string }>;
+  search_aliases?: string[];
 }
 
 export interface CartItem extends Product {
@@ -124,6 +139,12 @@ const App: React.FC = () => {
       const pathParts = location.pathname.split('/');
       if (pathParts[1] === 'product' && pathParts[2]) {
         const idFromUrl = parseInt(pathParts[2].split('-')[0], 10);
+        
+        if (idFromUrl === 3001) {
+          navigate('/osmo-pocket-4p', { replace: true });
+          return;
+        }
+
         const product = products.find(p => p.id === idFromUrl);
         if (product && (!selectedProduct || selectedProduct.id !== product.id)) {
           setSelectedProduct(product);
@@ -136,24 +157,20 @@ const App: React.FC = () => {
     }
   }, [location.pathname, products]);
 
+  // Auto promo popup disabled per user request
   useEffect(() => {
-    if (siteConfig.promo.active) {
-      const hasSeen = sessionStorage.getItem('hasSeenPromo');
-      if (!hasSeen) {
-        const timer = setTimeout(() => {
-          setIsPromoOverlayOpen(true);
-          sessionStorage.setItem('hasSeenPromo', 'true');
-        }, 1500);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [siteConfig.promo.active]);
+    setIsPromoOverlayOpen(false);
+  }, []);
 
   const slugify = (text: string) => {
     return text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '';
   };
 
   const openProductModal = (productId: number) => {
+    if (productId === 3001) {
+      navigate('/osmo-pocket-4p');
+      return;
+    }
     const product = products.find((p) => p.id === productId);
     if (product) {
       setSelectedProduct(product);
@@ -277,22 +294,22 @@ const AppContent: React.FC<{
     const [alertProduct, setAlertProduct] = useState<Product | null>(null);
     
     const location = useLocation();
+    const navigate = useNavigate();
     const isAdminRoute = location.pathname === '/admin';
+    
+    const selectedSeo = selectedProduct ? generateProductSEOPackage(selectedProduct, products) : null;
     
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 antialiased font-sans transition-colors duration-300">
-        {selectedProduct ? (
+        {selectedProduct && selectedSeo ? (
           <Helmet>
-            <title>{selectedProduct.name} | GearShop Maroc - Achat au Maroc</title>
-            <meta
-              name="description"
-              content={`Achetez le ${selectedProduct.name} au Maroc chez GearShop. Prix: ${(selectedProduct.price || 0).toLocaleString('fr-MA')} MAD. ${selectedProduct.inStock ? 'En stock' : 'Sur commande'}. Livraison rapide à Casablanca et dans tout le Maroc.`}
-            />
-            <link rel="canonical" href={`https://gearshop.ma/product/${selectedProduct.id}-${selectedProduct.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} />
-            <meta property="og:title" content={`${selectedProduct.name} | GearShop Maroc`} />
-            <meta property="og:description" content={`Achetez le ${selectedProduct.name} au Maroc. Prix: ${(selectedProduct.price || 0).toLocaleString('fr-MA')} MAD. Livraison rapide partout au Maroc.`} />
+            <title>{selectedSeo.seoTitle}</title>
+            <meta name="description" content={selectedSeo.metaDescription} />
+            <link rel="canonical" href={selectedSeo.canonicalUrl} />
+            <meta property="og:title" content={selectedSeo.seoTitle} />
+            <meta property="og:description" content={selectedSeo.metaDescription} />
             {selectedProduct.image && <meta property="og:image" content={selectedProduct.image} />}
-            <meta property="og:url" content={`https://gearshop.ma/product/${selectedProduct.id}-${selectedProduct.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} />
+            <meta property="og:url" content={selectedSeo.canonicalUrl} />
             <meta property="og:type" content="product" />
           </Helmet>
         ) : (
@@ -301,6 +318,7 @@ const AppContent: React.FC<{
             <meta name="description" content="GearShop: Revendeur officiel au Maroc d'objectifs 7Artisans et lentilles cinéma. Livraison rapide d'objectifs photo pour Canon, Nikon Z et Sony E." />
           </Helmet>
         )}
+
         {!isAdminRoute && (
           <Header
             onCartClick={() => setIsCartOpen(true)}
@@ -313,7 +331,7 @@ const AppContent: React.FC<{
           />
         )}
         
-        <main>
+        <main className="pb-20 md:pb-0">
           <StructuredData product={selectedProduct} allProducts={products} />
           <Routes>
             <Route path="/admin" element={
@@ -336,9 +354,39 @@ const AppContent: React.FC<{
                 <BrandCluster products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
               </React.Suspense>
             } />
+            <Route path="/categorie/:categorySlug" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <CategoryPage products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
+              </React.Suspense>
+            } />
+            <Route path="/guide/:useCaseSlug" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <UseCaseGuide products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
+              </React.Suspense>
+            } />
             <Route path="/a-propos" element={
               <React.Suspense fallback={<LoadingSpinner />}>
                 <AboutAndPartners />
+              </React.Suspense>
+            } />
+            <Route path="/osmo-pocket-4p" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <OsmoPocket4Page />
+              </React.Suspense>
+            } />
+            <Route path="/dji-osmo-pocket-4-pro" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <OsmoPocket4Page />
+              </React.Suspense>
+            } />
+            <Route path="/camera-maroc" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <CameraMarocPage products={products} openProductModal={openProductModal} siteConfig={siteConfig} />
+              </React.Suspense>
+            } />
+            <Route path="/cameras-maroc" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <CameraMarocPage products={products} openProductModal={openProductModal} siteConfig={siteConfig} />
               </React.Suspense>
             } />
             <Route path="*" element={
@@ -399,6 +447,19 @@ const AppContent: React.FC<{
           <>
             <Footer siteConfig={siteConfig} />
             <FloatingWhatsApp siteConfig={siteConfig} />
+            <BottomNav
+              onHomeClick={() => {
+                navigate('/');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              onShopClick={() => {
+                const el = document.getElementById('products');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              onCartClick={() => setIsCartOpen(true)}
+              onSearchClick={() => setIsSearchModalOpen(true)}
+              siteConfig={siteConfig}
+            />
           </>
         )}
 
@@ -428,6 +489,7 @@ const AppContent: React.FC<{
         {selectedProduct && (
           <ProductDetailModal
             product={selectedProduct}
+            allProducts={products}
             onClose={closeProductModal}
             buyNow={() => buyNow(selectedProduct.id)}
             siteConfig={siteConfig}
@@ -439,6 +501,7 @@ const AppContent: React.FC<{
               setAlertProduct(prod);
               setIsProductAlertOpen(true);
             }}
+            onSelectProduct={openProductModal}
           />
         )}
 
@@ -485,14 +548,7 @@ const AppContent: React.FC<{
         />
 
         <CookieConsentBanner />
-        <LeadPopup />
-
-        {isPromoOverlayOpen && (
-          <PromoOverlay
-            siteConfig={siteConfig}
-            onClose={() => setIsPromoOverlayOpen(false)}
-          />
-        )}
+        {/* Automatic lead popups disabled per user request */}
 
         {toastMessage && (
           <Toast message={toastMessage} onClose={clearToast} />

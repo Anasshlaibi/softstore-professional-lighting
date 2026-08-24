@@ -447,6 +447,43 @@ export const defaultProducts: Product[] = [
     specs: ['Diamètre: 82mm', 'ND2-ND32 (1 à 5 stops)', 'Verre optique 28 couches Nano-Xcel Pro', 'Zéro dérive colorimétrique (True Color)'],
     inStock: true,
     promoEligible: true
+  },
+  {
+    id: 3001,
+    name: 'DJI Osmo Pocket 4 Pro',
+    price: 8000,
+    category: 'portable',
+    brand: 'DJI',
+    desc: 'Le DJI Osmo Pocket 4 Pro (Osmo Pocket 4P) est une caméra vlog 4K d\'exception dotée d\'un capteur CMOS grand-angle 1 pouce offrant 17 stops de plage dynamique et le profil couleur D-Log 2. Elle intègre un second objectif téléobjectif moyen 60mm à ouverture f/1.8 idéal pour les portraits naturels. Équipée d\'une stabilisation nacelle 3 axes, du suivi intelligent ActiveTrack 8.0, d\'un mode ralenti Ultra-HD jusqu\'à 10× (4K) et de 103 Go de stockage interne.',
+    specs: [
+      'Statut: Précommande',
+      'Marque: DJI',
+      'Capteur principal: CMOS 1 pouce (17 Stops de dynamique)',
+      'Objectif Portrait: 60mm f/1.8',
+      'Profil couleur: D-Log 2 10-bit',
+      'Stabilisation: Nacelle 3 axes',
+      'Suivi intelligent: ActiveTrack 8.0',
+      'Mode Ralenti: Jusqu\'à 10× Ultra-HD (4K)',
+      'Résolution vidéo: 4K / 240fps (Grand-angle), 4K / 200fps (Médium-télé)',
+      'Zoom optique: 3× (jusqu\'à 12×)',
+      'Stockage interne: 103 Go (transfert 800 Mo/s)',
+      'Écran: Tactile 2 pouces',
+      'Connectivité: Bluetooth, Wi-Fi, USB-C',
+      'Garantie: 1 An GearShop Maroc'
+    ],
+    image: '/images/products/dji-osmo-pocket-4-pro-3.png',
+    gallery: [
+      '/images/products/dji-osmo-pocket-4-pro-3.png',
+      '/images/products/dji-osmo-pocket-4-pro-6.png',
+      '/images/products/dji-osmo-pocket-4-pro-4.png',
+      '/images/products/dji-osmo-pocket-4-pro-5.png',
+      '/images/products/dji-osmo-pocket-4-pro-1.jpg'
+    ],
+    stars: 5,
+    video: '/videos/dji-osmo-pocket-4-pro.mp4',
+    inStock: true,
+    isPreorder: true,
+    search_aliases: ['dji osmo pocket 4 pro', 'osmo pocket 4p', 'dji pocket 4', 'osmo pocket 4', 'pocket 4 pro', 'pocket 4']
   }
 ];
 

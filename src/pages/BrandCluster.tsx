@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Product } from '../../App';
 import ProductCard from '../../components/ProductCard';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../../src/context/CartContext';
+import { getBrands, getBrandBySlug, slugify } from '../utils/catalogEngine';
+import { extractProductAttributes } from '../utils/productMetadata';
 
 interface BrandClusterProps {
   products: Product[];
@@ -24,6 +26,28 @@ interface BrandSEOProfile {
 }
 
 const BRAND_PROFILES: Record<string, BrandSEOProfile> = {
+  '7artisans': {
+    name: '7Artisans',
+    metaTitle: 'Objectifs 7Artisans Maroc | Distributeur Officiel Casablanca — Prix les plus bas',
+    metaDesc: 'Importateur direct et revendeur officiel 7Artisans au Maroc. Objectifs autofocus F1.8 et ciné T2.0 pour Sony E, Canon RF, Nikon Z, Fuji FX, Lumix L-Mount. Garantie 1 an, stock Casablanca.',
+    keywords: '7artisans maroc, objectif 7artisans casablanca, objectif 7artisans af maroc, 7artisans cinema lens maroc, 7artisans sony e, 7artisans nikon z, 7artisans canon rf',
+    heroH1: 'Objectifs 7Artisans au Maroc',
+    heroSub: 'Distributeur officiel 7Artisans au Maroc. Découvrez la gamme complète d\'objectifs autofocus plein format et lentilles cinéma professionnelles.',
+    whyTitle: 'Pourquoi choisir les objectifs 7Artisans chez GearShop Maroc ?',
+    whyText: 'GearShop est le revendeur officiel et partenaire exclusif de 7Artisans au Maroc. Vous bénéficiez de l\'importation directe d\'usine sans intermédiaire, garantissant les prix les plus bas du marché, un stock réel à Casablanca et un service après-vente dédié avec garantie 1 an.',
+    matchTerms: ['7artisans', 'sevenartisans', '7 artisans']
+  },
+  'kf-concept': {
+    name: 'K&F Concept',
+    metaTitle: 'Filtres K&F Concept Maroc | ND Variable, Black Mist, CPL & Bagues | GearShop',
+    metaDesc: 'Distributeur officiel K&F Concept au Maroc. Filtres ND variables Nano-Xcel, Black Diffusion 1/4, filtres polarisants CPL, kits bagues d\'adaptation et sacs photo à Casablanca.',
+    keywords: 'kf concept maroc, k&f concept casablanca, filtre nd variable maroc, filtre black mist maroc, filtre cpl maroc, bagues adaptation kf maroc',
+    heroH1: 'Filtres & Accessoires K&F Concept au Maroc',
+    heroSub: 'Filtres optiques de haute précision en verre optique japonais Nano-Xcel, bagues d\'adaptation métalliques et accessoires photo/vidéo professionnels.',
+    whyTitle: 'La référence mondiale des filtres optiques désormais disponible au Maroc',
+    whyText: 'Les filtres K&F Concept garantissent une clarté optique parfaite sans dominante de couleur (True Color) et sans croix noire (vignettage en X). Protégez et sublimez vos optiques avec les technologies de traitement Nano-Xcel et Nano-X.',
+    matchTerms: ['k&f', 'kf', 'concept', 'kent faith']
+  },
   'lumix': {
     name: 'Panasonic Lumix (L-Mount & M43)',
     metaTitle: 'Objectifs Panasonic Lumix au Maroc (L-Mount & Micro 4/3) | GearShop Casa',
@@ -47,17 +71,6 @@ const BRAND_PROFILES: Record<string, BrandSEOProfile> = {
     matchTerms: ['lumix', 'panasonic', 'l mount', 'l-mount', 'm43', 'micro 4/3', 'olympus']
   },
   'fujifilm': {
-    name: 'Fujifilm (X-Mount & FX)',
-    metaTitle: 'Objectifs Fujifilm au Maroc (X-Mount / FX) | Focales Fixes & Cinéma GearShop',
-    metaDesc: 'Trouvez les meilleurs objectifs pour Fujifilm au Maroc. Optiques autofocus AF35mm, AF50mm et objectifs cinéma grand angle pour X-T5, X-T4, X-H2S, X-T30. En stock à Casablanca.',
-    keywords: 'objectif fujifilm maroc, lens fuji maroc, objectif fuji x mount maroc, objectif fujifilm casablanca, optique fuji xt5 maroc, 7artisans fuji fx maroc, fujifilm cinema lens maroc',
-    heroH1: 'Objectifs pour Fujifilm au Maroc (X-Mount)',
-    heroSub: 'Sublimez le rendu de votre capteur X-Trans avec nos objectifs autofocus lumineux, focales fixes manuelles et optiques cinéma pour boîtiers Fuji.',
-    whyTitle: 'Le mariage parfait avec la colorimétrie argentique Fujifilm',
-    whyText: 'Nos optiques 7Artisans pour monture Fuji FX exploitent à 100% le potentiel des simulations de film Fujifilm. Profitez d\'ouvertures ultra-lumineuses F1.2 / F1.4 et de verres haute résolution pour le portrait, la street photography et la vidéo 4K/6K.',
-    matchTerms: ['fuji', 'fujifilm', 'fx mount', 'fx-mount', 'x mount', 'x-mount']
-  },
-  'fuji': {
     name: 'Fujifilm (X-Mount & FX)',
     metaTitle: 'Objectifs Fujifilm au Maroc (X-Mount / FX) | Focales Fixes & Cinéma GearShop',
     metaDesc: 'Trouvez les meilleurs objectifs pour Fujifilm au Maroc. Optiques autofocus AF35mm, AF50mm et objectifs cinéma grand angle pour X-T5, X-T4, X-H2S, X-T30. En stock à Casablanca.',
@@ -101,39 +114,58 @@ const BRAND_PROFILES: Record<string, BrandSEOProfile> = {
     whyText: 'Conçus avec un corps en aluminium de qualité aéronautique et des bagues fluides sans clic, nos objectifs Canon RF sont l\'outil idéal pour les productions audiovisuelles au Maroc.',
     matchTerms: ['canon', 'eos-r', 'eos r', 'rf mount', 'rf-mount']
   },
-  'kf-concept': {
-    name: 'K&F Concept (Filtres, Bagues & Accessoires)',
-    metaTitle: 'K&F Concept Maroc | Filtres ND Variables, Black Mist, CPL & Bagues Casablanca',
-    metaDesc: 'Distributeur officiel K&F Concept au Maroc. Filtres 3-en-1 Nano-Xcel, Black Diffusion 1/4, polarisants CPL, kits bagues d\'adaptation et sacs photo au meilleur prix.',
-    keywords: 'kf concept maroc, k&f concept casablanca, filtre nd variable maroc, filtre black mist maroc, filtre cpl maroc, bagues adaptation kf maroc, sac camera kf maroc',
-    heroH1: 'Produits K&F Concept au Maroc',
-    heroSub: 'Filtres optiques de précision en verre japonais Nano-Xcel, bagues d\'adaptation métalliques et accessoires photo/vidéo professionnels.',
-    whyTitle: 'La référence mondiale des filtres optiques désormais au Maroc',
-    whyText: 'Les filtres K&F Concept garantissent une clarté optique parfaite sans dominante de couleur (True Color) et sans croix noire. Protégez et sublimez vos optiques avec les technologies Nano-Xcel et Nano-X.',
-    matchTerms: ['k&f', 'kf', 'concept']
+  'dji': {
+    name: 'DJI',
+    metaTitle: 'Matériel DJI au Maroc | Osmo Pocket, Stabilisateurs & Caméras | GearShop Casa',
+    metaDesc: 'Achetez votre matériel DJI au Maroc : DJI Osmo Pocket 4 Pro, stabilisateurs et accessoires de vlogging. Prix officiels, garantie 1 an et livraison rapide.',
+    keywords: 'dji maroc, dji osmo pocket maroc, dji pocket 4 maroc, stabilisateur dji maroc, dji casablanca',
+    heroH1: 'Matériel DJI & Caméras au Maroc',
+    heroSub: 'Découvrez la sélection DJI chez GearShop : caméras nomades stabilisées, solutions de vlogging 4K et accessoires certifiés.',
+    whyTitle: 'Votre spécialiste DJI à Casablanca',
+    whyText: 'Profitez de conseils d\'experts pour choisir vos équipements DJI avec assistance à la configuration, garantie 1 an et disponibilité immédiate à Casablanca.',
+    matchTerms: ['dji', 'osmo', 'pocket']
+  },
+  'godox': {
+    name: 'Godox',
+    metaTitle: 'Éclairage & Flashs Godox au Maroc | Éclairage Studio & Vidéo | GearShop',
+    metaDesc: 'Gamme complète d\'éclairage studio Godox au Maroc : projecteurs LED COB, torches portables, softboxes et flashs cobra. Stock Casablanca.',
+    keywords: 'godox maroc, eclairage godox casablanca, flash godox maroc, projecteur led godox maroc',
+    heroH1: 'Éclairage Studio & Vidéo Godox au Maroc',
+    heroSub: 'Solutions d\'éclairage continu et flashs professionnels pour photographes, vidéastes et studios de production.',
+    whyTitle: 'L\'éclairage de référence pour votre studio au Maroc',
+    whyText: 'Les éclairages Godox offrent un rendu des couleurs fidèle (CRI/TLCI 96+) et une fiabilité éprouvée pour sublimer vos créations visuelles.',
+    matchTerms: ['godox']
   }
 };
 
 const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, siteConfig }) => {
   const { brand } = useParams<{ brand: string }>();
   const { addToCart } = useCart();
+  const [selectedMount, setSelectedMount] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc'>('featured');
 
   const brandKey = (brand || '').toLowerCase().trim();
-  const profile = BRAND_PROFILES[brandKey] || {
-    name: brand ? brand.charAt(0).toUpperCase() + brand.slice(1).replace('-', ' ') : 'Marque',
-    metaTitle: `Objectifs et Équipements ${brand} au Maroc | GearShop Casablanca`,
-    metaDesc: `Découvrez notre sélection d'objectifs et d'équipements pour ${brand} au Maroc. Stock disponible à Casablanca et livraison express dans tout le Maroc.`,
-    keywords: `objectif ${brand} maroc, materiel ${brand} casablanca, accessoires ${brand}, gearshop maroc`,
-    heroH1: `Objectifs et Équipements pour ${brand}`,
-    heroSub: `Sélection de matériel professionnel certifié compatible avec vos équipements ${brand} au Maroc.`,
-    whyTitle: `Pourquoi choisir GearShop pour votre matériel ${brand} ?`,
-    whyText: `GearShop garantit des produits authentiques avec garantie constructeur, stock disponible immédiatement à Casablanca et conseils techniques personnalisés.`,
-    matchTerms: [brandKey]
-  };
+  const catalogBrand = getBrandBySlug(products, brandKey);
+
+  const profile: BrandSEOProfile = useMemo(() => {
+    if (BRAND_PROFILES[brandKey]) return BRAND_PROFILES[brandKey];
+    const cleanName = catalogBrand ? catalogBrand.name : (brand ? brand.charAt(0).toUpperCase() + brand.slice(1).replace('-', ' ') : 'Marque');
+    return {
+      name: cleanName,
+      metaTitle: `Matériel et Équipements ${cleanName} au Maroc | GearShop Casablanca`,
+      metaDesc: `Découvrez notre sélection officielle de matériel ${cleanName} au Maroc chez GearShop. Stock disponible à Casablanca et livraison express 24-48h.`,
+      keywords: `${cleanName} maroc, materiel ${cleanName} casablanca, accessoires ${cleanName}, gearshop maroc`,
+      heroH1: `Produits & Équipements ${cleanName} au Maroc`,
+      heroSub: `Sélection de matériel professionnel certifié ${cleanName} disponible chez GearShop Maroc.`,
+      whyTitle: `Pourquoi acheter votre matériel ${cleanName} chez GearShop Maroc ?`,
+      whyText: `GearShop garantit des produits 100% originaux avec garantie constructeur 1 an, stock vérifié à Casablanca et conseils techniques sur-mesure.`,
+      matchTerms: [brandKey, slugify(cleanName)]
+    };
+  }, [brandKey, catalogBrand, brand]);
 
   const openWhatsappReserve = (productName: string) => {
-    const phone = siteConfig.phone.replace('+212', '212');
-    const msg = `Bonjour, je souhaite réserver le produit : ${productName} (Catégorie ${profile.name})`;
+    const phone = siteConfig.phone.replace('+212', '212').replace(/\s+/g, '');
+    const msg = `Bonjour, je souhaite réserver le produit : ${productName} (Marque : ${profile.name})`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -146,11 +178,62 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, s
     ));
   };
 
-  // Comprehensive filter matching for mounts, brand names, and aliases
-  const brandProducts = products.filter(p => {
-    const haystack = `${p.name || ''} ${p.desc || ''} ${p.category || ''} ${(p.specs || []).join(' ')}`.toLowerCase();
-    return profile.matchTerms.some(term => haystack.includes(term.toLowerCase()));
-  });
+  // 1. Initial brand filtering
+  const brandProducts = useMemo(() => {
+    return products.filter(p => {
+      const attrs = extractProductAttributes(p);
+      if (catalogBrand && catalogBrand.productIds.includes(p.id)) return true;
+      if (attrs.brand && slugify(attrs.brand) === brandKey) return true;
+      const haystack = `${p.name || ''} ${p.desc || ''} ${p.category || ''} ${(p.specs || []).join(' ')}`.toLowerCase();
+      return profile.matchTerms.some(term => haystack.includes(term.toLowerCase()));
+    });
+  }, [products, catalogBrand, brandKey, profile.matchTerms]);
+
+  // Extract available mounts within this brand
+  const availableMounts = useMemo(() => {
+    const mounts = new Set<string>();
+    brandProducts.forEach(p => {
+      const attrs = extractProductAttributes(p);
+      if (attrs.mount && attrs.mount !== 'Universel') mounts.add(attrs.mount);
+    });
+    return Array.from(mounts).sort();
+  }, [brandProducts]);
+
+  // 2. Apply mount and sort filters
+  const filteredProducts = useMemo(() => {
+    let result = brandProducts.filter(p => {
+      if (selectedMount === 'all') return true;
+      const attrs = extractProductAttributes(p);
+      return attrs.mount === selectedMount;
+    });
+
+    if (sortBy === 'price-asc') {
+      result = [...result].sort((a, b) => (a.price || 0) - (b.price || 0));
+    } else if (sortBy === 'price-desc') {
+      result = [...result].sort((a, b) => (b.price || 0) - (a.price || 0));
+    }
+
+    return result;
+  }, [brandProducts, selectedMount, sortBy]);
+
+  // Structured Data Schema for CollectionPage
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": profile.heroH1,
+    "description": profile.metaDesc,
+    "url": `https://gearshop.ma/marque/${brandKey}`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": brandProducts.length,
+      "itemListElement": brandProducts.slice(0, 12).map((p, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": p.name,
+        "url": `https://gearshop.ma/product/${p.id}-${slugify(p.name)}`
+      }))
+    }
+  };
 
   return (
     <div className="pt-24 pb-16 bg-white dark:bg-gray-900 min-h-screen">
@@ -164,18 +247,25 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, s
         <meta property="og:url" content={`https://gearshop.ma/marque/${brandKey}`} />
       </Helmet>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
           <Link to="/" className="hover:text-red-600 transition-colors">Accueil</Link>
           <i className="fa-solid fa-chevron-right text-[9px] text-gray-400" />
+          <span className="text-gray-400">Marques</span>
+          <i className="fa-solid fa-chevron-right text-[9px] text-gray-400" />
           <span className="text-gray-900 dark:text-white font-semibold">{profile.name}</span>
         </nav>
 
         {/* Hero Banner for Brand */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <span className="inline-block px-3 py-1 bg-red-50 dark:bg-red-950/40 text-[#b91c1c] dark:text-red-400 text-xs font-black uppercase tracking-widest rounded-full mb-3">
-            COMPATIBILITÉ &amp; SÉLECTION OFFICIELLE
+            REVEnDEUR AGRÉÉ &amp; SÉLECTION OFFICIELLE
           </span>
           <h1 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
             {profile.heroH1}
@@ -185,21 +275,66 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, s
           </p>
         </div>
 
+        {/* Filters Bar: Mounts & Sorting */}
+        <div className="bg-gray-50 dark:bg-gray-800/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-700 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Mount Chips */}
+          <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+            <span className="text-xs font-bold text-gray-500 mr-1 uppercase">Monture :</span>
+            <button
+              onClick={() => setSelectedMount('all')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                selectedMount === 'all'
+                  ? 'bg-black dark:bg-white text-white dark:text-black shadow-xs'
+                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100'
+              }`}
+            >
+              Toutes ({brandProducts.length})
+            </button>
+            {availableMounts.map(m => (
+              <button
+                key={m}
+                onClick={() => setSelectedMount(m)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                  selectedMount === m
+                    ? 'bg-red-600 text-white shadow-xs'
+                    : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100'
+                }`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+
+          {/* Sort Selector */}
+          <div className="flex items-center gap-2 self-end md:self-auto text-xs">
+            <span className="font-bold text-gray-500">Trier :</span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+              className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-1.5 font-bold text-gray-800 dark:text-gray-100"
+            >
+              <option value="featured">Recommandés</option>
+              <option value="price-asc">Prix : Croissant</option>
+              <option value="price-desc">Prix : Décroissant</option>
+            </select>
+          </div>
+        </div>
+
         {/* Product Count Badge */}
         <div className="flex items-center justify-between mb-6 pb-3 border-b border-gray-100 dark:border-gray-800">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-            {brandProducts.length} {brandProducts.length > 1 ? 'produits disponibles' : 'produit disponible'}
+            {filteredProducts.length} {filteredProducts.length > 1 ? 'produits affichés' : 'produit affiché'}
           </p>
           <div className="flex items-center gap-2 text-xs text-emerald-600 font-bold">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            En stock à Casablanca
+            Stock garanti à Casablanca
           </div>
         </div>
 
         {/* Product Grid */}
-        {brandProducts.length > 0 ? (
+        {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {brandProducts.map(product => (
+            {filteredProducts.map(product => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -214,12 +349,12 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, s
         ) : (
           <div className="text-center py-20 bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 border border-gray-100 dark:border-gray-700">
             <i className="fa-solid fa-camera text-4xl text-gray-300 dark:text-gray-600 mb-4" />
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Sélection en cours d'arrivage</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Aucun produit dans cette monture</h3>
             <p className="text-gray-500 dark:text-gray-400 text-sm max-w-md mx-auto mb-6">
-              Contactez-nous directement sur WhatsApp pour réserver vos optiques ou vérifier la compatibilité avec votre modèle.
+              Contactez-nous directement sur WhatsApp pour vérifier les disponibilités ou commander votre référence spécifique.
             </p>
             <a
-              href={`https://wa.me/${siteConfig.phone.replace('+', '')}?text=${encodeURIComponent(`Bonjour, je cherche du matériel pour ${profile.name}`)}`}
+              href={`https://wa.me/${siteConfig.phone.replace('+', '')}?text=${encodeURIComponent(`Bonjour, je cherche un produit ${profile.name}`)}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-bold rounded-xl text-sm hover:opacity-90 transition-opacity"

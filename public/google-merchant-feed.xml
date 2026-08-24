@@ -635,6 +635,24 @@
       </g:shipping>
     </item>
     <item>
+      <g:id>3001</g:id>
+      <g:title>DJI Osmo Pocket 4 Pro</g:title>
+      <g:description>Le DJI Osmo Pocket 4 Pro (Osmo Pocket 4P) est une caméra vlog 4K d&apos;exception dotée d&apos;un capteur CMOS grand-angle 1 pouce offrant 17 stops de plage dynamique et le profil couleur D-Log 2. Elle intègre un second objectif téléobjectif moyen 60mm à ouverture f/1.8 idéal pour les portraits naturels. Équipée d&apos;une stabilisation nacelle 3 axes, du suivi intelligent ActiveTrack 8.0, d&apos;un mode ralenti Ultra-HD jusqu&apos;à 10× (4K) et de 103 Go de stockage interne.</g:description>
+      <g:link>https://gearshop.ma/product/3001-dji-osmo-pocket-4-pro</g:link>
+      <g:image_link>https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>8000.00 MAD</g:price>
+      <g:brand>DJI</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
       <g:id>1765907057061</g:id>
       <g:title>Y300S</g:title>
       <g:description>Y300S 300W dual color temperature Luminous flux (ML): 33000 Color temperature (K): 2700-6500 1 meter illuminance (with standard cover) lux: 98000 1 meter illuminance (bare light) lux: 10800 Input voltage: 200-220v Output power: 310w</g:description>

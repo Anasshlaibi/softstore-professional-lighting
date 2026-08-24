@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Product } from '../../App';
+import { Product } from '../../../App';
 import { ProductFormData } from '../../services/productService';
 
 interface ProductEditorModalProps {
@@ -42,6 +42,13 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
   const [warranty, setWarranty] = useState('3 Mois Garantie GearShop');
   const [accessories, setAccessories] = useState('Boîte d\'origine, Bouchons avant/arrière');
 
+  // SEO Overrides State
+  const [isPreorder, setIsPreorder] = useState(false);
+  const [seoTitle, setSeoTitle] = useState('');
+  const [metaDescription, setMetaDescription] = useState('');
+  const [seoIntro, setSeoIntro] = useState('');
+  const [searchAliasesInput, setSearchAliasesInput] = useState('');
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -59,7 +66,13 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
       setImage(product.image || '');
       setGallery(Array.isArray(product.gallery) && product.gallery.length > 0 ? product.gallery : [product.image || '']);
       setInStock(product.inStock !== false);
+      setIsPreorder(product.isPreorder === true || (product as any).status === 'Précommande');
       setDesc(product.desc || '');
+
+      setSeoTitle(product.seo_title || '');
+      setMetaDescription(product.meta_description || '');
+      setSeoIntro(product.seo_intro || '');
+      setSearchAliasesInput(Array.isArray(product.search_aliases) ? product.search_aliases.join(', ') : '');
 
       const specs = (product as any).technical_specs || {};
       const used = (product as any).used_attributes || {};
@@ -87,7 +100,13 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
       setGallery([]);
       setNewGalleryInput('');
       setInStock(true);
+      setIsPreorder(false);
       setDesc('');
+
+      setSeoTitle('');
+      setMetaDescription('');
+      setSeoIntro('');
+      setSearchAliasesInput('');
 
       setFocalLength('35mm');
       setAperture('F1.4');
@@ -163,10 +182,15 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
         image: image.trim(),
         gallery: gallery.length > 0 ? gallery : [image.trim()],
         inStock,
+        isPreorder,
         desc: desc.trim(),
         condition_rating: productGroup === 'used' ? conditionRating : undefined,
         technical_specs,
         used_attributes: productGroup === 'used' ? used_attributes : {},
+        seo_title: seoTitle.trim() || undefined,
+        meta_description: metaDescription.trim() || undefined,
+        seo_intro: seoIntro.trim() || undefined,
+        search_aliases: searchAliasesInput ? searchAliasesInput.split(',').map(s => s.trim()).filter(Boolean) : undefined,
         active: true,
       };
 
@@ -361,20 +385,32 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
               />
             </div>
 
-            <div className="flex flex-col justify-center">
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-                Disponibilité
+            <div className="flex flex-col justify-center gap-2">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
+                Disponibilité & Précommande
               </label>
-              <button
-                type="button"
-                onClick={() => setInStock(!inStock)}
-                className={`w-full py-3 px-4 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${
-                  inStock ? 'bg-green-600 text-white shadow-md' : 'bg-orange-500 text-white'
-                }`}
-              >
-                <i className={`fa-solid ${inStock ? 'fa-check-circle' : 'fa-clock'}`}></i>
-                {inStock ? 'En Stock' : 'Rupture / Sur Commande'}
-              </button>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => { setInStock(!inStock); if (!inStock) setIsPreorder(false); }}
+                  className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${
+                    inStock ? 'bg-green-600 text-white shadow-xs' : 'bg-gray-200 text-gray-700'
+                  }`}
+                >
+                  <i className={`fa-solid ${inStock ? 'fa-check-circle' : 'fa-circle-xmark'}`}></i>
+                  {inStock ? 'En Stock' : 'Hors Stock'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setIsPreorder(!isPreorder); if (!isPreorder) setInStock(false); }}
+                  className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${
+                    isPreorder ? 'bg-blue-600 text-white shadow-xs' : 'bg-gray-200 text-gray-700'
+                  }`}
+                >
+                  <i className="fa-solid fa-clock"></i>
+                  {isPreorder ? 'Précommande' : 'Précom: Non'}
+                </button>
+              </div>
             </div>
           </div>
 
@@ -542,6 +578,62 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
               className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:bg-white focus:border-black outline-none"
               placeholder="Description commerciale et caractéristiques techniques du produit..."
             ></textarea>
+          </div>
+
+          {/* Admin SEO Overrides (Priority: Admin override > Generated > Fallback) */}
+          <div className="bg-purple-50/60 border border-purple-100 p-5 rounded-2xl space-y-4">
+            <h4 className="text-xs font-bold text-purple-900 uppercase tracking-wider flex items-center gap-2">
+              <i className="fa-solid fa-magnifying-glass font-bold"></i> Surcharges SEO Manuelles (Priorité Administrateur)
+            </h4>
+            <p className="text-xs text-purple-700">
+              Ces champs remplacent les valeurs générées automatiquement. Laissez vide pour utiliser la génération automatique à partir des caractéristiques produit.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1">Titre SEO Personnalisé (Balise Title)</label>
+                <input
+                  type="text"
+                  value={seoTitle}
+                  onChange={e => setSeoTitle(e.target.value)}
+                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
+                  placeholder="Laisser vide pour générer automatiquement"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1">Méta Description Personnalisée</label>
+                <input
+                  type="text"
+                  value={metaDescription}
+                  onChange={e => setMetaDescription(e.target.value)}
+                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
+                  placeholder="Laisser vide pour générer automatiquement"
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block text-xs font-bold text-gray-700 mb-1">Introduction SEO Personnalisée (Présentation)</label>
+                <textarea
+                  rows={2}
+                  value={seoIntro}
+                  onChange={e => setSeoIntro(e.target.value)}
+                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
+                  placeholder="Laisser vide pour générer automatiquement"
+                ></textarea>
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block text-xs font-bold text-gray-700 mb-1">Alias de Recherche Séparés par des Virgules</label>
+                <input
+                  type="text"
+                  value={searchAliasesInput}
+                  onChange={e => setSearchAliasesInput(e.target.value)}
+                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
+                  placeholder="Ex: dji pocket 4, osmo pocket 4, pocket 4 pro"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Footer Submit Buttons */}

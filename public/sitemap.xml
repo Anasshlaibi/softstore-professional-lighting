@@ -6,108 +6,187 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://gearshop.ma/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://gearshop.ma/banner_7artisans.jpg</image:loc>
-      <image:title>GearShop Maroc - Objectifs 7Artisans et Lentilles Cinéma au Maroc</image:title>
-      <image:caption>Seul revendeur officiel d'objectifs 7Artisans au Maroc - Canon, Nikon Z, Sony E</image:caption>
-    </image:image>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/camera-maroc</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/cinema-lenses-maroc</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gearshop.ma/a-propos</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <loc>https://gearshop.ma/dji-osmo-pocket-4-pro</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/magasin-casablanca</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/a-propos</loc>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gearshop.ma/categorie/objectifs</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/categorie/filtres</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/categorie/eclairage-studio</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/categorie/eclairage-portable</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/categorie/accessoires</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/categorie/occasion</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://gearshop.ma/marque/7artisans</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://gearshop.ma/marque/lumix</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://gearshop.ma/marque/panasonic</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://gearshop.ma/marque/fujifilm</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://gearshop.ma/marque/fuji</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/marque/kf-concept</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/marque/sony</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/marque/canon</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/marque/nikon</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/marque/panasonic</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/marque/lumix</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/marque/fujifilm</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/marque/dji</loc>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/marque/godox</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/marque/rode</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/guide/filmmakers</loc>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gearshop.ma/marque/rode</loc>
-    <lastmod>2026-08-20</lastmod>
+    <loc>https://gearshop.ma/guide/videographers</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/guide/content-creators</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/guide/photographers</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/guide/interviews</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gearshop.ma/guide/weddings</loc>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gearshop.ma/product/1-ym-350</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg</image:loc>
       <image:title>YM 350 - GearShop Maroc</image:title>
-      <image:caption>Achetez YM 350 chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez YM 350 chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202506061717046AA969B2BE885D7F_b.jpg</image:loc>
@@ -120,13 +199,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2-yb-300r</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg</image:loc>
       <image:title>YB-300R - GearShop Maroc</image:title>
-      <image:caption>Achetez YB-300R chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez YB-300R chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg</image:loc>
@@ -139,13 +218,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/3-bkl400bi-bi-color</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.jpg</image:loc>
       <image:title>BKL400Bi Bi-Color - GearShop Maroc</image:title>
-      <image:caption>Achetez BKL400Bi Bi-Color chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez BKL400Bi Bi-Color chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.jpg</image:loc>
@@ -154,13 +233,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/4-panel-p-500</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319170443F599C75DE4A68CC2_s.webp</image:loc>
       <image:title>Panel P-500 - GearShop Maroc</image:title>
-      <image:caption>Achetez Panel P-500 chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez Panel P-500 chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319170443F599C75DE4A68CC2_s.webp</image:loc>
@@ -169,13 +248,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/6-yb-100r</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319173149416DF92390F5C3A7_b.webp</image:loc>
       <image:title>YB-100R  - GearShop Maroc</image:title>
-      <image:caption>Achetez YB-100R  chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez YB-100R  chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202403191731497CF0CC0C3BB448BE_b.webp</image:loc>
@@ -188,13 +267,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/7-s100-w-portable</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.jpg</image:loc>
       <image:title>S100 W portable - GearShop Maroc</image:title>
-      <image:caption>Achetez S100 W portable chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez S100 W portable chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/202410/202410161549185be597.jpg</image:loc>
@@ -207,13 +286,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/8-p-60s-spotlight</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.jpg</image:loc>
       <image:title>P-60S Spotlight - GearShop Maroc</image:title>
-      <image:caption>Achetez P-60S Spotlight chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez P-60S Spotlight chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.jpg</image:loc>
@@ -222,13 +301,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
       <image:title>35mm T2.0 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm T2.0 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm T2.0 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
@@ -241,13 +320,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
       <image:title>35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
@@ -260,13 +339,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
       <image:title>35mm T2.0 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm T2.0 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm T2.0 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
@@ -279,13 +358,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
       <image:title>35mm T2.0 Canon (EOS-R Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm T2.0 Canon (EOS-R Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm T2.0 Canon (EOS-R Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236</image:loc>
@@ -298,13 +377,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
       <image:title>50mm T2.0 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm T2.0 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm T2.0 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
@@ -317,13 +396,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1005-50mm-t2-0-panasonic-leica-sigma-l-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
       <image:title>50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
@@ -336,13 +415,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1006-50mm-t2-0-canon-eos-r-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
       <image:title>50mm T2.0 Canon (EOS-R Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm T2.0 Canon (EOS-R Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm T2.0 Canon (EOS-R Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
@@ -355,13 +434,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
       <image:title>50mm T2.0 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm T2.0 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm T2.0 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354</image:loc>
@@ -374,13 +453,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>AF35mm F1.4 Fuji (FX Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF35mm F1.4 Fuji (FX Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF35mm F1.4 Fuji (FX Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -393,13 +472,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
       <image:title>AF35mm F1.8 Sony (E Mount) APS-C - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF35mm F1.8 Sony (E Mount) APS-C - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF35mm F1.8 Sony (E Mount) APS-C - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
@@ -412,13 +491,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
       <image:title>AF35mm F1.8 Fuji (FX Mount) APS-C - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF35mm F1.8 Fuji (FX Mount) APS-C - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF35mm F1.8 Fuji (FX Mount) APS-C - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
@@ -431,13 +510,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
       <image:title>AF35mm F1.8 Nikon (Z Mount) APS-C - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF35mm F1.8 Nikon (Z Mount) APS-C - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF35mm F1.8 Nikon (Z Mount) APS-C - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
@@ -450,13 +529,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
       <image:title>AF50mm F1.8 Sony (E Mount) APS-C - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF50mm F1.8 Sony (E Mount) APS-C - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF50mm F1.8 Sony (E Mount) APS-C - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
@@ -469,13 +548,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
       <image:title>AF50mm F1.8 Fuji (FX Mount) APS-C - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF50mm F1.8 Fuji (FX Mount) APS-C - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF50mm F1.8 Fuji (FX Mount) APS-C - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
@@ -488,13 +567,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
       <image:title>AF50mm F1.8 Nikon (Z Mount) APS-C - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF50mm F1.8 Nikon (Z Mount) APS-C - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF50mm F1.8 Nikon (Z Mount) APS-C - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
@@ -507,13 +586,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117</image:loc>
       <image:title>AF24mm F1.8 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF24mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF24mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117</image:loc>
@@ -526,13 +605,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117</image:loc>
       <image:title>AF24mm F1.8 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF24mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF24mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117</image:loc>
@@ -545,13 +624,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117</image:loc>
       <image:title>AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117</image:loc>
@@ -564,13 +643,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
       <image:title>AF35mm F1.8 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF35mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF35mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
@@ -583,13 +662,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
       <image:title>AF35mm F1.8 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF35mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF35mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
@@ -602,13 +681,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
       <image:title>AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863</image:loc>
@@ -621,13 +700,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_5f614e8a-15b9-4f9e-a1b7-db9fbf89b1a2.jpg?v=1772003864</image:loc>
       <image:title>AF40mm F2.5 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF40mm F2.5 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF40mm F2.5 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_5f614e8a-15b9-4f9e-a1b7-db9fbf89b1a2.jpg?v=1772003864</image:loc>
@@ -640,13 +719,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1022-af50mm-f1-8-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
       <image:title>AF50mm F1.8 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF50mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF50mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
@@ -659,13 +738,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
       <image:title>AF50mm F1.8 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF50mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF50mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
@@ -678,13 +757,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/cpl_1.jpg?v=1781604309</image:loc>
       <image:title>AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/cpl_1.jpg?v=1781604309</image:loc>
@@ -697,13 +776,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1025-af135mm-f1-8-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185</image:loc>
       <image:title>AF135mm F1.8 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF135mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF135mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185</image:loc>
@@ -716,13 +795,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185</image:loc>
       <image:title>AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185</image:loc>
@@ -735,13 +814,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1027-af135mm-f1-8-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185</image:loc>
       <image:title>AF135mm F1.8 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez AF135mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez AF135mm F1.8 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185</image:loc>
@@ -754,13 +833,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1028-35mm-f1-4-sony-e-mount-mark-iii-ff-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm F1.4 Sony (E Mount) mark iii FF - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm F1.4 Sony (E Mount) mark iii FF - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm F1.4 Sony (E Mount) mark iii FF - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -773,13 +852,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -792,13 +871,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -811,13 +890,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm F1.4 Nikon (Z Mount) mark iii FF - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm F1.4 Nikon (Z Mount) mark iii FF - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm F1.4 Nikon (Z Mount) mark iii FF - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -830,13 +909,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
       <image:title>50mm F1.2 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm F1.2 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm F1.2 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
@@ -849,13 +928,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
       <image:title>50mm F1.2 Fuji (FX Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm F1.2 Fuji (FX Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm F1.2 Fuji (FX Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
@@ -868,13 +947,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
       <image:title>50mm F1.2 M43 (Panasonic Olympus) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm F1.2 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm F1.2 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
@@ -887,13 +966,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
       <image:title>50mm F1.2 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm F1.2 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm F1.2 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495</image:loc>
@@ -906,13 +985,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
       <image:title>50mm F1.8 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm F1.8 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
@@ -925,13 +1004,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
       <image:title>50mm F1.8 Fuji (FX Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 50mm F1.8 Fuji (FX Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 50mm F1.8 Fuji (FX Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210</image:loc>
@@ -944,13 +1023,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm/F1.4 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm/F1.4 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm/F1.4 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -963,13 +1042,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm/F1.4 Fuji (FX Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm/F1.4 Fuji (FX Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm/F1.4 Fuji (FX Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -982,13 +1061,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm/F1.4 M43 (Panasonic Olympus) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm/F1.4 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm/F1.4 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -1001,13 +1080,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm/F1.4 Nikon (Z Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm/F1.4 Nikon (Z Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm/F1.4 Nikon (Z Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -1020,13 +1099,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
       <image:title>35mm/F1.4 Canon (EOS-R Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 35mm/F1.4 Canon (EOS-R Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 35mm/F1.4 Canon (EOS-R Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186</image:loc>
@@ -1039,13 +1118,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/6_6e23eacf-6b37-499a-8b5f-b53efaaed46f.jpg?v=1659681589</image:loc>
       <image:title>Autofocus adapter for Canon EF - Nikon Z - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez Autofocus adapter for Canon EF - Nikon Z - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez Autofocus adapter for Canon EF - Nikon Z - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/products/6_6e23eacf-6b37-499a-8b5f-b53efaaed46f.jpg?v=1659681589</image:loc>
@@ -1058,13 +1137,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1077,13 +1156,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 Fuji (FX Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 Fuji (FX Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 Fuji (FX Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1096,13 +1175,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 M43 (Panasonic Olympus) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1115,13 +1194,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 Canon (EOS-R Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 Canon (EOS-R Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 Canon (EOS-R Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1134,13 +1213,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 Sony (E Mount) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 Sony (E Mount) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 Sony (E Mount) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1153,13 +1232,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 Fuji (FX Mount) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 Fuji (FX Mount) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 Fuji (FX Mount) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1172,13 +1251,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1191,13 +1270,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>10mm T2.1 Canon (EOS-R Mount) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 10mm T2.1 Canon (EOS-R Mount) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 10mm T2.1 Canon (EOS-R Mount) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1210,13 +1289,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 Sony (E Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 Sony (E Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 Sony (E Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1229,13 +1308,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 Fuji (FX Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 Fuji (FX Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 Fuji (FX Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1248,13 +1327,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 M43 (Panasonic Olympus) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 M43 (Panasonic Olympus) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1267,13 +1346,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 Canon (EOS-R Mount) - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 Canon (EOS-R Mount) - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 Canon (EOS-R Mount) - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1286,13 +1365,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 Sony (E Mount) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 Sony (E Mount) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 Sony (E Mount) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1305,13 +1384,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 Fuji (FX Mount) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 Fuji (FX Mount) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 Fuji (FX Mount) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1324,13 +1403,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1343,13 +1422,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
       <image:title>16mm T2.1 Canon (EOS-R Mount) - Titanium Gray - GearShop Maroc</image:title>
-      <image:caption>Achetez 16mm T2.1 Canon (EOS-R Mount) - Titanium Gray chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 16mm T2.1 Canon (EOS-R Mount) - Titanium Gray chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151</image:loc>
@@ -1362,13 +1441,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_a309bf99-2e99-4d89-a5bc-28f48cded8a4.jpg?v=1772606130</image:loc>
       <image:title>PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver - GearShop Maroc</image:title>
-      <image:caption>Achetez PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_a309bf99-2e99-4d89-a5bc-28f48cded8a4.jpg?v=1772606130</image:loc>
@@ -1381,13 +1460,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/08-06_VND.jpg?v=1722932210</image:loc>
       <image:title>77mm True Color VND6-9 Filter - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 77mm True Color VND6-9 Filter - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 77mm True Color VND6-9 Filter - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/08-06_VND.jpg?v=1722932210</image:loc>
@@ -1396,13 +1475,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1-8.jpg?v=1781605231</image:loc>
       <image:title>55mm 1/8 Black Mist Filter - Black - GearShop Maroc</image:title>
-      <image:caption>Achetez 55mm 1/8 Black Mist Filter - Black chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez 55mm 1/8 Black Mist Filter - Black chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1-8.jpg?v=1781605231</image:loc>
@@ -1415,13 +1494,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg</image:loc>
       <image:title>K&amp;F Concept 82mm 3-in-1 ND2-32 &amp; CPL &amp; Black Mist 1/4 Filter (Nano-Xcel) - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept 82mm 3-in-1 ND2-32 &amp; CPL &amp; Black Mist 1/4 Filter (Nano-Xcel) chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept 82mm 3-in-1 ND2-32 &amp; CPL &amp; Black Mist 1/4 Filter (Nano-Xcel) chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg</image:loc>
@@ -1430,13 +1509,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1064/KF01.1064-1-327x327.jpg</image:loc>
       <image:title>K&amp;F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X) - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X) chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X) chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1064/KF01.1064-1-327x327.jpg</image:loc>
@@ -1445,13 +1524,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg</image:loc>
       <image:title>K&amp;F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated) - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated) chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated) chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg</image:loc>
@@ -1460,13 +1539,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg</image:loc>
       <image:title>K&amp;F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg</image:loc>
@@ -1475,13 +1554,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/image/36-327x327.png</image:loc>
       <image:title>K&amp;F Concept 82mm MC-UV Slim Protection Filter (Japan Optics) - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept 82mm MC-UV Slim Protection Filter (Japan Optics) chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept 82mm MC-UV Slim Protection Filter (Japan Optics) chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/image/36-327x327.png</image:loc>
@@ -1490,13 +1569,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/image/70-327x327.png</image:loc>
       <image:title>K&amp;F Concept Kit 18pcs Bagues d&apos;Adaptation Step Up / Step Down (37mm - 82mm) - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept Kit 18pcs Bagues d&apos;Adaptation Step Up / Step Down (37mm - 82mm) chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept Kit 18pcs Bagues d&apos;Adaptation Step Up / Step Down (37mm - 82mm) chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/image/70-327x327.png</image:loc>
@@ -1505,13 +1584,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/799-327x327.png</image:loc>
       <image:title>K&amp;F Concept Kit de Nettoyage Professionnel Optique 3-en-1 - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept Kit de Nettoyage Professionnel Optique 3-en-1 chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept Kit de Nettoyage Professionnel Optique 3-en-1 chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/799-327x327.png</image:loc>
@@ -1520,13 +1599,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/583-327x327.png</image:loc>
       <image:title>K&amp;F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh) - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh) chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh) chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/583-327x327.png</image:loc>
@@ -1535,13 +1614,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/image/65-327x327.png</image:loc>
       <image:title>K&amp;F Concept Sac Bandoulière Photo Étanche pour Caméra &amp; Accessoires - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept Sac Bandoulière Photo Étanche pour Caméra &amp; Accessoires chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept Sac Bandoulière Photo Étanche pour Caméra &amp; Accessoires chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/category/image/65-327x327.png</image:loc>
@@ -1550,13 +1629,13 @@
   </url>
   <url>
     <loc>https://gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1996/KF01.1996-1-327x327.jpg</image:loc>
       <image:title>K&amp;F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro) - GearShop Maroc</image:title>
-      <image:caption>Achetez K&amp;F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro) chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez K&amp;F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro) chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://img.kfconcept.com/cache/catalog/products/us/KF01.1996/KF01.1996-1-327x327.jpg</image:loc>
@@ -1564,14 +1643,33 @@
     </image:image>
   </url>
   <url>
+    <loc>https://gearshop.ma/product/3001-dji-osmo-pocket-4-pro</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png</image:loc>
+      <image:title>DJI Osmo Pocket 4 Pro - GearShop Maroc</image:title>
+      <image:caption>Achetez DJI Osmo Pocket 4 Pro chez GearShop Maroc - Distributeur officiel</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png</image:loc>
+      <image:title>DJI Osmo Pocket 4 Pro - Vue supplémentaire - GearShop Maroc</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-6.png</image:loc>
+      <image:title>DJI Osmo Pocket 4 Pro - Vue supplémentaire - GearShop Maroc</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://gearshop.ma/product/1765907057061-y300s</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319171843802F1E3F22F87FE6_b.webp</image:loc>
       <image:title>Y300S - GearShop Maroc</image:title>
-      <image:caption>Achetez Y300S chez GearShop Maroc - Seul revendeur officiel 7Artisans</image:caption>
+      <image:caption>Achetez Y300S chez GearShop Maroc - Distributeur officiel</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319171843802F1E3F22F87FE6_b.webp</image:loc>

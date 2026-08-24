@@ -58,11 +58,18 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
         stars: Number(row.stars) || 5,
         specs: specs,
         inStock: row.inStock !== false && row.instock !== false && row.instock !== 'FALSE' && row.instock !== 'false',
+        isPreorder: row.isPreorder === true || row.ispreorder === true || row.status === 'Précommande' || String(row.name || '').toLowerCase().includes('précommande'),
         promoEligible: row.promoEligible === true || row.promoeligible === true || row.promoeligible === 'TRUE' || row.promoeligible === 'true',
-        // Enriched fields from Supabase DB columns (added via migration 20260820_nextgen_schema.sql)
+        // Enriched fields from Supabase DB columns
         brand: row.brand ? String(row.brand) : undefined,
         mount: row.mount ? String(row.mount) : undefined,
         product_group: row.product_group ? String(row.product_group) : undefined,
+        seo_title: row.seo_title ? String(row.seo_title) : undefined,
+        meta_description: row.meta_description ? String(row.meta_description) : undefined,
+        seo_intro: row.seo_intro ? String(row.seo_intro) : undefined,
+        seo_description: row.seo_description ? String(row.seo_description) : undefined,
+        custom_faq: parseArraySafe(row.custom_faq) as any,
+        search_aliases: parseArraySafe(row.search_aliases),
       };
     });
 

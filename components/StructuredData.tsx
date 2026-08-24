@@ -6,89 +6,81 @@ interface StructuredDataProps {
   allProducts?: Product[];
 }
 
-// FAQ data — exported for use in FAQPage schema
+// Comprehensive FAQ data — exported for use across FAQ component and schema
 export const faqSchemaData = [
   {
-    question: "Quels sont les délais de livraison?",
-    answer: "Livraison sous 24-48h à Casablanca. Pour les autres villes du Maroc, comptez 2-4 jours ouvrables. Livraison gratuite dès 500 DH d'achat."
+    question: "Quels sont les délais et tarifs de livraison au Maroc ?",
+    answer: "Livraison sous 24-48h à Casablanca. Pour les autres villes du Maroc (Rabat, Marrakech, Tanger, Fès, Agadir, etc.), comptez 2-4 jours ouvrables. La livraison est gratuite dès 500 DH d'achat."
   },
   {
-    question: "Proposez-vous de la location d'équipement?",
-    answer: "Oui! Nous proposons la location pour certains produits. Les tarifs de location sont indiqués sur les fiches produits. Contactez-nous sur WhatsApp pour plus d'informations."
+    question: "GearShop est-il le revendeur officiel 7Artisans et K&F Concept au Maroc ?",
+    answer: "Oui, GearShop est le revendeur agréé et importateur direct au Maroc des objectifs 7Artisans (autofocus et cinéma) ainsi que des filtres optiques professionnels K&F Concept. Tous nos produits sont 100% originaux avec garantie constructeur."
   },
   {
-    question: "Quelle est votre politique de retour?",
-    answer: "Retour sous 14 jours si le produit est dans son emballage d'origine et en parfait état. Les frais de retour sont à la charge du client sauf en cas de produit défectueux."
+    question: "Les produits bénéficient-ils d'une garantie ?",
+    answer: "Tous nos équipements neufs bénéficient d'une garantie constructeur de 1 an avec service après-vente et support technique basés localement à Casablanca."
   },
   {
-    question: "Les produits sont-ils garantis?",
-    answer: "Tous nos produits bénéficient d'une garantie constructeur de 1 an. En cas de problème, nous assurons le service après-vente et les réparations."
+    question: "Quels modes de paiement acceptez-vous ?",
+    answer: "Nous acceptons le paiement à la livraison en espèces (Cash on Delivery), le virement bancaire sécurisé, et le paiement par carte bancaire. Des factures professionnelles sont fournies."
   },
   {
-    question: "Quels modes de paiement acceptez-vous?",
-    answer: "Nous acceptons: paiement à la livraison (Cash), virement bancaire, et paiement par carte bancaire. Pour les entreprises, nous proposons des facilités de paiement."
+    question: "Quels objectifs 7Artisans sont compatibles avec mon boîtier ?",
+    answer: "Nous disposons d'optiques pour toutes les montures majeures : Sony E-Mount, Canon RF, Nikon Z, Panasonic Lumix L-Mount, Fujifilm X-Mount et Micro 4/3. Contactez nos conseillers sur WhatsApp pour valider la compatibilité exacte de votre modèle."
   },
   {
-    question: "Puis-je obtenir des conseils techniques?",
-    answer: "Absolument! Notre équipe d'experts est disponible pour vous conseiller sur le choix de votre matériel. Contactez-nous via WhatsApp ou email."
+    question: "Proposez-vous du matériel d'occasion ou de la location ?",
+    answer: "Oui, nous disposons d'une sélection de matériel d'occasion certifié et testé par nos techniciens, ainsi que d'options de location pour tournages vidéo et cinéma au Maroc."
   },
   {
-    question: "GearShop est-il le seul revendeur d'objectifs 7Artisans au Maroc?",
-    answer: "Oui, GearShop est le revendeur exclusif et officiel des objectifs 7Artisans au Maroc, incluant les lentilles cinéma, les objectifs pour Canon EOS-R, Nikon Z et Sony E Mount."
-  },
-  {
-    question: "Livrez-vous partout au Maroc?",
-    answer: "Oui! Nous livrons dans toutes les villes du Maroc: Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir, Meknès et toutes les autres villes. Livraison rapide et sécurisée."
-  },
-  {
-    question: "Quels objectifs 7Artisans sont compatibles avec mon appareil?",
-    answer: "Nous proposons des objectifs 7Artisans pour tous les boîtiers populaires: Canon EOS-R Mount, Nikon Z Mount, Sony E Mount. Contactez-nous avec le modèle de votre appareil pour une recommandation personnalisée."
-  },
-  {
-    question: "Effectuez-vous l'installation du matériel?",
-    answer: "Oui, nous proposons un service d'installation et de configuration pour les studios professionnels. Tarifs sur devis."
+    question: "Comment choisir entre un filtre ND variable et un filtre Black Mist ?",
+    answer: "Le filtre ND variable permet de contrôler la quantité de lumière pour conserver une vitesse d'obturation cinématographique (règle des 180°). Le filtre Black Mist adoucit les hautes lumières et réduit le contraste numérique pour un rendu organique et cinématographique."
   }
 ];
 
 const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts }) => {
-  // ===== 1. LocalBusiness / Store Schema =====
+  const baseUrl = "https://gearshop.ma";
+
+  // ===== 1. WebSite Schema with SearchAction =====
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${baseUrl}/#website`,
+    "url": baseUrl,
+    "name": "GearShop Maroc",
+    "description": "Boutique officielle de matériel photo, objectifs 7Artisans, lentilles cinéma, filtres K&F Concept et éclairage professionnel au Maroc.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${baseUrl}/?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    },
+    "inLanguage": ["fr-MA"]
+  };
+
+  // ===== 2. Organization / Store / LocalBusiness Schema =====
   const storeSchema = {
     "@context": "https://schema.org",
     "@type": ["Store", "LocalBusiness"],
-    "@id": "https://gearshop.ma/#business",
+    "@id": `${baseUrl}/#business`,
     "name": "GearShop Maroc",
     "alternateName": ["GearShop", "Soft Store Maroc", "GearShop Casablanca"],
-    "description": "GearShop est le seul revendeur officiel au Maroc d'objectifs 7Artisans, de lentilles cinéma professionnelles, et le meilleur endroit pour acheter votre lens camera au Maroc (Canon EOS-R, Nikon Z et Sony E). Livraison rapide dans tout le Maroc et à Casa (Casablanca).",
+    "description": "GearShop est le distributeur officiel au Maroc d'objectifs photo & cinéma 7Artisans, de filtres optiques K&F Concept, de matériel DJI et d'éclairage studio professionnel. Magasin à Casablanca et livraison partout au Maroc.",
     "knowsAbout": [
-      "Canon",
-      "Sony",
-      "Nikon",
-      "Sigma",
-      "Tamron",
-      "7Artisans",
-      "Viltrox",
-      "DJI",
-      "Godox",
-      "SmallRig",
-      "Sirui",
-      "Zhiyun",
-      "Nanlite",
-      "Aputure",
-      "Lexar",
-      "SanDisk",
-      "Angelbird",
-      "Peak Design",
-      "Mirrorless Cameras",
-      "DSLR Cameras",
-      "Cinema Cameras",
-      "Photography",
-      "Videography",
-      "Filmmaking",
-      "Camera Accessories",
-      "Studio Lighting",
-      "Drones"
+      "Sony E-Mount Lenses",
+      "Canon RF Lenses",
+      "Nikon Z Lenses",
+      "Lumix L-Mount Lenses",
+      "Fujifilm X-Mount Lenses",
+      "7Artisans Cinema Lenses",
+      "K&F Concept Variable ND Filters",
+      "DJI Osmo Pocket",
+      "Studio Lighting & LED Panels",
+      "Filmmaking Equipment Morocco"
     ],
-    "url": "https://gearshop.ma",
+    "url": baseUrl,
     "telephone": "+212673011873",
     "email": "contact@gearshop.ma",
     "foundingDate": "2019",
@@ -121,51 +113,18 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       "name": "Maroc"
     },
     "image": [
-      "https://gearshop.ma/banner_7artisans.jpg",
-      "https://gearshop.ma/cine_lens.jpg",
-      "https://gearshop.ma/photo_lens.jpg"
+      `${baseUrl}/banner_7artisans.jpg`,
+      `${baseUrl}/cine_lens.jpg`,
+      `${baseUrl}/photo_lens.jpg`
     ],
-    "logo": "https://gearshop.ma/logo.png",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Objectifs Cinéma et Lentilles 7Artisans",
-      "url": "https://gearshop.ma/cinema-lenses-maroc"
-    },
+    "logo": `${baseUrl}/logo.png`,
     "sameAs": [
       "https://www.instagram.com/spidi8_8/",
       "https://wa.me/212673011873"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "87",
-      "reviewCount": "87"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Mohamed A." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Qualité exceptionnelle! Mon studio n'a jamais été aussi bien équipé. Les objectifs 7Artisans sont parfaits."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Fatima Z." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Matériel professionnel, livraison rapide et excellent service client. Je recommande vivement!"
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Youssef K." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Les objectifs cinéma sont parfaits pour mes tournages. Qualité cinématographique professionnelle!"
-      }
     ]
   };
 
-  // ===== 2. FAQPage Schema =====
+  // ===== 3. FAQPage Schema =====
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -183,9 +142,6 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     return text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '';
   };
 
-  const productUrl = product ? `https://gearshop.ma/product/${product.id}-${slugify(product.name)}` : '';
-  
-  // Brand detection for rich snippets
   const getProductBrand = (p: Product) => {
     if (p.brand) return p.brand;
     const t = `${p.name || ''} ${p.category || ''}`.toLowerCase();
@@ -194,14 +150,19 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     if (t.includes('sony')) return 'Sony';
     if (t.includes('canon')) return 'Canon';
     if (t.includes('nikon')) return 'Nikon';
+    if (t.includes('dji')) return 'DJI';
+    if (t.includes('fuji')) return 'Fujifilm';
+    if (t.includes('lumix') || t.includes('panasonic')) return 'Panasonic';
     if (t.includes('rode') || t.includes('røde')) return 'Røde';
     if (t.includes('sandisk')) return 'SanDisk';
     return '7Artisans';
   };
 
   const resolvedBrand = product ? getProductBrand(product) : '7Artisans';
+  const productUrl = product ? `${baseUrl}/product/${product.id}-${slugify(product.name)}` : '';
 
-  // ===== 3. Product Schema (when a product is selected) =====
+  // ===== 4. Product Schema (when a product is selected) =====
+  const isPreorder = product?.isPreorder === true;
   const productSchema = product ? {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -211,8 +172,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       product.image,
       ...(Array.isArray(product.gallery) ? product.gallery.slice(0, 4) : [])
     ].filter(Boolean),
-    "description": `Achetez le ${product.name} (${resolvedBrand}) au Maroc chez GearShop. Matériel garanti avec livraison rapide à Casablanca et dans tout le Maroc.`,
-    "sku": product.id.toString(),
+    "description": product.meta_description || product.desc || `Achetez ${product.name} chez GearShop Maroc. Produit officiel garanti 1 an avec livraison rapide à Casablanca et partout au Maroc.`,
+    "sku": `GS-${product.id}`,
     "mpn": `${resolvedBrand.slice(0, 3).toUpperCase()}-${product.id}`,
     "brand": {
       "@type": "Brand",
@@ -222,26 +183,29 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       "@type": "Organization",
       "name": resolvedBrand
     },
-    "seller": {
-      "@id": "https://gearshop.ma/#business"
-    },
     "offers": {
       "@type": "Offer",
       "@id": `${productUrl}#offer`,
       "url": productUrl,
       "priceCurrency": "MAD",
       "price": (product.price || 0).toString(),
-      "priceValidUntil": "2027-01-01",
-      "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-      "itemCondition": "https://schema.org/NewCondition",
+      "priceValidUntil": "2027-12-31",
+      "availability": isPreorder 
+        ? "https://schema.org/PreOrder" 
+        : product.inStock 
+          ? "https://schema.org/InStock" 
+          : "https://schema.org/OutOfStock",
+      "itemCondition": (product.category || '').toLowerCase().includes('occasion') 
+        ? "https://schema.org/UsedCondition" 
+        : "https://schema.org/NewCondition",
       "seller": {
-        "@id": "https://gearshop.ma/#business"
+        "@id": `${baseUrl}/#business`
       },
       "shippingDetails": {
         "@type": "OfferShippingDetails",
         "shippingRate": {
           "@type": "MonetaryAmount",
-          "value": "0",
+          "value": (product.price || 0) >= 500 ? "0" : "35",
           "currency": "MAD"
         },
         "shippingDestination": {
@@ -259,7 +223,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
           "transitTime": {
             "@type": "QuantitativeValue",
             "minValue": 1,
-            "maxValue": 4,
+            "maxValue": 3,
             "unitCode": "DAY"
           }
         }
@@ -273,24 +237,17 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
         "returnFees": "https://schema.org/OriginalShippingFees"
       }
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": product.stars.toString(),
-      "bestRating": "5",
-      "worstRating": "1",
-      "reviewCount": "15"
-    },
     "isRelatedTo": allProducts ? allProducts
       .filter(p => p.id !== product.id && p.category === product.category)
       .slice(0, 4)
       .map(p => ({
         "@type": "Product",
         "name": p.name,
-        "url": `https://gearshop.ma/product/${p.id}-${slugify(p.name)}`
+        "url": `${baseUrl}/product/${p.id}-${slugify(p.name)}`
       })) : []
   } : null;
 
-  // ===== 4. BreadcrumbList (when a product is selected) =====
+  // ===== 5. BreadcrumbList Schema =====
   const breadcrumbSchema = product ? {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -299,13 +256,13 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
         "@type": "ListItem",
         "position": 1,
         "name": "Accueil",
-        "item": "https://gearshop.ma/"
+        "item": baseUrl
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": product.category,
-        "item": `https://gearshop.ma/?category=${encodeURIComponent(product.category)}`
+        "name": product.category || "Matériel",
+        "item": `${baseUrl}/categorie/${slugify(product.category || 'lenses')}`
       },
       {
         "@type": "ListItem",
@@ -318,6 +275,10 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(storeSchema) }}

@@ -187,13 +187,18 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
     if (cl.includes('accessoire') || cl.includes('divers')) return 'fa-box-open';
     if (cl.includes('portable') || cl.includes('batterie')) return 'fa-battery-three-quarters';
     if (cl.includes('audio') || cl.includes('son') || cl.includes('micro')) return 'fa-microphone';
+    if (cl.includes('dji') || cl.includes('gimbal')) return 'fa-video';
     return 'fa-tag';
   };
 
-  const sidebarCategories = categories.filter(c => {
-    const cl = c.toLowerCase();
-    return c !== 'all' && !cl.includes('occasion') && !cl.includes('location');
-  });
+  const sidebarCategories = React.useMemo(() => {
+    const cats = categories.filter(c => {
+      const cl = c.toLowerCase();
+      return c !== 'all' && !cl.includes('occasion') && !cl.includes('location') && !cl.includes('dji');
+    });
+    cats.push('DJI & Gimbals');
+    return cats;
+  }, [categories]);
 
   return (
     <aside className="w-full lg:w-72 flex-shrink-0 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden" style={{ position: 'sticky', top: '88px', maxHeight: 'calc(100vh - 104px)', display: 'flex', flexDirection: 'column' }}>

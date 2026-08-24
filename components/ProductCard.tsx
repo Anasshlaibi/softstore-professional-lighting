@@ -6,7 +6,7 @@ interface ProductCardProps {
   onProductClick: (id: number) => void;
   siteConfig: { currency: string; phone: string };
   openWhatsappReserve: (productName: string) => void;
-  generateStars: (rating: number) => JSX.Element[];
+  generateStars: (rating: number) => React.ReactNode[];
   addToCart: (productId: number) => void;
 }
 
@@ -21,93 +21,108 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
   }) => {
     const discount =
       product.oldPrice && product.oldPrice > product.price
-        ? Math.round(
-          ((product.oldPrice - product.price) / product.oldPrice) * 100
-        )
+        ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
         : 0;
 
     return (
       <div
-        className="rounded-2xl overflow-hidden group relative flex flex-col h-full bg-white cursor-pointer border border-transparent hover:border-gray-100 hover:shadow-xl transition-all duration-300"
+        className="rounded-2xl overflow-hidden group relative flex flex-col h-full bg-white cursor-pointer border border-gray-200/80 hover:border-red-500/50 hover:shadow-xl transition-all duration-300"
         onClick={() => onProductClick(product.id)}
       >
-        {!product.inStock && (
-          <div className="absolute top-2 left-2 bg-orange-100 text-orange-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm z-20">
-            Rupture
+        {/* Badges Top Bar */}
+        <div className="absolute top-2 left-2 right-2 flex items-center justify-between z-20 pointer-events-none">
+          <div className="flex flex-col gap-1 items-start">
+            {discount > 0 && (
+              <span className="bg-red-600 text-white text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-sm">
+                -{discount}%
+              </span>
+            )}
+            {!product.inStock && (
+              <span className="bg-amber-500 text-white text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-sm">
+                Sur Commande
+              </span>
+            )}
+            {product.rentPrice && product.rentPrice > 0 && (
+              <span className="bg-gray-800 text-white text-[9px] sm:text-[10px] font-extrabold px-1.5 py-0.5 rounded-md shadow-sm flex items-center gap-1">
+                <i className="fa-solid fa-calendar-check text-[8px]" /> Location
+              </span>
+            )}
           </div>
-        )}
-        {product.rentPrice && product.rentPrice > 0 && (
-          <div className="absolute bottom-24 right-2 md:bottom-auto md:top-2 md:left-auto md:right-2 bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm z-20">
-            <i className="fa-solid fa-calendar-check mr-1"></i> Location
-          </div>
-        )}
-        {product.video && (
-          <div className="absolute top-2 right-2 bg-black/50 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm z-20">
-            <i className="fa-solid fa-play"></i>
-          </div>
-        )}
 
-        <div className="h-auto aspect-[4/5] md:aspect-square bg-white flex items-center justify-center p-4 relative overflow-hidden group-hover:bg-gray-50 transition-colors duration-500">
+          {/* Video Icon or Wishlist Icon */}
+          {product.video ? (
+            <span className="bg-black/60 backdrop-blur text-white w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] shadow-sm">
+              <i className="fa-solid fa-play" />
+            </span>
+          ) : (
+            <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/80 backdrop-blur text-gray-400 hover:text-red-600 flex items-center justify-center text-[10px] shadow-sm transition">
+              <i className="fa-regular fa-heart" />
+            </span>
+          )}
+        </div>
+
+        {/* Product Image Area */}
+        <div className="w-full aspect-square bg-gray-50/60 flex items-center justify-center p-3 sm:p-5 relative overflow-hidden group-hover:bg-red-50/20 transition-colors duration-500">
           <img
             src={product.image}
-            alt={`7Artisans ${product.name} - ${product.category} disponible au Maroc chez GearShop`}
+            alt={`${product.name} - GearShop Maroc`}
             title={`${product.name} - GearShop Maroc`}
-            className={`w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm group-hover:drop-shadow-xl ${!product.inStock ? 'grayscale opacity-80' : ''}`}
+            className={`max-w-full max-h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 drop-shadow-sm ${
+              !product.inStock ? 'grayscale opacity-75' : ''
+            }`}
             loading="lazy"
-            width={400}
-            height={400}
+            width={300}
+            height={300}
           />
         </div>
 
-        <div className="p-3 md:p-6 flex flex-col flex-grow">
-          <div className="flex items-center gap-1 mb-1 md:mb-2">
-            {generateStars(product.stars)}
-          </div>
-          <h3 className="text-sm md:text-lg font-bold text-black mb-1 leading-tight line-clamp-2">
-            {product.name}
-          </h3>
-          <p className="text-xs text-gray-500 mb-2 md:mb-4 uppercase">
-            {product.category}
-          </p>
-          {product.inStock && (
-            <div className="flex items-center gap-2 text-xs text-green-600 mb-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+        {/* Product Info & Action Section */}
+        <div className="p-2.5 sm:p-4 flex flex-col flex-1 justify-between bg-white">
+          <div>
+            {/* Category / Brand & Stars */}
+            <div className="flex items-center justify-between mb-1 text-[10px]">
+              <span className="font-black text-red-600 uppercase tracking-wider truncate max-w-[60%]">
+                {product.category}
               </span>
-              Disponible immédiatement à Bouskoura
+              <div className="flex items-center gap-0.5 text-amber-500 font-bold">
+                <i className="fa-solid fa-star text-[9px]" />
+                <span>{product.stars || 5}</span>
+              </div>
             </div>
-          )}
 
-          <div className="mt-auto pt-3 border-t border-gray-50 flex items-center justify-between">
-            <div className="flex flex-col">
-              <div className="flex items-center">
-                <span className="text-green-600 font-bold text-sm md:text-lg">
+            {/* Title */}
+            <h3 className="text-xs sm:text-sm font-bold text-gray-900 line-clamp-2 leading-snug mb-2 group-hover:text-red-600 transition-colors">
+              {product.name}
+            </h3>
+          </div>
+
+          {/* Pricing & CTA Button */}
+          <div className="pt-2 border-t border-gray-100 flex items-end justify-between gap-1 mt-auto">
+            <div className="flex flex-col min-w-0">
+              <div className="flex items-baseline gap-1 flex-wrap">
+                <span className="text-xs sm:text-base font-black text-gray-900 tracking-tight">
                   {product.price > 0 ? (
-                    <>{product.price}{' '}<span className="text-xs">{siteConfig.currency}</span></>
+                    <>
+                      {product.price.toLocaleString('fr-MA')}{' '}
+                      <span className="text-[9px] sm:text-xs font-bold text-gray-500">{siteConfig.currency}</span>
+                    </>
                   ) : (
-                    <span className="text-gray-400 text-sm">Prix sur demande</span>
+                    <span className="text-gray-400 text-xs font-medium">Sur devis</span>
                   )}
                 </span>
-                {product.price > 0 && discount > 0 && (
-                  <span className="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-1 rounded ml-2">
-                    -{discount}%
-                  </span>
-                )}
               </div>
-              {product.oldPrice && (
-                <span className="text-xs text-gray-400 line-through font-medium">
-                  {product.oldPrice} {siteConfig.currency}
-                </span>
-              )}
-              {product.rentPrice && product.rentPrice > 0 && (
-                <span className="text-[10px] text-blue-500 font-medium mt-1">
-                  Loc: {product.rentPrice} {siteConfig.currency}/j
+
+              {product.oldPrice && product.oldPrice > product.price && (
+                <span className="text-[10px] sm:text-xs text-gray-400 line-through font-medium leading-none">
+                  {product.oldPrice.toLocaleString('fr-MA')} {siteConfig.currency}
                 </span>
               )}
             </div>
+
+            {/* Circular CTA Button */}
             <button
-              className={`text-xs font-bold py-2 rounded-full transition shadow-lg flex items-center gap-2 transform active:scale-95 duration-200 ${!product.inStock ? 'bg-orange-500 text-white hover:bg-orange-600 px-3' : 'bg-black text-white hover:bg-gray-800 px-4'}`}
+              type="button"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-red-600 hover:bg-red-700 active:scale-90 text-white flex items-center justify-center shadow-md shadow-red-600/25 transition cursor-pointer shrink-0 min-h-[36px] min-w-[36px]"
               onClick={(e) => {
                 e.stopPropagation();
                 if (!product.inStock) {
@@ -116,15 +131,12 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
                   addToCart(product.id);
                 }
               }}
+              aria-label={`Ajouter ${product.name} au panier`}
             >
               {!product.inStock ? (
-                <>
-                  <i className="fa-solid fa-clock"></i> Réserver
-                </>
+                <i className="fa-brands fa-whatsapp text-xs" />
               ) : (
-                <>
-                  <i className="fa-solid fa-plus"></i>
-                </>
+                <i className="fa-solid fa-plus text-xs" />
               )}
             </button>
           </div>

@@ -73,6 +73,15 @@ const guides: GuideItem[] = [
     content: 'Découvrez la série cinéma professionnelle 7Artisans Vision et Spectrum Series avec ouverture constante T2.0 et T2.1. Conçues pour le cinéma, les clips musicaux et les séries télévisées au Maroc avec engrenages de mise au point 0.8 MOD, bagues de diaphragme fluides sans clic et piqué cinématographique.',
     tags: ['10mm T2.1', '16mm T2.1', '35mm T2.0', '50mm T2.0', 'Adaptateur PL 4-en-1'],
     mounts: ['Sony E', 'Nikon Z', 'Canon RF', 'L Mount (Lumix)', 'M43 (Lumix)', 'Fuji FX']
+  },
+  {
+    id: 'dji-osmo',
+    icon: '🎥',
+    title: 'Produits DJI, Osmo Pocket & Drones au Maroc',
+    subtitle: 'Revendeur DJI Maroc : Osmo Pocket 4 Pro, Gimbals et Accessoires',
+    content: 'GearShop Maroc propose les derniers équipements DJI pour les créateurs de contenu, vloggeurs et professionnels de l\'audiovisuel. Découvrez la gamme DJI Osmo Pocket (incluant le tout nouveau DJI Osmo Pocket 4 Pro), les stabilisateurs pour smartphones et caméras, ainsi que divers accessoires de la marque DJI. Disponibles en précommande et en stock à Casablanca.',
+    tags: ['DJI Osmo Pocket 4 Pro', 'Osmo Action', 'DJI Ronin', 'Stabilisateurs DJI'],
+    mounts: ['DJI']
   }
 ];
 
@@ -89,7 +98,7 @@ const SEOContentSection: React.FC = () => {
             Compatibilité Optique par Marque &amp; Monture au Maroc
           </h2>
           <p className="text-xs text-gray-500 mt-1 max-w-2xl mx-auto">
-            Trouvez les meilleurs objectifs photo et cinéma pour Panasonic Lumix, Fujifilm, Sony, Nikon, Canon et les filtres K&amp;F Concept en stock à Casablanca.
+            Trouvez les meilleurs objectifs photo et cinéma pour Panasonic Lumix, Fujifilm, Sony, Nikon, Canon, les filtres K&amp;F Concept et les produits DJI en stock à Casablanca.
           </p>
         </div>
 
