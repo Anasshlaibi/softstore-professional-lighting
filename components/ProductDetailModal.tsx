@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Product } from '../App';
 import { useCart } from '../src/context/CartContext';
@@ -38,6 +38,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   const [activeTab, setActiveTab] = useState('desc');
   const [countdown, setCountdown] = useState<string>('');
   const [isCopied, setIsCopied] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   
   // Gallery Logic
   const initialGallery = Array.isArray(product.gallery) && product.gallery.length > 0 
@@ -57,6 +58,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     setCurrentIdx(0);
     if (product.video) {
       setActiveTab('video');
+    } else {
+      setActiveTab('desc');
+    }
+    // Always guarantee modal opens at the very top on phone & desktop
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
     }
   }, [product]);
 
@@ -157,14 +164,20 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   const categorySlug = slugify(product.category || 'lenses');
   const brandSlug = slugify(product.brand || '7artisans');
 
+  const visibleAccessories = useMemo(() => {
+    return compatibleAccessories
+      .filter(acc => acc && acc.price && acc.price > 50 && acc.image)
+      .slice(0, 4);
+  }, [compatibleAccessories]);
+
   return (
-    <div className="fixed inset-0 z-[70] overflow-y-auto bg-black/60 backdrop-blur-md flex items-center justify-center p-0 md:p-6 animate-fade-in">
+    <div className="fixed inset-0 z-[70] overflow-hidden bg-black/75 backdrop-blur-md flex items-center justify-center p-0 md:p-6 animate-fade-in">
       <div
-        className="bg-white w-full max-w-6xl min-h-screen md:min-h-0 md:max-h-[92vh] md:rounded-3xl shadow-2xl flex flex-col overflow-hidden relative"
+        className="bg-white w-full max-w-6xl h-full md:h-auto md:max-h-[92vh] md:rounded-3xl shadow-2xl flex flex-col overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Dedicated Mobile Sticky Navigation Bar */}
-        <div className="md:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200/90 px-3 py-2.5 flex items-center justify-between shadow-xs">
+        <div className="md:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200/90 px-3 py-2.5 flex items-center justify-between shadow-xs shrink-0">
           <button
             type="button"
             onClick={onClose}
@@ -213,8 +226,8 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           <i className="fa-solid fa-xmark text-lg"></i>
         </button>
 
-        {/* Scrollable Container */}
-        <div className="overflow-y-auto flex-grow pb-12 md:pb-0">
+        {/* Scrollable Container (Only single scroll container on mobile) */}
+        <div ref={scrollContainerRef} className="overflow-y-auto flex-grow pb-28 md:pb-8 overscroll-contain">
           {/* Breadcrumb Header with Copy Link button */}
           <div className="bg-gray-50 px-4 sm:px-6 py-2.5 border-b border-gray-100 flex items-center justify-between text-xs text-gray-500 gap-2 overflow-x-auto">
             <div className="flex items-center gap-2 whitespace-nowrap min-w-0">
@@ -262,10 +275,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* MAIN TWO-COLUMN LAYOUT */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 p-3 sm:p-6 md:p-10">
             {/* Left Column: Image Gallery */}
-            <div className="flex flex-col gap-4">
-              <div className="relative aspect-square bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 flex items-center justify-center p-6 group">
+            <div className="flex flex-col gap-3">
+              <div className="relative w-full aspect-square max-h-[380px] sm:max-h-[460px] mx-auto bg-gray-50/80 rounded-2xl overflow-hidden border border-gray-100 flex items-center justify-center p-3 sm:p-6 group">
                 {currentImage ? (
                   <img
                     src={currentImage}
@@ -280,21 +293,30 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <span>Image indisponible</span>
                   </div>
                 )}
+
+                {/* Mobile counter indicator badge */}
+                {galleryImages.length > 1 && (
+                  <div className="absolute bottom-2.5 right-2.5 bg-black/65 backdrop-blur-xs text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-xs">
+                    {currentIdx + 1} / {galleryImages.length}
+                  </div>
+                )}
                 
                 {/* Arrow Controls */}
                 {galleryImages.length > 1 && (
                   <>
                     <button 
                       onClick={handlePrevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white text-black rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 bg-white/85 hover:bg-white text-black rounded-full shadow-md flex items-center justify-center opacity-85 sm:opacity-0 group-hover:opacity-100 transition-opacity"
+                      aria-label="Image précédente"
                     >
-                      <i className="fa-solid fa-chevron-left"></i>
+                      <i className="fa-solid fa-chevron-left text-xs sm:text-sm"></i>
                     </button>
                     <button 
                       onClick={handleNextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white text-black rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 bg-white/85 hover:bg-white text-black rounded-full shadow-md flex items-center justify-center opacity-85 sm:opacity-0 group-hover:opacity-100 transition-opacity"
+                      aria-label="Image suivante"
                     >
-                      <i className="fa-solid fa-chevron-right"></i>
+                      <i className="fa-solid fa-chevron-right text-xs sm:text-sm"></i>
                     </button>
                   </>
                 )}
@@ -302,12 +324,13 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               {/* Thumbnails */}
               {galleryImages.length > 1 && (
-                <div className="flex gap-3 overflow-x-auto w-full py-2 no-scrollbar snap-x snap-mandatory">
+                <div className="flex gap-2 sm:gap-3 overflow-x-auto w-full py-1 no-scrollbar snap-x snap-mandatory justify-start sm:justify-center">
                   {galleryImages.map((img, idx) => (
                     <button
                       key={idx}
                       onClick={() => selectImage(idx)}
-                      className={`relative w-20 h-20 shrink-0 rounded-xl overflow-hidden border-2 transition-all snap-center ${currentIdx === idx ? 'border-black ring-2 ring-black/10' : 'border-gray-200 hover:border-gray-400'}`}
+                      className={`relative w-14 h-14 sm:w-18 sm:h-18 shrink-0 rounded-xl overflow-hidden border-2 transition-all snap-center bg-gray-50 ${currentIdx === idx ? 'border-red-600 ring-2 ring-red-600/20' : 'border-gray-200 hover:border-gray-400'}`}
+                      aria-label={`Afficher photo ${idx + 1}`}
                     >
                       <img 
                         src={img} 
@@ -645,14 +668,14 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
 
             {/* Compatible Accessories Cross-Sell */}
-            {compatibleAccessories.length > 0 && (
+            {visibleAccessories.length > 0 && (
               <div className="max-w-5xl mx-auto mb-8 bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
                 <h3 className="text-base font-black text-gray-900 mb-4 flex items-center gap-2">
                   <i className="fa-solid fa-puzzle-piece text-red-600"></i>
                   Accessoires compatibles recommandés
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {compatibleAccessories.map(acc => (
+                  {visibleAccessories.map(acc => (
                     <div
                       key={acc.id}
                       onClick={() => onSelectProduct && onSelectProduct(acc.id)}

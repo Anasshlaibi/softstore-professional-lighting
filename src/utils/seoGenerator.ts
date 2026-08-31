@@ -52,24 +52,27 @@ export function slugify(text: string): string {
     .replace(/(^-|-$)+/g, '');
 }
 
-export function getProductBrand(product: Product): string | undefined {
+export function getProductBrand(product: Product): string {
   if (product.brand && product.brand.trim()) return product.brand.trim();
+  const id = typeof product.id === 'number' ? product.id : parseInt(String(product.id || 0), 10);
+  if (id >= 1000 && id < 2000) return '7Artisans';
+  if (id >= 2000 && id < 3000) return 'K&F Concept';
+  if (id >= 3000 && id < 4000) return 'DJI';
+
   const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
   if (text.includes('7artisans')) return '7Artisans';
   if (text.includes('k&f') || text.includes('kf concept') || text.includes('concept')) return 'K&F Concept';
-  if (text.includes('sony')) return 'Sony';
-  if (text.includes('canon')) return 'Canon';
-  if (text.includes('nikon')) return 'Nikon';
-  if (text.includes('fujifilm') || text.includes('fuji')) return 'Fujifilm';
-  if (text.includes('panasonic') || text.includes('lumix')) return 'Panasonic Lumix';
-  if (text.includes('dji')) return 'DJI';
+  if (text.includes('dji') || text.includes('osmo')) return 'DJI';
   if (text.includes('godox')) return 'Godox';
   if (text.includes('rode') || text.includes('røde')) return 'Røde';
   if (text.includes('smallrig')) return 'SmallRig';
   if (text.includes('sirui')) return 'Sirui';
   if (text.includes('zhiyun')) return 'Zhiyun';
   if (text.includes('aputure') || text.includes('amaran')) return 'Aputure';
-  return undefined;
+  if (text.includes('sony') && !text.includes('sony e') && !text.includes('(e mount)')) return 'Sony';
+  if (text.includes('canon') && !text.includes('canon rf') && !text.includes('(eos-r') && !text.includes('canon ef')) return 'Canon';
+  if (text.includes('nikon') && !text.includes('nikon z') && !text.includes('(z mount)')) return 'Nikon';
+  return 'GearShop';
 }
 
 export function getProductMount(product: Product): string | undefined {
@@ -93,7 +96,9 @@ function parseTechnicalAttributes(product: Product) {
   const focalMatch = product.name.match(/(\d+(?:-\d+)?\s*mm)/i) || text.match(/(\d+(?:-\d+)?\s*mm)/i);
   const focalLength = focalMatch ? focalMatch[1] : undefined;
 
-  const apertureMatch = product.name.match(/(f\/?\d+(?:\.\d+)?|t\d+(?:\.\d+)?)/i) || text.match(/(f\/?\d+(?:\.\d+)?|t\d+(?:\.\d+)?)/i);
+  // Match isolated aperture/t-stop like F1.8, f/2.8, T2.0 without grabbing digits from AF135
+  const apertureMatch = product.name.match(/(?:^|\s|\/|[^\w])(f\/?\d+(?:\.\d+)?|t\d+(?:\.\d+)?)(?:\s|$|[^\w])/i) ||
+                        text.match(/(?:^|\s|\/|[^\w])(f\/?\d+(?:\.\d+)?|t\d+(?:\.\d+)?)(?:\s|$|[^\w])/i);
   const aperture = apertureMatch ? apertureMatch[1].toUpperCase() : undefined;
 
   const powerMatch = product.name.match(/(\d+W|\d+\s*watts)/i) || text.match(/(\d+W|\d+\s*watts)/i);
