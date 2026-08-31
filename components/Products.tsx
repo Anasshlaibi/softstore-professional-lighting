@@ -69,6 +69,12 @@ const Products: React.FC<ProductsProps> = ({
   const [displayLimit, setDisplayLimit] = useState(12);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
+  React.useEffect(() => {
+    if (globalSearchQuery && globalSearchQuery.trim()) {
+      setDisplayLimit(Math.max(24, products.length));
+    }
+  }, [globalSearchQuery, products.length]);
+
   const categories = useMemo(() => {
     const cats = new Set(products.map((p) => p.category));
     cats.add('DJI & Gimbals');
@@ -335,6 +341,21 @@ const Products: React.FC<ProductsProps> = ({
             <span className="bg-red-50 text-red-700 px-3 py-1.5 rounded-lg border border-red-200 text-[11px] font-extrabold">
               {filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''}
             </span>
+
+            {globalSearchQuery && globalSearchQuery.trim() && (
+              <span className="bg-amber-50 text-amber-900 px-2.5 py-1 rounded-lg border border-amber-200 flex items-center gap-1.5 text-[11px] font-bold shadow-xs">
+                <i className="fa-solid fa-magnifying-glass text-[9px] text-amber-600" />
+                <span>Recherche : "<strong className="text-black">{globalSearchQuery}</strong>"</span>
+                <button
+                  type="button"
+                  onClick={() => setGlobalSearchQuery?.('')}
+                  className="ml-1 w-4 h-4 rounded-full bg-amber-200/80 hover:bg-amber-300 text-amber-900 flex items-center justify-center text-[10px] cursor-pointer"
+                  title="Effacer la recherche"
+                >
+                  ×
+                </button>
+              </span>
+            )}
 
             {filters.category !== 'all' && (
               <span className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-lg border border-gray-200 flex items-center gap-1.5 text-[11px]">

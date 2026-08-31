@@ -415,7 +415,7 @@
 #### AF50mm F1.8 Sony (E Mount) - Black
 - **Marque / Brand**: Sony
 - **Monture / Mount**: Sony E
-- **Prix / Price**: Prix sur demande
+- **Prix / Price**: 2.300 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF101B UPC: 6971835485116 AF50mm F1.8 Sony (E Mount)
@@ -424,7 +424,7 @@
 #### AF50mm F1.8 Nikon (Z Mount) - Black
 - **Marque / Brand**: Nikon
 - **Monture / Mount**: Nikon Z
-- **Prix / Price**: Prix sur demande
+- **Prix / Price**: 2.300 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF102B UPC: 6971835485482 AF50mm F1.8 Nikon (Z Mount)
@@ -433,7 +433,7 @@
 #### AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
 - **Marque / Brand**: Panasonic
 - **Monture / Mount**: L-Mount
-- **Prix / Price**: Prix sur demande
+- **Prix / Price**: 2.300 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF50F18-L UPC: 6971835487264 AF50mm F1.8 Panasonic/Leica/Sigma (L Mount)
@@ -541,7 +541,7 @@
 #### 50mm F1.8 Sony (E Mount) - Black
 - **Marque / Brand**: Sony
 - **Monture / Mount**: Sony E
-- **Prix / Price**: 1.200 MAD
+- **Prix / Price**: 1.000 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: De-clicked, APS-C, Net Weight: 168g, Weight with box: 365g, Box size: 100*100*68mm
 - **Description**: MODEL: A701B UPC: 6971835480203 50mm F1.8 Sony (E Mount)

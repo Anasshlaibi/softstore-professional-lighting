@@ -475,6 +475,91 @@ export const defaultProducts: Product[] = [
     search_aliases: ['autofocus adapter canon ef nikon z', 'bague ef z', 'bague ef nikon z', 'adaptateur canon ef nikon z', '7artisans ef nz']
   },
   {
+    id: 1022,
+    name: 'AF50mm F1.8 Sony (E Mount) - Black',
+    price: 2300,
+    oldPrice: 2500,
+    category: 'lenses',
+    brand: '7Artisans',
+    mount: 'Sony E',
+    desc: 'Objectif plein format autofocus 7Artisans AF 50mm F1.8 pour boîtiers Sony E-Mount (Full Frame & APS-C). Équipé d\'un moteur pas-à-pas STM ultra-rapide et silencieux, prise en charge de l\'Eye AF (détection des yeux/visages), bague d\'ouverture manuelle avec commutateur Click/De-click et port USB-C de mise à jour.',
+    specs: [
+      'Monture: Sony E (Plein Format / APS-C)',
+      'Focale: 50mm (équiv. 75mm en APS-C)',
+      'Ouverture: F1.8 - F16 (11 lames pour un bokeh crémeux)',
+      'Moteur Autofocus STM silencieux compatible Eye-AF',
+      'Construction optique: 11 éléments en 9 groupes (verres ED & HR)',
+      'Bague d\'ouverture avec cran / de-click vidéo',
+      'Diamètre filtre: 62mm | Poids: env. 421g'
+    ],
+    image: 'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088',
+    gallery: [
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088',
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/5018AF_3a87473e-f189-4766-8abb-62aacff09d02.jpg?v=1722937094',
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/20004.jpg?v=1722937094',
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16003.jpg?v=1722937094'
+    ],
+    stars: 5,
+    inStock: true,
+    promoEligible: true,
+    search_aliases: ['af50mm', 'af 50mm', '50mm autofocus', '50mm f1.8 af', '7artisans 50mm af sony', 'camera 50mm']
+  },
+  {
+    id: 1023,
+    name: 'AF50mm F1.8 Nikon (Z Mount) - Black',
+    price: 2300,
+    oldPrice: 2500,
+    category: 'lenses',
+    brand: '7Artisans',
+    mount: 'Nikon Z',
+    desc: 'Objectif plein format autofocus 7Artisans AF 50mm F1.8 pour hybrides Nikon Z (Full Frame FX & DX). Moteur autofocus pas-à-pas STM haute vélocité, support du suivi des yeux, commutateur AF/MF et bague d\'ouverture vidéo dé-cliquée.',
+    specs: [
+      'Monture: Nikon Z (FX Plein Format / DX)',
+      'Focale: 50mm (Standard portrait & polyvalent)',
+      'Ouverture: F1.8 lumineuse avec diaphragme circulaire 11 lames',
+      'Autofocus STM rapide et précis avec support Eye AF',
+      'Bague d\'ouverture dé-cliquable pour la vidéo fluide',
+      'Port USB-C intégré pour mise à jour du firmware',
+      'Diamètre filtre: 62mm | Poids: env. 421g'
+    ],
+    image: 'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088',
+    gallery: [
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088',
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/5018AF_3a87473e-f189-4766-8abb-62aacff09d02.jpg?v=1722937094',
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/20004.jpg?v=1722937094',
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16003.jpg?v=1722937094'
+    ],
+    stars: 5,
+    inStock: true,
+    promoEligible: true,
+    search_aliases: ['af50mm nikon', 'af 50mm nikon z', '50mm autofocus nikon', '50mm f1.8 af nikon', '7artisans 50mm af nikon z', 'nikon 50mm']
+  },
+  {
+    id: 1036,
+    name: '50mm F1.8 Sony (E Mount) - Black',
+    price: 1000,
+    oldPrice: 1200,
+    category: 'lenses',
+    brand: '7Artisans',
+    mount: 'Sony E',
+    desc: 'Objectif compact et ultra-léger 7Artisans 50mm F1.8 manuel pour hybrides Sony E APS-C. Format pancake compact idéal pour la photographie de rue et les portraits au rendu vintage.',
+    specs: [
+      'Monture: Sony E (APS-C)',
+      'Focale: 50mm (équiv. 75mm)',
+      'Ouverture: F1.8 ultra-lumineuse',
+      'Mise au point: Manuelle fluide',
+      'Poids plume: seulement 168g'
+    ],
+    image: 'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210',
+    gallery: [
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210'
+    ],
+    stars: 5,
+    inStock: true,
+    promoEligible: true,
+    search_aliases: ['50mm 1.8 manuel', '50mm f1.8 petit', '7artisans 50mm f1.8 compact', '50mm pancake']
+  },
+  {
     id: 3001,
     name: 'DJI Osmo Pocket 4 Pro',
     price: 8000,

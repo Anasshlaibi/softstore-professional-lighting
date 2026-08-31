@@ -573,6 +573,20 @@ const AppContent: React.FC<{
           onSelectProduct={(id, query) => openProductModal(id, query)}
           siteConfig={siteConfig}
           initialQuery={searchHistoryQuery}
+          onSearchInCatalog={(searchQ) => {
+            setIsSearchModalOpen(false);
+            setGlobalSearchQuery(searchQ);
+            setSelectedCategory('all');
+            if (location.pathname !== '/') {
+              navigate('/');
+            }
+            setTimeout(() => {
+              const el = document.getElementById('products');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 120);
+          }}
         />
 
         {/* New Arrivals Drawer */}

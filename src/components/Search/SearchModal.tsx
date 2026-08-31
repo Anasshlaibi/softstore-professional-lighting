@@ -11,6 +11,7 @@ interface SearchModalProps {
   onSelectProduct: (id: number, query?: string) => void;
   siteConfig: { currency: string };
   initialQuery?: string;
+  onSearchInCatalog?: (query: string) => void;
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
@@ -20,10 +21,19 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onSelectProduct,
   siteConfig,
   initialQuery = '',
+  onSearchInCatalog,
 }) => {
   const [query, setQuery] = useState(initialQuery);
   const [copiedId, setCopiedId] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearchInCatalog = () => {
+    if (onSearchInCatalog && query.trim()) {
+      onSearchInCatalog(query.trim());
+    } else {
+      onClose();
+    }
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -76,9 +86,17 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           <input
             ref={inputRef}
             type="text"
-            placeholder="Rechercher une lentille, caméra, filtre (ex: Sony 35mm, Canon RF, Black Mist...)"
+            placeholder="Rechercher une lentille, caméra, filtre (ex: Sony 35mm, Canon RF, 50mm...)"
             value={query}
             onChange={e => setQuery(e.target.value)}
+            onKeyDown={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                if (query.trim()) {
+                  handleSearchInCatalog();
+                }
+              }
+            }}
             className="w-full bg-transparent text-black placeholder-gray-400 text-sm font-semibold outline-none"
           />
           {query && (
@@ -98,19 +116,36 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           </button>
         </div>
 
-        {/* Results Container */}
-        <div className="p-4 max-h-[60vh] overflow-y-auto space-y-2">
+        {/* Results Container with Full Scroll */}
+        <div className="p-4 max-h-[70vh] overflow-y-auto space-y-2">
           {query.trim().length > 0 ? (
             results.length > 0 ? (
               <>
+                {/* View all in catalog button */}
+                <button
+                  type="button"
+                  onClick={handleSearchInCatalog}
+                  className="w-full mb-2 py-3 px-4 bg-zinc-900 hover:bg-black active:scale-98 text-white text-xs font-bold rounded-2xl flex items-center justify-between transition shadow-md group cursor-pointer"
+                >
+                  <span className="flex items-center gap-2">
+                    <i className="fa-solid fa-arrow-down text-red-500 text-sm group-hover:translate-y-0.5 transition-transform"></i>
+                    <span>Afficher ces {results.length} produits dans la boutique</span>
+                  </span>
+                  <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded font-mono group-hover:bg-white/30 flex items-center gap-1">
+                    Entrée <i className="fa-solid fa-arrow-turn-down text-[9px] -rotate-90"></i>
+                  </span>
+                </button>
+
                 <div className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-2 mb-2 flex justify-between">
-                  <span>{results.length} Produit(s) Trouvé(s)</span>
+                  <span>{results.length} Produit(s) Trouvé(s) (Faites défiler pour voir tout)</span>
                   <span className="text-red-600">GearShop Maroc</span>
                 </div>
 
-                {results.slice(0, 10).map(product => {
+                {results.map(product => {
                   const productSlug = slugify(product.name);
                   const productUrl = `/product/${product.id}-${productSlug}`;
+                  const hasDiscount = product.oldPrice && product.oldPrice > product.price;
+                  const discountDh = hasDiscount ? product.oldPrice! - product.price : 0;
 
                   return (
                     <Link
@@ -123,12 +158,17 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                       }}
                       className="p-3 rounded-2xl bg-white hover:bg-gray-50 border border-gray-100 hover:border-gray-300 cursor-pointer transition flex items-center gap-3 sm:gap-4 group relative block"
                     >
-                      <div className="w-16 h-16 rounded-xl bg-gray-100 overflow-hidden shrink-0 border border-gray-100 p-1 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-xl bg-gray-100 overflow-hidden shrink-0 border border-gray-100 p-1 flex items-center justify-center relative">
                         <img
                           src={product.image}
                           alt={product.name}
                           className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition duration-300"
                         />
+                        {hasDiscount && (
+                          <span className="absolute top-0.5 left-0.5 bg-red-600 text-white text-[8px] font-black px-1 rounded-sm shadow-xs">
+                            -{discountDh} DH
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex-1 min-w-0">
@@ -188,6 +228,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                       </div>
 
                       <div className="text-right shrink-0">
+                        {hasDiscount && (
+                          <span className="text-[10px] text-gray-400 line-through block">
+                            {product.oldPrice!.toLocaleString('fr-MA')} {siteConfig.currency}
+                          </span>
+                        )}
                         <span className="text-sm font-black text-black block">
                           {product.price > 0 ? `${product.price.toLocaleString('fr-MA')} ${siteConfig.currency}` : 'Sur demande'}
                         </span>
