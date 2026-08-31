@@ -103,6 +103,8 @@ const App: React.FC = () => {
   const [isNewArrivalsOpen, setIsNewArrivalsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [searchHistoryQuery, setSearchHistoryQuery] = useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -112,10 +114,8 @@ const App: React.FC = () => {
       try {
         console.log('Fetching products from Supabase...');
         const fetchedProducts = await fetchSupabaseProducts();
-
-        if (fetchedProducts.length > 0) {
+        if (fetchedProducts && fetchedProducts.length > 0) {
           setProducts(fetchedProducts);
-          console.log(`Successfully loaded ${fetchedProducts.length} products from Supabase`);
         } else {
           console.log('No products found in Supabase (or missing credentials). Using hardcoded products.');
           setProducts(defaultProducts);
@@ -136,10 +136,19 @@ const App: React.FC = () => {
   // Sync modal with URL
   useEffect(() => {
     if (products.length > 0) {
-      const pathParts = location.pathname.split('/');
-      if (pathParts[1] === 'product' && pathParts[2]) {
-        const idFromUrl = parseInt(pathParts[2].split('-')[0], 10);
-        
+      const pathParts = location.pathname.split('/').filter(Boolean);
+      const searchParams = new URLSearchParams(location.search);
+      const queryProductId = searchParams.get('product') || searchParams.get('id') || searchParams.get('p');
+      
+      let idFromUrl: number | null = null;
+
+      if ((pathParts[0] === 'product' || pathParts[0] === 'products') && pathParts[1]) {
+        idFromUrl = parseInt(pathParts[1].split('-')[0], 10);
+      } else if (queryProductId) {
+        idFromUrl = parseInt(queryProductId, 10);
+      }
+
+      if (idFromUrl && !isNaN(idFromUrl)) {
         if (idFromUrl === 3001) {
           navigate('/osmo-pocket-4p', { replace: true });
           return;
@@ -155,7 +164,7 @@ const App: React.FC = () => {
         setSelectedProduct(null);
       }
     }
-  }, [location.pathname, products]);
+  }, [location.pathname, location.search, products]);
 
   // Auto promo popup disabled per user request
   useEffect(() => {
@@ -166,21 +175,39 @@ const App: React.FC = () => {
     return text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '';
   };
 
-  const openProductModal = (productId: number) => {
+  const openProductModal = (productId: number, fromSearchQuery?: string) => {
     if (productId === 3001) {
       navigate('/osmo-pocket-4p');
       return;
     }
     const product = products.find((p) => p.id === productId);
     if (product) {
+      if (fromSearchQuery !== undefined) {
+        setSearchHistoryQuery(fromSearchQuery);
+      }
       setSelectedProduct(product);
-      navigate(`/product/${product.id}-${slugify(product.name)}`);
+      navigate(`/product/${product.id}-${slugify(product.name)}`, {
+        state: { 
+          fromSearch: Boolean(fromSearchQuery), 
+          searchQuery: fromSearchQuery 
+        }
+      });
     }
   };
 
   const closeProductModal = () => {
     setSelectedProduct(null);
-    navigate('/');
+    const wasFromSearch = location.state?.fromSearch || Boolean(searchHistoryQuery);
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+    if (wasFromSearch) {
+      setTimeout(() => {
+        setIsSearchModalOpen(true);
+      }, 120);
+    }
   };
 
   const buyNow = (productId: number) => {
@@ -227,6 +254,9 @@ const App: React.FC = () => {
         setSelectedCategory={setSelectedCategory}
         selectedBrand={selectedBrand}
         setSelectedBrand={setSelectedBrand}
+        isSearchModalOpen={isSearchModalOpen}
+        setIsSearchModalOpen={setIsSearchModalOpen}
+        searchHistoryQuery={searchHistoryQuery}
       />
     </CartProvider>
   );
@@ -257,6 +287,9 @@ const AppContent: React.FC<{
   setSelectedCategory: (cat: string) => void;
   selectedBrand: string;
   setSelectedBrand: (brand: string) => void;
+  isSearchModalOpen: boolean;
+  setIsSearchModalOpen: (isOpen: boolean) => void;
+  searchHistoryQuery: string;
 }> = ({
   products,
   loading,
@@ -282,11 +315,13 @@ const AppContent: React.FC<{
   setSelectedCategory,
   selectedBrand,
   setSelectedBrand,
+  isSearchModalOpen,
+  setIsSearchModalOpen,
+  searchHistoryQuery,
 }) => {
     const { toastMessage, clearToast } = useCart();
     
-    // Marketing Lead & Search Modals state
-    const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+    // Marketing Lead & Quote Modals state
     const [isProductRequestOpen, setIsProductRequestOpen] = useState(false);
     const [isQuoteRequestOpen, setIsQuoteRequestOpen] = useState(false);
     const [quoteProduct, setQuoteProduct] = useState<Product | null>(null);
@@ -443,7 +478,7 @@ const AppContent: React.FC<{
           </Routes>
         </main>
 
-        {!isAdminRoute && (
+        {!isAdminRoute && !selectedProduct && (
           <>
             <Footer siteConfig={siteConfig} />
             <FloatingWhatsApp siteConfig={siteConfig} />
@@ -461,6 +496,9 @@ const AppContent: React.FC<{
               siteConfig={siteConfig}
             />
           </>
+        )}
+        {!isAdminRoute && selectedProduct && (
+          <Footer siteConfig={siteConfig} />
         )}
 
         <Cart
@@ -532,8 +570,9 @@ const AppContent: React.FC<{
           isOpen={isSearchModalOpen}
           products={products}
           onClose={() => setIsSearchModalOpen(false)}
-          onSelectProduct={(id) => openProductModal(id)}
+          onSelectProduct={(id, query) => openProductModal(id, query)}
           siteConfig={siteConfig}
+          initialQuery={searchHistoryQuery}
         />
 
         {/* New Arrivals Drawer */}

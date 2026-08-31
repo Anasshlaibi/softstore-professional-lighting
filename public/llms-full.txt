@@ -1,7 +1,7 @@
 # GearShop Maroc — Full Technical Catalog & Entity Knowledge Base (llms-full.txt)
 
 > **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's primary specialized retailer and official distributor for photography, filmmaking, cinema lenses, and studio equipment. Located in Casablanca, Morocco, GearShop provides official 1-year manufacturer warranties, express 24h delivery in Casablanca, and 2-4 days nationwide delivery across all Moroccan cities.
-> **Date of Catalog Compilation**: 2026-08-24
+> **Date of Catalog Compilation**: 2026-08-31
 > **Primary Currency**: MAD (Moroccan Dirham)
 > **Direct Contact**: WhatsApp / Phone: +212 673 011 873 | Email: contact@gearshop.ma
 > **Physical Store Location**: Casablanca, Morocco (Showroom & Testing Available)
@@ -604,7 +604,7 @@
 #### Autofocus adapter for Canon EF - Nikon Z - Black
 - **Marque / Brand**: Canon
 - **Monture / Mount**: Nikon Z
-- **Prix / Price**: Prix sur demande
+- **Prix / Price**: 2.300 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: Standards constructeur
 - **Description**: MODEL: EF-Z UPC: 6971835484324 Autofocus adapter for Canon EF - Nikon Z

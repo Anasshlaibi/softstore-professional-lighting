@@ -37,6 +37,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState('desc');
   const [countdown, setCountdown] = useState<string>('');
+  const [isCopied, setIsCopied] = useState(false);
   
   // Gallery Logic
   const initialGallery = Array.isArray(product.gallery) && product.gallery.length > 0 
@@ -121,6 +122,27 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
+  const handleShare = async () => {
+    const url = `${window.location.origin}/product/${product.id}-${slugify(product.name)}`;
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: `${product.name} - GearShop Maroc`,
+          text: `Découvrez ${product.name} à ${product.price > 0 ? `${product.price.toLocaleString('fr-MA')} DH` : 'sur demande'} chez GearShop Maroc`,
+          url: url,
+        });
+        return;
+      } catch (err) {
+        // Fallback to clipboard
+      }
+    }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      await navigator.clipboard.writeText(url);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2500);
+    }
+  };
+
   const videoUrl = product.video;
 
   // Cross-sell & alternative accessories
@@ -136,39 +158,107 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   const brandSlug = slugify(product.brand || '7artisans');
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-md flex items-center justify-center p-0 md:p-6 animate-fade-in">
+    <div className="fixed inset-0 z-[70] overflow-y-auto bg-black/60 backdrop-blur-md flex items-center justify-center p-0 md:p-6 animate-fade-in">
       <div
         className="bg-white w-full max-w-6xl min-h-screen md:min-h-0 md:max-h-[92vh] md:rounded-3xl shadow-2xl flex flex-col overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top Floating Close Button */}
+        {/* Dedicated Mobile Sticky Navigation Bar */}
+        <div className="md:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200/90 px-3 py-2.5 flex items-center justify-between shadow-xs">
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-gray-200 active:scale-95 text-gray-900 font-bold text-xs transition shrink-0"
+            aria-label="Retour"
+          >
+            <i className="fa-solid fa-arrow-left text-xs text-red-600"></i>
+            <span>Retour</span>
+          </button>
+
+          <div className="flex-1 mx-2 min-w-0 text-center">
+            <p className="text-xs font-bold text-gray-900 truncate">
+              {product.name}
+            </p>
+            <p className="text-[10px] font-black text-red-600">
+              {product.price > 0 ? `${product.price.toLocaleString('fr-MA')} ${siteConfig.currency}` : 'Sur devis'}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
+              type="button"
+              onClick={handleShare}
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 active:scale-95 flex items-center justify-center text-gray-700 text-xs transition"
+              title="Partager ce produit"
+            >
+              {isCopied ? <i className="fa-solid fa-check text-green-600 text-xs"></i> : <i className="fa-solid fa-share-nodes text-xs"></i>}
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-black hover:text-white active:scale-95 flex items-center justify-center text-gray-700 text-xs transition"
+              aria-label="Fermer"
+            >
+              <i className="fa-solid fa-xmark text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Top Floating Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-10 h-10 bg-gray-100 hover:bg-black hover:text-white text-gray-700 rounded-full flex items-center justify-center transition shadow-md"
+          className="hidden md:flex absolute top-4 right-4 z-20 w-10 h-10 bg-gray-100 hover:bg-black hover:text-white text-gray-700 rounded-full items-center justify-center transition shadow-md"
           aria-label="Fermer la modal"
         >
           <i className="fa-solid fa-xmark text-lg"></i>
         </button>
 
         {/* Scrollable Container */}
-        <div className="overflow-y-auto flex-grow">
-          {/* Breadcrumb Header */}
-          <div className="bg-gray-50 px-6 py-3 border-b border-gray-100 flex items-center gap-2 text-xs text-gray-500 overflow-x-auto whitespace-nowrap">
-            <Link to="/" onClick={onClose} className="hover:text-red-600 font-medium">Accueil</Link>
-            <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
-            <Link to={`/categorie/${categorySlug}`} onClick={onClose} className="hover:text-red-600 font-medium capitalize">
-              {product.category || 'Catégorie'}
-            </Link>
-            {product.brand && (
-              <>
-                <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
-                <Link to={`/marque/${brandSlug}`} onClick={onClose} className="hover:text-red-600 font-medium">
-                  {product.brand}
-                </Link>
-              </>
-            )}
-            <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
-            <span className="text-gray-900 font-bold truncate max-w-xs">{product.name}</span>
+        <div className="overflow-y-auto flex-grow pb-12 md:pb-0">
+          {/* Breadcrumb Header with Copy Link button */}
+          <div className="bg-gray-50 px-4 sm:px-6 py-2.5 border-b border-gray-100 flex items-center justify-between text-xs text-gray-500 gap-2 overflow-x-auto">
+            <div className="flex items-center gap-2 whitespace-nowrap min-w-0">
+              <Link to="/" onClick={onClose} className="hover:text-red-600 font-medium">Accueil</Link>
+              <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
+              <Link to={`/categorie/${categorySlug}`} onClick={onClose} className="hover:text-red-600 font-medium capitalize">
+                {product.category || 'Catégorie'}
+              </Link>
+              {product.brand && (
+                <>
+                  <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
+                  <Link to={`/marque/${brandSlug}`} onClick={onClose} className="hover:text-red-600 font-medium">
+                    {product.brand}
+                  </Link>
+                </>
+              )}
+              <i className="fa-solid fa-chevron-right text-[8px] text-gray-400"></i>
+              <span className="text-gray-900 font-bold truncate max-w-[140px] sm:max-w-xs">{product.name}</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                const url = `${window.location.origin}/product/${product.id}-${slugify(product.name)}`;
+                navigator.clipboard.writeText(url);
+                setIsCopied(true);
+                setTimeout(() => setIsCopied(false), 2000);
+              }}
+              className="text-[11px] font-bold text-gray-600 hover:text-red-600 px-2.5 py-1 rounded-lg bg-white border border-gray-200 hover:border-red-200 flex items-center gap-1.5 transition shrink-0 shadow-xs"
+              title="Copier le lien direct du produit"
+            >
+              {isCopied ? (
+                <>
+                  <i className="fa-solid fa-check text-green-600 text-xs"></i>
+                  <span className="text-green-600 font-bold">Lien copié !</span>
+                </>
+              ) : (
+                <>
+                  <i className="fa-solid fa-link text-[10px]"></i>
+                  <span className="hidden sm:inline">Copier le lien</span>
+                  <span className="sm:hidden">Lien</span>
+                </>
+              )}
+            </button>
           </div>
 
           {/* MAIN TWO-COLUMN LAYOUT */}
@@ -364,6 +454,41 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       <i className="fa-solid fa-file-invoice"></i> Demander un Devis Pro / Studio
                     </button>
                   )}
+
+                  {/* Share Product & WhatsApp */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={handleShare}
+                      className="flex-1 h-11 bg-gray-100 hover:bg-gray-200 active:scale-98 text-gray-800 font-bold rounded-xl transition flex items-center justify-center gap-2 text-xs cursor-pointer"
+                      title="Partager le lien de ce produit"
+                    >
+                      {isCopied ? (
+                        <>
+                          <i className="fa-solid fa-check text-green-600 text-sm"></i>
+                          <span className="text-green-600 font-bold">Lien copié !</span>
+                        </>
+                      ) : (
+                        <>
+                          <i className="fa-solid fa-share-nodes text-sm text-red-600"></i>
+                          <span>Partager le produit</span>
+                        </>
+                      )}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const url = `${window.location.origin}/product/${product.id}-${slugify(product.name)}`;
+                        const msg = `Regarde ce produit chez GearShop Maroc : ${product.name} (${product.price > 0 ? `${product.price.toLocaleString('fr-MA')} DH` : 'sur demande'})\n${url}`;
+                        window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+                      }}
+                      className="h-11 px-3.5 bg-green-50 hover:bg-green-100 active:scale-98 text-green-700 font-bold rounded-xl transition flex items-center justify-center gap-1.5 text-xs border border-green-200 cursor-pointer shrink-0"
+                      title="Envoyer sur WhatsApp"
+                    >
+                      <i className="fa-brands fa-whatsapp text-base text-green-600"></i>
+                      <span>WhatsApp</span>
+                    </button>
+                  </div>
                 </div>
               </div>
               

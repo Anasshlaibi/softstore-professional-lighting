@@ -449,6 +449,32 @@ export const defaultProducts: Product[] = [
     promoEligible: true
   },
   {
+    id: 1043,
+    name: 'Autofocus adapter for Canon EF - Nikon Z - Black',
+    price: 2300,
+    category: 'lenses',
+    brand: '7Artisans',
+    mount: 'Nikon Z',
+    desc: 'Bague d\'adaptation autofocus 7Artisans EF-NZ pour monter vos objectifs Canon EF et EF-S sur les boîtiers hybrides Nikon Z avec contrôle total de l\'autofocus, de l\'ouverture électronique et de la stabilisation IS.',
+    specs: [
+      'Compatibilité Objectifs: Canon EF / EF-S',
+      'Compatibilité Boîtiers: Nikon Z (Z5, Z6, Z7, Z8, Z9, Z50, Zfc, Z30, etc.)',
+      'Support Autofocus rapide & précis',
+      'Transmission données EXIF & Contrôle du diaphragme',
+      'Stabilisation IS prise en charge',
+      'Port USB intégré pour mises à jour firmware'
+    ],
+    image: 'https://cdn.shopify.com/s/files/1/0555/8504/6736/products/6_6e23eacf-6b37-499a-8b5f-b53efaaed46f.jpg?v=1659681589',
+    gallery: [
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/products/6_6e23eacf-6b37-499a-8b5f-b53efaaed46f.jpg?v=1659681589',
+      'https://cdn.shopify.com/s/files/1/0555/8504/6736/products/3_dc9e895f-5a8a-4a9e-ba2e-fb30e31ee3d8.jpg?v=1659681589'
+    ],
+    stars: 5,
+    inStock: true,
+    promoEligible: false,
+    search_aliases: ['autofocus adapter canon ef nikon z', 'bague ef z', 'bague ef nikon z', 'adaptateur canon ef nikon z', '7artisans ef nz']
+  },
+  {
     id: 3001,
     name: 'DJI Osmo Pocket 4 Pro',
     price: 8000,

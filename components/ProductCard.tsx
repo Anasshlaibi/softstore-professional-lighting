@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../App';
+import { slugify } from '../src/utils/catalogEngine';
 
 interface ProductCardProps {
   product: Product;
@@ -90,10 +92,17 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               </div>
             </div>
 
-            {/* Title */}
-            <h3 className="text-xs sm:text-sm font-bold text-gray-900 line-clamp-2 leading-snug mb-2 group-hover:text-red-600 transition-colors">
+            {/* Title as direct semantic Link */}
+            <Link
+              to={`/product/${product.id}-${slugify(product.name)}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                onProductClick(product.id);
+              }}
+              className="text-xs sm:text-sm font-bold text-gray-900 line-clamp-2 leading-snug mb-2 hover:text-red-600 transition-colors block"
+            >
               {product.name}
-            </h3>
+            </Link>
           </div>
 
           {/* Pricing & CTA Button */}
