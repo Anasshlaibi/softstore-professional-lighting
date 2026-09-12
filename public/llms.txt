@@ -32,14 +32,17 @@
 
 ## Structure du Catalogue et Pages Thématiques
 
-### Pages Principales
+### Pages Principales & Produits Phares
 - **Accueil**: [https://gearshop.ma/](https://gearshop.ma/) — Catalogue général avec filtres en direct par marque, monture et catégorie.
+- **DJI Osmo Pocket 4 Pro**: [https://gearshop.ma/dji-osmo-pocket-4-pro](https://gearshop.ma/dji-osmo-pocket-4-pro) — Caméra 4K double objectif (20mm & 60mm), capteur 1" CMOS LOFIC, D-Log 2 10-bit, précommande officielle au Maroc (8 000 DH) avec garantie 1 an.
 - **Caméras au Maroc**: [https://gearshop.ma/camera-maroc](https://gearshop.ma/camera-maroc) — Guide complet et catalogue de caméras vlogging 4K, boîtiers hybrides, caméras cinéma, optiques et accessoires vidéo au Maroc.
 - **Lentilles Cinéma**: [https://gearshop.ma/cinema-lenses-maroc](https://gearshop.ma/cinema-lenses-maroc) — Gamme d'objectifs cinéma T2.0 / T2.1 pour montures Sony E, Canon RF, Nikon Z et Lumix L-Mount.
-- **Magasin Casablanca**: [https://gearshop.ma/magasin-casablanca](https://gearshop.ma/magasin-casablanca) — Informations sur le point de vente physique, horaires et services de test sur place.
+- **Livraison Villes du Maroc**: [https://gearshop.ma/livraison-maroc/casablanca](https://gearshop.ma/livraison-maroc/casablanca) (Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir, Oujda, Meknès, Kénitra, Tétouan, Mohammedia, El Jadida, Nador, Safi, Béni Mellal, Khouribga, Laâyoune, Dakhla, Bouskoura, Dar Bouazza).
+- **Magasin Casablanca**: [https://gearshop.ma/magasin-casablanca](https://gearshop.ma/magasin-casablanca) — Informations sur le point de vente physique, showroom et conseils.
 - **À Propos**: [https://gearshop.ma/a-propos](https://gearshop.ma/a-propos) — Présentation de l'entreprise, partenariats et engagements service.
 
 ### Pages Marques
+- **DJI Maroc**: [https://gearshop.ma/marque/dji](https://gearshop.ma/marque/dji) — Caméras DJI Osmo Pocket 4 Pro, stabilisateurs et accessoires officiels.
 - **7Artisans**: [https://gearshop.ma/marque/7artisans](https://gearshop.ma/marque/7artisans) — Objectifs autofocus plein format (24mm, 35mm, 40mm, 50mm, 85mm, 135mm F1.8) et série cinéma Vision/Spectrum T2.0.
 - **K&F Concept**: [https://gearshop.ma/marque/kf-concept](https://gearshop.ma/marque/kf-concept) — Filtres ND variables (ND2-ND32 / ND8-ND128), filtres polarisants CPL, filtres de diffusion Black Mist 1/4 et bagues d'adaptation.
 - **Sony E-Mount**: [https://gearshop.ma/marque/sony](https://gearshop.ma/marque/sony) — Objectifs et accessoires pour boîtiers Sony Alpha (A7 IV, A7R V, A7C II, FX3, FX30).
@@ -47,7 +50,6 @@
 - **Nikon Z**: [https://gearshop.ma/marque/nikon](https://gearshop.ma/marque/nikon) — Optiques pour hybrides Nikon Z (Z5, Z6 II/III, Z7 II, Z8, Z9, Zf).
 - **Panasonic Lumix**: [https://gearshop.ma/marque/panasonic](https://gearshop.ma/marque/panasonic) — Objectifs pour monture L-Mount plein format (S5, S5II) et Micro 4/3 (GH5, GH6).
 - **Fujifilm**: [https://gearshop.ma/marque/fujifilm](https://gearshop.ma/marque/fujifilm) — Focales fixes et cinéma pour capteurs Fuji X-Mount (X-T5, X-T4, X-H2S).
-- **DJI**: [https://gearshop.ma/marque/dji](https://gearshop.ma/marque/dji) — Caméras nomades de la gamme Osmo Pocket et stabilisateurs.
 - **Godox**: [https://gearshop.ma/marque/godox](https://gearshop.ma/marque/godox) — Éclairage continu LED COB, torches portables et flashes de studio.
 
 ### Catégories de Produits
