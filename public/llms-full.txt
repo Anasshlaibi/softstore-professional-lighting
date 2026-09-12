@@ -1,7 +1,7 @@
 # GearShop Maroc — Full Technical Catalog & Entity Knowledge Base (llms-full.txt)
 
 > **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's primary specialized retailer and official distributor for photography, filmmaking, cinema lenses, and studio equipment. Located in Casablanca, Morocco, GearShop provides official 1-year manufacturer warranties, express 24h delivery in Casablanca, and 2-4 days nationwide delivery across all Moroccan cities.
-> **Date of Catalog Compilation**: 2026-08-31
+> **Date of Catalog Compilation**: 2026-09-12
 > **Primary Currency**: MAD (Moroccan Dirham)
 > **Direct Contact**: WhatsApp / Phone: +212 673 011 873 | Email: contact@gearshop.ma
 > **Physical Store Location**: Casablanca, Morocco (Showroom & Testing Available)
@@ -11,14 +11,25 @@
 ## Store Policies & Logistics
 
 - **Warranty**: 1-year official warranty on all new camera and lighting gear with local service in Casablanca.
-- **Delivery in Morocco**:
-  - Casablanca: 24 to 48 hours express delivery.
-  - Nationwide (Rabat, Marrakech, Tangier, Fez, Agadir, Oujda, Meknes, etc.): 2 to 4 business days.
+- **Delivery in Morocco (All Cities Covered)**:
+  - Casablanca & Mohammedia: Same-day or 24h Express delivery.
+  - Rabat, Salé, Kénitra: 24h Express Guaranteed.
+  - Marrakech, Tanger, Tétouan, Fès, Meknès, Agadir, El Jadida, Oujda, Nador, Safi, Béni Mellal, Khouribga, Laâyoune, Dakhla, Bouskoura, Dar Bouazza: 24h to 48h Express delivery.
   - Free Shipping threshold: Free for orders of 500 MAD and above.
 - **Payment Methods**:
-  - Cash on Delivery (Paiement à la livraison en espèces)
-  - Bank Transfer (Virement bancaire professionnel avec facture)
+  - Cash on Delivery (Paiement à la livraison en espèces partout au Maroc)
+  - Bank Transfer (Virement bancaire professionnel avec facture et TVA)
   - Credit Card (Paiement par carte bancaire sécurisé)
+
+---
+
+## Featured Flagship Products in Morocco
+
+- **DJI Osmo Pocket 4 Pro (Osmo Pocket 4P)**:
+  - Official Price: 8 000 MAD / DH
+  - URL: `https://gearshop.ma/dji-osmo-pocket-4-pro`
+  - Key Specs: Dual-lens system (20mm wide & 60mm medium telephoto f/1.8), 1-inch CMOS LOFIC sensor with 17 dynamic range stops, D-Log 2 10-bit color profile, 3-axis gimbal stabilization, ActiveTrack 8.0.
+  - Availability: Official preorder & delivery across all Moroccan cities with 1-year warranty.
 
 ---
 
@@ -114,7 +125,7 @@
 #### DJI Osmo Pocket 4 Pro
 - **Marque / Brand**: DJI
 - **Monture / Mount**: Standard / Universel
-- **Prix / Price**: 8.000 MAD
+- **Prix / Price**: 9.000 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: Statut: Précommande, Marque: DJI, Capteur principal: CMOS 1 pouce (17 Stops de dynamique), Objectif Portrait: 60mm f/1.8 (Zoom optique 3×, étendu 12×), Profil couleur: D-Log 2 10-bit (Plus de 1 milliard de couleurs), Stabilisation: Nacelle mécanique 3 axes, Suivi intelligent: ActiveTrack 8.0, Mode Ralenti: Jusqu'à 10× Ultra-HD (4K / 240fps), Résolution vidéo: 4K / 240fps (Grand-angle), 4K / 200fps (Médium-télé), Stockage interne: 103 Go (Transfert USB 3.1 jusqu'à 800 Mo/s), Photo: 37 MP & 4K Live Photo, Fonctionnalités Pro: Synchronisation Timecode & Mode Webcam, Écran: Tactile 2 pouces rotatif, Connectivité: Bluetooth, Wi-Fi, USB-C, Garantie: 1 An GearShop Maroc
 - **Description**: Le DJI Osmo Pocket 4 Pro (Osmo Pocket 4P) est une caméra vlog 4K d'exception dotée d'un capteur CMOS grand-angle 1 pouce offrant 17 stops de plage dynamique et le profil couleur D-Log 2. Elle intègre un second objectif téléobjectif moyen 60mm à ouverture f/1.8 idéal pour les portraits naturels. Équi
@@ -415,7 +426,7 @@
 #### AF50mm F1.8 Sony (E Mount) - Black
 - **Marque / Brand**: Sony
 - **Monture / Mount**: Sony E
-- **Prix / Price**: 2.300 MAD
+- **Prix / Price**: 3.400 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF101B UPC: 6971835485116 AF50mm F1.8 Sony (E Mount)
@@ -424,7 +435,7 @@
 #### AF50mm F1.8 Nikon (Z Mount) - Black
 - **Marque / Brand**: Nikon
 - **Monture / Mount**: Nikon Z
-- **Prix / Price**: 2.300 MAD
+- **Prix / Price**: 3.400 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF102B UPC: 6971835485482 AF50mm F1.8 Nikon (Z Mount)
@@ -433,7 +444,7 @@
 #### AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
 - **Marque / Brand**: Panasonic
 - **Monture / Mount**: L-Mount
-- **Prix / Price**: 2.300 MAD
+- **Prix / Price**: 3.400 MAD
 - **Disponibilité / Stock**: En stock à Casablanca
 - **Spécifications**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF50F18-L UPC: 6971835487264 AF50mm F1.8 Panasonic/Leica/Sigma (L Mount)

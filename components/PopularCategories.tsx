@@ -102,7 +102,7 @@ export const PopularCategories: React.FC<PopularCategoriesProps> = ({
       title: 'FILTRES ND / CPL',
       image: 'https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg',
       count: categoryCounts.filtersCount,
-      onClick: () => onCategorySelect('accessories', { lensType: 'all' }),
+      onClick: () => onCategorySelect('filtres', { lensType: 'all' }),
     },
     {
       id: 'lighting',

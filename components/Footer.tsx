@@ -161,6 +161,11 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
                   DJI Osmo &amp; Caméras
                 </Link>
               </li>
+              <li>
+                <Link to="/dji-osmo-pocket-4-pro" className="text-red-600 dark:text-red-400 font-bold hover:underline transition flex items-center gap-1">
+                  <span>🔥</span> DJI Osmo Pocket 4 Pro
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -170,6 +175,11 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
               Guides d'Achat
             </h5>
             <ul className="space-y-2.5">
+              <li>
+                <Link to="/dji-osmo-pocket-4-pro" className="hover:text-red-600 transition font-medium">
+                  DJI Osmo Pocket Maroc
+                </Link>
+              </li>
               <li>
                 <Link to="/guide/filmmakers" className="hover:text-red-600 transition">
                   Guide pour Cinéastes
@@ -211,6 +221,65 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
                 </Link>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Pan-Morocco Cities Delivery Matrix */}
+        <div className="border-t border-gray-100 dark:border-gray-800 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+            <div>
+              <span className="text-black dark:text-white font-bold text-xs uppercase tracking-wider block">
+                Livraison de Matériel Photo &amp; Vidéo Partout au Maroc (24h - 48h)
+              </span>
+              <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                Commandez vos objectifs 7Artisans, filtres K&amp;F Concept et caméras DJI avec paiement à la réception dans toutes les villes du Maroc :
+              </p>
+            </div>
+            <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 shrink-0">
+              ✓ Paiement Cash à la Livraison
+            </span>
+          </div>
+
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-gray-600 dark:text-gray-400">
+            <Link to="/livraison-maroc/casablanca" className="hover:text-red-600 transition font-medium">Casablanca</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/rabat" className="hover:text-red-600 transition font-medium">Rabat</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/marrakech" className="hover:text-red-600 transition font-medium">Marrakech</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/tanger" className="hover:text-red-600 transition font-medium">Tanger</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/agadir" className="hover:text-red-600 transition font-medium">Agadir</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/fes" className="hover:text-red-600 transition font-medium">Fès</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/meknes" className="hover:text-red-600 transition font-medium">Meknès</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/oujda" className="hover:text-red-600 transition font-medium">Oujda</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/kenitra" className="hover:text-red-600 transition font-medium">Kénitra</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/tetouan" className="hover:text-red-600 transition font-medium">Tétouan</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/mohammedia" className="hover:text-red-600 transition font-medium">Mohammedia</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/el-jadida" className="hover:text-red-600 transition font-medium">El Jadida</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/nador" className="hover:text-red-600 transition font-medium">Nador</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/safi" className="hover:text-red-600 transition font-medium">Safi</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/beni-mellal" className="hover:text-red-600 transition font-medium">Béni Mellal</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/khouribga" className="hover:text-red-600 transition font-medium">Khouribga</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/laayoune" className="hover:text-red-600 transition font-medium">Laâyoune</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/dakhla" className="hover:text-red-600 transition font-medium">Dakhla</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/bouskoura" className="hover:text-red-600 transition font-medium">Bouskoura</Link>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <Link to="/livraison-maroc/dar-bouazza" className="hover:text-red-600 transition font-medium">Dar Bouazza</Link>
           </div>
         </div>
 

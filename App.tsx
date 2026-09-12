@@ -43,6 +43,7 @@ const AdminDashboard = React.lazy(() => import('./src/pages/AdminDashboard'));
 const AboutAndPartners = React.lazy(() => import('./src/pages/AboutAndPartners'));
 const OsmoPocket4Page = React.lazy(() => import('./src/pages/OsmoPocket4Page'));
 const CameraMarocPage = React.lazy(() => import('./src/pages/CameraMarocPage'));
+const CityHubMaroc = React.lazy(() => import('./src/pages/CityHubMaroc'));
 
 import Newsletter from './src/components/Newsletter';
 import CookieConsentBanner from './src/components/CookieConsentBanner';
@@ -150,7 +151,7 @@ const App: React.FC = () => {
 
       if (idFromUrl && !isNaN(idFromUrl)) {
         if (idFromUrl === 3001) {
-          navigate('/osmo-pocket-4p', { replace: true });
+          navigate('/dji-osmo-pocket-4-pro', { replace: true });
           return;
         }
 
@@ -177,7 +178,7 @@ const App: React.FC = () => {
 
   const openProductModal = (productId: number, fromSearchQuery?: string) => {
     if (productId === 3001) {
-      navigate('/osmo-pocket-4p');
+      navigate('/dji-osmo-pocket-4-pro');
       return;
     }
     const product = products.find((p) => p.id === productId);
@@ -412,6 +413,21 @@ const AppContent: React.FC<{
             <Route path="/dji-osmo-pocket-4-pro" element={
               <React.Suspense fallback={<LoadingSpinner />}>
                 <OsmoPocket4Page />
+              </React.Suspense>
+            } />
+            <Route path="/livraison-maroc/:citySlug" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <CityHubMaroc products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
+              </React.Suspense>
+            } />
+            <Route path="/livraison-maroc" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <CityHubMaroc products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
+              </React.Suspense>
+            } />
+            <Route path="/villes-maroc" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <CityHubMaroc products={products} onProductClick={openProductModal} siteConfig={siteConfig} />
               </React.Suspense>
             } />
             <Route path="/camera-maroc" element={

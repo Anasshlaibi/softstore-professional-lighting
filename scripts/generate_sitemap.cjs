@@ -149,11 +149,22 @@ async function generateSitemap() {
     changefreq: 'weekly',
   }));
 
+  const cityPages = [
+    'casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes', 'meknes', 'oujda',
+    'kenitra', 'tetouan', 'mohammedia', 'el-jadida', 'nador', 'safi', 'beni-mellal',
+    'khouribga', 'laayoune', 'dakhla', 'bouskoura', 'dar-bouazza'
+  ].map(city => ({
+    url: `${baseUrl}/livraison-maroc/${city}`,
+    priority: '0.90',
+    changefreq: 'weekly',
+  }));
+
   const allStructuredPages = [
     ...staticLandingPages,
     ...categoryPages,
     ...brandPages,
     ...guidePages,
+    ...cityPages,
   ];
 
   const staticXmlEntries = allStructuredPages.map(page => `

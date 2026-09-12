@@ -215,6 +215,14 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                 {categories
                   .filter((c) => c !== 'all')
                   .map((cat) => {
+                    const categoryLabels: Record<string, string> = {
+                      lenses: 'Objectifs Photo & Cinéma',
+                      filtres: 'Filtres ND, CPL & Mist',
+                      accessories: 'Accessoires & Bagues',
+                      studio: 'Éclairage Studio',
+                      portable: 'Éclairage Portable',
+                      'DJI & Gimbals': 'DJI & Stabilisateurs',
+                    };
                     const isActive = filters.category === cat;
                     return (
                       <button
@@ -227,7 +235,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                             : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300'
                         }`}
                       >
-                        <span>{cat}</span>
+                        <span>{categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1))}</span>
                         {isActive && <i className="fa-solid fa-check text-xs text-red-600" />}
                       </button>
                     );

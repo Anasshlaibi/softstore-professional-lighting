@@ -76,10 +76,8 @@ const Products: React.FC<ProductsProps> = ({
   }, [globalSearchQuery, products.length]);
 
   const categories = useMemo(() => {
-    const cats = new Set(products.map((p) => p.category));
-    cats.add('DJI & Gimbals');
-    return ['all', ...Array.from(cats)];
-  }, [products]);
+    return ['all', 'lenses', 'filtres', 'accessories', 'studio', 'portable', 'DJI & Gimbals'];
+  }, []);
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
@@ -98,21 +96,24 @@ const Products: React.FC<ProductsProps> = ({
       const catLower = filters.category.toLowerCase();
       filtered = filtered.filter((p) => {
         const pCatLower = (p.category || '').toLowerCase();
+        const attr = extractProductAttributes(p);
         if (pCatLower === catLower) return true;
         if (catLower.includes('objectif') || catLower === 'lenses') {
-          return pCatLower.includes('lens') || pCatLower.includes('objectif');
+          return pCatLower.includes('lens') || pCatLower.includes('objectif') || attr.product_type === 'lens';
+        }
+        if (catLower.includes('filtr') || catLower === 'filters') {
+          return attr.product_type === 'filter' || p.name.toLowerCase().includes('filter') || p.name.toLowerCase().includes('filtre') || p.name.toLowerCase().includes('cpl') || p.name.toLowerCase().includes('vnd');
         }
         if (catLower.includes('accessoire') || catLower === 'accessories') {
-          return pCatLower.includes('accessor') || pCatLower.includes('accessoire');
+          return pCatLower.includes('accessor') || pCatLower.includes('accessoire') || attr.product_type === 'accessory' || attr.product_type === 'filter' || attr.product_type === 'adapter';
         }
         if (catLower.includes('éclairage') || catLower.includes('eclairage') || catLower === 'studio' || catLower === 'portable') {
-          return pCatLower.includes('studio') || pCatLower.includes('portable') || pCatLower.includes('éclairage') || pCatLower.includes('eclairage');
+          return pCatLower.includes('studio') || pCatLower.includes('portable') || pCatLower.includes('éclairage') || pCatLower.includes('eclairage') || attr.product_type === 'light';
         }
         if (catLower.includes('caméra') || catLower.includes('camera')) {
-          return pCatLower.includes('camera') || pCatLower.includes('caméra');
+          return pCatLower.includes('camera') || pCatLower.includes('caméra') || attr.product_type === 'camera';
         }
         if (catLower.includes('dji')) {
-          const attr = extractProductAttributes(p);
           return attr.brand.toLowerCase() === 'dji' || p.name.toLowerCase().includes('dji') || p.name.toLowerCase().includes('osmo');
         }
         return false;
@@ -137,14 +138,25 @@ const Products: React.FC<ProductsProps> = ({
     if (filters.mount !== 'all') {
       filtered = filtered.filter((p) => {
         const attr = extractProductAttributes(p);
-        return attr.mount === filters.mount;
+        if (attr.product_type === 'lens' || attr.product_type === 'adapter') {
+          return attr.mount === filters.mount || (filters.mount === 'Canon EF' && attr.mount.includes('Canon'));
+        }
+        // Universal items (filters, accessories, studio lights) are compatible across all systems
+        return true;
       });
     }
 
     if (filters.brand !== 'all') {
+      const bLower = filters.brand.toLowerCase();
       filtered = filtered.filter((p) => {
         const attr = extractProductAttributes(p);
-        return attr.brand.toLowerCase() === filters.brand.toLowerCase();
+        if (attr.brand.toLowerCase() === bLower) return true;
+        if (bLower === 'sony' && (attr.mount === 'Sony E' || p.name.toLowerCase().includes('sony'))) return true;
+        if (bLower === 'nikon' && (attr.mount === 'Nikon Z' || p.name.toLowerCase().includes('nikon'))) return true;
+        if (bLower === 'canon' && (attr.mount.includes('Canon') || p.name.toLowerCase().includes('canon'))) return true;
+        if ((bLower === 'fuji' || bLower === 'fujifilm') && (attr.mount === 'Fuji FX' || p.name.toLowerCase().includes('fuji'))) return true;
+        if (bLower === 'panasonic' && (attr.mount === 'L Mount' || attr.mount === 'M43' || p.name.toLowerCase().includes('panasonic'))) return true;
+        return false;
       });
     }
 
@@ -280,9 +292,15 @@ const Products: React.FC<ProductsProps> = ({
               onClick: () => setFilters({ ...filters, category: 'lenses', lensType: 'cinema', productGroup: undefined }),
             },
             {
+              id: 'filters',
+              label: 'Filtres ND & CPL',
+              isActive: filters.category.toLowerCase().includes('filtr'),
+              onClick: () => setFilters({ ...filters, category: 'filtres', productGroup: undefined, lensType: 'all' }),
+            },
+            {
               id: 'accessories',
-              label: 'Accessoires & Filtres',
-              isActive: filters.category.toLowerCase().includes('accessoir') || filters.category === 'accessories',
+              label: 'Accessoires',
+              isActive: (filters.category.toLowerCase().includes('accessoir') || filters.category === 'accessories') && !filters.category.toLowerCase().includes('filtr'),
               onClick: () => setFilters({ ...filters, category: 'accessories', productGroup: undefined, lensType: 'all' }),
             },
             {

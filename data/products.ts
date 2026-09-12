@@ -211,8 +211,8 @@ export const defaultProducts: Product[] = [
   {
     id: 10,
     name: '7Artisans 50mm F1.8 Auto Focus Lens',
-    price: 1800,
-    oldPrice: 2000,
+    price: 3400,
+    oldPrice: 3900,
     rentPrice: 150,
     category: 'lenses',
     image: 'https://7artisans.store/cdn/shop/files/2_8857cc7a-364e-4171-bc01-dae9619280d5.png',
@@ -327,8 +327,14 @@ export const defaultProducts: Product[] = [
     oldPrice: 800,
     rentPrice: 80,
     category: 'accessories',
-    image: 'https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg',
-    gallery: ['https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg'],
+    image: 'https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-1-327x327.jpg',
+    gallery: [
+      'https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-1-327x327.jpg',
+      'https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-2-327x327.jpg',
+      'https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-3-327x327.jpg',
+      'https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-4-327x327.jpg',
+      'https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-5-327x327.jpg'
+    ],
     video: '',
     desc: 'Filtre polarisant circulaire ultra-mince K&F Concept 82mm. Élimine les reflets sur l\'eau et le verre tout en saturant les couleurs.',
     stars: 5,
@@ -452,6 +458,7 @@ export const defaultProducts: Product[] = [
     id: 1043,
     name: 'Autofocus adapter for Canon EF - Nikon Z - Black',
     price: 2300,
+    oldPrice: 2500,
     category: 'lenses',
     brand: '7Artisans',
     mount: 'Nikon Z',
@@ -477,8 +484,8 @@ export const defaultProducts: Product[] = [
   {
     id: 1022,
     name: 'AF50mm F1.8 Sony (E Mount) - Black',
-    price: 2300,
-    oldPrice: 2500,
+    price: 3400,
+    oldPrice: 3900,
     category: 'lenses',
     brand: '7Artisans',
     mount: 'Sony E',
@@ -507,8 +514,8 @@ export const defaultProducts: Product[] = [
   {
     id: 1023,
     name: 'AF50mm F1.8 Nikon (Z Mount) - Black',
-    price: 2300,
-    oldPrice: 2500,
+    price: 3400,
+    oldPrice: 3900,
     category: 'lenses',
     brand: '7Artisans',
     mount: 'Nikon Z',
@@ -550,9 +557,9 @@ export const defaultProducts: Product[] = [
       'Mise au point: Manuelle fluide',
       'Poids plume: seulement 168g'
     ],
-    image: 'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210',
+    image: 'https://7artisans.store/cdn/shop/products/5018.jpg?v=1666173248',
     gallery: [
-      'https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210'
+      'https://7artisans.store/cdn/shop/products/5018.jpg?v=1666173248'
     ],
     stars: 5,
     inStock: true,

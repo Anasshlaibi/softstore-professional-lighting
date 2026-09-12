@@ -27,23 +27,29 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   const nameLower = name.toLowerCase();
   const fullText = `${nameLower} ${cat} ${desc}`;
 
-  // 1. BRAND DETECTION (DB column > text analysis)
+  // 1. BRAND DETECTION (DB column > ID range > text analysis)
   let brand = (p as any).brand || '';
   if (!brand) {
-    if (fullText.includes('7artisans') || fullText.includes('sevenartisans')) brand = '7Artisans';
-    else if (fullText.includes('k&f') || fullText.includes('kentfaith') || fullText.includes('concept')) brand = 'K&F Concept';
-    else if (fullText.includes('godox')) brand = 'Godox';
-    else if (fullText.includes('sony')) brand = 'Sony';
-    else if (fullText.includes('canon')) brand = 'Canon';
-    else if (fullText.includes('nikon')) brand = 'Nikon';
-    else if (fullText.includes('fuji') || fullText.includes('fujifilm')) brand = 'Fujifilm';
-    else if (fullText.includes('panasonic') || fullText.includes('lumix')) brand = 'Panasonic';
-    else if (fullText.includes('rode') || fullText.includes('røde')) brand = 'Røde';
-    else if (fullText.includes('sandisk')) brand = 'SanDisk';
-    else if (fullText.includes('insta360')) brand = 'Insta360';
-    else if (fullText.includes('yongnuo')) brand = 'Yongnuo';
-    else if (fullText.includes('dji')) brand = 'DJI';
-    else brand = '7Artisans'; // Default primary brand
+    const pId = Number(p.id);
+    if (pId === 10 || (pId >= 1000 && pId < 2000)) {
+      brand = '7Artisans';
+    } else if (pId >= 2000 && pId < 3000) {
+      brand = 'K&F Concept';
+    } else if (pId >= 3000 && pId < 4000 || nameLower.includes('dji') || nameLower.includes('osmo')) {
+      brand = 'DJI';
+    } else if (nameLower.includes('k&f') || nameLower.includes('kentfaith') || nameLower.includes('concept')) {
+      brand = 'K&F Concept';
+    } else if (nameLower.includes('godox')) {
+      brand = 'Godox';
+    } else if (nameLower.includes('rode') || nameLower.includes('røde')) {
+      brand = 'Røde';
+    } else if (nameLower.includes('yongnuo')) {
+      brand = 'Yongnuo';
+    } else if (fullText.includes('7artisans') || fullText.includes('sevenartisans')) {
+      brand = '7Artisans';
+    } else {
+      brand = '7Artisans'; // Primary brand
+    }
   }
 
   // 2. PRODUCT TYPE DETECTION (Strict separation of lenses vs non-lenses)

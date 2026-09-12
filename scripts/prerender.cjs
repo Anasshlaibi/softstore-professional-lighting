@@ -195,14 +195,26 @@ async function prerender() {
   let errorCount = 0;
 
   // Helper to prerender a specific page route
-  const writeStaticPage = (subPath, title, desc) => {
+  const writeStaticPage = (subPath, title, desc, extraJsonLd = null, semanticBody = '') => {
     const pageDir = path.join(distDir, subPath);
     try {
       fs.mkdirSync(pageDir, { recursive: true });
       let html = baseTemplate;
-      html = html.replace(/<title>.*?<\/title>/i, `<title>${title}</title>`);
-      html = html.replace(/<meta name="description" content=".*?"/i, `<meta name="description" content="${desc.replace(/"/g, '&quot;')}"`);
-      html = html.replace(/<link rel="canonical"[^>]*>/i, `<link rel="canonical" href="https://gearshop.ma/${subPath}" />`);
+      html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
+      html = html.replace(/<meta\s+name="description"[\s\S]*?>/i, `<meta name="description" content="${desc.replace(/"/g, '&quot;')}">`);
+      html = html.replace(/<link\s+rel="canonical"[\s\S]*?>/i, `<link rel="canonical" href="https://gearshop.ma/${subPath}" />`);
+      html = html.replace(/<meta\s+property="og:title"[\s\S]*?>/i, `<meta property="og:title" content="${title.replace(/"/g, '&quot;')}">`);
+      html = html.replace(/<meta\s+property="og:description"[\s\S]*?>/i, `<meta property="og:description" content="${desc.replace(/"/g, '&quot;')}">`);
+      html = html.replace(/<meta\s+property="og:url"[\s\S]*?>/i, `<meta property="og:url" content="https://gearshop.ma/${subPath}">`);
+
+      if (extraJsonLd) {
+        html = html.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(extraJsonLd)}\n  </script>\n</head>`);
+      }
+
+      if (semanticBody) {
+        html = html.replace('</body>', `${semanticBody}\n</body>`);
+      }
+
       fs.writeFileSync(path.join(pageDir, 'index.html'), html, 'utf-8');
       console.log(`  ✅ /${subPath}`);
       successCount++;
@@ -219,8 +231,104 @@ async function prerender() {
   writeStaticPage('cinema-lenses-maroc', 'Lentilles Cinéma Maroc | Objectifs Ciné Professionnels | GearShop', 'Gamme complète d\'objectifs cinéma 7Artisans T2.0 pour Sony E, Nikon Z, Canon RF et Lumix L-Mount au Maroc.');
   writeStaticPage('magasin-casablanca', 'Magasin Photo & Vidéo Casablanca | Showroom GearShop Maroc', 'Visitez notre magasin physique à Casablanca. Essais d\'objectifs, conseils personnalisés et stock disponible immédiatement.');
   writeStaticPage('a-propos', 'À Propos & Partenariats | GearShop Maroc', 'Découvrez l\'histoire de GearShop Maroc, distributeur officiel 7Artisans et K&F Concept avec garantie constructeur 1 an.');
-  writeStaticPage('dji-osmo-pocket-4-pro', 'DJI Osmo Pocket 4 Pro Maroc | Précommande & Prix Officiel | GearShop', 'Précommandez la caméra DJI Osmo Pocket 4 Pro au Maroc chez GearShop. Garantie officielle 1 an et livraison rapide.');
-  writeStaticPage('osmo-pocket-4p', 'DJI Osmo Pocket 4 Pro Maroc | GearShop Casablanca', 'Achetez la nouvelle DJI Osmo Pocket 4 Pro chez GearShop Maroc au meilleur prix garanti.');
+
+  // 1b. Dedicated Pre-rendering for DJI Osmo Pocket 4 Pro
+  console.log('📷 Pre-rendering DJI Osmo Pocket 4 Pro with Product & FAQ Schema...');
+  const osmoJsonLd = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "DJI Osmo Pocket 4 Pro",
+    "alternateName": ["DJI Osmo Pocket 4P", "DJI Pocket 4 Pro Maroc", "Caméra DJI Maroc"],
+    "image": ["https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png"],
+    "description": "Achetez le nouveau DJI Osmo Pocket 4 Pro au Maroc chez GearShop. Caméra vlog 4K avec capteur CMOS 1 pouce LOFIC, double objectif (20mm et 60mm), D-Log 2 10-bit et stabilisation 3 axes. Meilleur prix garanti au Maroc avec garantie 1 an.",
+    "brand": { "@type": "Brand", "name": "DJI" },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://gearshop.ma/dji-osmo-pocket-4-pro",
+      "priceCurrency": "MAD",
+      "price": "8000",
+      "availability": "https://schema.org/PreOrder",
+      "itemCondition": "https://schema.org/NewCondition",
+      "areaServed": { "@type": "Country", "name": "Maroc" },
+      "seller": { "@type": "Organization", "name": "GearShop Maroc", "telephone": "+212673011873" }
+    }
+  };
+
+  const osmoSemanticBody = `
+  <div id="prerendered-product-seo" style="display:none;" aria-hidden="true">
+    <h1>DJI Osmo Pocket 4 Pro au Maroc - Prix & Précommande</h1>
+    <p>Achetez ou précommandez la nouvelle caméra DJI Osmo Pocket 4 Pro chez GearShop Maroc au prix officiel de 8 000 DH.</p>
+    <p>Capteur CMOS 1 pouce LOFIC, plage dynamique de 17 stops, téléobjectif moyen 60mm f/1.8, D-Log 2 10-bit et stabilisation 3 axes.</p>
+    <p>Livraison express en 24h à Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir et partout au Maroc avec paiement à la livraison et garantie 1 an.</p>
+  </div>`;
+
+  writeStaticPage(
+    'dji-osmo-pocket-4-pro',
+    'DJI Osmo Pocket 4 Pro Maroc | Prix Officiel 8000 DH & Livraison | GearShop',
+    'Achetez le nouveau DJI Osmo Pocket 4 Pro au Maroc chez GearShop. Prix officiel 8 000 DH. Capteur CMOS 1 pouce LOFIC, double objectif, D-Log 2, garantie 1 an et livraison 24h partout au Maroc.',
+    osmoJsonLd,
+    osmoSemanticBody
+  );
+  writeStaticPage(
+    'osmo-pocket-4p',
+    'DJI Osmo Pocket 4 Pro Maroc | Prix Officiel 8000 DH & Livraison | GearShop',
+    'Achetez la nouvelle caméra DJI Osmo Pocket 4 Pro chez GearShop Maroc au prix de 8 000 DH avec garantie 1 an.',
+    osmoJsonLd,
+    osmoSemanticBody
+  );
+
+  // 1c. Pre-rendering for Pan-Morocco City Hubs
+  console.log('\n🇲🇦 Pre-rendering Pan-Morocco City Hub Pages...');
+  const moroccanCitiesList = [
+    { slug: 'casablanca', name: 'Casablanca', region: 'Casablanca-Settat', time: 'Le jour même / 24h Express' },
+    { slug: 'rabat', name: 'Rabat', region: 'Rabat-Salé-Kénitra', time: '24h Express Garanti' },
+    { slug: 'marrakech', name: 'Marrakech', region: 'Marrakech-Safi', time: '24h Express' },
+    { slug: 'tanger', name: 'Tanger', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h Express' },
+    { slug: 'agadir', name: 'Agadir', region: 'Souss-Massa', time: '24h - 48h Express' },
+    { slug: 'fes', name: 'Fès', region: 'Fès-Meknès', time: '24h Express' },
+    { slug: 'meknes', name: 'Meknès', region: 'Fès-Meknès', time: '24h Express' },
+    { slug: 'oujda', name: 'Oujda', region: 'L\'Oriental', time: '24h - 48h' },
+    { slug: 'kenitra', name: 'Kénitra', region: 'Rabat-Salé-Kénitra', time: '24h Express' },
+    { slug: 'tetouan', name: 'Tétouan', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h - 48h' },
+    { slug: 'mohammedia', name: 'Mohammedia', region: 'Casablanca-Settat', time: '24h Express' },
+    { slug: 'el-jadida', name: 'El Jadida', region: 'Casablanca-Settat', time: '24h Express' },
+    { slug: 'nador', name: 'Nador', region: 'L\'Oriental', time: '24h - 48h' },
+    { slug: 'safi', name: 'Safi', region: 'Marrakech-Safi', time: '24h - 48h' },
+    { slug: 'beni-mellal', name: 'Béni Mellal', region: 'Béni Mellal-Khénifra', time: '24h - 48h' },
+    { slug: 'khouribga', name: 'Khouribga', region: 'Béni Mellal-Khénifra', time: '24h Express' },
+    { slug: 'laayoune', name: 'Laâyoune', region: 'Laâyoune-Sakia El Hamra', time: '48h Express Sécurisé' },
+    { slug: 'dakhla', name: 'Dakhla', region: 'Dakhla-Oued Ed-Dahab', time: '48h Express Sécurisé' },
+    { slug: 'bouskoura', name: 'Bouskoura', region: 'Casablanca-Settat', time: 'Livraison le jour même / Express' },
+    { slug: 'dar-bouazza', name: 'Dar Bouazza', region: 'Casablanca-Settat', time: 'Livraison le jour même / Express' },
+  ];
+
+  for (const c of moroccanCitiesList) {
+    const cityTitle = `Matériel Photo & Vidéo à ${c.name} | DJI, 7Artisans, K&F | Livraison ${c.time} | GearShop Maroc`;
+    const cityDesc = `Achetez votre matériel photo, vidéo, caméras DJI Osmo Pocket 4 Pro et objectifs 7Artisans à ${c.name} (${c.region}). Livraison ${c.time}, garantie 1 an, paiement à la livraison.`;
+    const cityJsonLd = {
+      "@context": "https://schema.org",
+      "@type": ["Store", "LocalBusiness"],
+      "name": `GearShop Maroc - Matériel Photo, Vidéo & DJI à ${c.name}`,
+      "telephone": "+212673011873",
+      "url": `https://gearshop.ma/livraison-maroc/${c.slug}`,
+      "priceRange": "$$",
+      "currenciesAccepted": "MAD",
+      "paymentAccepted": "Cash on Delivery, Paiement à la livraison, Virement Bancaire",
+      "areaServed": {
+        "@type": "City",
+        "name": c.name,
+        "containedInPlace": { "@type": "AdministrativeArea", "name": c.region }
+      }
+    };
+    const citySemanticBody = `
+    <div id="prerendered-city-seo" style="display:none;" aria-hidden="true">
+      <h1>Matériel Photo, Vidéo et Caméras DJI à ${c.name}</h1>
+      <p>${cityDesc}</p>
+      <p>Distributeur officiel 7Artisans, K&F Concept et DJI. Produits 100% neufs avec garantie 1 an et SAV au Maroc.</p>
+    </div>`;
+
+    writeStaticPage(`livraison-maroc/${c.slug}`, cityTitle, cityDesc, cityJsonLd, citySemanticBody);
+  }
 
   // 2. Brand Cluster Pages
   console.log('\n🏷️  Pre-rendering Brand Cluster Pages...');

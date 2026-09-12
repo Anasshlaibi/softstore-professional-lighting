@@ -61,8 +61,12 @@ const Header: React.FC<HeaderProps> = React.memo(
             </div>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center space-x-7 text-sm font-medium">
+            <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
               <a href="/#products" className={navLinkClass}>Produits</a>
+              <a href="/dji-osmo-pocket-4-pro" className="relative text-xs font-black px-3 py-1.5 rounded-full border transition-all duration-200 bg-slate-900 text-red-400 border-red-500/40 hover:bg-red-600 hover:text-white hover:border-red-600 flex items-center gap-1.5 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                DJI Osmo Pocket 4P
+              </a>
               <a href="/cinema-lenses-maroc" className={navLinkClass}>Cinéma</a>
               <a href="/a-propos" className={navLinkClass}>À Propos &amp; Marques</a>
               <a href="/#videos" className={navLinkClass}>Vidéos</a>
@@ -176,6 +180,14 @@ const Header: React.FC<HeaderProps> = React.memo(
             >
               <i className="fa-solid fa-grid-2 w-5 text-center text-gray-400 text-xs" />
               Produits
+            </a>
+            <a
+              href="/dji-osmo-pocket-4-pro"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-red-950/40 border border-red-500/30 text-red-300 hover:bg-red-900/30 transition-colors text-sm font-bold"
+            >
+              <i className="fa-solid fa-camera w-5 text-center text-red-400 text-xs" />
+              DJI Osmo Pocket 4 Pro (Maroc)
             </a>
             <a
               href="/cinema-lenses-maroc"

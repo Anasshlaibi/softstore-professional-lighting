@@ -62,33 +62,33 @@ export const DjiOsmoPocket4PShowcase: React.FC<DjiShowcaseProps> = ({
             <ScrollReveal delay={100} direction="up">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-red-600/10 text-red-500 border border-red-600/20 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                Dual-Lens Cinematic Pocket Gimbal Camera
+                DJI Maroc · Livraison Express 24h &amp; Paiement à la Livraison
               </span>
             </ScrollReveal>
 
             <ScrollReveal delay={200} direction="up">
-              <h1 className="text-5xl sm:text-7xl font-black tracking-tight leading-tight text-white drop-shadow-2xl">
-                Osmo Pocket 4P
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight text-white drop-shadow-2xl">
+                DJI Osmo Pocket 4 Pro <span className="text-red-500 block text-3xl sm:text-5xl mt-2 font-extrabold">au Maroc</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={300} direction="up">
-              <p className="text-2xl sm:text-3xl font-light text-gray-200 tracking-wide">
-                See More. Tell More.
+              <p className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">
+                La Caméra Vlog 4K Révolutionnaire à Double Objectif
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={400} direction="up">
               <p className="text-base sm:text-lg text-slate-400 leading-relaxed font-normal max-w-xl">
-                Le premier système de caméra de poche à double objectif. Capteur principal 1 pouce CMOS LOFIC offrant 17 stops de dynamique, téléobjectif moyen 60mm f/1.8, profil D-Log 2 10-bit et stabilisation 3 axes avec ActiveTrack 8.0.
+                Le premier système de caméra de poche à double objectif. Capteur principal 1 pouce CMOS LOFIC offrant 17 stops de dynamique, téléobjectif moyen 60mm f/1.8, profil D-Log 2 10-bit et stabilisation 3 axes avec ActiveTrack 8.0. Disponible en précommande officielle chez GearShop Maroc avec garantie 1 an et livraison dans toutes les villes du Maroc.
               </p>
             </ScrollReveal>
 
             {/* Price & Action Buttons */}
             <ScrollReveal delay={500} direction="up">
-              <div className="pt-6 flex flex-wrap items-center gap-6">
+              <div className="pt-4 flex flex-wrap items-center gap-6">
                 <div className="flex flex-col">
-                  <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Prix Officiel</span>
+                  <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Prix Officiel Maroc</span>
                   <span className="text-4xl font-black text-white">
                     {price.toLocaleString()} <span className="text-xl font-medium text-red-500">{currency}</span>
                   </span>
@@ -100,17 +100,24 @@ export const DjiOsmoPocket4PShowcase: React.FC<DjiShowcaseProps> = ({
                     className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-2xl shadow-xl shadow-red-600/25 transition-all transform hover:-translate-y-1 flex items-center gap-3 text-base"
                   >
                     <i className="fa-solid fa-cart-shopping" />
-                    Réserver
+                    Précommander
                   </button>
 
                   <button
                     onClick={onContactWhatsApp}
                     className="px-6 py-4 bg-slate-800/50 hover:bg-slate-700/80 text-white border border-slate-700 backdrop-blur-md font-semibold rounded-2xl transition-all transform hover:-translate-y-1 flex items-center gap-3 text-base"
                   >
-                    <i className="fa-brands fa-whatsapp text-red-500 text-lg" />
+                    <i className="fa-brands fa-whatsapp text-emerald-400 text-lg" />
                     WhatsApp
                   </button>
                 </div>
+              </div>
+
+              {/* Local Moroccan Trust Signals */}
+              <div className="pt-6 flex flex-wrap gap-4 text-xs text-slate-400 border-t border-slate-800/80 mt-6">
+                <span className="flex items-center gap-1.5"><i className="fa-solid fa-truck-fast text-red-500" /> Livraison 24h Casablanca &amp; Villes du Maroc</span>
+                <span className="flex items-center gap-1.5"><i className="fa-solid fa-money-bill-wave text-emerald-400" /> Paiement à la réception (Cash)</span>
+                <span className="flex items-center gap-1.5"><i className="fa-solid fa-shield-check text-blue-400" /> Garantie 1 An Constructeur</span>
               </div>
             </ScrollReveal>
           </div>

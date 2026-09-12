@@ -98,14 +98,25 @@ async function generate() {
 ## Store Policies & Logistics
 
 - **Warranty**: 1-year official warranty on all new camera and lighting gear with local service in Casablanca.
-- **Delivery in Morocco**:
-  - Casablanca: 24 to 48 hours express delivery.
-  - Nationwide (Rabat, Marrakech, Tangier, Fez, Agadir, Oujda, Meknes, etc.): 2 to 4 business days.
+- **Delivery in Morocco (All Cities Covered)**:
+  - Casablanca & Mohammedia: Same-day or 24h Express delivery.
+  - Rabat, Salé, Kénitra: 24h Express Guaranteed.
+  - Marrakech, Tanger, Tétouan, Fès, Meknès, Agadir, El Jadida, Oujda, Nador, Safi, Béni Mellal, Khouribga, Laâyoune, Dakhla, Bouskoura, Dar Bouazza: 24h to 48h Express delivery.
   - Free Shipping threshold: Free for orders of 500 MAD and above.
 - **Payment Methods**:
-  - Cash on Delivery (Paiement à la livraison en espèces)
-  - Bank Transfer (Virement bancaire professionnel avec facture)
+  - Cash on Delivery (Paiement à la livraison en espèces partout au Maroc)
+  - Bank Transfer (Virement bancaire professionnel avec facture et TVA)
   - Credit Card (Paiement par carte bancaire sécurisé)
+
+---
+
+## Featured Flagship Products in Morocco
+
+- **DJI Osmo Pocket 4 Pro (Osmo Pocket 4P)**:
+  - Official Price: 8 000 MAD / DH
+  - URL: \`https://gearshop.ma/dji-osmo-pocket-4-pro\`
+  - Key Specs: Dual-lens system (20mm wide & 60mm medium telephoto f/1.8), 1-inch CMOS LOFIC sensor with 17 dynamic range stops, D-Log 2 10-bit color profile, 3-axis gimbal stabilization, ActiveTrack 8.0.
+  - Availability: Official preorder & delivery across all Moroccan cities with 1-year warranty.
 
 ---
 
