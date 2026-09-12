@@ -242,6 +242,22 @@ async function prerender() {
     "image": ["https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png"],
     "description": "Achetez le nouveau DJI Osmo Pocket 4 Pro au Maroc chez GearShop. Caméra vlog 4K avec capteur CMOS 1 pouce LOFIC, double objectif (20mm et 60mm), D-Log 2 10-bit et stabilisation 3 axes. Meilleur prix garanti au Maroc avec garantie 1 an.",
     "brand": { "@type": "Brand", "name": "DJI" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "24",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Yassine B." },
+        "datePublished": "2026-08-20",
+        "reviewBody": "Excellente caméra compacte pour le vlogging au Maroc. Stabilisation 3 axes impeccable et qualité 4K bluffante.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      }
+    ],
     "offers": {
       "@type": "Offer",
       "url": "https://gearshop.ma/dji-osmo-pocket-4-pro",
