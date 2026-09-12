@@ -294,28 +294,78 @@ async function prerender() {
   );
 
   // 1c. Pre-rendering for Pan-Morocco City Hubs
-  console.log('\n🇲🇦 Pre-rendering Pan-Morocco City Hub Pages...');
+  console.log('\n🇲🇦 Pre-rendering Pan-Morocco City Hub Pages (All 12 Regions)...');
   const moroccanCitiesList = [
+    // 1. Casablanca-Settat
     { slug: 'casablanca', name: 'Casablanca', region: 'Casablanca-Settat', time: 'Le jour même / 24h Express' },
-    { slug: 'rabat', name: 'Rabat', region: 'Rabat-Salé-Kénitra', time: '24h Express Garanti' },
-    { slug: 'marrakech', name: 'Marrakech', region: 'Marrakech-Safi', time: '24h Express' },
-    { slug: 'tanger', name: 'Tanger', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h Express' },
-    { slug: 'agadir', name: 'Agadir', region: 'Souss-Massa', time: '24h - 48h Express' },
-    { slug: 'fes', name: 'Fès', region: 'Fès-Meknès', time: '24h Express' },
-    { slug: 'meknes', name: 'Meknès', region: 'Fès-Meknès', time: '24h Express' },
-    { slug: 'oujda', name: 'Oujda', region: 'L\'Oriental', time: '24h - 48h' },
-    { slug: 'kenitra', name: 'Kénitra', region: 'Rabat-Salé-Kénitra', time: '24h Express' },
-    { slug: 'tetouan', name: 'Tétouan', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h - 48h' },
-    { slug: 'mohammedia', name: 'Mohammedia', region: 'Casablanca-Settat', time: '24h Express' },
-    { slug: 'el-jadida', name: 'El Jadida', region: 'Casablanca-Settat', time: '24h Express' },
-    { slug: 'nador', name: 'Nador', region: 'L\'Oriental', time: '24h - 48h' },
-    { slug: 'safi', name: 'Safi', region: 'Marrakech-Safi', time: '24h - 48h' },
-    { slug: 'beni-mellal', name: 'Béni Mellal', region: 'Béni Mellal-Khénifra', time: '24h - 48h' },
-    { slug: 'khouribga', name: 'Khouribga', region: 'Béni Mellal-Khénifra', time: '24h Express' },
-    { slug: 'laayoune', name: 'Laâyoune', region: 'Laâyoune-Sakia El Hamra', time: '48h Express Sécurisé' },
-    { slug: 'dakhla', name: 'Dakhla', region: 'Dakhla-Oued Ed-Dahab', time: '48h Express Sécurisé' },
+    { slug: 'mohammedia', name: 'Mohammedia', region: 'Casablanca-Settat', time: '24h Express / Le jour même' },
     { slug: 'bouskoura', name: 'Bouskoura', region: 'Casablanca-Settat', time: 'Livraison le jour même / Express' },
     { slug: 'dar-bouazza', name: 'Dar Bouazza', region: 'Casablanca-Settat', time: 'Livraison le jour même / Express' },
+    { slug: 'nouaceur', name: 'Nouaceur', region: 'Casablanca-Settat', time: '24h Express' },
+    { slug: 'settat', name: 'Settat', region: 'Casablanca-Settat', time: '24h Express' },
+    { slug: 'berrechid', name: 'Berrechid', region: 'Casablanca-Settat', time: '24h Express' },
+    { slug: 'el-jadida', name: 'El Jadida', region: 'Casablanca-Settat', time: '24h Express' },
+    { slug: 'benslimane', name: 'Benslimane', region: 'Casablanca-Settat', time: '24h Express' },
+
+    // 2. Rabat-Salé-Kénitra
+    { slug: 'rabat', name: 'Rabat', region: 'Rabat-Salé-Kénitra', time: '24h Express Garanti' },
+    { slug: 'sale', name: 'Salé', region: 'Rabat-Salé-Kénitra', time: '24h Express' },
+    { slug: 'temara', name: 'Témara', region: 'Rabat-Salé-Kénitra', time: '24h Express' },
+    { slug: 'kenitra', name: 'Kénitra', region: 'Rabat-Salé-Kénitra', time: '24h Express' },
+    { slug: 'sidi-kacem', name: 'Sidi Kacem', region: 'Rabat-Salé-Kénitra', time: '24h - 48h' },
+    { slug: 'sidi-slimane', name: 'Sidi Slimane', region: 'Rabat-Salé-Kénitra', time: '24h - 48h' },
+    { slug: 'khemisset', name: 'Khémisset', region: 'Rabat-Salé-Kénitra', time: '24h Express' },
+
+    // 3. Marrakech-Safi
+    { slug: 'marrakech', name: 'Marrakech', region: 'Marrakech-Safi', time: '24h Express' },
+    { slug: 'safi', name: 'Safi', region: 'Marrakech-Safi', time: '24h - 48h' },
+    { slug: 'essaouira', name: 'Essaouira', region: 'Marrakech-Safi', time: '24h - 48h' },
+    { slug: 'el-kelaa-des-sraghna', name: 'El Kelâa des Sraghna', region: 'Marrakech-Safi', time: '24h - 48h' },
+    { slug: 'ben-guerir', name: 'Ben Guerir', region: 'Marrakech-Safi', time: '24h Express' },
+
+    // 4. Tanger-Tétouan-Al Hoceïma
+    { slug: 'tanger', name: 'Tanger', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h Express' },
+    { slug: 'tetouan', name: 'Tétouan', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h - 48h' },
+    { slug: 'larache', name: 'Larache', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h - 48h' },
+    { slug: 'chefchaouen', name: 'Chefchaouen', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h - 48h' },
+    { slug: 'al-hoceima', name: 'Al Hoceïma', region: 'Tanger-Tétouan-Al Hoceïma', time: '48h Express' },
+    { slug: 'asilah', name: 'Asilah', region: 'Tanger-Tétouan-Al Hoceïma', time: '24h Express' },
+
+    // 5. Fès-Meknès
+    { slug: 'fes', name: 'Fès', region: 'Fès-Meknès', time: '24h Express' },
+    { slug: 'meknes', name: 'Meknès', region: 'Fès-Meknès', time: '24h Express' },
+    { slug: 'taza', name: 'Taza', region: 'Fès-Meknès', time: '24h - 48h' },
+    { slug: 'ifrane', name: 'Ifrane', region: 'Fès-Meknès', time: '24h Express' },
+
+    // 6. Souss-Massa
+    { slug: 'agadir', name: 'Agadir', region: 'Souss-Massa', time: '24h - 48h Express' },
+    { slug: 'taroudant', name: 'Taroudant', region: 'Souss-Massa', time: '48h Express' },
+    { slug: 'tiznit', name: 'Tiznit', region: 'Souss-Massa', time: '48h Express' },
+
+    // 7. L'Oriental
+    { slug: 'oujda', name: 'Oujda', region: 'L\'Oriental', time: '24h - 48h' },
+    { slug: 'nador', name: 'Nador', region: 'L\'Oriental', time: '24h - 48h' },
+    { slug: 'berkane', name: 'Berkane', region: 'L\'Oriental', time: '24h - 48h' },
+    { slug: 'taourirt', name: 'Taourirt', region: 'L\'Oriental', time: '48h Express' },
+
+    // 8. Béni Mellal-Khénifra
+    { slug: 'beni-mellal', name: 'Béni Mellal', region: 'Béni Mellal-Khénifra', time: '24h - 48h' },
+    { slug: 'khouribga', name: 'Khouribga', region: 'Béni Mellal-Khénifra', time: '24h Express' },
+    { slug: 'khenifra', name: 'Khénifra', region: 'Béni Mellal-Khénifra', time: '48h Express' },
+
+    // 9. Drâa-Tafilalet
+    { slug: 'ouarzazate', name: 'Ouarzazate', region: 'Drâa-Tafilalet', time: '48h Express Sécurisé' },
+    { slug: 'errachidia', name: 'Errachidia', region: 'Drâa-Tafilalet', time: '48h Express' },
+    { slug: 'tinghir', name: 'Tinghir', region: 'Drâa-Tafilalet', time: '48h Express' },
+
+    // 10. Guelmim-Oued Noun
+    { slug: 'guelmim', name: 'Guelmim', region: 'Guelmim-Oued Noun', time: '48h Express Sécurisé' },
+
+    // 11. Laâyoune-Sakia El Hamra
+    { slug: 'laayoune', name: 'Laâyoune', region: 'Laâyoune-Sakia El Hamra', time: '48h Express Sécurisé' },
+
+    // 12. Dakhla-Oued Ed-Dahab
+    { slug: 'dakhla', name: 'Dakhla', region: 'Dakhla-Oued Ed-Dahab', time: '48h Express Sécurisé' },
   ];
 
   for (const c of moroccanCitiesList) {

@@ -150,9 +150,18 @@ async function generateSitemap() {
   }));
 
   const cityPages = [
-    'casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes', 'meknes', 'oujda',
-    'kenitra', 'tetouan', 'mohammedia', 'el-jadida', 'nador', 'safi', 'beni-mellal',
-    'khouribga', 'laayoune', 'dakhla', 'bouskoura', 'dar-bouazza'
+    'casablanca', 'mohammedia', 'bouskoura', 'dar-bouazza', 'nouaceur', 'settat', 'berrechid', 'el-jadida', 'benslimane',
+    'rabat', 'sale', 'temara', 'kenitra', 'sidi-kacem', 'sidi-slimane', 'khemisset',
+    'marrakech', 'safi', 'essaouira', 'el-kelaa-des-sraghna', 'ben-guerir',
+    'tanger', 'tetouan', 'larache', 'chefchaouen', 'al-hoceima', 'asilah',
+    'fes', 'meknes', 'taza', 'ifrane',
+    'agadir', 'taroudant', 'tiznit',
+    'oujda', 'nador', 'berkane', 'taourirt',
+    'beni-mellal', 'khouribga', 'khenifra',
+    'ouarzazate', 'errachidia', 'tinghir',
+    'guelmim',
+    'laayoune',
+    'dakhla'
   ].map(city => ({
     url: `${baseUrl}/livraison-maroc/${city}`,
     priority: '0.90',
