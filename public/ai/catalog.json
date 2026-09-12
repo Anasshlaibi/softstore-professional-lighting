@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org",
+  "entity": {
+    "name": "GearShop Maroc",
+    "legalName": "Soft Store Maroc",
+    "url": "https://gearshop.ma",
+    "logo": "https://gearshop.ma/logo.png",
+    "telephone": "+212673011873",
+    "email": "contact@gearshop.ma",
+    "country": "MA",
+    "currency": "MAD",
+    "languages": [
+      "fr-MA",
+      "ar-MA",
+      "en"
+    ],
+    "showroom": {
+      "city": "Casablanca",
+      "country": "Maroc",
+      "services": [
+        "Essais d'objectifs sur place",
+        "Conseils compatibilité",
+        "Retrait immédiat"
+      ]
+    },
+    "deliveryNetwork": {
+      "coverage": "Toutes les villes et régions du Maroc",
+      "deliveryTimes": {
+        "Casablanca & Mohammedia": "Le jour même / 24h Express",
+        "Rabat, Salé, Kénitra, Témara": "24h Express Garanti",
+        "Marrakech, Tanger, Fès, Meknès, Agadir, Oujda, Nador, etc.": "24h à 48h Express"
+      },
+      "paymentAccepted": "Paiement en espèces à la livraison (Cash on Delivery partout au Maroc)"
+    }
+  },
+  "catalogSummary": {
+    "totalProducts": 82,
+    "categoriesCount": 7,
+    "brandsCount": 8,
+    "lastUpdated": "2026-09-12"
+  },
+  "endpoints": {
+    "fullText": "https://gearshop.ma/llms-full.txt",
+    "discovery": "https://gearshop.ma/llms.txt",
+    "productsJson": "https://gearshop.ma/ai/products.json",
+    "categoriesJson": "https://gearshop.ma/ai/categories.json",
+    "brandsJson": "https://gearshop.ma/ai/brands.json",
+    "sitemapXml": "https://gearshop.ma/sitemap.xml"
+  }
+}

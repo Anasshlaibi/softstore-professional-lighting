@@ -1,0 +1,234 @@
+{
+  "@context": "https://schema.org",
+  "entity": {
+    "name": "GearShop Maroc",
+    "legalName": "Soft Store Maroc",
+    "url": "https://gearshop.ma",
+    "logo": "https://gearshop.ma/logo.png",
+    "telephone": "+212673011873",
+    "email": "contact@gearshop.ma",
+    "country": "MA",
+    "currency": "MAD",
+    "languages": [
+      "fr-MA",
+      "ar-MA",
+      "en"
+    ],
+    "showroom": {
+      "city": "Casablanca",
+      "country": "Maroc",
+      "services": [
+        "Essais d'objectifs sur place",
+        "Conseils compatibilité",
+        "Retrait immédiat"
+      ]
+    },
+    "deliveryNetwork": {
+      "coverage": "Toutes les villes et régions du Maroc",
+      "deliveryTimes": {
+        "Casablanca & Mohammedia": "Le jour même / 24h Express",
+        "Rabat, Salé, Kénitra, Témara": "24h Express Garanti",
+        "Marrakech, Tanger, Fès, Meknès, Agadir, Oujda, Nador, etc.": "24h à 48h Express"
+      },
+      "paymentAccepted": "Paiement en espèces à la livraison (Cash on Delivery partout au Maroc)"
+    }
+  },
+  "catalogSummary": {
+    "totalProducts": 82,
+    "categoriesCount": 7,
+    "brandsCount": 8,
+    "lastUpdated": "2026-09-12"
+  },
+  "endpoints": {
+    "fullText": "https://gearshop.ma/llms-full.txt",
+    "discovery": "https://gearshop.ma/llms.txt",
+    "productsJson": "https://gearshop.ma/ai/products.json",
+    "categoriesJson": "https://gearshop.ma/ai/categories.json",
+    "brandsJson": "https://gearshop.ma/ai/brands.json",
+    "sitemapXml": "https://gearshop.ma/sitemap.xml"
+  },
+  "categories": [
+    {
+      "name": "Éclairage Studio LED",
+      "count": 5,
+      "sampleProducts": [
+        {
+          "name": "YM 350",
+          "price": 3000,
+          "url": "https://gearshop.ma/product/1-ym-350"
+        },
+        {
+          "name": "BKL400Bi Bi-Color",
+          "price": 2850,
+          "url": "https://gearshop.ma/product/3-bkl400bi-bi-color"
+        },
+        {
+          "name": "Panel P-500",
+          "price": 1150,
+          "url": "https://gearshop.ma/product/4-panel-p-500"
+        },
+        {
+          "name": "P-60S Spotlight",
+          "price": 1380,
+          "url": "https://gearshop.ma/product/8-p-60s-spotlight"
+        },
+        {
+          "name": "Y300S",
+          "price": 3200,
+          "url": "https://gearshop.ma/product/1765907057061-y300s"
+        }
+      ]
+    },
+    {
+      "name": "Éclairage Portable & RGB",
+      "count": 5,
+      "sampleProducts": [
+        {
+          "name": "YB-300R",
+          "price": 1000,
+          "url": "https://gearshop.ma/product/2-yb-300r"
+        },
+        {
+          "name": "YB-100R ",
+          "price": 1900,
+          "url": "https://gearshop.ma/product/6-yb-100r"
+        },
+        {
+          "name": "S100 W portable",
+          "price": 1999,
+          "url": "https://gearshop.ma/product/7-s100-w-portable"
+        },
+        {
+          "name": "K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)",
+          "price": 500,
+          "url": "https://gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah"
+        },
+        {
+          "name": "DJI Osmo Pocket 4 Pro",
+          "price": 9000,
+          "url": "https://gearshop.ma/dji-osmo-pocket-4-pro"
+        }
+      ]
+    },
+    {
+      "name": "Lentilles Cinéma",
+      "count": 24,
+      "sampleProducts": [
+        {
+          "name": "35mm T2.0 Sony (E Mount) - Black",
+          "price": 0,
+          "url": "https://gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black"
+        },
+        {
+          "name": "35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black",
+          "price": 0,
+          "url": "https://gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black"
+        },
+        {
+          "name": "35mm T2.0 Nikon (Z Mount) - Black",
+          "price": 4500,
+          "url": "https://gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black"
+        },
+        {
+          "name": "35mm T2.0 Canon (EOS-R Mount) - Black",
+          "price": 4500,
+          "url": "https://gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black"
+        },
+        {
+          "name": "50mm T2.0 Sony (E Mount) - Black",
+          "price": 4500,
+          "url": "https://gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black"
+        }
+      ]
+    },
+    {
+      "name": "Objectifs Photo",
+      "count": 37,
+      "sampleProducts": [
+        {
+          "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
+          "price": 0,
+          "url": "https://gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black"
+        },
+        {
+          "name": "AF35mm F1.8 Sony (E Mount) APS-C - Black",
+          "price": 0,
+          "url": "https://gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black"
+        },
+        {
+          "name": "AF35mm F1.8 Fuji (FX Mount) APS-C - Black",
+          "price": 0,
+          "url": "https://gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black"
+        },
+        {
+          "name": "AF35mm F1.8 Nikon (Z Mount) APS-C - Black",
+          "price": 0,
+          "url": "https://gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black"
+        },
+        {
+          "name": "AF50mm F1.8 Sony (E Mount) APS-C - Black",
+          "price": 0,
+          "url": "https://gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black"
+        }
+      ]
+    },
+    {
+      "name": "Bagues & Adaptateurs",
+      "count": 1,
+      "sampleProducts": [
+        {
+          "name": "PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver",
+          "price": 3000,
+          "url": "https://gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver"
+        }
+      ]
+    },
+    {
+      "name": "Filtres Optiques",
+      "count": 8,
+      "sampleProducts": [
+        {
+          "name": "77mm True Color VND6-9 Filter - Black",
+          "price": 750,
+          "url": "https://gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black"
+        },
+        {
+          "name": "55mm 1/8 Black Mist Filter - Black",
+          "price": 450,
+          "url": "https://gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black"
+        },
+        {
+          "name": "K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)",
+          "price": 1200,
+          "url": "https://gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel"
+        },
+        {
+          "name": "K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)",
+          "price": 700,
+          "url": "https://gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x"
+        },
+        {
+          "name": "K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)",
+          "price": 600,
+          "url": "https://gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated"
+        }
+      ]
+    },
+    {
+      "name": "Accessoires Photo & Vidéo",
+      "count": 2,
+      "sampleProducts": [
+        {
+          "name": "K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1",
+          "price": 200,
+          "url": "https://gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1"
+        },
+        {
+          "name": "K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires",
+          "price": 600,
+          "url": "https://gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires"
+        }
+      ]
+    }
+  ]
+}
