@@ -22,7 +22,7 @@ const SUPABASE_URL = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL || '
 const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const BASE_URL = 'https://gearshop.ma';
+const BASE_URL = 'https://www.gearshop.ma';
 
 function slugify(text) {
   if (!text) return '';

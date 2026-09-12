@@ -48,7 +48,7 @@ async function generateSitemap() {
   const env = loadEnv();
   const supabaseUrl = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
   const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
-  const baseUrl = 'https://gearshop.ma';
+  const baseUrl = 'https://www.gearshop.ma';
   const today = new Date().toISOString().split('T')[0];
 
   let productUrls = '';

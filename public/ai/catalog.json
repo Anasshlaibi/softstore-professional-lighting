@@ -3,8 +3,8 @@
   "entity": {
     "name": "GearShop Maroc",
     "legalName": "Soft Store Maroc",
-    "url": "https://gearshop.ma",
-    "logo": "https://gearshop.ma/logo.png",
+    "url": "https://www.gearshop.ma",
+    "logo": "https://www.gearshop.ma/logo.png",
     "telephone": "+212673011873",
     "email": "contact@gearshop.ma",
     "country": "MA",
@@ -40,11 +40,11 @@
     "lastUpdated": "2026-09-12"
   },
   "endpoints": {
-    "fullText": "https://gearshop.ma/llms-full.txt",
-    "discovery": "https://gearshop.ma/llms.txt",
-    "productsJson": "https://gearshop.ma/ai/products.json",
-    "categoriesJson": "https://gearshop.ma/ai/categories.json",
-    "brandsJson": "https://gearshop.ma/ai/brands.json",
-    "sitemapXml": "https://gearshop.ma/sitemap.xml"
+    "fullText": "https://www.gearshop.ma/llms-full.txt",
+    "discovery": "https://www.gearshop.ma/llms.txt",
+    "productsJson": "https://www.gearshop.ma/ai/products.json",
+    "categoriesJson": "https://www.gearshop.ma/ai/categories.json",
+    "brandsJson": "https://www.gearshop.ma/ai/brands.json",
+    "sitemapXml": "https://www.gearshop.ma/sitemap.xml"
   }
 }

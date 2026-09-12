@@ -3,8 +3,8 @@
   "entity": {
     "name": "GearShop Maroc",
     "legalName": "Soft Store Maroc",
-    "url": "https://gearshop.ma",
-    "logo": "https://gearshop.ma/logo.png",
+    "url": "https://www.gearshop.ma",
+    "logo": "https://www.gearshop.ma/logo.png",
     "telephone": "+212673011873",
     "email": "contact@gearshop.ma",
     "country": "MA",
@@ -40,12 +40,12 @@
     "lastUpdated": "2026-09-12"
   },
   "endpoints": {
-    "fullText": "https://gearshop.ma/llms-full.txt",
-    "discovery": "https://gearshop.ma/llms.txt",
-    "productsJson": "https://gearshop.ma/ai/products.json",
-    "categoriesJson": "https://gearshop.ma/ai/categories.json",
-    "brandsJson": "https://gearshop.ma/ai/brands.json",
-    "sitemapXml": "https://gearshop.ma/sitemap.xml"
+    "fullText": "https://www.gearshop.ma/llms-full.txt",
+    "discovery": "https://www.gearshop.ma/llms.txt",
+    "productsJson": "https://www.gearshop.ma/ai/products.json",
+    "categoriesJson": "https://www.gearshop.ma/ai/categories.json",
+    "brandsJson": "https://www.gearshop.ma/ai/brands.json",
+    "sitemapXml": "https://www.gearshop.ma/sitemap.xml"
   },
   "products": [
     {
@@ -71,7 +71,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg",
-      "url": "https://gearshop.ma/product/1-ym-350",
+      "url": "https://www.gearshop.ma/product/1-ym-350",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -97,7 +97,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg",
-      "url": "https://gearshop.ma/product/2-yb-300r",
+      "url": "https://www.gearshop.ma/product/2-yb-300r",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -123,7 +123,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.jpg",
-      "url": "https://gearshop.ma/product/3-bkl400bi-bi-color",
+      "url": "https://www.gearshop.ma/product/3-bkl400bi-bi-color",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -149,7 +149,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319170443F599C75DE4A68CC2_s.webp",
-      "url": "https://gearshop.ma/product/4-panel-p-500",
+      "url": "https://www.gearshop.ma/product/4-panel-p-500",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -175,7 +175,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319173149416DF92390F5C3A7_b.webp",
-      "url": "https://gearshop.ma/product/6-yb-100r",
+      "url": "https://www.gearshop.ma/product/6-yb-100r",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -201,7 +201,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.jpg",
-      "url": "https://gearshop.ma/product/7-s100-w-portable",
+      "url": "https://www.gearshop.ma/product/7-s100-w-portable",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -227,7 +227,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.jpg",
-      "url": "https://gearshop.ma/product/8-p-60s-spotlight",
+      "url": "https://www.gearshop.ma/product/8-p-60s-spotlight",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -253,7 +253,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
-      "url": "https://gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -279,7 +279,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
-      "url": "https://gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black",
+      "url": "https://www.gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -305,7 +305,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
-      "url": "https://gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -331,7 +331,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
-      "url": "https://gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -357,7 +357,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
-      "url": "https://gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -383,7 +383,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
-      "url": "https://gearshop.ma/product/1005-50mm-t2-0-panasonic-leica-sigma-l-mount-black",
+      "url": "https://www.gearshop.ma/product/1005-50mm-t2-0-panasonic-leica-sigma-l-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -409,7 +409,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
-      "url": "https://gearshop.ma/product/1006-50mm-t2-0-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1006-50mm-t2-0-canon-eos-r-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -435,7 +435,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
-      "url": "https://gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -461,7 +461,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
-      "url": "https://gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -487,7 +487,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/files/1_6f02ec7f-86ee-475c-8fe0-8689032d41cc.jpg?v=1770622210",
-      "url": "https://gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -513,7 +513,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/files/1_6f02ec7f-86ee-475c-8fe0-8689032d41cc.jpg?v=1770622210",
-      "url": "https://gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -539,7 +539,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/files/1_6f02ec7f-86ee-475c-8fe0-8689032d41cc.jpg?v=1770622210",
-      "url": "https://gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -565,7 +565,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210",
-      "url": "https://gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -591,7 +591,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210",
-      "url": "https://gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -617,7 +617,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210",
-      "url": "https://gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -643,7 +643,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117",
-      "url": "https://gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -669,7 +669,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117",
-      "url": "https://gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -695,7 +695,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117",
-      "url": "https://gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black",
+      "url": "https://www.gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -721,7 +721,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863",
-      "url": "https://gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -747,7 +747,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863",
-      "url": "https://gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -773,7 +773,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863",
-      "url": "https://gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black",
+      "url": "https://www.gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -799,7 +799,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_5f614e8a-15b9-4f9e-a1b7-db9fbf89b1a2.jpg?v=1772003864",
-      "url": "https://gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -825,7 +825,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088",
-      "url": "https://gearshop.ma/product/1022-af50mm-f1-8-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1022-af50mm-f1-8-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -851,7 +851,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088",
-      "url": "https://gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -877,7 +877,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088",
-      "url": "https://gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black",
+      "url": "https://www.gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -903,7 +903,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185",
-      "url": "https://gearshop.ma/product/1025-af135mm-f1-8-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1025-af135mm-f1-8-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -929,7 +929,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185",
-      "url": "https://gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black",
+      "url": "https://www.gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -955,7 +955,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185",
-      "url": "https://gearshop.ma/product/1027-af135mm-f1-8-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1027-af135mm-f1-8-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -981,7 +981,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
-      "url": "https://gearshop.ma/product/1028-35mm-f1-4-sony-e-mount-mark-iii-ff-black",
+      "url": "https://www.gearshop.ma/product/1028-35mm-f1-4-sony-e-mount-mark-iii-ff-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1007,7 +1007,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
-      "url": "https://gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black",
+      "url": "https://www.gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1033,7 +1033,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
-      "url": "https://gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black",
+      "url": "https://www.gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1059,7 +1059,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
-      "url": "https://gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black",
+      "url": "https://www.gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1085,7 +1085,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
-      "url": "https://gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1111,7 +1111,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
-      "url": "https://gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1137,7 +1137,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
-      "url": "https://gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1163,7 +1163,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
-      "url": "https://gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1189,7 +1189,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/products/5018.jpg?v=1666173248",
-      "url": "https://gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1215,7 +1215,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/products/5018.jpg?v=1666173248",
-      "url": "https://gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1241,7 +1241,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
-      "url": "https://gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1267,7 +1267,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
-      "url": "https://gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1293,7 +1293,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
-      "url": "https://gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1319,7 +1319,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
-      "url": "https://gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1345,7 +1345,7 @@
         "Carte Bancaire"
       ],
       "image": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
-      "url": "https://gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1371,7 +1371,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/6_6e23eacf-6b37-499a-8b5f-b53efaaed46f.jpg?v=1659681589",
-      "url": "https://gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black",
+      "url": "https://www.gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1397,7 +1397,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1423,7 +1423,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1449,7 +1449,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1475,7 +1475,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1501,7 +1501,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1527,7 +1527,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1553,7 +1553,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1579,7 +1579,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1605,7 +1605,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1631,7 +1631,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1657,7 +1657,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1683,7 +1683,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1709,7 +1709,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1735,7 +1735,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1761,7 +1761,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1787,7 +1787,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
-      "url": "https://gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1813,7 +1813,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_a309bf99-2e99-4d89-a5bc-28f48cded8a4.jpg?v=1772606130",
-      "url": "https://gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver",
+      "url": "https://www.gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1839,7 +1839,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/08-06_VND.jpg?v=1722932210",
-      "url": "https://gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black",
+      "url": "https://www.gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1865,7 +1865,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1-8.jpg?v=1781605231",
-      "url": "https://gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black",
+      "url": "https://www.gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1891,7 +1891,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg",
-      "url": "https://gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel",
+      "url": "https://www.gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1917,7 +1917,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/products/us/KF01.1064/KF01.1064-1-327x327.jpg",
-      "url": "https://gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x",
+      "url": "https://www.gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1943,7 +1943,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-1-327x327.jpg",
-      "url": "https://gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated",
+      "url": "https://www.gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1969,7 +1969,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg",
-      "url": "https://gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter",
+      "url": "https://www.gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -1995,7 +1995,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/category/image/36-327x327.png",
-      "url": "https://gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics",
+      "url": "https://www.gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -2021,7 +2021,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/category/image/70-327x327.png",
-      "url": "https://gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm",
+      "url": "https://www.gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -2047,7 +2047,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/category/799-327x327.png",
-      "url": "https://gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1",
+      "url": "https://www.gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -2073,7 +2073,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/category/583-327x327.png",
-      "url": "https://gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah",
+      "url": "https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -2099,7 +2099,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/category/image/65-327x327.png",
-      "url": "https://gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires",
+      "url": "https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -2125,7 +2125,7 @@
         "Carte Bancaire"
       ],
       "image": "https://img.kfconcept.com/cache/catalog/products/us/KF01.1996/KF01.1996-1-327x327.jpg",
-      "url": "https://gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro",
+      "url": "https://www.gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -2150,8 +2150,8 @@
         "Virement Bancaire",
         "Carte Bancaire"
       ],
-      "image": "https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png",
-      "url": "https://gearshop.ma/dji-osmo-pocket-4-pro",
+      "image": "https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png",
+      "url": "https://www.gearshop.ma/dji-osmo-pocket-4-pro",
       "lastUpdated": "2026-09-12"
     },
     {
@@ -2177,7 +2177,7 @@
         "Carte Bancaire"
       ],
       "image": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319171843802F1E3F22F87FE6_b.webp",
-      "url": "https://gearshop.ma/product/1765907057061-y300s",
+      "url": "https://www.gearshop.ma/product/1765907057061-y300s",
       "lastUpdated": "2026-09-12"
     }
   ]

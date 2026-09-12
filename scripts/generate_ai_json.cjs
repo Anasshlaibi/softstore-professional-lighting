@@ -117,7 +117,7 @@ async function generate() {
   const env = loadEnv();
   const supabaseUrl = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
   const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
-  const baseUrl = 'https://gearshop.ma';
+  const baseUrl = 'https://www.gearshop.ma';
   const today = new Date().toISOString().split('T')[0];
 
   let rawProducts = [];
@@ -146,7 +146,7 @@ async function generate() {
       category: 'Caméras & Stabilisateurs',
       brand: 'DJI',
       desc: 'Caméra compacte de vlog 4K avec double objectif (20mm & 60mm), capteur CMOS 1 pouce LOFIC (17 stops de plage dynamique), D-Log 2 10-bit et stabilisation 3 axes avec ActiveTrack 8.0.',
-      image: 'https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png',
+      image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png',
       inStock: true,
       isPreorder: true
     });

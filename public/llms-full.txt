@@ -1,19 +1,19 @@
 # GearShop Maroc — Full Technical Catalog & Knowledge Corpus (llms-full.txt)
 
-> **About GearShop Maroc**: GearShop (https://gearshop.ma) is Morocco's specialized retailer and importer for photography, filmmaking, cinema lenses, optical filters, and studio lighting equipment. Based in Casablanca, GearShop offers authentic camera gear with a 1-year local warranty, express 24h delivery in Casablanca/Rabat, and 24h-48h nationwide delivery across all 50+ Moroccan cities with Cash on Delivery (Paiement à la livraison).
+> **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's specialized retailer and importer for photography, filmmaking, cinema lenses, optical filters, and studio lighting equipment. Based in Casablanca, GearShop offers authentic camera gear with a 1-year local warranty, express 24h delivery in Casablanca/Rabat, and 24h-48h nationwide delivery across all 50+ Moroccan cities with Cash on Delivery (Paiement à la livraison).
 > **Catalog Compilation Date**: 2026-09-12
 > **Primary Currency**: MAD (Moroccan Dirham / DH)
-> **Canonical Entity URL**: https://gearshop.ma
-> **Official Root Discovery File**: https://gearshop.ma/llms.txt
-> **Machine-Readable API / Endpoints**: https://gearshop.ma/ai/products.json | https://gearshop.ma/ai/catalog.json
+> **Canonical Entity URL**: https://www.gearshop.ma
+> **Official Root Discovery File**: https://www.gearshop.ma/llms.txt
+> **Machine-Readable API / Endpoints**: https://www.gearshop.ma/ai/products.json | https://www.gearshop.ma/ai/catalog.json
 
 ---
 
 ## 1. Entity Identity & Trust Metadata
 
 - **Legal / Commercial Entity Name**: GearShop Maroc (Soft Store Maroc)
-- **Canonical URL**: https://gearshop.ma
-- **Logo URL**: https://gearshop.ma/logo.png
+- **Canonical URL**: https://www.gearshop.ma
+- **Logo URL**: https://www.gearshop.ma/logo.png
 - **Country of Origin & Operation**: Maroc (MA)
 - **Primary Operational Currency**: MAD (Moroccan Dirham / الدرهم المغربي)
 - **Supported Languages**: Français (fr-MA), Arabe (ar-MA), English (en)
@@ -132,12 +132,12 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 
 ## 6. Machine-Readable AI Endpoints (REST & JSON)
 
-- **AI Discovery File** : `https://gearshop.ma/llms.txt`
-- **Catalog Metadata & Entity Info** : `https://gearshop.ma/ai/catalog.json`
-- **Complete Products Database (Attributes, SKU, Mounts, Prices)** : `https://gearshop.ma/ai/products.json`
-- **Categories Breakdown** : `https://gearshop.ma/ai/categories.json`
-- **Brands & Mounts Breakdown** : `https://gearshop.ma/ai/brands.json`
-- **XML Sitemap** : `https://gearshop.ma/sitemap.xml`
+- **AI Discovery File** : `https://www.gearshop.ma/llms.txt`
+- **Catalog Metadata & Entity Info** : `https://www.gearshop.ma/ai/catalog.json`
+- **Complete Products Database (Attributes, SKU, Mounts, Prices)** : `https://www.gearshop.ma/ai/products.json`
+- **Categories Breakdown** : `https://www.gearshop.ma/ai/categories.json`
+- **Brands & Mounts Breakdown** : `https://www.gearshop.ma/ai/brands.json`
+- **XML Sitemap** : `https://www.gearshop.ma/sitemap.xml`
 
 ---
 
@@ -160,7 +160,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: MODEL：YM350 INPUTVOLTAGE：AC200-220V OUTPUT POWER：350W CRI：≥95 CCT：2700-6500K PRODUCT WEIGHT：1560G PRODUCT SIZE：219.7*147*114.5MM LUMINOUS FLUX：18000LM / 26000LM NOISE：30dB BARE LAMP：6500LUX / /8800LUX LIGHT ANGLE：120° DIMMING：0-100% LAMP BODY COLOR：BLACK / WHITE
-- **Lien Officiel Produit**: [YM 350](https://gearshop.ma/product/1-ym-350)
+- **Lien Officiel Produit**: [YM 350](https://www.gearshop.ma/product/1-ym-350)
 
 #### BKL400Bi Bi-Color
 - **SKU**: `GEAR-3-7ARTISANS`
@@ -177,7 +177,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Polyvalence absolue avec température de couleur ajustable de 2700K à 6500K. Ventilateur silencieux pour la vidéo.
-- **Lien Officiel Produit**: [BKL400Bi Bi-Color](https://gearshop.ma/product/3-bkl400bi-bi-color)
+- **Lien Officiel Produit**: [BKL400Bi Bi-Color](https://www.gearshop.ma/product/3-bkl400bi-bi-color)
 
 #### Y300S
 - **SKU**: `GEAR-1765907057061-7ARTISANS`
@@ -194,7 +194,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Y300S 300W dual color temperature Luminous flux (ML): 33000 Color temperature (K): 2700-6500 1 meter illuminance (with standard cover) lux: 98000 1 meter illuminance (bare light) lux: 10800 Input voltage: 200-220v Output power: 310w
-- **Lien Officiel Produit**: [Y300S](https://gearshop.ma/product/1765907057061-y300s)
+- **Lien Officiel Produit**: [Y300S](https://www.gearshop.ma/product/1765907057061-y300s)
 
 ### Catégorie : PORTABLE (6 articles)
 
@@ -213,7 +213,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: MODEL：YB-300R CHARGING PORT：DC, Type-C INPUT VOLTAGE：20V 3A RGB SCENARIOS FX：14 Scenarios FX OUTPUT POWER：25w LED QUANTITY：192pcs CRI：95+ POWER SUPPLY：NP-F CCT：2700-7500K+200K FIXED INTERFACE：1/4' Screw interface LAMP BODY COLOR：BLACK DIMMING：0-100% PACKING LIST：YB-300R/BARNDOOR/LANYARD/USER MANUAL/PACKING BOX
-- **Lien Officiel Produit**: [YB-300R](https://gearshop.ma/product/2-yb-300r)
+- **Lien Officiel Produit**: [YB-300R](https://www.gearshop.ma/product/2-yb-300r)
 
 #### YB-100R 
 - **SKU**: `GEAR-6-7ARTISANS`
@@ -230,7 +230,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Output power: 100 watts full brightness, RGB 50 watts Color temperature: 2700-7500K Color rendering index: 90 Number of LED beads: 72 PCS white/warm, 96 PCS RGB RGB color tone: 0-360 (full color) Dimming brightness adjustment: 0-100% Input voltage: 19V=5A
-- **Lien Officiel Produit**: [YB-100R ](https://gearshop.ma/product/6-yb-100r)
+- **Lien Officiel Produit**: [YB-100R ](https://www.gearshop.ma/product/6-yb-100r)
 
 #### S100 W portable
 - **SKU**: `GEAR-7-7ARTISANS`
@@ -247,7 +247,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: MODEL: S100 LIFETIME: 50,000 HOURS INPUT VOLTAGE: 200‑240V NUMBER OF LAMP BEADS: 1 PC OUTPUT POWER: 100W LUX AT 1 METER: 35,801 LUX CRI: ≥96 CCT: 2700‑6500K ±200K MATERIAL: METAL LAMP BODY COLOR: WHITE / BLUE PRODUCT WEIGHT: 367G DIMMING: 0‑100%
-- **Lien Officiel Produit**: [S100 W portable](https://gearshop.ma/product/7-s100-w-portable)
+- **Lien Officiel Produit**: [S100 W portable](https://www.gearshop.ma/product/7-s100-w-portable)
 
 #### P-60S Spotlight
 - **SKU**: `GEAR-8-7ARTISANS`
@@ -264,7 +264,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Spotlight focalisable pour un contrôle précis du faisceau. Parfait pour l'éclairage de cheveux ou les accents.
-- **Lien Officiel Produit**: [P-60S Spotlight](https://gearshop.ma/product/8-p-60s-spotlight)
+- **Lien Officiel Produit**: [P-60S Spotlight](https://www.gearshop.ma/product/8-p-60s-spotlight)
 
 #### K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)
 - **SKU**: `GEAR-2008-K-F-CONCEPT`
@@ -281,7 +281,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Projecteur LED de poche ultra-puissant K&F Concept RGB. Température réglable de 2500K à 9900K, rendu de couleur exceptionnel CRI 96+, spectre complet 360° HSI et 21 effets d'éclairage créatifs pour vidéo et vlogging.
-- **Lien Officiel Produit**: [K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)](https://gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah)
+- **Lien Officiel Produit**: [K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)](https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah)
 
 #### DJI Osmo Pocket 4 Pro
 - **SKU**: `GEAR-3001-DJI`
@@ -298,7 +298,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Statut: Précommande, Marque: DJI, Capteur principal: CMOS 1 pouce (17 Stops de dynamique), Objectif Portrait: 60mm f/1.8 (Zoom optique 3×, étendu 12×), Profil couleur: D-Log 2 10-bit (Plus de 1 milliard de couleurs), Stabilisation: Nacelle mécanique 3 axes, Suivi intelligent: ActiveTrack 8.0, Mode Ralenti: Jusqu'à 10× Ultra-HD (4K / 240fps), Résolution vidéo: 4K / 240fps (Grand-angle), 4K / 200fps (Médium-télé), Stockage interne: 103 Go (Transfert USB 3.1 jusqu'à 800 Mo/s), Photo: 37 MP & 4K Live Photo, Fonctionnalités Pro: Synchronisation Timecode & Mode Webcam, Écran: Tactile 2 pouces rotatif, Connectivité: Bluetooth, Wi-Fi, USB-C, Garantie: 1 An GearShop Maroc
 - **Description**: Le DJI Osmo Pocket 4 Pro (Osmo Pocket 4P) est une caméra vlog 4K d'exception dotée d'un capteur CMOS grand-angle 1 pouce offrant 17 stops de plage dynamique et le profil couleur D-Log 2. Elle intègre un second objectif téléobjectif moyen 60mm à ouverture f/1.8 idéal pour les portraits naturels. Équipée d'une stabilisat
-- **Lien Officiel Produit**: [DJI Osmo Pocket 4 Pro](https://gearshop.ma/dji-osmo-pocket-4-pro)
+- **Lien Officiel Produit**: [DJI Osmo Pocket 4 Pro](https://www.gearshop.ma/dji-osmo-pocket-4-pro)
 
 ### Catégorie : ACCESSORIES (10 articles)
 
@@ -317,7 +317,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Panneau LED ultra-fin pour une lumière douce et diffuse. Idéal pour les interviews et le portrait.
-- **Lien Officiel Produit**: [Panel P-500](https://gearshop.ma/product/4-panel-p-500)
+- **Lien Officiel Produit**: [Panel P-500](https://www.gearshop.ma/product/4-panel-p-500)
 
 #### K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)
 - **SKU**: `GEAR-2001-K-F-CONCEPT`
@@ -334,7 +334,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre 3-en-1 polyvalent K&F Concept 82mm combinant un filtre ND variable (ND2-32), un polarisant circulaire (CPL) et un filtre de diffusion Black Mist 1/4. Verre optique Nano-Xcel traité multicouches avec levier orange de réglage précis sans croix noire.
-- **Lien Officiel Produit**: [K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)](https://gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel)
+- **Lien Officiel Produit**: [K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)](https://www.gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel)
 
 #### K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)
 - **SKU**: `GEAR-2002-K-F-CONCEPT`
@@ -351,7 +351,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre de diffusion cinématographique Black Mist 1/4 K&F Concept 82mm Nano-X. Adoucit les hautes lumières, lisse les tons chair et crée un halo cinématographique tout en préservant le piqué de l'image.
-- **Lien Officiel Produit**: [K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)](https://gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x)
+- **Lien Officiel Produit**: [K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)](https://www.gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x)
 
 #### K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)
 - **SKU**: `GEAR-2003-K-F-CONCEPT`
@@ -368,7 +368,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre polarisant circulaire ultra-mince K&F Concept 82mm. Élimine les reflets indésirables sur l'eau, le verre et le feuillage tout en saturant les ciels et les couleurs naturelles.
-- **Lien Officiel Produit**: [K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)](https://gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated)
+- **Lien Officiel Produit**: [K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)](https://www.gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated)
 
 #### K&F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter
 - **SKU**: `GEAR-2004-K-F-CONCEPT`
@@ -385,7 +385,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre combiné 2-en-1 K&F Concept 82mm regroupant un polarisant circulaire CPL et un filtre à densité neutre variable ND2 à ND32 (1 à 5 stops). Idéal pour la vidéo et la photographie de paysage.
-- **Lien Officiel Produit**: [K&F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter](https://gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter)
+- **Lien Officiel Produit**: [K&F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter](https://www.gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter)
 
 #### K&F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)
 - **SKU**: `GEAR-2005-K-F-CONCEPT`
@@ -402,7 +402,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre de protection UV multicouches K&F Concept 82mm en verre optique japonais de haute précision. Protège votre objectif contre les rayures, la poussière et les chocs sans perte de piqué.
-- **Lien Officiel Produit**: [K&F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)](https://gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics)
+- **Lien Officiel Produit**: [K&F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)](https://www.gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics)
 
 #### K&F Concept Kit 18pcs Bagues d'Adaptation Step Up / Step Down (37mm - 82mm)
 - **SKU**: `GEAR-2006-K-F-CONCEPT`
@@ -419,7 +419,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Kit complet de 18 bagues d'adaptation K&F Concept en alliage d'aluminium aéronautique anodisé. Permet d'utiliser vos filtres 82mm ou autres tailles sur tous vos objectifs de 37mm à 82mm.
-- **Lien Officiel Produit**: [K&F Concept Kit 18pcs Bagues d'Adaptation Step Up / Step Down (37mm - 82mm)](https://gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm)
+- **Lien Officiel Produit**: [K&F Concept Kit 18pcs Bagues d'Adaptation Step Up / Step Down (37mm - 82mm)](https://www.gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm)
 
 #### K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1
 - **SKU**: `GEAR-2007-K-F-CONCEPT`
@@ -436,7 +436,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Kit d'entretien professionnel pour optiques et boîtiers K&F Concept. Comprend un stylo de nettoyage double face à pointe carbone, un souffleur d'air en silicone anti-poussière et un chiffon microfibre scellé sous vide.
-- **Lien Officiel Produit**: [K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1](https://gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1)
+- **Lien Officiel Produit**: [K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1](https://www.gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1)
 
 #### K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires
 - **SKU**: `GEAR-2009-K-F-CONCEPT`
@@ -453,7 +453,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Sac d'épaule bandoulière ergonomique et imperméable K&F Concept. Compartiment rembourré personnalisable pour un boîtier reflex ou hybride avec objectif monté, batteries, filtres et accessoires.
-- **Lien Officiel Produit**: [K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires](https://gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires)
+- **Lien Officiel Produit**: [K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires](https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires)
 
 #### K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)
 - **SKU**: `GEAR-2010-K-F-CONCEPT`
@@ -470,7 +470,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre ND variable de précision K&F Concept 82mm Nano-Xcel Pro. Réduction d'exposition de 1 à 5 stops (ND2-32) avec verre optique haute résolution traité 28 couches pour une clarté optique irréprochable sans croix noire.
-- **Lien Officiel Produit**: [K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)](https://gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro)
+- **Lien Officiel Produit**: [K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)](https://www.gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro)
 
 ### Catégorie : LENSES (60 articles)
 
@@ -489,7 +489,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
 - **Description**: MODEL: C401B UPC: 6971835483730 35mm T2.0 Sony (E Mount) Lentille Cinéma 35mm T2.0 pour E Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casab
-- **Lien Officiel Produit**: [35mm T2.0 Sony (E Mount) - Black](https://gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black)
+- **Lien Officiel Produit**: [35mm T2.0 Sony (E Mount) - Black](https://www.gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black)
 
 #### 35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black
 - **SKU**: `GEAR-1001-K-F-CONCEPT`
@@ -506,7 +506,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
 - **Description**: MODEL: C402B UPC: 6971835483747 35mm T2.0 Panasonic/Leica/Sigma (L Mount) Lentille Cinéma 35mm T2.0 pour L Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Ma
-- **Lien Officiel Produit**: [35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black)
+- **Lien Officiel Produit**: [35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black](https://www.gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black)
 
 #### 35mm T2.0 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1002-K-F-CONCEPT`
@@ -523,7 +523,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
 - **Description**: MODEL: C403B UPC: 6971835483754 35mm T2.0 Nikon (Z Mount) Lentille Cinéma 35mm T2.0 pour Z Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casa
-- **Lien Officiel Produit**: [35mm T2.0 Nikon (Z Mount) - Black](https://gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black)
+- **Lien Officiel Produit**: [35mm T2.0 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black)
 
 #### 35mm T2.0 Canon (EOS-R Mount) - Black
 - **SKU**: `GEAR-1003-K-F-CONCEPT`
@@ -540,7 +540,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 675g, Weight with box: 750g, Box size: 190*140*117mm
 - **Description**: MODEL: C404B UPC: 6971835483846 35mm T2.0 Canon (EOS-R Mount) Lentille Cinéma 35mm T2.0 pour EOS-R Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 35mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (bas
-- **Lien Officiel Produit**: [35mm T2.0 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black)
+- **Lien Officiel Produit**: [35mm T2.0 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black)
 
 #### 50mm T2.0 Sony (E Mount) - Black
 - **SKU**: `GEAR-1004-K-F-CONCEPT`
@@ -557,7 +557,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
 - **Description**: MODEL: C501B UPC: 6971835483761 50mm T2.0 Sony (E Mount) Lentille Cinéma 50mm T2.0 pour E Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casab
-- **Lien Officiel Produit**: [50mm T2.0 Sony (E Mount) - Black](https://gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black)
+- **Lien Officiel Produit**: [50mm T2.0 Sony (E Mount) - Black](https://www.gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black)
 
 #### 50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black
 - **SKU**: `GEAR-1005-K-F-CONCEPT`
@@ -574,7 +574,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
 - **Description**: MODEL: C502B UPC: 6971835483785 50mm T2.0 Panasonic/Leica/Sigma (L Mount) Lentille Cinéma 50mm T2.0 pour L Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Ma
-- **Lien Officiel Produit**: [50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1005-50mm-t2-0-panasonic-leica-sigma-l-mount-black)
+- **Lien Officiel Produit**: [50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black](https://www.gearshop.ma/product/1005-50mm-t2-0-panasonic-leica-sigma-l-mount-black)
 
 #### 50mm T2.0 Canon (EOS-R Mount) - Black
 - **SKU**: `GEAR-1006-K-F-CONCEPT`
@@ -591,7 +591,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
 - **Description**: MODEL: C503B UPC: 6971835483778 50mm T2.0 Canon (EOS-R Mount) Lentille Cinéma 50mm T2.0 pour EOS-R Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (bas
-- **Lien Officiel Produit**: [50mm T2.0 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1006-50mm-t2-0-canon-eos-r-mount-black)
+- **Lien Officiel Produit**: [50mm T2.0 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1006-50mm-t2-0-canon-eos-r-mount-black)
 
 #### 50mm T2.0 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1007-K-F-CONCEPT`
@@ -608,7 +608,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 690g, Weight with box: 850g, Box size: 190*140*117mm
 - **Description**: MODEL: C504B UPC: 6971835483792 50mm T2.0 Nikon (Z Mount) Lentille Cinéma 50mm T2.0 pour Z Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casa
-- **Lien Officiel Produit**: [50mm T2.0 Nikon (Z Mount) - Black](https://gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black)
+- **Lien Officiel Produit**: [50mm T2.0 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black)
 
 #### AF35mm F1.4 Fuji (FX Mount) - Black
 - **SKU**: `GEAR-1008-FUJIFILM`
@@ -625,7 +625,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: APS-C, Net Weight: 184g, Weight with box: 396g, Box size: 100*100*105mm
 - **Description**: MODEL: AF35F14B-FX UPC: 6971835487608 AF35mm F1.4 Fuji (FX Mount)
-- **Lien Officiel Produit**: [AF35mm F1.4 Fuji (FX Mount) - Black](https://gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black)
+- **Lien Officiel Produit**: [AF35mm F1.4 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black)
 
 #### AF35mm F1.8 Sony (E Mount) APS-C - Black
 - **SKU**: `GEAR-1009-SONY`
@@ -642,7 +642,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
 - **Description**: MODEL: AF35F18B-E APS-C UPC: 6971835489091 AF35mm F1.8 Sony (E Mount) APS-C
-- **Lien Officiel Produit**: [AF35mm F1.8 Sony (E Mount) APS-C - Black](https://gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black)
+- **Lien Officiel Produit**: [AF35mm F1.8 Sony (E Mount) APS-C - Black](https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black)
 
 #### AF35mm F1.8 Fuji (FX Mount) APS-C - Black
 - **SKU**: `GEAR-1010-FUJIFILM`
@@ -659,7 +659,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
 - **Description**: MODEL: AF35F18B-X APS-C UPC: 6971835489152 AF35mm F1.8 Fuji (FX Mount) APS-C
-- **Lien Officiel Produit**: [AF35mm F1.8 Fuji (FX Mount) APS-C - Black](https://gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black)
+- **Lien Officiel Produit**: [AF35mm F1.8 Fuji (FX Mount) APS-C - Black](https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black)
 
 #### AF35mm F1.8 Nikon (Z Mount) APS-C - Black
 - **SKU**: `GEAR-1011-NIKON`
@@ -676,7 +676,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
 - **Description**: MODEL: AF35F18B-Z APS-C UPC: 6971835489411 AF35mm F1.8 Nikon (Z Mount) APS-C
-- **Lien Officiel Produit**: [AF35mm F1.8 Nikon (Z Mount) APS-C - Black](https://gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black)
+- **Lien Officiel Produit**: [AF35mm F1.8 Nikon (Z Mount) APS-C - Black](https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black)
 
 #### AF50mm F1.8 Sony (E Mount) APS-C - Black
 - **SKU**: `GEAR-1012-SONY`
@@ -693,7 +693,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
 - **Description**: MODEL: AF50F18B-E APS-C UPC: 6971835489107 AF50mm F1.8 Sony (E Mount) APS-C
-- **Lien Officiel Produit**: [AF50mm F1.8 Sony (E Mount) APS-C - Black](https://gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black)
+- **Lien Officiel Produit**: [AF50mm F1.8 Sony (E Mount) APS-C - Black](https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black)
 
 #### AF50mm F1.8 Fuji (FX Mount) APS-C - Black
 - **SKU**: `GEAR-1013-FUJIFILM`
@@ -710,7 +710,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
 - **Description**: MODEL: AF50F18B-X APS-C UPC: 6971835489183 AF50mm F1.8 Fuji (FX Mount) APS-C
-- **Lien Officiel Produit**: [AF50mm F1.8 Fuji (FX Mount) APS-C - Black](https://gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black)
+- **Lien Officiel Produit**: [AF50mm F1.8 Fuji (FX Mount) APS-C - Black](https://www.gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black)
 
 #### AF50mm F1.8 Nikon (Z Mount) APS-C - Black
 - **SKU**: `GEAR-1014-NIKON`
@@ -727,7 +727,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
 - **Description**: MODEL: AF50F18B-Z APS-C UPC: 6971835489428 AF50mm F1.8 Nikon (Z Mount) APS-C
-- **Lien Officiel Produit**: [AF50mm F1.8 Nikon (Z Mount) APS-C - Black](https://gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black)
+- **Lien Officiel Produit**: [AF50mm F1.8 Nikon (Z Mount) APS-C - Black](https://www.gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black)
 
 #### AF24mm F1.8 Sony (E Mount) - Black
 - **SKU**: `GEAR-1015-SONY`
@@ -744,7 +744,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 424g, Weight with box: 730g, Box size: 140*120*105mm
 - **Description**: MODEL: AF24F18B-E UPC: 6971835487929 AF24mm F1.8 Sony (E Mount)
-- **Lien Officiel Produit**: [AF24mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black)
+- **Lien Officiel Produit**: [AF24mm F1.8 Sony (E Mount) - Black](https://www.gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black)
 
 #### AF24mm F1.8 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1016-NIKON`
@@ -761,7 +761,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 424g, Weight with box: 730g, Box size: 140*120*105mm
 - **Description**: MODEL: AF24F18B-Z UPC: 6971835488612 AF24mm F1.8 Nikon (Z Mount)
-- **Lien Officiel Produit**: [AF24mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black)
+- **Lien Officiel Produit**: [AF24mm F1.8 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black)
 
 #### AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
 - **SKU**: `GEAR-1017-PANASONIC-LUMIX`
@@ -778,7 +778,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 424g, Weight with box: 730g, Box size: 140*120*105mm
 - **Description**: MODEL: AF24F18B-L UPC: 6971835488629 AF24mm F1.8 Panasonic/Leica/Sigma (L Mount)
-- **Lien Officiel Produit**: [AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black)
+- **Lien Officiel Produit**: [AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://www.gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black)
 
 #### AF35mm F1.8 Sony (E Mount) - Black
 - **SKU**: `GEAR-1018-SONY`
@@ -795,7 +795,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 426g, Weight with box: 721g, Box size: 140*120*105mm
 - **Description**: MODEL: AF35F18B-E UPC: 6971835488643 AF35mm F1.8 Sony (E Mount)
-- **Lien Officiel Produit**: [AF35mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black)
+- **Lien Officiel Produit**: [AF35mm F1.8 Sony (E Mount) - Black](https://www.gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black)
 
 #### AF35mm F1.8 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1019-NIKON`
@@ -812,7 +812,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 426g, Weight with box: 721g, Box size: 140*120*105mm
 - **Description**: MODEL: AF35F18B-Z UPC: 6971835488780 AF35mm F1.8 Nikon (Z Mount)
-- **Lien Officiel Produit**: [AF35mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black)
+- **Lien Officiel Produit**: [AF35mm F1.8 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black)
 
 #### AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
 - **SKU**: `GEAR-1020-PANASONIC-LUMIX`
@@ -829,7 +829,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 426g, Weight with box: 721g, Box size: 140*120*105mm
 - **Description**: MODEL: AF35F18B-L UPC: 6971835488773 AF35mm F1.8 Panasonic/Leica/Sigma (L Mount)
-- **Lien Officiel Produit**: [AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black)
+- **Lien Officiel Produit**: [AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://www.gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black)
 
 #### AF40mm F2.5 Sony (E Mount) - Black
 - **SKU**: `GEAR-1021-SONY`
@@ -846,7 +846,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 97g, Weight with box: 228g, Box size: 100*100*90mm
 - **Description**: MODEL: AF40F25B-E UPC: 6971835489213 AF40mm F2.5 Sony (E Mount)
-- **Lien Officiel Produit**: [AF40mm F2.5 Sony (E Mount) - Black](https://gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black)
+- **Lien Officiel Produit**: [AF40mm F2.5 Sony (E Mount) - Black](https://www.gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black)
 
 #### AF50mm F1.8 Sony (E Mount) - Black
 - **SKU**: `GEAR-1022-SONY`
@@ -863,7 +863,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF101B UPC: 6971835485116 AF50mm F1.8 Sony (E Mount)
-- **Lien Officiel Produit**: [AF50mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1022-af50mm-f1-8-sony-e-mount-black)
+- **Lien Officiel Produit**: [AF50mm F1.8 Sony (E Mount) - Black](https://www.gearshop.ma/product/1022-af50mm-f1-8-sony-e-mount-black)
 
 #### AF50mm F1.8 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1023-NIKON`
@@ -880,7 +880,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF102B UPC: 6971835485482 AF50mm F1.8 Nikon (Z Mount)
-- **Lien Officiel Produit**: [AF50mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black)
+- **Lien Officiel Produit**: [AF50mm F1.8 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black)
 
 #### AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
 - **SKU**: `GEAR-1024-PANASONIC-LUMIX`
@@ -897,7 +897,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, Full Frame, Net Weight: 421g, Weight with box: 680g, Box size: 140*120*105mm
 - **Description**: MODEL: AF50F18-L UPC: 6971835487264 AF50mm F1.8 Panasonic/Leica/Sigma (L Mount)
-- **Lien Officiel Produit**: [AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black)
+- **Lien Officiel Produit**: [AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://www.gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black)
 
 #### AF135mm F1.8 Sony (E Mount) - Black
 - **SKU**: `GEAR-1025-SONY`
@@ -914,7 +914,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 1014g, Weight with box: 1550g, Box size: 190*140*130mm
 - **Description**: MODEL: AF135F18B-E UPC: 6971835489374 AF135mm F1.8 Sony (E Mount)
-- **Lien Officiel Produit**: [AF135mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1025-af135mm-f1-8-sony-e-mount-black)
+- **Lien Officiel Produit**: [AF135mm F1.8 Sony (E Mount) - Black](https://www.gearshop.ma/product/1025-af135mm-f1-8-sony-e-mount-black)
 
 #### AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black
 - **SKU**: `GEAR-1026-PANASONIC-LUMIX`
@@ -931,7 +931,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 1014g, Weight with box: 1550g, Box size: 190*140*130mm
 - **Description**: MODEL: AF135F18B-L UPC: 6971835489398 AF135mm F1.8 Panasonic/Leica/Sigma (L Mount)
-- **Lien Officiel Produit**: [AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black)
+- **Lien Officiel Produit**: [AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://www.gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black)
 
 #### AF135mm F1.8 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1027-NIKON`
@@ -948,7 +948,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 1014g, Weight with box: 1550g, Box size: 190*140*130mm
 - **Description**: MODEL: AF135F18B-Z UPC: 6971835489381 AF135mm F1.8 Nikon (Z Mount)
-- **Lien Officiel Produit**: [AF135mm F1.8 Nikon (Z Mount) - Black](https://gearshop.ma/product/1027-af135mm-f1-8-nikon-z-mount-black)
+- **Lien Officiel Produit**: [AF135mm F1.8 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1027-af135mm-f1-8-nikon-z-mount-black)
 
 #### 35mm F1.4 Sony (E Mount) mark iii FF - Black
 - **SKU**: `GEAR-1028-SONY`
@@ -965,7 +965,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
 - **Description**: MODEL: 35F14B-E UPC: 6971835486243 35mm F1.4 Sony (E Mount) mark iii FF
-- **Lien Officiel Produit**: [35mm F1.4 Sony (E Mount) mark iii FF - Black](https://gearshop.ma/product/1028-35mm-f1-4-sony-e-mount-mark-iii-ff-black)
+- **Lien Officiel Produit**: [35mm F1.4 Sony (E Mount) mark iii FF - Black](https://www.gearshop.ma/product/1028-35mm-f1-4-sony-e-mount-mark-iii-ff-black)
 
 #### 35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black
 - **SKU**: `GEAR-1029-PANASONIC-LUMIX`
@@ -982,7 +982,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
 - **Description**: MODEL: 35F14B-L UPC: 6971835486250 35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF
-- **Lien Officiel Produit**: [35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black](https://gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black)
+- **Lien Officiel Produit**: [35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black](https://www.gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black)
 
 #### 35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black
 - **SKU**: `GEAR-1030-CANON`
@@ -999,7 +999,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
 - **Description**: MODEL: 35F14B-R UPC: 6971835486267 35mm F1.4 Canon (EOS-R Mount) mark iii FF
-- **Lien Officiel Produit**: [35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black](https://gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black)
+- **Lien Officiel Produit**: [35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black](https://www.gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black)
 
 #### 35mm F1.4 Nikon (Z Mount) mark iii FF - Black
 - **SKU**: `GEAR-1031-NIKON`
@@ -1016,7 +1016,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, Full Frame, Net Weight: 274g, Weight with box: 470g, Box size: 100*100*105mm
 - **Description**: MODEL: 35F14B-Z UPC: 6971835486236 35mm F1.4 Nikon (Z Mount) mark iii FF
-- **Lien Officiel Produit**: [35mm F1.4 Nikon (Z Mount) mark iii FF - Black](https://gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black)
+- **Lien Officiel Produit**: [35mm F1.4 Nikon (Z Mount) mark iii FF - Black](https://www.gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black)
 
 #### 50mm F1.2 Sony (E Mount) - Black
 - **SKU**: `GEAR-1032-SONY`
@@ -1033,7 +1033,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
 - **Description**: MODEL: 50F12B-E UPC: 6971835488933 50mm F1.2 Sony (E Mount)
-- **Lien Officiel Produit**: [50mm F1.2 Sony (E Mount) - Black](https://gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black)
+- **Lien Officiel Produit**: [50mm F1.2 Sony (E Mount) - Black](https://www.gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black)
 
 #### 50mm F1.2 Fuji (FX Mount) - Black
 - **SKU**: `GEAR-1033-FUJIFILM`
@@ -1050,7 +1050,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
 - **Description**: MODEL: 50F12B-X UPC: 6971835488940 50mm F1.2 Fuji (FX Mount)
-- **Lien Officiel Produit**: [50mm F1.2 Fuji (FX Mount) - Black](https://gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black)
+- **Lien Officiel Produit**: [50mm F1.2 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black)
 
 #### 50mm F1.2 M43 (Panasonic Olympus) - Black
 - **SKU**: `GEAR-1034-PANASONIC-LUMIX`
@@ -1067,7 +1067,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
 - **Description**: MODEL: 50F12B-M UPC: 6971835488957 50mm F1.2 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [50mm F1.2 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black)
+- **Lien Officiel Produit**: [50mm F1.2 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black)
 
 #### 50mm F1.2 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1035-NIKON`
@@ -1084,7 +1084,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
 - **Description**: MODEL: 50F12B-Z UPC: 6971835488964 50mm F1.2 Nikon (Z Mount)
-- **Lien Officiel Produit**: [50mm F1.2 Nikon (Z Mount) - Black](https://gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black)
+- **Lien Officiel Produit**: [50mm F1.2 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black)
 
 #### 50mm F1.8 Sony (E Mount) - Black
 - **SKU**: `GEAR-1036-SONY`
@@ -1101,7 +1101,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, APS-C, Net Weight: 168g, Weight with box: 365g, Box size: 100*100*68mm
 - **Description**: MODEL: A701B UPC: 6971835480203 50mm F1.8 Sony (E Mount)
-- **Lien Officiel Produit**: [50mm F1.8 Sony (E Mount) - Black](https://gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black)
+- **Lien Officiel Produit**: [50mm F1.8 Sony (E Mount) - Black](https://www.gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black)
 
 #### 50mm F1.8 Fuji (FX Mount) - Black
 - **SKU**: `GEAR-1037-FUJIFILM`
@@ -1118,7 +1118,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, APS-C, Net Weight: 168g, Weight with box: 365g, Box size: 100*100*68mm
 - **Description**: MODEL: A703B UPC: 6971835480210 50mm F1.8 Fuji (FX Mount)
-- **Lien Officiel Produit**: [50mm F1.8 Fuji (FX Mount) - Black](https://gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black)
+- **Lien Officiel Produit**: [50mm F1.8 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black)
 
 #### 35mm/F1.4 Sony (E Mount) - Black
 - **SKU**: `GEAR-1038-SONY`
@@ -1135,7 +1135,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
 - **Description**: MODEL: A010B-E UPC: 6971835482191 35mm/F1.4 Sony (E Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Sony (E Mount) - Black](https://gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black)
+- **Lien Officiel Produit**: [35mm/F1.4 Sony (E Mount) - Black](https://www.gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black)
 
 #### 35mm/F1.4 Fuji (FX Mount) - Black
 - **SKU**: `GEAR-1039-FUJIFILM`
@@ -1152,7 +1152,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
 - **Description**: MODEL: A010B-X UPC: 6971835482221 35mm/F1.4 Fuji (FX Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Fuji (FX Mount) - Black](https://gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black)
+- **Lien Officiel Produit**: [35mm/F1.4 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black)
 
 #### 35mm/F1.4 M43 (Panasonic Olympus) - Black
 - **SKU**: `GEAR-1040-PANASONIC-LUMIX`
@@ -1169,7 +1169,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
 - **Description**: MODEL: A010B-M UPC: 6971835482214 35mm/F1.4 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [35mm/F1.4 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black)
+- **Lien Officiel Produit**: [35mm/F1.4 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black)
 
 #### 35mm/F1.4 Nikon (Z Mount) - Black
 - **SKU**: `GEAR-1041-NIKON`
@@ -1186,7 +1186,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
 - **Description**: MODEL: A010B-Z UPC: 6971835482207 35mm/F1.4 Nikon (Z Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Nikon (Z Mount) - Black](https://gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black)
+- **Lien Officiel Produit**: [35mm/F1.4 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black)
 
 #### 35mm/F1.4 Canon (EOS-R Mount) - Black
 - **SKU**: `GEAR-1042-CANON`
@@ -1203,7 +1203,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
 - **Description**: MODEL: A010B-R UPC: 6971835484188 35mm/F1.4 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black)
+- **Lien Officiel Produit**: [35mm/F1.4 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black)
 
 #### Autofocus adapter for Canon EF - Nikon Z - Black
 - **SKU**: `GEAR-1043-CANON`
@@ -1220,7 +1220,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: MODEL: EF-Z UPC: 6971835484324 Autofocus adapter for Canon EF - Nikon Z
-- **Lien Officiel Produit**: [Autofocus adapter for Canon EF - Nikon Z - Black](https://gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black)
+- **Lien Officiel Produit**: [Autofocus adapter for Canon EF - Nikon Z - Black](https://www.gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black)
 
 #### 10mm T2.1 Sony (E Mount) - Black
 - **SKU**: `GEAR-1044-SONY`
@@ -1237,7 +1237,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21B-E UPC: 6971835485598 10mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Sony (E Mount) - Black](https://gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black)
+- **Lien Officiel Produit**: [10mm T2.1 Sony (E Mount) - Black](https://www.gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black)
 
 #### 10mm T2.1 Fuji (FX Mount) - Black
 - **SKU**: `GEAR-1045-FUJIFILM`
@@ -1254,7 +1254,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21B-X UPC: 6971835485574 10mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Fuji (FX Mount) - Black](https://gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black)
+- **Lien Officiel Produit**: [10mm T2.1 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black)
 
 #### 10mm T2.1 M43 (Panasonic Olympus) - Black
 - **SKU**: `GEAR-1046-PANASONIC-LUMIX`
@@ -1271,7 +1271,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21B-M UPC: 6971835485536 10mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [10mm T2.1 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black)
+- **Lien Officiel Produit**: [10mm T2.1 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black)
 
 #### 10mm T2.1 Canon (EOS-R Mount) - Black
 - **SKU**: `GEAR-1047-CANON`
@@ -1288,7 +1288,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21B-R UPC: 6971835485550 10mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black)
+- **Lien Officiel Produit**: [10mm T2.1 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black)
 
 #### 10mm T2.1 Sony (E Mount) - Titanium Gray
 - **SKU**: `GEAR-1048-SONY`
@@ -1305,7 +1305,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21TG-E UPC: 6971835485604 10mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Sony (E Mount) - Titanium Gray](https://gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray)
+- **Lien Officiel Produit**: [10mm T2.1 Sony (E Mount) - Titanium Gray](https://www.gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray)
 
 #### 10mm T2.1 Fuji (FX Mount) - Titanium Gray
 - **SKU**: `GEAR-1049-FUJIFILM`
@@ -1322,7 +1322,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21TG-X UPC: 6971835485581 10mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Fuji (FX Mount) - Titanium Gray](https://gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray)
+- **Lien Officiel Produit**: [10mm T2.1 Fuji (FX Mount) - Titanium Gray](https://www.gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray)
 
 #### 10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray
 - **SKU**: `GEAR-1050-PANASONIC-LUMIX`
@@ -1339,7 +1339,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21TG-M UPC: 6971835485543 10mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray)
+- **Lien Officiel Produit**: [10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://www.gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray)
 
 #### 10mm T2.1 Canon (EOS-R Mount) - Titanium Gray
 - **SKU**: `GEAR-1051-CANON`
@@ -1356,7 +1356,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
 - **Description**: MODEL: 10T21TG-R UPC: 6971835485567 10mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray)
+- **Lien Officiel Produit**: [10mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://www.gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray)
 
 #### 16mm T2.1 Sony (E Mount) - Black
 - **SKU**: `GEAR-1052-SONY`
@@ -1373,7 +1373,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21B-E UPC: 6971835485680 16mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Sony (E Mount) - Black](https://gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black)
+- **Lien Officiel Produit**: [16mm T2.1 Sony (E Mount) - Black](https://www.gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black)
 
 #### 16mm T2.1 Fuji (FX Mount) - Black
 - **SKU**: `GEAR-1053-FUJIFILM`
@@ -1390,7 +1390,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21B-X UPC: 6971835485666 16mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Fuji (FX Mount) - Black](https://gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black)
+- **Lien Officiel Produit**: [16mm T2.1 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black)
 
 #### 16mm T2.1 M43 (Panasonic Olympus) - Black
 - **SKU**: `GEAR-1054-PANASONIC-LUMIX`
@@ -1407,7 +1407,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21B-M UPC: 6971835485628 16mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [16mm T2.1 M43 (Panasonic Olympus) - Black](https://gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black)
+- **Lien Officiel Produit**: [16mm T2.1 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black)
 
 #### 16mm T2.1 Canon (EOS-R Mount) - Black
 - **SKU**: `GEAR-1055-CANON`
@@ -1424,7 +1424,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21B-R UPC: 6971835485642 16mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Canon (EOS-R Mount) - Black](https://gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black)
+- **Lien Officiel Produit**: [16mm T2.1 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black)
 
 #### 16mm T2.1 Sony (E Mount) - Titanium Gray
 - **SKU**: `GEAR-1056-SONY`
@@ -1441,7 +1441,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21TG-E UPC: 6971835485673 16mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Sony (E Mount) - Titanium Gray](https://gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray)
+- **Lien Officiel Produit**: [16mm T2.1 Sony (E Mount) - Titanium Gray](https://www.gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray)
 
 #### 16mm T2.1 Fuji (FX Mount) - Titanium Gray
 - **SKU**: `GEAR-1057-FUJIFILM`
@@ -1458,7 +1458,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21TG-X UPC: 6971835485659 16mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Fuji (FX Mount) - Titanium Gray](https://gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray)
+- **Lien Officiel Produit**: [16mm T2.1 Fuji (FX Mount) - Titanium Gray](https://www.gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray)
 
 #### 16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray
 - **SKU**: `GEAR-1058-PANASONIC-LUMIX`
@@ -1475,7 +1475,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21TG-M UPC: 6971835485611 16mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray)
+- **Lien Officiel Produit**: [16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://www.gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray)
 
 #### 16mm T2.1 Canon (EOS-R Mount) - Titanium Gray
 - **SKU**: `GEAR-1059-CANON`
@@ -1492,7 +1492,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
 - **Description**: MODEL: 16T21TG-R UPC: 6971835485635 16mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray)
+- **Lien Officiel Produit**: [16mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://www.gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray)
 
 ### Catégorie : ACCESSORIES (3 articles)
 
@@ -1511,7 +1511,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: PL 4-in-1 Lens Adapter compatible with E/L/RF/Z mount
-- **Lien Officiel Produit**: [PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver](https://gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver)
+- **Lien Officiel Produit**: [PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver](https://www.gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver)
 
 #### 77mm True Color VND6-9 Filter - Black
 - **SKU**: `GEAR-1061-7ARTISANS`
@@ -1528,7 +1528,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: 77mm True Color VND6-9 Filter
-- **Lien Officiel Produit**: [77mm True Color VND6-9 Filter - Black](https://gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black)
+- **Lien Officiel Produit**: [77mm True Color VND6-9 Filter - Black](https://www.gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black)
 
 #### 55mm 1/8 Black Mist Filter - Black
 - **SKU**: `GEAR-1062-7ARTISANS`
@@ -1545,5 +1545,5 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre 7Artisans 55mm Black Mist 1/8 pour un rendu cinématique doux et une réduction subtile des hautes lumières.
-- **Lien Officiel Produit**: [55mm 1/8 Black Mist Filter - Black](https://gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black)
+- **Lien Officiel Produit**: [55mm 1/8 Black Mist Filter - Black](https://www.gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black)
 

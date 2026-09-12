@@ -95,7 +95,7 @@ async function generate() {
   const env = loadEnv();
   const supabaseUrl = process.env.VITE_SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://gunuqwikqhtllwplzcru.supabase.co';
   const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
-  const baseUrl = 'https://gearshop.ma';
+  const baseUrl = 'https://www.gearshop.ma';
   const now = new Date().toISOString().split('T')[0];
 
   let products = [];
@@ -124,7 +124,7 @@ async function generate() {
       category: 'Caméras & Stabilisateurs',
       brand: 'DJI',
       desc: 'Caméra de vlog 4K professionnelle avec double objectif optique (20mm f/1.8 et 60mm téléobjectif f/1.8), capteur CMOS 1 pouce LOFIC à 17 stops de plage dynamique, D-Log 2 10-bit, stabilisation mécanique 3 axes et suivi ActiveTrack 8.0.',
-      image: 'https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png',
+      image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png',
       inStock: true,
       isPreorder: true
     });
@@ -132,20 +132,20 @@ async function generate() {
 
   let content = `# GearShop Maroc — Full Technical Catalog & Knowledge Corpus (llms-full.txt)
 
-> **About GearShop Maroc**: GearShop (https://gearshop.ma) is Morocco's specialized retailer and importer for photography, filmmaking, cinema lenses, optical filters, and studio lighting equipment. Based in Casablanca, GearShop offers authentic camera gear with a 1-year local warranty, express 24h delivery in Casablanca/Rabat, and 24h-48h nationwide delivery across all 50+ Moroccan cities with Cash on Delivery (Paiement à la livraison).
+> **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's specialized retailer and importer for photography, filmmaking, cinema lenses, optical filters, and studio lighting equipment. Based in Casablanca, GearShop offers authentic camera gear with a 1-year local warranty, express 24h delivery in Casablanca/Rabat, and 24h-48h nationwide delivery across all 50+ Moroccan cities with Cash on Delivery (Paiement à la livraison).
 > **Catalog Compilation Date**: ${now}
 > **Primary Currency**: MAD (Moroccan Dirham / DH)
-> **Canonical Entity URL**: https://gearshop.ma
-> **Official Root Discovery File**: https://gearshop.ma/llms.txt
-> **Machine-Readable API / Endpoints**: https://gearshop.ma/ai/products.json | https://gearshop.ma/ai/catalog.json
+> **Canonical Entity URL**: https://www.gearshop.ma
+> **Official Root Discovery File**: https://www.gearshop.ma/llms.txt
+> **Machine-Readable API / Endpoints**: https://www.gearshop.ma/ai/products.json | https://www.gearshop.ma/ai/catalog.json
 
 ---
 
 ## 1. Entity Identity & Trust Metadata
 
 - **Legal / Commercial Entity Name**: GearShop Maroc (Soft Store Maroc)
-- **Canonical URL**: https://gearshop.ma
-- **Logo URL**: https://gearshop.ma/logo.png
+- **Canonical URL**: https://www.gearshop.ma
+- **Logo URL**: https://www.gearshop.ma/logo.png
 - **Country of Origin & Operation**: Maroc (MA)
 - **Primary Operational Currency**: MAD (Moroccan Dirham / الدرهم المغربي)
 - **Supported Languages**: Français (fr-MA), Arabe (ar-MA), English (en)
@@ -264,12 +264,12 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 
 ## 6. Machine-Readable AI Endpoints (REST & JSON)
 
-- **AI Discovery File** : \`https://gearshop.ma/llms.txt\`
-- **Catalog Metadata & Entity Info** : \`https://gearshop.ma/ai/catalog.json\`
-- **Complete Products Database (Attributes, SKU, Mounts, Prices)** : \`https://gearshop.ma/ai/products.json\`
-- **Categories Breakdown** : \`https://gearshop.ma/ai/categories.json\`
-- **Brands & Mounts Breakdown** : \`https://gearshop.ma/ai/brands.json\`
-- **XML Sitemap** : \`https://gearshop.ma/sitemap.xml\`
+- **AI Discovery File** : \`https://www.gearshop.ma/llms.txt\`
+- **Catalog Metadata & Entity Info** : \`https://www.gearshop.ma/ai/catalog.json\`
+- **Complete Products Database (Attributes, SKU, Mounts, Prices)** : \`https://www.gearshop.ma/ai/products.json\`
+- **Categories Breakdown** : \`https://www.gearshop.ma/ai/categories.json\`
+- **Brands & Mounts Breakdown** : \`https://www.gearshop.ma/ai/brands.json\`
+- **XML Sitemap** : \`https://www.gearshop.ma/sitemap.xml\`
 
 ---
 

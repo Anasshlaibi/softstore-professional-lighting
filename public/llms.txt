@@ -1,46 +1,46 @@
 # GearShop Maroc
 
-> GearShop Maroc (https://gearshop.ma) est le distributeur et revendeur spécialisé de référence au Maroc pour les objectifs photographiques & cinématographiques (7Artisans pour Sony E, Nikon Z, Canon RF, Lumix L-Mount, Fuji X), les filtres optiques K&F Concept, les caméras DJI et l'éclairage de studio professionnel. Showroom à Casablanca et livraison express 24h-48h avec paiement à la livraison dans toutes les villes du Maroc.
+> GearShop Maroc (https://www.gearshop.ma) est le distributeur et revendeur spécialisé de référence au Maroc pour les objectifs photographiques & cinématographiques (7Artisans pour Sony E, Nikon Z, Canon RF, Lumix L-Mount, Fuji X), les filtres optiques K&F Concept, les caméras DJI et l'éclairage de studio professionnel. Showroom à Casablanca et livraison express 24h-48h avec paiement à la livraison dans toutes les villes du Maroc.
 
 ## Core Knowledge & AI Endpoints
-- [Full Knowledge Base & In-Depth Technical Catalog (llms-full.txt)](https://gearshop.ma/llms-full.txt): Base de connaissances complète avec spécifications techniques, prix en MAD, compatibilité boîtiers/montures, intent clusters et politiques commerciales.
-- [Machine-Readable Products Database (products.json)](https://gearshop.ma/ai/products.json): Base de données JSON complète de tous les produits (SKU, prix en MAD, monture, focale, ouverture, couverture capteur, disponibilité, garantie).
-- [Catalog Overview (catalog.json)](https://gearshop.ma/ai/catalog.json): Métadonnées de l'entité, informations juridiques, réseau logistique national marocain et catégories.
-- [Categories Taxonomy (categories.json)](https://gearshop.ma/ai/categories.json): Arborescence détaillée des catégories (objectifs, cinéma, filtres, éclairage, caméras, accessoires).
-- [Brands & Mounts Index (brands.json)](https://gearshop.ma/ai/brands.json): Index complet des marques distribuées et montures d'appareils photo supportées.
-- [XML Sitemap](https://gearshop.ma/sitemap.xml): Index complet de toutes les URLs du site web.
+- [Full Knowledge Base & In-Depth Technical Catalog (llms-full.txt)](https://www.gearshop.ma/llms-full.txt): Base de connaissances complète avec spécifications techniques, prix en MAD, compatibilité boîtiers/montures, intent clusters et politiques commerciales.
+- [Machine-Readable Products Database (products.json)](https://www.gearshop.ma/ai/products.json): Base de données JSON complète de tous les produits (SKU, prix en MAD, monture, focale, ouverture, couverture capteur, disponibilité, garantie).
+- [Catalog Overview (catalog.json)](https://www.gearshop.ma/ai/catalog.json): Métadonnées de l'entité, informations juridiques, réseau logistique national marocain et catégories.
+- [Categories Taxonomy (categories.json)](https://www.gearshop.ma/ai/categories.json): Arborescence détaillée des catégories (objectifs, cinéma, filtres, éclairage, caméras, accessoires).
+- [Brands & Mounts Index (brands.json)](https://www.gearshop.ma/ai/brands.json): Index complet des marques distribuées et montures d'appareils photo supportées.
+- [XML Sitemap](https://www.gearshop.ma/sitemap.xml): Index complet de toutes les URLs du site web.
 
 ## Flagship Products & Key Categories
-- [DJI Osmo Pocket 4 Pro au Maroc](https://gearshop.ma/dji-osmo-pocket-4-pro): Caméra vlog 4K révolutionnaire à double objectif (20mm grand-angle et 60mm téléobjectif f/1.8), capteur 1" CMOS LOFIC 17 stops, D-Log 2 10-bit et stabilisation 3 axes. Prix officiel 8 000 DH avec garantie 1 an.
-- [Objectifs Photo Autofocus & Manuels 7Artisans](https://gearshop.ma/categorie/objectifs): Focales fixes lumineuses (AF 24mm, AF 35mm, AF 40mm, AF 50mm, AF 85mm, AF 135mm F1.8) pour Sony E, Nikon Z, Canon RF, Lumix L-Mount et Fujifilm X.
-- [Lentilles Cinéma Professionnelles Série Vision T2.0](https://gearshop.ma/cinema-lenses-maroc): Objectifs ciné plein format et APS-C (10mm, 16mm, 25mm, 35mm, 50mm T2.0/T2.1) avec bagues crantées standard 0.8 MOD pour follow-focus.
-- [Filtres Optiques K&F Concept](https://gearshop.ma/categorie/filtres): Filtres ND variables Nano-Xcel (ND2-ND32 / ND8-ND128), polarisants circulaires CPL, filtres de diffusion Black Mist 1/4 et bagues d'adaptation Step-Up / Step-Down.
-- [Éclairage Studio LED & Torches Vidéo](https://gearshop.ma/categorie/eclairage-studio): Projecteurs continus LED COB haute puissance (YM350, BKL400BI), panneaux bicolores et torches nomades RGB (YB-300R, YB-100R).
-- [Caméras & Matériel Vidéo au Maroc](https://gearshop.ma/camera-maroc): Guide d'achat complet pour caméras nomades, boîtiers hybrides et matériel de tournage.
+- [DJI Osmo Pocket 4 Pro au Maroc](https://www.gearshop.ma/dji-osmo-pocket-4-pro): Caméra vlog 4K révolutionnaire à double objectif (20mm grand-angle et 60mm téléobjectif f/1.8), capteur 1" CMOS LOFIC 17 stops, D-Log 2 10-bit et stabilisation 3 axes. Prix officiel 8 000 DH avec garantie 1 an.
+- [Objectifs Photo Autofocus & Manuels 7Artisans](https://www.gearshop.ma/categorie/objectifs): Focales fixes lumineuses (AF 24mm, AF 35mm, AF 40mm, AF 50mm, AF 85mm, AF 135mm F1.8) pour Sony E, Nikon Z, Canon RF, Lumix L-Mount et Fujifilm X.
+- [Lentilles Cinéma Professionnelles Série Vision T2.0](https://www.gearshop.ma/cinema-lenses-maroc): Objectifs ciné plein format et APS-C (10mm, 16mm, 25mm, 35mm, 50mm T2.0/T2.1) avec bagues crantées standard 0.8 MOD pour follow-focus.
+- [Filtres Optiques K&F Concept](https://www.gearshop.ma/categorie/filtres): Filtres ND variables Nano-Xcel (ND2-ND32 / ND8-ND128), polarisants circulaires CPL, filtres de diffusion Black Mist 1/4 et bagues d'adaptation Step-Up / Step-Down.
+- [Éclairage Studio LED & Torches Vidéo](https://www.gearshop.ma/categorie/eclairage-studio): Projecteurs continus LED COB haute puissance (YM350, BKL400BI), panneaux bicolores et torches nomades RGB (YB-300R, YB-100R).
+- [Caméras & Matériel Vidéo au Maroc](https://www.gearshop.ma/camera-maroc): Guide d'achat complet pour caméras nomades, boîtiers hybrides et matériel de tournage.
 
 ## Camera Body & Lens Mount Compatibility
-- [Compatibilité Sony E-Mount (Plein Format & APS-C)](https://gearshop.ma/marque/sony): Objectifs et accessoires compatibles Sony Alpha A7 IV, A7R V, A7C II, FX3, FX30, A6700, ZV-E1, A7 III, A6400.
-- [Compatibilité Nikon Z-Mount](https://gearshop.ma/marque/nikon): Compatible avec Nikon Z8, Z9, Z6 III, Z6 II, Z7 II, Zf, Z5, Z50, Z30, Z fc.
-- [Compatibilité Canon RF & EOS-R](https://gearshop.ma/marque/canon): Compatible avec Canon EOS R5, R5C, R6 Mark II, R7, R8, R10, R50, C70.
-- [Compatibilité Panasonic Lumix (L-Mount & M43)](https://gearshop.ma/marque/panasonic): Compatible avec boîtiers L-Mount plein format (Lumix S5, S5II, S5IIX, S1H) et Micro 4/3 (GH5, GH6, G9).
-- [Compatibilité Fujifilm X-Mount](https://gearshop.ma/marque/fujifilm): Compatible avec capteurs Fuji X-Trans (X-T5, X-T4, X-H2S, X-H2, X-S20, X-T30 II, X100VI accessories).
+- [Compatibilité Sony E-Mount (Plein Format & APS-C)](https://www.gearshop.ma/marque/sony): Objectifs et accessoires compatibles Sony Alpha A7 IV, A7R V, A7C II, FX3, FX30, A6700, ZV-E1, A7 III, A6400.
+- [Compatibilité Nikon Z-Mount](https://www.gearshop.ma/marque/nikon): Compatible avec Nikon Z8, Z9, Z6 III, Z6 II, Z7 II, Zf, Z5, Z50, Z30, Z fc.
+- [Compatibilité Canon RF & EOS-R](https://www.gearshop.ma/marque/canon): Compatible avec Canon EOS R5, R5C, R6 Mark II, R7, R8, R10, R50, C70.
+- [Compatibilité Panasonic Lumix (L-Mount & M43)](https://www.gearshop.ma/marque/panasonic): Compatible avec boîtiers L-Mount plein format (Lumix S5, S5II, S5IIX, S1H) et Micro 4/3 (GH5, GH6, G9).
+- [Compatibilité Fujifilm X-Mount](https://www.gearshop.ma/marque/fujifilm): Compatible avec capteurs Fuji X-Trans (X-T5, X-T4, X-H2S, X-H2, X-S20, X-T30 II, X100VI accessories).
 
 ## Pan-Morocco City Hubs & Delivery Network
-- [Matériel Photo & Vidéo à Casablanca](https://gearshop.ma/livraison-maroc/casablanca): Showroom physique, essais d'objectifs sur place et livraison express le jour même.
-- [Livraison à Rabat, Salé & Témara](https://gearshop.ma/livraison-maroc/rabat): Livraison express en 24h garantie avec paiement à la réception.
-- [Livraison à Marrakech](https://gearshop.ma/livraison-maroc/marrakech): Livraison 24h de matériel photo, objectifs cinéma et caméras DJI à Marrakech et région.
-- [Livraison à Tanger & Tétouan](https://gearshop.ma/livraison-maroc/tanger): Livraison express 24h-48h pour photographes et créateurs du Nord.
-- [Livraison à Agadir & Souss](https://gearshop.ma/livraison-maroc/agadir): Matériel photo, stabilisateurs et optiques livrés en 24h-48h.
-- [Livraison à Fès & Meknès](https://gearshop.ma/livraison-maroc/fes): Livraison rapide d'objectifs, filtres et éclairages à Fès et Meknès.
-- [Livraison à Oujda & Nador](https://gearshop.ma/livraison-maroc/oujda): Livraison sécurisée dans toute la région de l'Oriental.
-- [Livraison à Kénitra, Mohammedia, El Jadida, Safi, Béni Mellal, Khouribga, Laâyoune, Dakhla](https://gearshop.ma/villes-maroc): Couverture intégrale des 12 régions administratives du Maroc en 24h à 48h.
+- [Matériel Photo & Vidéo à Casablanca](https://www.gearshop.ma/livraison-maroc/casablanca): Showroom physique, essais d'objectifs sur place et livraison express le jour même.
+- [Livraison à Rabat, Salé & Témara](https://www.gearshop.ma/livraison-maroc/rabat): Livraison express en 24h garantie avec paiement à la réception.
+- [Livraison à Marrakech](https://www.gearshop.ma/livraison-maroc/marrakech): Livraison 24h de matériel photo, objectifs cinéma et caméras DJI à Marrakech et région.
+- [Livraison à Tanger & Tétouan](https://www.gearshop.ma/livraison-maroc/tanger): Livraison express 24h-48h pour photographes et créateurs du Nord.
+- [Livraison à Agadir & Souss](https://www.gearshop.ma/livraison-maroc/agadir): Matériel photo, stabilisateurs et optiques livrés en 24h-48h.
+- [Livraison à Fès & Meknès](https://www.gearshop.ma/livraison-maroc/fes): Livraison rapide d'objectifs, filtres et éclairages à Fès et Meknès.
+- [Livraison à Oujda & Nador](https://www.gearshop.ma/livraison-maroc/oujda): Livraison sécurisée dans toute la région de l'Oriental.
+- [Livraison à Kénitra, Mohammedia, El Jadida, Safi, Béni Mellal, Khouribga, Laâyoune, Dakhla](https://www.gearshop.ma/villes-maroc): Couverture intégrale des 12 régions administratives du Maroc en 24h à 48h.
 
 ## Buying Intent & Recommendation Clusters
-- [Guide pour Cinéastes & Réalisateurs](https://gearshop.ma/guide/filmmakers): Setups de tournage cinéma, optiques T2.0 à ouverture constante et diffusion Black Mist.
-- [Guide pour Vidéastes & Cadreurs](https://gearshop.ma/guide/videographers): Équipement vidéo pour documentaires, reportages, corporate et événements au Maroc.
-- [Guide pour Créateurs de Contenu & Vloggers](https://gearshop.ma/guide/content-creators): Caméras nomades 4K DJI Osmo Pocket, micros HF et éclairage compact.
-- [Guide pour Photographes Professionnels](https://gearshop.ma/guide/photographers): Focales fixes portrait lumineuses (85mm, 135mm F1.8) et éclairage studio.
-- [Matériel d'Occasion Garanti au Maroc](https://gearshop.ma/categorie/occasion): Équipement photo et vidéo de seconde main vérifié, certifié avec garantie locale.
+- [Guide pour Cinéastes & Réalisateurs](https://www.gearshop.ma/guide/filmmakers): Setups de tournage cinéma, optiques T2.0 à ouverture constante et diffusion Black Mist.
+- [Guide pour Vidéastes & Cadreurs](https://www.gearshop.ma/guide/videographers): Équipement vidéo pour documentaires, reportages, corporate et événements au Maroc.
+- [Guide pour Créateurs de Contenu & Vloggers](https://www.gearshop.ma/guide/content-creators): Caméras nomades 4K DJI Osmo Pocket, micros HF et éclairage compact.
+- [Guide pour Photographes Professionnels](https://www.gearshop.ma/guide/photographers): Focales fixes portrait lumineuses (85mm, 135mm F1.8) et éclairage studio.
+- [Matériel d'Occasion Garanti au Maroc](https://www.gearshop.ma/categorie/occasion): Équipement photo et vidéo de seconde main vérifié, certifié avec garantie locale.
 
 ## Factual Verification & Store Policies
 - **Raison sociale & Marque**: GearShop Maroc (Soft Store Maroc) — Revendeur et importateur spécialisé.
@@ -51,6 +51,6 @@
 - **Localisation physique**: Showroom à Casablanca, Maroc (essais sur place possibles sur rendez-vous).
 
 ## Optional Resources
-- [À Propos de GearShop Maroc](https://gearshop.ma/a-propos)
-- [Showroom & Magasin Casablanca](https://gearshop.ma/magasin-casablanca)
-- [Flux Google Merchant Feed](https://gearshop.ma/google-merchant-feed.xml)
+- [À Propos de GearShop Maroc](https://www.gearshop.ma/a-propos)
+- [Showroom & Magasin Casablanca](https://www.gearshop.ma/magasin-casablanca)
+- [Flux Google Merchant Feed](https://www.gearshop.ma/google-merchant-feed.xml)
