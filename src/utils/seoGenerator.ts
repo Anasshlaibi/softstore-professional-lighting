@@ -118,7 +118,7 @@ export function generateProductSEOPackage(
   const mount = getProductMount(product);
   const { focalLength, aperture, focusType, power } = parseTechnicalAttributes(product);
   const slug = slugify(product.name);
-  const canonicalUrl = `https://gearshop.ma/product/${product.id}-${slug}`;
+  const canonicalUrl = `https://www.gearshop.ma/product/${product.id}-${slug}`;
 
   const isPreorder = product.isPreorder ||
     (product as unknown as Record<string, unknown>).status === 'Précommande' ||
@@ -336,13 +336,13 @@ export function generateProductSEOPackage(
         '@type': 'ListItem',
         'position': 1,
         'name': 'Accueil',
-        'item': 'https://gearshop.ma/'
+        'item': 'https://www.gearshop.ma/'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': product.category || 'Matériel',
-        'item': `https://gearshop.ma/categorie/${slugify(product.category || 'objectifs')}`
+        'item': `https://www.gearshop.ma/categorie/${slugify(product.category || 'objectifs')}`
       },
       {
         '@type': 'ListItem',
