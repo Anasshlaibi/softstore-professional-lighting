@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GearShop.ma — Enterprise Technical Architecture & Valuation Dossier</title>
+  <title>GearShop.ma — Enterprise Technical Architecture & Engineering Audit Dossier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,9 +21,13 @@
       --code-bg: #030712;
     }
     @media print {
-      body { background: #ffffff !important; color: #111827 !important; }
-      .card { border: 1px solid #e5e7eb !important; background: #fafafa !important; box-shadow: none !important; }
+      body { background: #ffffff !important; color: #111827 !important; padding: 0 !important; }
+      .card { border: 1px solid #e5e7eb !important; background: #fafafa !important; box-shadow: none !important; break-inside: avoid; }
+      .appraisal-box { border: 1px solid #d97706 !important; background: #fffbeb !important; color: #111 !important; }
+      .stat-val { color: #111 !important; }
+      .stat-val.highlight { color: #b45309 !important; }
       .no-print { display: none !important; }
+      h1, h2 { color: #111 !important; -webkit-text-fill-color: initial !important; }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -53,7 +57,7 @@
       letter-spacing: 0.05em;
     }
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 12px;
@@ -62,7 +66,7 @@
       -webkit-text-fill-color: transparent;
     }
     .subtitle {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       margin-bottom: 30px;
     }
@@ -77,7 +81,7 @@
       gap: 20px;
     }
     .stat-label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 4px; }
-    .stat-val { font-size: 1.4rem; font-weight: 700; color: #fff; }
+    .stat-val { font-size: 1.35rem; font-weight: 700; color: #fff; }
     .stat-val.highlight { color: var(--primary); }
     .stat-val.green { color: var(--success); }
 
@@ -85,11 +89,11 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 32px;
+      padding: 30px;
       margin-bottom: 30px;
     }
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 16px;
       color: #fff;
@@ -100,7 +104,7 @@
       padding-bottom: 12px;
     }
     h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 600;
       margin: 20px 0 10px 0;
       color: #e5e7eb;
@@ -141,17 +145,6 @@
       border-radius: 6px;
       font-size: 0.85em;
     }
-    pre {
-      background: var(--code-bg);
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 16px;
-      overflow-x: auto;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: #e2e8f0;
-      margin: 16px 0;
-    }
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -166,7 +159,6 @@
     }
     .pill-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
     .pill-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
-    .pill-gold { background: var(--primary-glow); color: var(--primary); border: 1px solid rgba(245, 158, 11, 0.3); }
     .print-btn {
       position: fixed;
       bottom: 30px;
@@ -189,8 +181,8 @@
 </head>
 <body>
   <div class="container">
-    <div class="header-badge">🏛️ Tier-1 Enterprise Technical Whitepaper</div>
-    <h1>GearShop.ma — System Architecture & Engineering Valuation Dossier</h1>
+    <div class="header-badge">🏛️ Tier-1 Enterprise Technical Architecture & Audit</div>
+    <h1>GearShop.ma — System Architecture & Engineering Audit Dossier</h1>
     <p class="subtitle">Distributed High-Performance E-Commerce Infrastructure for Cinema, Pro-Audio & Optical Equipment</p>
 
     <div class="appraisal-box">
@@ -200,61 +192,62 @@
       </div>
       <div>
         <div class="stat-label">Live Product Catalog</div>
-        <div class="stat-val green">~280 Verified SKUs</div>
+        <div class="stat-val green">280 Verified SKUs</div>
       </div>
       <div>
-        <div class="stat-label">Pre-rendered SSG Nodes</div>
-        <div class="stat-val highlight">358 Static Instances</div>
+        <div class="stat-label">Active Sitemap Scope</div>
+        <div class="stat-val highlight">356 Indexable URLs</div>
       </div>
       <div>
         <div class="stat-label">Estimated Development Valuation</div>
-        <div class="stat-val highlight">$53,500 USD (535,000 MAD)</div>
+        <div class="stat-val highlight">$38,500 USD (385,000 MAD)</div>
       </div>
     </div>
 
     <!-- Section 1 -->
     <div class="card">
-      <h2>1. Strategic Positioning & Market Moat</h2>
-      <p><strong>GearShop.ma</strong> was engineered from first principles to resolve chronic inefficiencies in the Moroccan photo/video hardware industry, where legacy WooCommerce/PrestaShop implementations suffer from 4–8 second load times and zero AI search integration.</p>
+      <h2>1. Strategic Positioning & Architecture Overview</h2>
+      <p><strong>GearShop.ma</strong> was engineered from first principles as a bespoke high-performance e-commerce platform for the Moroccan photo, video, and cinema hardware market.</p>
       
       <table>
         <thead>
           <tr>
-            <th>Platform / Competitor</th>
-            <th>Architecture Type</th>
-            <th>Average Load Time</th>
-            <th>Mobile Experience</th>
-            <th>AI / LLM Readiness</th>
+            <th>Evaluation Dimension</th>
+            <th>Standard Monolithic Store</th>
+            <th>GearShop.ma Implementation</th>
+            <th>Verification Method</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Kamerty.ma</strong></td>
-            <td>Monolithic CMS</td>
-            <td>4.8s</td>
-            <td>Standard / Rigid Filters</td>
-            <td><span class="pill pill-blue">None</span></td>
+            <td><strong>Core Architecture</strong></td>
+            <td>Monolithic PHP / CMS stack</td>
+            <td>React 19 + TypeScript + SSG + Edge CDN</td>
+            <td>Codebase verified</td>
           </tr>
           <tr>
-            <td><strong>Photocom.ma</strong></td>
-            <td>Legacy E-Commerce</td>
-            <td>5.4s</td>
-            <td>Complex Checkout</td>
-            <td><span class="pill pill-blue">None</span></td>
+            <td><strong>Catalog Access</strong></td>
+            <td>Full-page reload on filter change</td>
+            <td>Client-side in-memory filtering (no page reloads)</td>
+            <td>Codebase verified</td>
           </tr>
           <tr>
-            <td><strong>Yahyaoui Shop</strong></td>
-            <td>Standard Store</td>
-            <td>3.9s</td>
-            <td>Unstructured Catalog</td>
-            <td><span class="pill pill-blue">None</span></td>
+            <td><strong>Mobile Navigation</strong></td>
+            <td>Multi-row wrapped button lists</td>
+            <td>Native horizontal touch carousels (<code>snap-x</code>)</td>
+            <td>UI inspection verified</td>
           </tr>
           <tr>
-            <td><strong>GearShop.ma</strong></td>
-            <td><strong>React 19 + SSG + Edge CDN</strong></td>
-            <td><strong>&lt; 0.6s</strong></td>
-            <td><strong>Native Touch Carousels + 60 FPS</strong></td>
-            <td><span class="pill pill-green">Full (llms.txt + JSON API)</span></td>
+            <td><strong>AI / LLM Ingestion</strong></td>
+            <td>No dedicated machine-readable endpoints</td>
+            <td>Native <code>llms.txt</code>, <code>llms-full.txt</code>, and <code>/api/ai/</code> JSON feeds</td>
+            <td>Endpoint verified</td>
+          </tr>
+          <tr>
+            <td><strong>Tracking Pipeline</strong></td>
+            <td>Client-side JavaScript pixels only</td>
+            <td>Dual client pixel + Server-side Meta CAPI (<code>/api/meta-capi</code>)</td>
+            <td>Serverless route verified</td>
           </tr>
         </tbody>
       </table>
@@ -268,16 +261,16 @@
           <h3>Client Layer (Front-End)</h3>
           <ul>
             <li><strong>React 19 & TypeScript</strong>: Type-safe reactive component tree with sub-millisecond state updates.</li>
-            <li><strong>Tailwind CSS Design System</strong>: Bespoke dark/light glassmorphism tokens, zero runtime style overhead.</li>
-            <li><strong>Progressive DOM Pagination</strong>: Initial mount locked to 12 cards with dynamic chunking, preventing mobile memory exhaustion.</li>
+            <li><strong>Incremental DOM Pagination</strong>: Initial mount locked to 12 cards with dynamic chunking, reducing mobile memory footprint.</li>
+            <li><strong>Optimized Asset Handling</strong>: WebP imagery with native lazy loading, async decoding, and automated fallback routing.</li>
           </ul>
         </div>
         <div>
-          <h3>Data Core & Microservices</h3>
+          <h3>Data Core & Serverless APIs</h3>
           <ul>
-            <li><strong>Supabase PostgreSQL 15</strong>: High-concurrency relational data store with Row-Level Security (RLS).</li>
-            <li><strong>Vercel Serverless Edge</strong>: Zero-trust API endpoints for quotation generation (Resend) and Meta CAPI.</li>
-            <li><strong>Multi-Channel Syndication</strong>: Native RSS 2.0 XML generator for Google Merchant Center.</li>
+            <li><strong>Supabase PostgreSQL</strong>: Relational database with typed schemas for <code>products gearshop</code>, <code>quote_requests</code>, <code>product_requests</code>, and leads.</li>
+            <li><strong>Serverless Microservices</strong>: <code>/api/send-email</code> (Resend) and <code>/api/meta-capi</code> (Meta CAPI) with zero privileged tokens in client bundle.</li>
+            <li><strong>Google Merchant Pipeline</strong>: Automated RSS 2.0 XML generator mapping 280 products with verified local assets.</li>
           </ul>
         </div>
       </div>
@@ -288,17 +281,17 @@
       <h2>3. 360° Technical SEO, GEO & AI Ingestion (AIO)</h2>
       <p>The platform implements an exhaustive four-tier organic discoverability engine:</p>
       <ul>
-        <li><strong>Static Site Generation (SSG - 358 Pages)</strong>: Every product, brand, category, and Moroccan city hub has a dedicated pre-compiled HTML snapshot for instant Googlebot indexing.</li>
-        <li><strong>Schema.org v14.0 JSON-LD</strong>: Deep microdata covering <code>Product</code>, <code>Offer</code> (MAD currency), <code>BreadcrumbList</code>, and <code>LocalBusiness</code>.</li>
-        <li><strong>Generative Engine Optimization (GEO)</strong>: Dedicated <code>/llms.txt</code> and <code>/llms-full.txt</code> endpoints enabling ChatGPT Search, Claude, Perplexity, and Gemini to accurately ingest specs and recommend products.</li>
-        <li><strong>Google Merchant Center Sync</strong>: Automated daily scheduled fetch at <code>https://www.gearshop.ma/google-merchant-feed.xml</code> with 100% verified WebP assets.</li>
+        <li><strong>Static Pre-rendering (SSG - 356 Sitemap URLs)</strong>: Every product, brand, category, and Moroccan city hub receives a pre-compiled HTML instance for immediate crawler discovery.</li>
+        <li><strong>Self-Referential Canonicals</strong>: Each indexable route receives a normalized self-referencing canonical URL under <code>https://www.gearshop.ma/</code>.</li>
+        <li><strong>Schema.org v14.0 JSON-LD</strong>: Microdata covering <code>Product</code>, <code>Offer</code> (MAD currency), <code>BreadcrumbList</code>, and <code>LocalBusiness</code>.</li>
+        <li><strong>Generative Engine Optimization (GEO)</strong>: Dedicated <code>/llms.txt</code> and <code>/llms-full.txt</code> (375 KB) endpoints enabling ChatGPT, Claude, Perplexity, and Gemini to ingest specifications accurately.</li>
       </ul>
     </div>
 
     <!-- Section 4 -->
     <div class="card">
       <h2>4. Engineering Hours & Professional Valuation Audit</h2>
-      <p>Standard professional valuation based on senior full-stack and cloud engineering billable rates ($100/hr / 1,000 MAD/hr):</p>
+      <p>Standard professional valuation based on senior full-stack, cloud, and DevOps engineering rates ($75–$100/hr / 750–1,000 MAD/hr):</p>
       
       <table>
         <thead>
@@ -311,69 +304,69 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>Front-End Core & Mobile UX</strong></td>
-            <td>React 19, TypeScript, touch carousels, instant filter, 60 FPS mobile layout</td>
-            <td>120 hrs</td>
-            <td>$12,000 / 120,000 MAD</td>
+            <td><strong>Front-End Architecture & Mobile UX</strong></td>
+            <td>React 19, TypeScript, touch carousels, responsive filter, progressive pagination</td>
+            <td>95 hrs</td>
+            <td>$8,500 / 85,000 MAD</td>
           </tr>
           <tr>
-            <td><strong>Database & RLS Security</strong></td>
-            <td>Supabase PostgreSQL schema, relational tables, indexing, secure permissions</td>
+            <td><strong>Database Design & Persistence Layer</strong></td>
+            <td>Supabase PostgreSQL schema, relational tables, indexing, basic RLS policies</td>
+            <td>35 hrs</td>
+            <td>$3,200 / 32,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>Static Pre-Rendering (SSG) Engine</strong></td>
+            <td>Build-time pre-render pipeline, static HTML generation, client hydration setup</td>
             <td>45 hrs</td>
-            <td>$4,500 / 45,000 MAD</td>
-          </tr>
-          <tr>
-            <td><strong>SSG Pre-rendering Pipeline</strong></td>
-            <td>358 isolated static HTML page generators, hydration optimizations</td>
-            <td>60 hrs</td>
-            <td>$6,000 / 60,000 MAD</td>
-          </tr>
-          <tr>
-            <td><strong>Serverless & Security Architecture</strong></td>
-            <td>Resend quotation engine, Meta CAPI event pipeline, zero-token leaks</td>
-            <td>50 hrs</td>
-            <td>$5,000 / 50,000 MAD</td>
-          </tr>
-          <tr>
-            <td><strong>SEO & GEO Domination Engine</strong></td>
-            <td>Schema.org JSON-LD, multi-city Moroccan targeting, sitemaps, canonical trees</td>
-            <td>55 hrs</td>
-            <td>$5,500 / 55,000 MAD</td>
-          </tr>
-          <tr>
-            <td><strong>AI Optimization (GEO / LLMs)</strong></td>
-            <td><code>llms.txt</code>, <code>llms-full.txt</code>, AI bot directives, JSON catalog</td>
-            <td>30 hrs</td>
-            <td>$3,500 / 35,000 MAD</td>
-          </tr>
-          <tr>
-            <td><strong>Google Merchant Data Engine</strong></td>
-            <td>Automated XML feed generator, attribute normalization, image validation</td>
-            <td>40 hrs</td>
             <td>$4,000 / 40,000 MAD</td>
           </tr>
           <tr>
-            <td><strong>Catalog Normalization (~280 SKUs)</strong></td>
-            <td>Multi-brand scraping, WebP conversion, pricing parity, specs extraction</td>
-            <td>70 hrs</td>
-            <td>$6,500 / 65,000 MAD</td>
+            <td><strong>Serverless Microservices & CAPI</strong></td>
+            <td><code>/api/send-email</code> (Resend), <code>/api/meta-capi</code> (Meta CAPI), <code>/api/ai/*</code> endpoints</td>
+            <td>40 hrs</td>
+            <td>$3,800 / 38,000 MAD</td>
           </tr>
           <tr>
-            <td><strong>Conversion Workflows & WhatsApp</strong></td>
-            <td>1-click WhatsApp checkout, free delivery calculations, trust badges</td>
-            <td>35 hrs</td>
-            <td>$3,500 / 35,000 MAD</td>
+            <td><strong>SEO & Geographic Landing Architecture</strong></td>
+            <td>Schema.org v14.0 JSON-LD, breadcrumb trees, sitemap generator (356 URLs), city hubs</td>
+            <td>45 hrs</td>
+            <td>$4,200 / 42,000 MAD</td>
           </tr>
           <tr>
-            <td><strong>Edge CDN & Performance Tuning</strong></td>
-            <td>Sub-50ms TTFB routing, asset compression, security headers</td>
+            <td><strong>Generative Engine Optimization (GEO)</strong></td>
+            <td><code>llms.txt</code>, <code>llms-full.txt</code> custom AI indexing pipeline, crawler directives</td>
             <td>25 hrs</td>
-            <td>$3,000 / 30,000 MAD</td>
+            <td>$2,500 / 25,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>Google Merchant XML Feed Engine</strong></td>
+            <td>RSS 2.0 XML generator, attribute mapping, asset resolution validation</td>
+            <td>30 hrs</td>
+            <td>$2,800 / 28,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>Catalog Processing & Asset Pipeline</strong></td>
+            <td>280 SKUs normalized, WebP asset generation, specs mapping, fallback images</td>
+            <td>50 hrs</td>
+            <td>$4,500 / 45,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>Checkout & Omnichannel Flows</strong></td>
+            <td>WhatsApp deep-linking, cart modal, quote generation, free delivery calculation</td>
+            <td>30 hrs</td>
+            <td>$2,700 / 27,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>Deployment, CDN & Quality Assurance</strong></td>
+            <td>Edge CDN configuration, TypeScript validation, ESLint compliance, cross-browser tests</td>
+            <td>25 hrs</td>
+            <td>$2,300 / 23,000 MAD</td>
           </tr>
           <tr style="font-weight: 700; background: rgba(245, 158, 11, 0.1);">
             <td colspan="2">TOTAL CERTIFIED ENGINEERING APPRAISAL</td>
-            <td>530 hrs</td>
-            <td style="color: var(--primary); font-size: 1.1rem;">$53,500 USD (535,000 MAD)</td>
+            <td>420 hrs</td>
+            <td style="color: var(--primary); font-size: 1.1rem;">$38,500 USD (385,000 MAD)</td>
           </tr>
         </tbody>
       </table>
@@ -381,7 +374,7 @@
   </div>
 
   <button class="print-btn no-print" onclick="window.print()">
-    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
     Save as PDF / Print Dossier
   </button>
 </body>

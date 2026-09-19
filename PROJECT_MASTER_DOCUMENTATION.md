@@ -1,4 +1,4 @@
-# 📸 GearShop.ma — Master System & Business Documentation
+# 📸 GearShop.ma — Master System & Technical Architecture Documentation
 **Plateforme E-Commerce Haute Performance pour Matériel Photo, Vidéo, Optiques Cinéma & Éclairage Professionnel au Maroc**
 
 ---
@@ -10,30 +10,26 @@
 4. [Front-End & Expérience Utilisateur (UI/UX Mobile First)](#4-front-end--expérience-utilisateur-uiux-mobile-first)
 5. [Back-End, Sécurité & Fonctions Serverless](#5-back-end-sécurité--fonctions-serverless)
 6. [Stratégie SEO, GEO & Référencement IA (AIO)](#6-stratégie-seo-geo--référencement-ia-aio)
-7. [Intégration Google Merchant Center & Search Console](#7-intégration-google-merchant-center--search-console)
-8. [Moteur Marketing, Conversion & Vente Omnicanale](#8-moteur-marketing-conversion--vente-omnicanale)
-9. [Bilan des Avantages Concurrentiels & Perspectives](#9-bilan-des-avantages-concurrentiels--perspectives)
+7. [Génération du Flux Google Merchant & Sitemap](#7-génération-du-flux-google-merchant--sitemap)
+8. [Moteur Marketing & Parcours de Conversion Omnicanal](#8-moteur-marketing--parcours-de-conversion-omnicanal)
+9. [Bilan Technique & Perspectives d'Évolution](#9-bilan-technique--perspectives-dévolution)
 
 ---
 
 ## 1. Positionnement Stratégique & Analyse de Marché
 
 ### 🎯 Vision & Proposition de Valeur
-**GearShop.ma** est conçu pour devenir la référence e-commerce au Maroc pour les créateurs de contenu, photographes, vidéastes professionnels, maisons de production et passionnés de matériel audiovisuel.
+**GearShop.ma** est conçu comme une vitrine digitale haute performance dédiée aux créateurs de contenu, photographes, vidéastes professionnels, maisons de production et passionnés d'audiovisuel au Maroc.
 
-### 🥊 Analyse Concurrentielle sur le Marché Marocain
-| Concurrent | Forces | Faiblesses identifiées | Avantage GearShop.ma |
-| :--- | :--- | :--- | :--- |
-| **Kamerty.ma** | Large catalogue, notoriété | UI vieillissante, lenteur mobile, filtres rigides | UX fluide, recherche instantanée, carrousels tactiles ultra-rapides |
-| **Photocom.ma** | Distribution officielle | Prix élevés, parcours de commande complexe | Devis en 1 clic, validation WhatsApp directe, paiement à la livraison |
-| **Yahyaoui Shop** | Forte communauté occasion | Catalogue web peu structuré, manque de fiches techniques | Fiches techniques complètes, SEO ville par ville, garanties claires |
-| **Next Level Photo / Best Store** | Magasins physiques | Présence digitale limitée, peu optimisé pour l'IA | 358 pages pré-rendues (SSG), flux IA (`llms.txt`), Google Merchant actif |
-
-### 🛡️ Piliers de Confiance Spécifiques au Marché Marocain
-* **Vérification du colis avant paiement** : Réassurance maximale contre la fraude.
-* **Garantie 1 an & Support SAV local** : Pièces et main d'œuvre garanties.
-* **Livraison Express 24/48H** : Partout au Maroc (Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir, etc.).
-* **Paiement Flexible** : Espèces à la livraison, virement bancaire ou devis pro pour entreprises.
+### 🥊 Grille Comparative Neutre
+| Critère d'évaluation | Boutique E-Commerce Traditionnelle | GearShop.ma |
+| :--- | :--- | :--- |
+| **Architecture** | CMS monolithique (PHP / Base SQL lourde) | React 19 + TypeScript + Pré-rendu statique (SSG) + CDN Edge |
+| **Recherche & Filtres** | Rechargement complet de page à chaque filtre | Filtrage en mémoire côté client sans rechargement de page |
+| **Ergonomie Mobile** | Listes de boutons empilées verticalement | Carrousels tactiles horizontaux avec accroche native (`snap-x`) |
+| **Catalogue Structuré** | Variable selon boutique | **280 références produits (SKUs)** prêtes et structurées |
+| **Indexation IA (LLMs)** | Aucune structure dédiée aux agents IA | Fichiers natifs `llms.txt`, `llms-full.txt` et API JSON IA |
+| **Attribution Publicitaire** | Pixels JavaScript client uniquement | Double intégration : Pixel client + Meta Conversions API serveur (`/api/meta-capi`) |
 
 ---
 
@@ -45,26 +41,26 @@ graph TD
     
     subgraph Frontend [Front-End Application]
         VercelEdge --> ReactApp[React 19 + TypeScript + Vite]
-        ReactApp --> SSGPages[358 Pages Statiques Pré-rendues]
+        ReactApp --> SSGPages[Pages Statiques Pré-rendues - 356 URLs]
         ReactApp --> MobileUX[Mobile-First UI & Carrousels Tactiles]
     end
     
-    subgraph DataLayer [Couche Données & Stockage]
-        ReactApp -->|REST / Realtime| SupabaseDB[(Supabase PostgreSQL)]
-        SupabaseDB --> ProductsTable[Table: 'products gearshop']
-        SupabaseDB --> OrdersTable[Table: 'orders']
-        SupabaseDB --> LeadsTable[Table: 'leads']
+    subgraph DataLayer [Couche Données Supabase]
+        ReactApp -->|REST via Clé Publique| SupabaseDB[(Supabase PostgreSQL)]
+        SupabaseDB --> ProductsTable[Table: 'products gearshop' - 280 SKUs]
+        SupabaseDB --> QuoteTable[Table: 'quote_requests' & 'product_requests']
+        SupabaseDB --> LeadsTable[Table: 'contact_leads' & 'newsletter_subscribers']
     end
     
     subgraph ServerlessAPIs [Fonctions Serverless Vercel]
-        ReactApp -->|POST /api/resend| ResendAPI[Resend Email API - Devis Auto]
-        ReactApp -->|POST /api/meta-conversions| MetaCAPI[Meta Conversions API CAPI]
+        ReactApp -->|POST /api/send-email| ResendAPI[Resend Email API - Devis Auto]
+        ReactApp -->|POST /api/meta-capi| MetaCAPI[Meta Conversions API CAPI]
         ReactApp -->|GET /api/ai/*| AIApiEndpoints[Catalogues IA JSON]
     end
-    
-    subgraph Integrations [Google & Référencement]
-        VercelEdge --> GoogleMerchant[Google Merchant Center XML Feed]
-        VercelEdge --> GoogleSitemap[Sitemap XML Index]
+
+    subgraph SyndicationLayer [Flux & Découvrabilité]
+        VercelEdge --> GoogleMerchant[Flux XML Google Merchant]
+        VercelEdge --> GoogleSitemap[Sitemap XML Index - 356 URLs]
         VercelEdge --> LLMFeeds[llms.txt & llms-full.txt pour IA]
     end
 ```
@@ -77,24 +73,29 @@ graph TD
 | Colonne | Type | Description & Utilisation |
 | :--- | :--- | :--- |
 | `id` | `text / int` | Identifiant unique du produit (ex: `6005`, `1002`). |
-| `name` | `text` | Nom complet et commercial (ex: *Canon EOS R5 Mark II + Objectif RF 24-105mm*). |
+| `name` | `text` | Nom complet et commercial du produit. |
 | `brand` | `text` | Marque officielle (Sony, Canon, Nikon, 7Artisans, Godox, DJI, etc.). |
 | `category` | `text` | Catégorie parente (Boîtiers, Objectifs, Éclairage, Stabilisateurs, etc.). |
 | `price` | `numeric` | Prix public en Dirhams Marocains (MAD). |
-| `original_price` | `numeric` | Prix barré avant remise (pour calcul du % d'économie). |
+| `original_price` | `numeric` | Prix barré indicatif avant remise. |
 | `image` | `text` | Chemin local WebP haute résolution (`/images/products/...`). |
-| `inStock` | `boolean` | Statut de disponibilité immédiate au Maroc. |
-| `desc` | `text` | Description détaillée, caractéristiques techniques et points forts. |
-| `specs` | `jsonb / text` | Spécifications détaillées (Monture, Capteur, Poids, etc.). |
-| `featured` | `boolean` | Mise en avant sur la page d'accueil ou en tête de rayon. |
+| `inStock` | `boolean` | Disponibilité immédiate en inventaire. |
+| `desc` | `text` | Description technique et commerciale. |
+| `specs` | `jsonb / text` | Spécifications techniques détaillées (Monture, Capteur, etc.). |
+| `featured` | `boolean` | Flag de mise en avant en vitrine. |
 
-### 🏷️ Marques Référencées dans le Catalogue (~280 Produits)
-* **Boîtiers & Hybrides** : Sony Alpha, Canon EOS R / Cinema, Nikon Z, Kodak Pixpro.
-* **Optiques & Objectifs** : Sony GM / G, Canon RF / EF, Nikkor Z, 7Artisans (Ciné & AF).
-* **Stabilisation & Drones** : DJI (Osmo Pocket 3, Osmo Mobile 7), Insta360 (X4, X5, Flow).
-* **Éclairage & Studio** : SoftStore Studio, Godox, Torches LED Bi-Color, Projecteurs COB.
-* **Audio Pro** : Røde (Wireless PRO, Wireless GO II), Microphones Canon / Sony.
-* **Accessoires & Cages** : SmallRig (Cages, Matte Box, Tiges 15mm), Vanguard (Sacs & Trépieds), PNY / SanDisk (Cartes SD / CFexpress).
+### 📋 Tables Actives du Schéma Supabase
+* `quote_requests` : Demandes formelles de devis B2B et coordonnées d'entreprises.
+* `product_requests` : Demandes de commande directe et précommandes.
+* `contact_leads` : Messages du formulaire de contact.
+* `newsletter_subscribers` : Inscriptions à la newsletter.
+* `product_alerts` : Alertes de réapprovisionnement.
+* `cookie_consents` : Journalisation du consentement cookies.
+* `email_campaigns` : Historique des campagnes e-mail.
+* `meta_capi_logs` : Journal des envois d'événements Meta CAPI.
+
+> [!NOTE]
+> **Gestion des commandes** : Les demandes de commande sont actuellement traitées via le workflow de leads/devis (`quote_requests` et `product_requests`). Une table relationnelle dédiée `orders` et `order_items` constitue une étape ultérieure pour l'automatisation complète de la facturation ERP.
 
 ---
 
@@ -105,111 +106,89 @@ graph TD
    - Remplacement des 20+ boutons empilés verticalement par deux carrousels horizontaux fluides (`overflow-x-auto snap-x scrollbar-none`).
    - Accès immédiat aux filtres de catégories et de marques sans pousser les produits en bas de l'écran.
 2. **Barre de Recherche Intelligente** :
-   - Placeholder adaptatif et auto-focus sans débordement sur petits écrans.
-   - Filtrage instantané multi-critères (marque, modèle, mot-clé, prix).
+   - Placeholder adaptatif sans débordement sur petits écrans.
+   - Filtrage instantané multi-critères (marque, modèle, mot-clé, prix) sans rechargement de page.
 3. **Chargement Progressif des Produits (Pagination +12)** :
-   - Chargement initial de 12 produits ultra-rapide (gain de mémoire et fluidité à 60 FPS).
-   - Bouton ergonomique : *« Afficher 12 produits suivants (X restants) »*.
-4. **Performance des Images** :
-   - Utilisation native de `loading="lazy"` et `decoding="async"`.
-   - Fallback automatique vers `/images/products/nikon-zr.webp` en cas de rupture de lien.
+   - Chargement initial limité à 12 produits pour réduire le volume du DOM et améliorer la fluidité sur smartphone.
+   - Bouton ergonomique : *« Afficher 12 produits suivants »*.
+4. **Performance & Repli des Images** :
+   - Utilisation de `loading="lazy"` et `decoding="async"`.
+   - Repli automatique vers `/images/products/nikon-zr.webp` en cas de lien brisé.
 5. **En-tête Épuré** :
-   - Masquage des barres de navigation secondaires lourdes sur mobile (`hidden md:block`).
-
-### 🛒 Parcours de Conversion & Commande
-* **Tiroir Panier (Cart Drawer)** : Aperçu instantané, calcul automatique des remises et du total.
-* **Seuil de Livraison Gratuite Automatique** : Livraison à 0 DH dès 500 DH d'achat.
-* **Commande WhatsApp en 1 Clic** : Génération d'un message pré-rempli avec le nom exact du produit, le prix et l'adresse de livraison.
-* **Modal Devis / Commande Directe** : Formulaire simplifié (Nom, Téléphone, Ville, Adresse) sans obligation de créer un compte.
+   - Masquage des barres secondaires sur mobile (`hidden md:block`).
 
 ---
 
 ## 5. Back-End, Sécurité & Fonctions Serverless
 
 ### 🔐 Architecture Serverless (Vercel)
-* `/api/resend` : Envoi sécurisé des devis et récapitulatifs de commandes par e-mail sans exposer les clés API côté client.
-* `/api/meta-conversions` : Envoi des événements d'achat et de leads vers Meta CAPI (Facebook/Instagram Ads) avec score de déduplication.
-* `/api/ai/catalog.json` : Endpoint REST léger servant le catalogue complet formaté pour les agents et assistants IA.
+* `/api/send-email` : Envoi des devis et récapitulatifs par e-mail via l'API Resend sans exposer de clé privée côté client.
+* `/api/meta-capi` : Envoi des événements de conversion côté serveur vers l'API Meta avec hachage SHA-256 des identifiants clients.
+* `/api/ai/catalog.json` : Endpoint REST servant le catalogue complet formaté pour les agents et assistants IA.
 
 ### 🛡️ Sécurité & Bonnes Pratiques
-* **Row-Level Security (RLS) Supabase** : Protection des données clients et des leads.
-* **Zéro Clé Secrète dans le Bundle JS** : Toutes les communications sensibles transitent par des fonctions Edge sécurisées.
-* **Validation des Entrées** : Nettoyage systématique des caractères et protection contre les injections XSS.
+* **Clés API** : Aucune clé secrète Meta ou Resend n'est injectée dans le code JavaScript client. Supabase utilise une clé publique (`anon`) encadrée par Row-Level Security.
+* **Row-Level Security (RLS)** : La lecture anonyme des tables de leads clients est bloquée.
+* **Recommandations de Durcissement** :
+  1. *Contrôle d'accès par rôle (RBAC)* : Remplacer l'autorisation générique `TO authenticated` sur les leads par une vérification stricte du rôle administrateur (`role = 'admin'`).
+  2. *Nettoyage HTML* : Passer les descriptions riches stockées au crible d'une bibliothèque de désinfection (type `DOMPurify`) avant injection via `dangerouslySetInnerHTML`.
 
 ---
 
 ## 6. Stratégie SEO, GEO & Référencement IA (AIO)
 
-### 🚀 1. Pré-rendu Statique (SSG - 358 Pages)
-Chaque produit, catégorie, marque et page de ville marocaine possède son fichier `.html` autonome généré à la compilation :
-* Découverte immédiate par les robots sans exécution JavaScript.
-* Temps de premier chargement (TTFB) inférieur à 50ms sur le réseau Vercel Edge.
+### 🚀 1. Pré-rendu Statique (SSG)
+Chaque produit, catégorie, marque et page de ville marocaine possède son fichier `.html` pré-généré à la compilation :
+* Découverte immédiate par les moteurs de recherche sans exécution JavaScript.
+* Amélioration de l'accessibilité pour les robots d'indexation.
 
-### 📍 2. SEO Géolocalisé (GEO-Targeting Maroc)
-Génération automatisée de pages de destination locales :
-* *« Matériel photo et vidéo à Casablanca »*
-* *« Magasin d'appareils photo et objectifs à Rabat »*
-* *« Éclairage studio et caméras cinéma à Marrakech, Tanger, Fès, Agadir... »*
+### 📍 2. URLs Canoniques Normalisées
+* Chaque route indexable reçoit sa propre balise canonique auto-référencée sous `https://www.gearshop.ma/` pour éviter toute pénalité de contenu dupliqué.
 
 ### 🤖 3. Référencement pour Moteurs IA (ChatGPT, Claude, Gemini, Perplexity)
 * `https://www.gearshop.ma/llms.txt` : Guide succinct structuré pour les LLMs.
-* `https://www.gearshop.ma/llms-full.txt` : Catalogue exhaustif avec spécifications, prix et liens directs pour la citation dans les réponses IA.
+* `https://www.gearshop.ma/llms-full.txt` : Fichier texte exhaustif (~375 Ko) documentant les 280 SKUs, prix en MAD et fiches techniques.
 * `robots.txt` : Autorisation explicite des agents `GPTBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`.
 
 ### 🏷️ 4. Microdonnées Enrichies (Schema.org / JSON-LD)
-* Type `Product` avec `Offer`, devise `MAD`, disponibilité `InStock`, marque et avis.
-* Type `BreadcrumbList` pour un fil d'Ariane clair dans les résultats Google.
-* Type `LocalBusiness` / `Store` géolocalisé pour le Maroc.
+* Type `Product` avec `Offer` (devise `MAD`), disponibilité et marque.
+* Type `BreadcrumbList` pour structurer le fil d'Ariane.
+* Type `LocalBusiness` pour l'ancrage géographique au Maroc.
 
 ---
 
-## 7. Intégration Google Merchant Center & Search Console
+## 7. Génération du Flux Google Merchant & Sitemap
 
-### 🛒 Google Merchant Center
-* **URL du Flux Actif** : `https://www.gearshop.ma/google-merchant-feed.xml`
-* **Format** : RSS 2.0 avec namespace Google Base (`xmlns:g="http://base.google.com/ns/1.0"`).
-* **Produits Actifs** : 239 à 280 articles synchronisés avec images WebP directes (`200 OK`).
-* **Mise à jour automatique** : Récupération quotidienne programmée (Scheduled Fetch) à minuit.
-* **Marché Cible** : Maroc (Devise : `MAD`, Livraison : `0.00 MAD`).
+### 🛒 Flux Google Merchant Center
+* **Fichier Généré** : `public/google-merchant-feed.xml` (`https://www.gearshop.ma/google-merchant-feed.xml`)
+* **Format** : Flux RSS 2.0 XML Google Base.
+* **Contenu** : 280 produits mappés avec titre, description, prix MAD, condition (`new`/`used`), catégorie Google Product et images WebP locales vérifiées.
 
-### 🔍 Google Search Console
-* **URL du Sitemap** : `https://www.gearshop.ma/sitemap.xml`
-* **Pages Découvertes** : 358 URLs indexables.
-* **Canonicalisation** : Normalisation universelle sur `https://www.gearshop.ma/` pour éliminer le contenu dupliqué.
+### 🔍 Sitemap XML
+* **Fichier Généré** : `public/sitemap.xml` (`https://www.gearshop.ma/sitemap.xml`)
+* **Volume** : **356 URLs indexables** générées automatiquement à chaque compilation.
 
 ---
 
-## 8. Moteur Marketing, Conversion & Vente Omnicanale
+## 8. Moteur Marketing & Parcours de Conversion Omnicanal
 
-### 📈 Entonnoir d'Acquisition & Taux de Conversion
-```
-Trafic (Google SEO + Google Shopping + Instagram Ads + IA Search)
-   │
-   ▼
-Page Produit Haute Vitesse (< 1s de chargement, photos HD, specs complètes)
-   │
-   ├────────► Commande Express WhatsApp (70% des conversions au Maroc)
-   ├────────► Paiement à la Livraison après vérification du colis
-   └────────► Demande de Devis PDF / Bon de Commande Pro (B2B)
-```
-
-### 💡 Points Forts Marketing
-1. **Urgence & Rassurance** : Badges *« En Stock au Maroc »*, *« Livraison 24/48H »*, *« Vérifiez avant de payer »*.
-2. **Attribution Précise** : Enregistrement des paramètres UTM (`utm_source`, `utm_medium`, `utm_campaign`) dans chaque lead Supabase.
-3. **Double Canal B2C / B2B** : Capacité à servir le créateur individuel comme les agences de production (facturation officielle TVA).
+### 🛒 Parcours Utilisateur & Options de Commande
+* **Commande WhatsApp en 1 Clic** : Génération d'un message pré-rempli avec le nom exact du produit et le prix.
+* **Formulaire Panier & Devis Direct** : Formulaire léger sans inscription obligatoire.
+* **Calculateur de Livraison** : Mention dynamique de livraison offerte dès 500 MAD d'achat.
 
 ---
 
-## 9. Bilan des Avantages Concurrentiels & Perspectives
+## 9. Bilan Technique & Perspectives d'Évolution
 
-| Dimension | Standard Marché Marocain | GearShop.ma |
+| Chantier Technique | État Actuel | Évolution Recommandée |
 | :--- | :--- | :--- |
-| **Vitesse Mobile** | 4 - 8 secondes (WordPress/WooCommerce non optimisé) | **< 1 seconde (React 19 + SSG + Edge CDN)** |
-| **Catalogue & Filtres** | Rechargement lent de page | **Filtrage instantané en mémoire (0ms)** |
-| **Visibilité Google Shopping** | Flux manuels souvent erronés ou absents | **Flux XML automatisé 24/7 avec 100% d'images conformes** |
-| **Indexation IA** | Non prise en compte | **Endpoints natifs `llms.txt` et API IA intégrés** |
-| **Processus de Vente** | Formulaires longs avec inscription forcée | **Commande WhatsApp 1-Clic & Paiement à la livraison** |
+| **Front-End & Mobile** | React 19 + Carrousels tactiles + Pagination +12 | Analyse continue des métriques Real User Monitoring (RUM) |
+| **Base de Données** | Supabase PostgreSQL + Table catalogue 280 SKUs | Création d'une table `orders` relationnelle avec passerelle de paiement |
+| **Sécurité RLS** | Lecture anonyme bloquée | Implémentation d'une politique basée sur un rôle `admin` vérifié |
+| **Sécurité Contenu** | Rendu HTML riche dans fiches produits | Intégration d'un module de désinfection HTML (`DOMPurify`) |
+| **SEO & IA** | 356 URLs sitemap + SSG + `llms-full.txt` | Suivi des impressions Search Console et rapports Merchant Center |
 
 ---
 
-*Document de référence — GearShop Maroc (Version Production 2.0).*
+*Document de référence technique — GearShop Maroc (Version 2.1 - Septembre 2026).*
