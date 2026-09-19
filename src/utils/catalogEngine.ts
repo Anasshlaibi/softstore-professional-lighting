@@ -452,7 +452,6 @@ function buildRecommendations(
         if (!theirAttrs) return false;
 
         const pNameLower = p.name.toLowerCase();
-        const myNameLower = product.name.toLowerCase();
 
         // 1. If Camera: suggest Cage, Memory Card, Battery, Audio Mic, Stabilizer, Lens
         if (myAttrs.product_type === 'camera') {

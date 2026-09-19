@@ -19,12 +19,14 @@ import { fetchAdminProducts, createProductRecord, updateProductRecord, togglePro
 import { ProductEditorModal } from '../components/Admin/ProductEditorModal';
 import { generateProductSEOPackage } from '../utils/seoGenerator';
 
-const ADMIN_PASS = 'gearshop2026';
+import { supabase } from '../lib/supabase';
 
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
-  const [authError, setAuthError] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [authLoading, setAuthLoading] = useState(false);
 
   const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'subscribers' | 'product_requests' | 'quotes' | 'attribution' | 'audiences' | 'settings'>('overview');
 
@@ -50,31 +52,63 @@ const AdminDashboard: React.FC = () => {
   // Score Breakdown Modal State
   const [activeBreakdown, setActiveBreakdown] = useState<Record<string, number> | null>(null);
 
-  // Settings State
-  const [pixelIdInput, setPixelIdInput] = useState('13684036354444670');
-  const [capiTokenInput, setCapiTokenInput] = useState('EAAVT0R8Y7JUBSKxzZBaUbDZCGnFsmN3bCLJsp9e0PZCHhng5SLJfmxOuNy19XIJ0tUhSOVmv9TsHaGHqbzm3IV4pnKY9SMfJZBtoZCdDgItClPv3BZCgFuEidwZA94AYk2n7yOKLTbO3aOfZAYyQCYfx0ZCGOI81rPhVE86TaixyZBYdhnZCK1ZBKHM3QrdF6ZCiA4wZDZD');
+  // Settings State (read from env or localStorage only)
+  const [pixelIdInput, setPixelIdInput] = useState(import.meta.env.VITE_META_PIXEL_ID || '');
+  const [capiTokenInput, setCapiTokenInput] = useState('');
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const sessionAuth = sessionStorage.getItem('gearshop_admin_auth');
-    if (sessionAuth === 'true') {
-      setIsAuthenticated(true);
-      fetchData();
-    }
-    setCapiTokenInput(localStorage.getItem('gearshop_capi_token') || 'EAAVT0R8Y7JUBSKxzZBaUbDZCGnFsmN3bCLJsp9e0PZCHhng5SLJfmxOuNy19XIJ0tUhSOVmv9TsHaGHqbzm3IV4pnKY9SMfJZBtoZCdDgItClPv3BZCgFuEidwZA94AYk2n7yOKLTbO3aOfZAYyQCYfx0ZCGOI81rPhVE86TaixyZBYdhnZCK1ZBKHM3QrdF6ZCiA4wZDZD');
+    // Check real Supabase Auth session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        setIsAuthenticated(true);
+        fetchData();
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        setIsAuthenticated(true);
+        fetchData();
+      } else {
+        setIsAuthenticated(false);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput === ADMIN_PASS || passwordInput === 'admin') {
-      setIsAuthenticated(true);
-      sessionStorage.setItem('gearshop_admin_auth', 'true');
-      setAuthError(false);
-      fetchData();
-    } else {
-      setAuthError(true);
+    setAuthLoading(true);
+    setAuthError(null);
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: emailInput,
+        password: passwordInput,
+      });
+
+      if (error) {
+        setAuthError(error.message || 'Identifiants invalides');
+      } else {
+        setIsAuthenticated(true);
+        fetchData();
+      }
+    } catch (err: unknown) {
+      setAuthError(err instanceof Error ? err.message : 'Erreur de connexion');
+    } finally {
+      setAuthLoading(false);
     }
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('gearshop_admin_auth');
   };
 
   const fetchData = async () => {
@@ -258,31 +292,46 @@ const AdminDashboard: React.FC = () => {
               🔒
             </div>
             <h1 className="text-2xl font-extrabold tracking-tight">GearShop Admin Panel</h1>
-            <p className="text-xs text-zinc-400">Plateforme d'attribution de leads & Meta CAPI</p>
+            <p className="text-xs text-zinc-400">Authentification sécurisée Supabase</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-300 mb-1">Mot de passe Administrateur</label>
+              <label className="block text-xs font-semibold text-zinc-300 mb-1">Email Administrateur</label>
+              <input
+                type="email"
+                required
+                value={emailInput}
+                onChange={e => setEmailInput(e.target.value)}
+                placeholder="admin@gearshop.ma"
+                className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-sm text-white outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-zinc-300 mb-1">Mot de passe</label>
               <input
                 type="password"
                 required
                 value={passwordInput}
                 onChange={e => setPasswordInput(e.target.value)}
-                placeholder="Entrez le mot de passe..."
+                placeholder="••••••••"
                 className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-sm text-white outline-none"
               />
             </div>
 
             {authError && (
-              <p className="text-red-400 text-xs font-medium">Mot de passe incorrect. Essayez `gearshop2026`.</p>
+              <p className="text-red-400 text-xs font-medium bg-red-950/40 p-2.5 rounded-lg border border-red-800/50">
+                {authError}
+              </p>
             )}
 
             <button
               type="submit"
-              className="w-full py-3 bg-red-600 hover:bg-red-700 font-bold text-sm text-white rounded-xl shadow-lg shadow-red-950/50 transition"
+              disabled={authLoading}
+              className="w-full py-3 bg-red-600 hover:bg-red-700 font-bold text-sm text-white rounded-xl shadow-lg shadow-red-950/50 transition disabled:opacity-50"
             >
-              Se Connecter
+              {authLoading ? 'Connexion en cours...' : 'Se Connecter'}
             </button>
           </form>
 
@@ -328,10 +377,7 @@ const AdminDashboard: React.FC = () => {
               Voir le Site
             </button>
             <button
-              onClick={() => {
-                sessionStorage.removeItem('gearshop_admin_auth');
-                setIsAuthenticated(false);
-              }}
+              onClick={handleLogout}
               className="px-3.5 py-1.5 bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white text-xs font-semibold rounded-lg transition"
             >
               Déconnexion

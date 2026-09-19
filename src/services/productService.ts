@@ -19,8 +19,8 @@ export interface ProductFormData {
   desc?: string;
   stars?: number;
   condition_rating?: string;
-  technical_specs?: Record<string, any>;
-  used_attributes?: Record<string, any>;
+  technical_specs?: Record<string, unknown>;
+  used_attributes?: Record<string, unknown>;
   seo_title?: string;
   meta_description?: string;
   seo_intro?: string;
@@ -41,23 +41,23 @@ export const fetchAdminProducts = async (): Promise<Product[]> => {
     throw error;
   }
 
-  return (data || []).map((item: any) => ({
-    id: item.id,
-    name: item.name,
+  return (data || []).map((item: Record<string, unknown>) => ({
+    id: Number(item.id),
+    name: String(item.name || ''),
     price: Number(item.price) || 0,
     oldPrice: item.oldPrice ? Number(item.oldPrice) : undefined,
     rentPrice: item.rentPrice ? Number(item.rentPrice) : undefined,
-    category: item.category || 'Accessoires',
-    brand: item.brand || '7Artisans',
-    product_group: item.product_group || 'new',
-    product_type: item.product_type || 'lens',
-    mount: item.mount,
-    image: item.image || 'https://via.placeholder.com/400',
-    gallery: Array.isArray(item.gallery) ? item.gallery : (item.image ? [item.image] : []),
+    category: String(item.category || 'Accessoires'),
+    brand: String(item.brand || '7Artisans'),
+    product_group: (item.product_group as 'new' | 'used') || 'new',
+    product_type: (item.product_type as 'lens' | 'camera' | 'light' | 'filter' | 'adapter' | 'accessory') || 'lens',
+    mount: item.mount ? String(item.mount) : undefined,
+    image: String(item.image || 'https://via.placeholder.com/400'),
+    gallery: Array.isArray(item.gallery) ? item.gallery.map(String) : (item.image ? [String(item.image)] : []),
     inStock: item.inStock !== false,
-    desc: item.desc || '',
-    stars: item.stars || 5,
-    specs: Array.isArray(item.specs) ? item.specs : [],
+    desc: String(item.desc || ''),
+    stars: Number(item.stars) || 5,
+    specs: Array.isArray(item.specs) ? item.specs.map(String) : [],
     isPreorder: item.isPreorder === true
   }));
 };
@@ -119,7 +119,7 @@ export const createProductRecord = async (formData: ProductFormData): Promise<Pr
 };
 
 export const updateProductRecord = async (id: number, formData: Partial<ProductFormData>): Promise<void> => {
-  const payload: Record<string, any> = {};
+  const payload: Record<string, unknown> = {};
   if (formData.name !== undefined) payload.name = formData.name;
   if (formData.price !== undefined) payload.price = formData.price;
   if (formData.oldPrice !== undefined) payload.oldPrice = formData.oldPrice;

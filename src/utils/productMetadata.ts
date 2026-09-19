@@ -28,7 +28,8 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   const fullText = `${nameLower} ${cat} ${desc}`;
 
   // 1. BRAND DETECTION (DB column > text analysis > fallback)
-  let brand = (p as any).brand || '';
+  const pRecord = p as unknown as Record<string, unknown>;
+  let brand = typeof p.brand === 'string' && p.brand ? p.brand : (typeof pRecord.brand === 'string' ? pRecord.brand : '');
   if (!brand) {
     const pId = Number(p.id);
     if (nameLower.includes('sony') || cat.includes('sony')) {
@@ -69,7 +70,7 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   }
 
   // 2. PRODUCT TYPE DETECTION (Strict separation of lenses vs non-lenses)
-  let product_type: ProductAttributes['product_type'] = (p as any).product_type;
+  let product_type: ProductAttributes['product_type'] = pRecord.product_type as ProductAttributes['product_type'];
   if (!product_type) {
     // Explicit non-lens indicators
     if (nameLower.includes('adapter') || nameLower.includes('adaptateur') || nameLower.includes('bague d\'adaptation')) {
@@ -101,8 +102,8 @@ export function extractProductAttributes(p: Product): ProductAttributes {
 
   if (product_type === 'lens') {
     // Check for explicit database/admin field
-    if ((p as any).lens_type) {
-      lens_type = (p as any).lens_type;
+    if (pRecord.lens_type) {
+      lens_type = pRecord.lens_type as ProductAttributes['lens_type'];
       focus_type = lens_type === 'autofocus' ? 'autofocus' : 'manual';
     } else {
       // Robust Cinema detection:
@@ -143,7 +144,7 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   }
 
   // 4. FILTER DIAMETER EXTRACTION (For filters & lenses with filter threads)
-  let filter_diameter: number | undefined = (p as any).filter_diameter;
+  let filter_diameter: number | undefined = typeof pRecord.filter_diameter === 'number' ? pRecord.filter_diameter : undefined;
   if (!filter_diameter) {
     // Look for diameter pattern in name e.g. 77mm, 55mm, 82mm
     const diamMatch = name.match(/\b(\d{2,3})\s*mm\b/i);
@@ -157,7 +158,7 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   }
 
   // 5. CAMERA MOUNT DETECTION (DB column > text analysis)
-  let mount = (p as any).mount || '';
+  let mount = typeof p.mount === 'string' && p.mount ? p.mount : (typeof pRecord.mount === 'string' ? pRecord.mount : '');
   if (!mount) {
     if (fullText.includes('sony e') || fullText.includes('e mount') || fullText.includes('e-mount') || fullText.includes('(e mount)')) mount = 'Sony E';
     else if (fullText.includes('canon rf') || fullText.includes('eos-r') || fullText.includes('rf mount') || fullText.includes('(eos-r mount)')) mount = 'Canon RF';
@@ -171,7 +172,7 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   }
 
   // 6. CONDITION / GROUP
-  let condition: ProductAttributes['condition'] = (p as any).product_group || (p as any).condition;
+  let condition: ProductAttributes['condition'] = (pRecord.product_group || pRecord.condition) as ProductAttributes['condition'];
   if (!condition) {
     if (cat.includes('occasion') || fullText.includes('occasion') || fullText.includes('seconde main') || fullText.includes('used')) {
       condition = 'used';

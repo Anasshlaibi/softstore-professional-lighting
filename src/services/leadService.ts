@@ -1,6 +1,6 @@
 import { supabase } from '../lib/supabase';
-import { getAttributionData, AttributionData } from './attributionTracker';
-import { calculateLeadScore, ScoreResult } from './leadScoringEngine';
+import { getAttributionData } from './attributionTracker';
+import { calculateLeadScore } from './leadScoringEngine';
 import { trackLead, sendOfflinePurchaseEvent } from './metaCapiService';
 
 export interface Subscriber {
@@ -374,7 +374,6 @@ export async function sendEmailCampaign(data: {
   segment: string;
   type: string;
   body: string;
-  resendApiKey?: string;
 }): Promise<{ success: boolean; recipientCount: number; message: string }> {
   const subscribers = await getSubscribers();
   let recipients = subscribers;
@@ -395,16 +394,12 @@ export async function sendEmailCampaign(data: {
     recipient_count: recipientCount
   }]);
 
-  const apiKey = data.resendApiKey || import.meta.env.VITE_RESEND_API_KEY;
-  if (apiKey && recipients.length > 0) {
+  if (recipients.length > 0) {
     try {
       const emailList = recipients.map(r => r.email);
-      await fetch('https://api.resend.com/emails', {
+      await fetch('/api/send-email', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           from: 'GearShop Maroc <newsletter@gearshop.ma>',
           to: emailList.slice(0, 50),
@@ -412,7 +407,9 @@ export async function sendEmailCampaign(data: {
           html: `<div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">${data.body.replace(/\n/g, '<br/>')}</div>`
         })
       });
-    } catch (err) {}
+    } catch (err: unknown) {
+      console.warn('Send email proxy warning:', err);
+    }
   }
 
   return {

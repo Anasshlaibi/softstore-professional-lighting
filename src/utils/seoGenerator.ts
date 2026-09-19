@@ -1,5 +1,5 @@
 import { Product } from '../../App';
-import { generateProductSearchAliases, normalizeQuery } from './textNormalization';
+import { generateProductSearchAliases } from './textNormalization';
 
 export interface SEOHighlight {
   label: string;
@@ -36,9 +36,9 @@ export interface ProductSEOPackage {
   compatibilityLink?: { label: string; url: string };
   relatedProducts: Product[];
   faqs: SEOFAQItem[];
-  productSchema: Record<string, any>;
-  breadcrumbSchema: Record<string, any>;
-  faqSchema: Record<string, any>;
+  productSchema: Record<string, unknown>;
+  breadcrumbSchema: Record<string, unknown>;
+  faqSchema: Record<string, unknown>;
   seoQuality: SEOQualityReport;
   searchAliases: string[];
 }
@@ -121,7 +121,7 @@ export function generateProductSEOPackage(
   const canonicalUrl = `https://gearshop.ma/product/${product.id}-${slug}`;
 
   const isPreorder = product.isPreorder ||
-    (product as any).status === 'Précommande' ||
+    (product as unknown as Record<string, unknown>).status === 'Précommande' ||
     product.name.toLowerCase().includes('précommande') ||
     product.name.toLowerCase().includes('preorder') ||
     (product.specs || []).some(s => s.toLowerCase().includes('précommande'));
@@ -300,7 +300,7 @@ export function generateProductSEOPackage(
     : (product.image ? [product.image] : []);
 
   const hasRealPrice = product.price && Number(product.price) > 0;
-  const productSchema: Record<string, any> = {
+  const productSchema: Record<string, unknown> = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
     '@id': canonicalUrl,

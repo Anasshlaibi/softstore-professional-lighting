@@ -23,7 +23,7 @@ export function initAttributionTracker(): AttributionData {
   try {
     const raw = localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY);
     if (raw) existing = JSON.parse(raw);
-  } catch (e) {
+  } catch {
     existing = {};
   }
 
@@ -59,7 +59,7 @@ export function initAttributionTracker(): AttributionData {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData));
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData));
-  } catch (e) {
+  } catch {
     // Ignore storage quota errors
   }
 
@@ -72,7 +72,9 @@ export function recordProductView(productName: string): AttributionData {
     current.visited_products.push(productName);
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
-    } catch (e) {}
+    } catch {
+      // Ignore
+    }
   }
   return current;
 }
@@ -82,7 +84,9 @@ export function recordWhatsAppClick(): AttributionData {
   current.whatsapp_clicked = true;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
-  } catch (e) {}
+  } catch {
+    // Ignore
+  }
   return current;
 }
 

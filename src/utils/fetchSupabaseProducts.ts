@@ -13,7 +13,9 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
       setTimeout(() => reject(new Error('Supabase request timed out after 5 seconds')), 5000)
     );
 
-    const { data, error } = await Promise.race([fetchPromise, timeoutPromise]) as any;
+    const raceResult = await Promise.race([fetchPromise, timeoutPromise]);
+    const data = (raceResult as { data: Record<string, unknown>[] | null }).data;
+    const error = (raceResult as { error: Error | null }).error;
 
     if (error) {
       console.error('Supabase error fetching products:', error);
@@ -25,14 +27,14 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
     }
 
     // Helper to parse strings that might be JSON arrays or comma separated
-    const parseArraySafe = (val: any): string[] => {
+    const parseArraySafe = (val: unknown): string[] => {
       if (!val) return [];
-      if (Array.isArray(val)) return val;
+      if (Array.isArray(val)) return val.map(String);
       if (typeof val === 'string') {
         try {
           const parsed = JSON.parse(val);
-          return Array.isArray(parsed) ? parsed : [val];
-        } catch (e) {
+          return Array.isArray(parsed) ? parsed.map(String) : [val];
+        } catch {
           return val.split(',').map(s => s.trim()).filter(Boolean);
         }
       }
@@ -40,7 +42,7 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
     };
 
     // Map Supabase rows to our Product interface
-    const mappedProducts = data.map((row: any, index: number): Product => {
+    const mappedProducts = data.map((row: Record<string, unknown>, index: number): Product => {
       const gallery = parseArraySafe(row.gallery);
       const specs = parseArraySafe(row.specs);
 
@@ -68,7 +70,13 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
         meta_description: row.meta_description ? String(row.meta_description) : undefined,
         seo_intro: row.seo_intro ? String(row.seo_intro) : undefined,
         seo_description: row.seo_description ? String(row.seo_description) : undefined,
-        custom_faq: parseArraySafe(row.custom_faq) as any,
+        custom_faq: parseArraySafe(row.custom_faq).map(item => {
+          try {
+            return typeof item === 'object' ? item : JSON.parse(item);
+          } catch {
+            return { question: '', answer: item };
+          }
+        }),
         search_aliases: parseArraySafe(row.search_aliases),
       };
     });

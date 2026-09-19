@@ -26,18 +26,16 @@ interface MetaCapiEventOptions {
   phone?: string;
   value?: number;
   currency?: string;
-  customData?: Record<string, any>;
+  customData?: Record<string, unknown>;
 }
 
 export async function sendMetaCapiEvent(options: MetaCapiEventOptions): Promise<boolean> {
   const eventId = options.eventId || generateEventId();
-  const pixelId = import.meta.env.VITE_META_PIXEL_ID || '13684036354444670';
-  const token = import.meta.env.VITE_META_CAPI_TOKEN || localStorage.getItem('gearshop_capi_token') || 'EAAVT0R8Y7JUBSKxzZBaUbDZCGnFsmN3bCLJsp9e0PZCHhng5SLJfmxOuNy19XIJ0tUhSOVmv9TsHaGHqbzm3IV4pnKY9SMfJZBtoZCdDgItClPv3BZCgFuEidwZA94AYk2n7yOKLTbO3aOfZAYyQCYfx0ZCGOI81rPhVE86TaixyZBYdhnZCK1ZBKHM3QrdF6ZCiA4wZDZD';
 
   // 1. Client-Side Meta Pixel dispatch (if loaded in window)
-  if (typeof window !== 'undefined' && (window as any).fbq) {
+  if (typeof window !== 'undefined' && (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq) {
     try {
-      (window as any).fbq('track', options.eventName, {
+      (window as unknown as { fbq: (...args: unknown[]) => void }).fbq('track', options.eventName, {
         currency: options.currency || 'MAD',
         value: options.value || 0,
         ...options.customData
@@ -47,53 +45,33 @@ export async function sendMetaCapiEvent(options: MetaCapiEventOptions): Promise<
     }
   }
 
-  // 2. Server-Side CAPI POST if token available
-  if (token && pixelId) {
-    try {
-      const hashedEmail = options.email ? await hashSha256(options.email) : '';
-      const hashedPhone = options.phone ? await hashSha256(options.phone) : '';
+  // 2. Server-Side CAPI Proxy through /api/meta-capi
+  try {
+    const res = await fetch('/api/meta-capi', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...options,
+        eventId
+      })
+    });
 
-      const payload = {
-        data: [
-          {
-            event_name: options.eventName,
-            event_time: Math.floor(Date.now() / 1000),
-            event_id: eventId,
-            action_source: 'website',
-            user_data: {
-              em: hashedEmail ? [hashedEmail] : [],
-              ph: hashedPhone ? [hashedPhone] : [],
-              client_user_agent: navigator.userAgent
-            },
-            custom_data: {
-              currency: options.currency || 'MAD',
-              value: options.value || 0,
-              ...options.customData
-            }
-          }
-        ]
-      };
-
-      const res = await fetch(`https://graph.facebook.net/v19.0/${pixelId}/events?access_token=${token}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      const resJson = await res.json();
-      await supabase.from('meta_capi_logs').insert([{
+    if (res.ok) {
+      // Log event to Supabase logs table if user is authenticated
+      supabase.from('meta_capi_logs').insert([{
         event_name: options.eventName,
         event_id: eventId,
         email: options.email || '',
         phone: options.phone || '',
         deal_value: options.value || 0,
         currency: options.currency || 'MAD',
-        response_status: res.ok ? 'SUCCESS' : `ERROR: ${JSON.stringify(resJson)}`
-      }]);
-
-    } catch (err) {
-      console.warn('Meta CAPI error:', err);
+        response_status: 'SUCCESS'
+      }]).catch(() => {
+        // silent catch if anonymous
+      });
     }
+  } catch {
+    // Graceful fallback on client
   }
 
   return true;
