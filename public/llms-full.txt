@@ -197,7 +197,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 
 ---
 
-## 7. Catalogue Détaillé des Produits (280 Articles Disponibles)
+## 7. Catalogue Détaillé des Produits (281 Articles Disponibles)
 
 ### Catégorie : STUDIO (3 articles)
 
@@ -527,6 +527,25 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Filtre ND variable de précision K&F Concept 82mm Nano-Xcel Pro. Réduction d'exposition de 1 à 5 stops (ND2-32) avec verre optique haute résolution traité 28 couches pour une clarté optique irréprochable sans croix noire.
 - **Lien Officiel Produit**: [K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)](https://www.gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro)
+
+### Catégorie : OCCASION (1 articles)
+
+#### Atomos Ninja V 5" 4K HDR + Pack Accessoires (Occasion - Comme Neuf)
+- **SKU**: `GEAR-15-7ARTISANS`
+- **Marque / Brand**: 7Artisans
+- **Monture(s) / Mount(s)**: Standard / Universel
+- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Focale / Focal Length**: Focale variable / Fixe
+- **Ouverture Maximale / Max Aperture**: Standard
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 4.500 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: État : Comme Neuf (Impeccable), Écran 5" 1000 nits HDR ProRes RAW, Valise Rigide de Transport Incluse, Pack Alimentation + Dummy Battery + Batterie NP-F, 2 Câbles HDMI (Micro & Full), Option SSD 500Go Lunchbox (+1 000 DH), Garantie 3 Mois GearShop
+- **Description**: Atomos Ninja V 5 pouces 4K HDR 1000 nits en état comme neuf. Pack complet comprenant : moniteur Atomos Ninja V, valise rigide de transport, alimentation secteur + dummy battery DC coupler, adaptateurs secteur internationaux, chargeur batterie NP-F + 1 batterie, adaptateur SSD Lunchbox rouge, 2 câbles HDMI (Micro HDMI e
+- **Lien Officiel Produit**: [Atomos Ninja V 5" 4K HDR + Pack Accessoires (Occasion - Comme Neuf)](https://www.gearshop.ma/product/15-atomos-ninja-v-5-4k-hdr-pack-accessoires-occasion-comme-neuf)
 
 ### Catégorie : LENSES (60 articles)
 

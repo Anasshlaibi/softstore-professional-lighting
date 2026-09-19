@@ -34,7 +34,7 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 280,
+    "totalProducts": 281,
     "categoriesCount": 8,
     "brandsCount": 10,
     "lastUpdated": "2026-09-19"
@@ -228,6 +228,32 @@
       ],
       "image": "https://www.gearshop.ma/images/products/p-60s-spotlight.webp",
       "url": "https://www.gearshop.ma/product/8-p-60s-spotlight",
+      "lastUpdated": "2026-09-19"
+    },
+    {
+      "id": 15,
+      "sku": "GEAR-15-7ARTISANS",
+      "name": "Atomos Ninja V 5\" 4K HDR + Pack Accessoires (Occasion - Comme Neuf)",
+      "brand": "7Artisans",
+      "category": "Objectifs Photo",
+      "mount": null,
+      "focus": "Manual Focus",
+      "sensorCoverage": "Full Frame",
+      "focalLength": null,
+      "maxAperture": null,
+      "condition": "New (Neuf sous emballage d'origine)",
+      "price": 4500,
+      "currency": "MAD",
+      "availability": "InStock",
+      "warranty": "1 an officiel avec SAV local à Casablanca",
+      "deliveryArea": "Maroc entier (24h à 48h)",
+      "paymentMethods": [
+        "Cash on Delivery (Paiement à la livraison)",
+        "Virement Bancaire",
+        "Carte Bancaire"
+      ],
+      "image": "https://www.gearshop.ma/images/products/atomos-ninja-v-occasion-kit.jpg",
+      "url": "https://www.gearshop.ma/product/15-atomos-ninja-v-5-4k-hdr-pack-accessoires-occasion-comme-neuf",
       "lastUpdated": "2026-09-19"
     },
     {

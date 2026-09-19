@@ -34,7 +34,7 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 280,
+    "totalProducts": 281,
     "categoriesCount": 8,
     "brandsCount": 10,
     "lastUpdated": "2026-09-19"
@@ -111,6 +111,37 @@
       ]
     },
     {
+      "name": "Objectifs Photo",
+      "count": 94,
+      "sampleProducts": [
+        {
+          "name": "Atomos Ninja V 5\" 4K HDR + Pack Accessoires (Occasion - Comme Neuf)",
+          "price": 4500,
+          "url": "https://www.gearshop.ma/product/15-atomos-ninja-v-5-4k-hdr-pack-accessoires-occasion-comme-neuf"
+        },
+        {
+          "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
+          "price": 0,
+          "url": "https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black"
+        },
+        {
+          "name": "AF35mm F1.8 Sony (E Mount) APS-C - Black",
+          "price": 0,
+          "url": "https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black"
+        },
+        {
+          "name": "AF35mm F1.8 Fuji (FX Mount) APS-C - Black",
+          "price": 0,
+          "url": "https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black"
+        },
+        {
+          "name": "AF35mm F1.8 Nikon (Z Mount) APS-C - Black",
+          "price": 0,
+          "url": "https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black"
+        }
+      ]
+    },
+    {
       "name": "Lentilles Cinéma",
       "count": 29,
       "sampleProducts": [
@@ -138,37 +169,6 @@
           "name": "50mm T2.0 Sony (E Mount) - Black",
           "price": 4500,
           "url": "https://www.gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black"
-        }
-      ]
-    },
-    {
-      "name": "Objectifs Photo",
-      "count": 93,
-      "sampleProducts": [
-        {
-          "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
-          "price": 0,
-          "url": "https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black"
-        },
-        {
-          "name": "AF35mm F1.8 Sony (E Mount) APS-C - Black",
-          "price": 0,
-          "url": "https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black"
-        },
-        {
-          "name": "AF35mm F1.8 Fuji (FX Mount) APS-C - Black",
-          "price": 0,
-          "url": "https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black"
-        },
-        {
-          "name": "AF35mm F1.8 Nikon (Z Mount) APS-C - Black",
-          "price": 0,
-          "url": "https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black"
-        },
-        {
-          "name": "AF50mm F1.8 Sony (E Mount) APS-C - Black",
-          "price": 0,
-          "url": "https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black"
         }
       ]
     },

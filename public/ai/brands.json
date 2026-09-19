@@ -34,7 +34,7 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 280,
+    "totalProducts": 281,
     "categoriesCount": 8,
     "brandsCount": 10,
     "lastUpdated": "2026-09-19"
@@ -50,7 +50,7 @@
   "brands": [
     {
       "name": "7Artisans",
-      "count": 92,
+      "count": 93,
       "mountsAvailable": [
         "Nikon Z"
       ],

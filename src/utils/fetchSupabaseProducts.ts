@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabase';
 import { Product } from '../../App';
+import { defaultProducts } from '../../data/products';
 
 export async function fetchSupabaseProducts(): Promise<Product[]> {
   try {
@@ -87,6 +88,15 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
         search_aliases: parseArraySafe(row.search_aliases),
       };
     });
+
+    // Merge local products (such as Occasion/Ninja V) that may not be in remote DB
+    const existingIds = new Set(mappedProducts.map(p => p.id));
+    for (const defProd of defaultProducts) {
+      if (!existingIds.has(defProd.id)) {
+        mappedProducts.push(defProd);
+        existingIds.add(defProd.id);
+      }
+    }
 
     // Curated rich audiovisual mix: DJI Osmo Pocket, Cameras, 7Artisans 135mm, Cinema Lenses, Photo Lenses, Bags, Filters & Lights
     const featuredNames = [
