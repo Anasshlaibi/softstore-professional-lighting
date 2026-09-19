@@ -213,6 +213,26 @@ const Products: React.FC<ProductsProps> = ({
             pNameLower.includes('vnd')
           );
         }
+        if (catLower.includes('cage') || catLower.includes('rigging')) {
+          return (
+            pCatLower.includes('cage') ||
+            pCatLower.includes('rigging') ||
+            pNameLower.includes('cage') ||
+            pNameLower.includes('matte box') ||
+            pNameLower.includes('support') ||
+            pNameLower.includes('smallrig')
+          );
+        }
+        if (catLower.includes('trépied') || catLower.includes('trepied') || catLower.includes('tripod')) {
+          return (
+            pCatLower.includes('trépied') ||
+            pCatLower.includes('trepied') ||
+            pNameLower.includes('trépied') ||
+            pNameLower.includes('trepied') ||
+            pNameLower.includes('tripod') ||
+            pNameLower.includes('monopod')
+          );
+        }
         if (catLower.includes('sac') || catLower.includes('accessoire') || catLower.includes('accessories')) {
           return (
             pCatLower.includes('sac') ||

@@ -516,19 +516,26 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </div>
               
               {/* Trust badges */}
-              <div className="mt-6 pt-6 border-t border-gray-100 grid grid-cols-2 gap-4">
-                 <div className="flex items-start gap-3 text-sm text-gray-600">
-                    <i className="fa-solid fa-truck-fast text-gray-400 text-lg mt-1"></i>
+              <div className="mt-6 pt-6 border-t border-gray-100 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                 <div className="flex items-start gap-2.5 text-xs text-gray-600">
+                    <i className="fa-solid fa-truck-fast text-red-500 text-base mt-0.5"></i>
                     <div>
-                      <span className="font-bold text-gray-800 block text-xs md:text-sm">Expédition sous 24h</span>
-                      <span className="text-xs text-gray-500">Livraison rapide partout au Maroc</span>
+                      <span className="font-bold text-gray-800 block text-xs">Livraison Gratuite</span>
+                      <span className="text-[11px] text-gray-500">Dès 500 DH partout au Maroc</span>
                     </div>
                  </div>
-                 <div className="flex items-start gap-3 text-sm text-gray-600">
-                    <i className="fa-solid fa-shield-halved text-gray-400 text-lg mt-1"></i>
+                 <div className="flex items-start gap-2.5 text-xs text-gray-600">
+                    <i className="fa-solid fa-box-open text-emerald-600 text-base mt-0.5"></i>
                     <div>
-                      <span className="font-bold text-gray-800 block text-xs md:text-sm">Garantie 1 an</span>
-                      <span className="text-xs text-gray-500">Distributeur officiel certifié</span>
+                      <span className="font-bold text-gray-800 block text-xs">Vérification Colis</span>
+                      <span className="text-[11px] text-gray-500">Inspectez avant de payer</span>
+                    </div>
+                 </div>
+                 <div className="flex items-start gap-2.5 text-xs text-gray-600">
+                    <i className="fa-solid fa-shield-halved text-blue-600 text-base mt-0.5"></i>
+                    <div>
+                      <span className="font-bold text-gray-800 block text-xs">Garantie 1 An</span>
+                      <span className="text-[11px] text-gray-500">Facture & SAV officiel</span>
                     </div>
                  </div>
               </div>

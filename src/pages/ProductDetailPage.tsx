@@ -555,7 +555,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </div>
 
               {/* Shipping & Delivery Guarantee */}
-              <div className="bg-gray-50 rounded-xl p-3.5 border border-gray-200 text-xs text-gray-700 space-y-1.5">
+              <div className="bg-gray-50 rounded-xl p-3.5 border border-gray-200 text-xs text-gray-700 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold flex items-center gap-1.5">
                     <i className="fa-solid fa-truck-fast text-red-600" />
@@ -565,6 +565,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 </div>
                 <div className="text-[11px] text-gray-500">
                   Expédition le jour même pour Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir...
+                </div>
+                <div className="pt-1.5 border-t border-gray-200 flex items-center gap-2 text-emerald-800 text-[11px] font-medium">
+                  <i className="fa-solid fa-box-open text-emerald-600 text-xs shrink-0" />
+                  <span><strong>Vérification à la réception :</strong> Ouvrez et inspectez le matériel avant de régler.</span>
                 </div>
               </div>
 

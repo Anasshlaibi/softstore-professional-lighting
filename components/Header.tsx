@@ -19,7 +19,7 @@ const announcements = [
   { icon: 'fa-truck-fast', text: 'Livraison Rapide 24h/48h Gratuite partout au Maroc dès 500 DH' },
   { icon: 'fa-camera-retro', text: 'Nouvel Arrivage 2026 : Nikon ZR, Canon R5 II, Sony FX3 & A7 IV en stock' },
   { icon: 'fa-shield-halved', text: 'Matériel 100% Neuf & Garanti 1 An • Facture Pro & TVA Disponible' },
-  { icon: 'fa-brands fa-whatsapp', text: 'Devis & Conseils Express WhatsApp au 06 73 01 18 73 / 06 73 01 18 73' }
+  { icon: 'fa-brands fa-whatsapp', text: 'Devis & Conseils Express WhatsApp au 06 73 01 18 73 • Réponse immédiate' }
 ];
 
 const categoriesList = [
@@ -31,7 +31,7 @@ const categoriesList = [
   { id: 'Stabilisateurs', name: 'Stabilisateurs DJI & Gimbals', icon: 'fa-arrows-to-dot', link: '/#products?cat=Stabilisateurs' },
   { id: 'Audio', name: 'Audio & Microphones Sans Fil', icon: 'fa-microphone', link: '/#products?cat=Audio' },
   { id: 'Cages & Rigging', name: 'Cages, Supports & Rigging SmallRig', icon: 'fa-wrench', link: '/#products?cat=Cages & Rigging' },
-  { id: 'Sacs & Trépieds', name: 'Trépieds & Sacs Vanguard', icon: 'fa-briefcase', link: '/#products?cat=Sacs & Trépieds' },
+  { id: 'Trépieds & Sacs', name: 'Trépieds & Sacs Vanguard', icon: 'fa-briefcase', link: '/#products?cat=Trépieds & Sacs' },
 ];
 
 const Header: React.FC<HeaderProps> = React.memo(
