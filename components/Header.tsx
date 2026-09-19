@@ -109,15 +109,15 @@ const Header: React.FC<HeaderProps> = React.memo(
     return (
       <>
         {/* ── 1. Top Announcement Bar ──────────────────────────────────────── */}
-        <div className="bg-[#0f172a] text-gray-200 text-xs py-1.5 px-4 border-b border-slate-800 z-50 relative">
+        <div className="bg-[#0f172a] text-gray-200 text-[11px] sm:text-xs py-1 sm:py-1.5 px-3 sm:px-4 border-b border-slate-800 z-50 relative">
           <div className="container mx-auto flex items-center justify-between">
             {/* Announcement Ticker */}
-            <div className="flex items-center gap-2 overflow-hidden py-0.5">
-              <span className="bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider uppercase shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden py-0.5 max-w-full">
+              <span className="bg-red-600 text-white text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded tracking-wider uppercase shrink-0">
                 INFO
               </span>
-              <div className="flex items-center gap-2 transition-all duration-500 text-slate-300 text-xs font-medium">
-                <i className={`fa-solid ${announcements[currentAnnouncementIdx].icon} text-red-400 text-xs`} />
+              <div className="flex items-center gap-1.5 transition-all duration-500 text-slate-300 text-[11px] sm:text-xs font-medium truncate">
+                <i className={`fa-solid ${announcements[currentAnnouncementIdx].icon} text-red-400 text-xs shrink-0`} />
                 <span className="truncate">{announcements[currentAnnouncementIdx].text}</span>
               </div>
             </div>
@@ -149,33 +149,38 @@ const Header: React.FC<HeaderProps> = React.memo(
 
         {/* ── 2. Main Sticky Header ─────────────────────────────────────────── */}
         <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-100">
-          <div className="container mx-auto px-4 md:px-6 py-2.5 flex items-center justify-between gap-4">
+          <div className="container mx-auto px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2.5 sm:gap-4">
             
             {/* Logo */}
-            <div className="flex items-center gap-4">
-              <Link to="/" className="flex items-center" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                <Logo theme="light" className="h-9 md:h-11 w-auto" />
+            <div className="flex items-center gap-3">
+              <Link to="/" className="flex items-center shrink-0" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <Logo theme="light" className="h-8 sm:h-9 md:h-11 w-auto" />
               </Link>
             </div>
 
             {/* Omnisearch Bar */}
             <div
               onClick={() => onOpenSearchModal?.()}
-              className="flex-1 max-w-2xl mx-2 md:mx-6 relative cursor-pointer group"
+              className="flex-1 max-w-2xl mx-1 sm:mx-2 md:mx-6 relative cursor-pointer group"
             >
-              <div className="w-full flex items-center bg-gray-100 hover:bg-gray-50 border border-gray-200 group-hover:border-red-500/80 rounded-full px-4 py-2 transition-all duration-200 shadow-inner">
-                <i className="fa-solid fa-magnifying-glass text-gray-400 group-hover:text-red-600 transition mr-3 text-sm" />
-                <span className="text-gray-500 text-sm truncate flex-1 select-none">
-                  {globalSearchQuery || 'Rechercher : Nikon ZR, Sony A7 IV, Canon R5 II, DJI, Godox...'}
+              <div className="w-full flex items-center bg-gray-100 hover:bg-gray-50 border border-gray-200 group-hover:border-red-500/80 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all duration-200 shadow-inner">
+                <i className="fa-solid fa-magnifying-glass text-gray-400 group-hover:text-red-600 transition mr-2 sm:mr-3 text-xs sm:text-sm shrink-0" />
+                <span className="text-gray-500 text-xs sm:text-sm truncate flex-1 select-none">
+                  {globalSearchQuery || (
+                    <>
+                      <span className="sm:hidden">Rechercher appareil, objectif...</span>
+                      <span className="hidden sm:inline">Rechercher : Nikon ZR, Sony A7 IV, Canon R5 II, DJI, Godox...</span>
+                    </>
+                  )}
                 </span>
-                <span className="hidden sm:inline-flex items-center gap-1 bg-white text-gray-700 text-[11px] font-semibold px-2.5 py-1 rounded-full border border-gray-200 shadow-sm">
+                <span className="hidden sm:inline-flex items-center gap-1 bg-white text-gray-700 text-[11px] font-semibold px-2.5 py-1 rounded-full border border-gray-200 shadow-sm shrink-0">
                   <i className="fa-solid fa-sliders text-[9px] text-red-500" /> Filtres
                 </span>
               </div>
             </div>
 
             {/* Header Right Actions */}
-            <div className="flex items-center gap-2 md:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 shrink-0">
               {/* WhatsApp Quick CTA */}
               <a
                 href={`https://wa.me/${whatsappNumber}`}
@@ -220,8 +225,8 @@ const Header: React.FC<HeaderProps> = React.memo(
             </div>
           </div>
 
-          {/* ── 3. The "Home Line" / Category Navigation Bar with Burger Menu ─ */}
-          <div className="bg-slate-900 text-white text-xs border-t border-slate-800">
+          {/* ── 3. Desktop Category Navigation Bar (Hidden on Mobile) ────────── */}
+          <div className="hidden md:block bg-slate-900 text-white text-xs border-t border-slate-800">
             <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
               
               {/* Category Burger Dropdown Trigger */}

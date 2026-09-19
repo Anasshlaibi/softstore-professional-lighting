@@ -112,10 +112,8 @@ const Products: React.FC<ProductsProps> = ({
   }, [filters, viewMode, debouncedSearchQuery, setSearchParams]);
 
   useEffect(() => {
-    if (debouncedSearchQuery && debouncedSearchQuery.trim()) {
-      setDisplayLimit(Math.max(24, products.length));
-    }
-  }, [debouncedSearchQuery, products.length]);
+    setDisplayLimit(12);
+  }, [debouncedSearchQuery]);
 
   const categories = useMemo(() => {
     return [
@@ -470,8 +468,8 @@ const Products: React.FC<ProductsProps> = ({
           </p>
         </header>
 
-        {/* ── 2. Brand Selector Bar with Progressive Disclosure ──────────────── */}
-        <div className="mb-4">
+        {/* ── 2. Brand Selector Bar (Horizontal Swipeable Carousel on Mobile) ── */}
+        <div className="mb-3.5">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] font-black uppercase tracking-wider text-gray-700 flex items-center gap-1.5">
               <i className="fa-solid fa-award text-red-600" aria-hidden="true" /> Filtrer par Marque Officielle :
@@ -488,7 +486,7 @@ const Products: React.FC<ProductsProps> = ({
             )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex overflow-x-auto no-scrollbar scrollbar-none gap-2 pb-1.5 snap-x snap-mandatory lg:flex-wrap items-center">
             {[
               { id: 'all', label: 'Toutes les Marques' },
               { id: 'Nikon', label: 'Nikon', icon: 'fa-camera' },
@@ -513,7 +511,7 @@ const Products: React.FC<ProductsProps> = ({
                   key={b.id}
                   type="button"
                   onClick={() => setFilters({ ...filters, brand: isBrandActive && b.id !== 'all' ? 'all' : b.id })}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-black transition flex items-center gap-1.5 border shadow-2xs cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 ${
+                  className={`px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-black transition flex items-center gap-1.5 border shadow-2xs cursor-pointer min-h-[38px] shrink-0 snap-start focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 ${
                     isBrandActive
                       ? 'bg-gray-900 text-white border-gray-900 shadow-sm'
                       : 'bg-white text-gray-800 border-gray-200 hover:border-black hover:bg-gray-50'
@@ -529,7 +527,7 @@ const Products: React.FC<ProductsProps> = ({
               <button
                 type="button"
                 onClick={() => setShowAllBrands(true)}
-                className="px-3.5 py-2 rounded-xl text-xs font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 border border-gray-300/80 transition flex items-center gap-1 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+                className="px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 border border-gray-300/80 transition flex items-center gap-1 cursor-pointer min-h-[38px] shrink-0 snap-start focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
               >
                 <span>+ 6 Autres Marques</span>
                 <i className="fa-solid fa-chevron-down text-[10px]" aria-hidden="true" />
@@ -540,7 +538,7 @@ const Products: React.FC<ProductsProps> = ({
               <button
                 type="button"
                 onClick={() => setShowAllBrands(false)}
-                className="px-3.5 py-2 rounded-xl text-xs font-bold text-gray-500 bg-transparent hover:bg-gray-100 transition flex items-center gap-1 cursor-pointer min-h-[40px] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+                className="px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold text-gray-500 bg-transparent hover:bg-gray-100 transition flex items-center gap-1 cursor-pointer min-h-[38px] shrink-0 snap-start focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
               >
                 <span>Réduire</span>
                 <i className="fa-solid fa-chevron-up text-[10px]" aria-hidden="true" />
@@ -549,8 +547,24 @@ const Products: React.FC<ProductsProps> = ({
           </div>
         </div>
 
-        {/* ── 3. Quick Category Pills Bar (Non-overflowing multi-line wrap) ───── */}
-        <div className="mb-5 flex flex-wrap items-center gap-2">
+        {/* ── 3. Quick Category Pills Bar (Horizontal Swipeable Carousel on Mobile) ── */}
+        <div className="mb-4 flex overflow-x-auto no-scrollbar scrollbar-none gap-2 pb-1.5 snap-x snap-mandatory lg:flex-wrap items-center">
+          {/* Mobile Filter Drawer Button */}
+          <button
+            type="button"
+            onClick={() => setIsFilterDrawerOpen(true)}
+            className="px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-extrabold bg-gray-900 text-white border border-gray-900 hover:bg-black transition cursor-pointer min-h-[38px] flex items-center gap-1.5 shadow-sm lg:hidden shrink-0 snap-start focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+            aria-label="Ouvrir les filtres avancés"
+          >
+            <i className="fa-solid fa-sliders text-xs text-red-400" aria-hidden="true" />
+            <span>Filtres</span>
+            {activeFilterCount > 0 && (
+              <span className="bg-red-600 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
+                {activeFilterCount}
+              </span>
+            )}
+          </button>
+
           {[
             {
               id: 'all',
@@ -629,7 +643,7 @@ const Products: React.FC<ProductsProps> = ({
               key={pill.id}
               type="button"
               onClick={pill.onClick}
-              className={`px-3.5 py-2 rounded-full text-xs font-extrabold border transition cursor-pointer min-h-[42px] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 ${
+              className={`px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-extrabold border transition cursor-pointer min-h-[38px] shrink-0 snap-start focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 ${
                 pill.isActive
                   ? 'bg-red-600 text-white border-red-600 shadow-sm'
                   : 'bg-white text-gray-700 border-gray-200 hover:border-red-500 hover:text-red-600 shadow-2xs'
@@ -638,22 +652,6 @@ const Products: React.FC<ProductsProps> = ({
               {pill.label}
             </button>
           ))}
-
-          {/* Mobile & Tablet Advanced Filter Button */}
-          <button
-            type="button"
-            onClick={() => setIsFilterDrawerOpen(true)}
-            className="px-4 py-2 rounded-full text-xs font-extrabold bg-gray-100 text-gray-800 border border-gray-200 hover:bg-gray-200 transition cursor-pointer min-h-[42px] flex items-center gap-1.5 shadow-2xs lg:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
-            aria-label="Ouvrir les filtres avancés"
-          >
-            <i className="fa-solid fa-sliders text-xs text-red-600" aria-hidden="true" />
-            <span>Filtres</span>
-            {activeFilterCount > 0 && (
-              <span className="bg-red-600 text-white text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center">
-                {activeFilterCount}
-              </span>
-            )}
-          </button>
         </div>
 
         {/* ── 4. Unified Cohesive Controls Bar with Active Filter Chips ───────── */}
@@ -872,14 +870,21 @@ const Products: React.FC<ProductsProps> = ({
                 </div>
 
                 {displayLimit < filteredProducts.length && (
-                  <div className="flex justify-center pt-8 pb-4">
+                  <div className="flex flex-col items-center justify-center pt-8 pb-4 gap-2">
                     <button
                       type="button"
                       onClick={() => setDisplayLimit((prev) => prev + 12)}
-                      className="px-8 py-3.5 bg-red-600 hover:bg-red-700 active:scale-98 text-white text-xs font-black tracking-widest uppercase rounded-2xl transition-all shadow-lg hover:shadow-red-600/30 cursor-pointer min-h-[48px] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                      className="px-8 py-3.5 bg-red-600 hover:bg-red-700 active:scale-98 text-white text-xs font-black tracking-wider uppercase rounded-2xl transition-all shadow-lg hover:shadow-red-600/30 cursor-pointer min-h-[48px] flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                     >
-                      Charger Plus de Produits ({filteredProducts.length - displayLimit} restants)
+                      <i className="fa-solid fa-plus text-xs" />
+                      <span>Afficher 12 produits suivants</span>
+                      <span className="bg-red-800/90 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">
+                        ({filteredProducts.length - displayLimit} restants)
+                      </span>
                     </button>
+                    <span className="text-[11px] text-gray-500 font-medium">
+                      Affichage de {Math.min(displayLimit, filteredProducts.length)} sur {filteredProducts.length} équipements
+                    </span>
                   </div>
                 )}
               </>

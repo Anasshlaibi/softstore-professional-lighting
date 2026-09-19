@@ -112,8 +112,12 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               !product.inStock ? 'grayscale opacity-75' : ''
             }`}
             loading="lazy"
+            decoding="async"
             width={300}
             height={300}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/images/products/nikon-zr.webp';
+            }}
           />
         </div>
 

@@ -108,8 +108,8 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
     <section className="bg-white text-gray-900 pt-3 pb-6" aria-label="B&H Style Megastore Photo & Vidéo Maroc">
       <div className="container mx-auto px-4 md:px-6">
         
-        {/* ── 1. B&H Style Framed Notice & Announcement Bar ──────────────── */}
-        <div className="mb-4">
+        {/* ── 1. B&H Style Framed Notice & Announcement Bar (Desktop Only) ── */}
+        <div className="hidden md:block mb-4">
           <div className="bg-amber-50/90 border border-amber-300 rounded-lg px-3.5 py-2 flex items-center justify-between text-xs text-amber-900 shadow-2xs">
             <div className="flex items-center gap-2">
               <span className="w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-[10px] shrink-0">

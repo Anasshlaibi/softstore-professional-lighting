@@ -8,7 +8,7 @@ const TrustBadges: React.FC = () => {
       subtitle: 'Dès 500 DH partout au Maroc'
     },
     {
-      icon: 'fa-shield-check',
+      icon: 'fa-shield-halved',
       title: 'Garantie 1 An',
       subtitle: 'Constructeur officielle certifiée'
     },
