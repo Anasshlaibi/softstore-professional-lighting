@@ -44,9 +44,9 @@ const bhSlides = [
     subtitle: 'Full-frame 4K 10-Bit video reference with S-Cinetone & dual native ISO',
     desc: 'La caméra de cinéma compacte référence des directeurs photo et créateurs pro au Maroc.',
     bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/5115-sony-alpha-7-iv.webp',
-    learnMoreLink: '/product/5115-sony-alpha-7-iv',
-    orderLink: '/product/5115-sony-alpha-7-iv',
+    cameraImg: '/images/products/sony-cinema-line-fx3.webp',
+    learnMoreLink: '/product/5120-sony-cinema-line-fx3',
+    orderLink: '/product/5120-sony-cinema-line-fx3',
     badgeColor: 'bg-blue-600',
     accent: '#0066cc'
   },
@@ -58,7 +58,7 @@ const bhSlides = [
     subtitle: 'High-speed 45MP back-illuminated sensor with 8K RAW & Eye Control AF',
     desc: 'Performance hybride ultime avec stabilisation intégrée 8.5 stops et monture RF.',
     bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/6004-canon-eos-r5-mark-ii.webp',
+    cameraImg: '/images/products/canon-eos-r5-mark-ii.webp',
     learnMoreLink: '/product/6004-canon-eos-r5-mark-ii',
     orderLink: '/product/6004-canon-eos-r5-mark-ii',
     badgeColor: 'bg-red-600',
@@ -72,7 +72,7 @@ const bhSlides = [
     subtitle: 'Complete 4K 120p gimbal stabilization & continuous studio LED lighting',
     desc: 'Tout le matériel professionnel pour équiper vos tournages, podcasts et studios au Maroc.',
     bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/6024-dji-osmo-pocket-3-creator-combo.webp',
+    cameraImg: '/images/products/dji-osmo-pocket-3-creator-combo.webp',
     learnMoreLink: '/product/6024-dji-osmo-pocket-3-creator-combo',
     orderLink: '/product/6024-dji-osmo-pocket-3-creator-combo',
     badgeColor: 'bg-emerald-600',
@@ -136,6 +136,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
           <Swiper
             modules={[Autoplay, EffectFade, Pagination, Navigation]}
             effect="fade"
+            fadeEffect={{ crossFade: true }}
             autoplay={{ delay: 6000, disableOnInteraction: false }}
             loop={true}
             pagination={{ clickable: true }}
@@ -218,6 +219,9 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                           height={288}
                           className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
                           loading="eager"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = '/images/products/nikon-zr.webp';
+                          }}
                         />
                         <span className="absolute bottom-2.5 right-2.5 bg-slate-900 text-white text-[9px] font-black px-2 py-0.5 rounded shadow">
                           EN STOCK
