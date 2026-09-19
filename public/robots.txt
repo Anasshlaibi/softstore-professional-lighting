@@ -1,4 +1,11 @@
-# robots.txt for GearShop.ma
+# Google Merchant & Search Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# General crawlers
 User-agent: *
 Allow: /
 Allow: /ai/
