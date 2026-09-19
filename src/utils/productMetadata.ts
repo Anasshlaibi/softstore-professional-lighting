@@ -59,6 +59,8 @@ export function extractProductAttributes(p: Product): ProductAttributes {
       brand = 'DJI';
     } else if (nameLower.includes('k&f') || nameLower.includes('kentfaith') || nameLower.includes('concept') || (pId >= 2000 && pId < 3000)) {
       brand = 'K&F Concept';
+    } else if (nameLower.includes('atomos')) {
+      brand = 'Atomos';
     } else if (nameLower.includes('rode') || nameLower.includes('røde')) {
       brand = 'Røde';
     } else if (nameLower.includes('yongnuo')) {
@@ -228,6 +230,15 @@ export function isProductMatchingCategory(
   const attr = providedAttr || extractProductAttributes(p);
 
   if (pCatLower === catLower) return true;
+
+  if (catLower.includes('occasion') || catLower.includes('used') || catLower.includes('déstockage') || catLower.includes('destockage')) {
+    return (
+      pCatLower.includes('occasion') ||
+      pCatLower.includes('used') ||
+      pNameLower.includes('occasion') ||
+      pNameLower.includes('used')
+    );
+  }
 
   if (catLower.includes('dji') || catLower.includes('gimbal')) {
     return (

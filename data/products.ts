@@ -289,6 +289,32 @@ export const defaultProducts: Product[] = [
     inStock: true,
   },
   {
+    id: 15,
+    name: 'Atomos Ninja V 5" 4K HDR + Pack Accessoires (Occasion - Comme Neuf)',
+    price: 4500,
+    oldPrice: 7500,
+    category: 'occasion',
+    image: '/images/products/atomos-ninja-v-occasion-kit.jpg',
+    gallery: [
+      '/images/products/atomos-ninja-v-occasion-kit.jpg',
+      '/images/products/atomos-ninja-v-occasion-camera.jpg',
+      '/images/products/atomos-ninja-v-occasion-lunchbox.jpg',
+      '/images/products/atomos-ninja-v-occasion-ssd.jpg',
+    ],
+    desc: 'Atomos Ninja V 5 pouces 4K HDR 1000 nits en état comme neuf. Pack complet comprenant : moniteur Atomos Ninja V, valise rigide de transport, alimentation secteur + dummy battery DC coupler, adaptateurs secteur internationaux, chargeur batterie NP-F + 1 batterie, adaptateur SSD Lunchbox rouge, 2 câbles HDMI (Micro HDMI et Full HDMI) et support fixation cold shoe. Option SSD mSATA 500 Go disponible (+1 000 DH) ou pack complet à 5 500 DH.',
+    stars: 5,
+    specs: [
+      'État : Comme Neuf (Impeccable)',
+      'Écran 5" 1000 nits HDR ProRes RAW',
+      'Valise Rigide de Transport Incluse',
+      'Pack Alimentation + Dummy Battery + Batterie NP-F',
+      '2 Câbles HDMI (Micro & Full)',
+      'Option SSD 500Go Lunchbox (+1 000 DH)',
+      'Garantie 3 Mois GearShop'
+    ],
+    inStock: true,
+  },
+  {
     id: 2001,
     name: 'K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)',
     price: 1200,
