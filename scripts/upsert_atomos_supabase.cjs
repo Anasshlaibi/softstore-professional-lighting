@@ -4,12 +4,12 @@ const supabaseUrl = 'https://gunuqwikqhtllwplzcru.supabase.co';
 const supabaseKey = 'sb_publishable_jFxYbBAqatWzrUOZ3N28ZA_xjxh5WET';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-async function upsertAtomos() {
+async function updatePrice() {
   const row = {
     id: 15,
-    name: 'Atomos Ninja V 5" 4K HDR + Pack Accessoires (Occasion - Comme Neuf)',
-    price: 4500,
-    oldPrice: 7500,
+    name: 'Atomos Ninja V 5" 4K HDR + Pack Complet (SSD 500Go Lunchbox, Valise, Batterie, 2x HDMI) - Comme Neuf',
+    price: 5500,
+    oldPrice: 8500,
     rentPrice: null,
     category: 'occasion',
     image: '/images/products/atomos-ninja-v-occasion-kit.jpg',
@@ -20,15 +20,16 @@ async function upsertAtomos() {
       '/images/products/atomos-ninja-v-occasion-ssd.jpg'
     ],
     video: '',
-    desc: 'Atomos Ninja V 5 pouces 4K HDR 1000 nits en état comme neuf. Pack complet comprenant : moniteur Atomos Ninja V, valise rigide de transport, alimentation secteur + dummy battery DC coupler, adaptateurs secteur internationaux, chargeur batterie NP-F + 1 batterie, adaptateur SSD Lunchbox rouge, 2 câbles HDMI (Micro HDMI et Full HDMI) et support fixation cold shoe. Option SSD mSATA 500 Go disponible (+1 000 DH) ou pack complet à 5 500 DH.',
+    desc: 'Atomos Ninja V 5 pouces 4K HDR 1000 nits en état comme neuf (impeccable). Pack complet "prêt à tourner" comprenant : moniteur Atomos Ninja V, SSD mSATA 500 Go dans boîtier Lunchbox compact rouge, valise rigide de transport étanche, alimentation secteur officielle + dummy battery DC coupler, adaptateurs secteur internationaux, batterie NP-F + chargeur dédié, 2 câbles HDMI professionnels (Micro HDMI et Full HDMI) et rotule fixation cold shoe.',
     stars: 5,
     specs: [
       'État : Comme Neuf (Impeccable)',
       'Écran 5" 1000 nits HDR ProRes RAW',
+      'SSD 500 Go mSATA Lunchbox Rouge Inclus',
       'Valise Rigide de Transport Incluse',
-      'Pack Alimentation + Dummy Battery + Batterie NP-F',
-      '2 Câbles HDMI (Micro & Full)',
-      'Option SSD 500Go Lunchbox (+1 000 DH)',
+      'Alimentation Secteur + Dummy Battery DC Coupler',
+      'Batterie NP-F + Chargeur Inclus',
+      '2 Câbles HDMI (Micro HDMI & Full HDMI)',
       'Garantie 3 Mois GearShop'
     ],
     inStock: true,
@@ -37,10 +38,10 @@ async function upsertAtomos() {
 
   const { data, error } = await supabase.from('products gearshop').upsert([row]);
   if (error) {
-    console.error('Supabase error:', error);
+    console.error('Supabase update error:', error);
   } else {
-    console.log('Successfully upserted Atomos Ninja V to Supabase products gearshop table!');
+    console.log('Successfully updated Atomos Ninja V price to 5500 DH in Supabase DB!');
   }
 }
 
-upsertAtomos();
+updatePrice();
