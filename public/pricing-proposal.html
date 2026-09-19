@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GearShop.ma — Commercial Proposal & Engineering Pricing Dossier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --primary: #f59e0b;
+      --primary-glow: rgba(245, 158, 11, 0.15);
+      --accent: #3b82f6;
+      --success: #10b981;
+      --code-bg: #030712;
+    }
+    @media print {
+      body { background: #ffffff !important; color: #111827 !important; padding: 0 !important; }
+      .card { border: 1px solid #e5e7eb !important; background: #fafafa !important; box-shadow: none !important; break-inside: avoid; }
+      .appraisal-box { border: 1px solid #d97706 !important; background: #fffbeb !important; color: #111 !important; }
+      .stat-val { color: #111 !important; }
+      .stat-val.highlight { color: #b45309 !important; }
+      .no-print { display: none !important; }
+      th { background: #f3f4f6 !important; color: #111 !important; }
+      h1, h2 { color: #111 !important; -webkit-text-fill-color: initial !important; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--primary-glow);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 9999px;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 40%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+    .appraisal-box {
+      background: linear-gradient(135deg, #182234, #0f172a);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 16px;
+      padding: 24px 30px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .stat-label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 4px; }
+    .stat-val { font-size: 1.35rem; font-weight: 700; color: #fff; }
+    .stat-val.highlight { color: var(--primary); }
+    .stat-val.green { color: var(--success); }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 20px 0 10px 0;
+      color: #e5e7eb;
+    }
+    p, li {
+      color: #d1d5db;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    ul { padding-left: 20px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th {
+      background: #1e293b;
+      color: #f3f4f6;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .price-col {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: #f59e0b;
+      text-align: right;
+    }
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .pill-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .print-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary);
+      color: #000;
+      font-weight: 700;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+    }
+    .print-btn:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-badge">💼 Official Commercial Proposal & Scope of Work</div>
+    <h1>GearShop.ma — Commercial Pricing & Engineering Deliverables</h1>
+    <p class="subtitle">Turnkey Distributed E-Commerce Infrastructure for Camera, Cinema & Optical Equipment in Morocco</p>
+
+    <div class="appraisal-box">
+      <div>
+        <div class="stat-label">Project Scope</div>
+        <div class="stat-val">Turnkey 10-Module Platform</div>
+      </div>
+      <div>
+        <div class="stat-label">Catalog & Routes</div>
+        <div class="stat-val green">280 SKUs / 356 URLs</div>
+      </div>
+      <div>
+        <div class="stat-label">Engineering Effort</div>
+        <div class="stat-val">420 Senior Hours</div>
+      </div>
+      <div>
+        <div class="stat-label">Total Turnkey Investment</div>
+        <div class="stat-val highlight">$35,000 USD (350,000 MAD)</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Itemized Pricing Table -->
+    <div class="card">
+      <h2>1. Itemized Development Breakdown & Scope of Work</h2>
+      <p>Transparent cost schedule based on senior full-stack, cloud, and DevOps engineering deliverables:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Module / Deliverable</th>
+            <th>Key Deliverables & Specifications</th>
+            <th>Effort</th>
+            <th style="text-align: right;">Valuation (USD / MAD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>01</strong></td>
+            <td><strong>Front-End Architecture & Mobile UX</strong></td>
+            <td>React 19, TypeScript, horizontal touch carousels, responsive filter, progressive pagination (+12 items), Cart Drawer</td>
+            <td>95 hrs</td>
+            <td class="price-col">$8,500 / 85,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>02</strong></td>
+            <td><strong>Database Architecture & Persistence</strong></td>
+            <td>Supabase PostgreSQL schema, relational tables, custom indexing (`brand`, `category`, `price`), RLS security</td>
+            <td>35 hrs</td>
+            <td class="price-col">$3,200 / 32,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>03</strong></td>
+            <td><strong>Static Pre-Rendering (SSG) Engine</strong></td>
+            <td>Build-time Node.js pre-render pipeline, 356 static HTML files, client hydration handling, zero-lag crawler delivery</td>
+            <td>45 hrs</td>
+            <td class="price-col">$4,000 / 40,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>04</strong></td>
+            <td><strong>Serverless Microservices & Tracking</strong></td>
+            <td><code>/api/send-email</code> (Resend B2B quotation engine), <code>/api/meta-capi</code> (Meta Conversions API with SHA-256), AI JSON feeds</td>
+            <td>40 hrs</td>
+            <td class="price-col">$3,800 / 38,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>05</strong></td>
+            <td><strong>360° Technical SEO & GEO Infrastructure</strong></td>
+            <td>Schema.org v14.0 JSON-LD, self-referential canonical trees, automated sitemap (356 URLs), Moroccan city landing hubs</td>
+            <td>45 hrs</td>
+            <td class="price-col">$4,200 / 42,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>06</strong></td>
+            <td><strong>Generative Engine Optimization (GEO / AI)</strong></td>
+            <td>Dedicated <code>/llms.txt</code> and <code>/llms-full.txt</code> (375 KB) AI indexing pipeline, AI crawler directives</td>
+            <td>25 hrs</td>
+            <td class="price-col">$2,500 / 25,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>07</strong></td>
+            <td><strong>Google Merchant Center Feed Engine</strong></td>
+            <td>Automated RSS 2.0 XML generator, attribute mapping (MAD, condition, stock, tax), 100% verified local WebP assets</td>
+            <td>30 hrs</td>
+            <td class="price-col">$2,800 / 28,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>08</strong></td>
+            <td><strong>Catalog Assembly & Asset Pipeline</strong></td>
+            <td>280 verified SKUs across 12 brands, specs extraction, WebP image processing, automated fallback routing</td>
+            <td>50 hrs</td>
+            <td class="price-col">$4,500 / 45,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>09</strong></td>
+            <td><strong>Checkout & Omnichannel Flows</strong></td>
+            <td>1-Click WhatsApp deep-linking, dynamic free shipping calculation (≥ 500 MAD), B2B quote request form</td>
+            <td>30 hrs</td>
+            <td class="price-col">$2,700 / 27,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>10</strong></td>
+            <td><strong>Deployment, Security & Handover</strong></td>
+            <td>Edge CDN configuration, token isolation, cross-browser QA, comprehensive documentation, and executive whitepaper</td>
+            <td>25 hrs</td>
+            <td class="price-col">$2,300 / 23,000 MAD</td>
+          </tr>
+          <tr style="font-weight: 700; background: rgba(245, 158, 11, 0.1);">
+            <td colspan="3">TOTAL TURNKEY COMMERCIAL PACKAGE (ALL 10 MODULES)</td>
+            <td>420 hrs</td>
+            <td class="price-col" style="font-size: 1.15rem; color: var(--primary);">$35,000 USD (350,000 MAD)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: Payment Milestones -->
+    <div class="card">
+      <h2>2. Standard Phased Payment Schedule</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Milestone Phase</th>
+            <th>Deliverable Trigger</th>
+            <th>Percentage</th>
+            <th style="text-align: right;">Amount (USD / MAD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Milestone 1: Project Kickoff</strong></td>
+            <td>Architecture Blueprint, Database Schemas, Core Frontend Layout</td>
+            <td>40%</td>
+            <td class="price-col">$14,000 / 140,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>Milestone 2: Catalog & Engine</strong></td>
+            <td>280 SKUs Populated, SSG Pre-rendering Engine, Serverless Email & Meta APIs</td>
+            <td>40%</td>
+            <td class="price-col">$14,000 / 140,000 MAD</td>
+          </tr>
+          <tr>
+            <td><strong>Milestone 3: Launch & Handover</strong></td>
+            <td>Google Merchant Feed live, SEO/GEO verification, full documentation, Git transfer</td>
+            <td>20%</td>
+            <td class="price-col">$7,000 / 70,000 MAD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 3: SLA Maintenance Retainer -->
+    <div class="card">
+      <h2>3. Optional Post-Launch SLA Maintenance & Growth Retainers</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Service Level</th>
+            <th>Inclusions & Scope</th>
+            <th style="text-align: right;">Monthly Fee (USD / MAD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Standard Care</strong></td>
+            <td>Monthly database backups, Edge CDN uptime monitoring, up to 20 new SKU additions/mo</td>
+            <td class="price-col">$650 / 6,500 MAD / mo</td>
+          </tr>
+          <tr>
+            <td><strong>Enterprise Growth</strong></td>
+            <td>Everything in Standard Care + Google Merchant feed monitoring, Meta CAPI maintenance, weekly LLM knowledge updates, up to 50 new SKU additions/mo, priority 24/7 SLA</td>
+            <td class="price-col">$1,200 / 12,000 MAD / mo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <button class="print-btn no-print" onclick="window.print()">
+    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+    Save as PDF / Print Proposal
+  </button>
+</body>
+</html>
