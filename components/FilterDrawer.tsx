@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { FilterState } from './ProductFilters';
 import { Product } from '../App';
-import { extractProductAttributes } from '../src/utils/productMetadata';
+import { extractProductAttributes, smartFilterUpdate } from '../src/utils/productMetadata';
 
 interface FilterDrawerProps {
   isOpen: boolean;
@@ -52,17 +52,18 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
       brand: 'all',
       lensType: 'all',
       filterDiameter: undefined,
+      productGroup: undefined,
       priceRange: [0, 100000],
       inStockOnly: false,
       sortBy: 'default',
     });
   };
 
-  const brands = Array.from(
-    new Set(
+  const brands: string[] = Array.from(
+    new Set<string>(
       products
         .map((p) => extractProductAttributes(p).brand)
-        .filter((b) => b && b !== 'Autre')
+        .filter((b): b is string => Boolean(b) && b !== 'Autre' && b !== 'Équipement Pro')
     )
   ).sort();
 
@@ -139,10 +140,11 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                       key={item.id}
                       type="button"
                       onClick={() =>
-                        onFilterChange({
-                          ...filters,
-                          productGroup: item.id === 'all' ? undefined : (item.id as any),
-                        })
+                        onFilterChange(
+                          smartFilterUpdate(filters, {
+                            productGroup: item.id === 'all' ? undefined : (item.id as any),
+                          })
+                        )
                       }
                       className={`min-h-[44px] px-3 py-2.5 rounded-xl border text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
                         isActive
@@ -176,10 +178,11 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                       key={item.id}
                       type="button"
                       onClick={() =>
-                        onFilterChange({
-                          ...filters,
-                          lensType: item.id === 'all' ? 'all' : item.id,
-                        })
+                        onFilterChange(
+                          smartFilterUpdate(filters, {
+                            lensType: item.id === 'all' ? 'all' : item.id as any,
+                          })
+                        )
                       }
                       className={`w-full min-h-[44px] px-4 py-2.5 rounded-xl border text-xs font-bold flex items-center justify-between transition cursor-pointer ${
                         isActive
@@ -203,7 +206,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
               <div className="space-y-1.5">
                 <button
                   type="button"
-                  onClick={() => onFilterChange({ ...filters, category: 'all' })}
+                  onClick={() => onFilterChange(smartFilterUpdate(filters, { category: 'all' }))}
                   className={`w-full min-h-[44px] px-4 py-2 rounded-xl text-xs font-bold text-left flex items-center justify-between transition cursor-pointer ${
                     filters.category === 'all'
                       ? 'bg-red-50 text-red-700 border border-red-200 dark:bg-red-950/40 dark:text-red-400 dark:border-red-900'
@@ -228,7 +231,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                       <button
                         key={cat}
                         type="button"
-                        onClick={() => onFilterChange({ ...filters, category: cat })}
+                        onClick={() => onFilterChange(smartFilterUpdate(filters, { category: cat }))}
                         className={`w-full min-h-[44px] px-4 py-2 rounded-xl text-xs font-bold text-left flex items-center justify-between transition cursor-pointer ${
                           isActive
                             ? 'bg-red-50 text-red-700 border border-red-200 dark:bg-red-950/40 dark:text-red-400 dark:border-red-900'
@@ -251,7 +254,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
-                  onClick={() => onFilterChange({ ...filters, mount: 'all' })}
+                  onClick={() => onFilterChange(smartFilterUpdate(filters, { mount: 'all' }))}
                   className={`min-h-[44px] px-3 py-2 rounded-xl border text-xs font-bold transition cursor-pointer ${
                     filters.mount === 'all'
                       ? 'bg-red-600 text-white border-red-600'
@@ -266,7 +269,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                     <button
                       key={m}
                       type="button"
-                      onClick={() => onFilterChange({ ...filters, mount: m })}
+                      onClick={() => onFilterChange(smartFilterUpdate(filters, { mount: m }))}
                       className={`min-h-[44px] px-3 py-2 rounded-xl border text-xs font-bold transition cursor-pointer ${
                         isActive
                           ? 'bg-red-600 text-white border-red-600'
@@ -289,7 +292,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                 <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
-                    onClick={() => onFilterChange({ ...filters, brand: 'all' })}
+                    onClick={() => onFilterChange(smartFilterUpdate(filters, { brand: 'all' }))}
                     className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-bold border transition cursor-pointer ${
                       filters.brand === 'all'
                         ? 'bg-red-600 text-white border-red-600'
@@ -304,7 +307,7 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
                       <button
                         key={b}
                         type="button"
-                        onClick={() => onFilterChange({ ...filters, brand: b })}
+                        onClick={() => onFilterChange(smartFilterUpdate(filters, { brand: b }))}
                         className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-bold border transition cursor-pointer ${
                           isActive
                             ? 'bg-red-600 text-white border-red-600'

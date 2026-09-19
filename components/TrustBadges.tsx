@@ -25,13 +25,13 @@ const TrustBadges: React.FC = () => {
   ];
 
   return (
-    <section className="py-6 md:py-8 bg-gray-50/70 border-y border-gray-200/80" aria-label="Engagements et Garanties GearShop">
+    <section className="py-5 md:py-7 bg-white border-y border-gray-100" aria-label="Engagements et Garanties GearShop">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
           {badges.map((badge, index) => (
-            <div key={index} className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 p-3 rounded-xl bg-white border border-gray-200/70 shadow-2xs hover:shadow-sm transition">
-              <div className="w-11 h-11 rounded-full bg-red-50 text-red-600 flex items-center justify-center shrink-0 border border-red-100">
-                <i className={`fa-solid ${badge.icon} text-lg`} aria-hidden="true" />
+            <div key={index} className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 p-3.5 rounded-xl bg-white border border-gray-100 shadow-2xs hover:shadow-xs hover:border-red-100 transition">
+              <div className="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center shrink-0 border border-red-100/80">
+                <i className={`fa-solid ${badge.icon} text-base`} aria-hidden="true" />
               </div>
               <div className="min-w-0">
                 <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">

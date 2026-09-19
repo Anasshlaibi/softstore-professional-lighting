@@ -250,7 +250,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                 key={cat.id}
                 type="button"
                 onClick={() => handleCategoryClick(cat)}
-                className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-gray-50 hover:bg-red-50/50 active:scale-[0.98] border border-gray-200/90 hover:border-red-500/50 transition duration-150 group text-center cursor-pointer shadow-2xs hover:shadow-md min-w-[125px] sm:min-w-[140px] lg:min-w-0 flex-1 snap-start min-h-[110px] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-white hover:bg-red-50/40 active:scale-[0.98] border border-gray-200/80 hover:border-red-500/50 transition duration-150 group text-center cursor-pointer shadow-2xs hover:shadow-xs min-w-[125px] sm:min-w-[140px] lg:min-w-0 flex-1 snap-start min-h-[110px] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                 aria-label={`Rayon ${cat.name}`}
               >
                 <div className="w-14 h-14 rounded-lg bg-white p-1.5 mb-2 flex items-center justify-center border border-gray-100 group-hover:scale-105 transition duration-150 shadow-2xs shrink-0 overflow-hidden relative">

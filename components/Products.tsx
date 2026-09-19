@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 import { FilterState } from './ProductFilters';
 import CatalogSidebar from './CatalogSidebar';
 import FilterDrawer from './FilterDrawer';
-import { extractProductAttributes } from '../src/utils/productMetadata';
+import { extractProductAttributes, isProductMatchingCategory, smartFilterUpdate } from '../src/utils/productMetadata';
 import { useCart } from '../src/context/CartContext';
 import richDescriptions from '../src/data/richDescriptions.json';
 
@@ -83,14 +83,14 @@ const Products: React.FC<ProductsProps> = ({
   // Handle incoming props changes (e.g. from Hero category or brand clicks)
   useEffect(() => {
     if (initialCategory && initialCategory !== 'all') {
-      setFilters((prev) => ({ ...prev, category: initialCategory }));
+      setFilters((prev) => smartFilterUpdate(prev, { category: initialCategory }));
       onCategoryConsumed?.();
     }
   }, [initialCategory, onCategoryConsumed]);
 
   useEffect(() => {
     if (initialBrand && initialBrand !== 'all') {
-      setFilters((prev) => ({ ...prev, brand: initialBrand }));
+      setFilters((prev) => smartFilterUpdate(prev, { brand: initialBrand }));
       onBrandConsumed?.();
     }
   }, [initialBrand, onBrandConsumed]);
@@ -148,103 +148,9 @@ const Products: React.FC<ProductsProps> = ({
     }
 
     if (filters.category !== 'all') {
-      const catLower = filters.category.toLowerCase();
       filtered = filtered.filter((p) => {
-        const pCatLower = (p.category || '').toLowerCase();
-        const pNameLower = (p.name || '').toLowerCase();
         const attr = extractProductAttributes(p);
-
-        if (pCatLower === catLower) return true;
-
-        if (catLower.includes('appareil') || catLower.includes('caméra') || catLower.includes('camera')) {
-          return (
-            attr.product_type === 'camera' ||
-            pCatLower.includes('appareil') ||
-            pCatLower.includes('camera') ||
-            pCatLower.includes('caméra') ||
-            pCatLower.includes('boîtier')
-          );
-        }
-        if (catLower.includes('objectif') || catLower.includes('lens')) {
-          return attr.product_type === 'lens' || pCatLower.includes('lens') || pCatLower.includes('objectif');
-        }
-        if (catLower.includes('éclairage') || catLower.includes('eclairage') || catLower.includes('flash') || catLower.includes('light')) {
-          return (
-            attr.product_type === 'light' ||
-            pCatLower.includes('flash') ||
-            pCatLower.includes('tube led') ||
-            pCatLower.includes('lumière') ||
-            pCatLower.includes('studio') ||
-            pCatLower.includes('portable') ||
-            pCatLower.includes('éclairage')
-          );
-        }
-        if (catLower.includes('stabilisateur') || catLower.includes('trépied') || catLower.includes('trepied') || catLower.includes('gimbal')) {
-          return (
-            pCatLower.includes('stabilisateur') ||
-            pCatLower.includes('trépied') ||
-            pCatLower.includes('trepied') ||
-            pNameLower.includes('ronin') ||
-            pNameLower.includes('rs3') ||
-            pNameLower.includes('rs4') ||
-            pNameLower.includes('gimbal') ||
-            pNameLower.includes('tripod') ||
-            pNameLower.includes('monopod')
-          );
-        }
-        if (catLower.includes('audio') || catLower.includes('micro')) {
-          return (
-            attr.product_type === 'audio' ||
-            pCatLower.includes('microphone') ||
-            pCatLower.includes('casque') ||
-            pCatLower.includes('intercom') ||
-            pCatLower.includes('audio')
-          );
-        }
-        if (catLower.includes('filtr')) {
-          return (
-            attr.product_type === 'filter' ||
-            pCatLower.includes('filtr') ||
-            pNameLower.includes('filter') ||
-            pNameLower.includes('filtre') ||
-            pNameLower.includes('cpl') ||
-            pNameLower.includes('vnd')
-          );
-        }
-        if (catLower.includes('cage') || catLower.includes('rigging')) {
-          return (
-            pCatLower.includes('cage') ||
-            pCatLower.includes('rigging') ||
-            pNameLower.includes('cage') ||
-            pNameLower.includes('matte box') ||
-            pNameLower.includes('support') ||
-            pNameLower.includes('smallrig')
-          );
-        }
-        if (catLower.includes('trépied') || catLower.includes('trepied') || catLower.includes('tripod')) {
-          return (
-            pCatLower.includes('trépied') ||
-            pCatLower.includes('trepied') ||
-            pNameLower.includes('trépied') ||
-            pNameLower.includes('trepied') ||
-            pNameLower.includes('tripod') ||
-            pNameLower.includes('monopod')
-          );
-        }
-        if (catLower.includes('sac') || catLower.includes('accessoire') || catLower.includes('accessories')) {
-          return (
-            pCatLower.includes('sac') ||
-            pCatLower.includes('valise') ||
-            pCatLower.includes('cage') ||
-            pCatLower.includes('accessoire') ||
-            pCatLower.includes('accessor') ||
-            pCatLower.includes('carte') ||
-            pCatLower.includes('batterie') ||
-            attr.product_type === 'accessory' ||
-            attr.product_type === 'adapter'
-          );
-        }
-        return false;
+        return isProductMatchingCategory(p, filters.category, attr);
       });
     }
 
@@ -302,78 +208,52 @@ const Products: React.FC<ProductsProps> = ({
       (p) => p.price >= filters.priceRange[0] && p.price <= filters.priceRange[1]
     );
 
-    // Intelligent E-Commerce Merchandising Sort: Flagship Cameras & Cinema Gear FIRST
-    const getProductPriorityScore = (p: Product): number => {
-      const attr = extractProductAttributes(p);
-      const nameL = (p.name || '').toLowerCase();
-      const catL = (p.category || '').toLowerCase();
+    // Curated rich audiovisual mix: DJI Osmo Pocket, Cameras, 7Artisans 135mm, Cinema Lenses, Photo Lenses, Bags, Filters & Lights
+    const featuredBestsellers = [
+      'DJI Osmo Pocket 4 Pro',
+      'Sony Alpha 7 IV Kit + Objectif 28-70mm',
+      'AF135mm F1.8 Sony (E Mount) - Black',
+      'Sony Cinema Line FX30',
+      'Vanguard Sac à Dos Photo VEO GO 42M Noir',
+      '77mm True Color VND6-9 Filter - Black',
+      'DJI Osmo Pocket 3 Creator Combo',
+      '35mm T2.0 Nikon (Z Mount) - Black',
+      'Sony FE 50mm f/1.8',
+      'K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)',
+      'Canon EOS R50 + Objectif RF-S 18-45mm IS STM',
+      'Vanguard Sac Photo VEO SELECT 22S Noir',
+      'AF135mm F1.8 Nikon (Z Mount) - Black',
+      'YM 350',
+      '55mm 1/8 Black Mist Filter - Black',
+      'K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires',
+      'Canon RF 50MM F1.8 STM',
+      'Insta360 Flow 2 Standard Bundle / Summit White CINSABQA',
+      '50mm T2.0 Sony (E Mount) - Black',
+      'Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir',
+      'YB-300R',
+      'Nikon Z30 Kit + Objectif Nikkor Z DX 16-50mm f/3.5-6.3 VR',
+      'Nikon Nikkor Z 50mm f/1.8 S',
+      'Sony FE 24-70mm F2.8 GM II',
+      'AF40mm F2.5 Sony (E Mount) - Black',
+      'Autofocus adapter for Canon EF - Nikon Z - Black',
+      '50mm F1.2 Nikon (Z Mount) - Black',
+      'Canon RF 35mm f/1.8 Macro IS STM',
+      'Sony FE 85mm F/1.4 GM',
+      'AF35mm F1.8 Sony (E Mount) - Black',
+      'AF35mm F1.8 Nikon (Z Mount) - Black',
+      'AF50mm F1.8 Sony (E Mount) - Black',
+      'AF50mm F1.8 Nikon (Z Mount) - Black',
+      'AF24mm F1.8 Sony (E Mount) - Black',
+      'Sony FE 24-105mm F4 G OSS',
+      'Canon RF 100-400mm F5.6-8 IS USM',
+      'PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver'
+    ];
 
-      // Flagship Cameras & Video Boîtiers (Top Priority)
-      if (
-        attr.product_type === 'camera' ||
-        catL.includes('appareil photo') ||
-        catL.includes('caméra') ||
-        catL.includes('camera') ||
-        nameL.startsWith('nikon z') ||
-        nameL.startsWith('nikon zr') ||
-        nameL.startsWith('sony alpha') ||
-        nameL.startsWith('canon eos')
-      ) {
-        if (
-          nameL.includes('alpha 7') ||
-          nameL.includes('fx3') ||
-          nameL.includes('r5') ||
-          nameL.includes('r6') ||
-          nameL.includes('zr') ||
-          nameL.includes('z6') ||
-          nameL.includes('z9') ||
-          nameL.includes('pocket 3')
-        ) {
-          return 100;
-        }
-        return 90;
-      }
-
-      // Premium & Cinema Lenses (Sony GM, Canon RF L, Nikkor S, 7Artisans Cine)
-      if (attr.product_type === 'lens') {
-        if (
-          attr.lens_type === 'cinema' ||
-          nameL.includes('gm') ||
-          nameL.includes(' f/1.2') ||
-          nameL.includes(' f/1.4') ||
-          nameL.includes(' f/2.8')
-        ) {
-          return 80;
-        }
-        return 70;
-      }
-
-      // Pro Studio Lighting & Flashes (Godox)
-      if (attr.product_type === 'light' || catL.includes('flash') || catL.includes('studio') || catL.includes('éclairage')) {
-        return 65;
-      }
-
-      // Stabilizers & Heavy Duty Tripods (DJI, Vanguard)
-      if (catL.includes('stabilisateur') || catL.includes('trépied') || nameL.includes('osmo') || nameL.includes('veo') || nameL.includes('alta')) {
-        return 60;
-      }
-
-      // Wireless Audio & Intercoms (Hollyland, Røde)
-      if (attr.product_type === 'audio' || nameL.includes('lark') || nameL.includes('solidcom')) {
-        return 55;
-      }
-
-      // Cages & Cinema Rigging (SmallRig)
-      if (catL.includes('cage') || nameL.includes('smallrig') || nameL.includes('matte box')) {
-        return 50;
-      }
-
-      // Storage & Filters (K&F Concept, PNY, Sony CFexpress)
-      if (attr.product_type === 'filter' || catL.includes('carte') || catL.includes('batterie')) {
-        return 40;
-      }
-
-      return 30;
+    const getBestsellerIndex = (p: Product): number => {
+      const pName = (p.name || '').trim().toLowerCase();
+      return featuredBestsellers.findIndex(
+        (b) => b.toLowerCase() === pName || pName.includes(b.toLowerCase())
+      );
     };
 
     const sorted = [...filtered].sort((a, b) => {
@@ -386,17 +266,40 @@ const Products: React.FC<ProductsProps> = ({
           return (b.id || 0) - (a.id || 0);
         case 'default':
         default: {
-          const scoreA = getProductPriorityScore(a);
-          const scoreB = getProductPriorityScore(b);
-          if (scoreA !== scoreB) {
-            return scoreB - scoreA;
-          }
-          return (b.price || 0) - (a.price || 0);
+          // 1. Featured Bestsellers Showcase First
+          const bIndexA = getBestsellerIndex(a);
+          const bIndexB = getBestsellerIndex(b);
+          if (bIndexA !== -1 && bIndexB !== -1) return bIndexA - bIndexB;
+          if (bIndexA !== -1) return -1;
+          if (bIndexB !== -1) return 1;
+
+          // 2. In-Stock and priced items take priority over 0-priced / out of stock
+          const hasPriceA = (a.price || 0) > 0 ? 1 : 0;
+          const hasPriceB = (b.price || 0) > 0 ? 1 : 0;
+          if (hasPriceA !== hasPriceB) return hasPriceB - hasPriceA;
+
+          if (a.inStock !== b.inStock) return a.inStock ? -1 : 1;
+
+          // 3. Balanced Price-Tier Interleaving (sweet-spot accessibility first, not just 38,000 DH first)
+          const getPriceTier = (p: Product) => {
+            const price = p.price || 0;
+            if (price >= 1500 && price <= 8000) return 3; // Moroccan Sweet Spot (high conversion)
+            if (price > 8000 && price <= 20000) return 2; // Mid-Pro Gear
+            if (price > 20000) return 1; // Flagships
+            return 0; // Budget & Accessories
+          };
+
+          const tierA = getPriceTier(a);
+          const tierB = getPriceTier(b);
+          if (tierA !== tierB) return tierB - tierA;
+
+          // Stable secondary ordering by ID/rating
+          return (b.id || 0) - (a.id || 0);
         }
       }
     });
 
-    return sorted.sort((a, b) => (a.inStock === b.inStock ? 0 : a.inStock ? -1 : 1));
+    return sorted;
   }, [products, debouncedSearchQuery, filters]);
 
   useEffect(() => {
@@ -570,73 +473,73 @@ const Products: React.FC<ProductsProps> = ({
               id: 'all',
               label: 'Tous les Produits',
               isActive: filters.category === 'all' && !filters.productGroup && (filters.lensType === 'all' || !filters.lensType),
-              onClick: () => setFilters({ ...filters, category: 'all', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'all', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'cameras',
               label: '📷 Appareils Photo & Caméras',
               isActive: filters.category.toLowerCase().includes('appareil') || filters.category.toLowerCase().includes('caméra'),
-              onClick: () => setFilters({ ...filters, category: 'Appareil Photo', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Appareil Photo', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'lenses',
               label: '🔍 Objectifs Photo',
               isActive: (filters.category.toLowerCase().includes('objectif') || filters.category === 'lenses') && (filters.lensType === 'all' || !filters.lensType),
-              onClick: () => setFilters({ ...filters, category: 'Objectifs', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Objectifs', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'cinema',
               label: '🎬 Lentilles Cinéma',
               isActive: filters.lensType === 'cinema',
-              onClick: () => setFilters({ ...filters, category: 'Objectifs', lensType: 'cinema', productGroup: undefined }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Objectifs', lensType: 'cinema', productGroup: undefined })),
             },
             {
               id: 'lighting',
               label: '💡 Éclairage & Flash Godox',
               isActive: filters.category.toLowerCase().includes('éclairage') || filters.category.toLowerCase().includes('flash') || filters.category === 'studio',
-              onClick: () => setFilters({ ...filters, category: 'Éclairage & Flash', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Éclairage & Flash', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'rigging',
               label: '🧰 Cages & Rigging SmallRig',
               isActive: filters.brand.toLowerCase() === 'smallrig' || filters.category.toLowerCase().includes('cage'),
-              onClick: () => setFilters({ ...filters, category: 'Sacs & Accessoires', brand: 'SmallRig', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Sacs & Accessoires', brand: 'SmallRig', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'stabilizers',
               label: '📐 Stabilisateurs & Trépieds',
               isActive: filters.category.toLowerCase().includes('stabilisateur') || filters.category.toLowerCase().includes('trépied'),
-              onClick: () => setFilters({ ...filters, category: 'Stabilisateurs & Trépieds', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Stabilisateurs & Trépieds', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'audio',
               label: '🎙️ Audio & Micros Hollyland',
               isActive: filters.category.toLowerCase().includes('audio') || filters.category.toLowerCase().includes('micro'),
-              onClick: () => setFilters({ ...filters, category: 'Audio & Micros', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Audio & Micros', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'filters',
               label: '🔘 Filtres ND & CPL',
               isActive: filters.category.toLowerCase().includes('filtr'),
-              onClick: () => setFilters({ ...filters, category: 'Filtres', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Filtres', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'bags',
               label: '🎒 Sacs & Valises Vanguard',
               isActive: filters.brand.toLowerCase() === 'vanguard',
-              onClick: () => setFilters({ ...filters, category: 'Sacs & Accessoires', brand: 'Vanguard', productGroup: undefined, lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'Sacs & Accessoires', brand: 'Vanguard', productGroup: undefined, lensType: 'all' })),
             },
             {
               id: 'occasions',
               label: '♻️ Occasions',
               isActive: filters.productGroup === 'used',
-              onClick: () => setFilters({ ...filters, category: 'all', productGroup: 'used', lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'all', productGroup: 'used', lensType: 'all' })),
             },
             {
               id: 'location',
               label: '🏷️ Location',
               isActive: filters.productGroup === 'rental',
-              onClick: () => setFilters({ ...filters, category: 'all', productGroup: 'rental', lensType: 'all' }),
+              onClick: () => setFilters(smartFilterUpdate(filters, { category: 'all', productGroup: 'rental', lensType: 'all' })),
             },
           ].map((pill) => (
             <button
@@ -655,7 +558,7 @@ const Products: React.FC<ProductsProps> = ({
         </div>
 
         {/* ── 4. Unified Cohesive Controls Bar with Active Filter Chips ───────── */}
-        <div className="mb-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 bg-gray-50/70 p-3 sm:p-4 rounded-2xl border border-gray-200/90 shadow-2xs">
+        <div className="mb-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 bg-white p-3 sm:p-4 rounded-2xl border border-gray-200 shadow-2xs">
           
           {/* Left: Product Count & Removable Active Filter Chips */}
           <div className="flex flex-wrap items-center gap-2">
@@ -684,7 +587,7 @@ const Products: React.FC<ProductsProps> = ({
                 <span>{filters.category}</span>
                 <button
                   type="button"
-                  onClick={() => setFilters({ ...filters, category: 'all' })}
+                  onClick={() => setFilters(smartFilterUpdate(filters, { category: 'all' }))}
                   className="ml-1 text-gray-400 hover:text-red-600 font-black text-sm cursor-pointer focus:outline-none"
                   aria-label={`Supprimer le filtre ${filters.category}`}
                 >
@@ -699,7 +602,7 @@ const Products: React.FC<ProductsProps> = ({
                 <span>{filters.brand}</span>
                 <button
                   type="button"
-                  onClick={() => setFilters({ ...filters, brand: 'all' })}
+                  onClick={() => setFilters(smartFilterUpdate(filters, { brand: 'all' }))}
                   className="ml-1 text-gray-400 hover:text-red-600 font-black text-sm cursor-pointer focus:outline-none"
                   aria-label={`Supprimer le filtre marque ${filters.brand}`}
                 >
@@ -714,7 +617,7 @@ const Products: React.FC<ProductsProps> = ({
                 <span>Monture : {filters.mount}</span>
                 <button
                   type="button"
-                  onClick={() => setFilters({ ...filters, mount: 'all' })}
+                  onClick={() => setFilters(smartFilterUpdate(filters, { mount: 'all' }))}
                   className="ml-1 text-gray-400 hover:text-red-600 font-black text-sm cursor-pointer focus:outline-none"
                   aria-label={`Supprimer le filtre monture ${filters.mount}`}
                 >
@@ -725,13 +628,34 @@ const Products: React.FC<ProductsProps> = ({
 
             {filters.lensType && filters.lensType !== 'all' && (
               <span className="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg border border-red-200 flex items-center gap-1.5 text-xs font-bold shadow-2xs">
-                <i className="fa-solid fa-film text-[10px] text-red-600" aria-hidden="true" />
-                <span>{filters.lensType === 'cinema' ? 'Cinéma T-Stop' : filters.lensType}</span>
+                <i className="fa-solid fa-circle-dot text-[10px] text-red-600" aria-hidden="true" />
+                <span>
+                  {filters.lensType === 'cinema'
+                    ? 'Cinéma (T-Stop)'
+                    : filters.lensType === 'autofocus'
+                    ? 'Autofocus (AF)'
+                    : 'Manuel Classique'}
+                </span>
                 <button
                   type="button"
-                  onClick={() => setFilters({ ...filters, lensType: 'all' })}
+                  onClick={() => setFilters(smartFilterUpdate(filters, { lensType: 'all' }))}
                   className="ml-1 text-red-400 hover:text-red-600 font-black text-sm cursor-pointer focus:outline-none"
                   aria-label="Supprimer le filtre type d'objectif"
+                >
+                  ×
+                </button>
+              </span>
+            )}
+
+            {filters.filterDiameter && (
+              <span className="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg border border-red-200 flex items-center gap-1.5 text-xs font-bold shadow-2xs">
+                <i className="fa-solid fa-circle-half-stroke text-[10px] text-red-600" aria-hidden="true" />
+                <span>Diamètre : {filters.filterDiameter}</span>
+                <button
+                  type="button"
+                  onClick={() => setFilters(smartFilterUpdate(filters, { filterDiameter: undefined }))}
+                  className="ml-1 text-red-400 hover:text-red-600 font-black text-sm cursor-pointer focus:outline-none"
+                  aria-label="Supprimer le filtre diamètre"
                 >
                   ×
                 </button>

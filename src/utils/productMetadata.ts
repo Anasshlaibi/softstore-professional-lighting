@@ -1,4 +1,5 @@
 import { Product } from '../../App';
+import { FilterState } from '../../components/ProductFilters';
 
 export interface ProductAttributes {
   product_type: 'lens' | 'light' | 'camera' | 'filter' | 'adapter' | 'audio' | 'accessory' | 'other';
@@ -75,7 +76,7 @@ export function extractProductAttributes(p: Product): ProductAttributes {
     // Explicit non-lens indicators
     if (nameLower.includes('adapter') || nameLower.includes('adaptateur') || nameLower.includes('bague d\'adaptation')) {
       product_type = 'adapter';
-    } else if (nameLower.includes('filter') || nameLower.includes('filtre') || nameLower.includes('vnd') || nameLower.includes('black mist') || nameLower.includes('uv filter') || nameLower.includes('cpl')) {
+    } else if (nameLower.includes('filter') || nameLower.includes('filtre') || nameLower.includes('vnd') || nameLower.includes('black mist') || nameLower.includes('uv filter') || nameLower.includes('cpl') || cat.includes('filtre')) {
       product_type = 'filter';
     } else if (cat.includes('studio') || cat.includes('éclairage') || cat.includes('eclairage') || cat.includes('portable') || cat.includes('flash') || cat.includes('tube led') || cat.includes('boite à lumière') || nameLower.includes('light') || nameLower.includes('spotlight') || nameLower.includes('led') || nameLower.includes('bkl') || nameLower.includes('softbox') || nameLower.includes('flash') || nameLower.includes('lux') || nameLower.includes('sl60') || nameLower.includes('godox')) {
       product_type = 'light';
@@ -85,7 +86,7 @@ export function extractProductAttributes(p: Product): ProductAttributes {
       product_type = 'camera';
     } else if (cat.includes('sac') || cat.includes('valise') || cat.includes('trépied') || cat.includes('trepied') || cat.includes('stabilisateur') || cat.includes('cage') || cat.includes('rig') || cat.includes('batterie') || cat.includes('carte') || cat.includes('accessories') || cat.includes('accessoire') || nameLower.includes('tripod') || nameLower.includes('trépied') || nameLower.includes('battery') || nameLower.includes('batterie') || nameLower.includes('card') || nameLower.includes('carte') || nameLower.includes('cage') || nameLower.includes('smallrig') || nameLower.includes('vanguard')) {
       product_type = 'accessory';
-    } else if (cat.includes('lenses') || cat.includes('objectif') || /\b\d+(\.\d+)?\s*mm\b/i.test(name) || nameLower.includes('fisheye')) {
+    } else if (cat.includes('lenses') || cat.includes('lentilles') || cat.includes('objectif') || /\b\d+(\.\d+)?\s*mm\b/i.test(name) || nameLower.includes('fisheye')) {
       // Must be an actual lens
       product_type = 'lens';
     } else {
@@ -107,29 +108,42 @@ export function extractProductAttributes(p: Product): ProductAttributes {
       focus_type = lens_type === 'autofocus' ? 'autofocus' : 'manual';
     } else {
       // Robust Cinema detection:
-      // T-stop regex pattern: e.g. T2.0, T1.5, T2.1, T/2.0, T2
+      // T-stop regex pattern: e.g. T2.0, T1.5, T2.1, T/2.0, T2, T1.05, T2.9
       const tStopMatch = name.match(/\b[tT]\s*\/?\s*(\d+(\.\d+)?)\b/);
-      const hasCineKeyword = /\b(cine|ciné|cinema|cinéma|anamorphic|vision series|spectrum series|firefly)\b/i.test(fullText);
+      const hasCineKeyword = /\b(cine|ciné|cinema|cinéma|anamorphic|anamorphique|vision series|spectrum series|firefly|dzofilm|nanomorph|vespid|irix cine|blazar|great joy|cattach)\b/i.test(fullText);
+      const isCineCategory = cat.includes('cinéma') || cat.includes('cinema') || cat.includes('lentilles cinéma');
 
-      if (tStopMatch || hasCineKeyword) {
+      if (tStopMatch || hasCineKeyword || isCineCategory) {
         lens_type = 'cinema';
-        focus_type = 'manual'; // Most cine lenses in this tier are manual geared focus
+        focus_type = 'manual'; // Most cine lenses in this tier are geared manual focus
         if (tStopMatch) t_stop = `T${tStopMatch[1]}`;
       } else {
-        // Robust Autofocus detection
-        const hasAFKeyword = /\baf\b/i.test(name) ||
+        // Explicit AF indicators
+        const hasExplicitAF = /\baf\b/i.test(name) ||
                              /\baf\d+/i.test(name) ||
                              /autofocus/i.test(fullText) ||
                              /auto-focus/i.test(fullText) ||
+                             /\b(stm|usm|hsm|vxd|rxd|dg dn|dc dn|di iii|g master|\bgm\b|s-line|lm wr|linear motor)\b/i.test(fullText) ||
                              fullText.includes('mise au point automatique');
 
-        if (hasAFKeyword) {
+        // Explicit Manual indicators
+        const hasExplicitMF = /\b(mf|manual focus|mise au point manuelle|focus manuel)\b/i.test(fullText);
+
+        // Manual specialty brands (7Artisans, TTArtisan, Laowa, Voigtlander, Mitakon, AstrHori, etc.)
+        const pId = Number(p.id);
+        const isManualBrand = /\b(7artisans|sevenartisans|ttartisan|laowa|venus optics|mitakon|zhongyi|voigtländer|voigtlander|astrhori|kamlan|brightin star|pergear)\b/i.test(fullText) ||
+                              (pId === 10 || (pId >= 1000 && pId < 2000 && !hasExplicitAF));
+
+        if (hasExplicitAF) {
           lens_type = 'autofocus';
           focus_type = 'autofocus';
-        } else {
-          // Standard manual photography prime/zoom
+        } else if (hasExplicitMF || isManualBrand) {
           lens_type = 'manual';
           focus_type = 'manual';
+        } else {
+          // Standard modern digital photography lenses (Sony, Canon, Nikon, Fuji, Panasonic, Sigma, Tamron, etc.) default to Autofocus
+          lens_type = 'autofocus';
+          focus_type = 'autofocus';
         }
       }
     }
@@ -197,3 +211,200 @@ export function extractProductAttributes(p: Product): ProductAttributes {
     brand,
   };
 }
+
+/**
+ * Universal category matcher used across CatalogSidebar, Products, and FilterDrawer.
+ * Resolves both friendly display labels ('Appareils Photo', 'Objectifs', etc.) and raw DB categories.
+ */
+export function isProductMatchingCategory(
+  p: Product,
+  targetCategory: string,
+  providedAttr?: ProductAttributes
+): boolean {
+  if (!targetCategory || targetCategory === 'all') return true;
+  const catLower = targetCategory.toLowerCase();
+  const pCatLower = (p.category || '').toLowerCase();
+  const pNameLower = (p.name || '').toLowerCase();
+  const attr = providedAttr || extractProductAttributes(p);
+
+  if (pCatLower === catLower) return true;
+
+  if (catLower.includes('dji') || catLower.includes('gimbal')) {
+    return (
+      pNameLower.includes('dji') ||
+      pNameLower.includes('ronin') ||
+      pNameLower.includes('osmo') ||
+      pCatLower.includes('dji') ||
+      pCatLower.includes('gimbal') ||
+      pCatLower.includes('stabilisateur')
+    );
+  }
+
+  if (catLower.includes('appareil') || catLower.includes('caméra') || catLower.includes('camera')) {
+    return (
+      attr.product_type === 'camera' ||
+      pCatLower.includes('appareil') ||
+      pCatLower.includes('camera') ||
+      pCatLower.includes('caméra') ||
+      pCatLower.includes('boîtier') ||
+      pCatLower.includes('boitier') ||
+      pNameLower.includes('camera') ||
+      pNameLower.includes('caméra') ||
+      pNameLower.includes('alpha') ||
+      pNameLower.includes('eos') ||
+      pNameLower.includes('z5') ||
+      pNameLower.includes('z6') ||
+      pNameLower.includes('z7') ||
+      pNameLower.includes('z8') ||
+      pNameLower.includes('z9')
+    );
+  }
+
+  if (catLower.includes('objectif') || catLower.includes('lens')) {
+    return (
+      attr.product_type === 'lens' ||
+      pCatLower.includes('lens') ||
+      pCatLower.includes('objectif') ||
+      pCatLower.includes('lentille')
+    );
+  }
+
+  if (
+    catLower.includes('éclairage') ||
+    catLower.includes('eclairage') ||
+    catLower.includes('flash') ||
+    catLower.includes('light') ||
+    catLower.includes('studio')
+  ) {
+    return (
+      attr.product_type === 'light' ||
+      pCatLower.includes('flash') ||
+      pCatLower.includes('tube led') ||
+      pCatLower.includes('lumière') ||
+      pCatLower.includes('studio') ||
+      pCatLower.includes('portable') ||
+      pCatLower.includes('éclairage') ||
+      pCatLower.includes('eclairage')
+    );
+  }
+
+  if (
+    catLower.includes('stabilisateur') ||
+    catLower.includes('trépied') ||
+    catLower.includes('trepied')
+  ) {
+    return (
+      pCatLower.includes('stabilisateur') ||
+      pCatLower.includes('trépied') ||
+      pCatLower.includes('trepied') ||
+      pCatLower.includes('gimbal') ||
+      pNameLower.includes('ronin') ||
+      pNameLower.includes('rs3') ||
+      pNameLower.includes('rs4') ||
+      pNameLower.includes('tripod') ||
+      pNameLower.includes('monopod')
+    );
+  }
+
+  if (catLower.includes('audio') || catLower.includes('micro')) {
+    return (
+      attr.product_type === 'audio' ||
+      pCatLower.includes('microphone') ||
+      pCatLower.includes('casque') ||
+      pCatLower.includes('intercom') ||
+      pCatLower.includes('audio') ||
+      pNameLower.includes('micro') ||
+      pNameLower.includes('lark') ||
+      pNameLower.includes('wireless go')
+    );
+  }
+
+  if (catLower.includes('filtr')) {
+    return (
+      attr.product_type === 'filter' ||
+      pCatLower.includes('filtr') ||
+      pNameLower.includes('filter') ||
+      pNameLower.includes('filtre') ||
+      pNameLower.includes('cpl') ||
+      pNameLower.includes('vnd')
+    );
+  }
+
+  if (
+    catLower.includes('sac') ||
+    catLower.includes('accessoire') ||
+    catLower.includes('accessories') ||
+    catLower.includes('cage') ||
+    catLower.includes('rigging')
+  ) {
+    return (
+      pCatLower.includes('sac') ||
+      pCatLower.includes('valise') ||
+      pCatLower.includes('cage') ||
+      pCatLower.includes('accessoire') ||
+      pCatLower.includes('accessor') ||
+      pCatLower.includes('carte') ||
+      pCatLower.includes('batterie') ||
+      pCatLower.includes('adaptateur') ||
+      pCatLower.includes('bague') ||
+      attr.product_type === 'accessory' ||
+      attr.product_type === 'adapter'
+    );
+  }
+
+  return false;
+}
+
+/**
+ * Smart filter transition sanitizer.
+ * Prevents dead-end filter states (e.g. keeping 'lensType=manual' when switching to 'Éclairage',
+ * or keeping 'filterDiameter=77mm' when switching to 'Appareils Photo').
+ */
+export function smartFilterUpdate(
+  current: FilterState,
+  updates: Partial<FilterState>
+): FilterState {
+  const next: FilterState = { ...current, ...updates };
+
+  // 1. If category changed:
+  if (updates.category !== undefined && updates.category !== current.category) {
+    const isLenses = updates.category.toLowerCase().includes('objectif') || updates.category.toLowerCase().includes('lens');
+    const isFilters = updates.category.toLowerCase().includes('filtr');
+    const isCameras = updates.category.toLowerCase().includes('appareil') || updates.category.toLowerCase().includes('caméra');
+
+    // If switching away from lenses and not 'all', reset lensType
+    if (!isLenses && updates.category !== 'all') {
+      next.lensType = 'all';
+    }
+
+    // If switching away from filters, clear filterDiameter
+    if (!isFilters) {
+      next.filterDiameter = undefined;
+    }
+
+    // If switching away from cameras and lenses and not 'all', reset mount
+    if (!isCameras && !isLenses && updates.category !== 'all') {
+      next.mount = 'all';
+    }
+  }
+
+  // 2. If lensType changed:
+  if (updates.lensType && updates.lensType !== 'all') {
+    const isLenses = next.category.toLowerCase().includes('objectif') || next.category.toLowerCase().includes('lens');
+    if (!isLenses && next.category !== 'all') {
+      next.category = 'Objectifs';
+    }
+    next.filterDiameter = undefined;
+  }
+
+  // 3. If filterDiameter changed:
+  if (updates.filterDiameter) {
+    const isFilters = next.category.toLowerCase().includes('filtr');
+    if (!isFilters && next.category !== 'all') {
+      next.category = 'Filtres';
+    }
+  }
+
+  return next;
+}
+

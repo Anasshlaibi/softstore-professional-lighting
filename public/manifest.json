@@ -5,7 +5,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "lang": "fr",
   "scope": "/",
   "orientation": "portrait",
@@ -29,7 +29,7 @@
       "src": "/banner_7artisans.jpg",
       "sizes": "1280x720",
       "type": "image/jpeg",
-      "label": "Objectifs 7Artisans - SoftStore Maroc"
+      "label": "Objectifs & Matériel Photo Vidéo - GearShop Maroc"
     }
   ]
 }

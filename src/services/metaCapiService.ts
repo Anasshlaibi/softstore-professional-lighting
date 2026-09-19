@@ -58,7 +58,7 @@ export async function sendMetaCapiEvent(options: MetaCapiEventOptions): Promise<
 
     if (res.ok) {
       // Log event to Supabase logs table if user is authenticated
-      supabase.from('meta_capi_logs').insert([{
+      void supabase.from('meta_capi_logs').insert([{
         event_name: options.eventName,
         event_id: eventId,
         email: options.email || '',
@@ -66,9 +66,7 @@ export async function sendMetaCapiEvent(options: MetaCapiEventOptions): Promise<
         deal_value: options.value || 0,
         currency: options.currency || 'MAD',
         response_status: 'SUCCESS'
-      }]).catch(() => {
-        // silent catch if anonymous
-      });
+      }]);
     }
   } catch {
     // Graceful fallback on client

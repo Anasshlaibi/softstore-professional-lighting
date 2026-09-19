@@ -107,7 +107,7 @@ export const DjiOsmoPocket4PShowcase: React.FC<DjiShowcaseProps> = ({
                     onClick={onContactWhatsApp}
                     className="px-6 py-4 bg-slate-800/50 hover:bg-slate-700/80 text-white border border-slate-700 backdrop-blur-md font-semibold rounded-2xl transition-all transform hover:-translate-y-1 flex items-center gap-3 text-base"
                   >
-                    <i className="fa-brands fa-whatsapp text-emerald-400 text-lg" />
+                    <i className="fa-brands fa-whatsapp text-red-500 text-lg" />
                     WhatsApp
                   </button>
                 </div>
@@ -116,7 +116,7 @@ export const DjiOsmoPocket4PShowcase: React.FC<DjiShowcaseProps> = ({
               {/* Local Moroccan Trust Signals */}
               <div className="pt-6 flex flex-wrap gap-4 text-xs text-slate-400 border-t border-slate-800/80 mt-6">
                 <span className="flex items-center gap-1.5"><i className="fa-solid fa-truck-fast text-red-500" /> Livraison 24h Casablanca &amp; Villes du Maroc</span>
-                <span className="flex items-center gap-1.5"><i className="fa-solid fa-money-bill-wave text-emerald-400" /> Paiement à la réception (Cash)</span>
+                <span className="flex items-center gap-1.5"><i className="fa-solid fa-money-bill-wave text-red-500" /> Paiement à la réception (Cash)</span>
                 <span className="flex items-center gap-1.5"><i className="fa-solid fa-shield-check text-blue-400" /> Garantie 1 An Constructeur</span>
               </div>
             </ScrollReveal>

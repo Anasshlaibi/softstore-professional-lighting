@@ -46,10 +46,17 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
       const gallery = parseArraySafe(row.gallery);
       const specs = parseArraySafe(row.specs);
 
+      const id = Number(row.id) || (index + 1000); // fallback ID if missing
+      const name = String(row.name || '');
+      let price = Number(row.price) || 0;
+      if (id === 3001 || name.toLowerCase().includes('pocket 4 pro')) {
+        price = 8000;
+      }
+
       return {
-        id: Number(row.id) || (index + 1000), // fallback ID if missing
-        name: String(row.name || ''),
-        price: Number(row.price) || 0,
+        id: id,
+        name: name,
+        price: price,
         oldPrice: row.oldprice || row.oldPrice ? Number(row.oldprice || row.oldPrice) : undefined,
         rentPrice: row.rentprice || row.rentPrice ? Number(row.rentprice || row.rentPrice) : undefined,
         category: String(row.category || 'accessories'),
@@ -81,22 +88,45 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
       };
     });
 
-    // Featured products that should appear first on the homepage
+    // Curated rich audiovisual mix: DJI Osmo Pocket, Cameras, 7Artisans 135mm, Cinema Lenses, Photo Lenses, Bags, Filters & Lights
     const featuredNames = [
-      'AF135mm F1.8 Nikon (Z Mount) - Black',
-      '35mm T2.0 Nikon (Z Mount) - Black',
-      '50mm T2.0 Sony (E Mount) - Black',
-      '50mm F1.2 Nikon (Z Mount) - Black',
-      'AF40mm F2.5 Sony (E Mount) - Black',
-      'AF35mm F1.8 Nikon (Z Mount) - Black',
-      'AF35mm F1.8 Sony (E Mount) - Black',
-      '35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black',
-      'AF24mm F1.8 Sony (E Mount) - Black',
-      'AF50mm F1.8 Nikon (Z Mount) - Black',
-      'Autofocus adapter for Canon EF - Nikon Z - Black',
-      'PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver',
+      'DJI Osmo Pocket 4 Pro',
+      'Sony Alpha 7 IV Kit + Objectif 28-70mm',
+      'AF135mm F1.8 Sony (E Mount) - Black',
+      'Sony Cinema Line FX30',
+      'Vanguard Sac à Dos Photo VEO GO 42M Noir',
       '77mm True Color VND6-9 Filter - Black',
-      '55mm 1/8 Black Mist Filter - Black'
+      'DJI Osmo Pocket 3 Creator Combo',
+      '35mm T2.0 Nikon (Z Mount) - Black',
+      'Sony FE 50mm f/1.8',
+      'K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)',
+      'Canon EOS R50 + Objectif RF-S 18-45mm IS STM',
+      'Vanguard Sac Photo VEO SELECT 22S Noir',
+      'AF135mm F1.8 Nikon (Z Mount) - Black',
+      'YM 350',
+      '55mm 1/8 Black Mist Filter - Black',
+      'K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires',
+      'Canon RF 50MM F1.8 STM',
+      'Insta360 Flow 2 Standard Bundle / Summit White CINSABQA',
+      '50mm T2.0 Sony (E Mount) - Black',
+      'Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir',
+      'YB-300R',
+      'Nikon Z30 Kit + Objectif Nikkor Z DX 16-50mm f/3.5-6.3 VR',
+      'Nikon Nikkor Z 50mm f/1.8 S',
+      'Sony FE 24-70mm F2.8 GM II',
+      'AF40mm F2.5 Sony (E Mount) - Black',
+      'Autofocus adapter for Canon EF - Nikon Z - Black',
+      '50mm F1.2 Nikon (Z Mount) - Black',
+      'Canon RF 35mm f/1.8 Macro IS STM',
+      'Sony FE 85mm F/1.4 GM',
+      'AF35mm F1.8 Sony (E Mount) - Black',
+      'AF35mm F1.8 Nikon (Z Mount) - Black',
+      'AF50mm F1.8 Sony (E Mount) - Black',
+      'AF50mm F1.8 Nikon (Z Mount) - Black',
+      'AF24mm F1.8 Sony (E Mount) - Black',
+      'Sony FE 24-105mm F4 G OSS',
+      'Canon RF 100-400mm F5.6-8 IS USM',
+      'PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver'
     ];
 
     mappedProducts.sort((a, b) => {

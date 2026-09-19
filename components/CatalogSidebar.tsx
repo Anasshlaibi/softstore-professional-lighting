@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilterState } from './ProductFilters';
 import { Product } from '../App';
-import { extractProductAttributes, ProductAttributes } from '../src/utils/productMetadata';
+import { extractProductAttributes, ProductAttributes, isProductMatchingCategory, smartFilterUpdate } from '../src/utils/productMetadata';
 
 interface CatalogSidebarProps {
   filters: FilterState;
@@ -40,15 +40,15 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
   const handleGroupChange = (group: string) => {
     if (group === 'used') {
       const occasionCat = categories.find(c => c.toLowerCase().includes('occasion')) || 'Occasion';
-      onFilterChange({ ...filters, category: occasionCat, productGroup: 'used' });
+      onFilterChange(smartFilterUpdate(filters, { category: occasionCat, productGroup: 'used' }));
     } else if (group === 'rental') {
       const locationCat = categories.find(c => c.toLowerCase().includes('location')) || 'Location de Matériel';
-      onFilterChange({ ...filters, category: locationCat, productGroup: 'rental' });
+      onFilterChange(smartFilterUpdate(filters, { category: locationCat, productGroup: 'rental' }));
     } else if (group === 'new') {
       const isCurrentlySpecial = activeGroup === 'used' || activeGroup === 'rental';
-      onFilterChange({ ...filters, category: isCurrentlySpecial ? 'all' : filters.category, productGroup: 'new' });
+      onFilterChange(smartFilterUpdate(filters, { category: isCurrentlySpecial ? 'all' : filters.category, productGroup: 'new' }));
     } else {
-      onFilterChange({ ...filters, category: 'all', productGroup: undefined });
+      onFilterChange(smartFilterUpdate(filters, { category: 'all', productGroup: undefined }));
     }
   };
 
@@ -91,29 +91,46 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
   }, [filters.category, filters.brand]);
 
   // -----------------------------------------------------------
+  // Sidebar categories list
+  // -----------------------------------------------------------
+  const sidebarCategories = React.useMemo(() => {
+    const cats = categories.filter(c => {
+      const cl = c.toLowerCase();
+      return c !== 'all' && !cl.includes('occasion') && !cl.includes('location') && !cl.includes('dji');
+    });
+    if (!cats.some(c => c.toLowerCase().includes('dji'))) {
+      cats.push('DJI & Gimbals');
+    }
+    return cats;
+  }, [categories]);
+
+  // -----------------------------------------------------------
   // Filter Diameter counts (for K&F & Filter products)
   // -----------------------------------------------------------
   const availableDiameters = [49, 52, 55, 58, 62, 67, 72, 77, 82, 95];
 
   // -----------------------------------------------------------
-  // Category counts
+  // Category counts (using universal matcher)
   // -----------------------------------------------------------
   const categoryCounts = React.useMemo(() => {
     const counts: Record<string, number> = {};
-    products.forEach(p => {
-      const attr = productAttributesMap.get(p.id);
-      if (!attr) return;
+    sidebarCategories.forEach(cat => {
+      let count = 0;
+      products.forEach(p => {
+        const attr = productAttributesMap.get(p.id);
+        if (!attr) return;
 
-      if (filters.brand !== 'all' && attr.brand.toLowerCase() !== filters.brand.toLowerCase()) return;
-      if (filters.mount !== 'all' && attr.mount !== filters.mount) return;
-      if (filters.lensType && filters.lensType !== 'all') {
-        if (attr.product_type !== 'lens' || attr.lens_type !== filters.lensType) return;
-      }
+        if (filters.brand !== 'all' && attr.brand.toLowerCase() !== filters.brand.toLowerCase()) return;
+        if (filters.productGroup && attr.condition !== filters.productGroup) return;
 
-      counts[p.category] = (counts[p.category] || 0) + 1;
+        if (isProductMatchingCategory(p, cat, attr)) {
+          count++;
+        }
+      });
+      counts[cat] = count;
     });
     return counts;
-  }, [products, productAttributesMap, filters.brand, filters.mount, filters.lensType]);
+  }, [products, productAttributesMap, filters.brand, filters.productGroup, sidebarCategories]);
 
   // -----------------------------------------------------------
   // Brand counts
@@ -124,11 +141,9 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
       const attr = productAttributesMap.get(p.id);
       if (!attr) return;
 
-      if (filters.category !== 'all' && p.category !== filters.category) return;
+      if (filters.category !== 'all' && !isProductMatchingCategory(p, filters.category, attr)) return;
       if (filters.mount !== 'all' && attr.mount !== filters.mount) return;
-      if (filters.lensType && filters.lensType !== 'all') {
-        if (attr.product_type !== 'lens' || attr.lens_type !== filters.lensType) return;
-      }
+      if (filters.productGroup && attr.condition !== filters.productGroup) return;
 
       counts[attr.brand] = (counts[attr.brand] || 0) + 1;
     });
@@ -136,7 +151,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
     return Object.entries(counts)
       .map(([brand, count]) => ({ brand, count }))
       .sort((a, b) => b.count - a.count);
-  }, [products, productAttributesMap, filters.category, filters.mount, filters.lensType]);
+  }, [products, productAttributesMap, filters.category, filters.mount, filters.productGroup]);
 
   // -----------------------------------------------------------
   // Mount counts
@@ -147,11 +162,9 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
       const attr = productAttributesMap.get(p.id);
       if (!attr || !attr.mount || attr.mount === 'Universel') return;
 
-      if (filters.category !== 'all' && p.category !== filters.category) return;
+      if (filters.category !== 'all' && !isProductMatchingCategory(p, filters.category, attr)) return;
       if (filters.brand !== 'all' && attr.brand.toLowerCase() !== filters.brand.toLowerCase()) return;
-      if (filters.lensType && filters.lensType !== 'all') {
-        if (attr.product_type !== 'lens' || attr.lens_type !== filters.lensType) return;
-      }
+      if (filters.productGroup && attr.condition !== filters.productGroup) return;
 
       counts[attr.mount] = (counts[attr.mount] || 0) + 1;
     });
@@ -159,7 +172,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
     return Object.entries(counts)
       .map(([mount, count]) => ({ mount, count }))
       .sort((a, b) => b.count - a.count);
-  }, [products, productAttributesMap, filters.category, filters.brand, filters.lensType]);
+  }, [products, productAttributesMap, filters.category, filters.brand, filters.productGroup]);
 
   const resetFilters = () => {
     onFilterChange({
@@ -190,15 +203,6 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
     if (cl.includes('dji') || cl.includes('gimbal')) return 'fa-video';
     return 'fa-tag';
   };
-
-  const sidebarCategories = React.useMemo(() => {
-    const cats = categories.filter(c => {
-      const cl = c.toLowerCase();
-      return c !== 'all' && !cl.includes('occasion') && !cl.includes('location') && !cl.includes('dji');
-    });
-    cats.push('DJI & Gimbals');
-    return cats;
-  }, [categories]);
 
   return (
     <aside className="w-full lg:w-72 flex-shrink-0 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden" style={{ position: 'sticky', top: '88px', maxHeight: 'calc(100vh - 104px)', display: 'flex', flexDirection: 'column' }}>
@@ -261,7 +265,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
               </h4>
               {filters.lensType && filters.lensType !== 'all' && (
                 <button
-                  onClick={() => onFilterChange({ ...filters, lensType: 'all' })}
+                  onClick={() => onFilterChange(smartFilterUpdate(filters, { lensType: 'all' }))}
                   className="text-[10px] font-bold text-red-600 hover:underline"
                 >
                   Effacer
@@ -280,7 +284,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
                 return (
                   <button
                     key={typeItem.id}
-                    onClick={() => onFilterChange({ ...filters, lensType: active && typeItem.id !== 'all' ? 'all' : typeItem.id as any })}
+                    onClick={() => onFilterChange(smartFilterUpdate(filters, { lensType: active && typeItem.id !== 'all' ? 'all' : typeItem.id as any }))}
                     className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                       active
                         ? 'bg-red-600 text-white shadow-sm'
@@ -315,7 +319,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
               </h4>
               {filters.filterDiameter && (
                 <button
-                  onClick={() => onFilterChange({ ...filters, filterDiameter: undefined })}
+                  onClick={() => onFilterChange(smartFilterUpdate(filters, { filterDiameter: undefined }))}
                   className="text-[10px] font-bold text-red-600 hover:underline"
                 >
                   Tous
@@ -328,10 +332,9 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
                 return (
                   <button
                     key={diam}
-                    onClick={() => onFilterChange({
-                      ...filters,
+                    onClick={() => onFilterChange(smartFilterUpdate(filters, {
                       filterDiameter: active ? undefined : `${diam}mm`
-                    })}
+                    }))}
                     className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all ${
                       active
                         ? 'bg-red-600 text-white shadow-sm'
@@ -351,7 +354,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
           <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">Catégories</h4>
           <div className="space-y-0.5">
             <button
-              onClick={() => onFilterChange({ ...filters, category: 'all' })}
+              onClick={() => onFilterChange(smartFilterUpdate(filters, { category: 'all' }))}
               className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all group ${
                 filters.category === 'all'
                   ? 'bg-gray-900 text-white'
@@ -376,7 +379,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
               return (
                 <button
                   key={cat}
-                  onClick={() => onFilterChange({ ...filters, category: active ? 'all' : cat })}
+                  onClick={() => onFilterChange(smartFilterUpdate(filters, { category: active ? 'all' : cat }))}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all group ${
                     active
                       ? 'bg-red-600 text-white shadow-sm'
@@ -409,7 +412,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
               <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">Monture &amp; Boîtier</h4>
               {filters.mount !== 'all' && (
                 <button
-                  onClick={() => onFilterChange({ ...filters, mount: 'all' })}
+                  onClick={() => onFilterChange(smartFilterUpdate(filters, { mount: 'all' }))}
                   className="text-[10px] font-bold text-red-600 hover:underline"
                 >
                   Toutes
@@ -418,7 +421,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
             </div>
             <div className="space-y-0.5">
               <button
-                onClick={() => onFilterChange({ ...filters, mount: 'all' })}
+                onClick={() => onFilterChange(smartFilterUpdate(filters, { mount: 'all' }))}
                 className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   filters.mount === 'all'
                     ? 'bg-gray-900 text-white'
@@ -433,7 +436,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
                 return (
                   <button
                     key={mount}
-                    onClick={() => onFilterChange({ ...filters, mount: active ? 'all' : mount })}
+                    onClick={() => onFilterChange(smartFilterUpdate(filters, { mount: active ? 'all' : mount }))}
                     className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                       active
                         ? 'bg-red-600 text-white shadow-sm'
@@ -460,7 +463,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
               <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">Marque</h4>
               {filters.brand !== 'all' && (
                 <button
-                  onClick={() => onFilterChange({ ...filters, brand: 'all' })}
+                  onClick={() => onFilterChange(smartFilterUpdate(filters, { brand: 'all' }))}
                   className="text-[10px] font-bold text-red-600 hover:underline"
                 >
                   Toutes
@@ -469,7 +472,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
             </div>
             <div className="space-y-0.5">
               <button
-                onClick={() => onFilterChange({ ...filters, brand: 'all' })}
+                onClick={() => onFilterChange(smartFilterUpdate(filters, { brand: 'all' }))}
                 className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   filters.brand === 'all'
                     ? 'bg-gray-900 text-white'
@@ -484,7 +487,7 @@ export const CatalogSidebar: React.FC<CatalogSidebarProps> = ({
                 return (
                   <button
                     key={brand}
-                    onClick={() => onFilterChange({ ...filters, brand: active ? 'all' : brand })}
+                    onClick={() => onFilterChange(smartFilterUpdate(filters, { brand: active ? 'all' : brand }))}
                     className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                       active
                         ? 'bg-red-600 text-white shadow-sm'

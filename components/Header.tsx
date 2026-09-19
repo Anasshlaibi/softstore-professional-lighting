@@ -132,9 +132,9 @@ const Header: React.FC<HeaderProps> = React.memo(
                 href={`https://wa.me/${whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold transition"
+                className="flex items-center gap-1.5 text-white hover:text-red-400 font-semibold transition"
               >
-                <i className="fa-brands fa-whatsapp text-sm" /> WhatsApp: 06 73 01 18 73
+                <i className="fa-brands fa-whatsapp text-sm text-red-500" /> WhatsApp: 06 73 01 18 73
               </a>
               <span className="h-3 w-px bg-slate-700" />
               <button
@@ -186,9 +186,9 @@ const Header: React.FC<HeaderProps> = React.memo(
                 href={`https://wa.me/${whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden xl:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-600 hover:text-white transition font-bold text-xs"
+                className="hidden xl:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200 hover:bg-red-600 hover:text-white hover:border-red-600 transition font-bold text-xs shadow-sm"
               >
-                <i className="fa-brands fa-whatsapp text-sm" />
+                <i className="fa-brands fa-whatsapp text-sm text-red-500 group-hover:text-white" />
                 <span>Conseil Pro</span>
               </a>
 
