@@ -1,0 +1,1 @@
+const e="https://saymonshop.com/backend-php",p={sendInvoice:`${e}/send-invoice.php`,sendContact:`${e}/send-contact.php`,saveOrder:`${e}/save-order.php`,getOrders:`${e}/get-orders.php`,health:`${e}/health.php`,getProducts:`${e}/get-products.php`,saveProduct:`${e}/save-product.php`,deleteProduct:`${e}/delete-product.php`,uploadImage:`${e}/upload-image.php`};export{p as A};

@@ -1,0 +1,1626 @@
+[
+  {
+    "id": 1027,
+    "name": "AF135mm F1.8 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af135mm-f1-8-nikon-z-mount-black.webp",
+    "localPath": "/images/products/af135mm-f1-8-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 4,
+    "name": "Panel P-500",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319170443F599C75DE4A68CC2_s.webp",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/panel-p-500.webp",
+    "localPath": "/images/products/panel-p-500.webp"
+  },
+  {
+    "id": 8,
+    "name": "P-60S Spotlight",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202404231504205E97A1413D1D518E_s.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/p-60s-spotlight.webp",
+    "localPath": "/images/products/p-60s-spotlight.webp"
+  },
+  {
+    "id": 3,
+    "name": "BKL400Bi Bi-Color",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202401142024346AB820E8D8FB81D9_s.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/bkl400bi-bi-color.webp",
+    "localPath": "/images/products/bkl400bi-bi-color.webp"
+  },
+  {
+    "id": 1002,
+    "name": "35mm T2.0 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-t2-0-nikon-z-mount-black.webp",
+    "localPath": "/images/products/35mm-t2-0-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 1,
+    "name": "YM 350",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/ym-350.webp",
+    "localPath": "/images/products/ym-350.webp"
+  },
+  {
+    "id": 2,
+    "name": "YB-300R",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202507261324366A68649B911A5220_b.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/yb-300r.webp",
+    "localPath": "/images/products/yb-300r.webp"
+  },
+  {
+    "id": 1003,
+    "name": "35mm T2.0 Canon (EOS-R Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-t2-0-canon-eos-r-mount-black.webp",
+    "localPath": "/images/products/35mm-t2-0-canon-eos-r-mount-black.webp"
+  },
+  {
+    "id": 1004,
+    "name": "50mm T2.0 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-t2-0-sony-e-mount-black.webp",
+    "localPath": "/images/products/50mm-t2-0-sony-e-mount-black.webp"
+  },
+  {
+    "id": 1043,
+    "name": "Autofocus adapter for Canon EF - Nikon Z - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/6_6e23eacf-6b37-499a-8b5f-b53efaaed46f.jpg?v=1659681589",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/autofocus-adapter-for-canon-ef-nikon-z-black.webp",
+    "localPath": "/images/products/autofocus-adapter-for-canon-ef-nikon-z-black.webp"
+  },
+  {
+    "id": 1029,
+    "name": "35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black.webp",
+    "localPath": "/images/products/35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black.webp"
+  },
+  {
+    "id": 1005,
+    "name": "50mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-t2-0-panasonic-leica-sigma-l-mount-black.webp",
+    "localPath": "/images/products/50mm-t2-0-panasonic-leica-sigma-l-mount-black.webp"
+  },
+  {
+    "id": 1019,
+    "name": "AF35mm F1.8 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af35mm-f1-8-nikon-z-mount-black.webp",
+    "localPath": "/images/products/af35mm-f1-8-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 5125,
+    "name": "Sony FE 35mm F/1.8",
+    "sourceUrl": "https://saymonshop.com/images/objectifsony3.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/sony-fe-35mm-f-1-8.webp",
+    "localPath": "/images/products/sony-fe-35mm-f-1-8.webp"
+  },
+  {
+    "id": 1026,
+    "name": "AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af135mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
+    "localPath": "/images/products/af135mm-f1-8-panasonic-leica-sigma-l-mount-black.webp"
+  },
+  {
+    "id": 1020,
+    "name": "AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af35mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
+    "localPath": "/images/products/af35mm-f1-8-panasonic-leica-sigma-l-mount-black.webp"
+  },
+  {
+    "id": 1048,
+    "name": "10mm T2.1 Sony (E Mount) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-sony-e-mount-titanium-gray.webp",
+    "localPath": "/images/products/10mm-t2-1-sony-e-mount-titanium-gray.webp"
+  },
+  {
+    "id": 1017,
+    "name": "AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af24mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
+    "localPath": "/images/products/af24mm-f1-8-panasonic-leica-sigma-l-mount-black.webp"
+  },
+  {
+    "id": 1006,
+    "name": "50mm T2.0 Canon (EOS-R Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-t2-0-canon-eos-r-mount-black.webp",
+    "localPath": "/images/products/50mm-t2-0-canon-eos-r-mount-black.webp"
+  },
+  {
+    "id": 6026,
+    "name": "DJI Osmo Mobile 7P Stabilisateur Smartphone",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2025/03/DJI-Osmo-Mobile-7-Stabilisateur-pour-smartphone-prix-maroc-kamerty.ma-kamerty-casablanca-morocco-price-gimbal-1.webp",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/dji-osmo-mobile-7p-stabilisateur-smartphone.webp",
+    "localPath": "/images/products/dji-osmo-mobile-7p-stabilisateur-smartphone.webp"
+  },
+  {
+    "id": 5054,
+    "name": "Insta360 X5 Kit Standard 360 (Noir)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/11/Insta360-X4-360-Action-Camera-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/insta360-x5-kit-standard-360-noir.webp",
+    "localPath": "/images/products/insta360-x5-kit-standard-360-noir.webp"
+  },
+  {
+    "id": 1046,
+    "name": "10mm T2.1 M43 (Panasonic Olympus) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-m43-panasonic-olympus-black.webp",
+    "localPath": "/images/products/10mm-t2-1-m43-panasonic-olympus-black.webp"
+  },
+  {
+    "id": 1765907057061,
+    "name": "Y300S",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319171843802F1E3F22F87FE6_b.webp",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/y300s.webp",
+    "localPath": "/images/products/y300s.webp"
+  },
+  {
+    "id": 1037,
+    "name": "50mm F1.8 Fuji (FX Mount) - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/products/5018.jpg?v=1666173248",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-f1-8-fuji-fx-mount-black.webp",
+    "localPath": "/images/products/50mm-f1-8-fuji-fx-mount-black.webp"
+  },
+  {
+    "id": 1031,
+    "name": "35mm F1.4 Nikon (Z Mount) mark iii FF - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-nikon-z-mount-mark-iii-ff-black.webp",
+    "localPath": "/images/products/35mm-f1-4-nikon-z-mount-mark-iii-ff-black.webp"
+  },
+  {
+    "id": 1056,
+    "name": "16mm T2.1 Sony (E Mount) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-sony-e-mount-titanium-gray.webp",
+    "localPath": "/images/products/16mm-t2-1-sony-e-mount-titanium-gray.webp"
+  },
+  {
+    "id": 1050,
+    "name": "10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-m43-panasonic-olympus-titanium-gray.webp",
+    "localPath": "/images/products/10mm-t2-1-m43-panasonic-olympus-titanium-gray.webp"
+  },
+  {
+    "id": 7,
+    "name": "S100 W portable",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/s100-w-portable.webp",
+    "localPath": "/images/products/s100-w-portable.webp"
+  },
+  {
+    "id": 1059,
+    "name": "16mm T2.1 Canon (EOS-R Mount) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-canon-eos-r-mount-titanium-gray.webp",
+    "localPath": "/images/products/16mm-t2-1-canon-eos-r-mount-titanium-gray.webp"
+  },
+  {
+    "id": 1041,
+    "name": "35mm/F1.4 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-nikon-z-mount-black.webp",
+    "localPath": "/images/products/35mm-f1-4-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 5009,
+    "name": "Agfa DC8200 Rose + Etui+ SD16G",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC8200-All-Colors-KAMERTY-KAMERTY.MA_.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc8200-rose-etui-sd16g.webp",
+    "localPath": "/images/products/agfa-dc8200-rose-etui-sd16g.webp"
+  },
+  {
+    "id": 1045,
+    "name": "10mm T2.1 Fuji (FX Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-fuji-fx-mount-black.webp",
+    "localPath": "/images/products/10mm-t2-1-fuji-fx-mount-black.webp"
+  },
+  {
+    "id": 1044,
+    "name": "10mm T2.1 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-sony-e-mount-black.webp",
+    "localPath": "/images/products/10mm-t2-1-sony-e-mount-black.webp"
+  },
+  {
+    "id": 2001,
+    "name": "K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel.webp",
+    "localPath": "/images/products/k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel.webp"
+  },
+  {
+    "id": 2002,
+    "name": "K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)",
+    "sourceUrl": "https://saymonshop.com/images/filtre4.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x.webp",
+    "localPath": "/images/products/k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x.webp"
+  },
+  {
+    "id": 6,
+    "name": "YB-100R",
+    "sourceUrl": "https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319173149416DF92390F5C3A7_b.webp",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/yb-100r.webp",
+    "localPath": "/images/products/yb-100r.webp"
+  },
+  {
+    "id": 2003,
+    "name": "K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/products/us/KF01.884/KF01.884-1-327x327.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated.webp",
+    "localPath": "/images/products/k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated.webp"
+  },
+  {
+    "id": 5011,
+    "name": "Canon Powershot V10",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Canon-PowerShot-V10-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-powershot-v10.webp",
+    "localPath": "/images/products/canon-powershot-v10.webp"
+  },
+  {
+    "id": 2004,
+    "name": "K&F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/products/us/KF01.1088/KF01.1088-1-327x327.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter.webp",
+    "localPath": "/images/products/k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter.webp"
+  },
+  {
+    "id": 2005,
+    "name": "K&F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/category/image/36-327x327.png",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics.webp",
+    "localPath": "/images/products/k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics.webp"
+  },
+  {
+    "id": 2006,
+    "name": "K&F Concept Kit 18pcs Bagues d'Adaptation Step Up / Step Down (37mm - 82mm)",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/category/image/70-327x327.png",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm.webp",
+    "localPath": "/images/products/k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm.webp"
+  },
+  {
+    "id": 2007,
+    "name": "K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/category/799-327x327.png",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1.webp",
+    "localPath": "/images/products/k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1.webp"
+  },
+  {
+    "id": 2008,
+    "name": "K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/category/583-327x327.png",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-mini-torche-led-video-rgb-2500k-9900k-cri96-batterie-2000mah.webp",
+    "localPath": "/images/products/k-f-concept-mini-torche-led-video-rgb-2500k-9900k-cri96-batterie-2000mah.webp"
+  },
+  {
+    "id": 2009,
+    "name": "K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/category/image/65-327x327.png",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-sac-bandouliere-photo-etanche-pour-camera-accessoires.webp",
+    "localPath": "/images/products/k-f-concept-sac-bandouliere-photo-etanche-pour-camera-accessoires.webp"
+  },
+  {
+    "id": 1018,
+    "name": "AF35mm F1.8 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1111_090f390e-b3f4-4eba-ae1a-49a0c210d2d6.jpg?v=1777434863",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af35mm-f1-8-sony-e-mount-black.webp",
+    "localPath": "/images/products/af35mm-f1-8-sony-e-mount-black.webp"
+  },
+  {
+    "id": 2010,
+    "name": "K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)",
+    "sourceUrl": "https://img.kfconcept.com/cache/catalog/products/us/KF01.1996/KF01.1996-1-327x327.jpg",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro.webp",
+    "localPath": "/images/products/k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro.webp"
+  },
+  {
+    "id": 1052,
+    "name": "16mm T2.1 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-sony-e-mount-black.webp",
+    "localPath": "/images/products/16mm-t2-1-sony-e-mount-black.webp"
+  },
+  {
+    "id": 3001,
+    "name": "DJI Osmo Pocket 4 Pro",
+    "sourceUrl": "https://saymonshop.com/images/dji5.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/dji-osmo-pocket-4-pro.webp",
+    "localPath": "/images/products/dji-osmo-pocket-4-pro.webp"
+  },
+  {
+    "id": 5037,
+    "name": "Godox Flash Nikon TTL",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/Godox-TTL-V860III-Flash-Nikon-prix-maroc-kamerty-kamerty-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-nikon-ttl.webp",
+    "localPath": "/images/products/godox-flash-nikon-ttl.webp"
+  },
+  {
+    "id": 1024,
+    "name": "AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af50mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
+    "localPath": "/images/products/af50mm-f1-8-panasonic-leica-sigma-l-mount-black.webp"
+  },
+  {
+    "id": 5005,
+    "name": "Agfa DC8200 Noir + Etui+ SD16G",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC8200-All-Colors-KAMERTY-KAMERTY.MA_.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc8200-noir-etui-sd16g.webp",
+    "localPath": "/images/products/agfa-dc8200-noir-etui-sd16g.webp"
+  },
+  {
+    "id": 1057,
+    "name": "16mm T2.1 Fuji (FX Mount) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-fuji-fx-mount-titanium-gray.webp",
+    "localPath": "/images/products/16mm-t2-1-fuji-fx-mount-titanium-gray.webp"
+  },
+  {
+    "id": 1023,
+    "name": "AF50mm F1.8 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af50mm-f1-8-nikon-z-mount-black.webp",
+    "localPath": "/images/products/af50mm-f1-8-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 1012,
+    "name": "AF50mm F1.8 Sony (E Mount) APS-C - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af50mm-f1-8-sony-e-mount-aps-c-black.webp",
+    "localPath": "/images/products/af50mm-f1-8-sony-e-mount-aps-c-black.webp"
+  },
+  {
+    "id": 1025,
+    "name": "AF135mm F1.8 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_9a398dbc-8564-4118-90c3-d96012864bad.jpg?v=1779179185",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af135mm-f1-8-sony-e-mount-black.webp",
+    "localPath": "/images/products/af135mm-f1-8-sony-e-mount-black.webp"
+  },
+  {
+    "id": 5008,
+    "name": "Agfa DC8200 Rouge + Etui+ SD16G",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC8200-All-Colors-KAMERTY-KAMERTY.MA_.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc8200-rouge-etui-sd16g.webp",
+    "localPath": "/images/products/agfa-dc8200-rouge-etui-sd16g.webp"
+  },
+  {
+    "id": 1060,
+    "name": "PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_a309bf99-2e99-4d89-a5bc-28f48cded8a4.jpg?v=1772606130",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver.webp",
+    "localPath": "/images/products/pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver.webp"
+  },
+  {
+    "id": 1013,
+    "name": "AF50mm F1.8 Fuji (FX Mount) APS-C - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af50mm-f1-8-fuji-fx-mount-aps-c-black.webp",
+    "localPath": "/images/products/af50mm-f1-8-fuji-fx-mount-aps-c-black.webp"
+  },
+  {
+    "id": 1038,
+    "name": "35mm/F1.4 Sony (E Mount) - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-sony-e-mount-black.webp",
+    "localPath": "/images/products/35mm-f1-4-sony-e-mount-black.webp"
+  },
+  {
+    "id": 5017,
+    "name": "Fujifilm Instax Mini 12 Violet",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/08/Instax-Mini-12-instant-camera-fujifilm-appareil-photo-instantane-kamerty.ma-virgin-kamerty-prix-maroc-casablanca-marrakech-rabat-tanger-agadir-camera-vintage-polarloid.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/fujifilm-instax-mini-12-violet.webp",
+    "localPath": "/images/products/fujifilm-instax-mini-12-violet.webp"
+  },
+  {
+    "id": 1058,
+    "name": "16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-m43-panasonic-olympus-titanium-gray.webp",
+    "localPath": "/images/products/16mm-t2-1-m43-panasonic-olympus-titanium-gray.webp"
+  },
+  {
+    "id": 1022,
+    "name": "AF50mm F1.8 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/16002_febadaf8-f451-414f-af5b-bad1e1789e09.jpg?v=1722937088",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af50mm-f1-8-sony-e-mount-black.webp",
+    "localPath": "/images/products/af50mm-f1-8-sony-e-mount-black.webp"
+  },
+  {
+    "id": 6002,
+    "name": "Canon Cinema EOS C50",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/Canon-EOS-C50-Cinema-Camera-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-cinema-eos-c50.webp",
+    "localPath": "/images/products/canon-cinema-eos-c50.webp"
+  },
+  {
+    "id": 1040,
+    "name": "35mm/F1.4 M43 (Panasonic Olympus) - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-m43-panasonic-olympus-black.webp",
+    "localPath": "/images/products/35mm-f1-4-m43-panasonic-olympus-black.webp"
+  },
+  {
+    "id": 1010,
+    "name": "AF35mm F1.8 Fuji (FX Mount) APS-C - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/files/1_6f02ec7f-86ee-475c-8fe0-8689032d41cc.jpg?v=1770622210",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af35mm-f1-8-fuji-fx-mount-aps-c-black.webp",
+    "localPath": "/images/products/af35mm-f1-8-fuji-fx-mount-aps-c-black.webp"
+  },
+  {
+    "id": 5141,
+    "name": "Sony FE 24-70mm F2.8 GM II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/sony-fe-24-70mm-f-4-0-za-oss-zeiss-vario-te-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-24-70mm-f2-8-gm-ii.webp",
+    "localPath": "/images/products/sony-fe-24-70mm-f2-8-gm-ii.webp"
+  },
+  {
+    "id": 5013,
+    "name": "Canon EOS R6 MARK II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Canon-EOS-R6-Mark-II-Boitier-Nu-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-eos-r6-mark-ii.webp",
+    "localPath": "/images/products/canon-eos-r6-mark-ii.webp"
+  },
+  {
+    "id": 1049,
+    "name": "10mm T2.1 Fuji (FX Mount) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-fuji-fx-mount-titanium-gray.webp",
+    "localPath": "/images/products/10mm-t2-1-fuji-fx-mount-titanium-gray.webp"
+  },
+  {
+    "id": 5020,
+    "name": "INSTAX MINI EVO CINEMA EX D",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2025/09/FUJIFILM-INSTAX-MINI-EVO-prix-maroc-virgin-kamerty.ma-kamerty-maarif-casablanca-marrakech-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/instax-mini-evo-cinema-ex-d.webp",
+    "localPath": "/images/products/instax-mini-evo-cinema-ex-d.webp"
+  },
+  {
+    "id": 5012,
+    "name": "Canon EOS R8 + RF24-50",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Canon-EOS-R8-Kit-24-50mm-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-eos-r8-rf24-50.webp",
+    "localPath": "/images/products/canon-eos-r8-rf24-50.webp"
+  },
+  {
+    "id": 1030,
+    "name": "35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black.webp",
+    "localPath": "/images/products/35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black.webp"
+  },
+  {
+    "id": 1054,
+    "name": "16mm T2.1 M43 (Panasonic Olympus) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-m43-panasonic-olympus-black.webp",
+    "localPath": "/images/products/16mm-t2-1-m43-panasonic-olympus-black.webp"
+  },
+  {
+    "id": 5002,
+    "name": "Agfa DC5200 Silver",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC5200-Blue-prix-maroc-agfaphoto-digital-camera-numerique-kamerty-kamerty.ma-morocco-price-prix-2-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc5200-silver.webp",
+    "localPath": "/images/products/agfa-dc5200-silver.webp"
+  },
+  {
+    "id": 5003,
+    "name": "Agfa DC5200 Rouge",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC5200-Blue-prix-maroc-agfaphoto-digital-camera-numerique-kamerty-kamerty.ma-morocco-price-prix-2-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc5200-rouge.webp",
+    "localPath": "/images/products/agfa-dc5200-rouge.webp"
+  },
+  {
+    "id": 5004,
+    "name": "Agfa DC5200 Bleu",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC5200-Blue-prix-maroc-agfaphoto-digital-camera-numerique-kamerty-kamerty.ma-morocco-price-prix-2-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc5200-bleu.webp",
+    "localPath": "/images/products/agfa-dc5200-bleu.webp"
+  },
+  {
+    "id": 1042,
+    "name": "35mm/F1.4 Canon (EOS-R Mount) - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-canon-eos-r-mount-black.webp",
+    "localPath": "/images/products/35mm-f1-4-canon-eos-r-mount-black.webp"
+  },
+  {
+    "id": 5006,
+    "name": "Agfa DC8200 Bleu + Etui+ SD16G",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC8200-All-Colors-KAMERTY-KAMERTY.MA_.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc8200-bleu-etui-sd16g.webp",
+    "localPath": "/images/products/agfa-dc8200-bleu-etui-sd16g.webp"
+  },
+  {
+    "id": 5007,
+    "name": "Agfa DC8200 Silver + Etui+ SD16G",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC8200-All-Colors-KAMERTY-KAMERTY.MA_.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc8200-silver-etui-sd16g.webp",
+    "localPath": "/images/products/agfa-dc8200-silver-etui-sd16g.webp"
+  },
+  {
+    "id": 5094,
+    "name": "Nikon Z30 Kit + Objectif Nikkor Z DX 16-50mm f/3.5-6.3 VR",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Z30-Kit-16-50mm-VR-kamerty.ma-prix-maroc-nikon-vlog-camera-casablanca-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-z30-kit-objectif-nikkor-z-dx-16-50mm-f-3-5-6-3-vr.webp",
+    "localPath": "/images/products/nikon-z30-kit-objectif-nikkor-z-dx-16-50mm-f-3-5-6-3-vr.webp"
+  },
+  {
+    "id": 1016,
+    "name": "AF24mm F1.8 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af24mm-f1-8-nikon-z-mount-black.webp",
+    "localPath": "/images/products/af24mm-f1-8-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 1009,
+    "name": "AF35mm F1.8 Sony (E Mount) APS-C - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/files/1_6f02ec7f-86ee-475c-8fe0-8689032d41cc.jpg?v=1770622210",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af35mm-f1-8-sony-e-mount-aps-c-black.webp",
+    "localPath": "/images/products/af35mm-f1-8-sony-e-mount-aps-c-black.webp"
+  },
+  {
+    "id": 5095,
+    "name": "Nikon Z50 II Kit + Objectif Nikkor Z DX 16-50mm VR",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Z50-Kit-16-50mm-VR-kamerty.ma-prix-maroc-nikon-camera-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-z50-ii-kit-objectif-nikkor-z-dx-16-50mm-vr.webp",
+    "localPath": "/images/products/nikon-z50-ii-kit-objectif-nikkor-z-dx-16-50mm-vr.webp"
+  },
+  {
+    "id": 5096,
+    "name": "Nikon Z5 II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Z5-Boitier-Nu-prix-maroc-kamerty.ma-nikon-camera-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-z5-ii.webp",
+    "localPath": "/images/products/nikon-z5-ii.webp"
+  },
+  {
+    "id": 5100,
+    "name": "Nikon Coolpix P1100 (Noir)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Coolpix-P1000-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-coolpix-p1100-noir.webp",
+    "localPath": "/images/products/nikon-coolpix-p1100-noir.webp"
+  },
+  {
+    "id": 1055,
+    "name": "16mm T2.1 Canon (EOS-R Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-canon-eos-r-mount-black.webp",
+    "localPath": "/images/products/16mm-t2-1-canon-eos-r-mount-black.webp"
+  },
+  {
+    "id": 1035,
+    "name": "50mm F1.2 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-f1-2-nikon-z-mount-black.webp",
+    "localPath": "/images/products/50mm-f1-2-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 5118,
+    "name": "Sony Alpha 7S III",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Sony-Alpha-7S-III-Boitier-Nu-ILCE-7SM3-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-alpha-7s-iii.webp",
+    "localPath": "/images/products/sony-alpha-7s-iii.webp"
+  },
+  {
+    "id": 1062,
+    "name": "55mm 1/8 Black Mist Filter - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1-8.jpg?v=1781605231",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/55mm-1-8-black-mist-filter-black.webp",
+    "localPath": "/images/products/55mm-1-8-black-mist-filter-black.webp"
+  },
+  {
+    "id": 1011,
+    "name": "AF35mm F1.8 Nikon (Z Mount) APS-C - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/files/1_6f02ec7f-86ee-475c-8fe0-8689032d41cc.jpg?v=1770622210",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af35mm-f1-8-nikon-z-mount-aps-c-black.webp",
+    "localPath": "/images/products/af35mm-f1-8-nikon-z-mount-aps-c-black.webp"
+  },
+  {
+    "id": 1014,
+    "name": "AF50mm F1.8 Nikon (Z Mount) APS-C - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1_75278715-c90b-4368-a765-0fa4b752a936.jpg?v=1770622210",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af50mm-f1-8-nikon-z-mount-aps-c-black.webp",
+    "localPath": "/images/products/af50mm-f1-8-nikon-z-mount-aps-c-black.webp"
+  },
+  {
+    "id": 1007,
+    "name": "50mm T2.0 Nikon (Z Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/29.png?v=1666604354",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-t2-0-nikon-z-mount-black.webp",
+    "localPath": "/images/products/50mm-t2-0-nikon-z-mount-black.webp"
+  },
+  {
+    "id": 1032,
+    "name": "50mm F1.2 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-f1-2-sony-e-mount-black.webp",
+    "localPath": "/images/products/50mm-f1-2-sony-e-mount-black.webp"
+  },
+  {
+    "id": 1061,
+    "name": "77mm True Color VND6-9 Filter - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/08-06_VND.jpg?v=1722932210",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/77mm-true-color-vnd6-9-filter-black.webp",
+    "localPath": "/images/products/77mm-true-color-vnd6-9-filter-black.webp"
+  },
+  {
+    "id": 5015,
+    "name": "Fujifilm Instax Mini 12 Blanc",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/08/Instax-Mini-12-instant-camera-fujifilm-appareil-photo-instantane-kamerty.ma-virgin-kamerty-prix-maroc-casablanca-marrakech-rabat-tanger-agadir-camera-vintage-polarloid.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/fujifilm-instax-mini-12-blanc.webp",
+    "localPath": "/images/products/fujifilm-instax-mini-12-blanc.webp"
+  },
+  {
+    "id": 1036,
+    "name": "50mm F1.8 Sony (E Mount) - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/products/5018.jpg?v=1666173248",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-f1-8-sony-e-mount-black.webp",
+    "localPath": "/images/products/50mm-f1-8-sony-e-mount-black.webp"
+  },
+  {
+    "id": 1047,
+    "name": "10mm T2.1 Canon (EOS-R Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-canon-eos-r-mount-black.webp",
+    "localPath": "/images/products/10mm-t2-1-canon-eos-r-mount-black.webp"
+  },
+  {
+    "id": 1034,
+    "name": "50mm F1.2 M43 (Panasonic Olympus) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-f1-2-m43-panasonic-olympus-black.webp",
+    "localPath": "/images/products/50mm-f1-2-m43-panasonic-olympus-black.webp"
+  },
+  {
+    "id": 1001,
+    "name": "35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-t2-0-panasonic-leica-sigma-l-mount-black.webp",
+    "localPath": "/images/products/35mm-t2-0-panasonic-leica-sigma-l-mount-black.webp"
+  },
+  {
+    "id": 1000,
+    "name": "35mm T2.0 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/products/28.png?v=1666604236",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-t2-0-sony-e-mount-black.webp",
+    "localPath": "/images/products/35mm-t2-0-sony-e-mount-black.webp"
+  },
+  {
+    "id": 1008,
+    "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af35mm-f1-4-fuji-fx-mount-black.webp",
+    "localPath": "/images/products/af35mm-f1-4-fuji-fx-mount-black.webp"
+  },
+  {
+    "id": 1033,
+    "name": "50mm F1.2 Fuji (FX Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_bf4fc8ad-dcf4-424c-a1a2-7be2d8f1112f.jpg?v=1765779495",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/50mm-f1-2-fuji-fx-mount-black.webp",
+    "localPath": "/images/products/50mm-f1-2-fuji-fx-mount-black.webp"
+  },
+  {
+    "id": 1053,
+    "name": "16mm T2.1 Fuji (FX Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/16mm-t2-1-fuji-fx-mount-black.webp",
+    "localPath": "/images/products/16mm-t2-1-fuji-fx-mount-black.webp"
+  },
+  {
+    "id": 1039,
+    "name": "35mm/F1.4 Fuji (FX Mount) - Black",
+    "sourceUrl": "https://7artisans.store/cdn/shop/products/3514m.jpg?v=1666250981",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-fuji-fx-mount-black.webp",
+    "localPath": "/images/products/35mm-f1-4-fuji-fx-mount-black.webp"
+  },
+  {
+    "id": 1021,
+    "name": "AF40mm F2.5 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_5f614e8a-15b9-4f9e-a1b7-db9fbf89b1a2.jpg?v=1772003864",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af40mm-f2-5-sony-e-mount-black.webp",
+    "localPath": "/images/products/af40mm-f2-5-sony-e-mount-black.webp"
+  },
+  {
+    "id": 1051,
+    "name": "10mm T2.1 Canon (EOS-R Mount) - Titanium Gray",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/7_d959057b-bd89-4d24-b622-630e5afb8565.jpg?v=1720596151",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/10mm-t2-1-canon-eos-r-mount-titanium-gray.webp",
+    "localPath": "/images/products/10mm-t2-1-canon-eos-r-mount-titanium-gray.webp"
+  },
+  {
+    "id": 1028,
+    "name": "35mm F1.4 Sony (E Mount) mark iii FF - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/43_9b4bc88e-cf4d-49d0-aa24-e21573fab61e.png?v=1743235186",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/35mm-f1-4-sony-e-mount-mark-iii-ff-black.webp",
+    "localPath": "/images/products/35mm-f1-4-sony-e-mount-mark-iii-ff-black.webp"
+  },
+  {
+    "id": 1015,
+    "name": "AF24mm F1.8 Sony (E Mount) - Black",
+    "sourceUrl": "https://cdn.shopify.com/s/files/1/0555/8504/6736/files/1_1d2119cf-2c55-46c4-bd6d-6c864abe7fe9.jpg?v=1783909117",
+    "sourceOrigin": "existing",
+    "targetFile": "public/images/products/af24mm-f1-8-sony-e-mount-black.webp",
+    "localPath": "/images/products/af24mm-f1-8-sony-e-mount-black.webp"
+  },
+  {
+    "id": 5022,
+    "name": "Fujifilm Film Instax Mini Eu 2 Glossy (10x2pck)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/06/InstaxMini20Film-330x330.webp",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/fujifilm-film-instax-mini-eu-2-glossy-10x2pck.webp",
+    "localPath": "/images/products/fujifilm-film-instax-mini-eu-2-glossy-10x2pck.webp"
+  },
+  {
+    "id": 5024,
+    "name": "MINI 12 CAMERA CASE LILAC-PURPLE",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/11/FUJIFILM-INSTAX-Mini-12-Lilac-Purple-kamerty.ma-kamerty-instax-Rose-virgine-casablanca-rabat-marrakech-fes-agadir-tanger-camera-instantee-1-330x330.png",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/mini-12-camera-case-lilac-purple.webp",
+    "localPath": "/images/products/mini-12-camera-case-lilac-purple.webp"
+  },
+  {
+    "id": 5026,
+    "name": "Godox Softbox Prabolique P120H",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/softbox-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-softbox-prabolique-p120h.webp",
+    "localPath": "/images/products/godox-softbox-prabolique-p120h.webp"
+  },
+  {
+    "id": 5030,
+    "name": "Godox Flash Studio",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/flash-eclairage-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-studio.webp",
+    "localPath": "/images/products/godox-flash-studio.webp"
+  },
+  {
+    "id": 5031,
+    "name": "Godox Flash Studio",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/flash-eclairage-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-studio.webp",
+    "localPath": "/images/products/godox-flash-studio.webp"
+  },
+  {
+    "id": 5036,
+    "name": "Godox Flash Sony",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/Godox-TTL-V860III-Flash-Sony-prix-maroc-kamerty-kamerty-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-sony.webp",
+    "localPath": "/images/products/godox-flash-sony.webp"
+  },
+  {
+    "id": 5034,
+    "name": "Godox Flash Nikon",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/Godox-TTL-V860III-Flash-Nikon-prix-maroc-kamerty-kamerty-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-nikon.webp",
+    "localPath": "/images/products/godox-flash-nikon.webp"
+  },
+  {
+    "id": 5035,
+    "name": "Godox Flash Canon",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/Godox-TTL-V860III-Flash-Canon-prix-maroc-kamerty-kamerty-9.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-canon.webp",
+    "localPath": "/images/products/godox-flash-canon.webp"
+  },
+  {
+    "id": 5040,
+    "name": "Godox Flash Appareil PhotoMF-R76",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/flash-eclairage-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-appareil-photomf-r76.webp",
+    "localPath": "/images/products/godox-flash-appareil-photomf-r76.webp"
+  },
+  {
+    "id": 5038,
+    "name": "Godox Flash Canon TTL",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/Godox-TTL-V860III-Flash-Canon-prix-maroc-kamerty-kamerty-9.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-canon-ttl.webp",
+    "localPath": "/images/products/godox-flash-canon-ttl.webp"
+  },
+  {
+    "id": 5039,
+    "name": "Godox Flash Sony TTL",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/Godox-TTL-V860III-Flash-Sony-prix-maroc-kamerty-kamerty-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-flash-sony-ttl.webp",
+    "localPath": "/images/products/godox-flash-sony-ttl.webp"
+  },
+  {
+    "id": 5043,
+    "name": "Hollyland Microphone Sans fil LARK A1 Combo (USB-C RX+Lightning RX+ Charging Case)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/07/Hollyland-LARK-A1-Combo-au-Maroc-pric-maroc-kamerty-kamerty.ma-micro-sand-fils-smartphone-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/hollyland-microphone-sans-fil-lark-a1-combo-usb-c-rx-lightning-rx-charging-case.webp",
+    "localPath": "/images/products/hollyland-microphone-sans-fil-lark-a1-combo-usb-c-rx-lightning-rx-charging-case.webp"
+  },
+  {
+    "id": 5042,
+    "name": "Hollyland Casque sans Fil Solidcom SE 4S Global Version",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/07/Hollyland-Solidcom-C1-Pro-Intercom-Headset-kamerty.ma-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/hollyland-casque-sans-fil-solidcom-se-4s-global-version.webp",
+    "localPath": "/images/products/hollyland-casque-sans-fil-solidcom-se-4s-global-version.webp"
+  },
+  {
+    "id": 5053,
+    "name": "Insta360 Ace Pro 2 Kit Standard (Noir)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/11/Insta360-Ace-Pro-2-Action-Camera-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/insta360-ace-pro-2-kit-standard-noir.webp",
+    "localPath": "/images/products/insta360-ace-pro-2-kit-standard-noir.webp"
+  },
+  {
+    "id": 5055,
+    "name": "Insta360 GO Ultra Kit Standard (Noir)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/11/Insta360-GO-3S-Action-Camera-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/insta360-go-ultra-kit-standard-noir.webp",
+    "localPath": "/images/products/insta360-go-ultra-kit-standard-noir.webp"
+  },
+  {
+    "id": 5077,
+    "name": "Kodak Pixpro AZ425 Noir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/KODAK-PIXPRO-AZ425-Digital-Camera-digital-camera-numerique-kodak-argentique-maarif-morocco-casablanca-maroc-price-prix-marrakech-2.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/kodak-pixpro-az425-noir.webp",
+    "localPath": "/images/products/kodak-pixpro-az425-noir.webp"
+  },
+  {
+    "id": 5075,
+    "name": "Kodak Pixpro AZ528 Noir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/KODAK-PIXPRO-AZ528-Digital-Camera-prix-maroc-digital-camera-numerique-morocco-price-prix-kamerty-kamerty.ma-maarif-casablanca-marrakech-rabat-tanger-11.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/kodak-pixpro-az528-noir.webp",
+    "localPath": "/images/products/kodak-pixpro-az528-noir.webp"
+  },
+  {
+    "id": 5076,
+    "name": "Kodak Pixpro AZ255 Noir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/KODAK-PIXPRO-AZ255-DIGITAL-CAMERA-digital-camera-numerique-maroc-morocco-price-prix-agfa-kodak-kamerty-kamerty-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/kodak-pixpro-az255-noir.webp",
+    "localPath": "/images/products/kodak-pixpro-az255-noir.webp"
+  },
+  {
+    "id": 5079,
+    "name": "Kodak Pixpro C1 Noir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/pack-kodak-pixpro-c1-appareil-photo-compact-carte-microsdhc-16-go-1.png",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/kodak-pixpro-c1-noir.webp",
+    "localPath": "/images/products/kodak-pixpro-c1-noir.webp"
+  },
+  {
+    "id": 5085,
+    "name": "Kodak Pixpro FZ55 Bleu",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/07/kodak-pixpro-fz55-digital-camera-blue-front_1-1.webp",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/kodak-pixpro-fz55-bleu.webp",
+    "localPath": "/images/products/kodak-pixpro-fz55-bleu.webp"
+  },
+  {
+    "id": 5093,
+    "name": "Nikon Coolpix MégapixelsNoir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Coolpix-P950-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-coolpix-megapixelsnoir.webp",
+    "localPath": "/images/products/nikon-coolpix-megapixelsnoir.webp"
+  },
+  {
+    "id": 5097,
+    "name": "Nikon Z5 II Kit + Objectif Nikkor Z 24-50mm f/4-6.3",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Z5-Kit-24-50mm-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3.webp",
+    "localPath": "/images/products/nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3.webp"
+  },
+  {
+    "id": 5098,
+    "name": "Nikon Z5 II Kit + Objectif Nikkor Z 24-50mm f/4-6.3",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Z5-Kit-24-50mm-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3.webp",
+    "localPath": "/images/products/nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3.webp"
+  },
+  {
+    "id": 5102,
+    "name": "Nikon Pro Z9 (Noir)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Z9-Boitier-Nu-prix-maroc-kamerty.ma-kamerty-casablanca-morocco-nikon-camera-pro-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-pro-z9-noir.webp",
+    "localPath": "/images/products/nikon-pro-z9-noir.webp"
+  },
+  {
+    "id": 5104,
+    "name": "Nikon Flash SB-700",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/flash-eclairage-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-flash-sb-700.webp",
+    "localPath": "/images/products/nikon-flash-sb-700.webp"
+  },
+  {
+    "id": 5107,
+    "name": "Nikon Nikkor Z 70-200mm f/2.8 VR S II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/06/Sony-FE-70-200mm-F2.8-GM-OSS-II-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-nikkor-z-70-200mm-f-2-8-vr-s-ii.webp",
+    "localPath": "/images/products/nikon-nikkor-z-70-200mm-f-2-8-vr-s-ii.webp"
+  },
+  {
+    "id": 5106,
+    "name": "Nikon Nikkor Z 24-70mm f/2.8 S II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/sony-fe-24-70mm-f-4-0-za-oss-zeiss-vario-te-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-nikkor-z-24-70mm-f-2-8-s-ii.webp",
+    "localPath": "/images/products/nikon-nikkor-z-24-70mm-f-2-8-s-ii.webp"
+  },
+  {
+    "id": 5112,
+    "name": "Sony Alpha 7 III",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/Sony-Alpha-7-III-Boitier-Nu-ILCE-7M3-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-alpha-7-iii.webp",
+    "localPath": "/images/products/sony-alpha-7-iii.webp"
+  },
+  {
+    "id": 5110,
+    "name": "Sony ZV-E10 Kit + Objectif 16-50mm f/3.5-5.6",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/SONY-ZV-E10-Poignee-GP-VPT2BT-kamerty.ma-prix-maroc-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-zv-e10-kit-objectif-16-50mm-f-3-5-5-6.webp",
+    "localPath": "/images/products/sony-zv-e10-kit-objectif-16-50mm-f-3-5-5-6.webp"
+  },
+  {
+    "id": 5111,
+    "name": "Sony ZV-E10 Mark II Kit + Objectif 16-50mm",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/SONY-ZV-E10-Poignee-GP-VPT2BT-kamerty.ma-prix-maroc-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-zv-e10-mark-ii-kit-objectif-16-50mm.webp",
+    "localPath": "/images/products/sony-zv-e10-mark-ii-kit-objectif-16-50mm.webp"
+  },
+  {
+    "id": 5114,
+    "name": "Sony Cinema Line FX30",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Sony-FX30-Cinema-Line-Boitier-Nu-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-cinema-line-fx30.webp",
+    "localPath": "/images/products/sony-cinema-line-fx30.webp"
+  },
+  {
+    "id": 5115,
+    "name": "Sony Alpha 7 IV",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Sony-Alpha-7-IV-Boitier-Nu-ILCE-7M4-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-alpha-7-iv.webp",
+    "localPath": "/images/products/sony-alpha-7-iv.webp"
+  },
+  {
+    "id": 5116,
+    "name": "Sony Alpha 6600 + Objectif 18-135mm",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/Sony-Alpha-6600-Kit-18-135mm-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-alpha-6600-objectif-18-135mm.webp",
+    "localPath": "/images/products/sony-alpha-6600-objectif-18-135mm.webp"
+  },
+  {
+    "id": 5120,
+    "name": "Sony Cinema Line FX3",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Sony-FX3-Cinema-Line-Boitier-Nu-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-cinema-line-fx3.webp",
+    "localPath": "/images/products/sony-cinema-line-fx3.webp"
+  },
+  {
+    "id": 5123,
+    "name": "Sony Lecteur de Carte Mémoire CFE-A/SD",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/carte-memoire-sd-card-stockage-disque-dure-hard-drive-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-lecteur-de-carte-memoire-cfe-a-sd.webp",
+    "localPath": "/images/products/sony-lecteur-de-carte-memoire-cfe-a-sd.webp"
+  },
+  {
+    "id": 5124,
+    "name": "Sony FE 50mm f/1.8",
+    "sourceUrl": "https://saymonshop.com/images/sony10.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/sony-fe-50mm-f-1-8.webp",
+    "localPath": "/images/products/sony-fe-50mm-f-1-8.webp"
+  },
+  {
+    "id": 5127,
+    "name": "Sony E PZ 18-105mm F/4 G OSS",
+    "sourceUrl": "https://saymonshop.com/images/sony5.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/sony-e-pz-18-105mm-f-4-g-oss.webp",
+    "localPath": "/images/products/sony-e-pz-18-105mm-f-4-g-oss.webp"
+  },
+  {
+    "id": 5128,
+    "name": "Sony FE 24-70mm F/4 ZA",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/sony-fe-24-70mm-f-4-0-za-oss-zeiss-vario-te-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-24-70mm-f-4-za.webp",
+    "localPath": "/images/products/sony-fe-24-70mm-f-4-za.webp"
+  },
+  {
+    "id": 5132,
+    "name": "Sony FE 90mm F2.8 Macro G OSS",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/08/Sony-FE-90mm-F2.8-Macro-G-OSS-Prix-maroc-kamerty.webp",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-90mm-f2-8-macro-g-oss.webp",
+    "localPath": "/images/products/sony-fe-90mm-f2-8-macro-g-oss.webp"
+  },
+  {
+    "id": 5135,
+    "name": "Sony FE 24-70mm F2.8 GM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/sony-fe-24-70mm-f-4-0-za-oss-zeiss-vario-te-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-24-70mm-f2-8-gm.webp",
+    "localPath": "/images/products/sony-fe-24-70mm-f2-8-gm.webp"
+  },
+  {
+    "id": 5140,
+    "name": "Sony FE 70-200mm F4 G OSS II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/06/Sony-FE-70-200mm-F2.8-GM-OSS-II-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-70-200mm-f4-g-oss-ii.webp",
+    "localPath": "/images/products/sony-fe-70-200mm-f4-g-oss-ii.webp"
+  },
+  {
+    "id": 5138,
+    "name": "Sony FE 70-200mm F2.8 GM OSS",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/06/Sony-FE-70-200mm-F2.8-GM-OSS-II-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-70-200mm-f2-8-gm-oss.webp",
+    "localPath": "/images/products/sony-fe-70-200mm-f2-8-gm-oss.webp"
+  },
+  {
+    "id": 5139,
+    "name": "Sony FE 50mm F/1.2 GM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/05/SONY-FE-50MM-F1.2-GM-2.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-50mm-f-1-2-gm.webp",
+    "localPath": "/images/products/sony-fe-50mm-f-1-2-gm.webp"
+  },
+  {
+    "id": 5142,
+    "name": "Sony FE 16-35mm F2.8 GM II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/Sony-FE-16-35mm-f2.8-GM-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-16-35mm-f2-8-gm-ii.webp",
+    "localPath": "/images/products/sony-fe-16-35mm-f2-8-gm-ii.webp"
+  },
+  {
+    "id": 5143,
+    "name": "Sony FE 70-200mm F2.8 GM II OSS",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/06/Sony-FE-70-200mm-F2.8-GM-OSS-II-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-70-200mm-f2-8-gm-ii-oss.webp",
+    "localPath": "/images/products/sony-fe-70-200mm-f2-8-gm-ii-oss.webp"
+  },
+  {
+    "id": 5148,
+    "name": "Vanguard Sac à Dos Photo VEO GO 42M Noir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/sac-valise-APPAREIL-PHOTO-INSTANTANE-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/vanguard-sac-a-dos-photo-veo-go-42m-noir.webp",
+    "localPath": "/images/products/vanguard-sac-a-dos-photo-veo-go-42m-noir.webp"
+  },
+  {
+    "id": 5155,
+    "name": "Vanguard Trépied VESTA 233AP",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/03/Manfrotto-MK190XPRO3-3W-Aluminum-Tripod-prix-maroc-kamerty-kamerty.ma-morocco-price-tirpod-manfrotto-photo-video-photographie-2.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/vanguard-trepied-vesta-233ap.webp",
+    "localPath": "/images/products/vanguard-trepied-vesta-233ap.webp"
+  },
+  {
+    "id": 5158,
+    "name": "Vanguard Trépied VEO 5 264AV14",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2025/01/KF-Concept-Trepied-et-monopode-leger-en-aluminium-KF09.089V1-prix-maroc-kamerty-china-morocco-tripod-tripied-kamerty.ma-casablanca-marrakech-phto-video-2.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/vanguard-trepied-veo-5-264av14.webp",
+    "localPath": "/images/products/vanguard-trepied-veo-5-264av14.webp"
+  },
+  {
+    "id": 6001,
+    "name": "Canon EOS R50 + Objectif RF-S 18-45mm IS STM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/10/CANON-EOS-R50-RF-S-18-45-MM-CREATOR-prix-maroc-kamerty-kamerty.ma-casablanca-marrakech-photo-store-7.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-eos-r50-objectif-rf-s-18-45mm-is-stm.webp",
+    "localPath": "/images/products/canon-eos-r50-objectif-rf-s-18-45mm-is-stm.webp"
+  },
+  {
+    "id": 6003,
+    "name": "Canon Cinema EOS R5 C",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Canon-EOS-R5-C-Cinema-Camera-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-cinema-eos-r5-c.webp",
+    "localPath": "/images/products/canon-cinema-eos-r5-c.webp"
+  },
+  {
+    "id": 6004,
+    "name": "Canon EOS R5 Mark II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/Canon-EOS-R5-Mark-II-Boitier-Nu-prix-maroc-kamerty.ma-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-eos-r5-mark-ii.webp",
+    "localPath": "/images/products/canon-eos-r5-mark-ii.webp"
+  },
+  {
+    "id": 6005,
+    "name": "Canon EOS R5 Mark II + Objectif RF 24-105mm L IS USM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/Canon-EOS-R5-Mark-II-Kit-24-105mm-L-IS-USM-kamerty.ma-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-eos-r5-mark-ii-objectif-rf-24-105mm-l-is-usm.webp",
+    "localPath": "/images/products/canon-eos-r5-mark-ii-objectif-rf-24-105mm-l-is-usm.webp"
+  },
+  {
+    "id": 6009,
+    "name": "Canon Batterie LP-E17",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/CANON-LP-E17-BATTERIE.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-batterie-lp-e17.webp",
+    "localPath": "/images/products/canon-batterie-lp-e17.webp"
+  },
+  {
+    "id": 6008,
+    "name": "Canon Batterie BP-820",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/batterie-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-batterie-bp-820.webp",
+    "localPath": "/images/products/canon-batterie-bp-820.webp"
+  },
+  {
+    "id": 6007,
+    "name": "Canon EOS R10 + Objectif RF-S 18-150mm IS STM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Canon-EOS-R10-Kit-18-150mm-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-eos-r10-objectif-rf-s-18-150mm-is-stm.webp",
+    "localPath": "/images/products/canon-eos-r10-objectif-rf-s-18-150mm-is-stm.webp"
+  },
+  {
+    "id": 6017,
+    "name": "Canon RF 50mm f/1.2L USM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/05/SONY-FE-50MM-F1.2-GM-2.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-rf-50mm-f-1-2l-usm.webp",
+    "localPath": "/images/products/canon-rf-50mm-f-1-2l-usm.webp"
+  },
+  {
+    "id": 6016,
+    "name": "Canon EF 16-35mm F/2.8L III USM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/Sony-FE-16-35mm-f2.8-GM-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-ef-16-35mm-f-2-8l-iii-usm.webp",
+    "localPath": "/images/products/canon-ef-16-35mm-f-2-8l-iii-usm.webp"
+  },
+  {
+    "id": 6019,
+    "name": "Canon RF 100-500mm F/4.5-7.1 L IS USM",
+    "sourceUrl": "https://saymonshop.com/images/canonmodif5.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/canon-rf-100-500mm-f-4-5-7-1-l-is-usm.webp",
+    "localPath": "/images/products/canon-rf-100-500mm-f-4-5-7-1-l-is-usm.webp"
+  },
+  {
+    "id": 6021,
+    "name": "Canon RF 28-70mm f/2 L USM",
+    "sourceUrl": "https://saymonshop.com/images/objectifcanon4.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/canon-rf-28-70mm-f-2-l-usm.webp",
+    "localPath": "/images/products/canon-rf-28-70mm-f-2-l-usm.webp"
+  },
+  {
+    "id": 6020,
+    "name": "Canon RF 70-200mm f/2.8 L IS",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/06/Sony-FE-70-200mm-F2.8-GM-OSS-II-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-rf-70-200mm-f-2-8-l-is.webp",
+    "localPath": "/images/products/canon-rf-70-200mm-f-2-8-l-is.webp"
+  },
+  {
+    "id": 6024,
+    "name": "DJI Osmo Pocket 3 Creator Combo",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/06/DJI-Osmo-Pocket-3-Creator-Combo-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/dji-osmo-pocket-3-creator-combo.webp",
+    "localPath": "/images/products/dji-osmo-pocket-3-creator-combo.webp"
+  },
+  {
+    "id": 6023,
+    "name": "Canon RF 100-400mm F5.6-8 IS USM",
+    "sourceUrl": "https://saymonshop.com/images/canonmodif5.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/canon-rf-100-400mm-f5-6-8-is-usm.webp",
+    "localPath": "/images/products/canon-rf-100-400mm-f5-6-8-is-usm.webp"
+  },
+  {
+    "id": 6025,
+    "name": "DJI Osmo Mobile 7 Stabilisateur Smartphone",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2025/03/DJI-Osmo-Mobile-7-Stabilisateur-pour-smartphone-prix-maroc-kamerty.ma-kamerty-casablanca-morocco-price-gimbal-1.webp",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/dji-osmo-mobile-7-stabilisateur-smartphone.webp",
+    "localPath": "/images/products/dji-osmo-mobile-7-stabilisateur-smartphone.webp"
+  },
+  {
+    "id": 6029,
+    "name": "Smallrig Mini Matte Box Lite",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/SmallRig-CT-10-–-Trepied-de-Voyage-en-Aluminium-PRIX-MAROC-MOROCCO-KAMERTY-TRIPOD-TRIPIED-CASABLANCA-MARRAKECH-MAARIF-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/smallrig-mini-matte-box-lite.webp",
+    "localPath": "/images/products/smallrig-mini-matte-box-lite.webp"
+  },
+  {
+    "id": 6033,
+    "name": "Smallrig Support Objectif Universal 15mm LWS",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/SmallRig-CT-10-–-Trepied-de-Voyage-en-Aluminium-PRIX-MAROC-MOROCCO-KAMERTY-TRIPOD-TRIPIED-CASABLANCA-MARRAKECH-MAARIF-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/smallrig-support-objectif-universal-15mm-lws.webp",
+    "localPath": "/images/products/smallrig-support-objectif-universal-15mm-lws.webp"
+  },
+  {
+    "id": 6031,
+    "name": "Smallrig Cage Protege Camera Canon EOS C50",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/SmallRig-CT-10-–-Trepied-de-Voyage-en-Aluminium-PRIX-MAROC-MOROCCO-KAMERTY-TRIPOD-TRIPIED-CASABLANCA-MARRAKECH-MAARIF-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/smallrig-cage-protege-camera-canon-eos-c50.webp",
+    "localPath": "/images/products/smallrig-cage-protege-camera-canon-eos-c50.webp"
+  },
+  {
+    "id": 6032,
+    "name": "Smallrig Cage Protege Camera Canon EOS C50 Kit",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/SmallRig-CT-10-–-Trepied-de-Voyage-en-Aluminium-PRIX-MAROC-MOROCCO-KAMERTY-TRIPOD-TRIPIED-CASABLANCA-MARRAKECH-MAARIF-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/smallrig-cage-protege-camera-canon-eos-c50-kit.webp",
+    "localPath": "/images/products/smallrig-cage-protege-camera-canon-eos-c50-kit.webp"
+  },
+  {
+    "id": 6035,
+    "name": "Smallrig Support camera Mini",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/SmallRig-CT-10-–-Trepied-de-Voyage-en-Aluminium-PRIX-MAROC-MOROCCO-KAMERTY-TRIPOD-TRIPIED-CASABLANCA-MARRAKECH-MAARIF-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/smallrig-support-camera-mini.webp",
+    "localPath": "/images/products/smallrig-support-camera-mini.webp"
+  },
+  {
+    "id": 6037,
+    "name": "Sony Chargeur Batterie BC-QZ1",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/CHARGEUR-DE-BATTERIE-SONY-330x330.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-chargeur-batterie-bc-qz1.webp",
+    "localPath": "/images/products/sony-chargeur-batterie-bc-qz1.webp"
+  },
+  {
+    "id": 6036,
+    "name": "Sony Batterie Rechargeable NP-FV100A",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2025/01/KF-Concept-Trepied-et-monopode-leger-en-aluminium-KF09.089V1-prix-maroc-kamerty-china-morocco-tripod-tripied-kamerty.ma-casablanca-marrakech-phto-video-2.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-batterie-rechargeable-np-fv100a.webp",
+    "localPath": "/images/products/sony-batterie-rechargeable-np-fv100a.webp"
+  },
+  {
+    "id": 5001,
+    "name": "Agfa DC5200 Noir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC5200-Blue-prix-maroc-agfaphoto-digital-camera-numerique-kamerty-kamerty.ma-morocco-price-prix-2-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc5200-noir.webp",
+    "localPath": "/images/products/agfa-dc5200-noir.webp"
+  },
+  {
+    "id": 5014,
+    "name": "Fujifilm Instax Mini 11 Lilac Purple",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2025/09/Fujifilm-instax-mini-11-Lilac-Purple-prix-maroc-kamerty-kamerty.ma-casablanca-morocco-prix-maroc-fujifilm-kamerty-virgin-price-instax-12-2.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/fujifilm-instax-mini-11-lilac-purple.webp",
+    "localPath": "/images/products/fujifilm-instax-mini-11-lilac-purple.webp"
+  },
+  {
+    "id": 5010,
+    "name": "Agfa DC8200 Violet + Etui+ SD16G",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/AGFAPHOTO-Realishot-DC8200-All-Colors-KAMERTY-KAMERTY.MA_.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/agfa-dc8200-violet-etui-sd16g.webp",
+    "localPath": "/images/products/agfa-dc8200-violet-etui-sd16g.webp"
+  },
+  {
+    "id": 5016,
+    "name": "Fujifilm Instax Mini 12 Vert",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/08/Instax-Mini-12-instant-camera-fujifilm-appareil-photo-instantane-kamerty.ma-virgin-kamerty-prix-maroc-casablanca-marrakech-rabat-tanger-agadir-camera-vintage-polarloid.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/fujifilm-instax-mini-12-vert.webp",
+    "localPath": "/images/products/fujifilm-instax-mini-12-vert.webp"
+  },
+  {
+    "id": 5019,
+    "name": "Fujifilm Instax Mini 41 Noir",
+    "sourceUrl": "https://saymonshop.com/images/fuji5.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/fujifilm-instax-mini-41-noir.webp",
+    "localPath": "/images/products/fujifilm-instax-mini-41-noir.webp"
+  },
+  {
+    "id": 5018,
+    "name": "Fujifilm Instax Mini 12 Bleu",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/08/Instax-Mini-12-instant-camera-fujifilm-appareil-photo-instantane-kamerty.ma-virgin-kamerty-prix-maroc-casablanca-marrakech-rabat-tanger-agadir-camera-vintage-polarloid.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/fujifilm-instax-mini-12-bleu.webp",
+    "localPath": "/images/products/fujifilm-instax-mini-12-bleu.webp"
+  },
+  {
+    "id": 5025,
+    "name": "Godox Softbox Prabolique P90H",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/softbox-studio-light-photographie-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-softbox-prabolique-p90h.webp",
+    "localPath": "/images/products/godox-softbox-prabolique-p90h.webp"
+  },
+  {
+    "id": 5105,
+    "name": "Nikon Nikkor Z 50mm f/1.8 S",
+    "sourceUrl": "https://saymonshop.com/images/nikon1.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/nikon-nikkor-z-50mm-f-1-8-s.webp",
+    "localPath": "/images/products/nikon-nikkor-z-50mm-f-1-8-s.webp"
+  },
+  {
+    "id": 5101,
+    "name": "Nikon Z6 III (Noir)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/07/Nikon-Z6-III-Boitier-Nu-kamerty.ma-prix-maroc-nikon-z6-3-z6-mk3-casablanca-marrakech-rabat-tanger-photo-video-camera-hybride-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-z6-iii-noir.webp",
+    "localPath": "/images/products/nikon-z6-iii-noir.webp"
+  },
+  {
+    "id": 5041,
+    "name": "Godox Tube Lumineux Led Light TL120",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Godox-TL120-RGB-Tube-Light-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/godox-tube-lumineux-led-light-tl120.webp",
+    "localPath": "/images/products/godox-tube-lumineux-led-light-tl120.webp"
+  },
+  {
+    "id": 5078,
+    "name": "Kodak Pixpro C1 Maron",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/pack-kodak-pixpro-c1-appareil-photo-compact-carte-microsdhc-16-go-1.png",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/kodak-pixpro-c1-maron.webp",
+    "localPath": "/images/products/kodak-pixpro-c1-maron.webp"
+  },
+  {
+    "id": 5086,
+    "name": "Kodak Porte-clés Charmera Keychain",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/04/KODAK-Charmera-Keychain-Digital-Camera-prix-maroc-kamerty-kamerty.ma-morocco-price-maarif-casablanca-marrakech-kodak-camera-ARGENTIQUE-camera-vintage-pinterest-g7x-.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/kodak-porte-cles-charmera-keychain.webp",
+    "localPath": "/images/products/kodak-porte-cles-charmera-keychain.webp"
+  },
+  {
+    "id": 5099,
+    "name": "Nikon Z fc / ZR (Noir)",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Nikon-Z-fc-Noir-Kit-28mm-f2.8-Special-Edition-kamerty-kamerty.ma-casablanca-maroc-morocco-price-nikon-camera-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/nikon-z-fc-zr-noir.webp",
+    "localPath": "/images/products/nikon-z-fc-zr-noir.webp"
+  },
+  {
+    "id": 5117,
+    "name": "Sony Alpha 7 IV Kit + Objectif 28-70mm",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/10/Sony-Alpha-7-IV-Kit-28-70mm-kamerty.ma-prix-maroc-1.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-alpha-7-iv-kit-objectif-28-70mm.webp",
+    "localPath": "/images/products/sony-alpha-7-iv-kit-objectif-28-70mm.webp"
+  },
+  {
+    "id": 5133,
+    "name": "Sony FE 24-105mm F4 G OSS",
+    "sourceUrl": "https://saymonshop.com/images/sony5.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/sony-fe-24-105mm-f4-g-oss.webp",
+    "localPath": "/images/products/sony-fe-24-105mm-f4-g-oss.webp"
+  },
+  {
+    "id": 5137,
+    "name": "Sony FE 16-35mm F2.8 GM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/Sony-FE-16-35mm-f2.8-GM-1.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-16-35mm-f2-8-gm.webp",
+    "localPath": "/images/products/sony-fe-16-35mm-f2-8-gm.webp"
+  },
+  {
+    "id": 5145,
+    "name": "Vanguard Sac Photo VESTA ASPIRE 15Z Gris",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/sac-valise-APPAREIL-PHOTO-INSTANTANE-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/vanguard-sac-photo-vesta-aspire-15z-gris.webp",
+    "localPath": "/images/products/vanguard-sac-photo-vesta-aspire-15z-gris.webp"
+  },
+  {
+    "id": 5153,
+    "name": "Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/08/sac-valise-APPAREIL-PHOTO-INSTANTANE-appareil-photo-camera-kamerty-kamerty.ma-maroc-casablanca-marrakech-rabat-tanger-agadir-fes-canon-sony-nikon-min.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/vanguard-sac-a-dos-photo-trolley-veo-select-55bt-noir.webp",
+    "localPath": "/images/products/vanguard-sac-a-dos-photo-trolley-veo-select-55bt-noir.webp"
+  },
+  {
+    "id": 6006,
+    "name": "Canon EOS 2000D + Objectif EF-S 18-55mm IS II",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2023/09/Canon-EOS-2000D-and-EF-S-18-55mm-IS-II-Lens.webp",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-eos-2000d-objectif-ef-s-18-55mm-is-ii.webp",
+    "localPath": "/images/products/canon-eos-2000d-objectif-ef-s-18-55mm-is-ii.webp"
+  },
+  {
+    "id": 5157,
+    "name": "Vanguard Trépied ALTA PRO 263AB G2",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/03/Manfrotto-MK290XTA3-BH-290-Xtra-Ball-Head-Kit-prix-maroc-kamerty-kamerty.ma-kamerty-morocco-price-marrakech-casablanca-tripod-3.webp",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/vanguard-trepied-alta-pro-263ab-g2.webp",
+    "localPath": "/images/products/vanguard-trepied-alta-pro-263ab-g2.webp"
+  },
+  {
+    "id": 6014,
+    "name": "Canon RF 50MM F1.8 STM",
+    "sourceUrl": "https://saymonshop.com/images/objectifcanon14.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/canon-rf-50mm-f1-8-stm.webp",
+    "localPath": "/images/products/canon-rf-50mm-f1-8-stm.webp"
+  },
+  {
+    "id": 6018,
+    "name": "Canon RF 15-35mm F2.8 L IS USM",
+    "sourceUrl": "https://saymonshop.com/images/objectifcanon6.webp",
+    "sourceOrigin": "saymon",
+    "targetFile": "public/images/products/canon-rf-15-35mm-f2-8-l-is-usm.webp",
+    "localPath": "/images/products/canon-rf-15-35mm-f2-8-l-is-usm.webp"
+  },
+  {
+    "id": 6022,
+    "name": "Canon RF-S 18-150mm f/3.5-6.3 IS STM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2024/09/Objectif-Canon-EF-50mm-f18-STM-kamerty-kamerty.ma-prix-maroc-casablanca-marrakech-photo-store-min-330x330.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/canon-rf-s-18-150mm-f-3-5-6-3-is-stm.webp",
+    "localPath": "/images/products/canon-rf-s-18-150mm-f-3-5-6-3-is-stm.webp"
+  },
+  {
+    "id": 6038,
+    "name": "Sony FE 85mm F/1.4 GM",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2022/12/sony-fe-85mm-f-1-4-gm-sel85f14gm-syx-.jpg.jpeg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/sony-fe-85mm-f-1-4-gm.webp",
+    "localPath": "/images/products/sony-fe-85mm-f-1-4-gm.webp"
+  },
+  {
+    "id": 6030,
+    "name": "Smallrig Cage Protege Camera Nikon ZR Kit",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/SmallRig-CT-10-–-Trepied-de-Voyage-en-Aluminium-PRIX-MAROC-MOROCCO-KAMERTY-TRIPOD-TRIPIED-CASABLANCA-MARRAKECH-MAARIF-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/smallrig-cage-protege-camera-nikon-zr-kit.webp",
+    "localPath": "/images/products/smallrig-cage-protege-camera-nikon-zr-kit.webp"
+  },
+  {
+    "id": 6034,
+    "name": "Smallrig Support Objectif Universal 15mm LWS",
+    "sourceUrl": "https://kamerty.ma/wp-content/uploads/2026/01/SmallRig-CT-10-–-Trepied-de-Voyage-en-Aluminium-PRIX-MAROC-MOROCCO-KAMERTY-TRIPOD-TRIPIED-CASABLANCA-MARRAKECH-MAARIF-6.jpg",
+    "sourceOrigin": "kamerty",
+    "targetFile": "public/images/products/smallrig-support-objectif-universal-15mm-lws.webp",
+    "localPath": "/images/products/smallrig-support-objectif-universal-15mm-lws.webp"
+  }
+]

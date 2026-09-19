@@ -217,15 +217,18 @@ function getCategoryInfo(rawCategory: string) {
  * This is the single entry point — call it once when products are loaded.
  */
 export function buildCatalogIndex(products: Product[]): CatalogIndex {
+  const safeProducts = Array.isArray(products) ? products : [];
   const attributesMap = new Map<number, ProductAttributes>();
-  products.forEach(p => {
-    attributesMap.set(p.id, extractProductAttributes(p));
+  safeProducts.forEach(p => {
+    if (p && p.id) {
+      attributesMap.set(p.id, extractProductAttributes(p));
+    }
   });
 
-  const brands = extractBrands(products, attributesMap);
-  const categories = extractCategories(products, attributesMap);
-  const useCases = extractUseCases(products, attributesMap);
-  const recommendations = buildRecommendations(products, attributesMap);
+  const brands = extractBrands(safeProducts, attributesMap);
+  const categories = extractCategories(safeProducts, attributesMap);
+  const useCases = extractUseCases(safeProducts, attributesMap);
+  const recommendations = buildRecommendations(safeProducts, attributesMap);
 
   return {
     brands,
@@ -448,18 +451,58 @@ function buildRecommendations(
         const theirAttrs = attrs.get(p.id);
         if (!theirAttrs) return false;
 
-        // Filters are accessories for lenses
-        if (myAttrs.product_type === 'lens' && theirAttrs.product_type === 'filter') return true;
-        // Adapters are accessories for lenses
-        if (myAttrs.product_type === 'lens' && theirAttrs.product_type === 'adapter') return true;
-        // Lights are accessories for cameras
-        if (myAttrs.product_type === 'camera' && theirAttrs.product_type === 'light') return true;
-        // Accessories match same brand or generic
-        if (theirAttrs.product_type === 'accessory') return true;
+        const pNameLower = p.name.toLowerCase();
+        const myNameLower = product.name.toLowerCase();
+
+        // 1. If Camera: suggest Cage, Memory Card, Battery, Audio Mic, Stabilizer, Lens
+        if (myAttrs.product_type === 'camera') {
+          if (pNameLower.includes('cage') || pNameLower.includes('matte box') || pNameLower.includes('rig')) {
+            if (myAttrs.brand === 'Sony' && pNameLower.includes('sony')) return true;
+            if (myAttrs.brand === 'Canon' && pNameLower.includes('canon')) return true;
+            if (myAttrs.brand === 'Nikon' && pNameLower.includes('nikon')) return true;
+            return true;
+          }
+          if (theirAttrs.product_type === 'audio' || pNameLower.includes('lark') || pNameLower.includes('mic')) return true;
+          if (pNameLower.includes('carte') || pNameLower.includes('sd') || pNameLower.includes('cfexpress') || pNameLower.includes('pny')) return true;
+          if (pNameLower.includes('batterie') || pNameLower.includes('chargeur')) {
+            if (myAttrs.brand === 'Sony' && pNameLower.includes('sony')) return true;
+            if (myAttrs.brand === 'Canon' && pNameLower.includes('canon')) return true;
+            return true;
+          }
+          if (pNameLower.includes('trépied') || pNameLower.includes('stabilisateur') || pNameLower.includes('osmo') || pNameLower.includes('vanguard')) return true;
+          if (theirAttrs.product_type === 'light') return true;
+          if (theirAttrs.product_type === 'lens' && (theirAttrs.mount === myAttrs.mount || (myAttrs.brand === 'Sony' && theirAttrs.mount === 'Sony E') || (myAttrs.brand === 'Canon' && theirAttrs.mount.includes('Canon')) || (myAttrs.brand === 'Nikon' && theirAttrs.mount === 'Nikon Z'))) return true;
+        }
+
+        // 2. If Lens: suggest Filters, Lens Support, Bags, Adapters
+        if (myAttrs.product_type === 'lens') {
+          if (theirAttrs.product_type === 'filter') {
+            if (myAttrs.filter_diameter && theirAttrs.filter_diameter) {
+              return myAttrs.filter_diameter === theirAttrs.filter_diameter;
+            }
+            return true;
+          }
+          if (pNameLower.includes('support') || pNameLower.includes('lws') || pNameLower.includes('bague') || theirAttrs.product_type === 'adapter') return true;
+          if (pNameLower.includes('sac') || pNameLower.includes('vesta') || pNameLower.includes('veo')) return true;
+        }
+
+        // 3. If Light: suggest Softboxes, Stands, Batteries
+        if (myAttrs.product_type === 'light') {
+          if (pNameLower.includes('softbox') || pNameLower.includes('boite') || pNameLower.includes('support') || pNameLower.includes('pied') || pNameLower.includes('trépied')) return true;
+          if (pNameLower.includes('batterie') || pNameLower.includes('chargeur')) return true;
+        }
+
+        // 4. If Audio: suggest Accessories, Adapters, Wind muffs, Cables
+        if (myAttrs.product_type === 'audio') {
+          if (pNameLower.includes('cold shoe') || pNameLower.includes('support') || pNameLower.includes('câble') || pNameLower.includes('adaptateur')) return true;
+        }
+
+        // Generic accessories
+        if (theirAttrs.product_type === 'accessory' && !pNameLower.includes('appareil')) return true;
 
         return false;
       })
-      .slice(0, 4)
+      .slice(0, 6)
       .map(p => p.id);
 
     // Related products: same category or mount
@@ -571,19 +614,28 @@ export function getRecommendationsForProduct(products: Product[], productId: num
   return index.recommendations.get(productId);
 }
 
-export function findCompatibleAccessories(products: Product[], product: Product): Product[] {
+export function findCompatibleAccessories(arg1: Product[] | Product, arg2: Product[] | Product): Product[] {
+  const products = Array.isArray(arg1) ? arg1 : (Array.isArray(arg2) ? arg2 : []);
+  const product = !Array.isArray(arg1) ? arg1 : (!Array.isArray(arg2) ? arg2 : null);
+  if (!product || products.length === 0) return [];
   const rec = getRecommendationsForProduct(products, product.id);
   if (!rec || !rec.compatibleAccessories.length) return [];
   return products.filter(p => rec.compatibleAccessories.includes(p.id));
 }
 
-export function findAlternativeProducts(products: Product[], product: Product): Product[] {
+export function findAlternativeProducts(arg1: Product[] | Product, arg2: Product[] | Product): Product[] {
+  const products = Array.isArray(arg1) ? arg1 : (Array.isArray(arg2) ? arg2 : []);
+  const product = !Array.isArray(arg1) ? arg1 : (!Array.isArray(arg2) ? arg2 : null);
+  if (!product || products.length === 0) return [];
   const rec = getRecommendationsForProduct(products, product.id);
   if (!rec || !rec.alternatives.length) return [];
   return products.filter(p => rec.alternatives.includes(p.id));
 }
 
-export function getRelatedProducts(products: Product[], product: Product): Product[] {
+export function getRelatedProducts(arg1: Product[] | Product, arg2: Product[] | Product): Product[] {
+  const products = Array.isArray(arg1) ? arg1 : (Array.isArray(arg2) ? arg2 : []);
+  const product = !Array.isArray(arg1) ? arg1 : (!Array.isArray(arg2) ? arg2 : null);
+  if (!product || products.length === 0) return [];
   const rec = getRecommendationsForProduct(products, product.id);
   if (!rec || !rec.relatedProducts.length) {
     return products.filter(p => p.id !== product.id && p.category === product.category).slice(0, 4);
@@ -663,3 +715,136 @@ export function parseSearchIntent(query: string): SearchIntent {
 
   return intent;
 }
+
+export function getProductPriorityScore(p: Product): number {
+  const attr = extractProductAttributes(p);
+  const nameL = (p.name || '').toLowerCase();
+  const catL = (p.category || '').toLowerCase();
+
+  // Flagship Cameras & Video Boîtiers (Top Priority)
+  if (attr.product_type === 'camera' || catL.includes('appareil photo') || catL.includes('caméra') || catL.includes('camera') || nameL.startsWith('nikon z') || nameL.startsWith('nikon zr') || nameL.startsWith('sony alpha') || nameL.startsWith('canon eos')) {
+    if (nameL.includes('alpha 7') || nameL.includes('fx3') || nameL.includes('r5') || nameL.includes('r6') || nameL.includes('zr') || nameL.includes('z6') || nameL.includes('z9') || nameL.includes('pocket 3')) {
+      return 100; // Top flagship cameras
+    }
+    return 90; // Other cameras
+  }
+
+  // Premium & Cinema Lenses (Sony GM, Canon RF L, Nikkor S, 7Artisans Cine)
+  if (attr.product_type === 'lens') {
+    if (attr.lens_type === 'cinema' || nameL.includes('gm') || nameL.includes(' f/1.2') || nameL.includes(' f/1.4') || nameL.includes(' f/2.8')) {
+      return 80;
+    }
+    return 70;
+  }
+
+  // Pro Studio Lighting & Flashes (Godox)
+  if (attr.product_type === 'light' || catL.includes('flash') || catL.includes('studio') || catL.includes('éclairage')) {
+    return 65;
+  }
+
+  // Stabilizers & Heavy Duty Tripods (DJI, Vanguard)
+  if (catL.includes('stabilisateur') || catL.includes('trépied') || nameL.includes('osmo') || nameL.includes('veo') || nameL.includes('alta')) {
+    return 60;
+  }
+
+  // Wireless Audio & Intercoms (Hollyland, Røde)
+  if (attr.product_type === 'audio' || nameL.includes('lark') || nameL.includes('solidcom')) {
+    return 55;
+  }
+
+  // Cages & Cinema Rigging (SmallRig)
+  if (catL.includes('cage') || nameL.includes('smallrig') || nameL.includes('matte box')) {
+    return 50;
+  }
+
+  // Storage & Filters (K&F Concept, PNY, Sony CFexpress)
+  if (attr.product_type === 'filter' || catL.includes('carte') || catL.includes('batterie')) {
+    return 40;
+  }
+
+  return 30; // Accessories & others
+}
+
+/**
+ * Finds all genuine compatible lenses in the catalog for a given camera product.
+ * Matches by camera mount / brand (e.g. Nikon Z -> Nikkor Z; Sony E -> Sony FE/E; Canon RF -> Canon RF).
+ */
+export function findCompatibleLensesForCamera(products: Product[], cameraProduct: Product): Product[] {
+  if (!cameraProduct || !Array.isArray(products) || products.length === 0) return [];
+  const cameraAttrs = extractProductAttributes(cameraProduct);
+  const camNameLower = (cameraProduct.name || '').toLowerCase();
+  const camBrandLower = (cameraAttrs.brand || '').toLowerCase();
+
+  const isCamera =
+    cameraAttrs.product_type === 'camera' ||
+    (cameraProduct.category || '').toLowerCase().includes('appareil') ||
+    (cameraProduct.category || '').toLowerCase().includes('caméra') ||
+    (cameraProduct.category || '').toLowerCase().includes('camera') ||
+    camNameLower.includes('nikon z') ||
+    camNameLower.includes('sony alpha') ||
+    camNameLower.includes('canon eos') ||
+    camNameLower.includes('fx3') ||
+    camNameLower.includes('fx30');
+
+  if (!isCamera) return [];
+
+  return products
+    .filter((p) => {
+      if (p.id === cameraProduct.id) return false;
+      const attr = extractProductAttributes(p);
+      const pNameLower = (p.name || '').toLowerCase();
+      const isLens =
+        attr.product_type === 'lens' ||
+        (p.category || '').toLowerCase().includes('objectif') ||
+        pNameLower.includes('nikkor') ||
+        pNameLower.includes('fe ') ||
+        pNameLower.includes('rf ') ||
+        pNameLower.includes('lens');
+      if (!isLens) return false;
+
+      // Nikon Z cameras
+      if (camBrandLower === 'nikon' || camNameLower.includes('nikon') || cameraAttrs.mount === 'Nikon Z') {
+        return (
+          attr.mount === 'Nikon Z' ||
+          pNameLower.includes('nikkor z') ||
+          (pNameLower.includes('nikon') && pNameLower.includes('50mm')) ||
+          (pNameLower.includes('nikon') && pNameLower.includes('24-70mm')) ||
+          (pNameLower.includes('nikon') && pNameLower.includes('70-200mm'))
+        );
+      }
+
+      // Sony E cameras
+      if (camBrandLower === 'sony' || camNameLower.includes('sony') || cameraAttrs.mount === 'Sony E') {
+        return (
+          attr.mount === 'Sony E' ||
+          pNameLower.includes('fe ') ||
+          pNameLower.includes('sony e') ||
+          (pNameLower.includes('sony') && (pNameLower.includes('gm') || pNameLower.includes('f/')))
+        );
+      }
+
+      // Canon RF cameras
+      if (camBrandLower === 'canon' || camNameLower.includes('canon') || cameraAttrs.mount.includes('Canon')) {
+        return (
+          attr.mount.includes('Canon') ||
+          pNameLower.includes('canon rf') ||
+          pNameLower.includes('rf ') ||
+          pNameLower.includes('ef-s')
+        );
+      }
+
+      // Fujifilm X cameras
+      if (camBrandLower.includes('fuji') || cameraAttrs.mount === 'Fuji FX') {
+        return attr.mount === 'Fuji FX' || pNameLower.includes('fuji');
+      }
+
+      // Match by exact mount
+      if (cameraAttrs.mount && cameraAttrs.mount !== 'Universel' && attr.mount === cameraAttrs.mount) {
+        return true;
+      }
+
+      return false;
+    })
+    .sort((a, b) => (b.price || 0) - (a.price || 0));
+}
+

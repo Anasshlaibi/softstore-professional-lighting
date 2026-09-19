@@ -27,28 +27,44 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   const nameLower = name.toLowerCase();
   const fullText = `${nameLower} ${cat} ${desc}`;
 
-  // 1. BRAND DETECTION (DB column > ID range > text analysis)
+  // 1. BRAND DETECTION (DB column > text analysis > fallback)
   let brand = (p as any).brand || '';
   if (!brand) {
     const pId = Number(p.id);
-    if (pId === 10 || (pId >= 1000 && pId < 2000)) {
-      brand = '7Artisans';
-    } else if (pId >= 2000 && pId < 3000) {
-      brand = 'K&F Concept';
-    } else if (pId >= 3000 && pId < 4000 || nameLower.includes('dji') || nameLower.includes('osmo')) {
-      brand = 'DJI';
-    } else if (nameLower.includes('k&f') || nameLower.includes('kentfaith') || nameLower.includes('concept')) {
-      brand = 'K&F Concept';
-    } else if (nameLower.includes('godox')) {
+    if (nameLower.includes('sony') || cat.includes('sony')) {
+      brand = 'Sony';
+    } else if (nameLower.includes('canon') || cat.includes('canon')) {
+      brand = 'Canon';
+    } else if (nameLower.includes('nikon') || cat.includes('nikon')) {
+      brand = 'Nikon';
+    } else if (nameLower.includes('godox') || cat.includes('godox')) {
       brand = 'Godox';
+    } else if (nameLower.includes('smallrig') || cat.includes('smallrig')) {
+      brand = 'SmallRig';
+    } else if (nameLower.includes('vanguard') || cat.includes('vanguard')) {
+      brand = 'Vanguard';
+    } else if (nameLower.includes('hollyland') || cat.includes('hollyland')) {
+      brand = 'Hollyland';
+    } else if (nameLower.includes('insta360') || cat.includes('insta360')) {
+      brand = 'Insta360';
+    } else if (nameLower.includes('kodak') || cat.includes('kodak')) {
+      brand = 'Kodak';
+    } else if (nameLower.includes('agfa') || cat.includes('agfa')) {
+      brand = 'Agfa';
+    } else if (nameLower.includes('pny') || cat.includes('pny')) {
+      brand = 'PNY';
+    } else if (nameLower.includes('dji') || nameLower.includes('osmo') || cat.includes('dji')) {
+      brand = 'DJI';
+    } else if (nameLower.includes('k&f') || nameLower.includes('kentfaith') || nameLower.includes('concept') || (pId >= 2000 && pId < 3000)) {
+      brand = 'K&F Concept';
     } else if (nameLower.includes('rode') || nameLower.includes('røde')) {
       brand = 'Røde';
     } else if (nameLower.includes('yongnuo')) {
       brand = 'Yongnuo';
-    } else if (fullText.includes('7artisans') || fullText.includes('sevenartisans')) {
+    } else if (fullText.includes('7artisans') || fullText.includes('sevenartisans') || pId === 10 || (pId >= 1000 && pId < 2000)) {
       brand = '7Artisans';
     } else {
-      brand = '7Artisans'; // Primary brand
+      brand = 'Équipement Pro';
     }
   }
 
@@ -60,13 +76,13 @@ export function extractProductAttributes(p: Product): ProductAttributes {
       product_type = 'adapter';
     } else if (nameLower.includes('filter') || nameLower.includes('filtre') || nameLower.includes('vnd') || nameLower.includes('black mist') || nameLower.includes('uv filter') || nameLower.includes('cpl')) {
       product_type = 'filter';
-    } else if (cat.includes('studio') || cat.includes('éclairage') || cat.includes('eclairage') || cat.includes('portable') || nameLower.includes('light') || nameLower.includes('spotlight') || nameLower.includes('led') || nameLower.includes('bkl') || nameLower.includes('softbox')) {
+    } else if (cat.includes('studio') || cat.includes('éclairage') || cat.includes('eclairage') || cat.includes('portable') || cat.includes('flash') || cat.includes('tube led') || cat.includes('boite à lumière') || nameLower.includes('light') || nameLower.includes('spotlight') || nameLower.includes('led') || nameLower.includes('bkl') || nameLower.includes('softbox') || nameLower.includes('flash') || nameLower.includes('lux') || nameLower.includes('sl60') || nameLower.includes('godox')) {
       product_type = 'light';
-    } else if (cat.includes('audio') || nameLower.includes('micro') || nameLower.includes('wireless go') || nameLower.includes('mic')) {
+    } else if (cat.includes('audio') || cat.includes('microphone') || cat.includes('casque') || cat.includes('intercom') || nameLower.includes('micro') || nameLower.includes('wireless go') || nameLower.includes('lark') || nameLower.includes('solidcom') || nameLower.includes('mic')) {
       product_type = 'audio';
-    } else if (cat.includes('caméra') || cat.includes('camera') || cat.includes('boîtier') || nameLower.includes('boitier nu') || nameLower.includes('body only')) {
+    } else if (cat.includes('appareil photo') || cat.includes('caméra') || cat.includes('camera') || cat.includes('boîtier') || nameLower.includes('boitier') || nameLower.includes('body') || nameLower.includes('alpha') || nameLower.includes('eos') || nameLower.includes('z5') || nameLower.includes('z6') || nameLower.includes('z7') || nameLower.includes('z8') || nameLower.includes('z9') || nameLower.includes('z30') || nameLower.includes('z50') || nameLower.includes('zfc') || nameLower.includes('insta360')) {
       product_type = 'camera';
-    } else if (cat.includes('accessories') || cat.includes('accessoire') || nameLower.includes('tripod') || nameLower.includes('trépied') || nameLower.includes('battery') || nameLower.includes('batterie') || nameLower.includes('card') || nameLower.includes('carte')) {
+    } else if (cat.includes('sac') || cat.includes('valise') || cat.includes('trépied') || cat.includes('trepied') || cat.includes('stabilisateur') || cat.includes('cage') || cat.includes('rig') || cat.includes('batterie') || cat.includes('carte') || cat.includes('accessories') || cat.includes('accessoire') || nameLower.includes('tripod') || nameLower.includes('trépied') || nameLower.includes('battery') || nameLower.includes('batterie') || nameLower.includes('card') || nameLower.includes('carte') || nameLower.includes('cage') || nameLower.includes('smallrig') || nameLower.includes('vanguard')) {
       product_type = 'accessory';
     } else if (cat.includes('lenses') || cat.includes('objectif') || /\b\d+(\.\d+)?\s*mm\b/i.test(name) || nameLower.includes('fisheye')) {
       // Must be an actual lens

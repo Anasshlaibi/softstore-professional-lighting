@@ -57,9 +57,66 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   if (!isOpen) return null;
 
   // Filter products using shared intelligent keyword & alias matching
-  const results = query.trim().length > 0
+  const matched = query.trim().length > 0
     ? products.filter(p => matchProductWithQuery(p, query))
     : [];
+
+  // Intelligent Search Ranking: Cameras first, then Lenses, then Lights, then Accessories
+  const getSearchRank = (p: Product, qLower: string) => {
+    const nameL = (p.name || '').toLowerCase();
+    const catL = (p.category || '').toLowerCase();
+    const isBrandSearch = qLower.includes('nikon') || qLower.includes('sony') || qLower.includes('canon') || qLower.includes('fuji') || qLower.includes('dji');
+
+    // 1. Direct Brand Camera Bodies (Top Rank 100)
+    if (
+      catL.includes('appareil') ||
+      catL.includes('camera') ||
+      catL.includes('caméra') ||
+      nameL.includes('boîtier') ||
+      nameL.includes('boitier') ||
+      nameL.includes('coolpix') ||
+      nameL.includes('cinema line') ||
+      nameL.includes('eos r') ||
+      nameL.includes('alpha 7') ||
+      nameL.includes('zv-e') ||
+      nameL.includes('nikon z') ||
+      nameL.includes('nikon zr') ||
+      nameL.includes('pocket 3')
+    ) {
+      // If user typed brand and product starts with brand name: highest possible priority
+      if (isBrandSearch && (nameL.startsWith('nikon z') || nameL.startsWith('sony alpha') || nameL.startsWith('canon eos') || nameL.startsWith('nikon coolpix') || nameL.startsWith('nikon zr'))) {
+        return 120;
+      }
+      return 100;
+    }
+
+    // 2. Direct Brand / First-Party Lenses (Rank 80)
+    if (catL.includes('lens') || catL.includes('objectif') || nameL.includes('nikkor') || nameL.includes('fe ') || nameL.includes('rf ') || nameL.includes('ef ')) {
+      return 80;
+    }
+
+    // 3. Third-party Cinema / Prime Lenses (Rank 60)
+    if (nameL.includes('mm f/') || nameL.includes('mm t') || nameL.includes('7artisans')) {
+      return 60;
+    }
+
+    // 4. Lights, Stabilizers, Audio (Rank 40)
+    if (catL.includes('light') || catL.includes('flash') || catL.includes('stabilisateur') || catL.includes('audio')) {
+      return 40;
+    }
+
+    return 20; // Adapters, cables, filters, cages
+  };
+
+  const results = [...matched].sort((a, b) => {
+    const qLower = query.toLowerCase();
+    const rankA = getSearchRank(a, qLower);
+    const rankB = getSearchRank(b, qLower);
+    if (rankA !== rankB) {
+      return rankB - rankA; // Highest rank first
+    }
+    return (b.price || 0) - (a.price || 0); // Higher tier price first
+  });
 
   const handleCopyLink = (e: React.MouseEvent, product: Product) => {
     e.preventDefault();

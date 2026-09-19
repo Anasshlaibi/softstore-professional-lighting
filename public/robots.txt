@@ -4,6 +4,7 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 # Dedicated AI crawler allowances
@@ -12,6 +13,7 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 User-agent: ChatGPT-User
@@ -19,6 +21,7 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 User-agent: ClaudeBot
@@ -26,6 +29,7 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 User-agent: PerplexityBot
@@ -33,6 +37,7 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 User-agent: Google-Extended
@@ -40,6 +45,7 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 User-agent: Applebot-Extended
@@ -47,6 +53,7 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 User-agent: CCBot
@@ -54,10 +61,11 @@ Allow: /
 Allow: /ai/
 Allow: /api/ai/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /admin
 
 # Sitemaps & AI Catalog Index
-Sitemap: https://gearshop.ma/sitemap.xml
+Sitemap: https://www.gearshop.ma/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1

@@ -5,22 +5,61 @@ import { slugify } from '../src/utils/catalogEngine';
 
 interface ProductCardProps {
   product: Product;
-  onProductClick: (id: number) => void;
-  siteConfig: { currency: string; phone: string };
-  openWhatsappReserve: (productName: string) => void;
-  generateStars: (rating: number) => React.ReactNode[];
-  addToCart: (productId: number) => void;
+  onProductClick?: (id: number) => void;
+  siteConfig?: { currency?: string; phone?: string };
+  openWhatsappReserve?: (productName: string) => void;
+  generateStars?: (rating: number) => React.ReactNode[];
+  addToCart?: (productId: number) => void;
+  currency?: string;
+  onSelect?: (id: number) => void;
+  onAddToCart?: (p: Product) => void;
+  onDirectOrder?: (p: Product) => void;
 }
+
+const defaultGenerateStars = (rating: number) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(
+      <i
+        key={i}
+        className={`fa-solid fa-star ${
+          i <= rating ? 'text-amber-400' : 'text-gray-200'
+        }`}
+      />
+    );
+  }
+  return stars;
+};
 
 const ProductCard: React.FC<ProductCardProps> = React.memo(
   ({
     product,
     onProductClick,
-    siteConfig,
+    siteConfig = { currency: 'DH', phone: '+212673011873' },
     openWhatsappReserve,
-    generateStars,
+    generateStars = defaultGenerateStars,
     addToCart,
+    currency,
+    onSelect,
   }) => {
+    const activeCurrency = currency || siteConfig?.currency || 'DH';
+    const activePhone = siteConfig?.phone || '+212673011873';
+    const handleClick = (id: number) => {
+      if (onProductClick) onProductClick(id);
+      else if (onSelect) onSelect(id);
+    };
+    const handleReserve = (name: string) => {
+      if (openWhatsappReserve) openWhatsappReserve(name);
+      else {
+        const phoneClean = activePhone.replace(/[^0-9]/g, '');
+        window.open(`https://wa.me/${phoneClean}?text=${encodeURIComponent(`Bonjour, je souhaite réserver ${name}`)}`, '_blank');
+      }
+    };
+    const handleAddToCart = (e: React.MouseEvent, id: number) => {
+      e.stopPropagation();
+      if (addToCart) addToCart(id);
+    };
+
     const discount =
       product.oldPrice && product.oldPrice > product.price
         ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -29,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
     return (
       <div
         className="rounded-2xl overflow-hidden group relative flex flex-col h-full bg-white cursor-pointer border border-gray-200/80 hover:border-red-500/50 hover:shadow-xl transition-all duration-300"
-        onClick={() => onProductClick(product.id)}
+        onClick={() => handleClick(product.id)}
       >
         {/* Badges Top Bar */}
         <div className="absolute top-2 left-2 right-2 flex items-center justify-between z-20 pointer-events-none">
@@ -97,7 +136,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               to={`/product/${product.id}-${slugify(product.name)}`}
               onClick={(e) => {
                 e.stopPropagation();
-                onProductClick(product.id);
+                handleClick(product.id);
               }}
               className="text-xs sm:text-sm font-bold text-gray-900 line-clamp-2 leading-snug mb-2 hover:text-red-600 transition-colors block"
             >
@@ -113,7 +152,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
                   {product.price > 0 ? (
                     <>
                       {product.price.toLocaleString('fr-MA')}{' '}
-                      <span className="text-[9px] sm:text-xs font-bold text-gray-500">{siteConfig.currency}</span>
+                      <span className="text-[9px] sm:text-xs font-bold text-gray-500">{activeCurrency}</span>
                     </>
                   ) : (
                     <span className="text-gray-400 text-xs font-medium">Sur devis</span>
@@ -123,7 +162,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
 
               {product.oldPrice && product.oldPrice > product.price && (
                 <span className="text-[10px] sm:text-xs text-gray-400 line-through font-medium leading-none">
-                  {product.oldPrice.toLocaleString('fr-MA')} {siteConfig.currency}
+                  {product.oldPrice.toLocaleString('fr-MA')} {activeCurrency}
                 </span>
               )}
             </div>
@@ -135,9 +174,9 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               onClick={(e) => {
                 e.stopPropagation();
                 if (!product.inStock) {
-                  openWhatsappReserve(product.name);
+                  handleReserve(product.name);
                 } else {
-                  addToCart(product.id);
+                  handleAddToCart(e, product.id);
                 }
               }}
               aria-label={`Ajouter ${product.name} au panier`}

@@ -15,12 +15,15 @@ export const PopularCategories: React.FC<PopularCategoriesProps> = ({
 
   // Pre-calculate real counts for each popular category
   const categoryCounts = useMemo(() => {
+    let camerasCount = 0;
     let photoLenses = 0;
     let cinemaLenses = 0;
     let filtersCount = 0;
     let lightingCount = 0;
     let audioCount = 0;
-    let cleaningCount = 0;
+    let riggingCount = 0;
+    let bagsCount = 0;
+    let stabilizersCount = 0;
     let usedCount = 0;
     let rentalCount = 0;
     let djiCount = 0;
@@ -30,6 +33,9 @@ export const PopularCategories: React.FC<PopularCategoriesProps> = ({
       const nameLower = (p.name || '').toLowerCase();
       const catLower = (p.category || '').toLowerCase();
 
+      if (attr.product_type === 'camera' || catLower.includes('appareil') || catLower.includes('camera')) {
+        camerasCount++;
+      }
       if (attr.product_type === 'lens') {
         if (attr.lens_type === 'cinema') cinemaLenses++;
         else photoLenses++;
@@ -37,14 +43,20 @@ export const PopularCategories: React.FC<PopularCategoriesProps> = ({
       if (attr.product_type === 'filter' || nameLower.includes('filter') || nameLower.includes('filtre')) {
         filtersCount++;
       }
-      if (attr.product_type === 'light' || catLower.includes('studio') || catLower.includes('portable')) {
+      if (attr.product_type === 'light' || catLower.includes('studio') || catLower.includes('flash') || catLower.includes('portable')) {
         lightingCount++;
       }
-      if (attr.product_type === 'audio' || nameLower.includes('mic') || nameLower.includes('audio')) {
+      if (attr.product_type === 'audio' || nameLower.includes('mic') || nameLower.includes('lark') || nameLower.includes('solidcom')) {
         audioCount++;
       }
-      if (nameLower.includes('nettoyage') || nameLower.includes('cleaning')) {
-        cleaningCount++;
+      if (catLower.includes('cage') || nameLower.includes('smallrig') || nameLower.includes('matte box')) {
+        riggingCount++;
+      }
+      if (catLower.includes('sac') || catLower.includes('valise') || nameLower.includes('veo') || nameLower.includes('vesta')) {
+        bagsCount++;
+      }
+      if (catLower.includes('stabilisateur') || catLower.includes('trépied') || nameLower.includes('osmo') || nameLower.includes('tripod')) {
+        stabilizersCount++;
       }
       if (attr.condition === 'used' || catLower.includes('occasion')) {
         usedCount++;
@@ -52,34 +64,34 @@ export const PopularCategories: React.FC<PopularCategoriesProps> = ({
       if (attr.condition === 'rental' || catLower.includes('location')) {
         rentalCount++;
       }
-      if (attr.brand === 'dji' || nameLower.includes('dji') || nameLower.includes('osmo')) {
+      if (attr.brand.toLowerCase() === 'dji' || nameLower.includes('dji') || nameLower.includes('osmo')) {
         djiCount++;
       }
     });
 
     return {
-      photoLenses: photoLenses || 34,
+      camerasCount: camerasCount || 35,
+      photoLenses: photoLenses || 65,
       cinemaLenses: cinemaLenses || 15,
-      filtersCount: filtersCount || 65,
-      lightingCount: lightingCount || 38,
-      audioCount: audioCount || 12,
-      cleaningCount: cleaningCount || 39,
-      usedCount: usedCount || 24,
-      rentalCount: rentalCount || 18,
-      djiCount: djiCount || 5,
+      filtersCount: filtersCount || 45,
+      lightingCount: lightingCount || 40,
+      audioCount: audioCount || 20,
+      riggingCount: riggingCount || 15,
+      bagsCount: bagsCount || 18,
+      stabilizersCount: stabilizersCount || 22,
+      usedCount: usedCount || 12,
+      rentalCount: rentalCount || 8,
+      djiCount: djiCount || 10,
     };
   }, [products]);
 
   const categories = [
     {
-      id: 'dji_products',
-      title: 'DJI & GIMBALS',
-      image: '/images/osmo-pocket-4-pro-announcement-1.png',
-      fallbackImage: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
-      count: categoryCounts.djiCount,
-      onClick: () => {
-        window.location.href = '/dji-osmo-pocket-4-pro';
-      },
+      id: 'cameras',
+      title: 'APPAREILS PHOTO',
+      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=400&q=80',
+      count: categoryCounts.camerasCount,
+      onClick: () => onCategorySelect('Appareil Photo'),
     },
     {
       id: 'photo_lenses',
@@ -87,7 +99,42 @@ export const PopularCategories: React.FC<PopularCategoriesProps> = ({
       image: '/photo_lens.jpg',
       fallbackImage: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
       count: categoryCounts.photoLenses,
-      onClick: () => onCategorySelect('lenses', { lensType: 'all' }),
+      onClick: () => onCategorySelect('Objectifs', { lensType: 'all' }),
+    },
+    {
+      id: 'lighting',
+      title: 'ÉCLAIRAGE & FLASH',
+      image: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg',
+      count: categoryCounts.lightingCount,
+      onClick: () => onCategorySelect('Éclairage & Flash'),
+    },
+    {
+      id: 'smallrig_rigging',
+      title: 'CAGES & RIGGING',
+      image: 'https://images.unsplash.com/photo-1589872545582-7634f198f1f5?auto=format&fit=crop&w=400&q=80',
+      count: categoryCounts.riggingCount,
+      onClick: () => onCategorySelect('Sacs & Accessoires', { brand: 'SmallRig' }),
+    },
+    {
+      id: 'stabilizers',
+      title: 'STABILISATEURS & TRÉPIEDS',
+      image: '/images/osmo-pocket-4-pro-announcement-1.png',
+      count: categoryCounts.stabilizersCount,
+      onClick: () => onCategorySelect('Stabilisateurs & Trépieds'),
+    },
+    {
+      id: 'audio',
+      title: 'AUDIO & MICROS',
+      image: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319173149416DF92390F5C3A7_b.webp',
+      count: categoryCounts.audioCount,
+      onClick: () => onCategorySelect('Audio & Micros'),
+    },
+    {
+      id: 'filters_nd',
+      title: 'FILTRES ND & CPL',
+      image: 'https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg',
+      count: categoryCounts.filtersCount,
+      onClick: () => onCategorySelect('Filtres'),
     },
     {
       id: 'cinema_lenses',
@@ -95,51 +142,14 @@ export const PopularCategories: React.FC<PopularCategoriesProps> = ({
       image: '/cine_lens.jpg',
       fallbackImage: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
       count: categoryCounts.cinemaLenses,
-      onClick: () => onCategorySelect('lenses', { lensType: 'cinema' }),
+      onClick: () => onCategorySelect('Objectifs', { lensType: 'cinema' }),
     },
     {
-      id: 'filters_nd',
-      title: 'FILTRES ND / CPL',
-      image: 'https://img.kfconcept.com/cache/catalog/products/us/KF01.2928V2/KF01.2928V2-1-327x327.jpg',
-      count: categoryCounts.filtersCount,
-      onClick: () => onCategorySelect('filtres', { lensType: 'all' }),
-    },
-    {
-      id: 'lighting',
-      title: 'ÉCLAIRAGE STUDIO',
-      image: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/2025060617165969C379C73A0204C9_b.jpg',
-      count: categoryCounts.lightingCount,
-      onClick: () => onCategorySelect('studio', { lensType: 'all' }),
-    },
-    {
-      id: 'audio',
-      title: 'MATÉRIEL AUDIO',
-      image: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/20240319173149416DF92390F5C3A7_b.webp',
-      count: categoryCounts.audioCount,
-      onClick: () => onCategorySelect('accessories', { lensType: 'all' }),
-    },
-    {
-      id: 'cleaning',
-      title: 'KIT DE NETTOYAGE',
-      image: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/product/202410161549379C4705A19E57E8B5_b.jpg',
-      count: categoryCounts.cleaningCount,
-      onClick: () => onCategorySelect('accessories', { lensType: 'all' }),
-    },
-    {
-      id: 'occasions',
-      title: 'OCCASION',
-      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80',
-      fallbackImage: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
-      count: categoryCounts.usedCount,
-      onClick: () => onCategorySelect('all', { productGroup: 'used' }),
-    },
-    {
-      id: 'location',
-      title: 'LOCATION',
-      image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&q=80',
-      fallbackImage: 'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
-      count: categoryCounts.rentalCount,
-      onClick: () => onCategorySelect('all', { productGroup: 'rental' }),
+      id: 'bags',
+      title: 'SACS & VALISES',
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=80',
+      count: categoryCounts.bagsCount,
+      onClick: () => onCategorySelect('Sacs & Accessoires', { brand: 'Vanguard' }),
     },
   ];
 

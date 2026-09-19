@@ -34,10 +34,10 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 82,
-    "categoriesCount": 7,
-    "brandsCount": 8,
-    "lastUpdated": "2026-09-12"
+    "totalProducts": 280,
+    "categoriesCount": 8,
+    "brandsCount": 10,
+    "lastUpdated": "2026-09-19"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -89,7 +89,7 @@
           "url": "https://www.gearshop.ma/product/2-yb-300r"
         },
         {
-          "name": "YB-100R ",
+          "name": "YB-100R",
           "price": 1900,
           "url": "https://www.gearshop.ma/product/6-yb-100r"
         },
@@ -112,7 +112,7 @@
     },
     {
       "name": "Lentilles Cinéma",
-      "count": 24,
+      "count": 29,
       "sampleProducts": [
         {
           "name": "35mm T2.0 Sony (E Mount) - Black",
@@ -143,7 +143,7 @@
     },
     {
       "name": "Objectifs Photo",
-      "count": 37,
+      "count": 93,
       "sampleProducts": [
         {
           "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
@@ -216,7 +216,7 @@
     },
     {
       "name": "Accessoires Photo & Vidéo",
-      "count": 2,
+      "count": 128,
       "sampleProducts": [
         {
           "name": "K&F Concept Kit de Nettoyage Professionnel Optique 3-en-1",
@@ -227,6 +227,52 @@
           "name": "K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires",
           "price": 600,
           "url": "https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires"
+        },
+        {
+          "name": "Agfa DC5200 Noir",
+          "price": 699,
+          "url": "https://www.gearshop.ma/product/5001-agfa-dc5200-noir"
+        },
+        {
+          "name": "Agfa DC5200 Silver",
+          "price": 699,
+          "url": "https://www.gearshop.ma/product/5002-agfa-dc5200-silver"
+        },
+        {
+          "name": "Agfa DC5200 Rouge",
+          "price": 699,
+          "url": "https://www.gearshop.ma/product/5003-agfa-dc5200-rouge"
+        }
+      ]
+    },
+    {
+      "name": "Caméras & Stabilisateurs",
+      "count": 11,
+      "sampleProducts": [
+        {
+          "name": "MINI 12 CAMERA CASE PASTEL-BLUE",
+          "price": 279,
+          "url": "https://www.gearshop.ma/product/5023-mini-12-camera-case-pastel-blue"
+        },
+        {
+          "name": "MINI 12 CAMERA CASE LILAC-PURPLE",
+          "price": 279,
+          "url": "https://www.gearshop.ma/product/5024-mini-12-camera-case-lilac-purple"
+        },
+        {
+          "name": "Insta360 Camera Luna Ultra Creator Bundle Cosmic Noir",
+          "price": 11599,
+          "url": "https://www.gearshop.ma/product/5046-insta360-camera-luna-ultra-creator-bundle-cosmic-noir"
+        },
+        {
+          "name": "Canon Camera Video XA60B",
+          "price": 13880,
+          "url": "https://www.gearshop.ma/product/6010-canon-camera-video-xa60b"
+        },
+        {
+          "name": "DJI Osmo Pocket 3 Creator Combo",
+          "price": 6650,
+          "url": "https://www.gearshop.ma/product/6024-dji-osmo-pocket-3-creator-combo"
         }
       ]
     }

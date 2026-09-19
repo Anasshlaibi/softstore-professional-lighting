@@ -34,10 +34,10 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 82,
-    "categoriesCount": 7,
-    "brandsCount": 8,
-    "lastUpdated": "2026-09-12"
+    "totalProducts": 280,
+    "categoriesCount": 8,
+    "brandsCount": 10,
+    "lastUpdated": "2026-09-19"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",

@@ -44,6 +44,7 @@ const AboutAndPartners = React.lazy(() => import('./src/pages/AboutAndPartners')
 const OsmoPocket4Page = React.lazy(() => import('./src/pages/OsmoPocket4Page'));
 const CameraMarocPage = React.lazy(() => import('./src/pages/CameraMarocPage'));
 const CityHubMaroc = React.lazy(() => import('./src/pages/CityHubMaroc'));
+const ProductDetailPage = React.lazy(() => import('./src/pages/ProductDetailPage'));
 
 import Newsletter from './src/components/Newsletter';
 import CookieConsentBanner from './src/components/CookieConsentBanner';
@@ -134,44 +135,6 @@ const App: React.FC = () => {
     initAttributionTracker();
   }, []);
 
-  // Sync modal with URL
-  useEffect(() => {
-    if (products.length > 0) {
-      const pathParts = location.pathname.split('/').filter(Boolean);
-      const searchParams = new URLSearchParams(location.search);
-      const queryProductId = searchParams.get('product') || searchParams.get('id') || searchParams.get('p');
-      
-      let idFromUrl: number | null = null;
-
-      if ((pathParts[0] === 'product' || pathParts[0] === 'products') && pathParts[1]) {
-        idFromUrl = parseInt(pathParts[1].split('-')[0], 10);
-      } else if (queryProductId) {
-        idFromUrl = parseInt(queryProductId, 10);
-      }
-
-      if (idFromUrl && !isNaN(idFromUrl)) {
-        if (idFromUrl === 3001) {
-          navigate('/dji-osmo-pocket-4-pro', { replace: true });
-          return;
-        }
-
-        const product = products.find(p => p.id === idFromUrl);
-        if (product && (!selectedProduct || selectedProduct.id !== product.id)) {
-          setSelectedProduct(product);
-          recordProductView(product.name);
-          trackViewContent(product.name, product.price || 0, product.category || 'Gear');
-        }
-      } else if (selectedProduct) {
-        setSelectedProduct(null);
-      }
-    }
-  }, [location.pathname, location.search, products]);
-
-  // Auto promo popup disabled per user request
-  useEffect(() => {
-    setIsPromoOverlayOpen(false);
-  }, []);
-
   const slugify = (text: string) => {
     return text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '';
   };
@@ -186,7 +149,8 @@ const App: React.FC = () => {
       if (fromSearchQuery !== undefined) {
         setSearchHistoryQuery(fromSearchQuery);
       }
-      setSelectedProduct(product);
+      recordProductView(product.name);
+      trackViewContent(product.name, product.price || 0, product.category || 'Gear');
       navigate(`/product/${product.id}-${slugify(product.name)}`, {
         state: { 
           fromSearch: Boolean(fromSearchQuery), 
@@ -364,6 +328,16 @@ const AppContent: React.FC<{
             onOpenProductRequest={() => setIsProductRequestOpen(true)}
             onOpenSearchModal={() => setIsSearchModalOpen(true)}
             onOpenNewArrivals={() => setIsNewArrivalsOpen(true)}
+            onSelectCategory={(cat) => {
+              setSelectedCategory(cat);
+              const el = document.getElementById('products');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            onSelectBrand={(brand) => {
+              setSelectedBrand(brand);
+              const el = document.getElementById('products');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
           />
         )}
         
@@ -435,14 +409,31 @@ const AppContent: React.FC<{
                 <CameraMarocPage products={products} openProductModal={openProductModal} siteConfig={siteConfig} />
               </React.Suspense>
             } />
-            <Route path="/cameras-maroc" element={
+            <Route path="/product/:slug" element={
               <React.Suspense fallback={<LoadingSpinner />}>
-                <CameraMarocPage products={products} openProductModal={openProductModal} siteConfig={siteConfig} />
+                <ProductDetailPage products={products} siteConfig={siteConfig} onProductClick={openProductModal} />
+              </React.Suspense>
+            } />
+            <Route path="/produit/:slug" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <ProductDetailPage products={products} siteConfig={siteConfig} onProductClick={openProductModal} />
               </React.Suspense>
             } />
             <Route path="*" element={
               <>
-                <Hero siteConfig={{ ...siteConfig, heroImg: '/banner_7artisans.jpg' }} />
+                <Hero
+                  siteConfig={siteConfig}
+                  onSelectCategory={(cat) => {
+                    setSelectedCategory(cat);
+                    const el = document.getElementById('products');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  onSelectBrand={(b) => {
+                    setSelectedBrand(b);
+                    const el = document.getElementById('products');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                />
                 
                 <React.Suspense fallback={<LoadingSpinner />}>
                   <TrustBadges />
@@ -494,7 +485,7 @@ const AppContent: React.FC<{
           </Routes>
         </main>
 
-        {!isAdminRoute && !selectedProduct && (
+        {!isAdminRoute && !location.pathname.startsWith('/product/') && !location.pathname.startsWith('/produit/') && (
           <>
             <Footer siteConfig={siteConfig} />
             <FloatingWhatsApp siteConfig={siteConfig} />
@@ -513,7 +504,7 @@ const AppContent: React.FC<{
             />
           </>
         )}
-        {!isAdminRoute && selectedProduct && (
+        {!isAdminRoute && (location.pathname.startsWith('/product/') || location.pathname.startsWith('/produit/')) && (
           <Footer siteConfig={siteConfig} />
         )}
 
@@ -537,25 +528,6 @@ const AppContent: React.FC<{
             onSuccess={() => {
               setIsCheckoutOpen(false);
             }}
-          />
-        )}
-
-        {selectedProduct && (
-          <ProductDetailModal
-            product={selectedProduct}
-            allProducts={products}
-            onClose={closeProductModal}
-            buyNow={() => buyNow(selectedProduct.id)}
-            siteConfig={siteConfig}
-            onOpenQuoteRequest={(prod) => {
-              setQuoteProduct(prod);
-              setIsQuoteRequestOpen(true);
-            }}
-            onOpenProductAlert={(prod) => {
-              setAlertProduct(prod);
-              setIsProductAlertOpen(true);
-            }}
-            onSelectProduct={openProductModal}
           />
         )}
 

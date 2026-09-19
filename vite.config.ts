@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 5173,
       host: '0.0.0.0',
+      watch: {
+        ignored: ['**/dist/**', '**/node_modules/**', '**/.git/**']
+      }
     },
     envPrefix: ['VITE_', 'SUPABASE_'],
     plugins: [react(), tailwindcss()],

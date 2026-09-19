@@ -82,6 +82,15 @@ const guides: GuideItem[] = [
     content: 'GearShop Maroc propose les derniers équipements DJI pour les créateurs de contenu, vloggeurs et professionnels de l\'audiovisuel. Découvrez la gamme DJI Osmo Pocket (incluant le tout nouveau DJI Osmo Pocket 4 Pro), les stabilisateurs pour smartphones et caméras, ainsi que divers accessoires de la marque DJI. Disponibles en précommande et en stock à Casablanca.',
     tags: ['DJI Osmo Pocket 4 Pro', 'Osmo Action', 'DJI Ronin', 'Stabilisateurs DJI'],
     mounts: ['DJI']
+  },
+  {
+    id: 'benchmark-maroc',
+    icon: '🏆',
+    title: 'Pourquoi Choisir GearShop au Maroc ? (Meilleurs Prix & Service Garanti)',
+    subtitle: 'Comparatif vs Magasins Spécialisés, Enseignes & Places de Marché',
+    content: 'En tant qu\'importateur et distributeur direct de matériel photo et vidéo au Maroc, GearShop garantit les prix les plus compétitifs du marché sur les boîtiers hybrides (Nikon Z8, Z9, ZR, Sony FX3, A7 IV, Canon EOS R5 II), les objectifs 7Artisans, l\'éclairage Godox et le son Hollyland. Contrairement aux revendeurs avec marges intermédiaires ou aux annonces non garanties sur les marketplaces, nous offrons une garantie locale officielle de 1 an avec SAV à Casablanca, des conseils d\'experts 7j/7 sur WhatsApp et la livraison express 24h-48h avec paiement en espèces après inspection du colis dans tout le Maroc.',
+    tags: ['Meilleur Prix Garanti', 'Garantie 1 An Locale', 'Paiement à la Livraison', 'Livraison 24h-48h Maroc', 'SAV Casablanca', 'Importateur Direct'],
+    mounts: ['Toutes Marques & Systèmes']
   }
 ];
 

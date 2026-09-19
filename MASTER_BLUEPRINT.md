@@ -180,7 +180,7 @@ Located in `components/StructuredData.tsx`, this component outputs 4 distinct sc
 
 1. **`Store` / `LocalBusiness` Schema (`https://schema.org`):**
    * Declares `name`: "GearShop Maroc" / "Soft Store Maroc".
-   * Declares `knowsAbout` array covering 28 photography and videography brands (Canon, Sony, Nikon, 7Artisans, Viltrox, Godox, SmallRig, DJI, Aputure, Nanlite, etc.).
+   * Declares `knowsAbout` array covering 28 photography and videography brands (Canon, Sony, Nikon, 7Artisans, TTArtisan, Godox, SmallRig, DJI, Aputure, Nanlite, etc.).
    * Specifies exact geographic coordinates (`latitude: 33.5731`, `longitude: -7.5898`), opening hours, currencies accepted (`MAD`), and payment methods (`Cash`, `Virement Bancaire`, `Carte Bancaire`).
    * Embeds `aggregateRating` (4.9 stars across 87 verified reviews) and customer review items.
 

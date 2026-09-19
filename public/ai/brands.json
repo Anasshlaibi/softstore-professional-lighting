@@ -34,10 +34,10 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 82,
-    "categoriesCount": 7,
-    "brandsCount": 8,
-    "lastUpdated": "2026-09-12"
+    "totalProducts": 280,
+    "categoriesCount": 8,
+    "brandsCount": 10,
+    "lastUpdated": "2026-09-19"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -50,7 +50,7 @@
   "brands": [
     {
       "name": "7Artisans",
-      "count": 11,
+      "count": 92,
       "mountsAvailable": [
         "Nikon Z"
       ],
@@ -76,7 +76,7 @@
           "url": "https://www.gearshop.ma/product/4-panel-p-500"
         },
         {
-          "name": "YB-100R ",
+          "name": "YB-100R",
           "price": 1900,
           "url": "https://www.gearshop.ma/product/6-yb-100r"
         }
@@ -121,7 +121,7 @@
     },
     {
       "name": "Fujifilm",
-      "count": 10,
+      "count": 21,
       "mountsAvailable": [
         "Fujifilm X"
       ],
@@ -155,7 +155,7 @@
     },
     {
       "name": "Sony",
-      "count": 15,
+      "count": 56,
       "mountsAvailable": [
         "Sony E"
       ],
@@ -189,7 +189,7 @@
     },
     {
       "name": "Nikon",
-      "count": 9,
+      "count": 29,
       "mountsAvailable": [
         "Nikon Z"
       ],
@@ -257,7 +257,7 @@
     },
     {
       "name": "Canon",
-      "count": 7,
+      "count": 37,
       "mountsAvailable": [
         "Canon RF",
         "Nikon Z"
@@ -292,13 +292,72 @@
     },
     {
       "name": "DJI",
-      "count": 1,
+      "count": 4,
       "mountsAvailable": [],
       "sampleProducts": [
         {
           "name": "DJI Osmo Pocket 4 Pro",
           "price": 9000,
           "url": "https://www.gearshop.ma/dji-osmo-pocket-4-pro"
+        },
+        {
+          "name": "DJI Osmo Pocket 3 Creator Combo",
+          "price": 6650,
+          "url": "https://www.gearshop.ma/product/6024-dji-osmo-pocket-3-creator-combo"
+        },
+        {
+          "name": "DJI Osmo Mobile 7 Stabilisateur Smartphone",
+          "price": 1240,
+          "url": "https://www.gearshop.ma/product/6025-dji-osmo-mobile-7-stabilisateur-smartphone"
+        },
+        {
+          "name": "DJI Osmo Mobile 7P Stabilisateur Smartphone",
+          "price": 2070,
+          "url": "https://www.gearshop.ma/product/6026-dji-osmo-mobile-7p-stabilisateur-smartphone"
+        }
+      ]
+    },
+    {
+      "name": "Godox",
+      "count": 11,
+      "mountsAvailable": [],
+      "sampleProducts": [
+        {
+          "name": "Godox Softbox Prabolique P90H",
+          "price": 899,
+          "url": "https://www.gearshop.ma/product/5025-godox-softbox-prabolique-p90h"
+        },
+        {
+          "name": "Godox Softbox Prabolique P120H",
+          "price": 1049,
+          "url": "https://www.gearshop.ma/product/5026-godox-softbox-prabolique-p120h"
+        },
+        {
+          "name": "Godox Flash StudioK1",
+          "price": 3699,
+          "url": "https://www.gearshop.ma/product/5027-godox-flash-studiok1"
+        },
+        {
+          "name": "Godox Flash StudioK1",
+          "price": 4699,
+          "url": "https://www.gearshop.ma/product/5028-godox-flash-studiok1"
+        },
+        {
+          "name": "Godox Flash StudioK1",
+          "price": 4299,
+          "url": "https://www.gearshop.ma/product/5029-godox-flash-studiok1"
+        }
+      ]
+    },
+    {
+      "name": "Røde",
+      "count": 1,
+      "mountsAvailable": [],
+      "sampleProducts": [
+        {
+          "name": "Insta360 X5 Invisible Mic Cold Shoe (for RODE Mic) CINSBAHP",
+          "price": 299,
+          "url": "https://www.gearshop.ma/product/5071-insta360-x5-invisible-mic-cold-shoe-for-rode-mic-cinsbahp"
         }
       ]
     }

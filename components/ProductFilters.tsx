@@ -77,12 +77,20 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
 
     const brands = [
         { id: 'all', label: 'Toutes marques' },
+        { id: 'Sony', label: 'Sony' },
+        { id: 'Canon', label: 'Canon' },
+        { id: 'Nikon', label: 'Nikon' },
+        { id: 'Godox', label: 'Godox' },
+        { id: 'SmallRig', label: 'SmallRig' },
+        { id: 'Vanguard', label: 'Vanguard' },
+        { id: 'Hollyland', label: 'Hollyland' },
+        { id: 'Insta360', label: 'Insta360' },
+        { id: 'DJI', label: 'DJI' },
         { id: '7Artisans', label: '7Artisans' },
         { id: 'K&F Concept', label: 'K&F Concept' },
-        { id: 'DJI', label: 'DJI' },
-        { id: 'Sony', label: 'Sony (Monture E)' },
-        { id: 'Nikon', label: 'Nikon (Monture Z)' },
-        { id: 'Canon', label: 'Canon (Monture RF/EF)' }
+        { id: 'Kodak', label: 'Kodak' },
+        { id: 'Agfa', label: 'Agfa' },
+        { id: 'PNY', label: 'PNY' }
     ];
 
     return (
