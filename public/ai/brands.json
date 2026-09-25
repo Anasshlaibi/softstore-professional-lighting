@@ -94,12 +94,12 @@
       "sampleProducts": [
         {
           "name": "35mm T2.0 Sony (E Mount) - Black",
-          "price": 0,
+          "price": 4500,
           "url": "https://www.gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black"
         },
         {
           "name": "35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black",
-          "price": 0,
+          "price": 4500,
           "url": "https://www.gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black"
         },
         {
@@ -128,27 +128,27 @@
       "sampleProducts": [
         {
           "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
-          "price": 0,
+          "price": 2100,
           "url": "https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black"
         },
         {
           "name": "AF35mm F1.8 Fuji (FX Mount) APS-C - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black"
         },
         {
           "name": "AF50mm F1.8 Fuji (FX Mount) APS-C - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black"
         },
         {
           "name": "50mm F1.2 Fuji (FX Mount) - Black",
-          "price": 0,
+          "price": 1300,
           "url": "https://www.gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black"
         },
         {
           "name": "50mm F1.8 Fuji (FX Mount) - Black",
-          "price": 0,
+          "price": 1000,
           "url": "https://www.gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black"
         }
       ]
@@ -162,12 +162,12 @@
       "sampleProducts": [
         {
           "name": "AF35mm F1.8 Sony (E Mount) APS-C - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black"
         },
         {
           "name": "AF50mm F1.8 Sony (E Mount) APS-C - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black"
         },
         {
@@ -196,12 +196,12 @@
       "sampleProducts": [
         {
           "name": "AF35mm F1.8 Nikon (Z Mount) APS-C - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black"
         },
         {
           "name": "AF50mm F1.8 Nikon (Z Mount) APS-C - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black"
         },
         {
@@ -250,7 +250,7 @@
         },
         {
           "name": "35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black"
         }
       ]
@@ -265,12 +265,12 @@
       "sampleProducts": [
         {
           "name": "35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black",
-          "price": 0,
+          "price": 2300,
           "url": "https://www.gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black"
         },
         {
           "name": "35mm/F1.4 Canon (EOS-R Mount) - Black",
-          "price": 0,
+          "price": 1200,
           "url": "https://www.gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black"
         },
         {
@@ -280,12 +280,12 @@
         },
         {
           "name": "10mm T2.1 Canon (EOS-R Mount) - Black",
-          "price": 0,
+          "price": 4800,
           "url": "https://www.gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black"
         },
         {
           "name": "10mm T2.1 Canon (EOS-R Mount) - Titanium Gray",
-          "price": 0,
+          "price": 4800,
           "url": "https://www.gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray"
         }
       ]
