@@ -46,46 +46,103 @@ function escapeXml(unsafe) {
 }
 
 function detectBrand(product) {
-  if (product.brand) return product.brand;
-  const text = `${product.name || ''} ${product.category || ''} ${product.desc || ''}`.toLowerCase();
-  if (text.includes('k&f') || text.includes('concept') || text.includes('kf')) return 'K&F Concept';
-  if (text.includes('7artisans')) return '7Artisans';
-  if (text.includes('godox')) return 'Godox';
-  if (text.includes('sony')) return 'Sony';
-  if (text.includes('canon')) return 'Canon';
-  if (text.includes('nikon')) return 'Nikon';
-  if (text.includes('fuji') || text.includes('fujifilm')) return 'Fujifilm';
-  if (text.includes('panasonic') || text.includes('lumix')) return 'Panasonic';
-  if (text.includes('rode') || text.includes('røde')) return 'Røde';
-  if (text.includes('sandisk')) return 'SanDisk';
-  if (text.includes('insta360')) return 'Insta360';
-  if (text.includes('yongnuo')) return 'Yongnuo';
-  if (text.includes('dji')) return 'DJI';
-  return '7Artisans';
+  // Use explicit DB field: never derive manufacturer from compatibility/desc text
+  if (product.brand && product.brand.trim()) return product.brand.trim();
+  const name = (product.name || '').toLowerCase();
+  if (name.includes('7artisans')) return '7Artisans';
+  if (name.includes('k&f') || name.includes('kf concept')) return 'K&F Concept';
+  if (name.includes('godox')) return 'Godox';
+  if (name.includes('atomos')) return 'Atomos';
+  if (name.includes('dji') || name.includes('osmo pocket') || name.includes('osmo mobile')) return 'DJI';
+  if (name.includes('smallrig')) return 'SmallRig';
+  if (name.includes('hollyland')) return 'Hollyland';
+  if (name.includes('insta360')) return 'Insta360';
+  if (name.includes('vanguard')) return 'Vanguard';
+  if (name.includes('yongnuo')) return 'Yongnuo';
+  if (name.includes('pny')) return 'PNY';
+  if (name.includes('sandisk')) return 'SanDisk';
+  if (name.includes('agfa')) return 'Agfa';
+  if (name.includes('kodak')) return 'Kodak';
+  if (name.includes('rode') || name.includes('r\u00f8de')) return 'R\u00f8de';
+  if (name.includes('sony') && !name.includes('e mount') && !name.includes('(e mount)')) return 'Sony';
+  if (name.includes('canon') && !name.includes('rf ') && !name.includes('eos-r') && !name.includes('canon ef')) return 'Canon';
+  if (name.includes('nikon') && !name.includes('z mount') && !name.includes('(z mount)')) return 'Nikon';
+  if (name.includes('fuji') || name.includes('fujifilm')) return 'Fujifilm';
+  if (name.includes('panasonic') || name.includes('lumix')) return 'Panasonic';
+  // DO NOT default to 7Artisans for unknown products
+  return '';
 }
 
 function getGoogleCategory(product) {
-  const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
-  if (text.includes('filter') || text.includes('filtre') || text.includes('vnd') || text.includes('cpl') || text.includes('black mist')) {
+  const name = (product.name || '').toLowerCase();
+  const cat = (product.category || '').toLowerCase();
+  const text = name + ' ' + cat;
+
+  // Camera bodies & action cameras — check BEFORE lenses to avoid false classification
+  if (text.includes('boitier') || text.includes('bo\u00eetier') || text.includes('body') ||
+      text.includes('eos r') || text.includes('alpha') || text.includes('zv-e') ||
+      text.includes('z5 ') || text.includes('z6 ') || text.includes('z8') || text.includes('z9') ||
+      text.includes('pocket 3') || text.includes('pocket 4') ||
+      text.includes('ace pro') || text.includes('insta360 x') ||
+      text.includes('cinema line') || text.includes('canon xa') ||
+      cat.includes('camera') || cat.includes('cam\u00e9ra') || cat.includes('appareil photo')) {
+    return 'Cameras &amp; Optics &gt; Cameras &gt; Digital Cameras';
+  }
+
+  // Gimbals / stabilizers
+  if (text.includes('gimbal') || text.includes('stabilisateur') || text.includes('osmo mobile') ||
+      text.includes('flow 2') || cat.includes('stabilisateur')) {
+    return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Tripods &amp; Monopods';
+  }
+
+  // Filters
+  if (text.includes('filter') || text.includes('filtre') || text.includes('vnd') ||
+      text.includes('cpl') || text.includes('black mist') || text.includes('uv filter')) {
     return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters';
   }
+
+  // Lens adapters
   if (text.includes('adapter') || text.includes('adaptateur') || text.includes('bague')) {
     return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Lens &amp; Filter Adapters';
   }
-  if (text.includes('bag') || text.includes('sac') || text.includes('backpack')) {
+
+  // Camera bags
+  if (text.includes('bag') || text.includes('sac') || text.includes('backpack') || text.includes('valise')) {
     return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Bags &amp; Cases';
   }
-  if (text.includes('light') || text.includes('led') || text.includes('studio') || text.includes('torche') || text.includes('spotlight')) {
+
+  // Lighting
+  if (text.includes('light') || text.includes(' led') || cat.includes('studio') || cat.includes('portable') ||
+      text.includes('torche') || text.includes('spotlight') || text.includes('flash') ||
+      text.includes('softbox') || text.includes('godox')) {
     return 'Cameras &amp; Optics &gt; Photography &gt; Lighting &amp; Studio';
   }
-  if (text.includes('clean') || text.includes('nettoyage') || text.includes('souffleur')) {
-    return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Care &amp; Cleaning';
+
+  // Memory cards / storage
+  if (text.includes('carte') || text.includes('card') || text.includes('ssd') || text.includes('cfe')) {
+    return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Memory Card Readers';
   }
-  if (text.includes('micro') || text.includes('audio') || text.includes('wireless')) {
+
+  // Audio
+  if (text.includes('micro') || text.includes('audio') || text.includes('wireless') ||
+      text.includes('lark') || text.includes('solidcom')) {
     return 'Electronics &gt; Audio &gt; Audio Accessories &gt; Microphones';
   }
-  // Default to Lenses
-  return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses';
+
+  // Tripods / rigging
+  if (text.includes('tripod') || text.includes('tr\u00e9pied') || text.includes('cage') ||
+      text.includes('smallrig') || text.includes('matte box')) {
+    return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Tripods &amp; Monopods';
+  }
+
+  // Lenses (default for optique-category products)
+  if (cat.includes('objectif') || cat.includes('lenses') || cat.includes('lens') ||
+      /\d+mm/.test(name)) {
+    return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses';
+  }
+
+  // Final safe default — Camera Accessories (not Lenses)
+  return 'Cameras &amp; Optics &gt; Camera &amp; Optic Accessories';
 }
 
 async function generateMerchantFeed() {
@@ -107,7 +164,14 @@ async function generateMerchantFeed() {
     <description>Distribution de Matériel Photo, Optiques Cinéma &amp; Accessoires Professionnels au Maroc</description>
 `;
 
+    let skippedCount = 0;
     products.forEach(product => {
+      // GUARD 1: Skip zero-price products — Google rejects 0.00 MAD offers
+      if (!product.price || Number(product.price) <= 0) {
+        console.warn(`  [SKIPPED] ID ${product.id} "${product.name}" — price is 0 or missing. Fix in DB before including.`);
+        skippedCount++;
+        return;
+      }
       if (!product.id || !product.name || !product.price) return;
 
       const slug = slugify(product.name);

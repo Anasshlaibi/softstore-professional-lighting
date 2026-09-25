@@ -1,7 +1,7 @@
 # GearShop Maroc — Full Technical Catalog & Knowledge Corpus (llms-full.txt)
 
 > **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's specialized retailer and importer for photography, filmmaking, cinema lenses, optical filters, and studio lighting equipment. Based in Casablanca, GearShop offers authentic camera gear with a 1-year local warranty, express 24h delivery in Casablanca/Rabat, and 24h-48h nationwide delivery across all 50+ Moroccan cities with Cash on Delivery (Paiement à la livraison).
-> **Catalog Compilation Date**: 2026-09-19
+> **Catalog Compilation Date**: 2026-09-25
 > **Primary Currency**: MAD (Moroccan Dirham / DH)
 > **Canonical Entity URL**: https://www.gearshop.ma
 > **Official Root Discovery File**: https://www.gearshop.ma/llms.txt

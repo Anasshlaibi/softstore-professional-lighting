@@ -116,7 +116,11 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             width={300}
             height={300}
             onError={(e) => {
-              (e.target as HTMLImageElement).src = '/images/products/nikon-zr.webp';
+              const img = e.target as HTMLImageElement;
+              // Prevent infinite loop if placeholder itself fails
+              img.onerror = null;
+              img.src = '/images/placeholder-unavailable.svg';
+              img.alt = 'Image non disponible';
             }}
           />
         </div>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" fill="none">
+  <rect width="300" height="300" fill="#F3F4F6"/>
+  <rect x="1" y="1" width="298" height="298" rx="3" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="6 4"/>
+  <!-- Camera icon outline -->
+  <path d="M150 120 C138 120 128 130 128 142 C128 154 138 164 150 164 C162 164 172 154 172 142 C172 130 162 120 150 120Z" stroke="#9CA3AF" stroke-width="2" fill="none"/>
+  <path d="M114 108 L120 96 L180 96 L186 108 L198 108 C201.3 108 204 110.7 204 114 L204 174 C204 177.3 201.3 180 198 180 L102 180 C98.7 180 96 177.3 96 174 L96 114 C96 110.7 98.7 108 102 108 Z" stroke="#9CA3AF" stroke-width="2" fill="none"/>
+  <line x1="102" y1="120" x2="114" y2="120" stroke="#9CA3AF" stroke-width="2"/>
+  <!-- X mark -->
+  <line x1="136" y1="198" x2="164" y2="218" stroke="#D1D5DB" stroke-width="1.5"/>
+  <line x1="164" y1="198" x2="136" y2="218" stroke="#D1D5DB" stroke-width="1.5"/>
+  <!-- Text -->
+  <text x="150" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#9CA3AF">Image non disponible</text>
+</svg>

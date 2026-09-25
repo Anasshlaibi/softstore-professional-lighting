@@ -111,17 +111,26 @@ function generateProductHTML(product, baseTemplate) {
   // Replace og:url
   html = html.replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${canonicalUrl}">`);
 
-  // Replace og:image if product has an image
+  // Replace og:image -- always use absolute URL
   if (product.image) {
-    html = html.replace(/<meta property="og:image"[^>]*>/, `<meta property="og:image" content="${product.image}">`);
+    const absOgImage = product.image.startsWith('http') ? product.image : 'https://www.gearshop.ma' + product.image;
+    html = html.replace(/<meta property="og:image"[^>]*>/, '<meta property="og:image" content="' + absOgImage + '">');
   }
 
-  // Parse gallery safely
-  let galleryImages = [product.image].filter(Boolean);
+  // Parse gallery safely — force all to absolute URLs
+  const toAbsolute = (url) => {
+    if (!url) return null;
+    if (url.startsWith('http')) return url;
+    return `https://www.gearshop.ma${url}`;
+  };
+  let galleryImages = [product.image].filter(Boolean).map(toAbsolute);
   if (product.gallery) {
-    if (Array.isArray(product.gallery)) galleryImages = product.gallery;
-    else {
-      try { galleryImages = JSON.parse(product.gallery); } catch (e) {}
+    let raw = product.gallery;
+    if (!Array.isArray(raw)) {
+      try { raw = JSON.parse(raw); } catch (e) { raw = []; }
+    }
+    if (Array.isArray(raw) && raw.length > 0) {
+      galleryImages = [...new Set([product.image, ...raw].filter(Boolean).map(toAbsolute))];
     }
   }
 
@@ -156,18 +165,30 @@ function generateProductHTML(product, baseTemplate) {
     `  <script type="application/ld+json">\n${JSON.stringify(jsonLd)}\n  </script>\n</head>`
   );
 
-  // Inject semantic HTML content inside <body> for zero-JS crawlers
-  const specsList = Array.isArray(product.specs) ? product.specs.map(s => `<li>${s}</li>`).join('') : '';
+  // Inject visible semantic HTML for Googlebot-Image and zero-JS crawlers
+  // NOTE: React will hydrate and replace this on first render
+  const specsList = Array.isArray(product.specs) ? product.specs.map(s => `<li style="list-style:disc;margin-left:1.2em;">${s}</li>`).join('') : '';
+  const primaryImageUrl = toAbsolute(product.image) || '';
+  const availabilityText = isPreorder ? 'Précommande officielle' : inStock ? 'En stock à Casablanca — Livraison 24h/48h au Maroc' : 'Rupture temporaire — Sur commande';
+
   const semanticBodyHtml = `
-  <div id="prerendered-product-seo" style="display:none;" aria-hidden="true">
+  <!-- Prerendered product snapshot for crawlers; React hydrates #root -->
+  <section
+    id="prerendered-product-seo"
+    data-prerendered="true"
+    style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"
+    aria-hidden="true"
+  >
     <h1>${product.name}</h1>
+    ${primaryImageUrl ? `<img src="${primaryImageUrl}" alt="${product.name.replace(/"/g, '&quot;')}" width="600" height="600" />` : ''}
     <p>${description}</p>
-    <p>Prix : ${priceFormatted}</p>
-    <p>Disponibilité : ${isPreorder ? 'Précommande' : inStock ? 'En stock à Casablanca' : 'Rupture temporaire'}</p>
-    ${brand ? `<p>Marque : ${brand}</p>` : ''}
-    ${product.category ? `<p>Catégorie : ${product.category}</p>` : ''}
+    <p>Prix&nbsp;: ${priceFormatted}</p>
+    <p>Disponibilité&nbsp;: ${availabilityText}</p>
+    ${brand ? `<p>Marque&nbsp;: ${brand}</p>` : ''}
+    ${product.category ? `<p>Catégorie&nbsp;: ${product.category}</p>` : ''}
     ${specsList ? `<ul>${specsList}</ul>` : ''}
-  </div>
+    <link rel="canonical" href="${canonicalUrl}" />
+  </section>
 `;
 
   html = html.replace('</body>', `${semanticBodyHtml}\n</body>`);

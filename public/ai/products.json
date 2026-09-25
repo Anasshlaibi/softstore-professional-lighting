@@ -37,7 +37,7 @@
     "totalProducts": 281,
     "categoriesCount": 8,
     "brandsCount": 10,
-    "lastUpdated": "2026-09-19"
+    "lastUpdated": "2026-09-25"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -72,7 +72,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/ym-350.webp",
       "url": "https://www.gearshop.ma/product/1-ym-350",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2,
@@ -98,7 +98,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/yb-300r.webp",
       "url": "https://www.gearshop.ma/product/2-yb-300r",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 3,
@@ -124,7 +124,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/bkl400bi-bi-color.webp",
       "url": "https://www.gearshop.ma/product/3-bkl400bi-bi-color",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 4,
@@ -150,7 +150,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/panel-p-500.webp",
       "url": "https://www.gearshop.ma/product/4-panel-p-500",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6,
@@ -176,7 +176,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/yb-100r.webp",
       "url": "https://www.gearshop.ma/product/6-yb-100r",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 7,
@@ -202,7 +202,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/s100-w-portable.webp",
       "url": "https://www.gearshop.ma/product/7-s100-w-portable",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 8,
@@ -228,7 +228,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/p-60s-spotlight.webp",
       "url": "https://www.gearshop.ma/product/8-p-60s-spotlight",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 15,
@@ -254,7 +254,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/atomos-ninja-v-occasion-kit.jpg",
       "url": "https://www.gearshop.ma/product/15-atomos-ninja-v-5-4k-hdr-pack-complet-ssd-500go-lunchbox-valise-batterie-2x-hdmi-comme-neuf",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1000,
@@ -280,7 +280,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-t2-0-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1001,
@@ -306,7 +306,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-t2-0-panasonic-leica-sigma-l-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1002,
@@ -332,7 +332,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-t2-0-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1003,
@@ -358,7 +358,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-t2-0-canon-eos-r-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1004,
@@ -384,7 +384,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-t2-0-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1005,
@@ -410,7 +410,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-t2-0-panasonic-leica-sigma-l-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1005-50mm-t2-0-panasonic-leica-sigma-l-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1006,
@@ -436,7 +436,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-t2-0-canon-eos-r-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1006-50mm-t2-0-canon-eos-r-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1007,
@@ -462,7 +462,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-t2-0-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1008,
@@ -488,7 +488,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-4-fuji-fx-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1009,
@@ -514,7 +514,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-sony-e-mount-aps-c-black.webp",
       "url": "https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1010,
@@ -540,7 +540,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-fuji-fx-mount-aps-c-black.webp",
       "url": "https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1011,
@@ -566,7 +566,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-nikon-z-mount-aps-c-black.webp",
       "url": "https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1012,
@@ -592,7 +592,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-sony-e-mount-aps-c-black.webp",
       "url": "https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1013,
@@ -618,7 +618,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-fuji-fx-mount-aps-c-black.webp",
       "url": "https://www.gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1014,
@@ -644,7 +644,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-nikon-z-mount-aps-c-black.webp",
       "url": "https://www.gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1015,
@@ -670,7 +670,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af24mm-f1-8-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1016,
@@ -696,7 +696,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af24mm-f1-8-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1017,
@@ -722,7 +722,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af24mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1018,
@@ -748,7 +748,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1019,
@@ -774,7 +774,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1020,
@@ -800,7 +800,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1021,
@@ -826,7 +826,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af40mm-f2-5-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1022,
@@ -852,7 +852,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1022-af50mm-f1-8-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1023,
@@ -878,7 +878,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1024,
@@ -904,7 +904,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1025,
@@ -930,7 +930,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af135mm-f1-8-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1025-af135mm-f1-8-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1026,
@@ -956,7 +956,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af135mm-f1-8-panasonic-leica-sigma-l-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1027,
@@ -982,7 +982,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/af135mm-f1-8-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1027-af135mm-f1-8-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1028,
@@ -1008,7 +1008,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-sony-e-mount-mark-iii-ff-black.webp",
       "url": "https://www.gearshop.ma/product/1028-35mm-f1-4-sony-e-mount-mark-iii-ff-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1029,
@@ -1034,7 +1034,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black.webp",
       "url": "https://www.gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1030,
@@ -1060,7 +1060,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black.webp",
       "url": "https://www.gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1031,
@@ -1086,7 +1086,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-nikon-z-mount-mark-iii-ff-black.webp",
       "url": "https://www.gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1032,
@@ -1112,7 +1112,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1033,
@@ -1138,7 +1138,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-fuji-fx-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1034,
@@ -1164,7 +1164,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-m43-panasonic-olympus-black.webp",
       "url": "https://www.gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1035,
@@ -1190,7 +1190,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1036,
@@ -1216,7 +1216,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-8-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1037,
@@ -1242,7 +1242,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-8-fuji-fx-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1038,
@@ -1268,7 +1268,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1039,
@@ -1294,7 +1294,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-fuji-fx-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1040,
@@ -1320,7 +1320,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-m43-panasonic-olympus-black.webp",
       "url": "https://www.gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1041,
@@ -1346,7 +1346,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-nikon-z-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1042,
@@ -1372,7 +1372,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-canon-eos-r-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1043,
@@ -1398,7 +1398,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/autofocus-adapter-for-canon-ef-nikon-z-black.webp",
       "url": "https://www.gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1044,
@@ -1424,7 +1424,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1045,
@@ -1450,7 +1450,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-fuji-fx-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1046,
@@ -1476,7 +1476,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-m43-panasonic-olympus-black.webp",
       "url": "https://www.gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1047,
@@ -1502,7 +1502,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-canon-eos-r-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1048,
@@ -1528,7 +1528,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-sony-e-mount-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1049,
@@ -1554,7 +1554,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-fuji-fx-mount-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1050,
@@ -1580,7 +1580,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-m43-panasonic-olympus-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1051,
@@ -1606,7 +1606,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-canon-eos-r-mount-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1052,
@@ -1632,7 +1632,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-sony-e-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1053,
@@ -1658,7 +1658,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-fuji-fx-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1054,
@@ -1684,7 +1684,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-m43-panasonic-olympus-black.webp",
       "url": "https://www.gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1055,
@@ -1710,7 +1710,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-canon-eos-r-mount-black.webp",
       "url": "https://www.gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1056,
@@ -1736,7 +1736,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-sony-e-mount-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1057,
@@ -1762,7 +1762,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-fuji-fx-mount-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1058,
@@ -1788,7 +1788,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-m43-panasonic-olympus-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1059,
@@ -1814,7 +1814,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-canon-eos-r-mount-titanium-gray.webp",
       "url": "https://www.gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1060,
@@ -1840,7 +1840,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver.webp",
       "url": "https://www.gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1061,
@@ -1866,7 +1866,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/77mm-true-color-vnd6-9-filter-black.webp",
       "url": "https://www.gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1062,
@@ -1892,7 +1892,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/55mm-1-8-black-mist-filter-black.webp",
       "url": "https://www.gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2001,
@@ -1918,7 +1918,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel.webp",
       "url": "https://www.gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2002,
@@ -1944,7 +1944,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x.webp",
       "url": "https://www.gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2003,
@@ -1970,7 +1970,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated.webp",
       "url": "https://www.gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2004,
@@ -1996,7 +1996,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter.webp",
       "url": "https://www.gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2005,
@@ -2022,7 +2022,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics.webp",
       "url": "https://www.gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2006,
@@ -2048,7 +2048,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm.webp",
       "url": "https://www.gearshop.ma/product/2006-k-f-concept-kit-18pcs-bagues-d-adaptation-step-up-step-down-37mm-82mm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2007,
@@ -2074,7 +2074,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1.webp",
       "url": "https://www.gearshop.ma/product/2007-k-f-concept-kit-de-nettoyage-professionnel-optique-3-en-1",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2008,
@@ -2100,7 +2100,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-mini-torche-led-video-rgb-2500k-9900k-cri96-batterie-2000mah.webp",
       "url": "https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2009,
@@ -2126,7 +2126,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-sac-bandouliere-photo-etanche-pour-camera-accessoires.webp",
       "url": "https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 2010,
@@ -2152,7 +2152,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro.webp",
       "url": "https://www.gearshop.ma/product/2010-k-f-concept-82mm-nd2-nd32-variable-neutral-density-filter-nano-xcel-pro",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 3001,
@@ -2178,7 +2178,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp",
       "url": "https://www.gearshop.ma/dji-osmo-pocket-4-pro",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5001,
@@ -2204,7 +2204,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc5200-noir.webp",
       "url": "https://www.gearshop.ma/product/5001-agfa-dc5200-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5002,
@@ -2230,7 +2230,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc5200-silver.webp",
       "url": "https://www.gearshop.ma/product/5002-agfa-dc5200-silver",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5003,
@@ -2256,7 +2256,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc5200-rouge.webp",
       "url": "https://www.gearshop.ma/product/5003-agfa-dc5200-rouge",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5004,
@@ -2282,7 +2282,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc5200-bleu.webp",
       "url": "https://www.gearshop.ma/product/5004-agfa-dc5200-bleu",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5005,
@@ -2308,7 +2308,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc8200-noir-etui-sd16g.webp",
       "url": "https://www.gearshop.ma/product/5005-agfa-dc8200-noir-etui-sd16g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5006,
@@ -2334,7 +2334,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc8200-bleu-etui-sd16g.webp",
       "url": "https://www.gearshop.ma/product/5006-agfa-dc8200-bleu-etui-sd16g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5007,
@@ -2360,7 +2360,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc8200-silver-etui-sd16g.webp",
       "url": "https://www.gearshop.ma/product/5007-agfa-dc8200-silver-etui-sd16g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5008,
@@ -2386,7 +2386,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc8200-rouge-etui-sd16g.webp",
       "url": "https://www.gearshop.ma/product/5008-agfa-dc8200-rouge-etui-sd16g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5009,
@@ -2412,7 +2412,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc8200-rose-etui-sd16g.webp",
       "url": "https://www.gearshop.ma/product/5009-agfa-dc8200-rose-etui-sd16g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5010,
@@ -2438,7 +2438,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/agfa-dc8200-violet-etui-sd16g.webp",
       "url": "https://www.gearshop.ma/product/5010-agfa-dc8200-violet-etui-sd16g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5011,
@@ -2464,7 +2464,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-powershot-v10.webp",
       "url": "https://www.gearshop.ma/product/5011-canon-powershot-v10",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5012,
@@ -2490,7 +2490,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-eos-r8-rf24-50.webp",
       "url": "https://www.gearshop.ma/product/5012-canon-eos-r8-rf24-50",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5013,
@@ -2516,7 +2516,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-eos-r6-mark-ii.webp",
       "url": "https://www.gearshop.ma/product/5013-canon-eos-r6-mark-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5014,
@@ -2542,7 +2542,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-instax-mini-11-lilac-purple.webp",
       "url": "https://www.gearshop.ma/product/5014-fujifilm-instax-mini-11-lilac-purple",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5015,
@@ -2568,7 +2568,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-instax-mini-12-blanc.webp",
       "url": "https://www.gearshop.ma/product/5015-fujifilm-instax-mini-12-blanc",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5016,
@@ -2594,7 +2594,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-instax-mini-12-vert.webp",
       "url": "https://www.gearshop.ma/product/5016-fujifilm-instax-mini-12-vert",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5017,
@@ -2620,7 +2620,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-instax-mini-12-violet.webp",
       "url": "https://www.gearshop.ma/product/5017-fujifilm-instax-mini-12-violet",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5018,
@@ -2646,7 +2646,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-instax-mini-12-bleu.webp",
       "url": "https://www.gearshop.ma/product/5018-fujifilm-instax-mini-12-bleu",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5019,
@@ -2672,7 +2672,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-instax-mini-41-noir.webp",
       "url": "https://www.gearshop.ma/product/5019-fujifilm-instax-mini-41-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5020,
@@ -2698,7 +2698,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/instax-mini-evo-cinema-ex-d.webp",
       "url": "https://www.gearshop.ma/product/5020-instax-mini-evo-cinema-ex-d",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5021,
@@ -2724,7 +2724,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-instax-wide-400-vert.webp",
       "url": "https://www.gearshop.ma/product/5021-fujifilm-instax-wide-400-vert",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5022,
@@ -2750,7 +2750,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/fujifilm-film-instax-mini-eu-2-glossy-10x2pck.webp",
       "url": "https://www.gearshop.ma/product/5022-fujifilm-film-instax-mini-eu-2-glossy-10x2pck",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5023,
@@ -2776,7 +2776,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/mini-12-camera-case-pastel-blue.webp",
       "url": "https://www.gearshop.ma/product/5023-mini-12-camera-case-pastel-blue",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5024,
@@ -2802,7 +2802,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/mini-12-camera-case-lilac-purple.webp",
       "url": "https://www.gearshop.ma/product/5024-mini-12-camera-case-lilac-purple",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5025,
@@ -2828,7 +2828,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-softbox-prabolique-p90h.webp",
       "url": "https://www.gearshop.ma/product/5025-godox-softbox-prabolique-p90h",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5026,
@@ -2854,7 +2854,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-softbox-prabolique-p120h.webp",
       "url": "https://www.gearshop.ma/product/5026-godox-softbox-prabolique-p120h",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5027,
@@ -2880,7 +2880,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-studiok1.webp",
       "url": "https://www.gearshop.ma/product/5027-godox-flash-studiok1",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5028,
@@ -2906,7 +2906,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-studiok1.webp",
       "url": "https://www.gearshop.ma/product/5028-godox-flash-studiok1",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5029,
@@ -2932,7 +2932,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-studiok1.webp",
       "url": "https://www.gearshop.ma/product/5029-godox-flash-studiok1",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5030,
@@ -2958,7 +2958,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-studio.webp",
       "url": "https://www.gearshop.ma/product/5030-godox-flash-studio",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5031,
@@ -2984,7 +2984,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-studio.webp",
       "url": "https://www.gearshop.ma/product/5031-godox-flash-studio",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5032,
@@ -3010,7 +3010,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-studio-kit1k.webp",
       "url": "https://www.gearshop.ma/product/5032-godox-flash-studio-kit1k",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5033,
@@ -3036,7 +3036,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-studio-kit2k.webp",
       "url": "https://www.gearshop.ma/product/5033-godox-flash-studio-kit2k",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5034,
@@ -3062,7 +3062,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-nikon.webp",
       "url": "https://www.gearshop.ma/product/5034-godox-flash-nikon",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5035,
@@ -3088,7 +3088,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-canon.webp",
       "url": "https://www.gearshop.ma/product/5035-godox-flash-canon",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5036,
@@ -3114,7 +3114,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-sony.webp",
       "url": "https://www.gearshop.ma/product/5036-godox-flash-sony",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5037,
@@ -3140,7 +3140,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-nikon-ttl.webp",
       "url": "https://www.gearshop.ma/product/5037-godox-flash-nikon-ttl",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5038,
@@ -3166,7 +3166,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-canon-ttl.webp",
       "url": "https://www.gearshop.ma/product/5038-godox-flash-canon-ttl",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5039,
@@ -3192,7 +3192,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-sony-ttl.webp",
       "url": "https://www.gearshop.ma/product/5039-godox-flash-sony-ttl",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5040,
@@ -3218,7 +3218,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-flash-appareil-photomf-r76.webp",
       "url": "https://www.gearshop.ma/product/5040-godox-flash-appareil-photomf-r76",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5041,
@@ -3244,7 +3244,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/godox-tube-lumineux-led-light-tl120.webp",
       "url": "https://www.gearshop.ma/product/5041-godox-tube-lumineux-led-light-tl120",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5042,
@@ -3270,7 +3270,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/hollyland-casque-sans-fil-solidcom-se-4s-global-version.webp",
       "url": "https://www.gearshop.ma/product/5042-hollyland-casque-sans-fil-solidcom-se-4s-global-version",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5043,
@@ -3296,7 +3296,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/hollyland-microphone-sans-fil-lark-a1-combo-usb-c-rx-lightning-rx-charging-case.webp",
       "url": "https://www.gearshop.ma/product/5043-hollyland-microphone-sans-fil-lark-a1-combo-usb-c-rx-lightning-rx-charging-case",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5044,
@@ -3322,7 +3322,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-adaptateur-de-micophone-pour-x5.webp",
       "url": "https://www.gearshop.ma/product/5044-insta360-adaptateur-de-micophone-pour-x5",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5045,
@@ -3348,7 +3348,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-adaptateur-de-micophone-pour-x4.webp",
       "url": "https://www.gearshop.ma/product/5045-insta360-adaptateur-de-micophone-pour-x4",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5046,
@@ -3374,7 +3374,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-camera-luna-ultra-creator-bundle-cosmic-noir.webp",
       "url": "https://www.gearshop.ma/product/5046-insta360-camera-luna-ultra-creator-bundle-cosmic-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5047,
@@ -3400,7 +3400,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-x5-lens-cap-cinsbahl.webp",
       "url": "https://www.gearshop.ma/product/5047-insta360-x5-lens-cap-cinsbahl",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5048,
@@ -3426,7 +3426,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-x5-utility-frame-cinsbahn.webp",
       "url": "https://www.gearshop.ma/product/5048-insta360-x5-utility-frame-cinsbahn",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5049,
@@ -3452,7 +3452,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-link-2c-standard-edition-arctic-white-cinsabna.webp",
       "url": "https://www.gearshop.ma/product/5049-insta360-link-2c-standard-edition-arctic-white-cinsabna",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5050,
@@ -3478,7 +3478,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-link-2c-standard-edition-graphite-black-cinsabna.webp",
       "url": "https://www.gearshop.ma/product/5050-insta360-link-2c-standard-edition-graphite-black-cinsabna",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5051,
@@ -3504,7 +3504,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-link-2-standard-edition-cinsabnb.webp",
       "url": "https://www.gearshop.ma/product/5051-insta360-link-2-standard-edition-cinsabnb",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5052,
@@ -3530,7 +3530,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-ace-pro-standard-bundle-cinsaaja.webp",
       "url": "https://www.gearshop.ma/product/5052-insta360-ace-pro-standard-bundle-cinsaaja",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5053,
@@ -3556,7 +3556,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-ace-pro-2-kit-standard-noir.webp",
       "url": "https://www.gearshop.ma/product/5053-insta360-ace-pro-2-kit-standard-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5054,
@@ -3582,7 +3582,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-x5-kit-standard-360-noir.webp",
       "url": "https://www.gearshop.ma/product/5054-insta360-x5-kit-standard-360-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5055,
@@ -3608,7 +3608,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-go-ultra-kit-standard-noir.webp",
       "url": "https://www.gearshop.ma/product/5055-insta360-go-ultra-kit-standard-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5056,
@@ -3634,7 +3634,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-chargeur-batterie-x5-boitier.webp",
       "url": "https://www.gearshop.ma/product/5056-insta360-chargeur-batterie-x5-boitier",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5057,
@@ -3660,7 +3660,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-ecran-selfie-snap.webp",
       "url": "https://www.gearshop.ma/product/5057-insta360-ecran-selfie-snap",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5058,
@@ -3686,7 +3686,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-lecteur-de-carte-memoire-x5-x4.webp",
       "url": "https://www.gearshop.ma/product/5058-insta360-lecteur-de-carte-memoire-x5-x4",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5059,
@@ -3712,7 +3712,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-114cm-invisible-selfie-stick-cinsaavf.webp",
       "url": "https://www.gearshop.ma/product/5059-insta360-114cm-invisible-selfie-stick-cinsaavf",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5060,
@@ -3738,7 +3738,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-action-invisible-selfie-stick-cinsaavv.webp",
       "url": "https://www.gearshop.ma/product/5060-insta360-action-invisible-selfie-stick-cinsaavv",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5061,
@@ -3764,7 +3764,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-enhanced-extended-edition-selfie-stick-dineess-b.webp",
       "url": "https://www.gearshop.ma/product/5061-insta360-enhanced-extended-edition-selfie-stick-dineess-b",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5062,
@@ -3790,7 +3790,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-x5-carry-case-cinsbamc.webp",
       "url": "https://www.gearshop.ma/product/5062-insta360-x5-carry-case-cinsbamc",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5063,
@@ -3816,7 +3816,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-standard-bundle-summit-white-cinsabqa.webp",
       "url": "https://www.gearshop.ma/product/5063-insta360-flow-2-standard-bundle-summit-white-cinsabqa",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5064,
@@ -3842,7 +3842,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-standard-bundle-stone-gray-cinsabqa.webp",
       "url": "https://www.gearshop.ma/product/5064-insta360-flow-2-standard-bundle-stone-gray-cinsabqa",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5065,
@@ -3868,7 +3868,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-al-tracker-bundle-summit-white-cinsabqa.webp",
       "url": "https://www.gearshop.ma/product/5065-insta360-flow-2-al-tracker-bundle-summit-white-cinsabqa",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5066,
@@ -3894,7 +3894,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-al-tracker-bundle-stone-gray-cinsabqa.webp",
       "url": "https://www.gearshop.ma/product/5066-insta360-flow-2-al-tracker-bundle-stone-gray-cinsabqa",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5067,
@@ -3920,7 +3920,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-pro-standard-bundle-stone-gray-cinsabqb.webp",
       "url": "https://www.gearshop.ma/product/5067-insta360-flow-2-pro-standard-bundle-stone-gray-cinsabqb",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5068,
@@ -3946,7 +3946,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-pro-standard-bundle-summit-white-cinsabqb.webp",
       "url": "https://www.gearshop.ma/product/5068-insta360-flow-2-pro-standard-bundle-summit-white-cinsabqb",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5069,
@@ -3972,7 +3972,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-pro-creator-bundle-stone-gray-cinsabqb.webp",
       "url": "https://www.gearshop.ma/product/5069-insta360-flow-2-pro-creator-bundle-stone-gray-cinsabqb",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5070,
@@ -3998,7 +3998,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-flow-2-pro-creator-bundle-summit-white-cinsabqb.webp",
       "url": "https://www.gearshop.ma/product/5070-insta360-flow-2-pro-creator-bundle-summit-white-cinsabqb",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5071,
@@ -4024,7 +4024,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-x5-invisible-mic-cold-shoe-for-rode-mic-cinsbahp.webp",
       "url": "https://www.gearshop.ma/product/5071-insta360-x5-invisible-mic-cold-shoe-for-rode-mic-cinsbahp",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5072,
@@ -4050,7 +4050,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-motorcycle-u-bolt-mount-cinsaavz.webp",
       "url": "https://www.gearshop.ma/product/5072-insta360-motorcycle-u-bolt-mount-cinsaavz",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5073,
@@ -4076,7 +4076,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-the-back-bar-enhanced-waist-strap-cinsbavd.webp",
       "url": "https://www.gearshop.ma/product/5073-insta360-the-back-bar-enhanced-waist-strap-cinsbavd",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5074,
@@ -4102,7 +4102,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/insta360-support-adhesif-flexible.webp",
       "url": "https://www.gearshop.ma/product/5074-insta360-support-adh-sif-flexible",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5075,
@@ -4128,7 +4128,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-az528-noir.webp",
       "url": "https://www.gearshop.ma/product/5075-kodak-pixpro-az528-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5076,
@@ -4154,7 +4154,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-az255-noir.webp",
       "url": "https://www.gearshop.ma/product/5076-kodak-pixpro-az255-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5077,
@@ -4180,7 +4180,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-az425-noir.webp",
       "url": "https://www.gearshop.ma/product/5077-kodak-pixpro-az425-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5078,
@@ -4206,7 +4206,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-c1-maron.webp",
       "url": "https://www.gearshop.ma/product/5078-kodak-pixpro-c1-maron",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5079,
@@ -4232,7 +4232,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-c1-noir.webp",
       "url": "https://www.gearshop.ma/product/5079-kodak-pixpro-c1-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5080,
@@ -4258,7 +4258,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-papier-transfert-textiles-clair-t-shirt-pack-5-feuille.webp",
       "url": "https://www.gearshop.ma/product/5080-kodak-papier-transfert-textiles-clair-t-shirt-pack-5-feuille",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5081,
@@ -4284,7 +4284,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-fz45-rouge.webp",
       "url": "https://www.gearshop.ma/product/5081-kodak-pixpro-fz45-rouge",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5082,
@@ -4310,7 +4310,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-wpz2-orange.webp",
       "url": "https://www.gearshop.ma/product/5082-kodak-pixpro-wpz2-orange",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5083,
@@ -4336,7 +4336,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-wpz2-rouge.webp",
       "url": "https://www.gearshop.ma/product/5083-kodak-pixpro-wpz2-rouge",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5084,
@@ -4362,7 +4362,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-wpz2-blanc.webp",
       "url": "https://www.gearshop.ma/product/5084-kodak-pixpro-wpz2-blanc",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5085,
@@ -4388,7 +4388,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-pixpro-fz55-bleu.webp",
       "url": "https://www.gearshop.ma/product/5085-kodak-pixpro-fz55-bleu",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5086,
@@ -4414,7 +4414,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-porte-cles-charmera-keychain.webp",
       "url": "https://www.gearshop.ma/product/5086-kodak-porte-cl-s-charmera-keychain",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5087,
@@ -4440,7 +4440,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-papier-transfert-textiles-fances-t-shirt-pack-5-feuille.webp",
       "url": "https://www.gearshop.ma/product/5087-kodak-papier-transfert-textiles-fanc-s-t-shirt-pack-5-feuille",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5088,
@@ -4466,7 +4466,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-papier-photo-brillant-pack-50-feuilles-180g.webp",
       "url": "https://www.gearshop.ma/product/5088-kodak-papier-photo-brillant-pack-50-feuilles-180g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5089,
@@ -4492,7 +4492,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-papier-photo-brillant-pack-50-feuilles-230g.webp",
       "url": "https://www.gearshop.ma/product/5089-kodak-papier-photo-brillant-pack-50-feuilles-230g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5090,
@@ -4518,7 +4518,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-papier-photo-mat-pack-20-feuille-230g.webp",
       "url": "https://www.gearshop.ma/product/5090-kodak-papier-photo-mat-pack-20-feuille-230g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5091,
@@ -4544,7 +4544,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/kodak-papier-couleur-pack-100-feuille-80g.webp",
       "url": "https://www.gearshop.ma/product/5091-kodak-papier-couleur-pack-100-feuille-80g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5092,
@@ -4570,7 +4570,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-adaptateur-pour-monture-ftz-ii.webp",
       "url": "https://www.gearshop.ma/product/5092-nikon-adaptateur-pour-monture-ftz-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5093,
@@ -4596,7 +4596,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-coolpix-p950.webp",
       "url": "https://www.gearshop.ma/product/5093-nikon-coolpix-p950",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5094,
@@ -4622,7 +4622,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-z30-kit-objectif-nikkor-z-dx-16-50mm-f-3-5-6-3-vr.webp",
       "url": "https://www.gearshop.ma/product/5094-nikon-z30-kit-objectif-nikkor-z-dx-16-50mm-f-3-5-6-3-vr",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5095,
@@ -4648,7 +4648,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-z50-ii-kit-objectif-nikkor-z-dx-16-50mm-vr.webp",
       "url": "https://www.gearshop.ma/product/5095-nikon-z50-ii-kit-objectif-nikkor-z-dx-16-50mm-vr",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5096,
@@ -4674,7 +4674,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-z5-ii.webp",
       "url": "https://www.gearshop.ma/product/5096-nikon-z5-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5097,
@@ -4700,7 +4700,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3.webp",
       "url": "https://www.gearshop.ma/product/5097-nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5098,
@@ -4726,7 +4726,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3.webp",
       "url": "https://www.gearshop.ma/product/5098-nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5099,
@@ -4752,7 +4752,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-zr.webp",
       "url": "https://www.gearshop.ma/product/5099-nikon-zr",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5100,
@@ -4778,7 +4778,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-coolpix-p1100-noir.webp",
       "url": "https://www.gearshop.ma/product/5100-nikon-coolpix-p1100-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5101,
@@ -4804,7 +4804,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-z6-iii.webp",
       "url": "https://www.gearshop.ma/product/5101-nikon-z6-iii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5102,
@@ -4830,7 +4830,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-z9.webp",
       "url": "https://www.gearshop.ma/product/5102-nikon-z9",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5103,
@@ -4856,7 +4856,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-teleconvertisseur-z-tc-2-0-x.webp",
       "url": "https://www.gearshop.ma/product/5103-nikon-t-l-convertisseur-z-tc-2-0-x",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5104,
@@ -4882,7 +4882,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-flash-sb-700.webp",
       "url": "https://www.gearshop.ma/product/5104-nikon-flash-sb-700",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5105,
@@ -4908,7 +4908,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-nikkor-z-50mm-f-1-8-s.webp",
       "url": "https://www.gearshop.ma/product/5105-nikon-nikkor-z-50mm-f-1-8-s",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5106,
@@ -4934,7 +4934,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-nikkor-z-24-70mm-f-2-8-s-ii.webp",
       "url": "https://www.gearshop.ma/product/5106-nikon-nikkor-z-24-70mm-f-2-8-s-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5107,
@@ -4960,7 +4960,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-nikkor-z-70-200mm-f-2-8-vr-s-ii.webp",
       "url": "https://www.gearshop.ma/product/5107-nikon-nikkor-z-70-200mm-f-2-8-vr-s-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5108,
@@ -4986,7 +4986,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/nikon-nikkor-z-100-400mm-f-4-5-5-6-vr-s.webp",
       "url": "https://www.gearshop.ma/product/5108-nikon-nikkor-z-100-400mm-f-4-5-5-6-vr-s",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5109,
@@ -5012,7 +5012,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/pny-lecteur-carte-memoire-r-tc-ua-3n1e01-rb-usb-c.webp",
       "url": "https://www.gearshop.ma/product/5109-pny-lecteur-carte-m-moire-r-tc-ua-3n1e01-rb-usb-c",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5110,
@@ -5038,7 +5038,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-zv-e10-kit-objectif-16-50mm-f-3-5-5-6.webp",
       "url": "https://www.gearshop.ma/product/5110-sony-zv-e10-kit-objectif-16-50mm-f-3-5-5-6",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5111,
@@ -5064,7 +5064,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-zv-e10-mark-ii-kit-objectif-16-50mm.webp",
       "url": "https://www.gearshop.ma/product/5111-sony-zv-e10-mark-ii-kit-objectif-16-50mm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5112,
@@ -5090,7 +5090,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-alpha-7-iii.webp",
       "url": "https://www.gearshop.ma/product/5112-sony-alpha-7-iii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5113,
@@ -5116,7 +5116,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-alpha-7-v-ilce-7m5.webp",
       "url": "https://www.gearshop.ma/product/5113-sony-alpha-7-v-ilce-7m5",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5114,
@@ -5142,7 +5142,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-cinema-line-fx30.webp",
       "url": "https://www.gearshop.ma/product/5114-sony-cinema-line-fx30",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5115,
@@ -5168,7 +5168,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-alpha-7-iv.webp",
       "url": "https://www.gearshop.ma/product/5115-sony-alpha-7-iv",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5116,
@@ -5194,7 +5194,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-alpha-6600-objectif-18-135mm.webp",
       "url": "https://www.gearshop.ma/product/5116-sony-alpha-6600-objectif-18-135mm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5117,
@@ -5220,7 +5220,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-alpha-7-iv-kit-objectif-28-70mm.webp",
       "url": "https://www.gearshop.ma/product/5117-sony-alpha-7-iv-kit-objectif-28-70mm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5118,
@@ -5246,7 +5246,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-alpha-7s-iii.webp",
       "url": "https://www.gearshop.ma/product/5118-sony-alpha-7s-iii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5119,
@@ -5272,7 +5272,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-ilme-fx2.webp",
       "url": "https://www.gearshop.ma/product/5119-sony-ilme-fx2",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5120,
@@ -5298,7 +5298,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-cinema-line-fx3.webp",
       "url": "https://www.gearshop.ma/product/5120-sony-cinema-line-fx3",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5121,
@@ -5324,7 +5324,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-100mm-f-2-8-stf-gm-oss.webp",
       "url": "https://www.gearshop.ma/product/5121-sony-fe-100mm-f-2-8-stf-gm-oss",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5122,
@@ -5350,7 +5350,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-carte-memoire-cfe-type-a160gb.webp",
       "url": "https://www.gearshop.ma/product/5122-sony-carte-m-moire-cfe-type-a160gb",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5123,
@@ -5376,7 +5376,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-lecteur-de-carte-memoire-cfe-a-sd.webp",
       "url": "https://www.gearshop.ma/product/5123-sony-lecteur-de-carte-m-moire-cfe-a-sd",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5124,
@@ -5402,7 +5402,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-50mm-f-1-8.webp",
       "url": "https://www.gearshop.ma/product/5124-sony-fe-50mm-f-1-8",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5125,
@@ -5428,7 +5428,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-35mm-f-1-8.webp",
       "url": "https://www.gearshop.ma/product/5125-sony-fe-35mm-f-1-8",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5126,
@@ -5454,7 +5454,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-e-11mm-f-1-8.webp",
       "url": "https://www.gearshop.ma/product/5126-sony-e-11mm-f-1-8",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5127,
@@ -5480,7 +5480,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-e-pz-18-105mm-f-4-g-oss.webp",
       "url": "https://www.gearshop.ma/product/5127-sony-e-pz-18-105mm-f-4-g-oss",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5128,
@@ -5506,7 +5506,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-24-70mm-f-4-za.webp",
       "url": "https://www.gearshop.ma/product/5128-sony-fe-24-70mm-f-4-za",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5129,
@@ -5532,7 +5532,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-e35-mm-f-1-8.webp",
       "url": "https://www.gearshop.ma/product/5129-sony-e35-mm-f-1-8",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5130,
@@ -5558,7 +5558,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-24mm-f-2-8-g.webp",
       "url": "https://www.gearshop.ma/product/5130-sony-fe-24mm-f-2-8-g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5131,
@@ -5584,7 +5584,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-e-pz-10-20mm-f-4g.webp",
       "url": "https://www.gearshop.ma/product/5131-sony-e-pz-10-20mm-f-4g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5132,
@@ -5610,7 +5610,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-90mm-f2-8-macro-g-oss.webp",
       "url": "https://www.gearshop.ma/product/5132-sony-fe-90mm-f2-8-macro-g-oss",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5133,
@@ -5636,7 +5636,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-24-105mm-f4-g-oss.webp",
       "url": "https://www.gearshop.ma/product/5133-sony-fe-24-105mm-f4-g-oss",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5134,
@@ -5662,7 +5662,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-e-16-55mm-f-2-8-g.webp",
       "url": "https://www.gearshop.ma/product/5134-sony-e-16-55mm-f-2-8-g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5135,
@@ -5688,7 +5688,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-24-70mm-f2-8-gm.webp",
       "url": "https://www.gearshop.ma/product/5135-sony-fe-24-70mm-f2-8-gm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5136,
@@ -5714,7 +5714,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-14mm-f-1-8-gm.webp",
       "url": "https://www.gearshop.ma/product/5136-sony-fe-14mm-f-1-8-gm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5137,
@@ -5740,7 +5740,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-16-35mm-f2-8-gm.webp",
       "url": "https://www.gearshop.ma/product/5137-sony-fe-16-35mm-f2-8-gm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5138,
@@ -5766,7 +5766,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-70-200mm-f2-8-gm-oss.webp",
       "url": "https://www.gearshop.ma/product/5138-sony-fe-70-200mm-f2-8-gm-oss",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5139,
@@ -5792,7 +5792,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-50mm-f-1-2-gm.webp",
       "url": "https://www.gearshop.ma/product/5139-sony-fe-50mm-f-1-2-gm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5140,
@@ -5818,7 +5818,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-70-200mm-f4-g-oss-ii.webp",
       "url": "https://www.gearshop.ma/product/5140-sony-fe-70-200mm-f4-g-oss-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5141,
@@ -5844,7 +5844,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-24-70mm-f2-8-gm-ii.webp",
       "url": "https://www.gearshop.ma/product/5141-sony-fe-24-70mm-f2-8-gm-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5142,
@@ -5870,7 +5870,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-16-35mm-f2-8-gm-ii.webp",
       "url": "https://www.gearshop.ma/product/5142-sony-fe-16-35mm-f2-8-gm-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5143,
@@ -5896,7 +5896,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-70-200mm-f2-8-gm-ii-oss.webp",
       "url": "https://www.gearshop.ma/product/5143-sony-fe-70-200mm-f2-8-gm-ii-oss",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5144,
@@ -5922,7 +5922,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-12-24mm-f-2-8-gm.webp",
       "url": "https://www.gearshop.ma/product/5144-sony-fe-12-24mm-f-2-8-gm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5145,
@@ -5948,7 +5948,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-photo-vesta-aspire-15z-gris.webp",
       "url": "https://www.gearshop.ma/product/5145-vanguard-sac-photo-vesta-aspire-15z-gris",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5146,
@@ -5974,7 +5974,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-photo-vesta-aspire-21gris.webp",
       "url": "https://www.gearshop.ma/product/5146-vanguard-sac-photo-vesta-aspire-21gris",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5147,
@@ -6000,7 +6000,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-photo-veo-go-21m-noir.webp",
       "url": "https://www.gearshop.ma/product/5147-vanguard-sac-photo-veo-go-21m-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5148,
@@ -6026,7 +6026,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-a-dos-photo-veo-go-42m-noir.webp",
       "url": "https://www.gearshop.ma/product/5148-vanguard-sac-dos-photo-veo-go-42m-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5149,
@@ -6052,7 +6052,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-a-dos-photo-veo-lite-b25l-chocolate.webp",
       "url": "https://www.gearshop.ma/product/5149-vanguard-sac-dos-photo-veo-lite-b25l-chocolate",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5150,
@@ -6078,7 +6078,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-a-dos-photo-veo-lite-b25l-navy.webp",
       "url": "https://www.gearshop.ma/product/5150-vanguard-sac-dos-photo-veo-lite-b25l-navy",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5151,
@@ -6104,7 +6104,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-photo-veo-select-22s-noir.webp",
       "url": "https://www.gearshop.ma/product/5151-vanguard-sac-photo-veo-select-22s-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5152,
@@ -6130,7 +6130,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-a-dos-photo-veo-select-39rbm-noir.webp",
       "url": "https://www.gearshop.ma/product/5152-vanguard-sac-dos-photo-veo-select-39rbm-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5153,
@@ -6156,7 +6156,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-a-dos-photo-trolley-veo-select-55bt-noir.webp",
       "url": "https://www.gearshop.ma/product/5153-vanguard-sac-dos-photo-trolley-veo-select-55bt-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5154,
@@ -6182,7 +6182,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-sac-a-dos-photo-veo-metro-b20l-noir.webp",
       "url": "https://www.gearshop.ma/product/5154-vanguard-sac-dos-photo-veo-metro-b20l-noir",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5155,
@@ -6208,7 +6208,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-trepied-vesta-233ap.webp",
       "url": "https://www.gearshop.ma/product/5155-vanguard-tr-pied-vesta-233ap",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5156,
@@ -6234,7 +6234,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-trepied-vesta-tb-204cb.webp",
       "url": "https://www.gearshop.ma/product/5156-vanguard-tr-pied-vesta-tb-204cb",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5157,
@@ -6260,7 +6260,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-trepied-alta-pro-263ab-g2.webp",
       "url": "https://www.gearshop.ma/product/5157-vanguard-tr-pied-alta-pro-263ab-g2",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5158,
@@ -6286,7 +6286,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-trepied-veo-5-264av14.webp",
       "url": "https://www.gearshop.ma/product/5158-vanguard-tr-pied-veo-5-264av14",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 5159,
@@ -6312,7 +6312,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/vanguard-trepied-veo3-303abs.webp",
       "url": "https://www.gearshop.ma/product/5159-vanguard-tr-pied-veo3-303abs",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6001,
@@ -6338,7 +6338,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-eos-r50-objectif-rf-s-18-45mm-is-stm.webp",
       "url": "https://www.gearshop.ma/product/6001-canon-eos-r50-objectif-rf-s-18-45mm-is-stm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6002,
@@ -6364,7 +6364,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-cinema-eos-c50.webp",
       "url": "https://www.gearshop.ma/product/6002-canon-cinema-eos-c50",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6003,
@@ -6390,7 +6390,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-cinema-eos-r5-c.webp",
       "url": "https://www.gearshop.ma/product/6003-canon-cinema-eos-r5-c",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6004,
@@ -6416,7 +6416,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-eos-r5-mark-ii.webp",
       "url": "https://www.gearshop.ma/product/6004-canon-eos-r5-mark-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6005,
@@ -6442,7 +6442,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-eos-r5-mark-ii-objectif-rf-24-105mm-l-is-usm.webp",
       "url": "https://www.gearshop.ma/product/6005-canon-eos-r5-mark-ii-objectif-rf-24-105mm-l-is-usm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6006,
@@ -6468,7 +6468,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-eos-2000d-objectif-ef-s-18-55mm-is-ii.webp",
       "url": "https://www.gearshop.ma/product/6006-canon-eos-2000d-objectif-ef-s-18-55mm-is-ii",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6007,
@@ -6494,7 +6494,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-eos-r10-objectif-rf-s-18-150mm-is-stm.webp",
       "url": "https://www.gearshop.ma/product/6007-canon-eos-r10-objectif-rf-s-18-150mm-is-stm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6008,
@@ -6520,7 +6520,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-batterie-bp-820.webp",
       "url": "https://www.gearshop.ma/product/6008-canon-batterie-bp-820",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6009,
@@ -6546,7 +6546,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-batterie-lp-e17.webp",
       "url": "https://www.gearshop.ma/product/6009-canon-batterie-lp-e17",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6010,
@@ -6572,7 +6572,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-camera-video-xa60b.webp",
       "url": "https://www.gearshop.ma/product/6010-canon-camera-video-xa60b",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6011,
@@ -6598,7 +6598,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-camescope-xa65.webp",
       "url": "https://www.gearshop.ma/product/6011-canon-camescope-xa65",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6012,
@@ -6624,7 +6624,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-camescope-xa70.webp",
       "url": "https://www.gearshop.ma/product/6012-canon-camescope-xa70",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6013,
@@ -6650,7 +6650,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-camescope-xa75.webp",
       "url": "https://www.gearshop.ma/product/6013-canon-camescope-xa75",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6014,
@@ -6676,7 +6676,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-50mm-f1-8-stm.webp",
       "url": "https://www.gearshop.ma/product/6014-canon-rf-50mm-f1-8-stm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6015,
@@ -6702,7 +6702,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-35mm-f-1-8-macro-is-stm.webp",
       "url": "https://www.gearshop.ma/product/6015-canon-rf-35mm-f-1-8-macro-is-stm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6016,
@@ -6728,7 +6728,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-ef-16-35mm-f-2-8l-iii-usm.webp",
       "url": "https://www.gearshop.ma/product/6016-canon-ef-16-35mm-f-2-8l-iii-usm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6017,
@@ -6754,7 +6754,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-50mm-f-1-2l-usm.webp",
       "url": "https://www.gearshop.ma/product/6017-canon-rf-50mm-f-1-2l-usm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6018,
@@ -6780,7 +6780,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-15-35mm-f2-8-l-is-usm.webp",
       "url": "https://www.gearshop.ma/product/6018-canon-rf-15-35mm-f2-8-l-is-usm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6019,
@@ -6806,7 +6806,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-100-500mm-f-4-5-7-1-l-is-usm.webp",
       "url": "https://www.gearshop.ma/product/6019-canon-rf-100-500mm-f-4-5-7-1-l-is-usm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6020,
@@ -6832,7 +6832,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-70-200mm-f-2-8-l-is.webp",
       "url": "https://www.gearshop.ma/product/6020-canon-rf-70-200mm-f-2-8-l-is",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6021,
@@ -6858,7 +6858,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-28-70mm-f-2-l-usm.webp",
       "url": "https://www.gearshop.ma/product/6021-canon-rf-28-70mm-f-2-l-usm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6022,
@@ -6884,7 +6884,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-s-18-150mm-f-3-5-6-3-is-stm.webp",
       "url": "https://www.gearshop.ma/product/6022-canon-rf-s-18-150mm-f-3-5-6-3-is-stm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6023,
@@ -6910,7 +6910,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/canon-rf-100-400mm-f5-6-8-is-usm.webp",
       "url": "https://www.gearshop.ma/product/6023-canon-rf-100-400mm-f5-6-8-is-usm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6024,
@@ -6936,7 +6936,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/dji-osmo-pocket-3-creator-combo.webp",
       "url": "https://www.gearshop.ma/product/6024-dji-osmo-pocket-3-creator-combo",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6025,
@@ -6962,7 +6962,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/dji-osmo-mobile-7-stabilisateur-smartphone.webp",
       "url": "https://www.gearshop.ma/product/6025-dji-osmo-mobile-7-stabilisateur-smartphone",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6026,
@@ -6988,7 +6988,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/dji-osmo-mobile-7p-stabilisateur-smartphone.webp",
       "url": "https://www.gearshop.ma/product/6026-dji-osmo-mobile-7p-stabilisateur-smartphone",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6027,
@@ -7014,7 +7014,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/pny-carte-memoire-sd-64gb-c10-u3-elite-x.webp",
       "url": "https://www.gearshop.ma/product/6027-pny-carte-m-moire-sd-64gb-c10-u3-elite-x",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6028,
@@ -7040,7 +7040,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/pny-carte-memoire-sd-128g-c10-u3-elite-x.webp",
       "url": "https://www.gearshop.ma/product/6028-pny-carte-m-moire-sd-128g-c10-u3-elite-x",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6029,
@@ -7066,7 +7066,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/smallrig-mini-matte-box-lite.webp",
       "url": "https://www.gearshop.ma/product/6029-smallrig-mini-matte-box-lite",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6030,
@@ -7092,7 +7092,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/smallrig-cage-protege-camera-nikon-zr-kit.webp",
       "url": "https://www.gearshop.ma/product/6030-smallrig-cage-protege-camera-nikon-zr-kit",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6031,
@@ -7118,7 +7118,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/smallrig-cage-protege-camera-canon-eos-c50.webp",
       "url": "https://www.gearshop.ma/product/6031-smallrig-cage-protege-camera-canon-eos-c50",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6032,
@@ -7144,7 +7144,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/smallrig-cage-protege-camera-canon-eos-c50-kit.webp",
       "url": "https://www.gearshop.ma/product/6032-smallrig-cage-protege-camera-canon-eos-c50-kit",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6033,
@@ -7170,7 +7170,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/smallrig-support-objectif-universal-15mm-lws.webp",
       "url": "https://www.gearshop.ma/product/6033-smallrig-support-objectif-universal-15mm-lws",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6034,
@@ -7196,7 +7196,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/smallrig-support-objectif-universal-15mm-lws.webp",
       "url": "https://www.gearshop.ma/product/6034-smallrig-support-objectif-universal-15mm-lws",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6035,
@@ -7222,7 +7222,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/smallrig-support-camera-mini.webp",
       "url": "https://www.gearshop.ma/product/6035-smallrig-support-camera-mini",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6036,
@@ -7248,7 +7248,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-batterie-rechargeable-np-fv100a.webp",
       "url": "https://www.gearshop.ma/product/6036-sony-batterie-rechargeable-np-fv100a",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6037,
@@ -7274,7 +7274,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-chargeur-batterie-bc-qz1.webp",
       "url": "https://www.gearshop.ma/product/6037-sony-chargeur-batterie-bc-qz1",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6038,
@@ -7300,7 +7300,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-85mm-f-1-4-gm.webp",
       "url": "https://www.gearshop.ma/product/6038-sony-fe-85mm-f-1-4-gm",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 6039,
@@ -7326,7 +7326,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/sony-fe-12-24mm-f-4g.webp",
       "url": "https://www.gearshop.ma/product/6039-sony-fe-12-24mm-f-4g",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     },
     {
       "id": 1765907057061,
@@ -7352,7 +7352,7 @@
       ],
       "image": "https://www.gearshop.ma/images/products/y300s.webp",
       "url": "https://www.gearshop.ma/product/1765907057061-y300s",
-      "lastUpdated": "2026-09-19"
+      "lastUpdated": "2026-09-25"
     }
   ]
 }

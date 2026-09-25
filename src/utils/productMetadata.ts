@@ -28,17 +28,23 @@ export function extractProductAttributes(p: Product): ProductAttributes {
   const nameLower = name.toLowerCase();
   const fullText = `${nameLower} ${cat} ${desc}`;
 
-  // 1. BRAND DETECTION (DB column > text analysis > fallback)
+  // 1. BRAND DETECTION (DB column > ID ranges > text analysis > fallback)
   const pRecord = p as unknown as Record<string, unknown>;
   let brand = typeof p.brand === 'string' && p.brand ? p.brand : (typeof pRecord.brand === 'string' ? pRecord.brand : '');
   if (!brand) {
     const pId = Number(p.id);
-    if (nameLower.includes('sony') || cat.includes('sony')) {
-      brand = 'Sony';
-    } else if (nameLower.includes('canon') || cat.includes('canon')) {
-      brand = 'Canon';
-    } else if (nameLower.includes('nikon') || cat.includes('nikon')) {
-      brand = 'Nikon';
+    if (pId >= 1000 && pId < 2000) {
+      brand = '7Artisans';
+    } else if (pId >= 2000 && pId < 3000) {
+      brand = 'K&F Concept';
+    } else if (pId >= 3000 && pId < 4000) {
+      brand = 'DJI';
+    } else if (nameLower.includes('7artisans') || fullText.includes('7artisans') || fullText.includes('sevenartisans')) {
+      brand = '7Artisans';
+    } else if (nameLower.includes('k&f') || nameLower.includes('kf concept') || nameLower.includes('kentfaith')) {
+      brand = 'K&F Concept';
+    } else if (nameLower.includes('dji') || nameLower.includes('osmo') || cat.includes('dji')) {
+      brand = 'DJI';
     } else if (nameLower.includes('godox') || cat.includes('godox')) {
       brand = 'Godox';
     } else if (nameLower.includes('smallrig') || cat.includes('smallrig')) {
@@ -55,18 +61,24 @@ export function extractProductAttributes(p: Product): ProductAttributes {
       brand = 'Agfa';
     } else if (nameLower.includes('pny') || cat.includes('pny')) {
       brand = 'PNY';
-    } else if (nameLower.includes('dji') || nameLower.includes('osmo') || cat.includes('dji')) {
-      brand = 'DJI';
-    } else if (nameLower.includes('k&f') || nameLower.includes('kentfaith') || nameLower.includes('concept') || (pId >= 2000 && pId < 3000)) {
-      brand = 'K&F Concept';
-    } else if (nameLower.includes('atomos')) {
+    } else if (nameLower.includes('sandisk') || cat.includes('sandisk')) {
+      brand = 'SanDisk';
+    } else if (nameLower.includes('atomos') || cat.includes('atomos')) {
       brand = 'Atomos';
-    } else if (nameLower.includes('rode') || nameLower.includes('røde')) {
+    } else if (nameLower.includes('rode') || nameLower.includes('røde') || cat.includes('rode')) {
       brand = 'Røde';
-    } else if (nameLower.includes('yongnuo')) {
+    } else if (nameLower.includes('yongnuo') || cat.includes('yongnuo')) {
       brand = 'Yongnuo';
-    } else if (fullText.includes('7artisans') || fullText.includes('sevenartisans') || pId === 10 || (pId >= 1000 && pId < 2000)) {
-      brand = '7Artisans';
+    } else if ((nameLower.includes('sony') || cat.includes('sony')) && !nameLower.includes('sony e') && !nameLower.includes('(e mount)')) {
+      brand = 'Sony';
+    } else if ((nameLower.includes('canon') || cat.includes('canon')) && !nameLower.includes('canon rf') && !nameLower.includes('(eos-r') && !nameLower.includes('canon ef') && !nameLower.includes('for canon')) {
+      brand = 'Canon';
+    } else if ((nameLower.includes('nikon') || cat.includes('nikon')) && !nameLower.includes('nikon z') && !nameLower.includes('(z mount)') && !nameLower.includes('for nikon')) {
+      brand = 'Nikon';
+    } else if (nameLower.includes('fuji') || nameLower.includes('fujifilm') || cat.includes('fuji')) {
+      brand = 'Fujifilm';
+    } else if (nameLower.includes('panasonic') || nameLower.includes('lumix') || cat.includes('panasonic')) {
+      brand = 'Panasonic';
     } else {
       brand = 'Équipement Pro';
     }
