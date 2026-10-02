@@ -146,10 +146,7 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
       return;
     }
 
-    if (!image.trim()) {
-      setError('Veuillez fournir l\'URL de l\'image principale.');
-      return;
-    }
+    const resolvedImage = image.trim() || (gallery.length > 0 ? gallery[0] : '/images/products/default-gear.webp');
 
     setIsSubmitting(true);
 
@@ -179,8 +176,8 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
         product_group: productGroup,
         product_type: productType,
         mount,
-        image: image.trim(),
-        gallery: gallery.length > 0 ? gallery : [image.trim()],
+        image: resolvedImage,
+        gallery: gallery.length > 0 ? gallery : [resolvedImage],
         inStock,
         isPreorder,
         desc: desc.trim(),
@@ -204,26 +201,26 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
+      <div className="relative w-full max-w-4xl bg-zinc-900 border border-zinc-800 text-white rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="px-6 py-4 bg-gray-900 text-white flex justify-between items-center border-b border-gray-800">
+        <div className="px-6 py-4 bg-zinc-950 border-b border-zinc-800 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center font-bold">
-              <i className="fa-solid fa-box-open text-lg"></i>
+            <div className="w-10 h-10 rounded-xl bg-red-600/20 text-red-500 border border-red-500/30 flex items-center justify-center font-bold text-lg">
+              <i className="fa-solid fa-box-open"></i>
             </div>
             <div>
-              <h2 className="text-xl font-bold">
+              <h2 className="text-lg font-extrabold text-white">
                 {isEdit ? `Éditer: ${product?.name}` : 'Nouveau Produit Équipement'}
               </h2>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-zinc-400">
                 Mise à jour en temps réel sur la base de données Supabase GearShop
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-gray-300 hover:text-white transition"
+            className="w-9 h-9 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-zinc-300 hover:text-white transition"
             aria-label="Fermer"
           >
             <i className="fa-solid fa-xmark text-lg"></i>
@@ -233,55 +230,55 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-6">
           {error && (
-            <div className="p-4 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm rounded-lg flex items-center gap-3">
-              <i className="fa-solid fa-triangle-exclamation text-lg"></i>
+            <div className="p-4 bg-red-950/60 border border-red-700 text-red-300 text-sm rounded-xl flex items-center gap-3">
+              <i className="fa-solid fa-triangle-exclamation text-lg text-red-400"></i>
               <span>{error}</span>
             </div>
           )}
 
           {/* Classification & Group */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-zinc-950/70 p-4 rounded-2xl border border-zinc-800">
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 État / Origine
               </label>
               <select
                 value={productGroup}
                 onChange={e => setProductGroup(e.target.value as any)}
-                className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm font-bold focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm font-semibold focus:border-red-500 outline-none"
               >
-                <option value="new">Matériel Neuf 🆕</option>
-                <option value="used">Matériel d'Occasion ♻️</option>
+                <option value="new" className="bg-zinc-900 text-white">Matériel Neuf 🆕</option>
+                <option value="used" className="bg-zinc-900 text-white">Matériel d'Occasion ♻️</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Type d'Équipement
               </label>
               <select
                 value={productType}
                 onChange={e => setProductType(e.target.value as any)}
-                className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm font-bold focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm font-semibold focus:border-red-500 outline-none"
               >
-                <option value="lens">Objectif / Lentille 📷</option>
-                <option value="camera">Boîtier / Caméra 🎥</option>
-                <option value="light">Éclairage & Flash 💡</option>
-                <option value="filter">Filtre Optique 🔍</option>
-                <option value="adapter">Bague / Adaptateur ⚙️</option>
-                <option value="accessory">Accessoire Studio / Rig 🎒</option>
+                <option value="lens" className="bg-zinc-900 text-white">Objectif / Lentille 📷</option>
+                <option value="camera" className="bg-zinc-900 text-white">Boîtier / Caméra 🎥</option>
+                <option value="light" className="bg-zinc-900 text-white">Éclairage & Flash 💡</option>
+                <option value="filter" className="bg-zinc-900 text-white">Filtre Optique 🔍</option>
+                <option value="adapter" className="bg-zinc-900 text-white">Bague / Adaptateur ⚙️</option>
+                <option value="accessory" className="bg-zinc-900 text-white">Accessoire Studio / Rig 🎒</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Marque Constructeur
               </label>
               <input
                 type="text"
                 value={brand}
                 onChange={e => setBrand(e.target.value)}
-                className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm font-medium focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm font-medium focus:border-red-500 outline-none placeholder-zinc-500"
                 placeholder="Ex: 7Artisans, Canon, Sony..."
               />
             </div>
@@ -290,7 +287,7 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
           {/* Basic Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Titre du Produit
               </label>
               <input
@@ -298,55 +295,55 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
                 required
                 value={name}
                 onChange={e => setName(e.target.value)}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-base font-bold text-black focus:bg-white focus:border-black outline-none transition"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-3 text-base font-bold focus:border-red-500 outline-none transition placeholder-zinc-500"
                 placeholder="Ex: 35mm F1.4 Mark III Full Frame"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Catégorie Boutique
               </label>
               <select
                 value={category}
                 onChange={e => setCategory(e.target.value)}
-                className="w-full bg-white border border-gray-300 rounded-xl p-3 text-sm font-bold text-gray-900 focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-3 text-sm font-semibold focus:border-red-500 outline-none"
               >
-                <option value="Objectifs Photo" className="text-gray-900 bg-white font-medium">Objectifs Photo</option>
-                <option value="Lentilles Cinéma" className="text-gray-900 bg-white font-medium">Lentilles Cinéma</option>
-                <option value="Matériel Studio" className="text-gray-900 bg-white font-medium">Matériel Studio</option>
-                <option value="Éclairage Portable" className="text-gray-900 bg-white font-medium">Éclairage Portable</option>
-                <option value="Accessoires" className="text-gray-900 bg-white font-medium">Accessoires</option>
-                <option value="Occasion" className="text-gray-900 bg-white font-medium">Occasion / Seconde Main</option>
+                <option value="Objectifs Photo" className="bg-zinc-900 text-white">Objectifs Photo</option>
+                <option value="Lentilles Cinéma" className="bg-zinc-900 text-white">Lentilles Cinéma</option>
+                <option value="Matériel Studio" className="bg-zinc-900 text-white">Matériel Studio</option>
+                <option value="Éclairage Portable" className="bg-zinc-900 text-white">Éclairage Portable</option>
+                <option value="Accessoires" className="bg-zinc-900 text-white">Accessoires</option>
+                <option value="Occasion" className="bg-zinc-900 text-white">Occasion / Seconde Main</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Monture Compatible
               </label>
               <select
                 value={mount}
                 onChange={e => setMount(e.target.value)}
-                className="w-full bg-white border border-gray-300 rounded-xl p-3 text-sm font-bold text-gray-900 focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-3 text-sm font-semibold focus:border-red-500 outline-none"
               >
-                <option value="Sony E" className="text-gray-900 bg-white font-medium">Sony E Mount</option>
-                <option value="Canon RF" className="text-gray-900 bg-white font-medium">Canon EOS-R (RF)</option>
-                <option value="Canon EF" className="text-gray-900 bg-white font-medium">Canon EF / EF-S</option>
-                <option value="Nikon Z" className="text-gray-900 bg-white font-medium">Nikon Z Mount</option>
-                <option value="Fuji FX" className="text-gray-900 bg-white font-medium">Fujifilm X Mount</option>
-                <option value="L Mount" className="text-gray-900 bg-white font-medium">Panasonic / Leica L Mount</option>
-                <option value="M43" className="text-gray-900 bg-white font-medium">Panasonic / Olympus M43</option>
-                <option value="PL Mount" className="text-gray-900 bg-white font-medium">ARRI / Cinema PL Mount</option>
-                <option value="Universal" className="text-gray-900 bg-white font-medium">Universel / Multi-monture</option>
+                <option value="Sony E" className="bg-zinc-900 text-white">Sony E Mount</option>
+                <option value="Canon RF" className="bg-zinc-900 text-white">Canon EOS-R (RF)</option>
+                <option value="Canon EF" className="bg-zinc-900 text-white">Canon EF / EF-S</option>
+                <option value="Nikon Z" className="bg-zinc-900 text-white">Nikon Z Mount</option>
+                <option value="Fuji FX" className="bg-zinc-900 text-white">Fujifilm X Mount</option>
+                <option value="L Mount" className="bg-zinc-900 text-white">Panasonic / Leica L Mount</option>
+                <option value="M43" className="bg-zinc-900 text-white">Panasonic / Olympus M43</option>
+                <option value="PL Mount" className="bg-zinc-900 text-white">ARRI / Cinema PL Mount</option>
+                <option value="Universal" className="bg-zinc-900 text-white">Universel / Multi-monture</option>
               </select>
             </div>
           </div>
 
           {/* Pricing & Stock */}
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 bg-zinc-950/70 p-4 rounded-2xl border border-zinc-800">
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Prix Vente (MAD)
               </label>
               <input
@@ -354,39 +351,39 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
                 required
                 value={price}
                 onChange={e => setPrice(e.target.value ? Number(e.target.value) : '')}
-                className="w-full bg-white border border-gray-200 rounded-xl p-3 font-black text-green-600 focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 font-black text-emerald-400 focus:border-emerald-500 outline-none"
                 placeholder="Ex: 2490"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-                Ancien Prix (Barre)
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
+                Ancien Prix (Barré)
               </label>
               <input
                 type="number"
                 value={oldPrice}
                 onChange={e => setOldPrice(e.target.value ? Number(e.target.value) : '')}
-                className="w-full bg-white border border-gray-200 rounded-xl p-3 font-bold text-gray-400 focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 font-semibold text-zinc-400 line-through focus:border-red-500 outline-none"
                 placeholder="Ex: 2990"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Prix Location / Jour
               </label>
               <input
                 type="number"
                 value={rentPrice}
                 onChange={e => setRentPrice(e.target.value ? Number(e.target.value) : '')}
-                className="w-full bg-white border border-gray-200 rounded-xl p-3 font-bold text-blue-600 focus:border-black outline-none"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 font-bold text-cyan-400 focus:border-cyan-500 outline-none"
                 placeholder="Ex: 200"
               />
             </div>
 
             <div className="flex flex-col justify-center gap-2">
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider">
                 Disponibilité & Précommande
               </label>
               <div className="flex gap-2">
@@ -394,7 +391,7 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
                   type="button"
                   onClick={() => { setInStock(!inStock); if (!inStock) setIsPreorder(false); }}
                   className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${
-                    inStock ? 'bg-green-600 text-white shadow-xs' : 'bg-gray-200 text-gray-700'
+                    inStock ? 'bg-emerald-600 text-white shadow-xs' : 'bg-zinc-800 text-zinc-400 border border-zinc-700'
                   }`}
                 >
                   <i className={`fa-solid ${inStock ? 'fa-check-circle' : 'fa-circle-xmark'}`}></i>
@@ -404,7 +401,7 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
                   type="button"
                   onClick={() => { setIsPreorder(!isPreorder); if (!isPreorder) setInStock(false); }}
                   className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 ${
-                    isPreorder ? 'bg-blue-600 text-white shadow-xs' : 'bg-gray-200 text-gray-700'
+                    isPreorder ? 'bg-blue-600 text-white shadow-xs' : 'bg-zinc-800 text-zinc-400 border border-zinc-700'
                   }`}
                 >
                   <i className="fa-solid fa-clock"></i>
@@ -416,40 +413,40 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
 
           {/* Dynamic Technical Specs */}
           {productType === 'lens' && (
-            <div className="bg-blue-50/60 border border-blue-100 p-4 rounded-2xl space-y-4">
-              <h4 className="text-xs font-bold text-blue-800 uppercase tracking-wider flex items-center gap-2">
+            <div className="bg-zinc-950/70 border border-zinc-800 p-4 rounded-2xl space-y-4">
+              <h4 className="text-xs font-bold text-blue-400 uppercase tracking-wider flex items-center gap-2">
                 <i className="fa-solid fa-camera"></i> Spécifications Optiques (Objectif)
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-gray-600 mb-1">Focale</label>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Focale</label>
                   <input
                     type="text"
                     value={focalLength}
                     onChange={e => setFocalLength(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm"
+                    className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm focus:border-red-500 outline-none"
                     placeholder="Ex: 35mm, 10-18mm"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-600 mb-1">Ouverture Max</label>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Ouverture Max</label>
                   <input
                     type="text"
                     value={aperture}
                     onChange={e => setAperture(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm"
+                    className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm focus:border-red-500 outline-none"
                     placeholder="Ex: F1.4, T2.1"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-600 mb-1">Mise au Point</label>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Mise au Point</label>
                   <select
                     value={focusType}
                     onChange={e => setFocusType(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm"
+                    className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm focus:border-red-500 outline-none"
                   >
-                    <option value="Manuel">Manuel (MF)</option>
-                    <option value="Autofocus">Autofocus (AF)</option>
+                    <option value="Manuel" className="bg-zinc-900 text-white">Manuel (MF)</option>
+                    <option value="Autofocus" className="bg-zinc-900 text-white">Autofocus (AF)</option>
                   </select>
                 </div>
               </div>
@@ -458,48 +455,48 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
 
           {/* Dynamic Used Equipment Specs */}
           {productGroup === 'used' && (
-            <div className="bg-amber-50/70 border border-amber-200 p-4 rounded-2xl space-y-4">
-              <h4 className="text-xs font-bold text-amber-900 uppercase tracking-wider flex items-center gap-2">
+            <div className="bg-zinc-950/70 border border-amber-900/50 p-4 rounded-2xl space-y-4">
+              <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
                 <i className="fa-solid fa-recycle"></i> Détails Matériel d'Occasion
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-gray-600 mb-1">Note d'État Cosmétique</label>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Note d'État Cosmétique</label>
                   <input
                     type="text"
                     value={conditionRating}
                     onChange={e => setConditionRating(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm"
+                    className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm focus:border-red-500 outline-none"
                     placeholder="Ex: 9/10 (Traces d'usage minimes)"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-600 mb-1">Nombre de Déclenchements (Si Caméra)</label>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Nombre de Déclenchements (Si Caméra)</label>
                   <input
                     type="text"
                     value={shutterCount}
                     onChange={e => setShutterCount(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm"
+                    className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm focus:border-red-500 outline-none"
                     placeholder="Ex: 14 200 déclenchements"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-600 mb-1">Garantie Offerte</label>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Garantie Offerte</label>
                   <input
                     type="text"
                     value={warranty}
                     onChange={e => setWarranty(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm"
+                    className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm focus:border-red-500 outline-none"
                     placeholder="Ex: 3 Mois Garantie GearShop"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-600 mb-1">Accessoires Inclus</label>
+                  <label className="block text-xs font-semibold text-zinc-300 mb-1">Accessoires Inclus</label>
                   <input
                     type="text"
                     value={accessories}
                     onChange={e => setAccessories(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-sm"
+                    className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-sm focus:border-red-500 outline-none"
                     placeholder="Ex: Boîte, Chargeur, 2 Batteries"
                   />
                 </div>
@@ -508,57 +505,65 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
           )}
 
           {/* Main Image & Gallery */}
-          <div className="space-y-4">
+          <div className="space-y-4 bg-zinc-950/70 p-4 rounded-2xl border border-zinc-800">
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-                URL Image Principale (Couverture)
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
+                Image Principale (URL Web ou chemin /images/...)
               </label>
-              <input
-                type="url"
-                required
-                value={image}
-                onChange={e => {
-                  setImage(e.target.value);
-                  if (gallery.length === 0) setGallery([e.target.value]);
-                }}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:bg-white focus:border-black outline-none"
-                placeholder="https://cdn.shopify.com/s/files/...jpg"
-              />
+              <div className="flex gap-3 items-center">
+                {image && (
+                  <div className="w-14 h-14 rounded-xl bg-white p-1 border border-zinc-700 overflow-hidden shrink-0 flex items-center justify-center">
+                    <img src={image} alt="Aperçu" className="w-full h-full object-contain" onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }} />
+                  </div>
+                )}
+                <input
+                  type="text"
+                  value={image}
+                  onChange={e => {
+                    setImage(e.target.value);
+                    if (gallery.length === 0 && e.target.value) setGallery([e.target.value]);
+                  }}
+                  className="flex-1 bg-zinc-800 border border-zinc-700 text-white rounded-xl p-3 text-sm focus:border-red-500 outline-none placeholder-zinc-500 font-mono text-xs"
+                  placeholder="https://... ou /images/products/..."
+                />
+              </div>
             </div>
 
             {/* Gallery Previews */}
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Galerie Photos Additionnelles ({gallery.length})
               </label>
               
-              <div className="flex gap-3 mb-3 overflow-x-auto py-2 no-scrollbar">
-                {gallery.map((url, idx) => (
-                  <div key={idx} className="relative w-20 h-20 rounded-xl border border-gray-200 overflow-hidden shrink-0 group">
-                    <img src={url} alt={`Vue ${idx + 1}`} className="w-full h-full object-contain p-1" />
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveGalleryImage(idx)}
-                      className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-80 hover:opacity-100"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
-              </div>
+              {gallery.length > 0 && (
+                <div className="flex gap-3 mb-3 overflow-x-auto py-2 no-scrollbar">
+                  {gallery.map((url, idx) => (
+                    <div key={idx} className="relative w-16 h-16 rounded-xl bg-white border border-zinc-700 overflow-hidden shrink-0 group">
+                      <img src={url} alt={`Vue ${idx + 1}`} className="w-full h-full object-contain p-1" />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveGalleryImage(idx)}
+                        className="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-90 hover:opacity-100 shadow"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="flex gap-2">
                 <input
-                  type="url"
+                  type="text"
                   value={newGalleryInput}
                   onChange={e => setNewGalleryInput(e.target.value)}
-                  className="flex-1 bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-sm focus:bg-white focus:border-black outline-none"
-                  placeholder="Coller l'URL d'une nouvelle vue..."
+                  className="flex-1 bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-xs focus:border-red-500 outline-none placeholder-zinc-500 font-mono"
+                  placeholder="Coller l'URL d'une nouvelle photo / vue..."
                 />
                 <button
                   type="button"
                   onClick={handleAddGalleryImage}
-                  className="px-4 py-2.5 bg-black text-white rounded-xl text-xs font-bold hover:bg-gray-800 transition shrink-0"
+                  className="px-4 py-2.5 bg-zinc-700 hover:bg-zinc-600 text-white rounded-xl text-xs font-bold transition shrink-0"
                 >
                   + Ajouter Vue
                 </button>
@@ -568,87 +573,84 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
 
           {/* Description */}
           <div>
-            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+            <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
               Description Détaillée du Produit
             </label>
             <textarea
               rows={4}
               value={desc}
               onChange={e => setDesc(e.target.value)}
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:bg-white focus:border-black outline-none"
+              className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-3 text-sm focus:border-red-500 outline-none placeholder-zinc-500"
               placeholder="Description commerciale et caractéristiques techniques du produit..."
             ></textarea>
           </div>
 
-          {/* Admin SEO Overrides (Priority: Admin override > Generated > Fallback) */}
-          <div className="bg-purple-50/60 border border-purple-100 p-5 rounded-2xl space-y-4">
-            <h4 className="text-xs font-bold text-purple-900 uppercase tracking-wider flex items-center gap-2">
-              <i className="fa-solid fa-magnifying-glass font-bold"></i> Surcharges SEO Manuelles (Priorité Administrateur)
+          {/* Admin SEO Overrides */}
+          <div className="bg-zinc-950/70 border border-purple-900/40 p-5 rounded-2xl space-y-4">
+            <h4 className="text-xs font-bold text-purple-400 uppercase tracking-wider flex items-center gap-2">
+              <i className="fa-solid fa-magnifying-glass"></i> Surcharges SEO Manuelles (Priorité Administrateur)
             </h4>
-            <p className="text-xs text-purple-700">
-              Ces champs remplacent les valeurs générées automatiquement. Laissez vide pour utiliser la génération automatique à partir des caractéristiques produit.
-            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-gray-700 mb-1">Titre SEO Personnalisé (Balise Title)</label>
+                <label className="block text-xs font-semibold text-zinc-300 mb-1">Titre SEO Personnalisé</label>
                 <input
                   type="text"
                   value={seoTitle}
                   onChange={e => setSeoTitle(e.target.value)}
-                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
+                  className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-xs focus:border-purple-500 outline-none placeholder-zinc-500"
                   placeholder="Laisser vide pour générer automatiquement"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 mb-1">Méta Description Personnalisée</label>
+                <label className="block text-xs font-semibold text-zinc-300 mb-1">Méta Description Personnalisée</label>
                 <input
                   type="text"
                   value={metaDescription}
                   onChange={e => setMetaDescription(e.target.value)}
-                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
+                  className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-xs focus:border-purple-500 outline-none placeholder-zinc-500"
                   placeholder="Laisser vide pour générer automatiquement"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xs font-bold text-gray-700 mb-1">Introduction SEO Personnalisée (Présentation)</label>
+                <label className="block text-xs font-semibold text-zinc-300 mb-1">Introduction SEO Personnalisée</label>
                 <textarea
                   rows={2}
                   value={seoIntro}
                   onChange={e => setSeoIntro(e.target.value)}
-                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
+                  className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-xs focus:border-purple-500 outline-none placeholder-zinc-500"
                   placeholder="Laisser vide pour générer automatiquement"
                 ></textarea>
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xs font-bold text-gray-700 mb-1">Alias de Recherche Séparés par des Virgules</label>
+                <label className="block text-xs font-semibold text-zinc-300 mb-1">Alias de Recherche Séparés par des Virgules</label>
                 <input
                   type="text"
                   value={searchAliasesInput}
                   onChange={e => setSearchAliasesInput(e.target.value)}
-                  className="w-full bg-white border border-gray-200 rounded-xl p-2.5 text-xs focus:border-purple-600 outline-none"
-                  placeholder="Ex: dji pocket 4, osmo pocket 4, pocket 4 pro"
+                  className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-xl p-2.5 text-xs focus:border-purple-500 outline-none placeholder-zinc-500"
+                  placeholder="Ex: 50mm f1.2, sony 50mm, lens e-mount"
                 />
               </div>
             </div>
           </div>
 
           {/* Footer Submit Buttons */}
-          <div className="pt-4 border-t border-gray-200 flex justify-end gap-3">
+          <div className="pt-4 border-t border-zinc-800 flex justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-3 rounded-xl border border-gray-300 text-sm font-bold text-gray-700 hover:bg-gray-100 transition"
+              className="px-6 py-3 rounded-xl border border-zinc-700 text-sm font-bold text-zinc-300 hover:bg-zinc-800 hover:text-white transition"
             >
               Annuler
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-8 py-3 rounded-xl bg-red-600 text-white text-sm font-bold hover:bg-red-700 transition shadow-lg flex items-center gap-2 disabled:opacity-50"
+              className="px-8 py-3 rounded-xl bg-red-600 text-white text-sm font-bold hover:bg-red-700 transition shadow-lg shadow-red-950/50 flex items-center gap-2 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
