@@ -7,7 +7,7 @@ interface ProductCardProps {
   product: Product;
   onProductClick?: (id: number) => void;
   siteConfig?: { currency?: string; phone?: string };
-  openWhatsappReserve?: (productName: string) => void;
+  openWhatsappReserve?: (productName: string, productId?: number) => void;
   generateStars?: (rating: number) => React.ReactNode[];
   addToCart?: (productId: number) => void;
   currency?: string;
@@ -48,11 +48,14 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
       if (onProductClick) onProductClick(id);
       else if (onSelect) onSelect(id);
     };
-    const handleReserve = (name: string) => {
-      if (openWhatsappReserve) openWhatsappReserve(name);
-      else {
-        const phoneClean = activePhone.replace(/[^0-9]/g, '');
-        window.open(`https://wa.me/${phoneClean}?text=${encodeURIComponent(`Bonjour, je souhaite réserver ${name}`)}`, '_blank');
+    const handleReserve = () => {
+      if (openWhatsappReserve) {
+        openWhatsappReserve(product.name, product.id);
+      } else {
+        const phoneClean = activePhone.replace('+212', '212').replace(/[^0-9]/g, '');
+        const productUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
+        const msg = `Bonjour GearShop Maroc,\n\nJe souhaite réserver le produit suivant :\n📦 *${product.name}*\n🔗 *Lien produit :* ${productUrl}\n\nPouvez-vous me confirmer le prix et le délai de livraison ?`;
+        window.open(`https://wa.me/${phoneClean}?text=${encodeURIComponent(msg)}`, '_blank');
       }
     };
     const handleAddToCart = (e: React.MouseEvent, id: number) => {
@@ -182,7 +185,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               onClick={(e) => {
                 e.stopPropagation();
                 if (!product.inStock) {
-                  handleReserve(product.name);
+                  handleReserve();
                 } else {
                   handleAddToCart(e, product.id);
                 }

@@ -62,7 +62,15 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
     const cityName = formData.city;
     const curr = siteConfig.currency;
-    const commandId = Date.now();
+    const commandId = 'GS-' + Math.floor(100000 + Math.random() * 900000);
+    const slugify = (text: string) => {
+      return (text || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+    };
 
     // Construct WhatsApp Message
     let msg = `*Nouvelle Commande #${commandId} - ${siteConfig.brandName}*\n\n`;
@@ -72,9 +80,10 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     msg += `Ville: ${cityName}\n`;
     msg += `Adresse: ${formData.address}\n\n`;
 
-    msg += `*Détails de la commande:*\n`;
+    msg += `*Détails des articles commandés:*\n`;
     cartItems.forEach((item) => {
-      msg += `- ${item.name} (x${item.qty}) : ${item.price * item.qty} ${curr}\n`;
+      const itemUrl = `https://www.gearshop.ma/product/${item.id}-${slugify(item.name)}`;
+      msg += `👉 *${item.name}* (x${item.qty}) : ${item.price * item.qty} ${curr}\n   🔗 ${itemUrl}\n`;
     });
     msg += `\n`;
 
@@ -94,6 +103,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
     // 1. Record lead / order safely in Supabase
     try {
+      const itemsList = cartItems.map(i => `${i.name} (x${i.qty}) [https://www.gearshop.ma/product/${i.id}-${slugify(i.name)}]`).join('\n');
       await createQuoteRequest({
         productName: `Panier (${cartItems.length} art.): ` + cartItems.map(i => `${i.name} (x${i.qty})`).join(', '),
         name: formData.name,
@@ -101,7 +111,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
         phone: formData.phone,
         company: `${cityName} - ${formData.address}`,
         quantity: cartItems.reduce((sum, item) => sum + item.qty, 0),
-        message: `Total: ${total} DH | ` + (formData.message || 'Commande Panier E-commerce')
+        message: `Total: ${total} DH | ` + (formData.message ? `${formData.message}\n\n` : '') + `Articles:\n${itemsList}`
       });
     } catch (dbErr) {
       console.warn('Database lead record non-blocking error:', dbErr);

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Product } from '../../App';
 import ProductCard from '../../components/ProductCard';
 import { useCart } from '../../src/context/CartContext';
+import { slugify } from '../utils/catalogEngine';
 
 interface CinemaLensesMarocProps {
   products: Product[];
@@ -13,9 +14,11 @@ interface CinemaLensesMarocProps {
 const CinemaLensesMaroc: React.FC<CinemaLensesMarocProps> = ({ products, onProductClick, siteConfig }) => {
   const { addToCart } = useCart();
 
-  const openWhatsappReserve = (productName: string) => {
-    const phone = siteConfig.phone.replace('+212', '212');
-    const msg = `Bonjour, je souhaite réserver le produit hors stock : ${productName}`;
+  const openWhatsappReserve = (productName: string, productId?: number) => {
+    const phone = siteConfig.phone.replace('+212', '212').replace(/[^0-9]/g, '');
+    const foundProduct = productId ? products.find(p => p.id === productId) : products.find(p => p.name === productName);
+    const productUrl = foundProduct ? `https://www.gearshop.ma/product/${foundProduct.id}-${slugify(foundProduct.name)}` : '';
+    const msg = `Bonjour GearShop Maroc,\n\nJe souhaite réserver le produit cinéma suivant :\n📦 *${productName}*${productUrl ? `\n🔗 *Lien produit :* ${productUrl}` : ''}\n\nPouvez-vous me confirmer le prix et le délai de livraison ?`;
     window.open(
       `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,
       '_blank'

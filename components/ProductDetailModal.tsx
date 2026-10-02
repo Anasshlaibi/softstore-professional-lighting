@@ -125,7 +125,8 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   const openReserveWhatsapp = () => {
     const phone = siteConfig.phone.replace('+212', '212').replace(/\s+/g, '');
-    const msg = `Bonjour, je souhaite réserver le produit : ${product.name} (Réf: ${product.id}) au prix de ${product.price > 0 ? `${product.price} DH` : 'sur demande'}`;
+    const productUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
+    const msg = `Bonjour GearShop Maroc,\n\nJe souhaite réserver / commander ce produit :\n📸 *${product.name}* (Réf: #${product.id})\n💰 Prix : ${product.price > 0 ? `${product.price.toLocaleString('fr-MA')} MAD` : 'Sur demande'}\n🔗 Lien produit : ${productUrl}\n\nPouvez-vous me confirmer la disponibilité ? Merci !`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -411,7 +412,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         Prix sur demande
                       </span>
                       <a
-                        href={`https://wa.me/212673011873?text=${encodeURIComponent(`Bonjour, je souhaite connaître le prix de : ${product.name}`)}`}
+                        href={`https://wa.me/212673011873?text=${encodeURIComponent(`Bonjour GearShop, je souhaite connaître le prix et la disponibilité de : ${product.name} (https://www.gearshop.ma/product/${product.id}-${slugify(product.name)})`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm text-green-600 font-semibold hover:underline"

@@ -8,6 +8,7 @@ import FilterDrawer from './FilterDrawer';
 import { extractProductAttributes, isProductMatchingCategory, smartFilterUpdate } from '../src/utils/productMetadata';
 import { useCart } from '../src/context/CartContext';
 import richDescriptions from '../src/data/richDescriptions.json';
+import { slugify } from '../src/utils/catalogEngine';
 
 interface ProductsProps {
   products: Product[];
@@ -321,9 +322,11 @@ const Products: React.FC<ProductsProps> = ({
     });
   }, [maxPrice, setGlobalSearchQuery]);
 
-  const openWhatsappReserve = (productName: string) => {
+  const openWhatsappReserve = (productName: string, productId?: number) => {
     const phone = siteConfig.phone.replace('+212', '212').replace(/[^0-9]/g, '');
-    const msg = `Bonjour, je souhaite réserver le produit hors stock : ${productName}`;
+    const foundProduct = productId ? products.find(p => p.id === productId) : products.find(p => p.name === productName);
+    const productUrl = foundProduct ? `https://www.gearshop.ma/product/${foundProduct.id}-${slugify(foundProduct.name)}` : '';
+    const msg = `Bonjour GearShop Maroc,\n\nJe souhaite réserver le produit suivant :\n📦 *${productName}*${productUrl ? `\n🔗 *Lien produit :* ${productUrl}` : ''}\n\nPouvez-vous me confirmer le prix et le délai de livraison ?`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 

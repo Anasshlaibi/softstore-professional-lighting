@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createQuoteRequest } from '../services/leadService';
 import { Product } from '../../App';
+import { slugify } from '../utils/catalogEngine';
 
 interface QuoteRequestModalProps {
   isOpen: boolean;
@@ -39,6 +40,13 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
 
     setLoading(true);
     try {
+      const productUrl = product?.id
+        ? `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`
+        : '';
+      const fullMessage = productUrl
+        ? (message ? `${message}\n\n🔗 Lien produit : ${productUrl}` : `🔗 Lien produit : ${productUrl}`)
+        : message;
+
       await createQuoteRequest({
         productId: product?.id,
         productName: productName || product?.name || 'Matériel Pro',
@@ -47,7 +55,7 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
         phone,
         company,
         quantity,
-        message
+        message: fullMessage
       });
       setSuccess(true);
       setTimeout(() => {

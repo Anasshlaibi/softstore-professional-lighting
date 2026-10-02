@@ -178,9 +178,11 @@ const UseCaseGuide: React.FC<UseCaseGuideProps> = ({ products, onProductClick, s
     };
   }, [slug, catalogUseCase, useCaseSlug]);
 
-  const openWhatsappReserve = (productName: string) => {
-    const phone = siteConfig.phone.replace('+212', '212').replace(/\s+/g, '');
-    const msg = `Bonjour, je souhaite réserver le produit recommandé : ${productName} (Guide : ${guide.title})`;
+  const openWhatsappReserve = (productName: string, productId?: number) => {
+    const phone = siteConfig.phone.replace('+212', '212').replace(/[^0-9]/g, '');
+    const foundProduct = productId ? products.find(p => p.id === productId) : products.find(p => p.name === productName);
+    const productUrl = foundProduct ? `https://www.gearshop.ma/product/${foundProduct.id}-${slugify(foundProduct.name)}` : '';
+    const msg = `Bonjour GearShop Maroc,\n\nJe souhaite réserver le produit recommandé suivant :\n📦 *${productName}* (Guide : ${guide.title})${productUrl ? `\n🔗 *Lien produit :* ${productUrl}` : ''}\n\nPouvez-vous me confirmer le prix et le délai de livraison ?`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 

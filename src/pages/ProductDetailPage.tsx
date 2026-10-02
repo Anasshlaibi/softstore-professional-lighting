@@ -186,10 +186,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const handleWhatsAppOrder = () => {
     if (!product) return;
     const phone = siteConfig.phone.replace(/[^0-9]/g, '') || '212673011873';
+    const productUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
     const lensDetails = selectedLens
       ? `\n🔍 Objectif Compatible Ajouté : *${selectedLens.name}* (+${selectedLens.price.toLocaleString('fr-FR')} ${siteConfig.currency})`
       : '\nConfiguration : *Boîtier Nu*';
-    const message = `Bonjour GearShop Maroc,\n\nJe souhaite commander :\n📸 Produit : *${product.name}*${lensDetails}\n💰 Total : *${calculatedPrice.toLocaleString('fr-FR')} ${siteConfig.currency}*\n🏷️ Réf : #${product.id}\nQuantité : ${quantity}\n\nPouvez-vous me confirmer la disponibilité et la livraison express ? Merci !`;
+    const message = `Bonjour GearShop Maroc,\n\nJe souhaite commander :\n📸 Produit : *${product.name}*${lensDetails}\n💰 Total : *${calculatedPrice.toLocaleString('fr-FR')} ${siteConfig.currency}*\n🏷️ Réf : #${product.id}\n🔗 Lien produit : ${productUrl}\nQuantité : ${quantity}\n\nPouvez-vous me confirmer la disponibilité et la livraison express ? Merci !`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
