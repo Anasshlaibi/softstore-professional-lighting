@@ -21,6 +21,8 @@ import { generateProductSEOPackage } from '../utils/seoGenerator';
 
 import { supabase } from '../lib/supabase';
 
+const ADMIN_PASS = 'anass2121';
+
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [emailInput, setEmailInput] = useState('');
@@ -59,7 +61,17 @@ const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check real Supabase Auth session
+    // Check saved session for persistent access
+    if (
+      sessionStorage.getItem('gearshop_admin_auth') === 'true' ||
+      localStorage.getItem('gearshop_admin_auth') === 'true'
+    ) {
+      setIsAuthenticated(true);
+      fetchData();
+      return;
+    }
+
+    // Check real Supabase Auth session if active
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         setIsAuthenticated(true);
@@ -71,8 +83,6 @@ const AdminDashboard: React.FC = () => {
       if (session) {
         setIsAuthenticated(true);
         fetchData();
-      } else {
-        setIsAuthenticated(false);
       }
     });
 
@@ -86,29 +96,45 @@ const AdminDashboard: React.FC = () => {
     setAuthLoading(true);
     setAuthError(null);
 
+    const pass = passwordInput.trim();
+
+    // 1. Password check (anass2121)
+    if (pass === ADMIN_PASS || pass.toLowerCase() === 'anass2121') {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('gearshop_admin_auth', 'true');
+      localStorage.setItem('gearshop_admin_auth', 'true');
+      setAuthLoading(false);
+      fetchData();
+      return;
+    }
+
+    // 2. Supabase Auth fallback
     try {
       const { error } = await supabase.auth.signInWithPassword({
-        email: emailInput,
+        email: emailInput.trim(),
         password: passwordInput,
       });
 
-      if (error) {
-        setAuthError(error.message || 'Identifiants invalides');
-      } else {
+      if (!error) {
         setIsAuthenticated(true);
+        sessionStorage.setItem('gearshop_admin_auth', 'true');
+        localStorage.setItem('gearshop_admin_auth', 'true');
         fetchData();
+        return;
       }
-    } catch (err: unknown) {
-      setAuthError(err instanceof Error ? err.message : 'Erreur de connexion');
-    } finally {
-      setAuthLoading(false);
-    }
+    } catch {}
+
+    setAuthError('Mot de passe incorrect.');
+    setAuthLoading(false);
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    try {
+      await supabase.auth.signOut();
+    } catch {}
     setIsAuthenticated(false);
     sessionStorage.removeItem('gearshop_admin_auth');
+    localStorage.removeItem('gearshop_admin_auth');
   };
 
   const fetchData = async () => {
@@ -292,7 +318,7 @@ const AdminDashboard: React.FC = () => {
               🔒
             </div>
             <h1 className="text-2xl font-extrabold tracking-tight">GearShop Admin Panel</h1>
-            <p className="text-xs text-zinc-400">Authentification sécurisée Supabase</p>
+            <p className="text-xs text-zinc-400">Authentification Administrateur</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -300,10 +326,9 @@ const AdminDashboard: React.FC = () => {
               <label className="block text-xs font-semibold text-zinc-300 mb-1">Email Administrateur</label>
               <input
                 type="email"
-                required
                 value={emailInput}
                 onChange={e => setEmailInput(e.target.value)}
-                placeholder="admin@gearshop.ma"
+                placeholder="anasshlaibi@gmail.com"
                 className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-sm text-white outline-none"
               />
             </div>
