@@ -197,7 +197,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 
 ---
 
-## 7. Catalogue Détaillé des Produits (282 Articles Disponibles)
+## 7. Catalogue Détaillé des Produits (283 Articles Disponibles)
 
 ### Catégorie : STUDIO (3 articles)
 
@@ -4183,7 +4183,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: Insta360 Support adhésif Flexible Ref: CINSAAVW — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 299 MAD | Distributeur Officiel Maroc Le Insta360 Support adhésif Flexible Ref: CINSAAVW est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au
 - **Lien Officiel Produit**: [Insta360 Support adhésif Flexible](https://www.gearshop.ma/product/5074-insta360-support-adh-sif-flexible)
 
-### Catégorie : CAMERA (4 articles)
+### Catégorie : CAMERA (5 articles)
 
 #### Nikon Coolpix P950
 - **SKU**: `GEAR-5093-NIKON`
@@ -4252,6 +4252,23 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Spécifications Clés**: Marque : NIKON, Catégorie : Appareil Photo, Référence / EAN : 4960759912282, Stock Disponible : 1 unités, Promotion Spéciale : -31%, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Nikon APN Boitier Z9 Noir — Matériel Audiovisuel Professionnel au Maroc 🔥 OFFRE PROMOTIONNELLE : 46499 MAD au lieu de 67818 MAD (-31% | Économisez 21319 MAD). Le Nikon APN Boitier Z9 Noir est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué 
 - **Lien Officiel Produit**: [Nikon Z9](https://www.gearshop.ma/product/5102-nikon-z9)
+
+#### Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z
+- **SKU**: `GEAR-6041-TAMRON`
+- **Marque / Brand**: Tamron
+- **Monture(s) / Mount(s)**: Nikon Z
+- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Focale / Focal Length**: 75mm
+- **Ouverture Maximale / Max Aperture**: f/2.8
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 31.500 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: Pack inclus : Nikon ZR + Tamron 28-75mm f/2.8 G2 (A063), Monture : Nikon Z, Zoom : 28-75 mm f/2.8 constant, Autofocus Tamron : VXD rapide et silencieux, Prix promotionnel : 31 500 DH au lieu de 31 999 DH, Économie : 499 DH, Statut : En stock — expédition depuis Casablanca
+- **Description**: Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc Ce pack réunit le Nikon ZR et le zoom Tamron 28-75mm f/2.8 Di III VXD G2 (A063) en monture Nikon Z, pour la photo et la vidéo. Le pack comprend Nikon ZR Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z (A063) Promotion pack Prix promotionnel : 31 500 DH au lieu de 31 9
+- **Lien Officiel Produit**: [Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z](https://www.gearshop.ma/product/6041-pack-nikon-zr-tamron-28-75mm-f-2-8-g2-nikon-z)
 
 ### Catégorie : OBJECTIF (41 articles)
 
@@ -4945,10 +4962,10 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Ouverture Maximale / Max Aperture**: f/2.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 11.500 MAD (Devise: MAD)
-- **Disponibilité / Availability**: Sur commande
+- **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Marque : Tamron, Modèle : A063, Monture : Nikon Z plein format, Focale : 28-75 mm, Ouverture maximale : f/2.8 constante, Formule optique : 17 éléments en 15 groupes, Autofocus : VXD (Voice-coil eXtreme-torque Drive), Mise au point minimale : 0,18 m (28 mm) / 0,38 m (75 mm), Rapport de reproduction maximal : 1:2,7 (28 mm) / 1:4,1 (75 mm), Diamètre de filtre : 67 mm, Dimensions : 75,8 mm x 119,8 mm, Poids : 550 g, Diaphragme : 9 lamelles circulaires, Statut : Sur commande - délai à confirmer
+- **Spécifications Clés**: Marque : Tamron, Modèle : A063, Monture : Nikon Z plein format, Focale : 28-75 mm, Ouverture maximale : f/2.8 constante, Formule optique : 17 éléments en 15 groupes, Autofocus : VXD (Voice-coil eXtreme-torque Drive), Mise au point minimale : 0,18 m (28 mm) / 0,38 m (75 mm), Rapport de reproduction maximal : 1:2,7 (28 mm) / 1:4,1 (75 mm), Diamètre de filtre : 67 mm, Dimensions : 75,8 mm x 119,8 mm, Poids : 550 g, Diaphragme : 9 lamelles circulaires, Statut : En stock — expédition depuis Casablanca
 - **Description**: Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z au Maroc Le Tamron A063 est un zoom standard lumineux f/2.8 constant conçu pour les hybrides Nikon Z plein format. Il couvre les scènes du quotidien, le reportage, le portrait et la vidéo avec un autofocus VXD rapide et silencieux. Points clés Monture Nikon Z pour boîtiers ple
 - **Lien Officiel Produit**: [Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z (A063)](https://www.gearshop.ma/product/6040-tamron-28-75mm-f-2-8-di-iii-vxd-g2-nikon-z-a063)
 

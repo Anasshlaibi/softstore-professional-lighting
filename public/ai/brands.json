@@ -34,7 +34,7 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 282,
+    "totalProducts": 283,
     "categoriesCount": 8,
     "brandsCount": 11,
     "lastUpdated": "2026-10-23"
@@ -363,7 +363,7 @@
     },
     {
       "name": "Tamron",
-      "count": 1,
+      "count": 2,
       "mountsAvailable": [
         "Nikon Z"
       ],
@@ -372,6 +372,11 @@
           "name": "Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z (A063)",
           "price": 11500,
           "url": "https://www.gearshop.ma/product/6040-tamron-28-75mm-f-2-8-di-iii-vxd-g2-nikon-z-a063"
+        },
+        {
+          "name": "Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z",
+          "price": 31500,
+          "url": "https://www.gearshop.ma/product/6041-pack-nikon-zr-tamron-28-75mm-f-2-8-g2-nikon-z"
         }
       ]
     }

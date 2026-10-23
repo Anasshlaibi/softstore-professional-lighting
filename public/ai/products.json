@@ -34,7 +34,7 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 282,
+    "totalProducts": 283,
     "categoriesCount": 8,
     "brandsCount": 11,
     "lastUpdated": "2026-10-23"
@@ -7342,7 +7342,7 @@
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 11500,
       "currency": "MAD",
-      "availability": "OutOfStock",
+      "availability": "InStock",
       "warranty": "1 an officiel avec SAV local à Casablanca",
       "deliveryArea": "Maroc entier (24h à 48h)",
       "paymentMethods": [
@@ -7352,6 +7352,32 @@
       ],
       "image": "https://www.gearshop.ma/images/products/tamron-28-75mm-f2-8-di-iii-vxd-g2-nikon-z-official-side.webp",
       "url": "https://www.gearshop.ma/product/6040-tamron-28-75mm-f-2-8-di-iii-vxd-g2-nikon-z-a063",
+      "lastUpdated": "2026-10-23"
+    },
+    {
+      "id": 6041,
+      "sku": "GEAR-6041-TAMRON",
+      "name": "Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z",
+      "brand": "Tamron",
+      "category": "Objectifs Photo",
+      "mount": "Nikon Z",
+      "focus": "Manual Focus",
+      "sensorCoverage": "Full Frame",
+      "focalLength": "75mm",
+      "maxAperture": "f/2.8",
+      "condition": "New (Neuf sous emballage d'origine)",
+      "price": 31500,
+      "currency": "MAD",
+      "availability": "InStock",
+      "warranty": "1 an officiel avec SAV local à Casablanca",
+      "deliveryArea": "Maroc entier (24h à 48h)",
+      "paymentMethods": [
+        "Cash on Delivery (Paiement à la livraison)",
+        "Virement Bancaire",
+        "Carte Bancaire"
+      ],
+      "image": "https://www.gearshop.ma/images/products/tamron-28-75mm-f2-8-nikon-zr-compatibility.webp",
+      "url": "https://www.gearshop.ma/product/6041-pack-nikon-zr-tamron-28-75mm-f-2-8-g2-nikon-z",
       "lastUpdated": "2026-10-23"
     },
     {

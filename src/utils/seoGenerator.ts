@@ -127,11 +127,14 @@ export function generateProductSEOPackage(
     product.name.toLowerCase().includes('preorder') ||
     (product.specs || []).some(s => s.toLowerCase().includes('précommande'));
   const isTamronA063 = Number(product.id) === 6040;
+  const isNikonZrTamronPack = Number(product.id) === 6041;
 
   // ===== 1. SEO TITLE (Priority: Admin Override > Generated > Fallback) =====
   let seoTitle = product.seo_title;
   if (isTamronA063) {
-    seoTitle = 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc | 11 500 DH';
+    seoTitle = 'Tamron 28-75mm f/2.8 G2 Nikon Z en stock au Maroc | 11 500 DH';
+  } else if (isNikonZrTamronPack) {
+    seoTitle = 'Pack Nikon ZR + Tamron 28-75mm f/2.8 au Maroc | 31 500 DH';
   }
   if (!seoTitle) {
     const priceStr = product.price > 0 ? ` (${product.price.toLocaleString('fr-MA')} MAD)` : '';
@@ -144,7 +147,9 @@ export function generateProductSEOPackage(
   // ===== 2. META DESCRIPTION (Priority: Admin Override > Generated > Fallback) =====
   let metaDescription = product.meta_description;
   if (isTamronA063) {
-    metaDescription = 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc chez GearShop : 11 500 DH. Zoom plein format, autofocus VXD et disponibilité fournisseur à confirmer avant commande.';
+    metaDescription = 'Tamron 28-75mm f/2.8 G2 Nikon Z en stock chez GearShop : 11 500 DH. Zoom plein format, autofocus VXD et livraison au Maroc depuis Casablanca.';
+  } else if (isNikonZrTamronPack) {
+    metaDescription = 'Pack Nikon ZR + Tamron 28-75mm f/2.8 Nikon Z à 31 500 DH chez GearShop. Économisez 499 DH, disponible à Casablanca avec livraison au Maroc.';
   }
   if (!metaDescription) {
     const priceText = product.price > 0 ? ` au prix de ${product.price.toLocaleString('fr-MA')} MAD` : '';
