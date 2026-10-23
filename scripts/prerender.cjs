@@ -69,6 +69,7 @@ function generateProductHTML(product, baseTemplate) {
   if (!brand) {
     const nameLower = (product.name || '').toLowerCase();
     if (nameLower.includes('dji') || fullJsonStr.includes('dji')) brand = 'DJI';
+    else if (nameLower.includes('tamron') || fullJsonStr.includes('tamron')) brand = 'Tamron';
     else if (nameLower.includes('sony') || fullJsonStr.includes('sony')) brand = 'Sony';
     else if (nameLower.includes('canon') || fullJsonStr.includes('canon')) brand = 'Canon';
     else if (nameLower.includes('nikon') || fullJsonStr.includes('nikon')) brand = 'Nikon';
@@ -80,9 +81,14 @@ function generateProductHTML(product, baseTemplate) {
     else if (nameLower.includes('rode') || nameLower.includes('røde')) brand = 'Røde';
   }
 
-  const title = product.seo_title || `${product.name} | ${product.category || 'GearShop'} Maroc`;
-  const description = product.meta_description || `Achetez ${product.name} chez GearShop Maroc. Prix: ${priceFormatted}. ${isPreorder ? 'Disponible en précommande chez GearShop Maroc' : inStock ? 'En stock à Casablanca' : 'Sur commande'}. Garantie 1 an.`;
-  const canonicalUrl = `https://gearshop.ma/product/${product.id}-${slugify(product.name)}`;
+  const isTamronA063 = Number(product.id) === 6040;
+  const title = product.seo_title || (isTamronA063
+    ? 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc | 11 500 DH'
+    : `${product.name} | ${product.category || 'GearShop'} Maroc`);
+  const description = product.meta_description || (isTamronA063
+    ? 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc chez GearShop : 11 500 DH. Zoom plein format, autofocus VXD et disponibilité fournisseur à confirmer avant commande.'
+    : `Achetez ${product.name} chez GearShop Maroc. Prix: ${priceFormatted}. ${isPreorder ? 'Disponible en précommande chez GearShop Maroc' : inStock ? 'En stock à Casablanca' : 'Sur commande'}. Garantie 1 an.`);
+  const canonicalUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
 
   let availability = 'https://schema.org/InStock';
   if (isPreorder) {
@@ -176,8 +182,7 @@ function generateProductHTML(product, baseTemplate) {
   <section
     id="prerendered-product-seo"
     data-prerendered="true"
-    style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"
-    aria-hidden="true"
+    style="max-width:72rem;margin:2rem auto;padding:1.5rem;font-family:system-ui,sans-serif;color:#111;background:#fff;"
   >
     <h1>${product.name}</h1>
     ${primaryImageUrl ? `<img src="${primaryImageUrl}" alt="${product.name.replace(/"/g, '&quot;')}" width="600" height="600" />` : ''}
@@ -187,11 +192,10 @@ function generateProductHTML(product, baseTemplate) {
     ${brand ? `<p>Marque&nbsp;: ${brand}</p>` : ''}
     ${product.category ? `<p>Catégorie&nbsp;: ${product.category}</p>` : ''}
     ${specsList ? `<ul>${specsList}</ul>` : ''}
-    <link rel="canonical" href="${canonicalUrl}" />
   </section>
 `;
 
-  html = html.replace('</body>', `${semanticBodyHtml}\n</body>`);
+  html = html.replace('<div id="root"></div>', `<div id="root">${semanticBodyHtml}</div>`);
 
   return html;
 }
@@ -216,24 +220,36 @@ async function prerender() {
   let errorCount = 0;
 
   // Helper to prerender a specific page route
-  const writeStaticPage = (subPath, title, desc, extraJsonLd = null, semanticBody = '') => {
+  const writeStaticPage = (subPath, title, desc, extraJsonLd = null, semanticBody = '', options = {}) => {
     const pageDir = path.join(distDir, subPath);
     try {
       fs.mkdirSync(pageDir, { recursive: true });
       let html = baseTemplate;
       html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
       html = html.replace(/<meta\s+name="description"[\s\S]*?>/i, `<meta name="description" content="${desc.replace(/"/g, '&quot;')}">`);
-      html = html.replace(/<link\s+rel="canonical"[\s\S]*?>/i, `<link rel="canonical" href="https://gearshop.ma/${subPath}" />`);
+      const canonicalUrl = options.canonicalUrl || `https://www.gearshop.ma/${subPath}`;
+      html = html.replace(/<link\s+rel="canonical"[\s\S]*?>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
+      html = html.replace(/<link\s+rel="alternate"\s+hreflang="fr-MA"[\s\S]*?>/i, `<link rel="alternate" hreflang="fr-MA" href="${canonicalUrl}" />`);
+      html = html.replace(/<link\s+rel="alternate"\s+hreflang="x-default"[\s\S]*?>/i, `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
       html = html.replace(/<meta\s+property="og:title"[\s\S]*?>/i, `<meta property="og:title" content="${title.replace(/"/g, '&quot;')}">`);
       html = html.replace(/<meta\s+property="og:description"[\s\S]*?>/i, `<meta property="og:description" content="${desc.replace(/"/g, '&quot;')}">`);
-      html = html.replace(/<meta\s+property="og:url"[\s\S]*?>/i, `<meta property="og:url" content="https://gearshop.ma/${subPath}">`);
+      html = html.replace(/<meta\s+property="og:url"[\s\S]*?>/i, `<meta property="og:url" content="${canonicalUrl}">`);
+      html = html.replace(/<meta\s+name="twitter:title"[\s\S]*?>/i, `<meta name="twitter:title" content="${title.replace(/"/g, '&quot;')}">`);
+      html = html.replace(/<meta\s+name="twitter:description"[\s\S]*?>/i, `<meta name="twitter:description" content="${desc.replace(/"/g, '&quot;')}">`);
+      if (options.image) {
+        html = html.replace(/<meta\s+property="og:image"[\s\S]*?>/i, `<meta property="og:image" content="${options.image}">`);
+        html = html.replace(/<meta\s+name="twitter:image"[\s\S]*?>/i, `<meta name="twitter:image" content="${options.image}">`);
+      }
+      if (options.twitterUrl) {
+        html = html.replace('</head>', `  <meta name="twitter:url" content="${canonicalUrl}">\n</head>`);
+      }
 
       if (extraJsonLd) {
         html = html.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(extraJsonLd)}\n  </script>\n</head>`);
       }
 
       if (semanticBody) {
-        html = html.replace('</body>', `${semanticBody}\n</body>`);
+        html = html.replace('<div id="root"></div>', `<div id="root">${semanticBody}</div>`);
       }
 
       fs.writeFileSync(path.join(pageDir, 'index.html'), html, 'utf-8');
@@ -258,60 +274,46 @@ async function prerender() {
   const osmoJsonLd = {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "name": "DJI Osmo Pocket 4 Pro",
+    "name": "DJI Osmo Pocket 4P (Pro)",
     "alternateName": ["DJI Osmo Pocket 4P", "DJI Pocket 4 Pro Maroc", "Caméra DJI Maroc"],
-    "image": ["https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png"],
-    "description": "Achetez le nouveau DJI Osmo Pocket 4 Pro au Maroc chez GearShop. Caméra vlog 4K avec capteur CMOS 1 pouce LOFIC, double objectif (20mm et 60mm), D-Log 2 10-bit et stabilisation 3 axes. Meilleur prix garanti au Maroc avec garantie 1 an.",
+    "image": ["https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp"],
+    "description": "Découvrez le DJI Osmo Pocket 4P au Maroc chez GearShop. Prix en MAD, garantie 1 an et livraison à Casablanca, Rabat, Marrakech et partout au Maroc.",
     "brand": { "@type": "Brand", "name": "DJI" },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "24",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Yassine B." },
-        "datePublished": "2026-08-20",
-        "reviewBody": "Excellente caméra compacte pour le vlogging au Maroc. Stabilisation 3 axes impeccable et qualité 4K bluffante.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      }
-    ],
     "offers": {
       "@type": "Offer",
-      "url": "https://gearshop.ma/dji-osmo-pocket-4-pro",
+      "url": "https://www.gearshop.ma/dji-osmo-pocket-4-pro",
       "priceCurrency": "MAD",
       "price": "8000",
       "availability": "https://schema.org/PreOrder",
       "itemCondition": "https://schema.org/NewCondition",
       "areaServed": { "@type": "Country", "name": "Maroc" },
-      "seller": { "@type": "Organization", "name": "GearShop Maroc", "telephone": "+212673011873" }
+      "seller": { "@type": "Organization", "name": "GearShop Maroc", "telephone": "+212673011873" },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "MAD" },
+        "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "MA" },
+        "deliveryTime": { "@type": "ShippingDeliveryTime", "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" }, "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" } }
+      },
+      "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "MA", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 7, "returnMethod": "https://schema.org/ReturnInStore", "returnFees": "https://schema.org/FreeReturn" }
     }
   };
 
   const osmoSemanticBody = `
-  <div id="prerendered-product-seo" style="display:none;" aria-hidden="true">
-    <h1>DJI Osmo Pocket 4 Pro au Maroc - Prix & Précommande</h1>
-    <p>Achetez ou précommandez la nouvelle caméra DJI Osmo Pocket 4 Pro chez GearShop Maroc au prix officiel de 8 000 DH.</p>
+  <section id="prerendered-product-seo" style="max-width:72rem;margin:2rem auto;padding:1.5rem;font-family:system-ui,sans-serif;color:#111;background:#fff;">
+    <img src="https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp" alt="DJI Osmo Pocket 4P (Pro) au Maroc" width="1024" height="1024" />
+    <h1>DJI Osmo Pocket 4P (Pro) au Maroc</h1>
+    <p>Découvrez le DJI Osmo Pocket 4P au Maroc chez GearShop. Prix en MAD, garantie 1 an et livraison à Casablanca, Rabat, Marrakech et partout au Maroc.</p>
     <p>Capteur CMOS 1 pouce LOFIC, plage dynamique de 17 stops, téléobjectif moyen 60mm f/1.8, D-Log 2 10-bit et stabilisation 3 axes.</p>
     <p>Livraison express en 24h à Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir et partout au Maroc avec paiement à la livraison et garantie 1 an.</p>
-  </div>`;
+  </section>`;
 
   writeStaticPage(
     'dji-osmo-pocket-4-pro',
-    'DJI Osmo Pocket 4 Pro Maroc | Prix Officiel 8000 DH & Livraison | GearShop',
-    'Achetez le nouveau DJI Osmo Pocket 4 Pro au Maroc chez GearShop. Prix officiel 8 000 DH. Capteur CMOS 1 pouce LOFIC, double objectif, D-Log 2, garantie 1 an et livraison 24h partout au Maroc.',
+    'DJI Osmo Pocket 4P (Pro) au Maroc – Prix & Précommande | GearShop',
+    'Découvrez le DJI Osmo Pocket 4P au Maroc chez GearShop. Prix en MAD, garantie 1 an et livraison à Casablanca, Rabat, Marrakech et partout au Maroc.',
     osmoJsonLd,
-    osmoSemanticBody
-  );
-  writeStaticPage(
-    'osmo-pocket-4p',
-    'DJI Osmo Pocket 4 Pro Maroc | Prix Officiel 8000 DH & Livraison | GearShop',
-    'Achetez la nouvelle caméra DJI Osmo Pocket 4 Pro chez GearShop Maroc au prix de 8 000 DH avec garantie 1 an.',
-    osmoJsonLd,
-    osmoSemanticBody
+    osmoSemanticBody,
+    { canonicalUrl: 'https://www.gearshop.ma/dji-osmo-pocket-4-pro', image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp', twitterUrl: true }
   );
 
   // 1c. Pre-rendering for Pan-Morocco City Hubs
@@ -390,28 +392,51 @@ async function prerender() {
   ];
 
   for (const c of moroccanCitiesList) {
-    const cityTitle = `Matériel Photo & Vidéo à ${c.name} | DJI, 7Artisans, K&F | Livraison ${c.time} | GearShop Maroc`;
+    const cityTitle = `Matériel Photo & DJI à ${c.name} | Livraison GearShop`;
     const cityDesc = `Achetez votre matériel photo, vidéo, caméras DJI Osmo Pocket 4 Pro et objectifs 7Artisans à ${c.name} (${c.region}). Livraison ${c.time}, garantie 1 an, paiement à la livraison.`;
+    const cityUrl = `https://www.gearshop.ma/livraison-maroc/${c.slug}`;
     const cityJsonLd = {
       "@context": "https://schema.org",
-      "@type": ["Store", "LocalBusiness"],
-      "name": `GearShop Maroc - Matériel Photo, Vidéo & DJI à ${c.name}`,
-      "telephone": "+212673011873",
-      "url": `https://gearshop.ma/livraison-maroc/${c.slug}`,
-      "priceRange": "$$",
-      "currenciesAccepted": "MAD",
-      "paymentAccepted": "Cash on Delivery, Paiement à la livraison, Virement Bancaire",
-      "areaServed": {
-        "@type": "City",
-        "name": c.name,
-        "containedInPlace": { "@type": "AdministrativeArea", "name": c.region }
-      }
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${cityUrl}#webpage`,
+          "url": cityUrl,
+          "name": cityTitle,
+          "inLanguage": ["fr-MA", "en"],
+          "about": { "@id": "https://www.gearshop.ma/#business" },
+          "breadcrumb": { "@id": `${cityUrl}#breadcrumb` }
+        },
+        {
+          "@type": "Service",
+          "@id": `${cityUrl}#delivery-service`,
+          "name": `Livraison de matériel photo et vidéo à ${c.name}`,
+          "serviceType": "Livraison de matériel photo, vidéo et cinéma",
+          "provider": { "@id": "https://www.gearshop.ma/#business" },
+          "areaServed": {
+            "@type": "City",
+            "name": c.name,
+            "containedInPlace": { "@type": "AdministrativeArea", "name": c.region }
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${cityUrl}#breadcrumb`,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.gearshop.ma/" },
+            { "@type": "ListItem", "position": 2, "name": "Livraison au Maroc", "item": "https://www.gearshop.ma/livraison-maroc" },
+            { "@type": "ListItem", "position": 3, "name": c.name, "item": cityUrl }
+          ]
+        }
+      ]
     };
     const citySemanticBody = `
     <div id="prerendered-city-seo" style="display:none;" aria-hidden="true">
       <h1>Matériel Photo, Vidéo et Caméras DJI à ${c.name}</h1>
       <p>${cityDesc}</p>
-      <p>Distributeur officiel 7Artisans, K&F Concept et DJI. Produits 100% neufs avec garantie 1 an et SAV au Maroc.</p>
+      <p>GearShop fournit des objectifs, filtres, caméras et accessoires avec prix et disponibilité vérifiés dans le catalogue au moment de la commande.</p>
+      <h2>Where can I buy professional camera gear in ${c.name}, Morocco?</h2>
+      <p>GearShop delivers professional photo and video equipment to ${c.name}. Check the current catalog price and availability before ordering. Estimated delivery: ${c.time}.</p>
     </div>`;
 
     writeStaticPage(`livraison-maroc/${c.slug}`, cityTitle, cityDesc, cityJsonLd, citySemanticBody);
@@ -422,6 +447,7 @@ async function prerender() {
   const brandList = [
     { slug: '7artisans', title: 'Objectifs 7Artisans Maroc | Distributeur Officiel Casablanca', desc: 'Distributeur officiel 7Artisans au Maroc. Objectifs autofocus F1.8 et ciné T2.0 pour Sony, Canon, Nikon, Lumix, Fuji.' },
     { slug: 'kf-concept', title: 'Filtres K&F Concept Maroc | ND Variable, Black Mist, CPL | GearShop', desc: 'Distributeur officiel K&F Concept au Maroc. Filtres ND variables, Black Diffusion et bagues d\'adaptation à Casablanca.' },
+    { slug: 'tamron', title: 'Objectifs Tamron Nikon Z au Maroc | Prix & Disponibilité | GearShop', desc: 'Découvrez les objectifs Tamron pour Nikon Z au Maroc. Prix en MAD et disponibilité à confirmer avant commande chez GearShop.' },
     { slug: 'sony', title: 'Objectifs Sony E-Mount au Maroc | AF F1.8 & Cinéma T2.0 GearShop', desc: 'Objectifs pour boîtiers Sony Alpha et Cinema Line (A7 IV, FX3, FX30) au Maroc. Autofocus et cinéma garantis.' },
     { slug: 'canon', title: 'Objectifs Canon EOS-R (RF-Mount) au Maroc | GearShop Casablanca', desc: 'Objectifs autofocus et série cinéma T2.0 natives pour votre système hybride Canon RF au Maroc.' },
     { slug: 'nikon', title: 'Objectifs Nikon Z au Maroc | Focales Fixes F1.8 & Cinéma GearShop', desc: 'Large choix d\'objectifs pour Nikon Z au Maroc (Z6, Z7, Z8, Z9, Z50) avec stock local à Casablanca.' },
@@ -476,7 +502,7 @@ async function prerender() {
       console.log(`✅ Fetched ${products.length} products\n`);
 
       for (const product of products) {
-        if (!product.id || !product.name) continue;
+        if (!product.id || !product.name || product.id === 3001) continue;
         const slug = slugify(product.name);
         const productDir = path.join(distDir, 'product', `${product.id}-${slug}`);
 

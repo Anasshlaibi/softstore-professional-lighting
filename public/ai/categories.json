@@ -34,10 +34,10 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 281,
+    "totalProducts": 282,
     "categoriesCount": 8,
-    "brandsCount": 10,
-    "lastUpdated": "2026-09-25"
+    "brandsCount": 11,
+    "lastUpdated": "2026-10-23"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -64,7 +64,7 @@
         },
         {
           "name": "Panel P-500",
-          "price": 1150,
+          "price": 19000,
           "url": "https://www.gearshop.ma/product/4-panel-p-500"
         },
         {
@@ -104,15 +104,15 @@
           "url": "https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah"
         },
         {
-          "name": "DJI Osmo Pocket 4 Pro",
-          "price": 9000,
+          "name": "DJI Osmo Pocket 4P (Pro)",
+          "price": 8000,
           "url": "https://www.gearshop.ma/dji-osmo-pocket-4-pro"
         }
       ]
     },
     {
       "name": "Objectifs Photo",
-      "count": 94,
+      "count": 95,
       "sampleProducts": [
         {
           "name": "Atomos Ninja V 5\" 4K HDR + Pack Complet (SSD 500Go Lunchbox, Valise, Batterie, 2x HDMI) - Comme Neuf",

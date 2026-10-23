@@ -41,6 +41,8 @@ export function extractProductAttributes(p: Product): ProductAttributes {
       brand = 'DJI';
     } else if (nameLower.includes('7artisans') || fullText.includes('7artisans') || fullText.includes('sevenartisans')) {
       brand = '7Artisans';
+    } else if (nameLower.includes('tamron') || fullText.includes('tamron')) {
+      brand = 'Tamron';
     } else if (nameLower.includes('k&f') || nameLower.includes('kf concept') || nameLower.includes('kentfaith')) {
       brand = 'K&F Concept';
     } else if (nameLower.includes('dji') || nameLower.includes('osmo') || cat.includes('dji')) {
@@ -173,6 +175,17 @@ export function extractProductAttributes(p: Product): ProductAttributes {
 
   // 4. FILTER DIAMETER EXTRACTION (For filters & lenses with filter threads)
   let filter_diameter: number | undefined = typeof pRecord.filter_diameter === 'number' ? pRecord.filter_diameter : undefined;
+  if (!filter_diameter) {
+    // Prefer an explicitly labelled specification over focal-length numbers in a lens name.
+    const specificationText = `${(p.specs || []).join(' ')} ${desc}`;
+    const labelledDiameter = specificationText.match(/(?:diam[eè]tre\s*(?:de\s*)?filtre|filter\s*(?:diameter|thread)?)[^\d]{0,20}(\d{2,3}(?:\.\d+)?)\s*mm/i);
+    if (labelledDiameter) {
+      const num = parseFloat(labelledDiameter[1]);
+      if ([37, 39, 40.5, 43, 46, 49, 52, 55, 58, 62, 67, 72, 77, 82, 86, 95, 105].includes(num)) {
+        filter_diameter = num;
+      }
+    }
+  }
   if (!filter_diameter) {
     // Look for diameter pattern in name e.g. 77mm, 55mm, 82mm
     const diamMatch = name.match(/\b(\d{2,3})\s*mm\b/i);
@@ -430,4 +443,3 @@ export function smartFilterUpdate(
 
   return next;
 }
-

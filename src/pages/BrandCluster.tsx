@@ -48,6 +48,17 @@ const BRAND_PROFILES: Record<string, BrandSEOProfile> = {
     whyText: 'Les filtres K&F Concept garantissent une clarté optique parfaite sans dominante de couleur (True Color) et sans croix noire (vignettage en X). Protégez et sublimez vos optiques avec les technologies de traitement Nano-Xcel et Nano-X.',
     matchTerms: ['k&f', 'kf', 'concept', 'kent faith']
   },
+  'tamron': {
+    name: 'Tamron',
+    metaTitle: 'Objectifs Tamron Nikon Z au Maroc | Prix & Disponibilité | GearShop',
+    metaDesc: 'Découvrez les objectifs Tamron pour Nikon Z au Maroc chez GearShop. Prix en MAD, caractéristiques techniques et disponibilité fournisseur à confirmer avant commande.',
+    keywords: 'tamron maroc, tamron nikon z maroc, tamron 28 75 nikon z prix maroc, objectif tamron casablanca, tamron a063 maroc',
+    heroH1: 'Objectifs Tamron Nikon Z au Maroc',
+    heroSub: 'Sélection d’objectifs Tamron pour hybrides Nikon Z, avec prix en MAD et confirmation de disponibilité avant commande.',
+    whyTitle: 'Choisir un objectif Tamron pour Nikon Z',
+    whyText: 'Comparez les focales, l’ouverture, l’autofocus et la compatibilité Nikon Z. GearShop confirme le délai fournisseur et les conditions de garantie avant paiement.',
+    matchTerms: ['tamron', 'a063']
+  },
   'lumix': {
     name: 'Panasonic Lumix (L-Mount & M43)',
     metaTitle: 'Objectifs Panasonic Lumix au Maroc (L-Mount & Micro 4/3) | GearShop Casa',
@@ -224,7 +235,7 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, s
     "@type": "CollectionPage",
     "name": profile.heroH1,
     "description": profile.metaDesc,
-    "url": `https://gearshop.ma/marque/${brandKey}`,
+    "url": `https://www.gearshop.ma/marque/${brandKey}`,
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": brandProducts.length,
@@ -232,7 +243,7 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, s
         "@type": "ListItem",
         "position": idx + 1,
         "name": p.name,
-        "url": `https://gearshop.ma/product/${p.id}-${slugify(p.name)}`
+        "url": `https://www.gearshop.ma/product/${p.id}-${slugify(p.name)}`
       }))
     }
   };
@@ -243,10 +254,10 @@ const BrandCluster: React.FC<BrandClusterProps> = ({ products, onProductClick, s
         <title>{profile.metaTitle}</title>
         <meta name="description" content={profile.metaDesc} />
         <meta name="keywords" content={profile.keywords} />
-        <link rel="canonical" href={`https://gearshop.ma/marque/${brandKey}`} />
+        <link rel="canonical" href={`https://www.gearshop.ma/marque/${brandKey}`} />
         <meta property="og:title" content={profile.metaTitle} />
         <meta property="og:description" content={profile.metaDesc} />
-        <meta property="og:url" content={`https://gearshop.ma/marque/${brandKey}`} />
+        <meta property="og:url" content={`https://www.gearshop.ma/marque/${brandKey}`} />
       </Helmet>
 
       <script

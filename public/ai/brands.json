@@ -34,10 +34,10 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 281,
+    "totalProducts": 282,
     "categoriesCount": 8,
-    "brandsCount": 10,
-    "lastUpdated": "2026-09-25"
+    "brandsCount": 11,
+    "lastUpdated": "2026-10-23"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -72,7 +72,7 @@
         },
         {
           "name": "Panel P-500",
-          "price": 1150,
+          "price": 19000,
           "url": "https://www.gearshop.ma/product/4-panel-p-500"
         },
         {
@@ -296,8 +296,8 @@
       "mountsAvailable": [],
       "sampleProducts": [
         {
-          "name": "DJI Osmo Pocket 4 Pro",
-          "price": 9000,
+          "name": "DJI Osmo Pocket 4P (Pro)",
+          "price": 8000,
           "url": "https://www.gearshop.ma/dji-osmo-pocket-4-pro"
         },
         {
@@ -358,6 +358,20 @@
           "name": "Insta360 X5 Invisible Mic Cold Shoe (for RODE Mic) CINSBAHP",
           "price": 299,
           "url": "https://www.gearshop.ma/product/5071-insta360-x5-invisible-mic-cold-shoe-for-rode-mic-cinsbahp"
+        }
+      ]
+    },
+    {
+      "name": "Tamron",
+      "count": 1,
+      "mountsAvailable": [
+        "Nikon Z"
+      ],
+      "sampleProducts": [
+        {
+          "name": "Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z (A063)",
+          "price": 11500,
+          "url": "https://www.gearshop.ma/product/6040-tamron-28-75mm-f-2-8-di-iii-vxd-g2-nikon-z-a063"
         }
       ]
     }

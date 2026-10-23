@@ -41,6 +41,7 @@ function detectBrand(p) {
   const text = `${p.name || ''} ${p.category || ''} ${p.desc || ''}`.toLowerCase();
   if (text.includes('k&f') || text.includes('concept') || text.includes('kf')) return 'K&F Concept';
   if (text.includes('7artisans')) return '7Artisans';
+  if (text.includes('tamron')) return 'Tamron';
   if (text.includes('sony')) return 'Sony';
   if (text.includes('canon')) return 'Canon';
   if (text.includes('nikon')) return 'Nikon';
@@ -146,8 +147,8 @@ async function generate() {
       category: 'Caméras & Stabilisateurs',
       brand: 'DJI',
       desc: 'Caméra compacte de vlog 4K avec double objectif (20mm & 60mm), capteur CMOS 1 pouce LOFIC (17 stops de plage dynamique), D-Log 2 10-bit et stabilisation 3 axes avec ActiveTrack 8.0.',
-      image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png',
-      inStock: true,
+       image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp',
+      inStock: false,
       isPreorder: true
     });
   }
@@ -168,7 +169,7 @@ async function generate() {
     return {
       id: p.id,
       sku: p.sku || `GEAR-${p.id}-${slugify(brand).toUpperCase()}`,
-      name: p.name,
+       name: isSpecialOsmo ? 'DJI Osmo Pocket 4P (Pro)' : p.name,
       brand: brand,
       category: category,
       mount: mount,
@@ -183,7 +184,9 @@ async function generate() {
       warranty: '1 an officiel avec SAV local à Casablanca',
       deliveryArea: 'Maroc entier (24h à 48h)',
       paymentMethods: ['Cash on Delivery (Paiement à la livraison)', 'Virement Bancaire', 'Carte Bancaire'],
-      image: p.image ? (p.image.startsWith('http') ? p.image : `${baseUrl}/${p.image.replace(/^\//, '')}`) : `${baseUrl}/banner_7artisans.jpg`,
+       image: isSpecialOsmo
+         ? `${baseUrl}/images/products/dji-osmo-pocket-4-pro.webp`
+         : p.image ? (p.image.startsWith('http') ? p.image : `${baseUrl}/${p.image.replace(/^\//, '')}`) : `${baseUrl}/banner_7artisans.jpg`,
       url: productUrl,
       lastUpdated: today
     };

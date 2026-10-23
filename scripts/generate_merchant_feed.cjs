@@ -63,6 +63,7 @@ function detectBrand(product) {
   if (name.includes('sandisk')) return 'SanDisk';
   if (name.includes('agfa')) return 'Agfa';
   if (name.includes('kodak')) return 'Kodak';
+  if (name.includes('tamron')) return 'Tamron';
   if (name.includes('rode') || name.includes('r\u00f8de')) return 'R\u00f8de';
   if (name.includes('sony') && !name.includes('e mount') && !name.includes('(e mount)')) return 'Sony';
   if (name.includes('canon') && !name.includes('rf ') && !name.includes('eos-r') && !name.includes('canon ef')) return 'Canon';
@@ -174,15 +175,20 @@ async function generateMerchantFeed() {
       }
       if (!product.id || !product.name || !product.price) return;
 
+      const isOsmoPocket4 = product.id === 3001 || (product.name || '').toLowerCase().includes('osmo pocket 4');
       const slug = slugify(product.name);
-      const productUrl = `${BASE_URL}/product/${product.id}-${slug}`;
-      const escapedTitle = escapeXml(product.name);
+      const productUrl = isOsmoPocket4
+        ? `${BASE_URL}/dji-osmo-pocket-4-pro`
+        : `${BASE_URL}/product/${product.id}-${slug}`;
+      const escapedTitle = escapeXml(isOsmoPocket4 ? 'DJI Osmo Pocket 4P (Pro)' : product.name);
       
       let desc = product.desc || product.name;
       desc = desc.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
       const escapedDesc = escapeXml(desc).substring(0, 5000);
 
-      let imageUrl = product.image || '';
+      let imageUrl = isOsmoPocket4
+        ? '/images/products/dji-osmo-pocket-4-pro.webp'
+        : product.image || '';
       if (imageUrl.startsWith('//')) imageUrl = 'https:' + imageUrl;
       else if (imageUrl.startsWith('/cdn/')) imageUrl = 'https://7artisans.store' + imageUrl;
       else if (imageUrl.startsWith('/')) imageUrl = BASE_URL + imageUrl;
@@ -192,7 +198,8 @@ async function generateMerchantFeed() {
       const priceFormatted = Number(product.price).toFixed(2) + ' MAD';
       const isOccasion = (product.category || '').toLowerCase().includes('occasion') || (product.name || '').toLowerCase().includes('occasion');
       const condition = isOccasion ? 'used' : 'new';
-      const availability = product.inStock !== false ? 'in_stock' : 'out_of_stock';
+      const isPreorder = isOsmoPocket4 || product.isPreorder === true || product.ispreorder === true || product.status === 'Précommande';
+      const availability = isPreorder ? 'preorder' : product.inStock !== false ? 'in_stock' : 'out_of_stock';
 
       xml += `    <item>
       <g:id>${product.id}</g:id>

@@ -61,6 +61,7 @@ export function getProductBrand(product: Product): string {
 
   const text = `${product.name || ''} ${product.category || ''}`.toLowerCase();
   if (text.includes('7artisans')) return '7Artisans';
+  if (text.includes('tamron')) return 'Tamron';
   if (text.includes('k&f') || text.includes('kf concept') || text.includes('concept')) return 'K&F Concept';
   if (text.includes('dji') || text.includes('osmo')) return 'DJI';
   if (text.includes('godox')) return 'Godox';
@@ -125,9 +126,13 @@ export function generateProductSEOPackage(
     product.name.toLowerCase().includes('précommande') ||
     product.name.toLowerCase().includes('preorder') ||
     (product.specs || []).some(s => s.toLowerCase().includes('précommande'));
+  const isTamronA063 = Number(product.id) === 6040;
 
   // ===== 1. SEO TITLE (Priority: Admin Override > Generated > Fallback) =====
   let seoTitle = product.seo_title;
+  if (isTamronA063) {
+    seoTitle = 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc | 11 500 DH';
+  }
   if (!seoTitle) {
     const priceStr = product.price > 0 ? ` (${product.price.toLocaleString('fr-MA')} MAD)` : '';
     seoTitle = `${product.name} Prix Maroc${priceStr} | Achat & Livraison 24h | GearShop`;
@@ -138,6 +143,9 @@ export function generateProductSEOPackage(
 
   // ===== 2. META DESCRIPTION (Priority: Admin Override > Generated > Fallback) =====
   let metaDescription = product.meta_description;
+  if (isTamronA063) {
+    metaDescription = 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc chez GearShop : 11 500 DH. Zoom plein format, autofocus VXD et disponibilité fournisseur à confirmer avant commande.';
+  }
   if (!metaDescription) {
     const priceText = product.price > 0 ? ` au prix de ${product.price.toLocaleString('fr-MA')} MAD` : '';
     const stockStatusText = isPreorder
@@ -302,7 +310,6 @@ export function generateProductSEOPackage(
   });
 
   const hasRealPrice = product.price && Number(product.price) > 0;
-  const ratingVal = product.stars || 4.9;
   const productSchema: Record<string, unknown> = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
@@ -318,13 +325,6 @@ export function generateProductSEOPackage(
         'name': brand
       }
     } : {}),
-    'aggregateRating': {
-      '@type': 'AggregateRating',
-      'ratingValue': ratingVal.toString(),
-      'reviewCount': '24',
-      'bestRating': '5',
-      'worstRating': '1'
-    },
     'offers': {
       '@type': 'Offer',
       '@id': `${canonicalUrl}#offer`,
