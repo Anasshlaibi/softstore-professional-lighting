@@ -263,6 +263,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <title>{productSeoTitle}</title>
         <meta name="description" content={productSeoDescription} />
         <link rel="canonical" href={canonicalUrl} />
+        <link rel="alternate" hrefLang="fr-MA" href={canonicalUrl} />
+        <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
         <meta property="og:title" content={productSeoTitle} />
         <meta property="og:description" content={productSeoDescription} />
         <meta property="og:url" content={canonicalUrl} />
@@ -273,6 +275,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <meta name="twitter:description" content={productSeoDescription} />
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:image" content={currentImage.startsWith('http') ? currentImage : `https://www.gearshop.ma${currentImage}`} />
+        <meta name="twitter:image:alt" content={product.name} />
       </Helmet>
 
       {/* Toast Notification */}

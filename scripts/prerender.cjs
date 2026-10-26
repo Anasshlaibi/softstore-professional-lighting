@@ -35,6 +35,15 @@ function slugify(text) {
   return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 }
 
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 async function fetchProducts(supabaseUrl, supabaseKey) {
   const url = `${supabaseUrl}/rest/v1/products%20gearshop?select=*&order=id.asc`;
   const response = await fetch(url, {
@@ -112,6 +121,8 @@ function generateProductHTML(product, baseTemplate) {
 
   // Replace canonical
   html = html.replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonicalUrl}" />`);
+  html = html.replace(/<link rel="alternate" hreflang="fr-MA"[^>]*>/, `<link rel="alternate" hreflang="fr-MA" href="${canonicalUrl}" />`);
+  html = html.replace(/<link rel="alternate" hreflang="x-default"[^>]*>/, `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
 
   // Replace og:title
   html = html.replace(/<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${title.replace(/"/g, '&quot;')}">`);
@@ -126,6 +137,7 @@ function generateProductHTML(product, baseTemplate) {
   if (product.image) {
     const absOgImage = product.image.startsWith('http') ? product.image : 'https://www.gearshop.ma' + product.image;
     html = html.replace(/<meta property="og:image"[^>]*>/, '<meta property="og:image" content="' + absOgImage + '">');
+    html = html.replace(/<meta property="og:image:alt"[^>]*>/, `<meta property="og:image:alt" content="${escapeHtml(product.name)}">`);
   }
 
   // Parse gallery safely — force all to absolute URLs
@@ -143,6 +155,18 @@ function generateProductHTML(product, baseTemplate) {
     if (Array.isArray(raw) && raw.length > 0) {
       galleryImages = [...new Set([product.image, ...raw].filter(Boolean).map(toAbsolute))];
     }
+  }
+  const primaryImageUrl = galleryImages[0] || '';
+
+  // Keep social previews aligned with the canonical product page and primary image.
+  html = html.replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${escapeHtml(title)}">`);
+  html = html.replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${escapeHtml(description)}">`);
+  html = html.replace(/<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${primaryImageUrl}">`);
+  html = html.replace(/<meta name="twitter:image:alt"[^>]*>/, `<meta name="twitter:image:alt" content="${escapeHtml(product.name)}">`);
+  if (/<meta name="twitter:url"[^>]*>/.test(html)) {
+    html = html.replace(/<meta name="twitter:url"[^>]*>/, `<meta name="twitter:url" content="${canonicalUrl}">`);
+  } else {
+    html = html.replace('</head>', `  <meta name="twitter:url" content="${canonicalUrl}">\n</head>`);
   }
 
   // Inject JSON-LD into head without fabricated SKUs or 0 MAD price
@@ -164,6 +188,23 @@ function generateProductHTML(product, baseTemplate) {
       "priceCurrency": "MAD",
       ...(hasRealPrice ? { "price": product.price.toString() } : {}),
       "availability": availability,
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "MA" },
+        "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "MAD" },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "MA",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnInStore",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
       "seller": {
         "@type": "Organization",
         "name": "GearShop Maroc"
@@ -178,9 +219,13 @@ function generateProductHTML(product, baseTemplate) {
 
   // Inject visible semantic HTML for Googlebot-Image and zero-JS crawlers
   // NOTE: React will hydrate and replace this on first render
-  const specsList = Array.isArray(product.specs) ? product.specs.map(s => `<li style="list-style:disc;margin-left:1.2em;">${s}</li>`).join('') : '';
-  const primaryImageUrl = toAbsolute(product.image) || '';
+  const specsList = Array.isArray(product.specs) ? product.specs.map(s => `<li>${escapeHtml(s)}</li>`).join('') : '';
   const availabilityText = isPreorder ? 'Précommande officielle' : inStock ? 'En stock à Casablanca — Livraison 24h/48h au Maroc' : 'Rupture temporaire — Sur commande';
+  const galleryHtml = galleryImages.map((imageUrl, index) => `
+      <figure style="margin:0;">
+        <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(`${product.name} — vue ${index + 1}`)}" width="1200" height="1200" loading="${index === 0 ? 'eager' : 'lazy'}" />
+        <figcaption>${escapeHtml(`${product.name} — vue ${index + 1}`)}</figcaption>
+      </figure>`).join('');
 
   const semanticBodyHtml = `
   <!-- Prerendered product snapshot for crawlers; React hydrates #root -->
@@ -189,13 +234,15 @@ function generateProductHTML(product, baseTemplate) {
     data-prerendered="true"
     style="max-width:72rem;margin:2rem auto;padding:1.5rem;font-family:system-ui,sans-serif;color:#111;background:#fff;"
   >
-    <h1>${product.name}</h1>
-    ${primaryImageUrl ? `<img src="${primaryImageUrl}" alt="${product.name.replace(/"/g, '&quot;')}" width="600" height="600" />` : ''}
-    <p>${description}</p>
+    <nav aria-label="Fil d’Ariane"><a href="https://www.gearshop.ma/">Accueil</a> / <a href="https://www.gearshop.ma/categorie/${slugify(product.category || 'materiel')}">${escapeHtml(product.category || 'Matériel')}</a> / ${escapeHtml(product.name)}</nav>
+    <h1>${escapeHtml(product.name)}</h1>
+    <div aria-label="Images produit" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">${galleryHtml}</div>
+    <p>${escapeHtml(description)}</p>
     <p>Prix&nbsp;: ${priceFormatted}</p>
     <p>Disponibilité&nbsp;: ${availabilityText}</p>
-    ${brand ? `<p>Marque&nbsp;: ${brand}</p>` : ''}
-    ${product.category ? `<p>Catégorie&nbsp;: ${product.category}</p>` : ''}
+    <p>Livraison&nbsp;: Casablanca 24 h ; Rabat, Marrakech et reste du Maroc 24–48 h.</p>
+    ${brand ? `<p>Marque&nbsp;: ${escapeHtml(brand)}</p>` : ''}
+    ${product.category ? `<p>Catégorie&nbsp;: ${escapeHtml(product.category)}</p>` : ''}
     ${specsList ? `<ul>${specsList}</ul>` : ''}
   </section>
 `;
