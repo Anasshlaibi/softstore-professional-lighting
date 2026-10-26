@@ -214,7 +214,7 @@ function generateProductHTML(product, baseTemplate) {
 
   html = html.replace(
     '</head>',
-    `  <script type="application/ld+json">\n${JSON.stringify(jsonLd)}\n  </script>\n</head>`
+    `  <script type="application/ld+json" data-gearshop-schema="product">\n${JSON.stringify(jsonLd)}\n  </script>\n</head>`
   );
 
   // Inject visible semantic HTML for Googlebot-Image and zero-JS crawlers

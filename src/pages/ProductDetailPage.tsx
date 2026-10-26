@@ -5,6 +5,7 @@ import { Product } from '../../App';
 import { useCart } from '../context/CartContext';
 import { extractProductAttributes } from '../utils/productMetadata';
 import { findCompatibleAccessories, findCompatibleLensesForCamera, getProductPriorityScore, slugify } from '../utils/catalogEngine';
+import { generateProductSEOPackage } from '../utils/seoGenerator';
 import richDescriptions from '../data/richDescriptions.json';
 import ProductCard from '../../components/ProductCard';
 import { trackWhatsAppLead } from '../services/googleAnalytics';
@@ -94,6 +95,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     if (!product) return { brand: 'GearShop', mount: '', lens_type: '', filter_size: '', is_flagship: false, category_clean: '', product_type: '' };
     return extractProductAttributes(product);
   }, [product]);
+
+  // One source of truth for the visible product page and every crawler-facing
+  // signal. This applies French/Morocco copy, canonical URLs, schema and FAQs
+  // consistently to the entire catalog rather than hand-tuning one product.
+  const seoPackage = useMemo(
+    () => product ? generateProductSEOPackage(product, products) : null,
+    [product, products]
+  );
 
   // Dynamic price with real selected lens
   const calculatedPrice = useMemo(() => {
@@ -243,19 +252,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     ? product.desc
     : (richDescriptions as Record<string, string>)[product.id?.toString()] || product.desc || '';
   const rawRichDesc = sanitizeSupplierHtml(supplierDescription);
-  const canonicalUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
-  const isTamronA063 = Number(product.id) === 6040;
-  const isNikonZrTamronPack = Number(product.id) === 6041;
-  const productSeoTitle = isTamronA063
-    ? 'Tamron 28-75mm f/2.8 G2 Nikon Z en stock au Maroc | 11 500 DH'
-    : isNikonZrTamronPack
-    ? 'Pack Nikon ZR + Tamron 28-75mm f/2.8 au Maroc | 31 500 DH'
-    : `${product.name} | Prix Maroc | GearShop`;
-  const productSeoDescription = isTamronA063
-    ? 'Tamron 28-75mm f/2.8 G2 Nikon Z en stock chez GearShop : 11 500 DH. Zoom plein format, autofocus VXD et livraison au Maroc depuis Casablanca.'
-    : isNikonZrTamronPack
-    ? 'Pack Nikon ZR + Tamron 28-75mm f/2.8 Nikon Z à 31 500 DH chez GearShop. Économisez 499 DH, disponible à Casablanca avec livraison au Maroc.'
-    : `Découvrez ${product.name} chez GearShop Maroc. Prix : ${product.price.toLocaleString('fr-MA')} ${siteConfig.currency}. ${product.inStock ? 'Disponibilité à confirmer avant expédition.' : 'Produit sur commande : délai à confirmer avant paiement.'}`;
+  const canonicalUrl = seoPackage?.canonicalUrl || `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
+  const productSeoTitle = seoPackage?.seoTitle || `${product.name} | Prix Maroc | GearShop`;
+  const productSeoDescription = seoPackage?.metaDescription || `Découvrez ${product.name} chez GearShop Maroc.`;
+  const hasServerProductSchema = typeof document !== 'undefined' && Boolean(document.querySelector('script[data-gearshop-schema="product"]'));
 
   return (
     <div className="bg-[#f8f9fb] min-h-screen pb-20 pt-3 md:pt-4 text-gray-900">
@@ -276,6 +276,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:image" content={currentImage.startsWith('http') ? currentImage : `https://www.gearshop.ma${currentImage}`} />
         <meta name="twitter:image:alt" content={product.name} />
+        {seoPackage && !hasServerProductSchema && (
+          <script type="application/ld+json">{JSON.stringify(seoPackage.productSchema)}</script>
+        )}
+        {seoPackage && (
+          <script type="application/ld+json">{JSON.stringify(seoPackage.breadcrumbSchema)}</script>
+        )}
+        {seoPackage && seoPackage.faqs.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify(seoPackage.faqSchema)}</script>
+        )}
       </Helmet>
 
       {/* Toast Notification */}
