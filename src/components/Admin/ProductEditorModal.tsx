@@ -132,6 +132,8 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
     setGallery(prev => prev.filter((_, i) => i !== idx));
   };
 
+  const uniqueGalleryCount = new Set(gallery.filter(Boolean)).size;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -534,6 +536,11 @@ export const ProductEditorModal: React.FC<ProductEditorModalProps> = ({
               <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">
                 Galerie Photos Additionnelles ({gallery.length})
               </label>
+              <p className={`text-xs mb-3 ${uniqueGalleryCount >= 4 ? 'text-emerald-400' : 'text-amber-300'}`}>
+                {uniqueGalleryCount >= 4
+                  ? `Prêt pour Google Images : ${uniqueGalleryCount} vues uniques.`
+                  : `À compléter : ${uniqueGalleryCount}/4 vues uniques. Ajoutez uniquement des images du même modèle, kit, couleur et monture.`}
+              </p>
               
               {gallery.length > 0 && (
                 <div className="flex gap-3 mb-3 overflow-x-auto py-2 no-scrollbar">
