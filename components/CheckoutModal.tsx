@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useCart } from '../src/context/CartContext';
 import { createQuoteRequest } from '../src/services/leadService';
 import { sendMetaCapiEvent } from '../src/services/metaCapiService';
+import { trackCheckoutStarted, trackWhatsAppLead } from '../src/services/googleAnalytics';
 
 interface CheckoutModalProps {
   onClose: () => void;
@@ -20,9 +21,10 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   // Fire InitiateCheckout when modal opens
   useEffect(() => {
+    const cartTotal = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+    trackCheckoutStarted(cartTotal, cartItems.reduce((sum, item) => sum + item.qty, 0));
     const win = window as any;
     if (typeof win.fbq === 'function') {
-      const cartTotal = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
       win.fbq('track', 'InitiateCheckout', {
         value: cartTotal,
         currency: 'MAD',
@@ -120,7 +122,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     // 2. Track Serverless Meta CAPI & Analytics
     try {
       sendMetaCapiEvent({
-        eventName: 'Purchase',
+        eventName: 'Lead',
         value: total,
         currency: 'MAD',
         phone: formData.phone,
@@ -128,25 +130,14 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
           content_name: 'WhatsApp E-commerce Order',
           content_ids: cartItems.map(i => i.id.toString()),
           content_type: 'product',
-          order_id: commandId.toString()
+          order_id: commandId.toString(),
+          lead_type: 'WhatsAppCheckout'
         }
       });
-
-      const win = window as any;
-      win.dataLayer = win.dataLayer || [];
-      win.dataLayer.push({
-        event: 'purchase',
-        ecommerce: {
-          transaction_id: commandId.toString(),
-          value: total,
-          currency: siteConfig.currency,
-          items: cartItems.map(item => ({
-            item_name: item.name,
-            item_id: item.id.toString(),
-            price: item.price,
-            quantity: item.qty
-          }))
-        }
+      trackWhatsAppLead({
+        source: 'checkout_whatsapp_order',
+        itemName: cartItems.map(item => item.name).join(', '),
+        value: total,
       });
     } catch (trackErr) {
       console.error('Tracking error:', trackErr);

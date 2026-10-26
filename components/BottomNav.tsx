@@ -1,4 +1,5 @@
 import React from 'react';
+import { trackWhatsAppLead } from '../src/services/googleAnalytics';
 import { useCart } from '../src/context/CartContext';
 
 interface BottomNavProps {
@@ -40,6 +41,7 @@ const BottomNav: React.FC<BottomNavProps> = ({
   };
 
   const handleWhatsApp = () => {
+    trackWhatsAppLead({ source: 'mobile_navigation' });
     const phone = (siteConfig?.phone || '+212600000000').replace('+212', '212').replace(/\s+/g, '');
     const msg = encodeURIComponent('Bonjour GearShop Maroc, je souhaite avoir des informations sur un produit.');
     window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');

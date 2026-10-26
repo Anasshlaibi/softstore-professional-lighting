@@ -7,6 +7,7 @@ import { extractProductAttributes } from '../utils/productMetadata';
 import { findCompatibleAccessories, findCompatibleLensesForCamera, getProductPriorityScore, slugify } from '../utils/catalogEngine';
 import richDescriptions from '../data/richDescriptions.json';
 import ProductCard from '../../components/ProductCard';
+import { trackWhatsAppLead } from '../services/googleAnalytics';
 
 // Supplier copy is content only. It must never be able to ship a stylesheet or
 // script that can change the GearShop header, navigation, or other page areas.
@@ -188,6 +189,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   // WhatsApp Order Handler
   const handleWhatsAppOrder = () => {
     if (!product) return;
+    trackWhatsAppLead({
+      source: 'product_detail_order',
+      itemId: product.id,
+      itemName: product.name,
+      value: calculatedPrice * quantity,
+    });
     const phone = siteConfig.phone.replace(/[^0-9]/g, '') || '212673011873';
     const productUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
     const lensDetails = selectedLens

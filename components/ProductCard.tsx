@@ -1,4 +1,5 @@
 import React from 'react';
+import { trackWhatsAppLead } from '../src/services/googleAnalytics';
 import { Link } from 'react-router-dom';
 import { Product } from '../App';
 import { slugify } from '../src/utils/catalogEngine';
@@ -49,6 +50,12 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
       else if (onSelect) onSelect(id);
     };
     const handleReserve = () => {
+      trackWhatsAppLead({
+        source: 'product_card_reserve',
+        itemId: product.id,
+        itemName: product.name,
+        value: product.price,
+      });
       if (openWhatsappReserve) {
         openWhatsappReserve(product.name, product.id);
       } else {

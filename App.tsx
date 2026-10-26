@@ -56,6 +56,7 @@ import { SearchModal } from './src/components/Search/SearchModal';
 
 import { initAttributionTracker, recordProductView } from './src/services/attributionTracker';
 import { trackViewContent, trackSearch } from './src/services/metaCapiService';
+import { initWhatsAppLeadTracking } from './src/services/googleAnalytics';
 
 export interface Product {
   id: number;
@@ -133,6 +134,7 @@ const App: React.FC = () => {
 
     loadProducts();
     initAttributionTracker();
+    return initWhatsAppLeadTracking();
   }, []);
 
   const slugify = (text: string) => {
