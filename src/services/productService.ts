@@ -60,13 +60,7 @@ export const fetchAdminProducts = async (): Promise<Product[]> => {
     desc: String(item.desc || ''),
     stars: Number(item.stars) || 5,
     specs: Array.isArray(item.specs) ? item.specs.map(String) : [],
-    isPreorder: item.isPreorder === true,
-    seo_title: item.seo_title ? String(item.seo_title) : undefined,
-    meta_description: item.meta_description ? String(item.meta_description) : undefined,
-    seo_intro: item.seo_intro ? String(item.seo_intro) : undefined,
-    search_aliases: Array.isArray(item.search_aliases) ? item.search_aliases.map(String) : undefined,
-    technical_specs: typeof item.technical_specs === 'object' && item.technical_specs ? item.technical_specs as Record<string, unknown> : undefined,
-    used_attributes: typeof item.used_attributes === 'object' && item.used_attributes ? item.used_attributes as Record<string, unknown> : undefined,
+    isPreorder: item.isPreorder === true
   }));
 };
 
@@ -79,27 +73,12 @@ export const createProductRecord = async (formData: ProductFormData): Promise<Pr
     oldPrice: formData.oldPrice || null,
     rentPrice: formData.rentPrice || null,
     category: formData.category,
-    brand: formData.brand || null,
-    product_group: formData.product_group || 'new',
-    product_type: formData.product_type || 'lens',
-    mount: formData.mount || null,
     image: formData.image,
     gallery: formData.gallery && formData.gallery.length > 0 ? formData.gallery : [formData.image],
     inStock: formData.inStock !== false,
-    isPreorder: formData.isPreorder === true,
     desc: formData.desc || '',
     stars: formData.stars || 5,
-    specs: JSON.stringify(formData.specs || [formData.brand, formData.mount].filter(Boolean)),
-    condition_rating: formData.condition_rating || null,
-    technical_specs: formData.technical_specs || {},
-    used_attributes: formData.used_attributes || {},
-    seo_title: formData.seo_title || null,
-    meta_description: formData.meta_description || null,
-    seo_intro: formData.seo_intro || null,
-    seo_description: formData.seo_description || null,
-    custom_faq: formData.custom_faq || [],
-    search_aliases: formData.search_aliases || [],
-    active: formData.active !== false,
+    specs: JSON.stringify(formData.specs || [formData.brand, formData.mount].filter(Boolean))
   };
 
   const { data, error } = await supabase
@@ -141,29 +120,14 @@ export const updateProductRecord = async (id: number, formData: Partial<ProductF
   if (formData.oldPrice !== undefined) payload.oldPrice = formData.oldPrice || null;
   if (formData.rentPrice !== undefined) payload.rentPrice = formData.rentPrice || null;
   if (formData.category !== undefined) payload.category = formData.category;
-  if (formData.brand !== undefined) payload.brand = formData.brand || null;
-  if (formData.product_group !== undefined) payload.product_group = formData.product_group;
-  if (formData.product_type !== undefined) payload.product_type = formData.product_type;
-  if (formData.mount !== undefined) payload.mount = formData.mount || null;
   if (formData.image !== undefined) payload.image = formData.image;
   if (formData.gallery !== undefined) payload.gallery = formData.gallery;
   if (formData.inStock !== undefined) payload.inStock = formData.inStock;
-  if (formData.isPreorder !== undefined) payload.isPreorder = formData.isPreorder;
   if (formData.desc !== undefined) payload.desc = formData.desc;
   if (formData.stars !== undefined) payload.stars = formData.stars;
   if (formData.specs !== undefined) {
     payload.specs = Array.isArray(formData.specs) ? JSON.stringify(formData.specs) : formData.specs;
   }
-  if (formData.condition_rating !== undefined) payload.condition_rating = formData.condition_rating || null;
-  if (formData.technical_specs !== undefined) payload.technical_specs = formData.technical_specs;
-  if (formData.used_attributes !== undefined) payload.used_attributes = formData.used_attributes;
-  if (formData.seo_title !== undefined) payload.seo_title = formData.seo_title || null;
-  if (formData.meta_description !== undefined) payload.meta_description = formData.meta_description || null;
-  if (formData.seo_intro !== undefined) payload.seo_intro = formData.seo_intro || null;
-  if (formData.seo_description !== undefined) payload.seo_description = formData.seo_description || null;
-  if (formData.custom_faq !== undefined) payload.custom_faq = formData.custom_faq;
-  if (formData.search_aliases !== undefined) payload.search_aliases = formData.search_aliases;
-  if (formData.active !== undefined) payload.active = formData.active;
 
   const { error } = await supabase
     .from('products gearshop')
