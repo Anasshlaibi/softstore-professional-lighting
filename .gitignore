@@ -33,3 +33,6 @@ scratch/
 TARIF*
 *Quotation*
 *Distribution Price*
+
+# Generated catalog audit reports
+reports/
