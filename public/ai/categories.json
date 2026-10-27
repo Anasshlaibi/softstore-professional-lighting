@@ -37,7 +37,7 @@
     "totalProducts": 283,
     "categoriesCount": 8,
     "brandsCount": 11,
-    "lastUpdated": "2026-10-23"
+    "lastUpdated": "2026-10-27"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -101,7 +101,7 @@
         {
           "name": "K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)",
           "price": 500,
-          "url": "https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah"
+          "url": "https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-video-rgb-2500k-9900k-cri96-batterie-2000mah"
         },
         {
           "name": "DJI Osmo Pocket 4P (Pro)",
@@ -226,7 +226,7 @@
         {
           "name": "K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires",
           "price": 600,
-          "url": "https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires"
+          "url": "https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouliere-photo-etanche-pour-camera-accessoires"
         },
         {
           "name": "Agfa DC5200 Noir",

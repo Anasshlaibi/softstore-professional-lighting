@@ -11,7 +11,7 @@ const AboutAndPartners: React.FC = () => {
           name="description"
           content="Découvrez GearShop Maroc: Premier importateur d'optiques cinéma 7Artisans, filtres K&F Concept, et distributeur d'équipements audiovisuels pro à Casablanca et partout au Maroc."
         />
-        <link rel="canonical" href="https://gearshop.ma/a-propos" />
+        <link rel="canonical" href="https://www.gearshop.ma/a-propos" />
       </Helmet>
 
       <div className="container mx-auto px-4 md:px-6 max-w-5xl">

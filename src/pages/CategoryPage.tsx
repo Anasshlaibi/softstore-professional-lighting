@@ -193,7 +193,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ products, onProductClick, s
     "@type": "CollectionPage",
     "name": editorial.title,
     "description": editorial.metaDesc,
-    "url": `https://gearshop.ma/categorie/${slug}`,
+    "url": `https://www.gearshop.ma/categorie/${slug}`,
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": categoryProducts.length,
@@ -201,7 +201,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ products, onProductClick, s
         "@type": "ListItem",
         "position": idx + 1,
         "name": p.name,
-        "url": `https://gearshop.ma/product/${p.id}-${slugify(p.name)}`
+        "url": `https://www.gearshop.ma/product/${p.id}-${slugify(p.name)}`
       }))
     }
   };
@@ -212,10 +212,10 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ products, onProductClick, s
         <title>{editorial.metaTitle}</title>
         <meta name="description" content={editorial.metaDesc} />
         <meta name="keywords" content={editorial.keywords} />
-        <link rel="canonical" href={`https://gearshop.ma/categorie/${slug}`} />
+        <link rel="canonical" href={`https://www.gearshop.ma/categorie/${slug}`} />
         <meta property="og:title" content={editorial.metaTitle} />
         <meta property="og:description" content={editorial.metaDesc} />
-        <meta property="og:url" content={`https://gearshop.ma/categorie/${slug}`} />
+        <meta property="og:url" content={`https://www.gearshop.ma/categorie/${slug}`} />
       </Helmet>
 
       <script

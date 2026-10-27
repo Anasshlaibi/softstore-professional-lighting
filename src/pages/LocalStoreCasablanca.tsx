@@ -8,7 +8,7 @@ const LocalStoreCasablanca: React.FC = () => {
         <title>Magasin Matériel Photo & Vidéo Casablanca | GearShop Maroc</title>
         <meta name="description" content="Visitez GearShop à Casablanca. Le seul magasin certifié revendeur officiel 7Artisans au Maroc. Découvrez nos objectifs cinéma, photo, et accessoires professionnels." />
         <meta name="keywords" content="magasin materiel photo casablanca, revendeur 7artisans maroc, boutique photo casablanca, acheter objectif casablanca, gearshop maroc, materiel video" />
-        <link rel="canonical" href="https://gearshop.ma/magasin-casablanca" />
+        <link rel="canonical" href="https://www.gearshop.ma/magasin-casablanca" />
       </Helmet>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">

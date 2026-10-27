@@ -219,15 +219,15 @@ const UseCaseGuide: React.FC<UseCaseGuideProps> = ({ products, onProductClick, s
     "@type": "Article",
     "headline": guide.title,
     "description": guide.metaDesc,
-    "url": `https://gearshop.ma/guide/${slug}`,
+    "url": `https://www.gearshop.ma/guide/${slug}`,
     "publisher": {
       "@type": "Organization",
       "name": "GearShop Maroc",
-      "logo": "https://gearshop.ma/logo.png"
+      "logo": "https://www.gearshop.ma/logo.png"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://gearshop.ma/guide/${slug}`
+      "@id": `https://www.gearshop.ma/guide/${slug}`
     }
   };
 
@@ -237,10 +237,10 @@ const UseCaseGuide: React.FC<UseCaseGuideProps> = ({ products, onProductClick, s
         <title>{guide.metaTitle}</title>
         <meta name="description" content={guide.metaDesc} />
         <meta name="keywords" content={guide.keywords} />
-        <link rel="canonical" href={`https://gearshop.ma/guide/${slug}`} />
+        <link rel="canonical" href={`https://www.gearshop.ma/guide/${slug}`} />
         <meta property="og:title" content={guide.metaTitle} />
         <meta property="og:description" content={guide.metaDesc} />
-        <meta property="og:url" content={`https://gearshop.ma/guide/${slug}`} />
+        <meta property="og:url" content={`https://www.gearshop.ma/guide/${slug}`} />
       </Helmet>
 
       <script

@@ -25,7 +25,7 @@ export default async function handler(req: Request) {
     }
 
     const products = await res.json();
-    const baseUrl = 'https://gearshop.ma';
+    const baseUrl = 'https://www.gearshop.ma';
 
     const brandDetails: Record<string, any> = {
       '7artisans': {

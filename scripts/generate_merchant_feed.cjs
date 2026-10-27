@@ -26,8 +26,10 @@ const BASE_URL = 'https://www.gearshop.ma';
 
 function slugify(text) {
   if (!text) return '';
-  return text
+  return String(text)
     .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)+/g, '');
 }

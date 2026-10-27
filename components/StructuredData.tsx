@@ -39,7 +39,7 @@ export const faqSchemaData = [
 ];
 
 const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts }) => {
-  const baseUrl = "https://gearshop.ma";
+  const baseUrl = "https://www.gearshop.ma";
 
   // ===== 1. WebSite Schema with SearchAction =====
   const websiteSchema = {

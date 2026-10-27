@@ -109,7 +109,7 @@ export default async function handler(req: Request) {
       });
     }
 
-    const baseUrl = 'https://gearshop.ma';
+    const baseUrl = 'https://www.gearshop.ma';
     const brand = detectBrand(targetProduct);
     const mount = detectMount(targetProduct);
     const prodSlug = slugify(targetProduct.name);

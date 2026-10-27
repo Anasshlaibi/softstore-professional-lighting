@@ -9,7 +9,7 @@ export const OsmoPocket4Page: React.FC = () => {
     "name": "DJI Osmo Pocket 4 Pro",
     "alternateName": ["DJI Osmo Pocket 4P", "DJI Pocket 4 Pro", "Osmo Pocket 4 Pro Maroc"],
     "image": [
-      "https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png"
+      "https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png"
     ],
     "description": "Achetez le nouveau DJI Osmo Pocket 4 Pro (Osmo Pocket 4P) au Maroc. Caméra vlog 4K avec capteur CMOS 1 pouce LOFIC (17 stops de dynamique), téléobjectif 60mm f/1.8, D-Log 2 10-bit et stabilisation 3 axes. Meilleur prix garanti au Maroc chez GearShop Casablanca.",
     "brand": {
@@ -41,7 +41,7 @@ export const OsmoPocket4Page: React.FC = () => {
     ],
     "offers": {
       "@type": "Offer",
-      "url": "https://gearshop.ma/dji-osmo-pocket-4-pro",
+      "url": "https://www.gearshop.ma/dji-osmo-pocket-4-pro",
       "priceCurrency": "MAD",
       "price": "8000",
       "priceValidUntil": "2027-12-31",
@@ -55,7 +55,7 @@ export const OsmoPocket4Page: React.FC = () => {
         "@type": "Organization",
         "name": "GearShop Maroc",
         "telephone": "+212673011873",
-        "url": "https://gearshop.ma"
+        "url": "https://www.gearshop.ma"
       }
     }
   };
@@ -103,14 +103,14 @@ export const OsmoPocket4Page: React.FC = () => {
           name="keywords"
           content="DJI Osmo Pocket 4 Pro, DJI Osmo Pocket 4 Pro Maroc, prix dji osmo pocket 4 maroc, acheter dji osmo pocket maroc, dji pocket 4 maroc, camera vlog 4k maroc, dji casablanca, gearshop maroc"
         />
-        <link rel="canonical" href="https://gearshop.ma/dji-osmo-pocket-4-pro" />
+        <link rel="canonical" href="https://www.gearshop.ma/dji-osmo-pocket-4-pro" />
         <meta property="og:title" content="DJI Osmo Pocket 4 Pro au Maroc | GearShop Casablanca" />
         <meta
           property="og:description"
           content="Précommandez la caméra DJI Osmo Pocket 4 Pro au Maroc au prix de 8 000 DH. Garantie officielle 1 an et livraison express dans toutes les villes du Maroc."
         />
-        <meta property="og:image" content="https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png" />
-        <meta property="og:url" content="https://gearshop.ma/dji-osmo-pocket-4-pro" />
+        <meta property="og:image" content="https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png" />
+        <meta property="og:url" content="https://www.gearshop.ma/dji-osmo-pocket-4-pro" />
         <meta property="og:type" content="product" />
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}

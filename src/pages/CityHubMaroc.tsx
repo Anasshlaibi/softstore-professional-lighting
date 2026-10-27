@@ -32,10 +32,10 @@ export const CityHubMaroc: React.FC<CityHubMarocProps> = ({
     "@context": "https://schema.org",
     "@type": ["Store", "LocalBusiness"],
     "name": `GearShop Maroc - Matériel Photo, Vidéo & DJI à ${city.name}`,
-    "image": "https://gearshop.ma/banner_7artisans.jpg",
+    "image": "https://www.gearshop.ma/banner_7artisans.jpg",
     "telephone": "+212673011873",
     "email": "contact@gearshop.ma",
-    "url": `https://gearshop.ma/livraison-maroc/${city.slug}`,
+    "url": `https://www.gearshop.ma/livraison-maroc/${city.slug}`,
     "priceRange": "$$",
     "currenciesAccepted": "MAD",
     "paymentAccepted": "Cash on Delivery, Paiement à la livraison, Virement Bancaire",
@@ -121,10 +121,10 @@ export const CityHubMaroc: React.FC<CityHubMarocProps> = ({
           name="keywords"
           content={`materiel photo ${city.name.toLowerCase()}, dji ${city.name.toLowerCase()}, dji osmo pocket ${city.name.toLowerCase()}, objectif photo ${city.name.toLowerCase()}, 7artisans ${city.name.toLowerCase()}, k&f concept ${city.name.toLowerCase()}, camera ${city.name.toLowerCase()}, materiel video ${city.name.toLowerCase()}, livraison photo maroc`}
         />
-        <link rel="canonical" href={`https://gearshop.ma/livraison-maroc/${city.slug}`} />
+        <link rel="canonical" href={`https://www.gearshop.ma/livraison-maroc/${city.slug}`} />
         <meta property="og:title" content={`Matériel Photo & Vidéo à ${city.name} - GearShop Maroc`} />
         <meta property="og:description" content={`Distributeur officiel 7Artisans, K&F Concept et DJI au Maroc. Livraison rapide et sécurisée à ${city.name}.`} />
-        <meta property="og:url" content={`https://gearshop.ma/livraison-maroc/${city.slug}`} />
+        <meta property="og:url" content={`https://www.gearshop.ma/livraison-maroc/${city.slug}`} />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -274,7 +274,7 @@ export const CityHubMaroc: React.FC<CityHubMarocProps> = ({
 
             <div className="lg:col-span-4 flex justify-center">
               <img
-                src="https://gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png"
+                src="https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png"
                 alt={`DJI Osmo Pocket 4 Pro disponible à ${city.name}`}
                 className="max-h-64 object-contain filter drop-shadow-[0_20px_30px_rgba(239,68,68,0.25)]"
                 onError={(e) => {

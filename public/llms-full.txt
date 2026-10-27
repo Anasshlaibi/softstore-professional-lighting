@@ -1,7 +1,7 @@
 # GearShop Maroc — Full Technical Catalog & Knowledge Corpus (llms-full.txt)
 
 > **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's specialized retailer and importer for photography, filmmaking, cinema lenses, optical filters, and studio lighting equipment. Based in Casablanca, GearShop offers authentic camera gear with a 1-year local warranty, express 24h delivery in Casablanca/Rabat, and 24h-48h nationwide delivery across all 50+ Moroccan cities with Cash on Delivery (Paiement à la livraison).
-> **Catalog Compilation Date**: 2026-10-23
+> **Catalog Compilation Date**: 2026-10-27
 > **Primary Currency**: MAD (Moroccan Dirham / DH)
 > **Canonical Entity URL**: https://www.gearshop.ma
 > **Official Root Discovery File**: https://www.gearshop.ma/llms.txt
@@ -337,7 +337,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Projecteur LED de poche ultra-puissant K&F Concept RGB. Température réglable de 2500K à 9900K, rendu de couleur exceptionnel CRI 96+, spectre complet 360° HSI et 21 effets d'éclairage créatifs pour vidéo et vlogging.
-- **Lien Officiel Produit**: [K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)](https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-vid-o-rgb-2500k-9900k-cri96-batterie-2000mah)
+- **Lien Officiel Produit**: [K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)](https://www.gearshop.ma/product/2008-k-f-concept-mini-torche-led-video-rgb-2500k-9900k-cri96-batterie-2000mah)
 
 #### DJI Osmo Pocket 4 Pro
 - **SKU**: `GEAR-3001-DJI`
@@ -509,7 +509,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Standards constructeur certifiés
 - **Description**: Sac d'épaule bandoulière ergonomique et imperméable K&F Concept. Compartiment rembourré personnalisable pour un boîtier reflex ou hybride avec objectif monté, batteries, filtres et accessoires.
-- **Lien Officiel Produit**: [K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires](https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouli-re-photo-tanche-pour-cam-ra-accessoires)
+- **Lien Officiel Produit**: [K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires](https://www.gearshop.ma/product/2009-k-f-concept-sac-bandouliere-photo-etanche-pour-camera-accessoires)
 
 #### K&F Concept 82mm ND2-ND32 Variable Neutral Density Filter (Nano-Xcel Pro)
 - **SKU**: `GEAR-2010-K-F-CONCEPT`
@@ -2319,7 +2319,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : KODAK, Catégorie : Appareil Photo, Référence / EAN : 4897116931801, Stock Disponible : 492 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Kodak Appareil Photo Numérique Porte-clés Charmera Keychain — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 549 MAD | Distributeur Officiel Maroc Le Kodak Appareil Photo Numérique Porte-clés Charmera Keychain est un équipement de référence sélectionné pour les photographes, vidéastes et profession
-- **Lien Officiel Produit**: [Kodak Porte-clés Charmera Keychain](https://www.gearshop.ma/product/5086-kodak-porte-cl-s-charmera-keychain)
+- **Lien Officiel Produit**: [Kodak Porte-clés Charmera Keychain](https://www.gearshop.ma/product/5086-kodak-porte-cles-charmera-keychain)
 
 #### Nikon Z30 Kit + Objectif Nikkor Z DX 16-50mm f/3.5-6.3 VR
 - **SKU**: `GEAR-5094-NIKON`
@@ -2763,7 +2763,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : KODAK, Catégorie : Papier & Film, Référence / EAN : 850033510553, Stock Disponible : 128 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Kodak Papier Transfert Textiles Fancés T-Shirt Pack 5 feuille — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 219 MAD | Distributeur Officiel Maroc Le Kodak Papier Transfert Textiles Fancés T-Shirt Pack 5 feuille est un équipement de référence sélectionné pour les photographes, vidéastes et profes
-- **Lien Officiel Produit**: [Kodak Papier Transfert Textiles Fancés T-Shirt Pack 5 feuille](https://www.gearshop.ma/product/5087-kodak-papier-transfert-textiles-fanc-s-t-shirt-pack-5-feuille)
+- **Lien Officiel Produit**: [Kodak Papier Transfert Textiles Fancés T-Shirt Pack 5 feuille](https://www.gearshop.ma/product/5087-kodak-papier-transfert-textiles-fances-t-shirt-pack-5-feuille)
 
 #### Kodak Papier Photo Brillant Pack 50 feuilles 180g
 - **SKU**: `GEAR-5088-7ARTISANS`
@@ -3559,7 +3559,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : NIKON, Catégorie : Accessoires, Référence / EAN : 18208200993, Stock Disponible : 2 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Nikon Téléconvertisseur Z TC- 2.0 X — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 7888 MAD | Distributeur Officiel Maroc Le Nikon Téléconvertisseur Z TC- 2.0 X est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué offic
-- **Lien Officiel Produit**: [Nikon Téléconvertisseur Z TC- 2.0 X](https://www.gearshop.ma/product/5103-nikon-t-l-convertisseur-z-tc-2-0-x)
+- **Lien Officiel Produit**: [Nikon Téléconvertisseur Z TC- 2.0 X](https://www.gearshop.ma/product/5103-nikon-teleconvertisseur-z-tc-2-0-x)
 
 ### Catégorie : BATTERIE & CHARGEUR (5 articles)
 
@@ -3682,7 +3682,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : PNY, Catégorie : Carte Mémoire, Référence / EAN : 3536403358273, Stock Disponible : 297 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: PNY Lecteur Carte Mémoire R-TC-UA-3N1E01-RB USB-C — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 229 MAD | Distributeur Officiel Maroc Le PNY Lecteur Carte Mémoire R-TC-UA-3N1E01-RB USB-C est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la productio
-- **Lien Officiel Produit**: [PNY Lecteur Carte Mémoire R-TC-UA-3N1E01-RB USB-C](https://www.gearshop.ma/product/5109-pny-lecteur-carte-m-moire-r-tc-ua-3n1e01-rb-usb-c)
+- **Lien Officiel Produit**: [PNY Lecteur Carte Mémoire R-TC-UA-3N1E01-RB USB-C](https://www.gearshop.ma/product/5109-pny-lecteur-carte-memoire-r-tc-ua-3n1e01-rb-usb-c)
 
 #### Sony Carte Mémoire CFE Type A160GB
 - **SKU**: `GEAR-5122-SONY`
@@ -3699,7 +3699,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : SONY DI, Catégorie : Carte Mémoire, Référence / EAN : 4548736089105, Stock Disponible : 10 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Sony Carte Mémoire CFE Type A Ref: CEA-G160T 160GB — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 4990 MAD | Distributeur Officiel Maroc Le Sony Carte Mémoire CFE Type A Ref: CEA-G160T 160GB est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la produc
-- **Lien Officiel Produit**: [Sony Carte Mémoire CFE Type A160GB](https://www.gearshop.ma/product/5122-sony-carte-m-moire-cfe-type-a160gb)
+- **Lien Officiel Produit**: [Sony Carte Mémoire CFE Type A160GB](https://www.gearshop.ma/product/5122-sony-carte-memoire-cfe-type-a160gb)
 
 #### Sony Lecteur de Carte Mémoire CFE-A/SD
 - **SKU**: `GEAR-5123-SONY`
@@ -3716,7 +3716,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : SONY DI, Catégorie : Carte Mémoire, Référence / EAN : 4548736120419, Stock Disponible : 5 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Sony Lecteur de Carte Mémoire CFE-A/SD Ref: MRW-G2 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 2200 MAD | Distributeur Officiel Maroc Le Sony Lecteur de Carte Mémoire CFE-A/SD Ref: MRW-G2 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la produc
-- **Lien Officiel Produit**: [Sony Lecteur de Carte Mémoire CFE-A/SD](https://www.gearshop.ma/product/5123-sony-lecteur-de-carte-m-moire-cfe-a-sd)
+- **Lien Officiel Produit**: [Sony Lecteur de Carte Mémoire CFE-A/SD](https://www.gearshop.ma/product/5123-sony-lecteur-de-carte-memoire-cfe-a-sd)
 
 #### PNY Carte Mémoire SD 64GB C10 U3 ELITE-X
 - **SKU**: `GEAR-6027-7ARTISANS`
@@ -3733,7 +3733,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : PNY, Catégorie : Carte Mémoire, Référence / EAN : 751492625584, Stock Disponible : 160 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: PNY Carte Mémoire SD 64GB C10 U3 ELITE-X — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 150 MAD | Distributeur Officiel Maroc Le PNY Carte Mémoire SD 64GB C10 U3 ELITE-X est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distri
-- **Lien Officiel Produit**: [PNY Carte Mémoire SD 64GB C10 U3 ELITE-X](https://www.gearshop.ma/product/6027-pny-carte-m-moire-sd-64gb-c10-u3-elite-x)
+- **Lien Officiel Produit**: [PNY Carte Mémoire SD 64GB C10 U3 ELITE-X](https://www.gearshop.ma/product/6027-pny-carte-memoire-sd-64gb-c10-u3-elite-x)
 
 #### PNY Carte Mémoire SD 128G C10 U3 ELITE-X
 - **SKU**: `GEAR-6028-7ARTISANS`
@@ -3750,7 +3750,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : PNY, Catégorie : Carte Mémoire, Référence / EAN : 751492625591, Stock Disponible : 410 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: PNY Carte Mémoire SD 128G C10 U3 ELITE-X — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 290 MAD | Distributeur Officiel Maroc Le PNY Carte Mémoire SD 128G C10 U3 ELITE-X est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distri
-- **Lien Officiel Produit**: [PNY Carte Mémoire SD 128G C10 U3 ELITE-X](https://www.gearshop.ma/product/6028-pny-carte-m-moire-sd-128g-c10-u3-elite-x)
+- **Lien Officiel Produit**: [PNY Carte Mémoire SD 128G C10 U3 ELITE-X](https://www.gearshop.ma/product/6028-pny-carte-memoire-sd-128g-c10-u3-elite-x)
 
 ### Catégorie : SAC & VALISE (11 articles)
 
@@ -3837,7 +3837,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Sac & Valise, Référence / EAN : 4719856247175, Stock Disponible : 20 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Sac à Dos Photo VEO GO 42M Noir — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 1199 MAD | Distributeur Officiel Maroc Le Vanguard Sac à Dos Photo VEO GO 42M Noir est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distr
-- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO GO 42M Noir](https://www.gearshop.ma/product/5148-vanguard-sac-dos-photo-veo-go-42m-noir)
+- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO GO 42M Noir](https://www.gearshop.ma/product/5148-vanguard-sac-a-dos-photo-veo-go-42m-noir)
 
 #### Vanguard Sac à Dos Photo VEO LITE B25L Chocolate
 - **SKU**: `GEAR-5149-7ARTISANS`
@@ -3854,7 +3854,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Sac & Valise, Référence / EAN : 4719856255415, Stock Disponible : 10 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Sac à Dos Photo VEO LITE B25L Chocolate — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 2249 MAD | Distributeur Officiel Maroc Le Vanguard Sac à Dos Photo VEO LITE B25L Chocolate est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production
-- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO LITE B25L Chocolate](https://www.gearshop.ma/product/5149-vanguard-sac-dos-photo-veo-lite-b25l-chocolate)
+- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO LITE B25L Chocolate](https://www.gearshop.ma/product/5149-vanguard-sac-a-dos-photo-veo-lite-b25l-chocolate)
 
 #### Vanguard Sac à Dos Photo VEO LITE B25L Navy
 - **SKU**: `GEAR-5150-7ARTISANS`
@@ -3871,7 +3871,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Sac & Valise, Référence / EAN : 4719856255439, Stock Disponible : 5 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Sac à Dos Photo VEO LITE B25L Navy — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 2249 MAD | Distributeur Officiel Maroc Le Vanguard Sac à Dos Photo VEO LITE B25L Navy est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc.
-- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO LITE B25L Navy](https://www.gearshop.ma/product/5150-vanguard-sac-dos-photo-veo-lite-b25l-navy)
+- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO LITE B25L Navy](https://www.gearshop.ma/product/5150-vanguard-sac-a-dos-photo-veo-lite-b25l-navy)
 
 #### Vanguard Sac Photo VEO SELECT 22S Noir
 - **SKU**: `GEAR-5151-7ARTISANS`
@@ -3905,7 +3905,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Sac & Valise, Référence / EAN : 4719856248363, Stock Disponible : 10 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Sac à Dos Photo VEO SELECT 39RBM Noir — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 1299 MAD | Distributeur Officiel Maroc Le Vanguard Sac à Dos Photo VEO SELECT 39RBM Noir est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au 
-- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO SELECT 39RBM Noir](https://www.gearshop.ma/product/5152-vanguard-sac-dos-photo-veo-select-39rbm-noir)
+- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO SELECT 39RBM Noir](https://www.gearshop.ma/product/5152-vanguard-sac-a-dos-photo-veo-select-39rbm-noir)
 
 #### Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir
 - **SKU**: `GEAR-5153-7ARTISANS`
@@ -3922,7 +3922,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Sac & Valise, Référence / EAN : 4719856248523, Stock Disponible : 4 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 4199 MAD | Distributeur Officiel Maroc Le Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la 
-- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir](https://www.gearshop.ma/product/5153-vanguard-sac-dos-photo-trolley-veo-select-55bt-noir)
+- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir](https://www.gearshop.ma/product/5153-vanguard-sac-a-dos-photo-trolley-veo-select-55bt-noir)
 
 #### Vanguard Sac à Dos Photo VEO METRO B20L Noir
 - **SKU**: `GEAR-5154-7ARTISANS`
@@ -3939,7 +3939,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Sac & Valise, Référence / EAN : 4719856254517, Stock Disponible : 10 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Sac à Dos Photo VEO METRO B20L Noir — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 2649 MAD | Distributeur Officiel Maroc Le Vanguard Sac à Dos Photo VEO METRO B20L Noir est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maro
-- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO METRO B20L Noir](https://www.gearshop.ma/product/5154-vanguard-sac-dos-photo-veo-metro-b20l-noir)
+- **Lien Officiel Produit**: [Vanguard Sac à Dos Photo VEO METRO B20L Noir](https://www.gearshop.ma/product/5154-vanguard-sac-a-dos-photo-veo-metro-b20l-noir)
 
 ### Catégorie : STABILISATEUR (10 articles)
 
@@ -4181,7 +4181,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : Insta360, Catégorie : Support & Cage, Référence / EAN : 6970357855834, Stock Disponible : 10 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Insta360 Support adhésif Flexible Ref: CINSAAVW — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 299 MAD | Distributeur Officiel Maroc Le Insta360 Support adhésif Flexible Ref: CINSAAVW est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au
-- **Lien Officiel Produit**: [Insta360 Support adhésif Flexible](https://www.gearshop.ma/product/5074-insta360-support-adh-sif-flexible)
+- **Lien Officiel Produit**: [Insta360 Support adhésif Flexible](https://www.gearshop.ma/product/5074-insta360-support-adhesif-flexible)
 
 ### Catégorie : CAMERA (5 articles)
 
@@ -4986,7 +4986,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Trépied, Référence / EAN : 4719856245362, Stock Disponible : 9 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Trépied VESTA 233AP — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 999 MAD | Distributeur Officiel Maroc Le Vanguard Trépied VESTA 233AP est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officiellement avec 
-- **Lien Officiel Produit**: [Vanguard Trépied VESTA 233AP](https://www.gearshop.ma/product/5155-vanguard-tr-pied-vesta-233ap)
+- **Lien Officiel Produit**: [Vanguard Trépied VESTA 233AP](https://www.gearshop.ma/product/5155-vanguard-trepied-vesta-233ap)
 
 #### Vanguard Trépied VESTA TB 204CB
 - **SKU**: `GEAR-5156-7ARTISANS`
@@ -5003,7 +5003,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Trépied, Référence / EAN : 4719856247922, Stock Disponible : 20 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Trépied VESTA TB 204CB — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 1299 MAD | Distributeur Officiel Maroc Le Vanguard Trépied VESTA TB 204CB est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officiellemen
-- **Lien Officiel Produit**: [Vanguard Trépied VESTA TB 204CB](https://www.gearshop.ma/product/5156-vanguard-tr-pied-vesta-tb-204cb)
+- **Lien Officiel Produit**: [Vanguard Trépied VESTA TB 204CB](https://www.gearshop.ma/product/5156-vanguard-trepied-vesta-tb-204cb)
 
 #### Vanguard Trépied ALTA PRO 263AB G2
 - **SKU**: `GEAR-5157-7ARTISANS`
@@ -5020,7 +5020,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Trépied, Référence / EAN : 4719856255323, Stock Disponible : 5 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Trépied ALTA PRO 263AB G2 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 1999 MAD | Distributeur Officiel Maroc Le Vanguard Trépied ALTA PRO 263AB G2 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officie
-- **Lien Officiel Produit**: [Vanguard Trépied ALTA PRO 263AB G2](https://www.gearshop.ma/product/5157-vanguard-tr-pied-alta-pro-263ab-g2)
+- **Lien Officiel Produit**: [Vanguard Trépied ALTA PRO 263AB G2](https://www.gearshop.ma/product/5157-vanguard-trepied-alta-pro-263ab-g2)
 
 #### Vanguard Trépied VEO 5 264AV14
 - **SKU**: `GEAR-5158-7ARTISANS`
@@ -5037,7 +5037,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Trépied, Référence / EAN : 4719856253176, Stock Disponible : 5 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Trépied VEO 5 264AV14 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 2899 MAD | Distributeur Officiel Maroc Le Vanguard Trépied VEO 5 264AV14 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officiellement 
-- **Lien Officiel Produit**: [Vanguard Trépied VEO 5 264AV14](https://www.gearshop.ma/product/5158-vanguard-tr-pied-veo-5-264av14)
+- **Lien Officiel Produit**: [Vanguard Trépied VEO 5 264AV14](https://www.gearshop.ma/product/5158-vanguard-trepied-veo-5-264av14)
 
 #### Vanguard Trépied VEO3+ 303ABS
 - **SKU**: `GEAR-5159-7ARTISANS`
@@ -5054,5 +5054,5 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : VANGUARD, Catégorie : Trépied, Référence / EAN : 4719856251400, Stock Disponible : 5 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Vanguard Trépied VEO3+ 303ABS — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 2699 MAD | Distributeur Officiel Maroc Le Vanguard Trépied VEO3+ 303ABS est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officiellement av
-- **Lien Officiel Produit**: [Vanguard Trépied VEO3+ 303ABS](https://www.gearshop.ma/product/5159-vanguard-tr-pied-veo3-303abs)
+- **Lien Officiel Produit**: [Vanguard Trépied VEO3+ 303ABS](https://www.gearshop.ma/product/5159-vanguard-trepied-veo3-303abs)
 

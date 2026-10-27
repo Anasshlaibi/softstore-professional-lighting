@@ -20,11 +20,11 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
     >
       {/* Hidden schema metadata for Google */}
       <meta itemProp="name" content="GearShop Maroc" />
-      <meta itemProp="url" content="https://gearshop.ma" />
+      <meta itemProp="url" content="https://www.gearshop.ma" />
       <meta itemProp="telephone" content="+212673011873" />
       <meta itemProp="email" content="contact@gearshop.ma" />
       <meta itemProp="priceRange" content="$$" />
-      <meta itemProp="image" content="https://gearshop.ma/banner_7artisans.jpg" />
+      <meta itemProp="image" content="https://www.gearshop.ma/banner_7artisans.jpg" />
       <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress" className="hidden">
         <meta itemProp="addressLocality" content="Casablanca" />
         <meta itemProp="addressCountry" content="MA" />
