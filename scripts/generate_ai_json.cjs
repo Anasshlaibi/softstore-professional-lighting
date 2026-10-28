@@ -33,23 +33,45 @@ function loadEnv() {
 }
 
 function slugify(text) {
-  return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  return String(text || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
 }
 
 function detectBrand(p) {
   if (p.brand && p.brand.trim()) return p.brand.trim();
+  const id = Number(p.id);
+  if (id >= 1000 && id < 2000) return '7Artisans';
+  if (id >= 2000 && id < 3000) return 'K&F Concept';
+
+  const name = (p.name || '').trim();
+  const nameLower = name.toLowerCase();
   const text = `${p.name || ''} ${p.category || ''} ${p.desc || ''}`.toLowerCase();
-  if (text.includes('k&f') || text.includes('concept') || text.includes('kf')) return 'K&F Concept';
+
   if (text.includes('7artisans')) return '7Artisans';
-  if (text.includes('tamron')) return 'Tamron';
-  if (text.includes('sony')) return 'Sony';
-  if (text.includes('canon')) return 'Canon';
-  if (text.includes('nikon')) return 'Nikon';
-  if (text.includes('fuji') || text.includes('fujifilm')) return 'Fujifilm';
-  if (text.includes('panasonic') || text.includes('lumix')) return 'Panasonic Lumix';
-  if (text.includes('dji')) return 'DJI';
+  if (text.includes('k&f') || text.includes('kf concept') || text.includes('concept')) return 'K&F Concept';
+  if (text.includes('tamron') || id === 6040 || id === 6041) return 'Tamron';
+  if (text.includes('dji') || text.includes('osmo pocket') || text.includes('osmo mobile') || id === 3001) return 'DJI';
+  if (text.includes('smallrig')) return 'SmallRig';
+  if (text.includes('vanguard')) return 'Vanguard';
+  if (text.includes('hollyland')) return 'Hollyland';
+  if (text.includes('insta360')) return 'Insta360';
+  if (text.includes('pny')) return 'PNY';
+  if (text.includes('sandisk')) return 'SanDisk';
   if (text.includes('godox')) return 'Godox';
-  if (text.includes('rode') || text.includes('røde')) return 'Røde';
+  if (text.includes('rode') || text.includes('r\u00f8de') || text.includes('røde')) return 'Røde';
+  if (text.includes('yongnuo')) return 'Yongnuo';
+
+  // Camera bodies & manufacturer lenses (must start with brand or clearly indicate maker, not just camera mount)
+  if (/^sony\b/i.test(name) || (nameLower.includes('sony') && !nameLower.includes('mount'))) return 'Sony';
+  if (/^canon\b/i.test(name) || (nameLower.includes('canon') && !nameLower.includes('mount') && !nameLower.includes('eos-r'))) return 'Canon';
+  if (/^nikon\b/i.test(name) || (nameLower.includes('nikon') && !nameLower.includes('mount'))) return 'Nikon';
+  if (/^fuji/i.test(name) || (nameLower.includes('fujifilm') && !nameLower.includes('mount'))) return 'Fujifilm';
+  if (text.includes('panasonic') || text.includes('lumix')) return 'Panasonic Lumix';
+
   return '7Artisans';
 }
 

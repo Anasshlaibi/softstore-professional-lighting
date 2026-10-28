@@ -26,7 +26,7 @@ export default async function handler(req: Request) {
     }
 
     const products = await res.json();
-    const baseUrl = 'https://gearshop.ma';
+    const baseUrl = 'https://www.gearshop.ma';
     const now = new Date().toISOString();
 
     const brandSet = new Set<string>();

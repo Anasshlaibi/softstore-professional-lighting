@@ -36,7 +36,7 @@
   "catalogSummary": {
     "totalProducts": 283,
     "categoriesCount": 8,
-    "brandsCount": 11,
+    "brandsCount": 14,
     "lastUpdated": "2026-10-28"
   },
   "endpoints": {
@@ -50,9 +50,13 @@
   "brands": [
     {
       "name": "7Artisans",
-      "count": 93,
+      "count": 102,
       "mountsAvailable": [
-        "Nikon Z"
+        "Sony E",
+        "L-Mount",
+        "Nikon Z",
+        "Canon RF",
+        "Fujifilm X"
       ],
       "sampleProducts": [
         {
@@ -84,209 +88,33 @@
     },
     {
       "name": "K&F Concept",
-      "count": 18,
-      "mountsAvailable": [
-        "Sony E",
-        "L-Mount",
-        "Nikon Z",
-        "Canon RF"
-      ],
+      "count": 10,
+      "mountsAvailable": [],
       "sampleProducts": [
         {
-          "name": "35mm T2.0 Sony (E Mount) - Black",
-          "price": 4500,
-          "url": "https://www.gearshop.ma/product/1000-35mm-t2-0-sony-e-mount-black"
-        },
-        {
-          "name": "35mm T2.0 Panasonic/Leica/Sigma (L Mount) - Black",
-          "price": 4500,
-          "url": "https://www.gearshop.ma/product/1001-35mm-t2-0-panasonic-leica-sigma-l-mount-black"
-        },
-        {
-          "name": "35mm T2.0 Nikon (Z Mount) - Black",
-          "price": 4500,
-          "url": "https://www.gearshop.ma/product/1002-35mm-t2-0-nikon-z-mount-black"
-        },
-        {
-          "name": "35mm T2.0 Canon (EOS-R Mount) - Black",
-          "price": 4500,
-          "url": "https://www.gearshop.ma/product/1003-35mm-t2-0-canon-eos-r-mount-black"
-        },
-        {
-          "name": "50mm T2.0 Sony (E Mount) - Black",
-          "price": 4500,
-          "url": "https://www.gearshop.ma/product/1004-50mm-t2-0-sony-e-mount-black"
-        }
-      ]
-    },
-    {
-      "name": "Fujifilm",
-      "count": 21,
-      "mountsAvailable": [
-        "Fujifilm X"
-      ],
-      "sampleProducts": [
-        {
-          "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
-          "price": 2100,
-          "url": "https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black"
-        },
-        {
-          "name": "AF35mm F1.8 Fuji (FX Mount) APS-C - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black"
-        },
-        {
-          "name": "AF50mm F1.8 Fuji (FX Mount) APS-C - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black"
-        },
-        {
-          "name": "50mm F1.2 Fuji (FX Mount) - Black",
-          "price": 1300,
-          "url": "https://www.gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black"
-        },
-        {
-          "name": "50mm F1.8 Fuji (FX Mount) - Black",
-          "price": 1000,
-          "url": "https://www.gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black"
-        }
-      ]
-    },
-    {
-      "name": "Sony",
-      "count": 56,
-      "mountsAvailable": [
-        "Sony E"
-      ],
-      "sampleProducts": [
-        {
-          "name": "AF35mm F1.8 Sony (E Mount) APS-C - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black"
-        },
-        {
-          "name": "AF50mm F1.8 Sony (E Mount) APS-C - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black"
-        },
-        {
-          "name": "AF24mm F1.8 Sony (E Mount) - Black",
-          "price": 3999,
-          "url": "https://www.gearshop.ma/product/1015-af24mm-f1-8-sony-e-mount-black"
-        },
-        {
-          "name": "AF35mm F1.8 Sony (E Mount) - Black",
-          "price": 3899,
-          "url": "https://www.gearshop.ma/product/1018-af35mm-f1-8-sony-e-mount-black"
-        },
-        {
-          "name": "AF40mm F2.5 Sony (E Mount) - Black",
-          "price": 1999,
-          "url": "https://www.gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black"
-        }
-      ]
-    },
-    {
-      "name": "Nikon",
-      "count": 29,
-      "mountsAvailable": [
-        "Nikon Z"
-      ],
-      "sampleProducts": [
-        {
-          "name": "AF35mm F1.8 Nikon (Z Mount) APS-C - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black"
-        },
-        {
-          "name": "AF50mm F1.8 Nikon (Z Mount) APS-C - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black"
-        },
-        {
-          "name": "AF24mm F1.8 Nikon (Z Mount) - Black",
-          "price": 4200,
-          "url": "https://www.gearshop.ma/product/1016-af24mm-f1-8-nikon-z-mount-black"
-        },
-        {
-          "name": "AF35mm F1.8 Nikon (Z Mount) - Black",
-          "price": 4000,
-          "url": "https://www.gearshop.ma/product/1019-af35mm-f1-8-nikon-z-mount-black"
-        },
-        {
-          "name": "AF50mm F1.8 Nikon (Z Mount) - Black",
-          "price": 3400,
-          "url": "https://www.gearshop.ma/product/1023-af50mm-f1-8-nikon-z-mount-black"
-        }
-      ]
-    },
-    {
-      "name": "Panasonic Lumix",
-      "count": 11,
-      "mountsAvailable": [
-        "L-Mount"
-      ],
-      "sampleProducts": [
-        {
-          "name": "AF24mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
-          "price": 3899,
-          "url": "https://www.gearshop.ma/product/1017-af24mm-f1-8-panasonic-leica-sigma-l-mount-black"
-        },
-        {
-          "name": "AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
-          "price": 4000,
-          "url": "https://www.gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black"
-        },
-        {
-          "name": "AF50mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
-          "price": 3400,
-          "url": "https://www.gearshop.ma/product/1024-af50mm-f1-8-panasonic-leica-sigma-l-mount-black"
-        },
-        {
-          "name": "AF135mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black",
-          "price": 7500,
-          "url": "https://www.gearshop.ma/product/1026-af135mm-f1-8-panasonic-leica-sigma-l-mount-black"
-        },
-        {
-          "name": "35mm F1.4 Panasonic/Leica/Sigma (L Mount) mark iii FF - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1029-35mm-f1-4-panasonic-leica-sigma-l-mount-mark-iii-ff-black"
-        }
-      ]
-    },
-    {
-      "name": "Canon",
-      "count": 37,
-      "mountsAvailable": [
-        "Canon RF",
-        "Nikon Z"
-      ],
-      "sampleProducts": [
-        {
-          "name": "35mm F1.4 Canon (EOS-R Mount) mark iii FF - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1030-35mm-f1-4-canon-eos-r-mount-mark-iii-ff-black"
-        },
-        {
-          "name": "35mm/F1.4 Canon (EOS-R Mount) - Black",
+          "name": "K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)",
           "price": 1200,
-          "url": "https://www.gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black"
+          "url": "https://www.gearshop.ma/product/2001-k-f-concept-82mm-3-in-1-nd2-32-cpl-black-mist-1-4-filter-nano-xcel"
         },
         {
-          "name": "Autofocus adapter for Canon EF - Nikon Z - Black",
-          "price": 2300,
-          "url": "https://www.gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black"
+          "name": "K&F Concept 82mm Black Diffusion / Black Mist 1/4 Filter (Nano-X)",
+          "price": 700,
+          "url": "https://www.gearshop.ma/product/2002-k-f-concept-82mm-black-diffusion-black-mist-1-4-filter-nano-x"
         },
         {
-          "name": "10mm T2.1 Canon (EOS-R Mount) - Black",
-          "price": 4800,
-          "url": "https://www.gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black"
+          "name": "K&F Concept 82mm Slim CPL Circular Polarizing Filter (Blue Multi-Coated)",
+          "price": 600,
+          "url": "https://www.gearshop.ma/product/2003-k-f-concept-82mm-slim-cpl-circular-polarizing-filter-blue-multi-coated"
         },
         {
-          "name": "10mm T2.1 Canon (EOS-R Mount) - Titanium Gray",
-          "price": 4800,
-          "url": "https://www.gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray"
+          "name": "K&F Concept 82mm 2-in-1 C-Series CPL + Variable ND2-ND32 Filter",
+          "price": 1050,
+          "url": "https://www.gearshop.ma/product/2004-k-f-concept-82mm-2-in-1-c-series-cpl-variable-nd2-nd32-filter"
+        },
+        {
+          "name": "K&F Concept 82mm MC-UV Slim Protection Filter (Japan Optics)",
+          "price": 400,
+          "url": "https://www.gearshop.ma/product/2005-k-f-concept-82mm-mc-uv-slim-protection-filter-japan-optics"
         }
       ]
     },
@@ -318,8 +146,76 @@
       ]
     },
     {
+      "name": "Canon",
+      "count": 26,
+      "mountsAvailable": [
+        "Canon RF"
+      ],
+      "sampleProducts": [
+        {
+          "name": "Canon Powershot V10",
+          "price": 3599,
+          "url": "https://www.gearshop.ma/product/5011-canon-powershot-v10"
+        },
+        {
+          "name": "Canon EOS R8 + RF24-50",
+          "price": 19999,
+          "url": "https://www.gearshop.ma/product/5012-canon-eos-r8-rf24-50"
+        },
+        {
+          "name": "Canon EOS R6 MARK II",
+          "price": 22499,
+          "url": "https://www.gearshop.ma/product/5013-canon-eos-r6-mark-ii"
+        },
+        {
+          "name": "Canon EOS R50 + Objectif RF-S 18-45mm IS STM",
+          "price": 8540,
+          "url": "https://www.gearshop.ma/product/6001-canon-eos-r50-objectif-rf-s-18-45mm-is-stm"
+        },
+        {
+          "name": "Canon Cinema EOS C50",
+          "price": 48640,
+          "url": "https://www.gearshop.ma/product/6002-canon-cinema-eos-c50"
+        }
+      ]
+    },
+    {
+      "name": "Fujifilm",
+      "count": 8,
+      "mountsAvailable": [
+        "Fujifilm X"
+      ],
+      "sampleProducts": [
+        {
+          "name": "Fujifilm Instax Mini 11 Lilac Purple",
+          "price": 899,
+          "url": "https://www.gearshop.ma/product/5014-fujifilm-instax-mini-11-lilac-purple"
+        },
+        {
+          "name": "Fujifilm Instax Mini 12 Blanc",
+          "price": 1099,
+          "url": "https://www.gearshop.ma/product/5015-fujifilm-instax-mini-12-blanc"
+        },
+        {
+          "name": "Fujifilm Instax Mini 12 Vert",
+          "price": 1099,
+          "url": "https://www.gearshop.ma/product/5016-fujifilm-instax-mini-12-vert"
+        },
+        {
+          "name": "Fujifilm Instax Mini 12 Violet",
+          "price": 1099,
+          "url": "https://www.gearshop.ma/product/5017-fujifilm-instax-mini-12-violet"
+        },
+        {
+          "name": "Fujifilm Instax Mini 12 Bleu",
+          "price": 1099,
+          "url": "https://www.gearshop.ma/product/5018-fujifilm-instax-mini-12-bleu"
+        }
+      ]
+    },
+    {
       "name": "Godox",
-      "count": 11,
+      "count": 17,
       "mountsAvailable": [],
       "sampleProducts": [
         {
@@ -350,14 +246,207 @@
       ]
     },
     {
-      "name": "Røde",
-      "count": 1,
+      "name": "Hollyland",
+      "count": 2,
       "mountsAvailable": [],
       "sampleProducts": [
         {
-          "name": "Insta360 X5 Invisible Mic Cold Shoe (for RODE Mic) CINSBAHP",
-          "price": 299,
-          "url": "https://www.gearshop.ma/product/5071-insta360-x5-invisible-mic-cold-shoe-for-rode-mic-cinsbahp"
+          "name": "Hollyland Casque sans Fil Solidcom SE 4S Global Version",
+          "price": 3799,
+          "url": "https://www.gearshop.ma/product/5042-hollyland-casque-sans-fil-solidcom-se-4s-global-version"
+        },
+        {
+          "name": "Hollyland Microphone Sans fil LARK A1 Combo (USB-C RX+Lightning RX+ Charging Case)",
+          "price": 599,
+          "url": "https://www.gearshop.ma/product/5043-hollyland-microphone-sans-fil-lark-a1-combo-usb-c-rx-lightning-rx-charging-case"
+        }
+      ]
+    },
+    {
+      "name": "Insta360",
+      "count": 31,
+      "mountsAvailable": [],
+      "sampleProducts": [
+        {
+          "name": "Insta360 Adaptateur de Micophone pour X5",
+          "price": 129,
+          "url": "https://www.gearshop.ma/product/5044-insta360-adaptateur-de-micophone-pour-x5"
+        },
+        {
+          "name": "Insta360 Adaptateur de Micophone pour X4",
+          "price": 259,
+          "url": "https://www.gearshop.ma/product/5045-insta360-adaptateur-de-micophone-pour-x4"
+        },
+        {
+          "name": "Insta360 Camera Luna Ultra Creator Bundle Cosmic Noir",
+          "price": 11599,
+          "url": "https://www.gearshop.ma/product/5046-insta360-camera-luna-ultra-creator-bundle-cosmic-noir"
+        },
+        {
+          "name": "Insta360 X5 Lens Cap CINSBAHL",
+          "price": 89,
+          "url": "https://www.gearshop.ma/product/5047-insta360-x5-lens-cap-cinsbahl"
+        },
+        {
+          "name": "Insta360 X5 Utility Frame CINSBAHN",
+          "price": 999,
+          "url": "https://www.gearshop.ma/product/5048-insta360-x5-utility-frame-cinsbahn"
+        }
+      ]
+    },
+    {
+      "name": "Nikon",
+      "count": 17,
+      "mountsAvailable": [
+        "Nikon Z"
+      ],
+      "sampleProducts": [
+        {
+          "name": "Nikon Adaptateur pour monture FTZ II",
+          "price": 1649,
+          "url": "https://www.gearshop.ma/product/5092-nikon-adaptateur-pour-monture-ftz-ii"
+        },
+        {
+          "name": "Nikon Coolpix P950",
+          "price": 8477,
+          "url": "https://www.gearshop.ma/product/5093-nikon-coolpix-p950"
+        },
+        {
+          "name": "Nikon Z30 Kit + Objectif Nikkor Z DX 16-50mm f/3.5-6.3 VR",
+          "price": 7499,
+          "url": "https://www.gearshop.ma/product/5094-nikon-z30-kit-objectif-nikkor-z-dx-16-50mm-f-3-5-6-3-vr"
+        },
+        {
+          "name": "Nikon Z50 II Kit + Objectif Nikkor Z DX 16-50mm VR",
+          "price": 10499,
+          "url": "https://www.gearshop.ma/product/5095-nikon-z50-ii-kit-objectif-nikkor-z-dx-16-50mm-vr"
+        },
+        {
+          "name": "Nikon Z5 II",
+          "price": 15099,
+          "url": "https://www.gearshop.ma/product/5096-nikon-z5-ii"
+        }
+      ]
+    },
+    {
+      "name": "PNY",
+      "count": 3,
+      "mountsAvailable": [],
+      "sampleProducts": [
+        {
+          "name": "PNY Lecteur Carte Mémoire R-TC-UA-3N1E01-RB USB-C",
+          "price": 229,
+          "url": "https://www.gearshop.ma/product/5109-pny-lecteur-carte-memoire-r-tc-ua-3n1e01-rb-usb-c"
+        },
+        {
+          "name": "PNY Carte Mémoire SD 64GB C10 U3 ELITE-X",
+          "price": 150,
+          "url": "https://www.gearshop.ma/product/6027-pny-carte-memoire-sd-64gb-c10-u3-elite-x"
+        },
+        {
+          "name": "PNY Carte Mémoire SD 128G C10 U3 ELITE-X",
+          "price": 290,
+          "url": "https://www.gearshop.ma/product/6028-pny-carte-memoire-sd-128g-c10-u3-elite-x"
+        }
+      ]
+    },
+    {
+      "name": "Sony",
+      "count": 39,
+      "mountsAvailable": [
+        "Sony E"
+      ],
+      "sampleProducts": [
+        {
+          "name": "Sony ZV-E10 Kit + Objectif 16-50mm f/3.5-5.6",
+          "price": 8349,
+          "url": "https://www.gearshop.ma/product/5110-sony-zv-e10-kit-objectif-16-50mm-f-3-5-5-6"
+        },
+        {
+          "name": "Sony ZV-E10 Mark II Kit + Objectif 16-50mm",
+          "price": 12999,
+          "url": "https://www.gearshop.ma/product/5111-sony-zv-e10-mark-ii-kit-objectif-16-50mm"
+        },
+        {
+          "name": "Sony Alpha 7 III",
+          "price": 13999,
+          "url": "https://www.gearshop.ma/product/5112-sony-alpha-7-iii"
+        },
+        {
+          "name": "Sony Alpha 7 V / ILCE-7M5",
+          "price": 33499,
+          "url": "https://www.gearshop.ma/product/5113-sony-alpha-7-v-ilce-7m5"
+        },
+        {
+          "name": "Sony Cinema Line FX30",
+          "price": 20499,
+          "url": "https://www.gearshop.ma/product/5114-sony-cinema-line-fx30"
+        }
+      ]
+    },
+    {
+      "name": "Vanguard",
+      "count": 15,
+      "mountsAvailable": [],
+      "sampleProducts": [
+        {
+          "name": "Vanguard Sac Photo VESTA ASPIRE 15Z Gris",
+          "price": 419,
+          "url": "https://www.gearshop.ma/product/5145-vanguard-sac-photo-vesta-aspire-15z-gris"
+        },
+        {
+          "name": "Vanguard Sac Photo VESTA ASPIRE 21Gris",
+          "price": 569,
+          "url": "https://www.gearshop.ma/product/5146-vanguard-sac-photo-vesta-aspire-21gris"
+        },
+        {
+          "name": "Vanguard Sac Photo VEO GO 21M Noir",
+          "price": 619,
+          "url": "https://www.gearshop.ma/product/5147-vanguard-sac-photo-veo-go-21m-noir"
+        },
+        {
+          "name": "Vanguard Sac à Dos Photo VEO GO 42M Noir",
+          "price": 1199,
+          "url": "https://www.gearshop.ma/product/5148-vanguard-sac-a-dos-photo-veo-go-42m-noir"
+        },
+        {
+          "name": "Vanguard Sac à Dos Photo VEO LITE B25L Chocolate",
+          "price": 2249,
+          "url": "https://www.gearshop.ma/product/5149-vanguard-sac-a-dos-photo-veo-lite-b25l-chocolate"
+        }
+      ]
+    },
+    {
+      "name": "SmallRig",
+      "count": 7,
+      "mountsAvailable": [
+        "Nikon Z"
+      ],
+      "sampleProducts": [
+        {
+          "name": "Smallrig Mini Matte Box Lite",
+          "price": 1130,
+          "url": "https://www.gearshop.ma/product/6029-smallrig-mini-matte-box-lite"
+        },
+        {
+          "name": "Smallrig Cage Protege Camera Nikon ZR Kit",
+          "price": 1150,
+          "url": "https://www.gearshop.ma/product/6030-smallrig-cage-protege-camera-nikon-zr-kit"
+        },
+        {
+          "name": "Smallrig Cage Protege Camera Canon EOS C50",
+          "price": 1090,
+          "url": "https://www.gearshop.ma/product/6031-smallrig-cage-protege-camera-canon-eos-c50"
+        },
+        {
+          "name": "Smallrig Cage Protege Camera Canon EOS C50 Kit",
+          "price": 1450,
+          "url": "https://www.gearshop.ma/product/6032-smallrig-cage-protege-camera-canon-eos-c50-kit"
+        },
+        {
+          "name": "Smallrig Support Objectif Universal 15mm LWS",
+          "price": 260,
+          "url": "https://www.gearshop.ma/product/6033-smallrig-support-objectif-universal-15mm-lws"
         }
       ]
     },
