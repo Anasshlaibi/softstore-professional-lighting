@@ -80,19 +80,30 @@ function generateProductHTML(product, baseTemplate) {
 
   // Brand extraction without defaulting unknown to 7Artisans
   let brand = product.brand;
+  const productId = Number(product.id);
   if (!brand) {
-    const nameLower = (product.name || '').toLowerCase();
-    if (nameLower.includes('dji') || fullJsonStr.includes('dji')) brand = 'DJI';
-    else if (nameLower.includes('tamron') || fullJsonStr.includes('tamron')) brand = 'Tamron';
-    else if (nameLower.includes('sony') || fullJsonStr.includes('sony')) brand = 'Sony';
-    else if (nameLower.includes('canon') || fullJsonStr.includes('canon')) brand = 'Canon';
-    else if (nameLower.includes('nikon') || fullJsonStr.includes('nikon')) brand = 'Nikon';
-    else if (nameLower.includes('k&f') || nameLower.includes('kf concept') || nameLower.includes('concept')) brand = 'K&F Concept';
-    else if (nameLower.includes('7artisans')) brand = '7Artisans';
-    else if (nameLower.includes('godox')) brand = 'Godox';
-    else if (nameLower.includes('fuji') || nameLower.includes('fujifilm')) brand = 'Fujifilm';
-    else if (nameLower.includes('lumix') || nameLower.includes('panasonic')) brand = 'Panasonic';
-    else if (nameLower.includes('rode') || nameLower.includes('røde')) brand = 'Røde';
+    if (productId >= 1000 && productId < 2000) brand = '7Artisans';
+    else if (productId >= 2000 && productId < 3000) brand = 'K&F Concept';
+    else {
+      const nameRaw = (product.name || '').trim();
+      const nameLower = nameRaw.toLowerCase();
+      if (nameLower.includes('dji') || fullJsonStr.includes('dji') || productId === 3001) brand = 'DJI';
+      else if (nameLower.includes('tamron') || fullJsonStr.includes('tamron') || productId === 6040 || productId === 6041) brand = 'Tamron';
+      else if (nameLower.includes('k&f') || nameLower.includes('kf concept') || nameLower.includes('concept')) brand = 'K&F Concept';
+      else if (nameLower.includes('7artisans')) brand = '7Artisans';
+      else if (nameLower.includes('smallrig')) brand = 'SmallRig';
+      else if (nameLower.includes('vanguard')) brand = 'Vanguard';
+      else if (nameLower.includes('hollyland')) brand = 'Hollyland';
+      else if (nameLower.includes('insta360')) brand = 'Insta360';
+      else if (nameLower.includes('pny')) brand = 'PNY';
+      else if (nameLower.includes('godox')) brand = 'Godox';
+      else if (nameLower.includes('rode') || nameLower.includes('røde')) brand = 'Røde';
+      else if (/^sony\b/i.test(nameRaw) || (nameLower.includes('sony') && !nameLower.includes('mount'))) brand = 'Sony';
+      else if (/^canon\b/i.test(nameRaw) || (nameLower.includes('canon') && !nameLower.includes('mount') && !nameLower.includes('eos-r'))) brand = 'Canon';
+      else if (/^nikon\b/i.test(nameRaw) || (nameLower.includes('nikon') && !nameLower.includes('mount'))) brand = 'Nikon';
+      else if (/^fuji/i.test(nameRaw) || (nameLower.includes('fujifilm') && !nameLower.includes('mount'))) brand = 'Fujifilm';
+      else if (nameLower.includes('lumix') || nameLower.includes('panasonic')) brand = 'Panasonic';
+    }
   }
 
   const isTamronA063 = Number(product.id) === 6040;
@@ -100,13 +111,13 @@ function generateProductHTML(product, baseTemplate) {
   const title = product.seo_title || (isTamronA063
     ? 'Tamron 28-75mm f/2.8 G2 Nikon Z en stock au Maroc | 11 500 DH'
     : isNikonZrTamronPack
-    ? 'Pack Nikon ZR + Tamron 28-75mm f/2.8 au Maroc | 31 500 DH'
-    : `${product.name} | ${product.category || 'GearShop'} Maroc`);
+      ? 'Pack Nikon ZR + Tamron 28-75mm f/2.8 au Maroc | 31 500 DH'
+      : `${product.name} | ${product.category || 'GearShop'} Maroc`);
   const description = product.meta_description || (isTamronA063
     ? 'Tamron 28-75mm f/2.8 G2 Nikon Z en stock chez GearShop : 11 500 DH. Zoom plein format, autofocus VXD et livraison au Maroc depuis Casablanca.'
     : isNikonZrTamronPack
-    ? 'Pack Nikon ZR + Tamron 28-75mm f/2.8 Nikon Z à 31 500 DH chez GearShop. Économisez 499 DH, disponible à Casablanca avec livraison au Maroc.'
-    : `Achetez ${product.name} chez GearShop Maroc. Prix: ${priceFormatted}. ${isPreorder ? 'Disponible en précommande chez GearShop Maroc' : inStock ? 'En stock à Casablanca' : 'Sur commande'}. Garantie 1 an.`);
+      ? 'Pack Nikon ZR + Tamron 28-75mm f/2.8 Nikon Z à 31 500 DH chez GearShop. Économisez 499 DH, disponible à Casablanca avec livraison au Maroc.'
+      : `Achetez ${product.name} chez GearShop Maroc. Prix: ${priceFormatted}. ${isPreorder ? 'Disponible en précommande chez GearShop Maroc' : inStock ? 'En stock à Casablanca' : 'Sur commande'}. Garantie 1 an.`);
   const canonicalUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
 
   let availability = 'https://schema.org/InStock';

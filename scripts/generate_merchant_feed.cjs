@@ -50,12 +50,17 @@ function escapeXml(unsafe) {
 function detectBrand(product) {
   // Use explicit DB field: never derive manufacturer from compatibility/desc text
   if (product.brand && product.brand.trim()) return product.brand.trim();
-  const name = (product.name || '').toLowerCase();
+  const id = Number(product.id);
+  if (id >= 1000 && id < 2000) return '7Artisans';
+  if (id >= 2000 && id < 3000) return 'K&F Concept';
+
+  const nameRaw = (product.name || '').trim();
+  const name = nameRaw.toLowerCase();
   if (name.includes('7artisans')) return '7Artisans';
   if (name.includes('k&f') || name.includes('kf concept')) return 'K&F Concept';
   if (name.includes('godox')) return 'Godox';
   if (name.includes('atomos')) return 'Atomos';
-  if (name.includes('dji') || name.includes('osmo pocket') || name.includes('osmo mobile')) return 'DJI';
+  if (name.includes('dji') || name.includes('osmo pocket') || name.includes('osmo mobile') || id === 3001) return 'DJI';
   if (name.includes('smallrig')) return 'SmallRig';
   if (name.includes('hollyland')) return 'Hollyland';
   if (name.includes('insta360')) return 'Insta360';
@@ -65,12 +70,12 @@ function detectBrand(product) {
   if (name.includes('sandisk')) return 'SanDisk';
   if (name.includes('agfa')) return 'Agfa';
   if (name.includes('kodak')) return 'Kodak';
-  if (name.includes('tamron')) return 'Tamron';
-  if (name.includes('rode') || name.includes('r\u00f8de')) return 'R\u00f8de';
-  if (name.includes('sony') && !name.includes('e mount') && !name.includes('(e mount)')) return 'Sony';
-  if (name.includes('canon') && !name.includes('rf ') && !name.includes('eos-r') && !name.includes('canon ef')) return 'Canon';
-  if (name.includes('nikon') && !name.includes('z mount') && !name.includes('(z mount)')) return 'Nikon';
-  if (name.includes('fuji') || name.includes('fujifilm')) return 'Fujifilm';
+  if (name.includes('tamron') || id === 6040 || id === 6041) return 'Tamron';
+  if (name.includes('rode') || name.includes('r\u00f8de') || name.includes('røde')) return 'Røde';
+  if (/^sony\b/i.test(nameRaw) || (name.includes('sony') && !name.includes('mount'))) return 'Sony';
+  if (/^canon\b/i.test(nameRaw) || (name.includes('canon') && !name.includes('mount') && !name.includes('eos-r'))) return 'Canon';
+  if (/^nikon\b/i.test(nameRaw) || (name.includes('nikon') && !name.includes('mount'))) return 'Nikon';
+  if (/^fuji/i.test(nameRaw) || (name.includes('fujifilm') && !name.includes('mount'))) return 'Fujifilm';
   if (name.includes('panasonic') || name.includes('lumix')) return 'Panasonic';
   // DO NOT default to 7Artisans for unknown products
   return '';
