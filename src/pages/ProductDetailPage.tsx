@@ -6,7 +6,6 @@ import { useCart } from '../context/CartContext';
 import { extractProductAttributes } from '../utils/productMetadata';
 import { findCompatibleAccessories, findCompatibleLensesForCamera, getProductPriorityScore, slugify } from '../utils/catalogEngine';
 import { generateProductSEOPackage } from '../utils/seoGenerator';
-import richDescriptions from '../data/richDescriptions.json';
 import ProductCard from '../../components/ProductCard';
 import { trackWhatsAppLead } from '../services/googleAnalytics';
 
@@ -71,6 +70,23 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showAllFeatures, setShowAllFeatures] = useState(false);
   const [selectedLensId, setSelectedLensId] = useState<number | null>(null);
+  const [richDesc, setRichDesc] = useState<string>(product?.desc || '');
+
+  // Lazy load extended rich descriptions so the 940KB JSON isn't in the initial bundle
+  useEffect(() => {
+    if (!product) return;
+    setRichDesc(product.desc || '');
+    if (product.id === 3001) return;
+
+    import('../data/richDescriptions.json')
+      .then((mod) => {
+        const custom = (mod.default as Record<string, string>)[product.id.toString()];
+        if (custom) {
+          setRichDesc(custom);
+        }
+      })
+      .catch(() => {});
+  }, [product?.id]);
 
   // Compatible real lenses from catalog for cameras (Nikon Z, Sony E, Canon RF...)
   const compatibleLenses = useMemo(() => {
@@ -248,10 +264,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
     : 0;
 
-  const supplierDescription = product.id === 3001
-    ? product.desc
-    : (richDescriptions as Record<string, string>)[product.id?.toString()] || product.desc || '';
-  const rawRichDesc = sanitizeSupplierHtml(supplierDescription);
+  const rawRichDesc = sanitizeSupplierHtml(richDesc || product.desc || '');
   const canonicalUrl = seoPackage?.canonicalUrl || `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
   const productSeoTitle = seoPackage?.seoTitle || `${product.name} | Prix Maroc | GearShop`;
   const productSeoDescription = seoPackage?.metaDescription || `Découvrez ${product.name} chez GearShop Maroc.`;
