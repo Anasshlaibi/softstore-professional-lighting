@@ -36,3 +36,12 @@ TARIF*
 
 # Generated catalog audit reports
 reports/
+
+.tmp-nikon-zr/
+*.html
+!index.html
+!CLIENT_PROPOSAL_AND_QUOTE.html
+!MASTER_BLUEPRINT.html
+!MEGA_MASTER_DOSSIER_AND_VALUATION.html
+!VALUE_DEFENSE_AND_CLIENT_CONVICTION_STRATEGY.html
+public/images/products/nikon-zr-*.png
