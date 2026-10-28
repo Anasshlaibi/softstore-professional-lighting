@@ -42,6 +42,7 @@ function detectBrand(p) {
   const text = `${p.name || ''} ${p.category || ''} ${p.desc || ''}`.toLowerCase();
   if (text.includes('k&f') || text.includes('concept') || text.includes('kf')) return 'K&F Concept';
   if (text.includes('7artisans')) return '7Artisans';
+  if (text.includes('tamron')) return 'Tamron';
   if (text.includes('sony')) return 'Sony';
   if (text.includes('canon')) return 'Canon';
   if (text.includes('nikon')) return 'Nikon';
@@ -124,8 +125,8 @@ async function generate() {
       category: 'Caméras & Stabilisateurs',
       brand: 'DJI',
       desc: 'Caméra de vlog 4K professionnelle avec double objectif optique (20mm f/1.8 et 60mm téléobjectif f/1.8), capteur CMOS 1 pouce LOFIC à 17 stops de plage dynamique, D-Log 2 10-bit, stabilisation mécanique 3 axes et suivi ActiveTrack 8.0.',
-      image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro-3.png',
-      inStock: true,
+       image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp',
+      inStock: false,
       isPreorder: true
     });
   }
@@ -399,4 +400,3 @@ generate().catch(err => {
   console.error('Fatal error generating llms-full.txt:', err);
   process.exit(0);
 });
-

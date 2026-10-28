@@ -49,10 +49,7 @@ export async function fetchSupabaseProducts(): Promise<Product[]> {
 
       const id = Number(row.id) || (index + 1000); // fallback ID if missing
       const name = String(row.name || '');
-      let price = Number(row.price) || 0;
-      if (id === 3001 || name.toLowerCase().includes('pocket 4 pro')) {
-        price = 8000;
-      }
+      const price = Number(row.price) || 0;
 
       return {
         id: id,

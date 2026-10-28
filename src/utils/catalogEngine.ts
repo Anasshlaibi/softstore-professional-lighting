@@ -277,7 +277,7 @@ function extractBrands(products: Product[], attrs: Map<number, ProductAttributes
         max: prices.length > 0 ? Math.max(...prices) : 0,
       },
       productIds: data.products.map(p => p.id),
-      url: `https://gearshop.ma/marque/${slugify(name)}`,
+      url: `https://www.gearshop.ma/marque/${slugify(name)}`,
     };
   }).sort((a, b) => b.productCount - a.productCount);
 }
@@ -364,7 +364,7 @@ function extractCategories(products: Product[], attrs: Map<number, ProductAttrib
         max: prices.length > 0 ? Math.max(...prices) : 0,
       },
       productIds: data.products.map(p => p.id),
-      url: `https://gearshop.ma/categorie/${info.slug}`,
+      url: `https://www.gearshop.ma/categorie/${info.slug}`,
     };
   }).sort((a, b) => b.productCount - a.productCount);
 }
@@ -392,7 +392,7 @@ function extractUseCases(products: Product[], attrs: Map<number, ProductAttribut
         description: rule.description,
         productIds: matchingIds,
         productCount: matchingIds.length,
-        url: `https://gearshop.ma/guide/${rule.id}`,
+        url: `https://www.gearshop.ma/guide/${rule.id}`,
       };
     })
     .filter(uc => uc.productCount >= 3); // Only include use cases with enough products
@@ -846,4 +846,3 @@ export function findCompatibleLensesForCamera(products: Product[], cameraProduct
     })
     .sort((a, b) => (b.price || 0) - (a.price || 0));
 }
-

@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-10-28T15:30:59.868Z",
+  "productCount": 283,
+  "imageGoal": "At least 4 verified, exact-variant product images per product",
+  "priorityCounts": {
+    "P0": 43,
+    "P1": 239,
+    "P2": 0,
+    "P3": 1
+  },
+  "imageCounts": {
+    "fewerThanFour": 281,
+    "noPrimaryImage": 1
+  }
+}

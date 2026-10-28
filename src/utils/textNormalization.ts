@@ -138,7 +138,7 @@ export function generateProductSearchAliases(product: Product): string[] {
   if (normalizedName) aliases.add(normalizedName);
 
   // Extract brand if available or inferred
-  const brand = (product.brand || (name.match(/7artisans|sony|canon|nikon|dji|godox|k&f|kf concept|fujifilm|fuji|lumix|panasonic|rode/i) || [''])[0]).toLowerCase();
+  const brand = (product.brand || (name.match(/7artisans|tamron|sony|canon|nikon|dji|godox|k&f|kf concept|fujifilm|fuji|lumix|panasonic|rode/i) || [''])[0]).toLowerCase();
   const mount = (product.mount || '').toLowerCase();
 
   // Extract numeric model/focal patterns (e.g. 70-200, 24-70, 35, 50, 135, 4)

@@ -39,7 +39,7 @@ export const faqSchemaData = [
 ];
 
 const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts }) => {
-  const baseUrl = "https://gearshop.ma";
+  const baseUrl = "https://www.gearshop.ma";
 
   // ===== 1. WebSite Schema with SearchAction =====
   const websiteSchema = {
@@ -160,7 +160,11 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
   };
 
   const resolvedBrand = product ? getProductBrand(product) : undefined;
-  const productUrl = product ? `${baseUrl}/product/${product.id}-${slugify(product.name)}` : '';
+  const productUrl = product
+    ? product.id === 3001
+      ? `${baseUrl}/dji-osmo-pocket-4-pro`
+      : `${baseUrl}/product/${product.id}-${slugify(product.name)}`
+    : '';
 
   // ===== 4. Product Schema (when a product is selected) =====
   const isPreorder = product?.isPreorder === true;
@@ -188,13 +192,6 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
         "name": resolvedBrand
       }
     } : {}),
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": (product.stars || 4.9).toString(),
-      "reviewCount": "24",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
     "offers": {
       "@type": "Offer",
       "@id": `${productUrl}#offer`,

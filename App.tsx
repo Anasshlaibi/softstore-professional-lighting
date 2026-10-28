@@ -31,7 +31,7 @@ import { CartProvider, useCart } from './src/context/CartContext';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { fetchSupabaseProducts } from './src/utils/fetchSupabaseProducts';
 import { generateProductSEOPackage } from './src/utils/seoGenerator';
-import { useNavigate, useLocation, Routes, Route, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const CinemaLensesMaroc = React.lazy(() => import('./src/pages/CinemaLensesMaroc'));
@@ -379,14 +379,11 @@ const AppContent: React.FC<{
                 <AboutAndPartners />
               </React.Suspense>
             } />
-            <Route path="/osmo-pocket-4p" element={
-              <React.Suspense fallback={<LoadingSpinner />}>
-                <OsmoPocket4Page />
-              </React.Suspense>
-            } />
+            <Route path="/osmo-pocket-4p" element={<Navigate to="/dji-osmo-pocket-4-pro" replace />} />
+            <Route path="/product/3001-dji-osmo-pocket-4-pro" element={<Navigate to="/dji-osmo-pocket-4-pro" replace />} />
             <Route path="/dji-osmo-pocket-4-pro" element={
               <React.Suspense fallback={<LoadingSpinner />}>
-                <OsmoPocket4Page />
+                <OsmoPocket4Page products={products} />
               </React.Suspense>
             } />
             <Route path="/livraison-maroc/:citySlug" element={

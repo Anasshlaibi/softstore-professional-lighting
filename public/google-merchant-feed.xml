@@ -65,8 +65,8 @@
       <g:link>https://www.gearshop.ma/product/4-panel-p-500</g:link>
       <g:image_link>https://www.gearshop.ma/images/products/panel-p-500.webp</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>out_of_stock</g:availability>
-      <g:price>1150.00 MAD</g:price>
+      <g:availability>in_stock</g:availability>
+      <g:price>19000.00 MAD</g:price>
       <g:brand></g:brand>
       <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories</g:google_product_category>
       <g:identifier_exists>no</g:identifier_exists>
@@ -1253,7 +1253,7 @@
       <g:link>https://www.gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black</g:link>
       <g:image_link>https://www.gearshop.ma/images/products/77mm-true-color-vnd6-9-filter-black.webp</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
+      <g:availability>out_of_stock</g:availability>
       <g:price>750.00 MAD</g:price>
       <g:brand></g:brand>
       <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lens Accessories &gt; Camera Lens Filters</g:google_product_category>
@@ -1464,13 +1464,13 @@
     </item>
     <item>
       <g:id>3001</g:id>
-      <g:title>DJI Osmo Pocket 4 Pro</g:title>
+      <g:title>DJI Osmo Pocket 4P (Pro)</g:title>
       <g:description>Le DJI Osmo Pocket 4 Pro (Osmo Pocket 4P) est une caméra vlog 4K d&apos;exception dotée d&apos;un capteur CMOS grand-angle 1 pouce offrant 17 stops de plage dynamique et le profil couleur D-Log 2. Elle intègre un second objectif téléobjectif moyen 60mm à ouverture f/1.8 idéal pour les portraits naturels. Équipée d&apos;une stabilisation nacelle 3 axes, du suivi intelligent ActiveTrack 8.0, d&apos;un mode ralenti Ultra-HD jusqu&apos;à 10× (4K) et de 103 Go de stockage interne.</g:description>
-      <g:link>https://www.gearshop.ma/product/3001-dji-osmo-pocket-4-pro</g:link>
+      <g:link>https://www.gearshop.ma/dji-osmo-pocket-4-pro</g:link>
       <g:image_link>https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp</g:image_link>
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>9000.00 MAD</g:price>
+      <g:availability>preorder</g:availability>
+      <g:price>8000.00 MAD</g:price>
       <g:brand>DJI</g:brand>
       <g:google_product_category>Cameras &amp; Optics &gt; Cameras &gt; Digital Cameras</g:google_product_category>
       <g:identifier_exists>no</g:identifier_exists>
@@ -3249,7 +3249,7 @@
       <g:title>Nikon ZR</g:title>
       <g:description>Nikon APN Boitier ZR — Matériel Audiovisuel Professionnel au Maroc 🔥 OFFRE PROMOTIONNELLE : 20499 MAD au lieu de 25999 MAD (-21% | Économisez 5500 MAD). Le Nikon APN Boitier ZR est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officiellement avec garantie constructeur 1 an et support technique à Casablanca. Caractéristiques &amp; Points Forts Marque Officielle : NIKON Catégorie Équipement : Appareil Photo Référence / EAN : 4960759919700 Disponibilité : En stock immédiat à Casablanca (21 unités disponibles). Fidélité &amp; Performance : Conçu pour répondre aux exigences rigoureuses des tournages en studio et en extérieur. Disponibilité &amp; Livraison au Maroc Stock immédiat à Casablanca : Expédition le jour même pour toute commande passée avant 14h. Casablanca : Livraison express 24h ou retrait local au showroom. Rabat, Marrakech, Tanger, Fès, Tétouan : Expédition sécurisée 24-48h via transporteur express avec suivi en temps réel. Garantie &amp; Paiement : Paiement à la livraison (Cash on Delivery) &amp; Virement acceptés. Produit neuf scellé avec garantie locale 1 an. Facture TVA 20% : Facture commerciale déductible fournie pour entreprises et boîtes de production. Questions Fréquentes (FAQ) Q : Le produit est-il en stock réel ou sur commande ? R : Cet article est en stock physique immédiat à Casablanca pour expédition rapide partout au Maroc. Q : Quels sont les modes de règlement acceptés ? R : Vous pouvez régler en toute sécurité à la livraison (Cash on Delivery) ou par virement bancaire. Q : Comment s&apos;applique la garantie de 1 an au Maroc ? R : Tout notre matériel bénéficie d&apos;une garantie constructeur officielle de 1 an avec SAV local pris en charge à Casablanca.</g:description>
       <g:link>https://www.gearshop.ma/product/5099-nikon-zr</g:link>
-      <g:image_link>https://www.gearshop.ma/images/products/nikon-zr.webp</g:image_link>
+      <g:image_link>https://www.gearshop.ma/images/products/nikon-zr-front.webp</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>20499.00 MAD</g:price>
@@ -5037,6 +5037,42 @@
       <g:price>19150.00 MAD</g:price>
       <g:brand>Sony</g:brand>
       <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>6040</g:id>
+      <g:title>Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z (A063)</g:title>
+      <g:description>Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z au Maroc Le Tamron A063 est un zoom standard lumineux f/2.8 constant conçu pour les hybrides Nikon Z plein format. Il couvre les scènes du quotidien, le reportage, le portrait et la vidéo avec un autofocus VXD rapide et silencieux. Points clés Monture Nikon Z pour boîtiers plein format Nikon Z Focale 28-75 mm et ouverture constante f/2.8 Autofocus linéaire VXD rapide et silencieux Mise au point minimale 0,18 m à 28 mm Construction résistante à l’humidité et traitement fluoré Prix et disponibilité au Maroc Prix GearShop : 11 500 DH. Produit disponible. Confirmez votre commande avec GearShop avant paiement pour organiser l’expédition. Commander depuis Casablanca et partout au Maroc GearShop accompagne les photographes et vidéastes à Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir et partout au Maroc.</g:description>
+      <g:link>https://www.gearshop.ma/product/6040-tamron-28-75mm-f-2-8-di-iii-vxd-g2-nikon-z-a063</g:link>
+      <g:image_link>https://www.gearshop.ma/images/products/tamron-28-75mm-f2-8-di-iii-vxd-g2-nikon-z-official-side.webp</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>11500.00 MAD</g:price>
+      <g:brand>Tamron</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Camera &amp; Optic Accessories &gt; Camera Lenses</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:shipping>
+        <g:country>MA</g:country>
+        <g:service>Livraison Express Maroc</g:service>
+        <g:price>0.00 MAD</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>6041</g:id>
+      <g:title>Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z</g:title>
+      <g:description>Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc Ce pack réunit le Nikon ZR et le zoom Tamron 28-75mm f/2.8 Di III VXD G2 (A063) en monture Nikon Z, pour la photo et la vidéo. Le pack comprend Nikon ZR Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z (A063) Promotion pack Prix promotionnel : 31 500 DH au lieu de 31 999 DH achetés séparément, soit 499 DH d’économie. Disponibilité et livraison Pack disponible chez GearShop à Casablanca, avec livraison à Rabat, Marrakech, Tanger, Fès, Agadir et partout au Maroc.</g:description>
+      <g:link>https://www.gearshop.ma/product/6041-pack-nikon-zr-tamron-28-75mm-f-2-8-g2-nikon-z</g:link>
+      <g:image_link>https://www.gearshop.ma/images/products/tamron-28-75mm-f2-8-nikon-zr-compatibility.webp</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>31500.00 MAD</g:price>
+      <g:brand>Tamron</g:brand>
+      <g:google_product_category>Cameras &amp; Optics &gt; Cameras &gt; Digital Cameras</g:google_product_category>
       <g:identifier_exists>no</g:identifier_exists>
       <g:shipping>
         <g:country>MA</g:country>

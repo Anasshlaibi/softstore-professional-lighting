@@ -68,7 +68,7 @@ async function generateSitemap() {
         console.log(`✅ Fetched ${products.length} products from Supabase`);
 
         for (const product of products) {
-          if (!product.id || !product.name) continue;
+          if (!product.id || !product.name || product.id === 3001) continue;
           const slug = slugify(product.name);
           const productUrl = `${baseUrl}/product/${product.id}-${slug}`;
 
@@ -100,7 +100,7 @@ async function generateSitemap() {
     ${product.image ? `<image:image>
       <image:loc>${escapeXml(getAbsoluteImageUrl(product.image))}</image:loc>
       <image:title>${escapeXml(product.name)} - GearShop Maroc</image:title>
-      <image:caption>Achetez ${escapeXml(product.name)} chez GearShop Maroc - Distributeur officiel</image:caption>
+      <image:caption>${escapeXml(product.name)} chez GearShop Maroc — prix et disponibilité à confirmer</image:caption>
     </image:image>` : ''}
     ${gallery.slice(0, 2).map(img => `<image:image>
       <image:loc>${escapeXml(getAbsoluteImageUrl(img))}</image:loc>
@@ -120,13 +120,19 @@ async function generateSitemap() {
     { url: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
     { url: `${baseUrl}/camera-maroc`, priority: '0.98', changefreq: 'daily' },
     { url: `${baseUrl}/cinema-lenses-maroc`, priority: '0.9', changefreq: 'weekly' },
-    { url: `${baseUrl}/dji-osmo-pocket-4-pro`, priority: '0.95', changefreq: 'daily' },
+    {
+      url: `${baseUrl}/dji-osmo-pocket-4-pro`,
+      priority: '0.95',
+      changefreq: 'daily',
+      image: `${baseUrl}/images/products/dji-osmo-pocket-4-pro.webp`,
+      imageTitle: 'DJI Osmo Pocket 4P (Pro) - GearShop Maroc'
+    },
     { url: `${baseUrl}/magasin-casablanca`, priority: '0.85', changefreq: 'monthly' },
     { url: `${baseUrl}/a-propos`, priority: '0.8', changefreq: 'monthly' },
   ];
 
   const brandPages = [
-    '7artisans', 'kf-concept', 'sony', 'canon', 'nikon', 'panasonic', 'lumix', 'fujifilm', 'dji', 'godox', 'rode'
+    '7artisans', 'kf-concept', 'tamron', 'sony', 'canon', 'nikon', 'panasonic', 'lumix', 'fujifilm', 'dji', 'godox', 'rode'
   ].map(b => ({
     url: `${baseUrl}/marque/${b}`,
     priority: '0.85',
@@ -181,7 +187,11 @@ async function generateSitemap() {
     <loc>${page.url}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
+    <priority>${page.priority}</priority>${page.image ? `
+    <image:image>
+      <image:loc>${escapeXml(page.image)}</image:loc>
+      <image:title>${escapeXml(page.imageTitle || 'GearShop Maroc')}</image:title>
+    </image:image>` : ''}
   </url>`).join('');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

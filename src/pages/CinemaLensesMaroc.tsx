@@ -47,7 +47,7 @@ const CinemaLensesMaroc: React.FC<CinemaLensesMarocProps> = ({ products, onProdu
         <title>Lentilles Cinéma 7Artisans au Maroc | Objectifs Vidéo Professionnels</title>
         <meta name="description" content="Découvrez notre gamme complète de lentilles cinéma 7Artisans au Maroc. Objectifs professionnels T2.0 et T1.05 pour Sony E, Canon RF, et Nikon Z. Livraison rapide à Casablanca et partout au Maroc." />
         <meta name="keywords" content="lentille cinéma maroc, cine lens maroc, objectifs cinéma 7artisans, materiel video casablanca, 7artisans T2.0 maroc, objectifs monture E video" />
-        <link rel="canonical" href="https://gearshop.ma/cinema-lenses-maroc" />
+        <link rel="canonical" href="https://www.gearshop.ma/cinema-lenses-maroc" />
       </Helmet>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

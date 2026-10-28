@@ -52,7 +52,7 @@ const CameraMarocPage: React.FC<CameraMarocPageProps> = ({
 
   const pageTitle = "Caméra Maroc | Achat Caméra Photo, Vidéo & Vlogging à Casablanca | GearShop";
   const metaDesc = "Achetez votre caméra au Maroc chez GearShop. Caméras 4K nomades DJI, caméras cinéma, objectifs pour boîtiers Sony, Canon, Nikon, Lumix, Fuji et accessoires. Garantie 1 an et livraison 24h à Casablanca et partout au Maroc.";
-  const canonicalUrl = "https://gearshop.ma/camera-maroc";
+  const canonicalUrl = "https://www.gearshop.ma/camera-maroc";
 
   // JSON-LD Schemas
   const collectionSchema = {
@@ -67,7 +67,7 @@ const CameraMarocPage: React.FC<CameraMarocPageProps> = ({
         "@type": "ListItem",
         "position": idx + 1,
         "name": p.name,
-        "url": `https://gearshop.ma/product/${p.id}-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+        "url": `https://www.gearshop.ma/product/${p.id}-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
       }))
     }
   };

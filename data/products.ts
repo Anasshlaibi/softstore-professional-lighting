@@ -616,9 +616,9 @@ export const defaultProducts: Product[] = [
       'Connectivité: Bluetooth, Wi-Fi, USB-C',
       'Garantie: 1 An GearShop Maroc'
     ],
-    image: '/images/products/dji-osmo-pocket-4-pro-3.png',
+    image: '/images/products/dji-osmo-pocket-4-pro.webp',
     gallery: [
-      '/images/products/dji-osmo-pocket-4-pro-3.png',
+      '/images/products/dji-osmo-pocket-4-pro.webp',
       '/images/products/dji-osmo-pocket-4-pro-6.png',
       '/images/products/dji-osmo-pocket-4-pro-4.png',
       '/images/products/dji-osmo-pocket-4-pro-5.png',

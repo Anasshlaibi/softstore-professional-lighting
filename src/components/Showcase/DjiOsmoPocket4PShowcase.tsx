@@ -39,7 +39,7 @@ export interface DjiShowcaseProps {
 }
 
 export const DjiOsmoPocket4PShowcase: React.FC<DjiShowcaseProps> = ({
-  price = 8000,
+  price,
   currency = 'DH',
   onPreorder,
   onContactWhatsApp,
@@ -88,9 +88,10 @@ export const DjiOsmoPocket4PShowcase: React.FC<DjiShowcaseProps> = ({
             <ScrollReveal delay={500} direction="up">
               <div className="pt-4 flex flex-wrap items-center gap-6">
                 <div className="flex flex-col">
-                  <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Prix Officiel Maroc</span>
+                  <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Prix catalogue actuel</span>
                   <span className="text-4xl font-black text-white">
-                    {price.toLocaleString()} <span className="text-xl font-medium text-red-500">{currency}</span>
+                    {price && price > 0 ? price.toLocaleString('fr-MA') : 'À confirmer'}{' '}
+                    {price && price > 0 ? <span className="text-xl font-medium text-red-500">{currency}</span> : null}
                   </span>
                 </div>
 
@@ -128,7 +129,7 @@ export const DjiOsmoPocket4PShowcase: React.FC<DjiShowcaseProps> = ({
               <div className="relative w-full max-w-lg aspect-[3/4] bg-gradient-to-tr from-slate-900 to-slate-800 rounded-[2.5rem] p-8 border border-slate-700 shadow-2xl flex items-center justify-center overflow-hidden group">
                 <div className="absolute inset-0 bg-red-600/5 mix-blend-overlay"></div>
                 <img
-                  src="/images/products/dji-osmo-pocket-4-pro-3.png"
+                  src="/images/products/dji-osmo-pocket-4-pro.webp"
                   alt="DJI Osmo Pocket 4 Pro"
                   className="w-full h-full object-contain filter drop-shadow-[0_30px_50px_rgba(0,112,213,0.3)] transition-transform duration-[2000ms] ease-out group-hover:scale-110 relative z-10"
                 />

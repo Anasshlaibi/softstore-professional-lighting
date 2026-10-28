@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Product } from '../../App';
 import { useCart } from '../context/CartContext';
@@ -7,6 +7,11 @@ import { extractProductAttributes } from '../utils/productMetadata';
 import { findCompatibleAccessories, findCompatibleLensesForCamera, getProductPriorityScore, slugify } from '../utils/catalogEngine';
 import richDescriptions from '../data/richDescriptions.json';
 import ProductCard from '../../components/ProductCard';
+
+// Supplier copy is content only. It must never be able to ship a stylesheet or
+// script that can change the GearShop header, navigation, or other page areas.
+const sanitizeSupplierHtml = (html: string) => html
+  .replace(/<(?:style|script|iframe|object|embed)\b[^>]*>[\s\S]*?<\/(?:style|script|iframe|object|embed)>/gi, '');
 
 interface ProductDetailPageProps {
   products: Product[];
@@ -58,7 +63,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
   const [activeImageIdx, setActiveImageIdx] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'overview' | 'specs' | 'accessories' | 'reviews'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'specs' | 'accessories'>('overview');
   const [addedToast, setAddedToast] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -102,13 +107,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       return product.specs;
     }
     const list: string[] = [];
-    if (meta.brand) list.push(`Marque Certifiée : ${meta.brand}`);
-    if (meta.mount) list.push(`Monture Officielle : ${meta.mount}`);
-    if (meta.lens_type) list.push(`Gamme Optique : ${meta.lens_type.toUpperCase()} Haute Précision`);
+    if (meta.brand) list.push(`Marque : ${meta.brand}`);
+    if (meta.mount) list.push(`Monture : ${meta.mount}`);
+    if (meta.lens_type) list.push(`Type : ${meta.lens_type.toUpperCase()}`);
     if (meta.filter_size) list.push(`Diamètre Filtre : ${meta.filter_size}`);
-    list.push('Capteur & Électronique de traitement nouvelle génération');
-    list.push('Qualité de fabrication professionnelle pour le cinéma et la photo');
-    list.push('Garantie constructeur officielle avec SAV local à Casablanca');
+    list.push('Consultez la fiche technique pour confirmer la compatibilité avec votre équipement.');
     return list;
   }, [product, meta]);
 
@@ -218,26 +221,46 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     );
   }
 
+  // The Pocket 4P has its own canonical page.  Never render the legacy
+  // generic template (which contains an imported supplier description) for it.
+  if (product.id === 3001) {
+    return <Navigate to="/dji-osmo-pocket-4-pro" replace />;
+  }
+
   const currentImage = galleryImages[activeImageIdx] || galleryImages[0];
   const discountPercent = product.oldPrice && product.oldPrice > product.price
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
     : 0;
 
-  const rawRichDesc = (richDescriptions as Record<string, string>)[product.id?.toString()] || product.desc || '';
+  const supplierDescription = product.id === 3001
+    ? product.desc
+    : (richDescriptions as Record<string, string>)[product.id?.toString()] || product.desc || '';
+  const rawRichDesc = sanitizeSupplierHtml(supplierDescription);
+  const canonicalUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
+  const isTamronA063 = Number(product.id) === 6040;
+  const productSeoTitle = isTamronA063
+    ? 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc | 11 500 DH'
+    : `${product.name} | Prix Maroc | GearShop`;
+  const productSeoDescription = isTamronA063
+    ? 'Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc chez GearShop : 11 500 DH. Zoom plein format, autofocus VXD et disponibilité fournisseur à confirmer avant commande.'
+    : `Découvrez ${product.name} chez GearShop Maroc. Prix : ${product.price.toLocaleString('fr-MA')} ${siteConfig.currency}. ${product.inStock ? 'Disponibilité à confirmer avant expédition.' : 'Produit sur commande : délai à confirmer avant paiement.'}`;
 
   return (
     <div className="bg-[#f8f9fb] min-h-screen pb-20 pt-3 md:pt-4 text-gray-900">
       <Helmet>
-        <title>{`${product.name} au Meilleur Prix Maroc | GearShop`}</title>
-        <meta
-          name="description"
-          content={`Achetez ${product.name} à ${product.price} ${siteConfig.currency} au Maroc. Matériel 100% Neuf avec garantie officielle, showroom à Casablanca et livraison express 24h.`}
-        />
-        <link rel="canonical" href={`https://gearshop.ma/product/${product.id}-${slugify(product.name)}`} />
-        <meta property="og:title" content={`${product.name} | GearShop Maroc`} />
-        <meta property="og:description" content={`Disponible au Maroc chez GearShop. Prix: ${product.price} ${siteConfig.currency}. Livraison express.`} />
-        <meta property="og:image" content={currentImage.startsWith('http') ? currentImage : `https://gearshop.ma${currentImage}`} />
+        <title>{productSeoTitle}</title>
+        <meta name="description" content={productSeoDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={productSeoTitle} />
+        <meta property="og:description" content={productSeoDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={currentImage.startsWith('http') ? currentImage : `https://www.gearshop.ma${currentImage}`} />
         <meta property="og:type" content="product" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={productSeoTitle} />
+        <meta name="twitter:description" content={productSeoDescription} />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:image" content={currentImage.startsWith('http') ? currentImage : `https://www.gearshop.ma${currentImage}`} />
       </Helmet>
 
       {/* Toast Notification */}
@@ -264,27 +287,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <span className="font-semibold text-gray-900 truncate max-w-[240px] sm:max-w-md">{product.name}</span>
         </nav>
 
-        {/* ── B&H HEADER BAR (Title, Ratings, Authorized Badge) ─────────────── */}
+        {/* Product identity and real catalogue information */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 mb-4 border-b border-gray-200">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
               {product.name}
             </h1>
             <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mt-1.5">
-              <span>BH #{product.id.toString().padStart(8, '0')}</span>
+              <span>Réf. GearShop : GEAR-{product.id}</span>
               <span>•</span>
-              <span>MFR #PRO-{product.id}</span>
-              <span>•</span>
-              <div className="flex items-center gap-1 text-amber-500 font-bold">
-                <div className="flex text-xs">
-                  {'★★★★★'.split('').map((s, i) => (
-                    <span key={i} className={i < (product.stars || 5) ? 'text-amber-400' : 'text-gray-300'}>{s}</span>
-                  ))}
-                </div>
-                <span className="text-gray-700 underline cursor-pointer ml-0.5">32 avis</span>
-              </div>
-              <span>•</span>
-              <span className="text-gray-600 hover:text-gray-900 cursor-pointer">12 Questions, 13 Réponses</span>
+              <span>{product.inStock ? 'Disponibilité : en stock' : 'Disponibilité : sur commande'}</span>
               <span>•</span>
               <button onClick={() => navigator.clipboard.writeText(window.location.href)} className="hover:text-red-600 flex items-center gap-1">
                 <i className="fa-solid fa-share-nodes text-[10px]" /> Partager
@@ -299,8 +311,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             </div>
             <div className="flex flex-col">
               <span className="text-[11px] font-black uppercase text-gray-900 tracking-wider">{meta.brand}</span>
-              <span className="text-[10px] text-green-700 font-bold flex items-center gap-1">
-                <i className="fa-solid fa-circle-check text-[9px]" /> Revendeur Officiel
+              <span className="text-[10px] text-gray-600 font-semibold flex items-center gap-1">
+                <i className="fa-solid fa-tag text-[9px]" /> Marque du produit
               </span>
             </div>
           </div>
@@ -409,10 +421,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <div className="lg:col-span-6 flex flex-col justify-between">
             <div className="flex flex-col gap-5">
               
-              {/* Stock Status Badge */}
-              <div className="flex items-center gap-2 text-xs font-bold text-green-700 bg-green-50 px-3 py-1.5 rounded-lg border border-green-200 w-fit">
-                <i className="fa-solid fa-circle-check text-green-600" />
-                <span>En Stock • Expédition Immédiate 24h-48h Partout au Maroc</span>
+              {/* Availability is derived from the actual catalogue status. */}
+              <div className={`flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-lg border w-fit ${
+                product.inStock
+                  ? 'text-green-700 bg-green-50 border-green-200'
+                  : 'text-amber-800 bg-amber-50 border-amber-200'
+              }`}>
+                <i className={`fa-solid ${product.inStock ? 'fa-circle-check text-green-600' : 'fa-clock text-amber-600'}`} />
+                <span>{product.inStock ? 'En stock - délai confirmé avant expédition' : 'Sur commande - délai à confirmer avant paiement'}</span>
               </div>
 
               {/* Price & Savings */}
@@ -440,7 +456,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <div className="text-xs font-bold text-gray-800 mb-2.5 flex items-center justify-between">
                     <span className="flex items-center gap-1.5">
                       <i className="fa-solid fa-circle-dot text-red-600" />
-                      <span>Objectifs Compatibles en Stock ({compatibleLenses.length}) :</span>
+                      <span>Objectifs compatibles du catalogue ({compatibleLenses.length}) :</span>
                     </span>
                     {selectedLens && (
                       <button
@@ -526,14 +542,23 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     </button>
                   </div>
 
-                  {/* Wide Green Add to Cart Button */}
-                  <button
-                    onClick={handleAddToCart}
-                    className="flex-1 h-12 bg-[#28a745] hover:bg-[#218838] active:scale-[0.98] text-white font-black text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-700/20 transition cursor-pointer"
-                  >
-                    <i className="fa-solid fa-cart-shopping" />
-                    <span>Ajouter au Panier (Add to Cart)</span>
-                  </button>
+                  {product.inStock ? (
+                    <button
+                      onClick={handleAddToCart}
+                      className="flex-1 h-12 bg-[#28a745] hover:bg-[#218838] active:scale-[0.98] text-white font-black text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-700/20 transition cursor-pointer"
+                    >
+                      <i className="fa-solid fa-cart-shopping" />
+                      <span>Ajouter au panier</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleWhatsAppOrder}
+                      className="flex-1 h-12 bg-amber-600 hover:bg-amber-700 active:scale-[0.98] text-white font-black text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-amber-700/20 transition cursor-pointer"
+                    >
+                      <i className="fa-brands fa-whatsapp text-lg" />
+                      <span>Confirmer la disponibilité</span>
+                    </button>
+                  )}
 
                   {/* Bookmark Button */}
                   <button
@@ -565,11 +590,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <span className="font-bold text-green-700">GRATUITE</span>
                 </div>
                 <div className="text-[11px] text-gray-500">
-                  Expédition le jour même pour Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir...
+                  {product.inStock
+                    ? 'Le délai de livraison est confirmé avant l’expédition.'
+                    : 'Le délai et la disponibilité fournisseur sont confirmés sur WhatsApp avant paiement.'}
                 </div>
                 <div className="pt-1.5 border-t border-gray-200 flex items-center gap-2 text-emerald-800 text-[11px] font-medium">
                   <i className="fa-solid fa-box-open text-emerald-600 text-xs shrink-0" />
-                  <span><strong>Vérification à la réception :</strong> Ouvrez et inspectez le matériel avant de régler.</span>
+                  <span><strong>Besoin d’aide ?</strong> Demandez la compatibilité, le délai et les conditions de garantie avant commande.</span>
                 </div>
               </div>
 
@@ -579,9 +606,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div className="border-t border-gray-100 pt-4 mt-4 text-xs text-gray-500 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-1.5 text-gray-700 font-semibold">
-                  <i className="fa-solid fa-shield-halved text-green-600" /> Protection Matériel 2 Ans
+                  <i className="fa-solid fa-shield-halved text-green-600" /> Garantie et SAV
                 </span>
-                <span className="text-gray-900 font-bold">Incluse 100%</span>
+                <span className="text-gray-900 font-bold">Selon le produit</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-1.5 text-gray-700 font-semibold">
@@ -708,16 +735,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             >
               Accessoires &amp; Rigging
             </button>
-            <button
-              onClick={() => setActiveTab('reviews')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
-                activeTab === 'reviews'
-                  ? 'bg-black text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              Avis Clients (32)
-            </button>
           </div>
 
           {/* TAB 1: OVERVIEW (CLEAN HTML RENDERING) */}
@@ -800,34 +817,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   </button>
                 </div>
               ))}
-            </div>
-          )}
-
-          {/* TAB 4: REVIEWS */}
-          {activeTab === 'reviews' && (
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 bg-gray-50 p-5 rounded-xl border border-gray-200">
-                <div className="text-4xl font-black text-gray-900">4.9</div>
-                <div>
-                  <div className="flex text-amber-400 text-sm gap-0.5 mb-1">
-                    {'★★★★★'.split('').map((s, i) => (
-                      <span key={i}>{s}</span>
-                    ))}
-                  </div>
-                  <div className="text-xs text-gray-500">Basé sur 32 avis vérifiés au Maroc</div>
-                </div>
-              </div>
-
-              <div className="bg-white p-4 rounded-xl border border-gray-200">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-xs text-gray-900">Karim B. (Casablanca)</span>
-                  <span className="text-[10px] text-gray-400">Il y a 3 jours</span>
-                </div>
-                <div className="text-amber-400 text-xs mb-1.5">★★★★★</div>
-                <p className="text-xs text-gray-600">
-                  "Matériel 100% original scellé, reçu en 24h chrono à Casablanca avec facture commerciale. Service client au top !"
-                </p>
-              </div>
             </div>
           )}
 

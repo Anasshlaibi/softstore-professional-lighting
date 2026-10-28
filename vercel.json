@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/osmo-pocket-4p", "destination": "/dji-osmo-pocket-4-pro", "permanent": true },
+    { "source": "/product/3001-dji-osmo-pocket-4-pro", "destination": "/dji-osmo-pocket-4-pro", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/ai/product/:slug.json", "destination": "/api/ai/product?slug=:slug" },
     { "source": "/ai/product/:slug", "destination": "/api/ai/product?slug=:slug" },
