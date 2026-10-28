@@ -35,7 +35,7 @@
   },
   "catalogSummary": {
     "totalProducts": 283,
-    "categoriesCount": 8,
+    "categoriesCount": 7,
     "brandsCount": 14,
     "lastUpdated": "2026-10-28"
   },
@@ -56,7 +56,8 @@
         "L-Mount",
         "Nikon Z",
         "Canon RF",
-        "Fujifilm X"
+        "Fujifilm X",
+        "Micro 4/3"
       ],
       "sampleProducts": [
         {
@@ -70,14 +71,14 @@
           "url": "https://www.gearshop.ma/product/2-yb-300r"
         },
         {
-          "name": "BKL400Bi Bi-Color",
+          "name": "BKL 400Bi Éclairage Studio Bi-Color 400W (Monture Bowens)",
           "price": 2850,
-          "url": "https://www.gearshop.ma/product/3-bkl400bi-bi-color"
+          "url": "https://www.gearshop.ma/product/3-bkl-400bi-eclairage-studio-bi-color-400w-monture-bowens"
         },
         {
-          "name": "Panel P-500",
+          "name": "Panel P-500 Panneau LED Studio Professionnel Bi-Color",
           "price": 19000,
-          "url": "https://www.gearshop.ma/product/4-panel-p-500"
+          "url": "https://www.gearshop.ma/product/4-panel-p-500-panneau-led-studio-professionnel-bi-color"
         },
         {
           "name": "YB-100R",

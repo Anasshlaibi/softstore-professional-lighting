@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-10-28T15:30:59.868Z",
+  "generatedAt": "2026-10-28T16:26:28.757Z",
   "productCount": 283,
   "imageGoal": "At least 4 verified, exact-variant product images per product",
   "priorityCounts": {
-    "P0": 43,
-    "P1": 239,
+    "P0": 0,
+    "P1": 281,
     "P2": 0,
-    "P3": 1
+    "P3": 2
   },
   "imageCounts": {
     "fewerThanFour": 281,
-    "noPrimaryImage": 1
+    "noPrimaryImage": 0
   }
 }

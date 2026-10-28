@@ -35,7 +35,7 @@
   },
   "catalogSummary": {
     "totalProducts": 283,
-    "categoriesCount": 8,
+    "categoriesCount": 7,
     "brandsCount": 14,
     "lastUpdated": "2026-10-28"
   },
@@ -103,7 +103,7 @@
     {
       "id": 3,
       "sku": "GEAR-3-7ARTISANS",
-      "name": "BKL400Bi Bi-Color",
+      "name": "BKL 400Bi Éclairage Studio Bi-Color 400W (Monture Bowens)",
       "brand": "7Artisans",
       "category": "Éclairage Studio LED",
       "mount": null,
@@ -123,13 +123,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/bkl400bi-bi-color.webp",
-      "url": "https://www.gearshop.ma/product/3-bkl400bi-bi-color",
+      "url": "https://www.gearshop.ma/product/3-bkl-400bi-eclairage-studio-bi-color-400w-monture-bowens",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 4,
       "sku": "GEAR-4-7ARTISANS",
-      "name": "Panel P-500",
+      "name": "Panel P-500 Panneau LED Studio Professionnel Bi-Color",
       "brand": "7Artisans",
       "category": "Éclairage Studio LED",
       "mount": null,
@@ -149,7 +149,7 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/panel-p-500.webp",
-      "url": "https://www.gearshop.ma/product/4-panel-p-500",
+      "url": "https://www.gearshop.ma/product/4-panel-p-500-panneau-led-studio-professionnel-bi-color",
       "lastUpdated": "2026-10-28"
     },
     {
@@ -181,7 +181,7 @@
     {
       "id": 7,
       "sku": "GEAR-7-7ARTISANS",
-      "name": "S100 W portable",
+      "name": "S100W Éclairage Vidéo LED Portable Bi-Color 100W (Monture Bowens)",
       "brand": "7Artisans",
       "category": "Éclairage Portable & RGB",
       "mount": null,
@@ -201,13 +201,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/s100-w-portable.webp",
-      "url": "https://www.gearshop.ma/product/7-s100-w-portable",
+      "url": "https://www.gearshop.ma/product/7-s100w-eclairage-video-led-portable-bi-color-100w-monture-bowens",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 8,
       "sku": "GEAR-8-7ARTISANS",
-      "name": "P-60S Spotlight",
+      "name": "P-60S Projecteur Spotlight LED Studio 60W (Daylight 5600K)",
       "brand": "7Artisans",
       "category": "Éclairage Studio LED",
       "mount": null,
@@ -227,7 +227,7 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/p-60s-spotlight.webp",
-      "url": "https://www.gearshop.ma/product/8-p-60s-spotlight",
+      "url": "https://www.gearshop.ma/product/8-p-60s-projecteur-spotlight-led-studio-60w-daylight-5600k",
       "lastUpdated": "2026-10-28"
     },
     {
@@ -467,13 +467,13 @@
     {
       "id": 1008,
       "sku": "GEAR-1008-7ARTISANS",
-      "name": "AF35mm F1.4 Fuji (FX Mount) - Black",
+      "name": "7Artisans AF 35mm F1.4 Fuji X (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Fujifilm X",
       "focus": "Autofocus",
-      "sensorCoverage": "Full Frame",
-      "focalLength": null,
+      "sensorCoverage": "APS-C",
+      "focalLength": "35mm",
       "maxAperture": "f/1.4",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 2100,
@@ -487,19 +487,19 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-4-fuji-fx-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1008-7artisans-af-35mm-f1-4-fuji-x-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1009,
       "sku": "GEAR-1009-7ARTISANS",
-      "name": "AF35mm F1.8 Sony (E Mount) APS-C - Black",
+      "name": "7Artisans AF 35mm F1.8 Sony E (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Sony E",
       "focus": "Autofocus",
       "sensorCoverage": "APS-C",
-      "focalLength": null,
+      "focalLength": "35mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 2300,
@@ -513,19 +513,19 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-sony-e-mount-aps-c-black.webp",
-      "url": "https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1009-7artisans-af-35mm-f1-8-sony-e-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1010,
       "sku": "GEAR-1010-7ARTISANS",
-      "name": "AF35mm F1.8 Fuji (FX Mount) APS-C - Black",
+      "name": "7Artisans AF 35mm F1.8 Fuji X (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Fujifilm X",
       "focus": "Autofocus",
       "sensorCoverage": "APS-C",
-      "focalLength": null,
+      "focalLength": "35mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 2300,
@@ -539,19 +539,19 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-fuji-fx-mount-aps-c-black.webp",
-      "url": "https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1010-7artisans-af-35mm-f1-8-fuji-x-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1011,
       "sku": "GEAR-1011-7ARTISANS",
-      "name": "AF35mm F1.8 Nikon (Z Mount) APS-C - Black",
+      "name": "7Artisans AF 35mm F1.8 Nikon Z (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Nikon Z",
       "focus": "Autofocus",
       "sensorCoverage": "APS-C",
-      "focalLength": null,
+      "focalLength": "35mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 2300,
@@ -565,19 +565,19 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af35mm-f1-8-nikon-z-mount-aps-c-black.webp",
-      "url": "https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1011-7artisans-af-35mm-f1-8-nikon-z-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1012,
       "sku": "GEAR-1012-7ARTISANS",
-      "name": "AF50mm F1.8 Sony (E Mount) APS-C - Black",
+      "name": "7Artisans AF 50mm F1.8 Sony E (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Sony E",
       "focus": "Autofocus",
       "sensorCoverage": "APS-C",
-      "focalLength": null,
+      "focalLength": "50mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 2300,
@@ -591,19 +591,19 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-sony-e-mount-aps-c-black.webp",
-      "url": "https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1012-7artisans-af-50mm-f1-8-sony-e-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1013,
       "sku": "GEAR-1013-7ARTISANS",
-      "name": "AF50mm F1.8 Fuji (FX Mount) APS-C - Black",
+      "name": "7Artisans AF 50mm F1.8 Fuji X (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Fujifilm X",
       "focus": "Autofocus",
       "sensorCoverage": "APS-C",
-      "focalLength": null,
+      "focalLength": "50mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 2300,
@@ -617,19 +617,19 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-fuji-fx-mount-aps-c-black.webp",
-      "url": "https://www.gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1013-7artisans-af-50mm-f1-8-fuji-x-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1014,
       "sku": "GEAR-1014-7ARTISANS",
-      "name": "AF50mm F1.8 Nikon (Z Mount) APS-C - Black",
+      "name": "7Artisans AF 50mm F1.8 Nikon Z (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Nikon Z",
       "focus": "Autofocus",
       "sensorCoverage": "APS-C",
-      "focalLength": null,
+      "focalLength": "50mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 2300,
@@ -643,7 +643,7 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af50mm-f1-8-nikon-z-mount-aps-c-black.webp",
-      "url": "https://www.gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black",
+      "url": "https://www.gearshop.ma/product/1014-7artisans-af-50mm-f1-8-nikon-z-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
@@ -805,13 +805,13 @@
     {
       "id": 1021,
       "sku": "GEAR-1021-7ARTISANS",
-      "name": "AF40mm F2.5 Sony (E Mount) - Black",
+      "name": "7Artisans AF 40mm F2.5 Sony E (Full Frame / APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Sony E",
       "focus": "Autofocus",
-      "sensorCoverage": "Full Frame",
-      "focalLength": null,
+      "sensorCoverage": "APS-C",
+      "focalLength": "40mm",
       "maxAperture": "f/2.5",
       "condition": "New (Neuf sous emballage d'origine)",
       "price": 1999,
@@ -825,7 +825,7 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/af40mm-f2-5-sony-e-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1021-7artisans-af-40mm-f2-5-sony-e-full-frame-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
@@ -1091,12 +1091,12 @@
     {
       "id": 1032,
       "sku": "GEAR-1032-7ARTISANS",
-      "name": "50mm F1.2 Sony (E Mount) - Black",
+      "name": "7Artisans 50mm F1.2 Sony E (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Sony E",
       "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "sensorCoverage": "APS-C",
       "focalLength": "50mm",
       "maxAperture": "f/1.2",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1111,18 +1111,18 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-sony-e-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1032-7artisans-50mm-f1-2-sony-e-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1033,
       "sku": "GEAR-1033-7ARTISANS",
-      "name": "50mm F1.2 Fuji (FX Mount) - Black",
+      "name": "7Artisans 50mm F1.2 Fuji X (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Fujifilm X",
       "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "sensorCoverage": "APS-C",
       "focalLength": "50mm",
       "maxAperture": "f/1.2",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1137,13 +1137,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-fuji-fx-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1033-7artisans-50mm-f1-2-fuji-x-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1034,
       "sku": "GEAR-1034-7ARTISANS",
-      "name": "50mm F1.2 M43 (Panasonic Olympus) - Black",
+      "name": "7Artisans 50mm F1.2 Micro 4/3 (Panasonic / OM System) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "L-Mount",
@@ -1163,18 +1163,18 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-m43-panasonic-olympus-black.webp",
-      "url": "https://www.gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1034-7artisans-50mm-f1-2-micro-4-3-panasonic-om-system-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1035,
       "sku": "GEAR-1035-7ARTISANS",
-      "name": "50mm F1.2 Nikon (Z Mount) - Black",
+      "name": "7Artisans 50mm F1.2 Nikon Z (APS-C / DX) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Nikon Z",
       "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "sensorCoverage": "APS-C",
       "focalLength": "50mm",
       "maxAperture": "f/1.2",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1189,18 +1189,18 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-2-nikon-z-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1035-7artisans-50mm-f1-2-nikon-z-aps-c-dx-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1036,
       "sku": "GEAR-1036-7ARTISANS",
-      "name": "50mm F1.8 Sony (E Mount) - Black",
+      "name": "7Artisans 50mm F1.8 Sony E (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Sony E",
       "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "sensorCoverage": "APS-C",
       "focalLength": "50mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1215,18 +1215,18 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-8-sony-e-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1036-7artisans-50mm-f1-8-sony-e-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1037,
       "sku": "GEAR-1037-7ARTISANS",
-      "name": "50mm F1.8 Fuji (FX Mount) - Black",
+      "name": "7Artisans 50mm F1.8 Fuji X (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Fujifilm X",
       "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "sensorCoverage": "APS-C",
       "focalLength": "50mm",
       "maxAperture": "f/1.8",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1241,18 +1241,18 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/50mm-f1-8-fuji-fx-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1037-7artisans-50mm-f1-8-fuji-x-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1038,
       "sku": "GEAR-1038-7ARTISANS",
-      "name": "35mm/F1.4 Sony (E Mount) - Black",
+      "name": "7Artisans 35mm F1.4 Sony E (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Sony E",
       "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "sensorCoverage": "APS-C",
       "focalLength": "35mm",
       "maxAperture": "f/1.4",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1267,18 +1267,18 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-sony-e-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1038-7artisans-35mm-f1-4-sony-e-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1039,
       "sku": "GEAR-1039-7ARTISANS",
-      "name": "35mm/F1.4 Fuji (FX Mount) - Black",
+      "name": "7Artisans 35mm F1.4 Fuji X (APS-C) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Fujifilm X",
-      "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "focus": "Autofocus",
+      "sensorCoverage": "APS-C",
       "focalLength": "35mm",
       "maxAperture": "f/1.4",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1293,13 +1293,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-fuji-fx-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1039-7artisans-35mm-f1-4-fuji-x-aps-c-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1040,
       "sku": "GEAR-1040-7ARTISANS",
-      "name": "35mm/F1.4 M43 (Panasonic Olympus) - Black",
+      "name": "7Artisans 35mm F1.4 Micro 4/3 (Panasonic / OM System) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "L-Mount",
@@ -1319,18 +1319,18 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-m43-panasonic-olympus-black.webp",
-      "url": "https://www.gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1040-7artisans-35mm-f1-4-micro-4-3-panasonic-om-system-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1041,
       "sku": "GEAR-1041-7ARTISANS",
-      "name": "35mm/F1.4 Nikon (Z Mount) - Black",
+      "name": "7Artisans 35mm F1.4 Nikon Z (APS-C / DX) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Nikon Z",
       "focus": "Manual Focus",
-      "sensorCoverage": "Full Frame",
+      "sensorCoverage": "APS-C",
       "focalLength": "35mm",
       "maxAperture": "f/1.4",
       "condition": "New (Neuf sous emballage d'origine)",
@@ -1345,13 +1345,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-nikon-z-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black",
+      "url": "https://www.gearshop.ma/product/1041-7artisans-35mm-f1-4-nikon-z-aps-c-dx-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1042,
       "sku": "GEAR-1042-7ARTISANS",
-      "name": "35mm/F1.4 Canon (EOS-R Mount) - Black",
+      "name": "7Artisans 35mm F1.4 Canon RF (EOS-R Mount) - Black",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Canon RF",
@@ -1371,13 +1371,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/35mm-f1-4-canon-eos-r-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1042-7artisans-35mm-f1-4-canon-rf-eos-r-mount-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1043,
       "sku": "GEAR-1043-7ARTISANS",
-      "name": "Autofocus adapter for Canon EF - Nikon Z - Black",
+      "name": "Bague d'Adaptation Autofocus 7Artisans EF-NZ (Canon EF vers Nikon Z)",
       "brand": "7Artisans",
       "category": "Objectifs Photo",
       "mount": "Nikon Z",
@@ -1397,13 +1397,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/autofocus-adapter-for-canon-ef-nikon-z-black.webp",
-      "url": "https://www.gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black",
+      "url": "https://www.gearshop.ma/product/1043-bague-d-adaptation-autofocus-7artisans-ef-nz-canon-ef-vers-nikon-z",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1044,
       "sku": "GEAR-1044-7ARTISANS",
-      "name": "10mm T2.1 Sony (E Mount) - Black",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Sony E (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Sony E",
@@ -1423,13 +1423,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-sony-e-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1044-7artisans-vision-10mm-t2-1-cinema-sony-e-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1045,
       "sku": "GEAR-1045-7ARTISANS",
-      "name": "10mm T2.1 Fuji (FX Mount) - Black",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Fuji X (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Fujifilm X",
@@ -1449,13 +1449,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-fuji-fx-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1045-7artisans-vision-10mm-t2-1-cinema-fuji-x-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1046,
       "sku": "GEAR-1046-7ARTISANS",
-      "name": "10mm T2.1 M43 (Panasonic Olympus) - Black",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Micro 4/3 (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "L-Mount",
@@ -1475,13 +1475,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-m43-panasonic-olympus-black.webp",
-      "url": "https://www.gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1046-7artisans-vision-10mm-t2-1-cinema-micro-4-3-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1047,
       "sku": "GEAR-1047-7ARTISANS",
-      "name": "10mm T2.1 Canon (EOS-R Mount) - Black",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Canon RF (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Canon RF",
@@ -1501,17 +1501,17 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-canon-eos-r-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1047-7artisans-vision-10mm-t2-1-cinema-canon-rf-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1048,
       "sku": "GEAR-1048-7ARTISANS",
-      "name": "10mm T2.1 Sony (E Mount) - Titanium Gray",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Sony E (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Sony E",
-      "focus": "Manual Focus",
+      "focus": "Autofocus",
       "sensorCoverage": "Full Frame",
       "focalLength": "10mm",
       "maxAperture": "f/2.1",
@@ -1527,13 +1527,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-sony-e-mount-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1048-7artisans-vision-10mm-t2-1-cinema-sony-e-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1049,
       "sku": "GEAR-1049-7ARTISANS",
-      "name": "10mm T2.1 Fuji (FX Mount) - Titanium Gray",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Fuji X (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Fujifilm X",
@@ -1553,13 +1553,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-fuji-fx-mount-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1049-7artisans-vision-10mm-t2-1-cinema-fuji-x-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1050,
       "sku": "GEAR-1050-7ARTISANS",
-      "name": "10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Micro 4/3 (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "L-Mount",
@@ -1579,13 +1579,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-m43-panasonic-olympus-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1050-7artisans-vision-10mm-t2-1-cinema-micro-4-3-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1051,
       "sku": "GEAR-1051-7ARTISANS",
-      "name": "10mm T2.1 Canon (EOS-R Mount) - Titanium Gray",
+      "name": "7Artisans Vision 10mm T2.1 Cinéma Canon RF (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Canon RF",
@@ -1605,13 +1605,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/10mm-t2-1-canon-eos-r-mount-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1051-7artisans-vision-10mm-t2-1-cinema-canon-rf-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1052,
       "sku": "GEAR-1052-7ARTISANS",
-      "name": "16mm T2.1 Sony (E Mount) - Black",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Sony E (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Sony E",
@@ -1631,13 +1631,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-sony-e-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black",
+      "url": "https://www.gearshop.ma/product/1052-7artisans-vision-16mm-t2-1-cinema-sony-e-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1053,
       "sku": "GEAR-1053-7ARTISANS",
-      "name": "16mm T2.1 Fuji (FX Mount) - Black",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Fuji X (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Fujifilm X",
@@ -1657,13 +1657,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-fuji-fx-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black",
+      "url": "https://www.gearshop.ma/product/1053-7artisans-vision-16mm-t2-1-cinema-fuji-x-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1054,
       "sku": "GEAR-1054-7ARTISANS",
-      "name": "16mm T2.1 M43 (Panasonic Olympus) - Black",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Micro 4/3 (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "L-Mount",
@@ -1683,13 +1683,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-m43-panasonic-olympus-black.webp",
-      "url": "https://www.gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black",
+      "url": "https://www.gearshop.ma/product/1054-7artisans-vision-16mm-t2-1-cinema-micro-4-3-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1055,
       "sku": "GEAR-1055-7ARTISANS",
-      "name": "16mm T2.1 Canon (EOS-R Mount) - Black",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Canon RF (Black)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Canon RF",
@@ -1709,13 +1709,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-canon-eos-r-mount-black.webp",
-      "url": "https://www.gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black",
+      "url": "https://www.gearshop.ma/product/1055-7artisans-vision-16mm-t2-1-cinema-canon-rf-black",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1056,
       "sku": "GEAR-1056-7ARTISANS",
-      "name": "16mm T2.1 Sony (E Mount) - Titanium Gray",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Sony E (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Sony E",
@@ -1735,13 +1735,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-sony-e-mount-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1056-7artisans-vision-16mm-t2-1-cinema-sony-e-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1057,
       "sku": "GEAR-1057-7ARTISANS",
-      "name": "16mm T2.1 Fuji (FX Mount) - Titanium Gray",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Fuji X (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Fujifilm X",
@@ -1761,17 +1761,17 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-fuji-fx-mount-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1057-7artisans-vision-16mm-t2-1-cinema-fuji-x-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1058,
       "sku": "GEAR-1058-7ARTISANS",
-      "name": "16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Micro 4/3 (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
-      "mount": "L-Mount",
-      "focus": "Manual Focus",
+      "mount": "Micro 4/3",
+      "focus": "Autofocus",
       "sensorCoverage": "Micro 4/3",
       "focalLength": "16mm",
       "maxAperture": "f/2.1",
@@ -1787,13 +1787,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-m43-panasonic-olympus-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1058-7artisans-vision-16mm-t2-1-cinema-micro-4-3-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1059,
       "sku": "GEAR-1059-7ARTISANS",
-      "name": "16mm T2.1 Canon (EOS-R Mount) - Titanium Gray",
+      "name": "7Artisans Vision 16mm T2.1 Cinéma Canon RF (Titanium Gray)",
       "brand": "7Artisans",
       "category": "Lentilles Cinéma",
       "mount": "Canon RF",
@@ -1813,16 +1813,16 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/16mm-t2-1-canon-eos-r-mount-titanium-gray.webp",
-      "url": "https://www.gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray",
+      "url": "https://www.gearshop.ma/product/1059-7artisans-vision-16mm-t2-1-cinema-canon-rf-titanium-gray",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1060,
       "sku": "GEAR-1060-7ARTISANS",
-      "name": "PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver",
+      "name": "7Artisans Adaptateur PL 4-en-1 Universel (PL vers Sony E / L / RF / Nikon Z)",
       "brand": "7Artisans",
-      "category": "Bagues & Adaptateurs",
-      "mount": "Nikon Z",
+      "category": "Accessoires Photo & Vidéo",
+      "mount": "Sony E",
       "focus": "Manual Focus",
       "sensorCoverage": "Full Frame",
       "focalLength": null,
@@ -1839,13 +1839,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver.webp",
-      "url": "https://www.gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver",
+      "url": "https://www.gearshop.ma/product/1060-7artisans-adaptateur-pl-4-en-1-universel-pl-vers-sony-e-l-rf-nikon-z",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1061,
       "sku": "GEAR-1061-7ARTISANS",
-      "name": "77mm True Color VND6-9 Filter - Black",
+      "name": "7Artisans Filtre Variable ND 77mm True Color (VND ND64 - ND512 / 6-9 Stops)",
       "brand": "7Artisans",
       "category": "Filtres Optiques",
       "mount": null,
@@ -1865,13 +1865,13 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/77mm-true-color-vnd6-9-filter-black.webp",
-      "url": "https://www.gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black",
+      "url": "https://www.gearshop.ma/product/1061-7artisans-filtre-variable-nd-77mm-true-color-vnd-nd64-nd512-6-9-stops",
       "lastUpdated": "2026-10-28"
     },
     {
       "id": 1062,
       "sku": "GEAR-1062-7ARTISANS",
-      "name": "55mm 1/8 Black Mist Filter - Black",
+      "name": "7Artisans Filtre 55mm 1/8 Black Mist (Diffusion Cinématographique)",
       "brand": "7Artisans",
       "category": "Filtres Optiques",
       "mount": null,
@@ -1891,7 +1891,7 @@
         "Carte Bancaire"
       ],
       "image": "https://www.gearshop.ma/images/products/55mm-1-8-black-mist-filter-black.webp",
-      "url": "https://www.gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black",
+      "url": "https://www.gearshop.ma/product/1062-7artisans-filtre-55mm-1-8-black-mist-diffusion-cinematographique",
       "lastUpdated": "2026-10-28"
     },
     {

@@ -218,7 +218,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: MODEL：YM350 INPUTVOLTAGE：AC200-220V OUTPUT POWER：350W CRI：≥95 CCT：2700-6500K PRODUCT WEIGHT：1560G PRODUCT SIZE：219.7*147*114.5MM LUMINOUS FLUX：18000LM / 26000LM NOISE：30dB BARE LAMP：6500LUX / /8800LUX LIGHT ANGLE：120° DIMMING：0-100% LAMP BODY COLOR：BLACK / WHITE
 - **Lien Officiel Produit**: [YM 350](https://www.gearshop.ma/product/1-ym-350)
 
-#### BKL400Bi Bi-Color
+#### BKL 400Bi Éclairage Studio Bi-Color 400W (Monture Bowens)
 - **SKU**: `GEAR-3-7ARTISANS`
 - **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -231,9 +231,9 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: Sur commande
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: Polyvalence absolue avec température de couleur ajustable de 2700K à 6500K. Ventilateur silencieux pour la vidéo.
-- **Lien Officiel Produit**: [BKL400Bi Bi-Color](https://www.gearshop.ma/product/3-bkl400bi-bi-color)
+- **Spécifications Clés**: Puissance nominale : 400 Watts LED COB, Température de couleur : 2700K - 6500K Bi-Color, Indice de rendu des couleurs : CRI 96+ / TLCI 97+, Monture accessoires : Standard Bowens Mount, Gradation : 0% à 100% sans scintillement (Flicker-Free), Refroidissement : Ventilateur ultra-silencieux pour prise de son, Alimentation : Secteur AC 100-240V, Garantie : 1 an SAV officiel GearShop Maroc
+- **Description**: Le projecteur studio BKL 400Bi est un éclairage LED professionnel bi-color de 400W haute puissance conçu pour les tournages cinéma, plateaux TV et studios photo au Maroc. Doté d'une plage de température de couleur variable de 2700K à 6500K, d'un indice CRI/TLCI supérieur à 96 pour un rendu des couleurs fidèle, et d'une
+- **Lien Officiel Produit**: [BKL 400Bi Éclairage Studio Bi-Color 400W (Monture Bowens)](https://www.gearshop.ma/product/3-bkl-400bi-eclairage-studio-bi-color-400w-monture-bowens)
 
 #### Y300S
 - **SKU**: `GEAR-1765907057061-7ARTISANS`
@@ -288,7 +288,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: Output power: 100 watts full brightness, RGB 50 watts Color temperature: 2700-7500K Color rendering index: 90 Number of LED beads: 72 PCS white/warm, 96 PCS RGB RGB color tone: 0-360 (full color) Dimming brightness adjustment: 0-100% Input voltage: 19V=5A
 - **Lien Officiel Produit**: [YB-100R](https://www.gearshop.ma/product/6-yb-100r)
 
-#### S100 W portable
+#### S100W Éclairage Vidéo LED Portable Bi-Color 100W (Monture Bowens)
 - **SKU**: `GEAR-7-7ARTISANS`
 - **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -301,11 +301,11 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: MODEL: S100 LIFETIME: 50,000 HOURS INPUT VOLTAGE: 200‑240V NUMBER OF LAMP BEADS: 1 PC OUTPUT POWER: 100W LUX AT 1 METER: 35,801 LUX CRI: ≥96 CCT: 2700‑6500K ±200K MATERIAL: METAL LAMP BODY COLOR: WHITE / BLUE PRODUCT WEIGHT: 367G DIMMING: 0‑100%
-- **Lien Officiel Produit**: [S100 W portable](https://www.gearshop.ma/product/7-s100-w-portable)
+- **Spécifications Clés**: Puissance : 100 Watts haute luminosité, Température de couleur : 2800K - 6500K Bi-Color, Indice CRI : 96+ / TLCI 96+, Monture : Mini Bowens / Standard Bowens compatible, Poids : Ultra-léger moins de 1 kg pour tournage nomade, Contrôle : Molettes physiques et contrôle sans fil, Garantie : 1 an GearShop Maroc avec livraison nationale
+- **Description**: La torche LED portable S100W offre une puissance lumineuse de 100 Watts dans un format ultra-compact et nomade, idéal pour les créateurs de contenu, streamers et vidéastes mobiles au Maroc. Grâce à sa monture Bowens polyvalente et sa molette de réglage précis, illuminez facilement vos vlogs, interviews et shootings en 
+- **Lien Officiel Produit**: [S100W Éclairage Vidéo LED Portable Bi-Color 100W (Monture Bowens)](https://www.gearshop.ma/product/7-s100w-eclairage-video-led-portable-bi-color-100w-monture-bowens)
 
-#### P-60S Spotlight
+#### P-60S Projecteur Spotlight LED Studio 60W (Daylight 5600K)
 - **SKU**: `GEAR-8-7ARTISANS`
 - **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -318,9 +318,9 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: Sur commande
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: Spotlight focalisable pour un contrôle précis du faisceau. Parfait pour l'éclairage de cheveux ou les accents.
-- **Lien Officiel Produit**: [P-60S Spotlight](https://www.gearshop.ma/product/8-p-60s-spotlight)
+- **Spécifications Clés**: Puissance : 60 Watts LED COB focalisable, Température de couleur : Daylight équilibrée 5600K, Indice CRI : > 95 pour une précision chromatique optimale, Faisceau : Spot orientable avec coupe-flux 4 volets inclus, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: Le projecteur P-60S Spotlight 60W Daylight est un spot compact ultra-puissant délivrant une lumière du jour pure à 5600K. Équipé d'une lentille de focalisation pour concentrer ou élargir le faisceau lumineux, il est parfait comme éclairage principal ou lumière de découpe (rim light) pour vos vidéos YouTube, portraits e
+- **Lien Officiel Produit**: [P-60S Projecteur Spotlight LED Studio 60W (Daylight 5600K)](https://www.gearshop.ma/product/8-p-60s-projecteur-spotlight-led-studio-60w-daylight-5600k)
 
 #### K&F Concept Mini Torche LED Vidéo RGB 2500K-9900K CRI96+ (Batterie 2000mAh)
 - **SKU**: `GEAR-2008-K-F-CONCEPT`
@@ -358,7 +358,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 
 ### Catégorie : ACCESSORIES (10 articles)
 
-#### Panel P-500
+#### Panel P-500 Panneau LED Studio Professionnel Bi-Color
 - **SKU**: `GEAR-4-7ARTISANS`
 - **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -371,9 +371,9 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: Panneau LED ultra-fin pour une lumière douce et diffuse. Idéal pour les interviews et le portrait.
-- **Lien Officiel Produit**: [Panel P-500](https://www.gearshop.ma/product/4-panel-p-500)
+- **Spécifications Clés**: Type d'éclairage : Panneau LED Studio professionnel, Puissance lumineuse : Équivalent 500W haute intensité, Température de couleur : Bi-Color ajustable 3200K - 5600K, Rendu chromatique : CRI 95+ pour restitution naturelle des teintes de peau, Angle de diffusion : 120 degrés avec volets coupe-flux orientables, Alimentation : Secteur AC et double support batterie V-Mount, Garantie : 1 an constructeur GearShop Maroc
+- **Description**: Le Panel P-500 est un panneau d'éclairage LED haute intensité pour studio broadcast, vidéastes et créateurs exigeants au Maroc. Avec sa diffusion ultra-douce intégrée et sa puissance lumineuse réglable, il garantit un éclairage homogène sans ombres dures sur les visages et les interviews. Contrôle précis de la températ
+- **Lien Officiel Produit**: [Panel P-500 Panneau LED Studio Professionnel Bi-Color](https://www.gearshop.ma/product/4-panel-p-500-panneau-led-studio-professionnel-bi-color)
 
 #### K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)
 - **SKU**: `GEAR-2001-K-F-CONCEPT`
@@ -685,124 +685,124 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: MODEL: C504B UPC: 6971835483792 50mm T2.0 Nikon (Z Mount) Lentille Cinéma 50mm T2.0 pour Z Mount - Disponible au Maroc Découvrez la puissance de la lentille cinéma 7Artisans 50mm T2.0 , conçue spécifiquement pour les productions vidéo professionnelles exigeantes. GearShop, votre revendeur officiel au Maroc (basé à Casa
 - **Lien Officiel Produit**: [50mm T2.0 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1007-50mm-t2-0-nikon-z-mount-black)
 
-#### AF35mm F1.4 Fuji (FX Mount) - Black
-- **SKU**: `GEAR-1008-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans AF 35mm F1.4 Fuji X (APS-C) - Black
+- **SKU**: `GEAR-1008-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Autofocus (AF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Couverture Capteur / Sensor Coverage**: APS-C
+- **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.4
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 2.100 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: APS-C, Net Weight: 184g, Weight with box: 396g, Box size: 100*100*105mm
-- **Description**: MODEL: AF35F14B-FX UPC: 6971835487608 AF35mm F1.4 Fuji (FX Mount)
-- **Lien Officiel Produit**: [AF35mm F1.4 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1008-af35mm-f1-4-fuji-fx-mount-black)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (APS-C), Focale : 35mm (Équivalent 53mm en plein format), Ouverture maximale : f/1.4, Ouverture minimale : f/16, Autofocus : Moteur pas-à-pas STM rapide & silencieux (Eye-AF), Formule optique : Lentilles haute réfraction pour piqué optimal, Diaphragme : Circulaire pour un bokeh crémeux, Diamètre de filtre : 52 mm, Poids : Environ 240 g, Garantie : 1 an SAV officiel GearShop Maroc
+- **Description**: L'objectif 7Artisans AF 35mm F1.4 pour boîtiers hybrides Fujifilm X-Mount est une focale fixe ultra-lumineuse équivalente à un 53mm plein format. Doté d'une très grande ouverture f/1.4 idéale en basse lumière et pour créer un superbe flou d'arrière-plan (bokeh), cet objectif intègre un moteur autofocus pas-à-pas STM ra
+- **Lien Officiel Produit**: [7Artisans AF 35mm F1.4 Fuji X (APS-C) - Black](https://www.gearshop.ma/product/1008-7artisans-af-35mm-f1-4-fuji-x-aps-c-black)
 
-#### AF35mm F1.8 Sony (E Mount) APS-C - Black
-- **SKU**: `GEAR-1009-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans AF 35mm F1.8 Sony E (APS-C) - Black
+- **SKU**: `GEAR-1009-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: APS-C
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 2.300 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
-- **Description**: MODEL: AF35F18B-E APS-C UPC: 6971835489091 AF35mm F1.8 Sony (E Mount) APS-C
-- **Lien Officiel Produit**: [AF35mm F1.8 Sony (E Mount) APS-C - Black](https://www.gearshop.ma/product/1009-af35mm-f1-8-sony-e-mount-aps-c-black)
+- **Spécifications Clés**: Monture : Sony E (APS-C), Focale : 35mm (Équivalent 52.5mm plein format), Ouverture maximale : f/1.8, Ouverture minimale : f/16, Mise au point : Autofocus STM rapide & silencieux (Eye-AF), Construction optique : 10 éléments en 8 groupes, Diaphragme : 9 lamelles circulaires, Distance min. de mise au point : 0.6 m, Diamètre de filtre : 52 mm, Poids : 181 g, Garantie : 1 an officiel GearShop Maroc
+- **Description**: L'objectif 7Artisans AF 35mm F1.8 pour Sony E-Mount est une focale fixe ultra-compacte et lumineuse conçue spécifiquement pour les boîtiers hybrides APS-C Sony (A6700, A6400, ZV-E10). Avec son ouverture rapide f/1.8, son moteur autofocus STM fluide et silencieux compatible Eye-AF, et son poids plume de 181g, c'est l'op
+- **Lien Officiel Produit**: [7Artisans AF 35mm F1.8 Sony E (APS-C) - Black](https://www.gearshop.ma/product/1009-7artisans-af-35mm-f1-8-sony-e-aps-c-black)
 
-#### AF35mm F1.8 Fuji (FX Mount) APS-C - Black
-- **SKU**: `GEAR-1010-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans AF 35mm F1.8 Fuji X (APS-C) - Black
+- **SKU**: `GEAR-1010-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: APS-C
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 2.300 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
-- **Description**: MODEL: AF35F18B-X APS-C UPC: 6971835489152 AF35mm F1.8 Fuji (FX Mount) APS-C
-- **Lien Officiel Produit**: [AF35mm F1.8 Fuji (FX Mount) APS-C - Black](https://www.gearshop.ma/product/1010-af35mm-f1-8-fuji-fx-mount-aps-c-black)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (APS-C), Focale : 35mm (Équivalent 53mm), Ouverture maximale : f/1.8, Ouverture minimale : f/16, Autofocus : Moteur STM silencieux compatible suivi AF Fuji, Construction optique : 10 éléments en 8 groupes, Poids : Ultra-léger 181 g, Diamètre de filtre : 52 mm, Garantie : 1 an officiel GearShop Maroc
+- **Description**: L'objectif 7Artisans AF 35mm F1.8 pour Fujifilm X-Mount offre un équilibre parfait entre compacité, légèreté et netteté optique. Avec son ouverture rapide f/1.8 et sa motorisation autofocus STM fluide, il constitue une optique de choix au quotidien pour les utilisateurs d'hybrides Fuji (X-T5, X-T4, X-S20, X-T30). Idéal
+- **Lien Officiel Produit**: [7Artisans AF 35mm F1.8 Fuji X (APS-C) - Black](https://www.gearshop.ma/product/1010-7artisans-af-35mm-f1-8-fuji-x-aps-c-black)
 
-#### AF35mm F1.8 Nikon (Z Mount) APS-C - Black
-- **SKU**: `GEAR-1011-NIKON`
-- **Marque / Brand**: Nikon
+#### 7Artisans AF 35mm F1.8 Nikon Z (APS-C) - Black
+- **SKU**: `GEAR-1011-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Nikon Z
 - **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: APS-C
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 2.300 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: APS-C, Net Weight: 181g, Weight with box: 318g, Box size: 100*100*90mm
-- **Description**: MODEL: AF35F18B-Z APS-C UPC: 6971835489411 AF35mm F1.8 Nikon (Z Mount) APS-C
-- **Lien Officiel Produit**: [AF35mm F1.8 Nikon (Z Mount) APS-C - Black](https://www.gearshop.ma/product/1011-af35mm-f1-8-nikon-z-mount-aps-c-black)
+- **Spécifications Clés**: Monture : Nikon Z-Mount (Format DX / APS-C), Focale : 35mm (Équivalent 52.5mm), Ouverture : f/1.8 - f/16, Autofocus : Motorisation STM réactive & silencieuse, Poids : 185 g, Diamètre de filtre : 52 mm, Garantie : 1 an SAV officiel GearShop Maroc
+- **Description**: L'objectif 7Artisans AF 35mm F1.8 pour Nikon Z-Mount est optimisé pour les hybrides APS-C Nikon DX (Nikon Zfc, Z50, Z30) ainsi que pour les boîtiers Z plein format en mode recadrage. Sa grande ouverture f/1.8 permet de photographier facilement en faible luminosité tout en isolant nettement le sujet. Autofocus STM rapid
+- **Lien Officiel Produit**: [7Artisans AF 35mm F1.8 Nikon Z (APS-C) - Black](https://www.gearshop.ma/product/1011-7artisans-af-35mm-f1-8-nikon-z-aps-c-black)
 
-#### AF50mm F1.8 Sony (E Mount) APS-C - Black
-- **SKU**: `GEAR-1012-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans AF 50mm F1.8 Sony E (APS-C) - Black
+- **SKU**: `GEAR-1012-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: APS-C
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 2.300 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
-- **Description**: MODEL: AF50F18B-E APS-C UPC: 6971835489107 AF50mm F1.8 Sony (E Mount) APS-C
-- **Lien Officiel Produit**: [AF50mm F1.8 Sony (E Mount) APS-C - Black](https://www.gearshop.ma/product/1012-af50mm-f1-8-sony-e-mount-aps-c-black)
+- **Spécifications Clés**: Monture : Sony E-Mount (APS-C), Focale : 50mm (Équivalent 75mm en plein format), Ouverture maximale : f/1.8, Ouverture minimale : f/16, Autofocus : Moteur STM avec détection oculaire Sony Eye-AF, Diaphragme : 9 lamelles circulaires pour un bokeh velouté, Diamètre de filtre : 52 mm, Poids : 185 g, Garantie : 1 an SAV local GearShop Maroc
+- **Description**: Le 7Artisans AF 50mm F1.8 pour Sony E-Mount est l'objectif à portrait par excellence pour les hybrides APS-C Sony (Sony A6700, A6400, A6000, ZV-E10). Offrant un cadrage serré équivalent à 75mm en plein format, il isole magnifiquement vos sujets avec un flou d'arrière-plan doux et progressif. Son autofocus STM précis s'
+- **Lien Officiel Produit**: [7Artisans AF 50mm F1.8 Sony E (APS-C) - Black](https://www.gearshop.ma/product/1012-7artisans-af-50mm-f1-8-sony-e-aps-c-black)
 
-#### AF50mm F1.8 Fuji (FX Mount) APS-C - Black
-- **SKU**: `GEAR-1013-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans AF 50mm F1.8 Fuji X (APS-C) - Black
+- **SKU**: `GEAR-1013-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: APS-C
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 2.300 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
-- **Description**: MODEL: AF50F18B-X APS-C UPC: 6971835489183 AF50mm F1.8 Fuji (FX Mount) APS-C
-- **Lien Officiel Produit**: [AF50mm F1.8 Fuji (FX Mount) APS-C - Black](https://www.gearshop.ma/product/1013-af50mm-f1-8-fuji-fx-mount-aps-c-black)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (APS-C), Focale : 50mm (Équivalent 75mm), Ouverture : f/1.8 à f/16, Autofocus : Moteur pas-à-pas STM rapide, Poids : 185 g, Diamètre de filtre : 52 mm, Garantie : 1 an officiel GearShop Maroc
+- **Description**: L'objectif 7Artisans AF 50mm F1.8 pour Fujifilm X est une focale fixe portrait délivrant un cadrage téléobjectif court de 75mm. Parfait pour les portraits, la photo de détail et les plans serrés en vidéo. Son autofocus STM garantit des transitions douces et silencieuses, adaptées à la vidéo comme à la photographie. En 
+- **Lien Officiel Produit**: [7Artisans AF 50mm F1.8 Fuji X (APS-C) - Black](https://www.gearshop.ma/product/1013-7artisans-af-50mm-f1-8-fuji-x-aps-c-black)
 
-#### AF50mm F1.8 Nikon (Z Mount) APS-C - Black
-- **SKU**: `GEAR-1014-NIKON`
-- **Marque / Brand**: Nikon
+#### 7Artisans AF 50mm F1.8 Nikon Z (APS-C) - Black
+- **SKU**: `GEAR-1014-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Nikon Z
 - **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: APS-C
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 2.300 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: APS-C, Net Weight: 178g, Weight with box: 315g, Box size: 100*100*90mm
-- **Description**: MODEL: AF50F18B-Z APS-C UPC: 6971835489428 AF50mm F1.8 Nikon (Z Mount) APS-C
-- **Lien Officiel Produit**: [AF50mm F1.8 Nikon (Z Mount) APS-C - Black](https://www.gearshop.ma/product/1014-af50mm-f1-8-nikon-z-mount-aps-c-black)
+- **Spécifications Clés**: Monture : Nikon Z-Mount (APS-C / DX), Focale : 50mm (Équivalent 75mm), Ouverture : f/1.8 - f/16, Autofocus : Moteur STM rapide et silencieux, Poids : 188 g, Diamètre de filtre : 52 mm, Garantie : 1 an SAV officiel GearShop Maroc
+- **Description**: Le 7Artisans AF 50mm F1.8 pour monture Nikon Z (DX) offre aux utilisateurs de Nikon Z50, Zfc et Z30 un objectif à portrait lumineux et abordable. Équivalent à un 75mm plein format, il produit des portraits nets avec un superbe détachement de plan. Compatible Eye-AF Nikon. Disponible chez GearShop avec garantie 1 an.
+- **Lien Officiel Produit**: [7Artisans AF 50mm F1.8 Nikon Z (APS-C) - Black](https://www.gearshop.ma/product/1014-7artisans-af-50mm-f1-8-nikon-z-aps-c-black)
 
 #### AF24mm F1.8 Sony (E Mount) - Black
 - **SKU**: `GEAR-1015-SONY`
@@ -906,22 +906,22 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: MODEL: AF35F18B-L UPC: 6971835488773 AF35mm F1.8 Panasonic/Leica/Sigma (L Mount)
 - **Lien Officiel Produit**: [AF35mm F1.8 Panasonic/Leica/Sigma (L Mount) - Black](https://www.gearshop.ma/product/1020-af35mm-f1-8-panasonic-leica-sigma-l-mount-black)
 
-#### AF40mm F2.5 Sony (E Mount) - Black
-- **SKU**: `GEAR-1021-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans AF 40mm F2.5 Sony E (Full Frame / APS-C) - Black
+- **SKU**: `GEAR-1021-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Autofocus (AF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
-- **Focale / Focal Length**: Focale variable / Fixe
+- **Couverture Capteur / Sensor Coverage**: APS-C
+- **Focale / Focal Length**: 40mm
 - **Ouverture Maximale / Max Aperture**: f/2.5
 - **État / Condition**: Neuf sous emballage d'origine (New)
 - **Prix Officiel / Price**: 1.999 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Clicked, Full Frame, Net Weight: 97g, Weight with box: 228g, Box size: 100*100*90mm
-- **Description**: MODEL: AF40F25B-E UPC: 6971835489213 AF40mm F2.5 Sony (E Mount)
-- **Lien Officiel Produit**: [AF40mm F2.5 Sony (E Mount) - Black](https://www.gearshop.ma/product/1021-af40mm-f2-5-sony-e-mount-black)
+- **Spécifications Clés**: Monture : Sony E-Mount (Plein Format Full Frame & APS-C), Focale : 40mm (Perspective humaine naturelle), Ouverture maximale : f/2.5, Ouverture minimale : f/16, Autofocus : STM fluide avec prise en charge du suivi autofocus Sony, Construction : Métal robuste ultra-compact, Diamètre de filtre : 52 mm, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: Le 7Artisans AF 40mm F2.5 pour Sony E-Mount est un objectif compact de type "pancake" couvrant les capteurs Plein Format (Sony A7 IV, A7 III, A7C, FX3) et APS-C. Sa focale naturelle de 40mm se situe entre le 35mm et le 50mm, offrant une perspective très proche de la vision humaine. Fabrication métallique haut de gamme 
+- **Lien Officiel Produit**: [7Artisans AF 40mm F2.5 Sony E (Full Frame / APS-C) - Black](https://www.gearshop.ma/product/1021-7artisans-af-40mm-f2-5-sony-e-full-frame-aps-c-black)
 
 #### AF50mm F1.8 Sony (E Mount) - Black
 - **SKU**: `GEAR-1022-SONY`
@@ -1093,12 +1093,12 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: MODEL: 35F14B-Z UPC: 6971835486236 35mm F1.4 Nikon (Z Mount) mark iii FF
 - **Lien Officiel Produit**: [35mm F1.4 Nikon (Z Mount) mark iii FF - Black](https://www.gearshop.ma/product/1031-35mm-f1-4-nikon-z-mount-mark-iii-ff-black)
 
-#### 50mm F1.2 Sony (E Mount) - Black
-- **SKU**: `GEAR-1032-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans 50mm F1.2 Sony E (APS-C) - Black
+- **SKU**: `GEAR-1032-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.2
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1106,16 +1106,16 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
-- **Description**: MODEL: 50F12B-E UPC: 6971835488933 50mm F1.2 Sony (E Mount)
-- **Lien Officiel Produit**: [50mm F1.2 Sony (E Mount) - Black](https://www.gearshop.ma/product/1032-50mm-f1-2-sony-e-mount-black)
+- **Spécifications Clés**: Monture : Sony E-Mount (APS-C), Focale : 50mm (Équivalent 75mm), Ouverture maximale : f/1.2 ultra-lumineuse, Ouverture minimale : f/16, Mise au point : Manuelle fluide longue course, Diaphragme : 10 lamelles pour des cercles de bokeh parfaits, Diamètre de filtre : 52 mm, Poids : 336 g en aluminium anodisé, Garantie : 1 an officiel GearShop Maroc
+- **Description**: L'objectif manuel 7Artisans 50mm F1.2 pour Sony E-Mount est réputé pour son ouverture titanesque f/1.2 produisant un bokeh spectaculaire et une immersion cinématographique unique. Entièrement mécanique avec bague d'ouverture continue et bague de mise au point fluide en métal, il est prisé des photographes de portrait e
+- **Lien Officiel Produit**: [7Artisans 50mm F1.2 Sony E (APS-C) - Black](https://www.gearshop.ma/product/1032-7artisans-50mm-f1-2-sony-e-aps-c-black)
 
-#### 50mm F1.2 Fuji (FX Mount) - Black
-- **SKU**: `GEAR-1033-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans 50mm F1.2 Fuji X (APS-C) - Black
+- **SKU**: `GEAR-1033-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.2
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1123,13 +1123,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
-- **Description**: MODEL: 50F12B-X UPC: 6971835488940 50mm F1.2 Fuji (FX Mount)
-- **Lien Officiel Produit**: [50mm F1.2 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1033-50mm-f1-2-fuji-fx-mount-black)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (APS-C), Focale : 50mm (Équivalent 75mm), Ouverture maximale : f/1.2, Mise au point : Manuelle mécanique précise, Diaphragme : 10 lamelles, Diamètre de filtre : 52 mm, Garantie : 1 an GearShop Maroc
+- **Description**: L'objectif 7Artisans 50mm F1.2 pour Fujifilm X-Mount offre aux passionnés de photographie argentique et créative une ouverture record f/1.2. Idéal pour sublimer les simulations de film Fujifilm avec des arrière-plans veloutés et des portraits saisissants en lumière tamisée. Corps tout en métal usiné de précision. Dispo
+- **Lien Officiel Produit**: [7Artisans 50mm F1.2 Fuji X (APS-C) - Black](https://www.gearshop.ma/product/1033-7artisans-50mm-f1-2-fuji-x-aps-c-black)
 
-#### 50mm F1.2 M43 (Panasonic Olympus) - Black
-- **SKU**: `GEAR-1034-PANASONIC-LUMIX`
-- **Marque / Brand**: Panasonic Lumix
+#### 7Artisans 50mm F1.2 Micro 4/3 (Panasonic / OM System) - Black
+- **SKU**: `GEAR-1034-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: L-Mount
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Micro 4/3
@@ -1140,16 +1140,16 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
-- **Description**: MODEL: 50F12B-M UPC: 6971835488957 50mm F1.2 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [50mm F1.2 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1034-50mm-f1-2-m43-panasonic-olympus-black)
+- **Spécifications Clés**: Monture : Micro 4/3 (MFT / M43 Panasonic & OM System), Focale : 50mm (Équivalent 100mm plein format), Ouverture maximale : f/1.2, Mise au point : Manuelle douce et progressive, Diamètre de filtre : 52 mm, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: Le 7Artisans 50mm F1.2 en monture Micro Four Thirds (M43) transforme votre hybride Panasonic Lumix (GH5, GH6, G9) ou Olympus en une bête de portrait équivalente à 100mm. Sa très grande ouverture f/1.2 compense la taille du capteur pour offrir une profondeur de champ restreinte et une luminosité abondante en basse lumiè
+- **Lien Officiel Produit**: [7Artisans 50mm F1.2 Micro 4/3 (Panasonic / OM System) - Black](https://www.gearshop.ma/product/1034-7artisans-50mm-f1-2-micro-4-3-panasonic-om-system-black)
 
-#### 50mm F1.2 Nikon (Z Mount) - Black
-- **SKU**: `GEAR-1035-NIKON`
-- **Marque / Brand**: Nikon
+#### 7Artisans 50mm F1.2 Nikon Z (APS-C / DX) - Black
+- **SKU**: `GEAR-1035-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Nikon Z
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.2
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1157,16 +1157,16 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Clicked, APS-C, Net Weight: 410g, Weight with box: 550g, Box size: 100*100*110mm
-- **Description**: MODEL: 50F12B-Z UPC: 6971835488964 50mm F1.2 Nikon (Z Mount)
-- **Lien Officiel Produit**: [50mm F1.2 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1035-50mm-f1-2-nikon-z-mount-black)
+- **Spécifications Clés**: Monture : Nikon Z-Mount (DX / APS-C), Focale : 50mm (Équivalent 75mm), Ouverture maximale : f/1.2 ultra-rapide, Mise au point : Manuelle mécanique de précision, Diamètre de filtre : 52 mm, Garantie : 1 an SAV officiel GearShop Maroc
+- **Description**: L'objectif manuel 7Artisans 50mm F1.2 pour Nikon Z-Mount apporte l'art du bokeh f/1.2 aux boîtiers Nikon Zfc, Z50 et Z30. Fabrication artisanale tout en métal, bague de mise au point à rotation douce et formule optique traitée multicouche pour un contraste éclatant. Disponible chez GearShop avec livraison partout au Ma
+- **Lien Officiel Produit**: [7Artisans 50mm F1.2 Nikon Z (APS-C / DX) - Black](https://www.gearshop.ma/product/1035-7artisans-50mm-f1-2-nikon-z-aps-c-dx-black)
 
-#### 50mm F1.8 Sony (E Mount) - Black
-- **SKU**: `GEAR-1036-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans 50mm F1.8 Sony E (APS-C) - Black
+- **SKU**: `GEAR-1036-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1174,16 +1174,16 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, APS-C, Net Weight: 168g, Weight with box: 365g, Box size: 100*100*68mm
-- **Description**: MODEL: A701B UPC: 6971835480203 50mm F1.8 Sony (E Mount)
-- **Lien Officiel Produit**: [50mm F1.8 Sony (E Mount) - Black](https://www.gearshop.ma/product/1036-50mm-f1-8-sony-e-mount-black)
+- **Spécifications Clés**: Monture : Sony E-Mount (APS-C), Focale : 50mm (Équivalent 75mm), Ouverture : f/1.8 - f/16, Mise au point : Manuelle, Diaphragme : 12 lamelles pour un bokeh très circulaire, Diamètre de filtre : 52 mm, Poids : 168 g, Garantie : 1 an GearShop Maroc
+- **Description**: Focale fixe manuelle compacte et abordable, le 7Artisans 50mm F1.8 pour Sony E-Mount est l'objectif d'initiation idéal au portrait et au flou créatif. Poids plume, corps métallique robuste et bague de diaphragme décliquée parfaite pour la vidéo. Disponible chez GearShop avec garantie 1 an.
+- **Lien Officiel Produit**: [7Artisans 50mm F1.8 Sony E (APS-C) - Black](https://www.gearshop.ma/product/1036-7artisans-50mm-f1-8-sony-e-aps-c-black)
 
-#### 50mm F1.8 Fuji (FX Mount) - Black
-- **SKU**: `GEAR-1037-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans 50mm F1.8 Fuji X (APS-C) - Black
+- **SKU**: `GEAR-1037-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1191,16 +1191,16 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, APS-C, Net Weight: 168g, Weight with box: 365g, Box size: 100*100*68mm
-- **Description**: MODEL: A703B UPC: 6971835480210 50mm F1.8 Fuji (FX Mount)
-- **Lien Officiel Produit**: [50mm F1.8 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1037-50mm-f1-8-fuji-fx-mount-black)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (APS-C), Focale : 50mm (Équivalent 75mm), Ouverture : f/1.8 - f/16, Diaphragme : 12 lamelles arrondies, Poids : 168 g, Diamètre de filtre : 52 mm, Garantie : 1 an GearShop Maroc
+- **Description**: Le 7Artisans 50mm F1.8 pour boîtiers hybrides Fujifilm X-Mount combine une grande ouverture f/1.8 et un diaphragme à 12 lamelles pour un rendu doux et artistique des portraits. Conçu en aluminium aviation, il se glisse dans n'importe quel sac de reportage. Disponible chez GearShop Casablanca.
+- **Lien Officiel Produit**: [7Artisans 50mm F1.8 Fuji X (APS-C) - Black](https://www.gearshop.ma/product/1037-7artisans-50mm-f1-8-fuji-x-aps-c-black)
 
-#### 35mm/F1.4 Sony (E Mount) - Black
-- **SKU**: `GEAR-1038-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans 35mm F1.4 Sony E (APS-C) - Black
+- **SKU**: `GEAR-1038-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.4
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1208,16 +1208,16 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
-- **Description**: MODEL: A010B-E UPC: 6971835482191 35mm/F1.4 Sony (E Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Sony (E Mount) - Black](https://www.gearshop.ma/product/1038-35mm-f1-4-sony-e-mount-black)
+- **Spécifications Clés**: Monture : Sony E-Mount (APS-C), Focale : 35mm (Équivalent standard 52mm), Ouverture : f/1.4 - f/16, Mise au point : Manuelle mécanique avec échelle de profondeur de champ, Construction : 8 éléments en 5 groupes, Diamètre de filtre : 46 mm, Poids : 228 g, Garantie : 1 an GearShop Maroc
+- **Description**: Le 7Artisans 35mm F1.4 Mark II pour Sony E-Mount est une focale fixe manuelle de référence pour la street-photography et le reportage au Maroc. Équivalent à un 52mm plein format, il délivre des images piquées avec une belle transition vers le flou d'arrière-plan grâce à son ouverture f/1.4. Châssis métallique compact. 
+- **Lien Officiel Produit**: [7Artisans 35mm F1.4 Sony E (APS-C) - Black](https://www.gearshop.ma/product/1038-7artisans-35mm-f1-4-sony-e-aps-c-black)
 
-#### 35mm/F1.4 Fuji (FX Mount) - Black
-- **SKU**: `GEAR-1039-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans 35mm F1.4 Fuji X (APS-C) - Black
+- **SKU**: `GEAR-1039-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Type de mise au point / Focus**: Autofocus (AF)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.4
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1225,13 +1225,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
-- **Description**: MODEL: A010B-X UPC: 6971835482221 35mm/F1.4 Fuji (FX Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1039-35mm-f1-4-fuji-fx-mount-black)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (APS-C), Focale : 35mm (Équivalent 53mm), Ouverture maximale : f/1.4, Mise au point : Manuelle, Diamètre de filtre : 46 mm, Poids : 228 g, Garantie : 1 an GearShop Casablanca
+- **Description**: L'objectif manuel 7Artisans 35mm F1.4 pour Fujifilm X-Mount offre la focale universelle par excellence (équivalent 53mm). Son ouverture f/1.4 permet de capturer la lumière disponible dans les ruelles et les intérieurs sombres au Maroc sans bruit numérique. Finition noire métallique raffinée. Garantie 1 an GearShop.
+- **Lien Officiel Produit**: [7Artisans 35mm F1.4 Fuji X (APS-C) - Black](https://www.gearshop.ma/product/1039-7artisans-35mm-f1-4-fuji-x-aps-c-black)
 
-#### 35mm/F1.4 M43 (Panasonic Olympus) - Black
-- **SKU**: `GEAR-1040-PANASONIC-LUMIX`
-- **Marque / Brand**: Panasonic Lumix
+#### 7Artisans 35mm F1.4 Micro 4/3 (Panasonic / OM System) - Black
+- **SKU**: `GEAR-1040-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: L-Mount
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Micro 4/3
@@ -1242,16 +1242,16 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
-- **Description**: MODEL: A010B-M UPC: 6971835482214 35mm/F1.4 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [35mm/F1.4 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1040-35mm-f1-4-m43-panasonic-olympus-black)
+- **Spécifications Clés**: Monture : Micro 4/3 (M43), Focale : 35mm (Équivalent 70mm), Ouverture : f/1.4 - f/16, Mise au point : Manuelle, Diamètre de filtre : 46 mm, Garantie : 1 an GearShop Maroc
+- **Description**: Le 7Artisans 35mm F1.4 en monture Micro 4/3 équivaut à un 70mm court, parfait pour le portrait naturel et le reportage vidéo sur Panasonic Lumix GH5/GH6 et boîtiers Olympus. Grande ouverture f/1.4 et bague manuelle souple. Disponible chez GearShop avec livraison rapide au Maroc.
+- **Lien Officiel Produit**: [7Artisans 35mm F1.4 Micro 4/3 (Panasonic / OM System) - Black](https://www.gearshop.ma/product/1040-7artisans-35mm-f1-4-micro-4-3-panasonic-om-system-black)
 
-#### 35mm/F1.4 Nikon (Z Mount) - Black
-- **SKU**: `GEAR-1041-NIKON`
-- **Marque / Brand**: Nikon
+#### 7Artisans 35mm F1.4 Nikon Z (APS-C / DX) - Black
+- **SKU**: `GEAR-1041-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Nikon Z
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Couverture Capteur / Sensor Coverage**: APS-C
 - **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.4
 - **État / Condition**: Neuf sous emballage d'origine (New)
@@ -1259,13 +1259,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
-- **Description**: MODEL: A010B-Z UPC: 6971835482207 35mm/F1.4 Nikon (Z Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Nikon (Z Mount) - Black](https://www.gearshop.ma/product/1041-35mm-f1-4-nikon-z-mount-black)
+- **Spécifications Clés**: Monture : Nikon Z-Mount (DX / APS-C), Focale : 35mm (Équivalent 52mm), Ouverture : f/1.4 - f/16, Mise au point : Manuelle de précision, Diamètre de filtre : 46 mm, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: Le 7Artisans 35mm F1.4 pour monture Nikon Z (DX) s'associe à merveille avec les Nikon Zfc et Z50 grâce à son design rétro tout en métal. Ouverture f/1.4 lumineuse, mise au point précise au millimètre et rendu d'image organique. Disponible chez GearShop Maroc.
+- **Lien Officiel Produit**: [7Artisans 35mm F1.4 Nikon Z (APS-C / DX) - Black](https://www.gearshop.ma/product/1041-7artisans-35mm-f1-4-nikon-z-aps-c-dx-black)
 
-#### 35mm/F1.4 Canon (EOS-R Mount) - Black
-- **SKU**: `GEAR-1042-CANON`
-- **Marque / Brand**: Canon
+#### 7Artisans 35mm F1.4 Canon RF (EOS-R Mount) - Black
+- **SKU**: `GEAR-1042-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Canon RF
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1276,13 +1276,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, APS-C, Net Weight: 228g, Weight with box: 328g, Box size: 100*100*68mm
-- **Description**: MODEL: A010B-R UPC: 6971835484188 35mm/F1.4 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [35mm/F1.4 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1042-35mm-f1-4-canon-eos-r-mount-black)
+- **Spécifications Clés**: Monture : Canon RF (EOS-R), Focale : 35mm, Ouverture : f/1.4 - f/16, Mise au point : Manuelle mécanique, Diamètre de filtre : 46 mm, Garantie : 1 an GearShop Maroc
+- **Description**: L'objectif 7Artisans 35mm F1.4 pour monture Canon RF est conçu pour les hybrides Canon EOS R (R50, R10, R7, R8, R6). Focale standard polyvalente et très lumineuse avec son ouverture f/1.4 pour des créations photographiques et vidéo expressives. Disponible chez GearShop.
+- **Lien Officiel Produit**: [7Artisans 35mm F1.4 Canon RF (EOS-R Mount) - Black](https://www.gearshop.ma/product/1042-7artisans-35mm-f1-4-canon-rf-eos-r-mount-black)
 
-#### Autofocus adapter for Canon EF - Nikon Z - Black
-- **SKU**: `GEAR-1043-CANON`
-- **Marque / Brand**: Canon
+#### Bague d'Adaptation Autofocus 7Artisans EF-NZ (Canon EF vers Nikon Z)
+- **SKU**: `GEAR-1043-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Nikon Z
 - **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1293,13 +1293,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: MODEL: EF-Z UPC: 6971835484324 Autofocus adapter for Canon EF - Nikon Z
-- **Lien Officiel Produit**: [Autofocus adapter for Canon EF - Nikon Z - Black](https://www.gearshop.ma/product/1043-autofocus-adapter-for-canon-ef-nikon-z-black)
+- **Spécifications Clés**: Monture objectif : Canon EF / EF-S, Monture boîtier : Nikon Z (Plein Format & DX), Fonctionnalités : Autofocus haute vitesse, Eye-AF, Stabilisation IS/VR, Transmission : Données EXIF complètes transmises au boîtier, Mise à jour : Port USB-C intégré pour mise à jour du micrologiciel, Construction : Métal en alliage d'aluminium avec baïonnettes en laiton, Garantie : 1 an SAV officiel GearShop Maroc
+- **Description**: La bague d'adaptation intelligente 7Artisans EF-NZ permet de monter tous vos objectifs reflex Canon EF et EF-S sur les boîtiers hybrides Nikon Z (Z9, Z8, Z6, Z7, Z5, Z50, Zfc) avec conservation intégrale de l'autofocus, du suivi des yeux (Eye-AF), de la stabilisation d'image IS/VR et de la transmission des données EXIF
+- **Lien Officiel Produit**: [Bague d'Adaptation Autofocus 7Artisans EF-NZ (Canon EF vers Nikon Z)](https://www.gearshop.ma/product/1043-bague-d-adaptation-autofocus-7artisans-ef-nz-canon-ef-vers-nikon-z)
 
-#### 10mm T2.1 Sony (E Mount) - Black
-- **SKU**: `GEAR-1044-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans Vision 10mm T2.1 Cinéma Sony E (Black)
+- **SKU**: `GEAR-1044-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1310,13 +1310,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21B-E UPC: 6971835485598 10mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Sony (E Mount) - Black](https://www.gearshop.ma/product/1044-10mm-t2-1-sony-e-mount-black)
+- **Spécifications Clés**: Monture : Sony E-Mount (Format APS-C / Super35), Focale : 10mm Ultra Grand-Angle Cinéma, Ouverture : T2.1 - T22 continue et décliquée, Bagues crantées : Standardisées 0.8 MOD pour Follow Focus, Course de mise au point : 270° de rotation ultra-précise, Diamètre frontal : 82 mm standard cinéma, Construction : Entièrement métallique pour production cinéma, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: L'objectif cinéma 7Artisans Vision 10mm T2.1 pour Sony E-Mount est une optique ultra grand-angle cinématographique d'exception. Doté de bagues crantées standardisées 0.8 MOD pour follow-focus et contrôle d'ouverture fluide, d'une rotation de focus longue à 270 degrés pour des tirages précis, et d'une distorsion remarqu
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Sony E (Black)](https://www.gearshop.ma/product/1044-7artisans-vision-10mm-t2-1-cinema-sony-e-black)
 
-#### 10mm T2.1 Fuji (FX Mount) - Black
-- **SKU**: `GEAR-1045-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans Vision 10mm T2.1 Cinéma Fuji X (Black)
+- **SKU**: `GEAR-1045-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1327,13 +1327,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21B-X UPC: 6971835485574 10mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1045-10mm-t2-1-fuji-fx-mount-black)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (Super35 / APS-C), Focale : 10mm Ultra-Wide Ciné, Ouverture : T2.1 - T22 dé-cliquée, Engrenage : 0.8 MOD cine-standard, Course focus : 270 degrés, Diamètre frontal : 82 mm, Garantie : 1 an officiel GearShop Maroc
+- **Description**: L'objectif cinéma 7Artisans Vision 10mm T2.1 pour Fujifilm X-Mount offre un champ de vision ultra-large immersif pour les cinéastes et vidéastes indépendants. Bagues d'engrenage 0.8 MOD, faible respiration de focus (focus breathing maîtrisé) et rendu d'image cinématographique chaud et naturel. Disponible chez GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Fuji X (Black)](https://www.gearshop.ma/product/1045-7artisans-vision-10mm-t2-1-cinema-fuji-x-black)
 
-#### 10mm T2.1 M43 (Panasonic Olympus) - Black
-- **SKU**: `GEAR-1046-PANASONIC-LUMIX`
-- **Marque / Brand**: Panasonic Lumix
+#### 7Artisans Vision 10mm T2.1 Cinéma Micro 4/3 (Black)
+- **SKU**: `GEAR-1046-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: L-Mount
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Micro 4/3
@@ -1344,13 +1344,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21B-M UPC: 6971835485536 10mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [10mm T2.1 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1046-10mm-t2-1-m43-panasonic-olympus-black)
+- **Spécifications Clés**: Monture : Micro 4/3 (M43 / BMPCC 4K), Focale : 10mm (Équivalent 20mm plein format), Ouverture : T2.1 continue, Bagues : 0.8 MOD pour moteur de suivi de point, Course : 270°, Diamètre frontal : 82 mm, Garantie : 1 an GearShop Casablanca
+- **Description**: Conçu pour les caméras cinéma Micro 4/3 (Blackmagic Pocket Cinema Camera 4K, Panasonic GH6/GH5s), le 7Artisans Vision 10mm T2.1 offre un angle de vue équivalent à 20mm plein format sans distorsion optique marquée. Contrôle mécanique parfait pour les tournages en équipe ou au stabilisateur. Garanti 1 an GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Micro 4/3 (Black)](https://www.gearshop.ma/product/1046-7artisans-vision-10mm-t2-1-cinema-micro-4-3-black)
 
-#### 10mm T2.1 Canon (EOS-R Mount) - Black
-- **SKU**: `GEAR-1047-CANON`
-- **Marque / Brand**: Canon
+#### 7Artisans Vision 10mm T2.1 Cinéma Canon RF (Black)
+- **SKU**: `GEAR-1047-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Canon RF
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1361,15 +1361,15 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21B-R UPC: 6971835485550 10mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1047-10mm-t2-1-canon-eos-r-mount-black)
+- **Spécifications Clés**: Monture : Canon RF (Format Super35 / APS-C), Focale : 10mm, Ouverture : T2.1 - T22, Bagues cinéma : 0.8 MOD standardisées, Diamètre frontal : 82 mm, Garantie : 1 an GearShop Maroc
+- **Description**: Le 7Artisans Vision 10mm T2.1 Cinéma pour monture Canon RF (Canon C70, EOS R7, R50) apporte une optique cinéma grand-angle haute précision aux caméras EOS Cinema Line. Corps métallique robuste, bagues calibrées 0.8 MOD et grande luminosité T2.1. Disponible chez GearShop avec livraison partout au Maroc.
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Canon RF (Black)](https://www.gearshop.ma/product/1047-7artisans-vision-10mm-t2-1-cinema-canon-rf-black)
 
-#### 10mm T2.1 Sony (E Mount) - Titanium Gray
-- **SKU**: `GEAR-1048-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans Vision 10mm T2.1 Cinéma Sony E (Titanium Gray)
+- **SKU**: `GEAR-1048-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Type de mise au point / Focus**: Autofocus (AF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
 - **Focale / Focal Length**: 10mm
 - **Ouverture Maximale / Max Aperture**: f/2.1
@@ -1378,13 +1378,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21TG-E UPC: 6971835485604 10mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Sony (E Mount) - Titanium Gray](https://www.gearshop.ma/product/1048-10mm-t2-1-sony-e-mount-titanium-gray)
+- **Spécifications Clés**: Monture : Sony E-Mount (Super35 / APS-C), Finition : Édition Titanium Gray métal brossé, Focale : 10mm Ultra-Wide Cinéma, Ouverture : T2.1 - T22 continue, Course focus : 270° fluide, Engrenage : 0.8 MOD, Garantie : 1 an GearShop Casablanca
+- **Description**: Version Titanium Gray de l'objectif cinéma 7Artisans Vision 10mm T2.1 pour Sony E-Mount. Alliant esthétique raffinée gris titane et performances optiques professionnelles, c'est l'outil de prédilection des réalisateurs pour les prises de vue en caméra subjective, drone lourd et décors majestueux au Maroc. Garanti 1 an 
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Sony E (Titanium Gray)](https://www.gearshop.ma/product/1048-7artisans-vision-10mm-t2-1-cinema-sony-e-titanium-gray)
 
-#### 10mm T2.1 Fuji (FX Mount) - Titanium Gray
-- **SKU**: `GEAR-1049-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans Vision 10mm T2.1 Cinéma Fuji X (Titanium Gray)
+- **SKU**: `GEAR-1049-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1395,13 +1395,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21TG-X UPC: 6971835485581 10mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Fuji (FX Mount) - Titanium Gray](https://www.gearshop.ma/product/1049-10mm-t2-1-fuji-fx-mount-titanium-gray)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (Super35), Finition : Titanium Gray, Focale : 10mm Cinéma, Ouverture : T2.1, Bagues : 0.8 MOD, Garantie : 1 an GearShop Maroc
+- **Description**: Édition Titanium Gray du 7Artisans Vision 10mm T2.1 pour Fujifilm X-Mount. Optique cinéma ultra-large en finition titane avec un contrôle manuel d'une précision chirurgicale pour les vidéastes commerciaux et documentaristes au Maroc. Disponible chez GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Fuji X (Titanium Gray)](https://www.gearshop.ma/product/1049-7artisans-vision-10mm-t2-1-cinema-fuji-x-titanium-gray)
 
-#### 10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray
-- **SKU**: `GEAR-1050-PANASONIC-LUMIX`
-- **Marque / Brand**: Panasonic Lumix
+#### 7Artisans Vision 10mm T2.1 Cinéma Micro 4/3 (Titanium Gray)
+- **SKU**: `GEAR-1050-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: L-Mount
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Micro 4/3
@@ -1412,13 +1412,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21TG-M UPC: 6971835485543 10mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [10mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://www.gearshop.ma/product/1050-10mm-t2-1-m43-panasonic-olympus-titanium-gray)
+- **Spécifications Clés**: Monture : Micro 4/3 (M43), Finition : Titanium Gray, Focale : 10mm, Ouverture : T2.1, Garantie : 1 an GearShop Maroc
+- **Description**: Objectif cinéma ultra grand-angle 7Artisans Vision 10mm T2.1 en finition Titanium Gray pour caméras Micro 4/3 (BMPCC 4K, Panasonic). Look cinéma moderne, bagues synchronisées avec la gamme Vision et transmission lumineuse T2.1 constante. Disponible chez GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Micro 4/3 (Titanium Gray)](https://www.gearshop.ma/product/1050-7artisans-vision-10mm-t2-1-cinema-micro-4-3-titanium-gray)
 
-#### 10mm T2.1 Canon (EOS-R Mount) - Titanium Gray
-- **SKU**: `GEAR-1051-CANON`
-- **Marque / Brand**: Canon
+#### 7Artisans Vision 10mm T2.1 Cinéma Canon RF (Titanium Gray)
+- **SKU**: `GEAR-1051-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Canon RF
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1429,81 +1429,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 620g, Weight with box: 1020g, Box size: 190*140*117mm
-- **Description**: MODEL: 10T21TG-R UPC: 6971835485567 10mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [10mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://www.gearshop.ma/product/1051-10mm-t2-1-canon-eos-r-mount-titanium-gray)
+- **Spécifications Clés**: Monture : Canon RF, Finition : Titanium Gray, Focale : 10mm T2.1, Bagues : 0.8 MOD, Garantie : 1 an GearShop Maroc
+- **Description**: Le 7Artisans Vision 10mm T2.1 Titanium Gray en monture Canon RF offre une polyvalence cinéma inégalée sur les caméras Canon EOS C70 et hybrides RF. Résistance mécanique exemplaire et esthétique titane exclusive. Disponible chez GearShop Casablanca.
+- **Lien Officiel Produit**: [7Artisans Vision 10mm T2.1 Cinéma Canon RF (Titanium Gray)](https://www.gearshop.ma/product/1051-7artisans-vision-10mm-t2-1-cinema-canon-rf-titanium-gray)
 
-#### 16mm T2.1 Sony (E Mount) - Black
-- **SKU**: `GEAR-1052-SONY`
-- **Marque / Brand**: Sony
-- **Monture(s) / Mount(s)**: Sony E
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
-- **Focale / Focal Length**: 16mm
-- **Ouverture Maximale / Max Aperture**: f/2.1
-- **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
-- **Disponibilité / Availability**: En stock immédiat (InStock)
-- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
-- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21B-E UPC: 6971835485680 16mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Sony (E Mount) - Black](https://www.gearshop.ma/product/1052-16mm-t2-1-sony-e-mount-black)
-
-#### 16mm T2.1 Fuji (FX Mount) - Black
-- **SKU**: `GEAR-1053-FUJIFILM`
-- **Marque / Brand**: Fujifilm
-- **Monture(s) / Mount(s)**: Fujifilm X
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
-- **Focale / Focal Length**: 16mm
-- **Ouverture Maximale / Max Aperture**: f/2.1
-- **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
-- **Disponibilité / Availability**: En stock immédiat (InStock)
-- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
-- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21B-X UPC: 6971835485666 16mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Fuji (FX Mount) - Black](https://www.gearshop.ma/product/1053-16mm-t2-1-fuji-fx-mount-black)
-
-#### 16mm T2.1 M43 (Panasonic Olympus) - Black
-- **SKU**: `GEAR-1054-PANASONIC-LUMIX`
-- **Marque / Brand**: Panasonic Lumix
-- **Monture(s) / Mount(s)**: L-Mount
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Micro 4/3
-- **Focale / Focal Length**: 16mm
-- **Ouverture Maximale / Max Aperture**: f/2.1
-- **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
-- **Disponibilité / Availability**: En stock immédiat (InStock)
-- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
-- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21B-M UPC: 6971835485628 16mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [16mm T2.1 M43 (Panasonic Olympus) - Black](https://www.gearshop.ma/product/1054-16mm-t2-1-m43-panasonic-olympus-black)
-
-#### 16mm T2.1 Canon (EOS-R Mount) - Black
-- **SKU**: `GEAR-1055-CANON`
-- **Marque / Brand**: Canon
-- **Monture(s) / Mount(s)**: Canon RF
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
-- **Focale / Focal Length**: 16mm
-- **Ouverture Maximale / Max Aperture**: f/2.1
-- **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
-- **Disponibilité / Availability**: En stock immédiat (InStock)
-- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
-- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21B-R UPC: 6971835485642 16mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Canon (EOS-R Mount) - Black](https://www.gearshop.ma/product/1055-16mm-t2-1-canon-eos-r-mount-black)
-
-#### 16mm T2.1 Sony (E Mount) - Titanium Gray
-- **SKU**: `GEAR-1056-SONY`
-- **Marque / Brand**: Sony
+#### 7Artisans Vision 16mm T2.1 Cinéma Sony E (Black)
+- **SKU**: `GEAR-1052-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1514,13 +1446,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21TG-E UPC: 6971835485673 16mm T2.1 Sony (E Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Sony (E Mount) - Titanium Gray](https://www.gearshop.ma/product/1056-16mm-t2-1-sony-e-mount-titanium-gray)
+- **Spécifications Clés**: Monture : Sony E-Mount (Super35 / APS-C), Focale : 16mm Grand-Angle Cinéma (Équivalent 24mm), Ouverture : T2.1 - T22 continue sans clic, Bagues d'engrenage : Standard cinéma 0.8 MOD, Course de mise au point : 270 degrés, Diamètre frontal : 82 mm standard, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: L'objectif 7Artisans Vision 16mm T2.1 pour Sony E-Mount est une focale grand-angle cinéma équivalente à environ 24mm plein format. Parfait pour les plans d'ambiance, les scènes de dialogue dynamiques et les plans larges narratifs. Sa bague de mise au point à rotation fluide de 270° permet des tirages au millimètre sans
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Sony E (Black)](https://www.gearshop.ma/product/1052-7artisans-vision-16mm-t2-1-cinema-sony-e-black)
 
-#### 16mm T2.1 Fuji (FX Mount) - Titanium Gray
-- **SKU**: `GEAR-1057-FUJIFILM`
-- **Marque / Brand**: Fujifilm
+#### 7Artisans Vision 16mm T2.1 Cinéma Fuji X (Black)
+- **SKU**: `GEAR-1053-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Fujifilm X
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1531,13 +1463,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21TG-X UPC: 6971835485659 16mm T2.1 Fuji (FX Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Fuji (FX Mount) - Titanium Gray](https://www.gearshop.ma/product/1057-16mm-t2-1-fuji-fx-mount-titanium-gray)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount (Super35), Focale : 16mm Grand-Angle Ciné, Ouverture : T2.1 continue, Bagues cinéma : 0.8 MOD, Course focus : 270°, Garantie : 1 an GearShop Maroc
+- **Description**: Le 7Artisans Vision 16mm T2.1 Cinéma pour Fujifilm X-Mount sublime vos productions vidéo avec un piqué net au centre, des aberrations chromatiques contrôlées et un bokeh doux à pleine ouverture. Idéal pour les fictions, clips musicaux et documentaires au Maroc. Disponible chez GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Fuji X (Black)](https://www.gearshop.ma/product/1053-7artisans-vision-16mm-t2-1-cinema-fuji-x-black)
 
-#### 16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray
-- **SKU**: `GEAR-1058-PANASONIC-LUMIX`
-- **Marque / Brand**: Panasonic Lumix
+#### 7Artisans Vision 16mm T2.1 Cinéma Micro 4/3 (Black)
+- **SKU**: `GEAR-1054-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: L-Mount
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Micro 4/3
@@ -1548,13 +1480,13 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21TG-M UPC: 6971835485611 16mm T2.1 M43 (Panasonic Olympus)
-- **Lien Officiel Produit**: [16mm T2.1 M43 (Panasonic Olympus) - Titanium Gray](https://www.gearshop.ma/product/1058-16mm-t2-1-m43-panasonic-olympus-titanium-gray)
+- **Spécifications Clés**: Monture : Micro 4/3 (M43), Focale : 16mm (Équivalent 32mm), Ouverture : T2.1 - T22, Bagues : 0.8 MOD cine-standard, Garantie : 1 an GearShop Casablanca
+- **Description**: L'objectif cinéma 7Artisans Vision 16mm T2.1 en monture Micro 4/3 (équivalent 32mm standard) est l'un des objectifs les plus polyvalents pour les tournages documentaires et fictionnels sur Blackmagic BMPCC 4K et Panasonic GH6. Construction robuste tout métal, bagues 0.8 MOD. Garanti 1 an GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Micro 4/3 (Black)](https://www.gearshop.ma/product/1054-7artisans-vision-16mm-t2-1-cinema-micro-4-3-black)
 
-#### 16mm T2.1 Canon (EOS-R Mount) - Titanium Gray
-- **SKU**: `GEAR-1059-CANON`
-- **Marque / Brand**: Canon
+#### 7Artisans Vision 16mm T2.1 Cinéma Canon RF (Black)
+- **SKU**: `GEAR-1055-7ARTISANS`
+- **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Canon RF
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
@@ -1565,16 +1497,84 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: De-clicked, S35, Net Weight: 706g, Weight with box: 1100g, Box size: 190*140*117mm
-- **Description**: MODEL: 16T21TG-R UPC: 6971835485635 16mm T2.1 Canon (EOS-R Mount)
-- **Lien Officiel Produit**: [16mm T2.1 Canon (EOS-R Mount) - Titanium Gray](https://www.gearshop.ma/product/1059-16mm-t2-1-canon-eos-r-mount-titanium-gray)
+- **Spécifications Clés**: Monture : Canon RF, Focale : 16mm Cinéma, Ouverture : T2.1 - T22, Bagues : 0.8 MOD pour Follow Focus, Diamètre frontal : 82 mm, Garantie : 1 an GearShop Maroc
+- **Description**: Pour les utilisateurs de caméras Canon cinéma RF (Canon EOS C70, RED Komodo avec bague RF, Canon R7), le 7Artisans Vision 16mm T2.1 offre un rendu optique cinéma soigné avec un piqué uniforme et une manipulation professionnelle. Disponible chez GearShop Maroc.
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Canon RF (Black)](https://www.gearshop.ma/product/1055-7artisans-vision-16mm-t2-1-cinema-canon-rf-black)
+
+#### 7Artisans Vision 16mm T2.1 Cinéma Sony E (Titanium Gray)
+- **SKU**: `GEAR-1056-7ARTISANS`
+- **Marque / Brand**: 7Artisans
+- **Monture(s) / Mount(s)**: Sony E
+- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Focale / Focal Length**: 16mm
+- **Ouverture Maximale / Max Aperture**: f/2.1
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: Monture : Sony E-Mount (Super35), Finition : Titanium Gray exclusive, Focale : 16mm T2.1, Course focus : 270°, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: Édition Titanium Gray du 7Artisans Vision 16mm T2.1 pour Sony E-Mount. Finition luxueuse en aluminium brossé gris titane, performance optique de niveau cinéma et compatibilité parfaite avec les rigs professionnels. En stock chez GearShop avec livraison express.
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Sony E (Titanium Gray)](https://www.gearshop.ma/product/1056-7artisans-vision-16mm-t2-1-cinema-sony-e-titanium-gray)
+
+#### 7Artisans Vision 16mm T2.1 Cinéma Fuji X (Titanium Gray)
+- **SKU**: `GEAR-1057-7ARTISANS`
+- **Marque / Brand**: 7Artisans
+- **Monture(s) / Mount(s)**: Fujifilm X
+- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Focale / Focal Length**: 16mm
+- **Ouverture Maximale / Max Aperture**: f/2.1
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: Monture : Fujifilm X-Mount, Finition : Titanium Gray, Focale : 16mm, Ouverture : T2.1, Garantie : 1 an GearShop Maroc
+- **Description**: Version Titanium Gray du 7Artisans Vision 16mm T2.1 pour Fujifilm X. Un objectif grand-angle cinéma élégant et ultra-performant pour les cinéastes au Maroc. Bagues 0.8 MOD universelles. Garanti 1 an GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Fuji X (Titanium Gray)](https://www.gearshop.ma/product/1057-7artisans-vision-16mm-t2-1-cinema-fuji-x-titanium-gray)
+
+#### 7Artisans Vision 16mm T2.1 Cinéma Micro 4/3 (Titanium Gray)
+- **SKU**: `GEAR-1058-7ARTISANS`
+- **Marque / Brand**: 7Artisans
+- **Monture(s) / Mount(s)**: Micro 4/3
+- **Type de mise au point / Focus**: Autofocus (AF)
+- **Couverture Capteur / Sensor Coverage**: Micro 4/3
+- **Focale / Focal Length**: 16mm
+- **Ouverture Maximale / Max Aperture**: f/2.1
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: Monture : Micro 4/3, Finition : Titanium Gray, Focale : 16mm T2.1, Garantie : 1 an GearShop Casablanca
+- **Description**: Le 7Artisans Vision 16mm T2.1 Titanium Gray en monture Micro 4/3 offre une optique de tournage raffinée et durable pour vos caméras de cinéma compactes au Maroc. Bagues alignées avec la série Vision. Disponible chez GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Micro 4/3 (Titanium Gray)](https://www.gearshop.ma/product/1058-7artisans-vision-16mm-t2-1-cinema-micro-4-3-titanium-gray)
+
+#### 7Artisans Vision 16mm T2.1 Cinéma Canon RF (Titanium Gray)
+- **SKU**: `GEAR-1059-7ARTISANS`
+- **Marque / Brand**: 7Artisans
+- **Monture(s) / Mount(s)**: Canon RF
+- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Focale / Focal Length**: 16mm
+- **Ouverture Maximale / Max Aperture**: f/2.1
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 3.900 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: Monture : Canon RF, Finition : Titanium Gray, Focale : 16mm, Ouverture : T2.1, Garantie : 1 an GearShop Maroc
+- **Description**: L'objectif cinéma 7Artisans Vision 16mm T2.1 Titanium Gray en monture Canon RF allie robustesse cinéma, design titane contemporain et précision mécanique pour vos tournages publicitaires et cinéma au Maroc. Disponible chez GearShop.
+- **Lien Officiel Produit**: [7Artisans Vision 16mm T2.1 Cinéma Canon RF (Titanium Gray)](https://www.gearshop.ma/product/1059-7artisans-vision-16mm-t2-1-cinema-canon-rf-titanium-gray)
 
 ### Catégorie : ACCESSORIES (3 articles)
 
-#### PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver
+#### 7Artisans Adaptateur PL 4-en-1 Universel (PL vers Sony E / L / RF / Nikon Z)
 - **SKU**: `GEAR-1060-7ARTISANS`
 - **Marque / Brand**: 7Artisans
-- **Monture(s) / Mount(s)**: Nikon Z
+- **Monture(s) / Mount(s)**: Sony E
 - **Type de mise au point / Focus**: Mise au point manuelle (MF)
 - **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
 - **Focale / Focal Length**: Focale variable / Fixe
@@ -1584,11 +1584,11 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: PL 4-in-1 Lens Adapter compatible with E/L/RF/Z mount
-- **Lien Officiel Produit**: [PL 4-in-1 Lens Adapter compatible with E / L / RF / Z Mount - Silver](https://www.gearshop.ma/product/1060-pl-4-in-1-lens-adapter-compatible-with-e-l-rf-z-mount-silver)
+- **Spécifications Clés**: Monture d'entrée : Arri PL standard cinéma, Montures de sortie interchangeables : Sony E, L-Mount, Canon RF, Nikon Z, Réglage du tirage : Jeu de cales (shims) de haute précision inclus, Support pied : Filetage 1/4"-20 pour support d'objectif lourd (Lens Support), Matériau : Acier inoxydable aéronautique et aluminium anodisé, Garantie : 1 an officiel GearShop Casablanca
+- **Description**: L'adaptateur cinéma modulaire 7Artisans PL 4-en-1 est la solution ultime pour les loueurs de matériel, directeurs photo et sociétés de production au Maroc. Il permet de monter n'importe quel objectif cinéma standard Arri PL sur les 4 montures hybrides majeures : Sony E, Leica/Panasonic L-Mount, Canon RF et Nikon Z grâc
+- **Lien Officiel Produit**: [7Artisans Adaptateur PL 4-en-1 Universel (PL vers Sony E / L / RF / Nikon Z)](https://www.gearshop.ma/product/1060-7artisans-adaptateur-pl-4-en-1-universel-pl-vers-sony-e-l-rf-nikon-z)
 
-#### 77mm True Color VND6-9 Filter - Black
+#### 7Artisans Filtre Variable ND 77mm True Color (VND ND64 - ND512 / 6-9 Stops)
 - **SKU**: `GEAR-1061-7ARTISANS`
 - **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -1601,11 +1601,11 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: Sur commande
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: 77mm True Color VND6-9 Filter
-- **Lien Officiel Produit**: [77mm True Color VND6-9 Filter - Black](https://www.gearshop.ma/product/1061-77mm-true-color-vnd6-9-filter-black)
+- **Spécifications Clés**: Diamètre : 77 mm standard, Plage d'atténuation : 6 à 9 Stops (ND64 à ND512 variable), Technologie : True Color sans dominante jaune ou magenta, Conception : Butées physiques (Hard Stops) anti-croix noire (No X-Cross), Revêtement : Nano-coating 18 couches déperlant, oléophobe et anti-rayures, Cadre : Aluminium ultra-fin slim pour éviter le vignetage, Garantie : 1 an officiel GearShop Maroc
+- **Description**: Le filtre à densité neutre variable 7Artisans True Color 77mm offre une réduction de lumière réglable de 6 à 9 diaphragmes (ND64 à ND512) sans aucune dérive colorimétrique ni effet de croix noire (No X-Cross). Indispensable pour filmer en plein soleil marocain avec des optiques ultra-lumineuses à pleine ouverture f/1.2
+- **Lien Officiel Produit**: [7Artisans Filtre Variable ND 77mm True Color (VND ND64 - ND512 / 6-9 Stops)](https://www.gearshop.ma/product/1061-7artisans-filtre-variable-nd-77mm-true-color-vnd-nd64-nd512-6-9-stops)
 
-#### 55mm 1/8 Black Mist Filter - Black
+#### 7Artisans Filtre 55mm 1/8 Black Mist (Diffusion Cinématographique)
 - **SKU**: `GEAR-1062-7ARTISANS`
 - **Marque / Brand**: 7Artisans
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -1618,9 +1618,9 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Standards constructeur certifiés
-- **Description**: Filtre 7Artisans 55mm Black Mist 1/8 pour un rendu cinématique doux et une réduction subtile des hautes lumières.
-- **Lien Officiel Produit**: [55mm 1/8 Black Mist Filter - Black](https://www.gearshop.ma/product/1062-55mm-1-8-black-mist-filter-black)
+- **Spécifications Clés**: Diamètre : 55 mm, Intensité de diffusion : 1/8 (Subtile et cinématique), Effet : Adoucissement des hautes lumières et lissage de peau naturel, Verre : Optique de précision multicouche haute transmission, Bague : Profil slim anti-vignetage en aluminium aéronautique, Garantie : 1 an constructeur GearShop Maroc
+- **Description**: Le filtre de diffusion 7Artisans Black Mist 1/8 en diamètre 55mm est l'accessoire secret des vidéastes et portraitistes pour casser le piqué numérique trop dur des capteurs modernes. Il adoucit délicatement les hautes lumières en créant un halo subtil (bloom) autour des sources lumineuses tout en lissant les imperfecti
+- **Lien Officiel Produit**: [7Artisans Filtre 55mm 1/8 Black Mist (Diffusion Cinématographique)](https://www.gearshop.ma/product/1062-7artisans-filtre-55mm-1-8-black-mist-diffusion-cinematographique)
 
 ### Catégorie : APPAREIL PHOTO (65 articles)
 
