@@ -332,8 +332,12 @@
     ['pointerdown', 'keydown', 'touchstart'].forEach(function (eventName) {
       w.addEventListener(eventName, loadMarketing, { once: true, passive: true });
     });
-    if ('requestIdleCallback' in w) w.requestIdleCallback(loadMarketing, { timeout: 8000 });
-    else w.setTimeout(loadMarketing, 7500);
+    // Do not use requestIdleCallback immediately: on a quiet phone it can run before
+    // the first screen has painted. After seven seconds, use an idle slot if possible.
+    w.setTimeout(function () {
+      if ('requestIdleCallback' in w) w.requestIdleCallback(loadMarketing, { timeout: 1000 });
+      else loadMarketing();
+    }, 7000);
   })(window, document);
   </script>
 
