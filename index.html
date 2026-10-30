@@ -8,7 +8,9 @@
   <!-- ===== PERFORMANCE PRELOADS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="/images/banners/banner_nikon.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="/images/banners/banner_nikon-mobile.webp" as="image"
+    imagesrcset="/images/banners/banner_nikon-mobile.webp 768w, /images/banners/banner_nikon.webp 1920w"
+    imagesizes="100vw" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;700;800&display=swap" rel="stylesheet">
 
   <!-- ===== FAVICON & SEARCH LOGO ===== -->
@@ -293,29 +295,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Google Tag Manager owns the GA4 configuration. Loading gtag separately
-       downloaded the same analytics library twice on every mobile visit. -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-W4ZN9BW6');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Meta Pixel Code -->
+  <!-- Keep conversion queues immediately available, then load marketing code when
+       the browser is idle or the visitor first interacts. This protects mobile LCP. -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '13684036354444670');
-  fbq('track', 'PageView');
+  (function (w, d) {
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
+    var fbq = w.fbq;
+    if (!fbq) {
+      fbq = w.fbq = function () {
+        fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+      };
+      if (!w._fbq) w._fbq = fbq;
+      fbq.push = fbq;
+      fbq.loaded = true;
+      fbq.version = '2.0';
+      fbq.queue = [];
+    }
+    fbq('init', '13684036354444670');
+    fbq('track', 'PageView');
+
+    var loaded = false;
+    function loadMarketing() {
+      if (loaded) return;
+      loaded = true;
+      var gtm = d.createElement('script');
+      gtm.async = true;
+      gtm.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-W4ZN9BW6';
+      d.head.appendChild(gtm);
+      var meta = d.createElement('script');
+      meta.async = true;
+      meta.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      d.head.appendChild(meta);
+    }
+    ['pointerdown', 'keydown', 'touchstart'].forEach(function (eventName) {
+      w.addEventListener(eventName, loadMarketing, { once: true, passive: true });
+    });
+    if ('requestIdleCallback' in w) w.requestIdleCallback(loadMarketing, { timeout: 3500 });
+    else w.setTimeout(loadMarketing, 2500);
+  })(window, document);
   </script>
-  <!-- End Meta Pixel Code -->
 
 
 </head>

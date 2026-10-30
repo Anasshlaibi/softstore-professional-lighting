@@ -150,6 +150,8 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                   {/* Background Panoramic Image */}
                   <img
                     src={slide.bgImg}
+                    srcSet="/images/banners/banner_nikon-mobile.webp 768w, /images/banners/banner_nikon.webp 1920w"
+                    sizes="100vw"
                     alt={slide.title}
                     width={1920}
                     height={600}

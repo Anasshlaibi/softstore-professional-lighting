@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface VideoShowcaseProps {
   siteConfig: {
@@ -21,6 +21,40 @@ const getYoutubeEmbedUrl = (urlOrId?: string) => {
 const VideoShowcase: React.FC<VideoShowcaseProps> = ({ siteConfig }) => {
   const video1Url = getYoutubeEmbedUrl(siteConfig.video1 || 'LcdLz8-JmI0');
   const video2Url = getYoutubeEmbedUrl(siteConfig.video2 || 't_leEVDR9Kc');
+  const [activeVideo, setActiveVideo] = useState<number | null>(null);
+
+  const VideoFrame = ({ url, title, index }: { url: string | null; title: string; index: number }) => {
+    if (!url) {
+      return <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-900">Vidéo indisponible</div>;
+    }
+
+    if (activeVideo !== index) {
+      return (
+        <button
+          type="button"
+          onClick={() => setActiveVideo(index)}
+          className="group w-full h-full flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-slate-950 via-slate-900 to-red-950 text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400"
+          aria-label={`Lire ${title}`}
+        >
+          <span className="w-14 h-14 rounded-full bg-red-600 group-hover:bg-red-500 transition flex items-center justify-center shadow-xl">
+            <i className="fa-solid fa-play ml-1" aria-hidden="true" />
+          </span>
+          <span className="text-xs font-bold">Cliquez pour lire la démonstration</span>
+        </button>
+      );
+    }
+
+    return (
+      <iframe
+        src={`${url}&autoplay=1`}
+        title={title}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="w-full h-full"
+      />
+    );
+  };
 
   return (
     <section id="videos" className="py-12 md:py-20 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
@@ -43,21 +77,7 @@ const VideoShowcase: React.FC<VideoShowcaseProps> = ({ siteConfig }) => {
           {/* Video 1: Left */}
           <div className="flex flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-200/80 dark:border-gray-700">
             <div className="aspect-video w-full bg-black relative">
-              {video1Url ? (
-                <iframe
-                  src={video1Url}
-                  title="Objectifs 7Artisans Démo"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                  loading="lazy"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-900">
-                  Vidéo 1 Indisponible
-                </div>
-              )}
+              <VideoFrame url={video1Url} title="Objectifs 7Artisans Démo" index={1} />
             </div>
             <div className="p-4 bg-white dark:bg-gray-800">
               <h3 className="text-sm font-black text-gray-900 dark:text-white flex items-center gap-2">
@@ -73,21 +93,7 @@ const VideoShowcase: React.FC<VideoShowcaseProps> = ({ siteConfig }) => {
           {/* Video 2: Right */}
           <div className="flex flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-200/80 dark:border-gray-700">
             <div className="aspect-video w-full bg-black relative">
-              {video2Url ? (
-                <iframe
-                  src={video2Url}
-                  title="Éclairage Professionnel Démo"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                  loading="lazy"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-900">
-                  Vidéo 2 Indisponible
-                </div>
-              )}
+              <VideoFrame url={video2Url} title="Éclairage Professionnel Démo" index={2} />
             </div>
             <div className="p-4 bg-white dark:bg-gray-800">
               <h3 className="text-sm font-black text-gray-900 dark:text-white flex items-center gap-2">
