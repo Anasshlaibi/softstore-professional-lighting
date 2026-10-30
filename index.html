@@ -332,8 +332,8 @@
     ['pointerdown', 'keydown', 'touchstart'].forEach(function (eventName) {
       w.addEventListener(eventName, loadMarketing, { once: true, passive: true });
     });
-    if ('requestIdleCallback' in w) w.requestIdleCallback(loadMarketing, { timeout: 3500 });
-    else w.setTimeout(loadMarketing, 2500);
+    if ('requestIdleCallback' in w) w.requestIdleCallback(loadMarketing, { timeout: 8000 });
+    else w.setTimeout(loadMarketing, 7500);
   })(window, document);
   </script>
 

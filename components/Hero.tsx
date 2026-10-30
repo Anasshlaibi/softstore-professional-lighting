@@ -1,12 +1,5 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 interface HeroProps {
   siteConfig?: {
@@ -93,6 +86,14 @@ const categoryIcons = [
 
 const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand }) => {
   const whatsappPhone = (siteConfig?.phone || '212673011873').replace(/[^0-9]/g, '');
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % bhSlides.length);
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   const handleCategoryClick = (cat: typeof categoryIcons[0]) => {
     if (cat.link) {
@@ -133,18 +134,9 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
 
         {/* ── 2. Full-Width Panoramic Widescreen Hero Banner Slider ───────── */}
         <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200 relative bg-[#090d16] mb-5">
-          <Swiper
-            modules={[Autoplay, EffectFade, Pagination, Navigation]}
-            effect="fade"
-            fadeEffect={{ crossFade: true }}
-            autoplay={{ delay: 6000, disableOnInteraction: false }}
-            loop={true}
-            pagination={{ clickable: true }}
-            navigation={true}
-            className="w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] hero-bh-swiper"
-          >
+          <div className="w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] hero-bh-swiper">
             {bhSlides.map((slide, index) => (
-              <SwiperSlide key={slide.id}>
+              <div key={slide.id} className={index === activeSlide ? 'block' : 'hidden'}>
                 <div className="relative w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] flex items-center overflow-hidden">
                   
                   {/* Background Panoramic Image */}
@@ -236,9 +228,21 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                   </div>
 
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+            <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2" aria-label="Choisir une annonce">
+              {bhSlides.map((slide, index) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  aria-label={`Afficher ${slide.title}`}
+                  aria-current={index === activeSlide ? 'true' : undefined}
+                  onClick={() => setActiveSlide(index)}
+                  className={`h-2.5 w-2.5 rounded-full transition ${index === activeSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* ── 3. Iconic B&H Category Icon Strip (Standardized & Snap Scroll) ── */}
