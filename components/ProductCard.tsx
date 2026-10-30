@@ -45,6 +45,11 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
   }) => {
     const activeCurrency = currency || siteConfig?.currency || 'DH';
     const activePhone = siteConfig?.phone || '+212673011873';
+    // Product grids are rendered at a small size. Use the generated WebP
+    // thumbnail and retain the original as an error fallback for new uploads.
+    const cardImage = product.image.startsWith('/images/products/')
+      ? product.image.replace('/images/products/', '/images/products/thumbs/')
+      : product.image;
     const handleClick = (id: number) => {
       if (onProductClick) onProductClick(id);
       else if (onSelect) onSelect(id);
@@ -115,7 +120,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
         {/* Product Image Area */}
         <div className="w-full aspect-square bg-gray-50/60 flex items-center justify-center p-3 sm:p-5 relative overflow-hidden group-hover:bg-red-50/20 transition-colors duration-500">
           <img
-            src={product.image}
+            src={cardImage}
             alt={`${product.name} - GearShop Maroc`}
             title={`${product.name} - GearShop Maroc`}
             className={`max-w-full max-h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 drop-shadow-sm ${
@@ -129,7 +134,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               const img = e.target as HTMLImageElement;
               // Prevent infinite loop if placeholder itself fails
               img.onerror = null;
-              img.src = '/images/placeholder-unavailable.svg';
+              img.src = product.image || '/images/placeholder-unavailable.svg';
               img.alt = 'Image non disponible';
             }}
           />

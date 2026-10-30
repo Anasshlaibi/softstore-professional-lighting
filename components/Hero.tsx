@@ -30,7 +30,7 @@ const bhSlides = [
     subtitle: 'High-end, full-frame performance in an easy-carry hybrid camera',
     desc: 'Capteur plein format ultra-sensible, vidéo 4K/60p 10-bit & monture Z professionnelle.',
     bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/nikon-zr.webp',
+    cameraImg: '/images/hero/nikon-zr.webp',
     learnMoreLink: '/product/5099-nikon-zr',
     orderLink: '/product/5099-nikon-zr',
     badgeColor: 'bg-red-600',
@@ -44,7 +44,7 @@ const bhSlides = [
     subtitle: 'Full-frame 4K 10-Bit video reference with S-Cinetone & dual native ISO',
     desc: 'La caméra de cinéma compacte référence des directeurs photo et créateurs pro au Maroc.',
     bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/sony-cinema-line-fx3.webp',
+    cameraImg: '/images/hero/sony-cinema-line-fx3.webp',
     learnMoreLink: '/product/5120-sony-cinema-line-fx3',
     orderLink: '/product/5120-sony-cinema-line-fx3',
     badgeColor: 'bg-blue-600',
@@ -58,7 +58,7 @@ const bhSlides = [
     subtitle: 'High-speed 45MP back-illuminated sensor with 8K RAW & Eye Control AF',
     desc: 'Performance hybride ultime avec stabilisation intégrée 8.5 stops et monture RF.',
     bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/canon-eos-r5-mark-ii.webp',
+    cameraImg: '/images/hero/canon-eos-r5-mark-ii.webp',
     learnMoreLink: '/product/6004-canon-eos-r5-mark-ii',
     orderLink: '/product/6004-canon-eos-r5-mark-ii',
     badgeColor: 'bg-red-600',
@@ -72,7 +72,7 @@ const bhSlides = [
     subtitle: 'Complete 4K 120p gimbal stabilization & continuous studio LED lighting',
     desc: 'Tout le matériel professionnel pour équiper vos tournages, podcasts et studios au Maroc.',
     bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/dji-osmo-pocket-3-creator-combo.webp',
+    cameraImg: '/images/hero/dji-osmo-pocket-3-creator-combo.webp',
     learnMoreLink: '/product/6024-dji-osmo-pocket-3-creator-combo',
     orderLink: '/product/6024-dji-osmo-pocket-3-creator-combo',
     badgeColor: 'bg-emerald-600',
@@ -143,7 +143,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
             navigation={true}
             className="w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] hero-bh-swiper"
           >
-            {bhSlides.map((slide) => (
+            {bhSlides.map((slide, index) => (
               <SwiperSlide key={slide.id}>
                 <div className="relative w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] flex items-center overflow-hidden">
                   
@@ -154,7 +154,8 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                     width={1920}
                     height={600}
                     className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-screen scale-105"
-                    loading="eager"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
                   />
                   
                   {/* Gradient Overlay for Text Readability */}
@@ -218,7 +219,8 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                           width={288}
                           height={288}
                           className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                          loading="eager"
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          fetchPriority={index === 0 ? 'high' : 'auto'}
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = '/images/products/nikon-zr.webp';
                           }}
@@ -255,7 +257,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
               >
                 <div className="w-14 h-14 rounded-lg bg-white p-1.5 mb-2 flex items-center justify-center border border-gray-100 group-hover:scale-105 transition duration-150 shadow-2xs shrink-0 overflow-hidden relative">
                   <img
-                    src={cat.img}
+                    src={cat.img.replace('/images/products/', '/images/products/thumbs/')}
                     alt={cat.name}
                     width={56}
                     height={56}

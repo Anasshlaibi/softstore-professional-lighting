@@ -3,9 +3,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import BottomNav from './components/BottomNav';
-import Cart from './components/Cart';
-import CheckoutModal from './components/CheckoutModal';
-import PromoOverlay from './components/PromoOverlay';
 import Toast from './components/Toast';
 
 import Hero from './components/Hero';
@@ -24,6 +21,8 @@ const TrustBadges = React.lazy(() => import('./components/TrustBadges'));
 const ShopCategories = React.lazy(() => import('./components/ShopCategories'));
 const BrandLogos = React.lazy(() => import('./components/BrandLogos'));
 const ProductDetailModal = React.lazy(() => import('./components/ProductDetailModal'));
+const Cart = React.lazy(() => import('./components/Cart'));
+const CheckoutModal = React.lazy(() => import('./components/CheckoutModal'));
 
 import { defaultProducts } from './data/products';
 import { defaultSiteConfig } from './data/config';
@@ -46,13 +45,12 @@ const CameraMarocPage = React.lazy(() => import('./src/pages/CameraMarocPage'));
 const CityHubMaroc = React.lazy(() => import('./src/pages/CityHubMaroc'));
 const ProductDetailPage = React.lazy(() => import('./src/pages/ProductDetailPage'));
 
-import Newsletter from './src/components/Newsletter';
-import CookieConsentBanner from './src/components/CookieConsentBanner';
-import LeadPopup from './src/components/LeadPopup';
-import ProductRequestModal from './src/components/ProductRequestModal';
-import QuoteRequestModal from './src/components/QuoteRequestModal';
-import ProductAlertModal from './src/components/ProductAlertModal';
-import { SearchModal } from './src/components/Search/SearchModal';
+const Newsletter = React.lazy(() => import('./src/components/Newsletter'));
+const CookieConsentBanner = React.lazy(() => import('./src/components/CookieConsentBanner'));
+const ProductRequestModal = React.lazy(() => import('./src/components/ProductRequestModal'));
+const QuoteRequestModal = React.lazy(() => import('./src/components/QuoteRequestModal'));
+const ProductAlertModal = React.lazy(() => import('./src/components/ProductAlertModal'));
+const SearchModal = React.lazy(() => import('./src/components/Search/SearchModal').then(module => ({ default: module.SearchModal })));
 
 import { initAttributionTracker, recordProductView } from './src/services/attributionTracker';
 import { trackViewContent, trackSearch } from './src/services/metaCapiService';
@@ -507,53 +505,42 @@ const AppContent: React.FC<{
           <Footer siteConfig={siteConfig} />
         )}
 
-        <Cart
-          isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
-          siteConfig={siteConfig}
-          openCheckout={() => {
-            setIsCartOpen(false);
-            setIsCheckoutOpen(true);
-          }}
-          applyPromo={applyPromo}
-          appliedPromo={appliedPromo}
-        />
-
-        {isCheckoutOpen && (
-          <CheckoutModal
-            onClose={() => setIsCheckoutOpen(false)}
-            siteConfig={siteConfig}
-            appliedPromo={appliedPromo}
-            onSuccess={() => {
-              setIsCheckoutOpen(false);
-            }}
-          />
+        {isCartOpen && (
+          <React.Suspense fallback={null}>
+            <Cart
+              isOpen={isCartOpen}
+              onClose={() => setIsCartOpen(false)}
+              siteConfig={siteConfig}
+              openCheckout={() => {
+                setIsCartOpen(false);
+                setIsCheckoutOpen(true);
+              }}
+              applyPromo={applyPromo}
+              appliedPromo={appliedPromo}
+            />
+          </React.Suspense>
         )}
 
-        <ProductRequestModal
-          isOpen={isProductRequestOpen}
-          onClose={() => setIsProductRequestOpen(false)}
-        />
+        {isCheckoutOpen && (
+          <React.Suspense fallback={null}>
+            <CheckoutModal
+              onClose={() => setIsCheckoutOpen(false)}
+              siteConfig={siteConfig}
+              appliedPromo={appliedPromo}
+              onSuccess={() => {
+                setIsCheckoutOpen(false);
+              }}
+            />
+          </React.Suspense>
+        )}
 
-        <QuoteRequestModal
-          isOpen={isQuoteRequestOpen}
-          product={quoteProduct}
-          onClose={() => {
-            setIsQuoteRequestOpen(false);
-            setQuoteProduct(null);
-          }}
-        />
+        {isProductRequestOpen && <React.Suspense fallback={null}><ProductRequestModal isOpen={isProductRequestOpen} onClose={() => setIsProductRequestOpen(false)} /></React.Suspense>}
 
-        <ProductAlertModal
-          isOpen={isProductAlertOpen}
-          product={alertProduct}
-          onClose={() => {
-            setIsProductAlertOpen(false);
-            setAlertProduct(null);
-          }}
-        />
+        {isQuoteRequestOpen && <React.Suspense fallback={null}><QuoteRequestModal isOpen={isQuoteRequestOpen} product={quoteProduct} onClose={() => { setIsQuoteRequestOpen(false); setQuoteProduct(null); }} /></React.Suspense>}
 
-        <SearchModal
+        {isProductAlertOpen && <React.Suspense fallback={null}><ProductAlertModal isOpen={isProductAlertOpen} product={alertProduct} onClose={() => { setIsProductAlertOpen(false); setAlertProduct(null); }} /></React.Suspense>}
+
+        {isSearchModalOpen && <React.Suspense fallback={null}><SearchModal
           isOpen={isSearchModalOpen}
           products={products}
           onClose={() => setIsSearchModalOpen(false)}
@@ -574,10 +561,10 @@ const AppContent: React.FC<{
               }
             }, 120);
           }}
-        />
+        /></React.Suspense>}
 
         {/* New Arrivals Drawer */}
-        <NewArrivals
+        {isNewArrivalsOpen && <React.Suspense fallback={null}><NewArrivals
           isOpen={isNewArrivalsOpen}
           onClose={() => setIsNewArrivalsOpen(false)}
           products={products}
@@ -585,9 +572,9 @@ const AppContent: React.FC<{
             setIsNewArrivalsOpen(false);
             openProductModal(id);
           }}
-        />
+        /></React.Suspense>}
 
-        <CookieConsentBanner />
+        <React.Suspense fallback={null}><CookieConsentBanner /></React.Suspense>
         {/* Automatic lead popups disabled per user request */}
 
         {toastMessage && (
