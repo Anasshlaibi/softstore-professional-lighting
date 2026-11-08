@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Product } from '../../App';
+import { trackAddToCart, trackRemoveFromCart } from '../services/googleAnalytics';
 
 export interface CartItem extends Product {
   qty: number;
@@ -44,6 +45,53 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // Reconcile cached localStorage cart items against live Supabase products (price, stock, name)
+  useEffect(() => {
+    if (!Array.isArray(products) || products.length === 0) return;
+
+    setCart(prevCart => {
+      if (prevCart.length === 0) return prevCart;
+      const productMap = new Map<number, Product>(products.map(p => [p.id, p]));
+      let changed = false;
+      const validatedCart: CartItem[] = [];
+
+      for (const item of prevCart) {
+        const liveProduct = productMap.get(item.id);
+        if (!liveProduct) {
+          // Product no longer exists in catalog
+          changed = true;
+          continue;
+        }
+        if (!liveProduct.inStock) {
+          // Product is out of stock
+          changed = true;
+          continue;
+        }
+        if (
+          item.price !== liveProduct.price ||
+          item.oldPrice !== liveProduct.oldPrice ||
+          item.name !== liveProduct.name ||
+          item.image !== liveProduct.image
+        ) {
+          changed = true;
+          validatedCart.push({
+            ...item,
+            name: liveProduct.name,
+            price: liveProduct.price,
+            oldPrice: liveProduct.oldPrice,
+            image: liveProduct.image,
+            inStock: liveProduct.inStock,
+            category: liveProduct.category,
+          });
+        } else {
+          validatedCart.push(item);
+        }
+      }
+
+      return changed ? validatedCart : prevCart;
+    });
+  }, [products]);
+
   useEffect(() => {
     try {
       window.localStorage.setItem('cart', JSON.stringify(cart));
@@ -66,14 +114,32 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children, products }
       return [...prevCart, { ...productToAdd, qty: 1 }];
     });
 
+    trackAddToCart({
+      item_id: String(productToAdd.id),
+      item_name: productToAdd.name,
+      item_category: productToAdd.category,
+      item_brand: productToAdd.brand,
+      price: productToAdd.price,
+      quantity: 1,
+    });
+
     // Show success toast
     setToastMessage(`${productToAdd.name} ajouté au panier`);
   };
 
   const removeFromCart = (productId: number) => {
     setCart(prevCart => {
-      const newCart = prevCart.filter(item => item.id !== productId);
-      return newCart;
+      const removed = prevCart.find(item => item.id === productId);
+      if (removed) {
+        trackRemoveFromCart({
+          item_id: String(removed.id),
+          item_name: removed.name,
+          item_category: removed.category,
+          price: removed.price,
+          quantity: removed.qty,
+        });
+      }
+      return prevCart.filter(item => item.id !== productId);
     });
   };
 

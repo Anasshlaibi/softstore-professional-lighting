@@ -54,9 +54,9 @@ import QuoteRequestModal from './src/components/QuoteRequestModal';
 import ProductAlertModal from './src/components/ProductAlertModal';
 import { SearchModal } from './src/components/Search/SearchModal';
 
-import { initAttributionTracker, recordProductView } from './src/services/attributionTracker';
-import { trackViewContent, trackSearch } from './src/services/metaCapiService';
-import { initWhatsAppLeadTracking } from './src/services/googleAnalytics';
+import { initAttributionTracker } from './src/services/attributionTracker';
+import { trackSearch } from './src/services/metaCapiService';
+import { initWhatsAppLeadTracking, trackPageView } from './src/services/googleAnalytics';
 
 export interface Product {
   id: number;
@@ -151,8 +151,6 @@ const App: React.FC = () => {
       if (fromSearchQuery !== undefined) {
         setSearchHistoryQuery(fromSearchQuery);
       }
-      recordProductView(product.name);
-      trackViewContent(product.name, product.price || 0, product.category || 'Gear');
       navigate(`/product/${product.id}-${slugify(product.name)}`, {
         state: { 
           fromSearch: Boolean(fromSearchQuery), 
@@ -298,6 +296,12 @@ const AppContent: React.FC<{
     const location = useLocation();
     const navigate = useNavigate();
     const isAdminRoute = location.pathname === '/admin';
+    const isHomeRoute = location.pathname === '/';
+
+    // Track SPA route changes in GA4 and Meta Pixel
+    useEffect(() => {
+      trackPageView(location.pathname + location.search);
+    }, [location.pathname, location.search]);
     
     const selectedSeo = selectedProduct ? generateProductSEOPackage(selectedProduct, products) : null;
     
@@ -314,12 +318,13 @@ const AppContent: React.FC<{
             <meta property="og:url" content={selectedSeo.canonicalUrl} />
             <meta property="og:type" content="product" />
           </Helmet>
-        ) : (
+        ) : isHomeRoute ? (
           <Helmet>
-            <title>GearShop Maroc | Objectifs 7Artisans & Lentilles Cinéma</title>
-            <meta name="description" content="GearShop: Revendeur officiel au Maroc d'objectifs 7Artisans et lentilles cinéma. Livraison rapide d'objectifs photo pour Canon, Nikon Z et Sony E." />
+            <title>GearShop.ma | Matériel Photo, Vidéo, Cinéma &amp; Éclairage Studio au Maroc</title>
+            <meta name="description" content="GearShop.ma — Boutique spécialisée en caméras Sony, Nikon Z, Canon EOS, objectifs photo &amp; cinéma 7Artisans, Tamron, stabilisateurs DJI, éclairage studio Godox et accessoires K&amp;F Concept au Maroc. Garantie 1 an &amp; livraison 24h-48h." />
+            <link rel="canonical" href="https://www.gearshop.ma/" />
           </Helmet>
-        )}
+        ) : null}
 
         {!isAdminRoute && (
           <Header

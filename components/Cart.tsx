@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCart } from '../src/context/CartContext';
 import CartItem from './CartItem';
 import CartSummary from './CartSummary';
+import { trackViewCart } from '../src/services/googleAnalytics';
 
 interface CartProps {
   isOpen: boolean;
@@ -21,6 +22,22 @@ const Cart: React.FC<CartProps> = ({
   appliedPromo,
 }) => {
   const { cart } = useCart();
+
+  useEffect(() => {
+    if (isOpen && cart.length > 0) {
+      const cartTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      trackViewCart(
+        cartTotal,
+        cart.map(item => ({
+          item_id: String(item.id),
+          item_name: item.name,
+          item_category: item.category,
+          price: item.price,
+          quantity: item.qty,
+        }))
+      );
+    }
+  }, [isOpen]);
 
   return (
     <div

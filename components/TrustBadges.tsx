@@ -5,7 +5,7 @@ const TrustBadges: React.FC = () => {
     {
       icon: 'fa-truck-fast',
       title: 'Livraison Gratuite',
-      subtitle: 'Dès 500 DH partout au Maroc'
+      subtitle: 'Commandes > 2 000 DH au Maroc'
     },
     {
       icon: 'fa-shield-halved',

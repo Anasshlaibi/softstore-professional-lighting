@@ -208,6 +208,8 @@ async function generateMerchantFeed() {
       const isPreorder = isOsmoPocket4 || product.isPreorder === true || product.ispreorder === true || product.status === 'Précommande';
       const availability = isPreorder ? 'preorder' : product.inStock !== false ? 'in_stock' : 'out_of_stock';
 
+      const shippingCost = Number(product.price) > 2000 ? '0.00 MAD' : '45.00 MAD';
+
       xml += `    <item>
       <g:id>${product.id}</g:id>
       <g:title>${escapedTitle}</g:title>
@@ -223,7 +225,7 @@ async function generateMerchantFeed() {
       <g:shipping>
         <g:country>MA</g:country>
         <g:service>Livraison Express Maroc</g:service>
-        <g:price>0.00 MAD</g:price>
+        <g:price>${shippingCost}</g:price>
       </g:shipping>
     </item>\n`;
     });

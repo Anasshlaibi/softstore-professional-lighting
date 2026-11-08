@@ -37,7 +37,7 @@
     "totalProducts": 283,
     "categoriesCount": 7,
     "brandsCount": 14,
-    "lastUpdated": "2026-10-28"
+    "lastUpdated": "2026-11-08"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -81,7 +81,7 @@
     },
     {
       "name": "Éclairage Portable & RGB",
-      "count": 5,
+      "count": 7,
       "sampleProducts": [
         {
           "name": "YB-300R",
@@ -174,7 +174,7 @@
     },
     {
       "name": "Accessoires Photo & Vidéo",
-      "count": 129,
+      "count": 127,
       "sampleProducts": [
         {
           "name": "7Artisans Adaptateur PL 4-en-1 Universel (PL vers Sony E / L / RF / Nikon Z)",

@@ -21,11 +21,11 @@ import { generateProductSEOPackage } from '../utils/seoGenerator';
 
 import { supabase } from '../lib/supabase';
 
-const ADMIN_PASS = 'anass2121';
+const ADMIN_EMAIL_DEFAULT = 'anasshlaibi@gmail.com';
 
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [emailInput, setEmailInput] = useState('');
+  const [emailInput, setEmailInput] = useState(ADMIN_EMAIL_DEFAULT);
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(false);
@@ -61,16 +61,6 @@ const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check saved session for persistent access
-    if (
-      sessionStorage.getItem('gearshop_admin_auth') === 'true' ||
-      localStorage.getItem('gearshop_admin_auth') === 'true'
-    ) {
-      setIsAuthenticated(true);
-      fetchData();
-      return;
-    }
-
     // Check real Supabase Auth session if active
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
@@ -83,6 +73,8 @@ const AdminDashboard: React.FC = () => {
       if (session) {
         setIsAuthenticated(true);
         fetchData();
+      } else {
+        setIsAuthenticated(false);
       }
     });
 
@@ -96,35 +88,23 @@ const AdminDashboard: React.FC = () => {
     setAuthLoading(true);
     setAuthError(null);
 
-    const pass = passwordInput.trim();
-
-    // 1. Password check (anass2121)
-    if (pass === ADMIN_PASS || pass.toLowerCase() === 'anass2121') {
-      setIsAuthenticated(true);
-      sessionStorage.setItem('gearshop_admin_auth', 'true');
-      localStorage.setItem('gearshop_admin_auth', 'true');
-      setAuthLoading(false);
-      fetchData();
-      return;
-    }
-
-    // 2. Supabase Auth fallback
     try {
       const { error } = await supabase.auth.signInWithPassword({
-        email: emailInput.trim(),
+        email: (emailInput || ADMIN_EMAIL_DEFAULT).trim(),
         password: passwordInput,
       });
 
       if (!error) {
         setIsAuthenticated(true);
-        sessionStorage.setItem('gearshop_admin_auth', 'true');
-        localStorage.setItem('gearshop_admin_auth', 'true');
+        setAuthLoading(false);
         fetchData();
         return;
       }
-    } catch {}
+      setAuthError(error.message || 'Identifiants administrateur invalides.');
+    } catch {
+      setAuthError('Erreur de connexion au serveur Supabase Auth.');
+    }
 
-    setAuthError('Mot de passe incorrect.');
     setAuthLoading(false);
   };
 

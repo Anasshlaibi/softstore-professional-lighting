@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import DjiOsmoPocket4PShowcase from '../components/Showcase/DjiOsmoPocket4PShowcase';
 import { Helmet } from 'react-helmet-async';
 import { Product } from '../../App';
+import { trackViewItem, trackWhatsAppLead } from '../services/googleAnalytics';
+import { trackViewContent } from '../services/metaCapiService';
+import { recordProductView } from '../services/attributionTracker';
 
 interface OsmoPocket4PageProps {
   products?: Product[];
@@ -14,11 +18,25 @@ export const OsmoPocket4Page: React.FC<OsmoPocket4PageProps> = ({ products = [] 
     const name = (item.name || '').toLowerCase();
     return name.includes('osmo pocket 4') || name.includes('pocket 4 pro');
   });
+  const pocket3Combo = products.find(item => item.id === 6024 || (item.name || '').toLowerCase().includes('pocket 3'));
   const livePrice = product?.price && Number(product.price) > 0 ? Number(product.price) : undefined;
   const priceText = livePrice ? `${livePrice.toLocaleString('fr-MA')} DH` : 'à confirmer dans le catalogue';
   // This landing page advertises a reservation flow. Keep the visible CTA,
   // Product markup and Merchant feed aligned until physical stock is confirmed.
   const availability = 'https://schema.org/PreOrder';
+
+  useEffect(() => {
+    recordProductView('DJI Osmo Pocket 4 Pro');
+    trackViewItem({
+      item_id: '3001',
+      item_name: 'DJI Osmo Pocket 4 Pro',
+      item_category: 'Caméra',
+      item_brand: 'DJI',
+      price: livePrice || 8000,
+      quantity: 1,
+    });
+    trackViewContent('DJI Osmo Pocket 4 Pro', livePrice || 8000, 'Caméra');
+  }, [livePrice]);
 
   const jsonLd = {
     "@context": "https://schema.org/",
@@ -140,11 +158,48 @@ export const OsmoPocket4Page: React.FC<OsmoPocket4PageProps> = ({ products = [] 
         </script>
       </Helmet>
       
+      {/* Immediate In-Stock Alternative Banner: DJI Osmo Pocket 3 Creator Combo */}
+      <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-950 border-b border-emerald-500/30 py-3.5 px-4">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+          <div className="flex items-center gap-2.5 text-emerald-100">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-bold text-xs shrink-0">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              EN STOCK IMMÉDIAT
+            </span>
+            <span>
+              Besoin d&apos;une caméra dès aujourd&apos;hui ? Le <strong>DJI Osmo Pocket 3 Creator Combo</strong> est disponible en stock à Casablanca ({pocket3Combo?.price ? `${pocket3Combo.price.toLocaleString('fr-FR')} DH` : '6 650 DH'}) avec livraison 24h !
+            </span>
+          </div>
+          <Link
+            to="/product/6024-dji-osmo-pocket-3-creator-combo"
+            className="px-4 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs whitespace-nowrap transition shadow-md shrink-0"
+          >
+            Voir le Osmo Pocket 3 (En Stock) &rarr;
+          </Link>
+        </div>
+      </div>
+
       <DjiOsmoPocket4PShowcase
         price={livePrice}
         currency="DH"
-        onPreorder={() => window.open(`https://wa.me/212673011873?text=${encodeURIComponent(`Bonjour, je souhaite connaître le prix actuel et précommander le DJI Osmo Pocket 4 Pro (${priceText}).`)}`, '_blank')}
-        onContactWhatsApp={() => window.open('https://wa.me/212673011873?text=Bonjour,%20j%27ai%20une%20question%20sur%20la%20caméra%20DJI%20Osmo%20Pocket%204%20Pro%20au%20Maroc', '_blank')}
+        onPreorder={() => {
+          trackWhatsAppLead({
+            source: 'osmo_pocket_4_preorder',
+            itemId: 3001,
+            itemName: 'DJI Osmo Pocket 4 Pro',
+            value: livePrice || 8000,
+          });
+          window.open(`https://wa.me/212673011873?text=${encodeURIComponent(`Bonjour, je souhaite connaître le prix actuel et précommander le DJI Osmo Pocket 4 Pro (${priceText}).`)}`, '_blank');
+        }}
+        onContactWhatsApp={() => {
+          trackWhatsAppLead({
+            source: 'osmo_pocket_4_inquiry',
+            itemId: 3001,
+            itemName: 'DJI Osmo Pocket 4 Pro',
+            value: livePrice || 8000,
+          });
+          window.open('https://wa.me/212673011873?text=Bonjour,%20j%27ai%20une%20question%20sur%20la%20caméra%20DJI%20Osmo%20Pocket%204%20Pro%20au%20Maroc', '_blank');
+        }}
       />
     </div>
   );

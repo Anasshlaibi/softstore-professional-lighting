@@ -16,7 +16,7 @@ interface HeaderProps {
 }
 
 const announcements = [
-  { icon: 'fa-truck-fast', text: 'Livraison Rapide 24h/48h Gratuite partout au Maroc dès 500 DH' },
+  { icon: 'fa-truck-fast', text: 'Livraison Rapide 24h/48h partout au Maroc • Gratuite > 2 000 DH' },
   { icon: 'fa-camera-retro', text: 'Nouvel Arrivage 2026 : Nikon ZR, Canon R5 II, Sony FX3 & A7 IV en stock' },
   { icon: 'fa-shield-halved', text: 'Matériel 100% Neuf & Garanti 1 An • Facture Pro & TVA Disponible' },
   { icon: 'fa-brands fa-whatsapp', text: 'Devis & Conseils Express WhatsApp au 06 73 01 18 73 • Réponse immédiate' }

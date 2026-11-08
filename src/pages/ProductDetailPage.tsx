@@ -7,7 +7,9 @@ import { extractProductAttributes } from '../utils/productMetadata';
 import { findCompatibleAccessories, findCompatibleLensesForCamera, getProductPriorityScore, slugify } from '../utils/catalogEngine';
 import { generateProductSEOPackage } from '../utils/seoGenerator';
 import ProductCard from '../../components/ProductCard';
-import { trackWhatsAppLead } from '../services/googleAnalytics';
+import { trackWhatsAppLead, trackViewItem } from '../services/googleAnalytics';
+import { trackViewContent } from '../services/metaCapiService';
+import { recordProductView } from '../services/attributionTracker';
 
 // Supplier copy is content only. It must never be able to ship a stylesheet or
 // script that can change the GearShop header, navigation, or other page areas.
@@ -98,12 +100,25 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     return compatibleLenses.find(l => l.id === selectedLensId) || null;
   }, [compatibleLenses, selectedLensId]);
 
-  // Reset state when product changes
+  // Reset state & fire view_item / ViewContent when product changes
   useEffect(() => {
     setActiveImageIdx(0);
     setQuantity(1);
     setSelectedLensId(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (product && product.id !== 3001) {
+      recordProductView(product.name);
+      trackViewItem({
+        item_id: String(product.id),
+        item_name: product.name,
+        item_category: product.category || 'Photo & Vidéo',
+        item_brand: product.brand || extractProductAttributes(product).brand,
+        price: product.price || 0,
+        quantity: 1,
+      });
+      trackViewContent(product.name, product.price || 0, product.category || 'Gear');
+    }
   }, [product?.id]);
 
   // Metadata & specs
@@ -157,7 +172,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     }
   }, [compatibleAccessories]);
 
-  // Bundle Total Price & Savings
+  // Bundle Total Price
   const bundleTotalPrice = useMemo(() => {
     if (!product) return 0;
     let total = product.price;
@@ -168,11 +183,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     });
     return total;
   }, [product, compatibleAccessories, selectedBundleItems]);
-
-  const bundleSavings = useMemo(() => {
-    if (selectedBundleItems.length === 0) return 0;
-    return Math.round(bundleTotalPrice * 0.08); // 8% combo savings
-  }, [bundleTotalPrice, selectedBundleItems]);
 
   // Related products
   const relatedProducts = useMemo(() => {
@@ -619,12 +629,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
               {/* Shipping & Delivery Guarantee */}
               <div className="bg-gray-50 rounded-xl p-3.5 border border-gray-200 text-xs text-gray-700 space-y-2">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                   <span className="font-semibold flex items-center gap-1.5">
                     <i className="fa-solid fa-truck-fast text-red-600" />
                     Livraison Partout au Maroc :
                   </span>
-                  <span className="font-bold text-green-700">GRATUITE</span>
+                  {calculatedPrice > 2000 ? (
+                    <span className="font-bold text-green-700">GRATUITE (&gt; 2 000 DH)</span>
+                  ) : (
+                    <span className="font-bold text-gray-900">30 DH Casa / 45 DH Maroc (Gratuite &gt; 2 000 DH)</span>
+                  )}
                 </div>
                 <div className="text-[11px] text-gray-500">
                   {product.inStock
@@ -659,22 +673,23 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
         </div>
 
-        {/* ── B&H SAVINGS AVAILABLE / FREQUENTLY BOUGHT TOGETHER ────────────── */}
+        {/* ── FREQUENTLY BOUGHT TOGETHER / RECOMMENDED SETUP ────────────── */}
         {compatibleAccessories.length > 0 && (
           <div className="mt-8 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
               <div>
                 <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
-                  <i className="fa-solid fa-tag text-red-600" />
-                  Packs &amp; Économies Disponibles (Savings Available)
+                  <i className="fa-solid fa-layer-group text-red-600" />
+                  Complétez Votre Setup (Accessoires Compatibles)
                 </h2>
                 <p className="text-xs text-gray-500">
-                  Associez les accessoires officiels compatibles et bénéficiez d'une remise pack immédiate :
+                  Sélectionnez les accessoires compatibles avec votre {product.name} pour les ajouter en un clic :
                 </p>
               </div>
-              {bundleSavings > 0 && (
+              {bundleTotalPrice > 2000 && (
                 <span className="bg-green-100 text-green-800 text-xs font-black px-3 py-1 rounded-full border border-green-300">
-                  Économie : -{bundleSavings.toLocaleString('fr-FR')} DH
+                  <i className="fa-solid fa-truck-fast mr-1.5" />
+                  Livraison GRATUITE incluse (&gt; 2 000 DH)
                 </span>
               )}
             </div>

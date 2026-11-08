@@ -207,7 +207,7 @@ function generateProductHTML(product, baseTemplate) {
       "shippingDetails": {
         "@type": "OfferShippingDetails",
         "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "MA" },
-        "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "MAD" },
+        "shippingRate": { "@type": "MonetaryAmount", "value": (Number(product.price) || 0) > 2000 ? "0" : "45", "currency": "MAD" },
         "deliveryTime": {
           "@type": "ShippingDeliveryTime",
           "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" }

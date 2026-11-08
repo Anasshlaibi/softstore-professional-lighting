@@ -348,7 +348,7 @@ export function generateProductSEOPackage(
         '@type': 'OfferShippingDetails',
         'shippingRate': {
           '@type': 'MonetaryAmount',
-          'value': '0',
+          'value': (product.price || 0) > 2000 ? '0' : '45',
           'currency': 'MAD'
         },
         'shippingDestination': {

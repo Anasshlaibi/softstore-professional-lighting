@@ -17,12 +17,22 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   appliedPromo,
   onSuccess,
 }) => {
-  const { cart: cartItems } = useCart();
+  const { cart: cartItems, clearCart } = useCart();
 
   // Fire InitiateCheckout when modal opens
   useEffect(() => {
     const cartTotal = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
-    trackCheckoutStarted(cartTotal, cartItems.reduce((sum, item) => sum + item.qty, 0));
+    trackCheckoutStarted(
+      cartTotal,
+      cartItems.reduce((sum, item) => sum + item.qty, 0),
+      cartItems.map(item => ({
+        item_id: String(item.id),
+        item_name: item.name,
+        item_category: item.category,
+        price: item.price,
+        quantity: item.qty,
+      }))
+    );
     const win = window as any;
     if (typeof win.fbq === 'function') {
       win.fbq('track', 'InitiateCheckout', {
@@ -52,8 +62,8 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     ? Math.round(subtotal * (appliedPromo / 100))
     : 0;
 
-  // Free shipping threshold: 500 DH or higher
-  const isFreeShipping = subtotal >= 500;
+  // Mandatory policy: Free shipping applies strictly to orders above 2,000 DH
+  const isFreeShipping = subtotal > 2000;
   const standardShipping = formData.city === 'Casablanca' ? 30 : 45;
   const shipping = isFreeShipping ? 0 : standardShipping;
   const total = subtotal - discountAmount + shipping;
@@ -93,7 +103,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     if (appliedPromo) {
       msg += `Remise (${appliedPromo}%): -${discountAmount} ${curr}\n`;
     }
-    msg += `Livraison: ${isFreeShipping ? 'GRATUITE (Commande ≥ 500 DH)' : `${shipping} ${curr}`}\n`;
+    msg += `Livraison: ${isFreeShipping ? 'GRATUITE (Commande > 2 000 DH)' : `${shipping} ${curr}`}\n`;
     msg += `*TOTAL FINAL: ${total} ${curr}*\n\n`;
 
     if (formData.message) {
@@ -103,6 +113,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     msg += `Paiement: Cash à la livraison après vérification du colis.\n`;
     msg += `Merci pour votre confiance!`;
 
+    const phoneNum = (siteConfig.phone || '212673011873').replace(/[^0-9]/g, '');
+    const waUrl = `https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`;
+
+    // Open WhatsApp synchronously in user click gesture so mobile Safari never blocks it
+    window.open(waUrl, '_blank');
+
     // 1. Record lead / order safely in Supabase
     try {
       const itemsList = cartItems.map(i => `${i.name} (x${i.qty}) [https://www.gearshop.ma/product/${i.id}-${slugify(i.name)}]`).join('\n');
@@ -111,9 +127,9 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
         name: formData.name,
         email: `${formData.phone.replace(/[^0-9]/g, '') || 'client'}@gearshop.ma`,
         phone: formData.phone,
-        company: `${cityName} - ${formData.address}`,
+        company: `COMMANDE CLIENT (${cityName} - ${formData.address})`,
         quantity: cartItems.reduce((sum, item) => sum + item.qty, 0),
-        message: `Total: ${total} DH | ` + (formData.message ? `${formData.message}\n\n` : '') + `Articles:\n${itemsList}`
+        message: `Commande #${commandId} | Total: ${total} DH (Livraison: ${isFreeShipping ? 'Gratuite > 2000 DH' : shipping + ' DH'}) | ` + (formData.message ? `${formData.message}\n\n` : '') + `Articles:\n${itemsList}`
       });
     } catch (dbErr) {
       console.warn('Database lead record non-blocking error:', dbErr);
@@ -143,12 +159,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
       console.error('Tracking error:', trackErr);
     }
 
-    const phoneNum = (siteConfig.phone || '212673011873').replace(/[^0-9]/g, '');
-    window.open(
-      `https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`,
-      '_blank'
-    );
-
+    clearCart();
     setIsSubmitting(false);
     onSuccess();
   };
@@ -290,7 +301,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
               <span className="text-gray-600">Frais de livraison</span>
               {isFreeShipping ? (
                 <span className="text-green-700 font-bold bg-green-100 px-2 py-0.5 rounded text-[11px]">
-                  GRATUITE (Dès 500 DH)
+                  GRATUITE (&gt; 2 000 DH)
                 </span>
               ) : (
                 <span className="text-gray-900">{shipping} {siteConfig.currency}</span>

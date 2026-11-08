@@ -116,7 +116,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                 i
               </span>
               <span>
-                <strong>BOUTIQUE EN LIGNE • LIVRAISON 24h-48h PARTOUT AU MAROC :</strong> Dès 500 DH. Expédition rapide le jour même avec paiement sécurisé à la livraison (Cash on Delivery).
+                <strong>BOUTIQUE EN LIGNE • LIVRAISON 24h-48h PARTOUT AU MAROC :</strong> Livraison offerte au-dessus de 2 000 DH. Expédition rapide le jour même avec paiement sécurisé à la livraison (Cash on Delivery).
               </span>
             </div>
             <a

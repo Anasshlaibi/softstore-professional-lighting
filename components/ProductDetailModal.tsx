@@ -522,7 +522,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <i className="fa-solid fa-truck-fast text-red-500 text-base mt-0.5"></i>
                     <div>
                       <span className="font-bold text-gray-800 block text-xs">Livraison Gratuite</span>
-                      <span className="text-[11px] text-gray-500">Dès 500 DH partout au Maroc</span>
+                      <span className="text-[11px] text-gray-500">Commandes &gt; 2 000 DH au Maroc</span>
                     </div>
                  </div>
                  <div className="flex items-start gap-2.5 text-xs text-gray-600">
@@ -665,7 +665,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </div>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                     <h3 className="font-bold text-lg text-gray-900 mb-2">Faites-vous la livraison sur Casablanca et hors Casablanca ?</h3>
-                    <p className="text-gray-600">Absolument. Nous expédions sous 24h à Casablanca et 2-4 jours dans tout le Maroc, avec livraison gratuite dès 500 DH.</p>
+                    <p className="text-gray-600">Absolument. Nous expédions sous 24h à Casablanca (30 DH) et 24-48h dans tout le Maroc (45 DH), avec livraison gratuite pour toute commande supérieure à 2 000 DH.</p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                     <h3 className="font-bold text-lg text-gray-900 mb-2">Puis-je tester ce produit avant l'achat ?</h3>

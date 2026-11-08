@@ -29,6 +29,9 @@ const CartSummary: React.FC<CartSummaryProps> = ({
     ? Math.round(subtotal * (appliedPromo / 100))
     : 0;
   const total = subtotal - discountAmount;
+  const isFreeShipping = subtotal > 2000;
+  const remainingForFreeShipping = Math.max(0, 2001 - subtotal);
+  const freeShippingProgress = Math.min(100, Math.round((subtotal / 2001) * 100));
 
   const handleApplyPromo = () => {
     const success = applyPromo(promoCode);
@@ -41,6 +44,31 @@ const CartSummary: React.FC<CartSummaryProps> = ({
 
   return (
     <div className="p-6 border-t border-gray-100 bg-gray-50">
+      {/* Free Shipping Progress Indicator (> 2,000 DH strictly) */}
+      <div className="mb-4 p-3 rounded-xl bg-white border border-gray-200 shadow-2xs">
+        {isFreeShipping ? (
+          <div className="flex items-center gap-2 text-xs font-bold text-green-700">
+            <i className="fa-solid fa-circle-check text-green-600"></i>
+            <span>Votre commande bénéficie de la Livraison GRATUITE (&gt; 2 000 DH) !</span>
+          </div>
+        ) : (
+          <div>
+            <div className="flex justify-between items-center text-xs text-gray-700 mb-1.5">
+              <span>
+                Ajoutez <strong className="text-black">{remainingForFreeShipping.toLocaleString('fr-FR')} {siteConfig.currency}</strong> pour la <strong>Livraison GRATUITE</strong>
+              </span>
+              <span className="text-[11px] font-bold text-gray-500">&gt; 2 000 {siteConfig.currency}</span>
+            </div>
+            <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-green-600 rounded-full transition-all duration-300"
+                style={{ width: `${freeShippingProgress}%` }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Promo Code */}
       <div className="mb-4">
         <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">

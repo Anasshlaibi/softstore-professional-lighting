@@ -10,7 +10,7 @@ interface StructuredDataProps {
 export const faqSchemaData = [
   {
     question: "Quels sont les délais et tarifs de livraison au Maroc ?",
-    answer: "Livraison sous 24-48h à Casablanca. Pour les autres villes du Maroc (Rabat, Marrakech, Tanger, Fès, Agadir, etc.), comptez 2-4 jours ouvrables. La livraison est gratuite dès 500 DH d'achat."
+    answer: "Livraison sous 24-48h à Casablanca (30 DH). Pour les autres villes du Maroc (Rabat, Marrakech, Tanger, Fès, Agadir, etc.), comptez 24-48h (45 DH). La livraison est gratuite pour toute commande supérieure à 2 000 DH."
   },
   {
     question: "GearShop est-il le revendeur officiel 7Artisans et K&F Concept au Maroc ?",
@@ -214,7 +214,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
         "@type": "OfferShippingDetails",
         "shippingRate": {
           "@type": "MonetaryAmount",
-          "value": (product.price || 0) >= 500 ? "0" : "35",
+          "value": (product.price || 0) > 2000 ? "0" : "45",
           "currency": "MAD"
         },
         "shippingDestination": {

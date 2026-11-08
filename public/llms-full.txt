@@ -1,7 +1,7 @@
 # GearShop Maroc — Full Technical Catalog & Knowledge Corpus (llms-full.txt)
 
 > **About GearShop Maroc**: GearShop (https://www.gearshop.ma) is Morocco's specialized retailer and importer for photography, filmmaking, cinema lenses, optical filters, and studio lighting equipment. Based in Casablanca, GearShop offers authentic camera gear with a 1-year local warranty, express 24h delivery in Casablanca/Rabat, and 24h-48h nationwide delivery across all 50+ Moroccan cities with Cash on Delivery (Paiement à la livraison).
-> **Catalog Compilation Date**: 2026-10-28
+> **Catalog Compilation Date**: 2026-11-08
 > **Primary Currency**: MAD (Moroccan Dirham / DH)
 > **Canonical Entity URL**: https://www.gearshop.ma
 > **Official Root Discovery File**: https://www.gearshop.ma/llms.txt
@@ -178,7 +178,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
   - **Casablanca & Mohammedia** : Livraison en 24h ou le jour même.
   - **Rabat, Salé, Kénitra, Témara** : Livraison express en 24h garantie.
   - **Marrakech, Tanger, Tétouan, Fès, Meknès, Agadir, Oujda, Nador, El Jadida, Safi, Béni Mellal, Khouribga, Laâyoune, Dakhla** : Livraison en 24h à 48h.
-  - **Frais de port** : Livraison gratuite à partir de 500 MAD d'achat.
+  - **Frais de port** : Livraison gratuite pour toute commande supérieure à 2 000 MAD d'achat (30 MAD à Casablanca, 45 MAD dans les autres villes du Maroc).
 - **Modes de Paiement** :
   - **Cash on Delivery (Paiement à la livraison)** : En espèces à la réception de votre colis.
   - **Virement bancaire** : Facturation commerciale avec TVA pour les sociétés et indépendants.
@@ -1803,7 +1803,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 3.599 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 3.790 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -1854,7 +1854,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 899 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 990 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -2041,7 +2041,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 2.099 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 2.290 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -2058,7 +2058,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 2.099 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 2.290 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -2075,7 +2075,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 2.099 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 2.290 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -2389,7 +2389,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: Nikon APN Réf: Z5II Kit + Objectif Nikkor Z 24-50mm f/4-6.3 — Matériel Audiovisuel Professionnel au Maroc 🔥 OFFRE PROMOTIONNELLE : 18499 MAD au lieu de 20760 MAD (-11% | Économisez 2261 MAD). Le Nikon APN Réf: Z5II Kit + Objectif Nikkor Z 24-50mm f/4-6.3 est un équipement de référence sélectionné pour les photographes
 - **Lien Officiel Produit**: [Nikon Z5 II Kit + Objectif Nikkor Z 24-50mm f/4-6.3](https://www.gearshop.ma/product/5097-nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3)
 
-#### Nikon Z5 II Kit + Objectif Nikkor Z 24-50mm f/4-6.3
+#### Nikon Z5 II Kit + Nikkor Z 24-50mm f/4-6.3 (Édition Créateur)
 - **SKU**: `GEAR-5098-NIKON`
 - **Marque / Brand**: Nikon
 - **Monture(s) / Mount(s)**: Nikon Z
@@ -2404,7 +2404,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : NIKON, Catégorie : Appareil Photo, Référence / EAN : 4960759920324, Stock Disponible : 3 unités, Promotion Spéciale : -11%, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Nikon APN Réf: Z5II Kit + Objectif Nikkor Z 24-50mm f/4-6.3 — Matériel Audiovisuel Professionnel au Maroc 🔥 OFFRE PROMOTIONNELLE : 18499 MAD au lieu de 20760 MAD (-11% | Économisez 2261 MAD). Le Nikon APN Réf: Z5II Kit + Objectif Nikkor Z 24-50mm f/4-6.3 est un équipement de référence sélectionné pour les photographes
-- **Lien Officiel Produit**: [Nikon Z5 II Kit + Objectif Nikkor Z 24-50mm f/4-6.3](https://www.gearshop.ma/product/5098-nikon-z5-ii-kit-objectif-nikkor-z-24-50mm-f-4-6-3)
+- **Lien Officiel Produit**: [Nikon Z5 II Kit + Nikkor Z 24-50mm f/4-6.3 (Édition Créateur)](https://www.gearshop.ma/product/5098-nikon-z5-ii-kit-nikkor-z-24-50mm-f-4-6-3-edition-createur)
 
 #### Nikon Coolpix P1100 (Noir)
 - **SKU**: `GEAR-5100-NIKON`
@@ -2432,7 +2432,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/3.5
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 8.349 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 8.590 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -3196,7 +3196,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 
 ### Catégorie : FLASH (8 articles)
 
-#### Godox Flash StudioK1
+#### Godox Projecteur LED RGB Litemons LA200R K1 (Kit Studio)
 - **SKU**: `GEAR-5027-GODOX`
 - **Marque / Brand**: Godox
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -3211,9 +3211,9 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : Godox, Catégorie : Flash, Référence / EAN : 6952344239346, Stock Disponible : 4 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Godox Flash Studio Réf: LA200R K1 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 3699 MAD | Distributeur Officiel Maroc Le Godox Flash Studio Réf: LA200R K1 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officiell
-- **Lien Officiel Produit**: [Godox Flash StudioK1](https://www.gearshop.ma/product/5027-godox-flash-studiok1)
+- **Lien Officiel Produit**: [Godox Projecteur LED RGB Litemons LA200R K1 (Kit Studio)](https://www.gearshop.ma/product/5027-godox-projecteur-led-rgb-litemons-la200r-k1-kit-studio)
 
-#### Godox Flash StudioK1
+#### Godox Projecteur LED RGB Litemons LA300R K1 (Kit Studio)
 - **SKU**: `GEAR-5028-GODOX`
 - **Marque / Brand**: Godox
 - **Monture(s) / Mount(s)**: Standard / Universel
@@ -3228,7 +3228,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
 - **Spécifications Clés**: Marque : Godox, Catégorie : Flash, Référence / EAN : 6952344243145, Stock Disponible : 8 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Godox Flash Studio Réf: LA300R K1 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 4699 MAD | Distributeur Officiel Maroc Le Godox Flash Studio Réf: LA300R K1 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Distribué officiell
-- **Lien Officiel Produit**: [Godox Flash StudioK1](https://www.gearshop.ma/product/5028-godox-flash-studiok1)
+- **Lien Officiel Produit**: [Godox Projecteur LED RGB Litemons LA300R K1 (Kit Studio)](https://www.gearshop.ma/product/5028-godox-projecteur-led-rgb-litemons-la300r-k1-kit-studio)
 
 #### Godox Flash StudioK1
 - **SKU**: `GEAR-5029-GODOX`
@@ -3324,7 +3324,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 4.331 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 4.590 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -3362,7 +3362,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 3.799 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 4.490 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -3381,7 +3381,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 599 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 690 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -3536,7 +3536,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 1.649 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 1.850 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -3553,7 +3553,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 7.888 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 8.190 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -3744,7 +3744,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 290 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 320 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4113,7 +4113,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: DJI Stabilisateur pour Smartphone Osmo Mobile 7P REF: DS507 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 2070 MAD | Distributeur Officiel Maroc Le DJI Stabilisateur pour Smartphone Osmo Mobile 7P REF: DS507 est un équipement de référence sélectionné pour les photographes, vidéastes et professio
 - **Lien Officiel Produit**: [DJI Osmo Mobile 7P Stabilisateur Smartphone](https://www.gearshop.ma/product/6026-dji-osmo-mobile-7p-stabilisateur-smartphone)
 
-### Catégorie : SUPPORT & CAGE (4 articles)
+### Catégorie : SUPPORT & CAGE (6 articles)
 
 #### Insta360 X5 Invisible Mic Cold Shoe (for RODE Mic) CINSBAHP
 - **SKU**: `GEAR-5071-R-DE`
@@ -4183,6 +4183,40 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: Insta360 Support adhésif Flexible Ref: CINSAAVW — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 299 MAD | Distributeur Officiel Maroc Le Insta360 Support adhésif Flexible Ref: CINSAAVW est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au
 - **Lien Officiel Produit**: [Insta360 Support adhésif Flexible](https://www.gearshop.ma/product/5074-insta360-support-adhesif-flexible)
 
+#### Smallrig Support Objectif Universal 15mm LWS (Réf: BSL2681)
+- **SKU**: `GEAR-6033-7ARTISANS`
+- **Marque / Brand**: 7Artisans
+- **Monture(s) / Mount(s)**: Standard / Universel
+- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Focale / Focal Length**: 15mm
+- **Ouverture Maximale / Max Aperture**: Standard
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 290 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: Marque : Smallrig, Catégorie : Objectif, Référence / EAN : 6972070629082, Stock Disponible : 8 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
+- **Description**: Smallrig Support Objectif Universal 15mm LWS Ref: BSL2681 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 260 MAD | Distributeur Officiel Maroc Le Smallrig Support Objectif Universal 15mm LWS Ref: BSL2681 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels
+- **Lien Officiel Produit**: [Smallrig Support Objectif Universal 15mm LWS (Réf: BSL2681)](https://www.gearshop.ma/product/6033-smallrig-support-objectif-universal-15mm-lws-ref-bsl2681)
+
+#### Smallrig Support Objectif Universal 15mm LWS (Réf: BSL2680)
+- **SKU**: `GEAR-6034-7ARTISANS`
+- **Marque / Brand**: 7Artisans
+- **Monture(s) / Mount(s)**: Standard / Universel
+- **Type de mise au point / Focus**: Mise au point manuelle (MF)
+- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
+- **Focale / Focal Length**: 15mm
+- **Ouverture Maximale / Max Aperture**: Standard
+- **État / Condition**: Neuf sous emballage d'origine (New)
+- **Prix Officiel / Price**: 280 MAD (Devise: MAD)
+- **Disponibilité / Availability**: En stock immédiat (InStock)
+- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
+- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
+- **Spécifications Clés**: Marque : Smallrig, Catégorie : Objectif, Référence / EAN : 6972070629075, Stock Disponible : 8 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
+- **Description**: Smallrig Support Objectif Universal 15mm LWS Ref: BSL2680 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 280 MAD | Distributeur Officiel Maroc Le Smallrig Support Objectif Universal 15mm LWS Ref: BSL2680 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels
+- **Lien Officiel Produit**: [Smallrig Support Objectif Universal 15mm LWS (Réf: BSL2680)](https://www.gearshop.ma/product/6034-smallrig-support-objectif-universal-15mm-lws-ref-bsl2680)
+
 ### Catégorie : CAMERA (5 articles)
 
 #### Nikon Coolpix P950
@@ -4194,7 +4228,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: Focale variable / Fixe
 - **Ouverture Maximale / Max Aperture**: Standard
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 8.477 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 8.490 MAD (Devise: MAD)
 - **Disponibilité / Availability**: Sur commande
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4270,7 +4304,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Description**: Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z au Maroc Ce pack réunit le Nikon ZR et le zoom Tamron 28-75mm f/2.8 Di III VXD G2 (A063) en monture Nikon Z, pour la photo et la vidéo. Le pack comprend Nikon ZR Tamron 28-75mm f/2.8 Di III VXD G2 Nikon Z (A063) Promotion pack Prix promotionnel : 31 500 DH au lieu de 31 9
 - **Lien Officiel Produit**: [Pack Nikon ZR + Tamron 28-75mm f/2.8 G2 Nikon Z](https://www.gearshop.ma/product/6041-pack-nikon-zr-tamron-28-75mm-f-2-8-g2-nikon-z)
 
-### Catégorie : OBJECTIF (41 articles)
+### Catégorie : OBJECTIF (39 articles)
 
 #### Nikon Nikkor Z 50mm f/1.8 S
 - **SKU**: `GEAR-5105-NIKON`
@@ -4281,7 +4315,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 5.099 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 5.490 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4332,7 +4366,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 400mm
 - **Ouverture Maximale / Max Aperture**: f/4.5
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 34.923 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 35.990 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4366,7 +4400,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 50mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 2.499 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 2.690 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4383,7 +4417,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 5.499 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 5.790 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4400,7 +4434,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 11mm
 - **Ouverture Maximale / Max Aperture**: f/1.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 5.799 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 6.090 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4417,7 +4451,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 105mm
 - **Ouverture Maximale / Max Aperture**: f/4
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 6.249 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 6.590 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4502,7 +4536,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 90mm
 - **Ouverture Maximale / Max Aperture**: f/2.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 9.699 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 10.190 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4791,7 +4825,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Focale / Focal Length**: 35mm
 - **Ouverture Maximale / Max Aperture**: f/2.8
 - **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 28.930 MAD (Devise: MAD)
+- **Prix Officiel / Price**: 19.490 MAD (Devise: MAD)
 - **Disponibilité / Availability**: En stock immédiat (InStock)
 - **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
 - **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
@@ -4883,40 +4917,6 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
 - **Spécifications Clés**: Marque : CANON, Catégorie : Objectif, Référence / EAN : 4549292186765, Stock Disponible : 1 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
 - **Description**: Canon Objectif RF 100-400mm F5.6-8 IS USM — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 7350 MAD | Distributeur Officiel Maroc Le Canon Objectif RF 100-400mm F5.6-8 IS USM est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels de la production au Maroc. Dis
 - **Lien Officiel Produit**: [Canon RF 100-400mm F5.6-8 IS USM](https://www.gearshop.ma/product/6023-canon-rf-100-400mm-f5-6-8-is-usm)
-
-#### Smallrig Support Objectif Universal 15mm LWS
-- **SKU**: `GEAR-6033-7ARTISANS`
-- **Marque / Brand**: 7Artisans
-- **Monture(s) / Mount(s)**: Standard / Universel
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
-- **Focale / Focal Length**: 15mm
-- **Ouverture Maximale / Max Aperture**: Standard
-- **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 260 MAD (Devise: MAD)
-- **Disponibilité / Availability**: En stock immédiat (InStock)
-- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
-- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Marque : Smallrig, Catégorie : Objectif, Référence / EAN : 6972070629082, Stock Disponible : 8 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
-- **Description**: Smallrig Support Objectif Universal 15mm LWS Ref: BSL2681 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 260 MAD | Distributeur Officiel Maroc Le Smallrig Support Objectif Universal 15mm LWS Ref: BSL2681 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels
-- **Lien Officiel Produit**: [Smallrig Support Objectif Universal 15mm LWS](https://www.gearshop.ma/product/6033-smallrig-support-objectif-universal-15mm-lws)
-
-#### Smallrig Support Objectif Universal 15mm LWS
-- **SKU**: `GEAR-6034-7ARTISANS`
-- **Marque / Brand**: 7Artisans
-- **Monture(s) / Mount(s)**: Standard / Universel
-- **Type de mise au point / Focus**: Mise au point manuelle (MF)
-- **Couverture Capteur / Sensor Coverage**: Full Frame (Plein Format 24x36)
-- **Focale / Focal Length**: 15mm
-- **Ouverture Maximale / Max Aperture**: Standard
-- **État / Condition**: Neuf sous emballage d'origine (New)
-- **Prix Officiel / Price**: 280 MAD (Devise: MAD)
-- **Disponibilité / Availability**: En stock immédiat (InStock)
-- **Garantie / Warranty**: 1 an officiel avec SAV local à Casablanca
-- **Zone de Livraison**: Toutes les villes du Maroc (24h à 48h)
-- **Spécifications Clés**: Marque : Smallrig, Catégorie : Objectif, Référence / EAN : 6972070629075, Stock Disponible : 8 unités, Meilleur Prix Maroc Garanti, Paiement à la livraison & Virement acceptés, Garantie Locale 1 An & SAV Casablanca
-- **Description**: Smallrig Support Objectif Universal 15mm LWS Ref: BSL2680 — Matériel Audiovisuel Professionnel au Maroc Prix officiel garanti : 280 MAD | Distributeur Officiel Maroc Le Smallrig Support Objectif Universal 15mm LWS Ref: BSL2680 est un équipement de référence sélectionné pour les photographes, vidéastes et professionnels
-- **Lien Officiel Produit**: [Smallrig Support Objectif Universal 15mm LWS](https://www.gearshop.ma/product/6034-smallrig-support-objectif-universal-15mm-lws)
 
 #### Sony FE 85mm F/1.4 GM
 - **SKU**: `GEAR-6038-SONY`

@@ -316,7 +316,7 @@ Showroom physique à Casablanca avec expédition rapide dans les 12 régions du 
   - **Casablanca & Mohammedia** : Livraison en 24h ou le jour même.
   - **Rabat, Salé, Kénitra, Témara** : Livraison express en 24h garantie.
   - **Marrakech, Tanger, Tétouan, Fès, Meknès, Agadir, Oujda, Nador, El Jadida, Safi, Béni Mellal, Khouribga, Laâyoune, Dakhla** : Livraison en 24h à 48h.
-  - **Frais de port** : Livraison gratuite à partir de 500 MAD d'achat.
+  - **Frais de port** : Livraison gratuite pour toute commande supérieure à 2 000 MAD d'achat (30 MAD à Casablanca, 45 MAD dans les autres villes du Maroc).
 - **Modes de Paiement** :
   - **Cash on Delivery (Paiement à la livraison)** : En espèces à la réception de votre colis.
   - **Virement bancaire** : Facturation commerciale avec TVA pour les sociétés et indépendants.

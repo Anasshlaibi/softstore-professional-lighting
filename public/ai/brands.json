@@ -37,7 +37,7 @@
     "totalProducts": 283,
     "categoriesCount": 7,
     "brandsCount": 14,
-    "lastUpdated": "2026-10-28"
+    "lastUpdated": "2026-11-08"
   },
   "endpoints": {
     "fullText": "https://www.gearshop.ma/llms-full.txt",
@@ -155,7 +155,7 @@
       "sampleProducts": [
         {
           "name": "Canon Powershot V10",
-          "price": 3599,
+          "price": 3790,
           "url": "https://www.gearshop.ma/product/5011-canon-powershot-v10"
         },
         {
@@ -189,7 +189,7 @@
       "sampleProducts": [
         {
           "name": "Fujifilm Instax Mini 11 Lilac Purple",
-          "price": 899,
+          "price": 990,
           "url": "https://www.gearshop.ma/product/5014-fujifilm-instax-mini-11-lilac-purple"
         },
         {
@@ -230,14 +230,14 @@
           "url": "https://www.gearshop.ma/product/5026-godox-softbox-prabolique-p120h"
         },
         {
-          "name": "Godox Flash StudioK1",
+          "name": "Godox Projecteur LED RGB Litemons LA200R K1 (Kit Studio)",
           "price": 3699,
-          "url": "https://www.gearshop.ma/product/5027-godox-flash-studiok1"
+          "url": "https://www.gearshop.ma/product/5027-godox-projecteur-led-rgb-litemons-la200r-k1-kit-studio"
         },
         {
-          "name": "Godox Flash StudioK1",
+          "name": "Godox Projecteur LED RGB Litemons LA300R K1 (Kit Studio)",
           "price": 4699,
-          "url": "https://www.gearshop.ma/product/5028-godox-flash-studiok1"
+          "url": "https://www.gearshop.ma/product/5028-godox-projecteur-led-rgb-litemons-la300r-k1-kit-studio"
         },
         {
           "name": "Godox Flash StudioK1",
@@ -253,12 +253,12 @@
       "sampleProducts": [
         {
           "name": "Hollyland Casque sans Fil Solidcom SE 4S Global Version",
-          "price": 3799,
+          "price": 4490,
           "url": "https://www.gearshop.ma/product/5042-hollyland-casque-sans-fil-solidcom-se-4s-global-version"
         },
         {
           "name": "Hollyland Microphone Sans fil LARK A1 Combo (USB-C RX+Lightning RX+ Charging Case)",
-          "price": 599,
+          "price": 690,
           "url": "https://www.gearshop.ma/product/5043-hollyland-microphone-sans-fil-lark-a1-combo-usb-c-rx-lightning-rx-charging-case"
         }
       ]
@@ -304,12 +304,12 @@
       "sampleProducts": [
         {
           "name": "Nikon Adaptateur pour monture FTZ II",
-          "price": 1649,
+          "price": 1850,
           "url": "https://www.gearshop.ma/product/5092-nikon-adaptateur-pour-monture-ftz-ii"
         },
         {
           "name": "Nikon Coolpix P950",
-          "price": 8477,
+          "price": 8490,
           "url": "https://www.gearshop.ma/product/5093-nikon-coolpix-p950"
         },
         {
@@ -346,7 +346,7 @@
         },
         {
           "name": "PNY Carte Mémoire SD 128G C10 U3 ELITE-X",
-          "price": 290,
+          "price": 320,
           "url": "https://www.gearshop.ma/product/6028-pny-carte-memoire-sd-128g-c10-u3-elite-x"
         }
       ]
@@ -360,7 +360,7 @@
       "sampleProducts": [
         {
           "name": "Sony ZV-E10 Kit + Objectif 16-50mm f/3.5-5.6",
-          "price": 8349,
+          "price": 8590,
           "url": "https://www.gearshop.ma/product/5110-sony-zv-e10-kit-objectif-16-50mm-f-3-5-5-6"
         },
         {
@@ -445,9 +445,9 @@
           "url": "https://www.gearshop.ma/product/6032-smallrig-cage-protege-camera-canon-eos-c50-kit"
         },
         {
-          "name": "Smallrig Support Objectif Universal 15mm LWS",
-          "price": 260,
-          "url": "https://www.gearshop.ma/product/6033-smallrig-support-objectif-universal-15mm-lws"
+          "name": "Smallrig Support Objectif Universal 15mm LWS (Réf: BSL2681)",
+          "price": 290,
+          "url": "https://www.gearshop.ma/product/6033-smallrig-support-objectif-universal-15mm-lws-ref-bsl2681"
         }
       ]
     },
