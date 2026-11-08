@@ -34,7 +34,7 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 283,
+    "totalProducts": 299,
     "categoriesCount": 7,
     "brandsCount": 14,
     "lastUpdated": "2026-11-08"
@@ -131,46 +131,46 @@
         },
         {
           "name": "DJI Osmo Pocket 3 Creator Combo",
-          "price": 6650,
+          "price": 6690,
           "url": "https://www.gearshop.ma/product/6024-dji-osmo-pocket-3-creator-combo"
         },
         {
           "name": "DJI Osmo Mobile 7 Stabilisateur Smartphone",
-          "price": 1240,
+          "price": 1290,
           "url": "https://www.gearshop.ma/product/6025-dji-osmo-mobile-7-stabilisateur-smartphone"
         },
         {
           "name": "DJI Osmo Mobile 7P Stabilisateur Smartphone",
-          "price": 2070,
+          "price": 2090,
           "url": "https://www.gearshop.ma/product/6026-dji-osmo-mobile-7p-stabilisateur-smartphone"
         }
       ]
     },
     {
       "name": "Canon",
-      "count": 26,
+      "count": 29,
       "mountsAvailable": [
         "Canon RF"
       ],
       "sampleProducts": [
         {
           "name": "Canon Powershot V10",
-          "price": 3790,
+          "price": 3890,
           "url": "https://www.gearshop.ma/product/5011-canon-powershot-v10"
         },
         {
           "name": "Canon EOS R8 + RF24-50",
-          "price": 19999,
+          "price": 21090,
           "url": "https://www.gearshop.ma/product/5012-canon-eos-r8-rf24-50"
         },
         {
           "name": "Canon EOS R6 MARK II",
-          "price": 22499,
+          "price": 22190,
           "url": "https://www.gearshop.ma/product/5013-canon-eos-r6-mark-ii"
         },
         {
           "name": "Canon EOS R50 + Objectif RF-S 18-45mm IS STM",
-          "price": 8540,
+          "price": 8590,
           "url": "https://www.gearshop.ma/product/6001-canon-eos-r50-objectif-rf-s-18-45mm-is-stm"
         },
         {
@@ -182,7 +182,7 @@
     },
     {
       "name": "Fujifilm",
-      "count": 8,
+      "count": 9,
       "mountsAvailable": [
         "Fujifilm X"
       ],
@@ -194,22 +194,22 @@
         },
         {
           "name": "Fujifilm Instax Mini 12 Blanc",
-          "price": 1099,
+          "price": 990,
           "url": "https://www.gearshop.ma/product/5015-fujifilm-instax-mini-12-blanc"
         },
         {
           "name": "Fujifilm Instax Mini 12 Vert",
-          "price": 1099,
+          "price": 990,
           "url": "https://www.gearshop.ma/product/5016-fujifilm-instax-mini-12-vert"
         },
         {
           "name": "Fujifilm Instax Mini 12 Violet",
-          "price": 1099,
+          "price": 990,
           "url": "https://www.gearshop.ma/product/5017-fujifilm-instax-mini-12-violet"
         },
         {
           "name": "Fujifilm Instax Mini 12 Bleu",
-          "price": 1099,
+          "price": 990,
           "url": "https://www.gearshop.ma/product/5018-fujifilm-instax-mini-12-bleu"
         }
       ]
@@ -265,27 +265,27 @@
     },
     {
       "name": "Insta360",
-      "count": 31,
+      "count": 36,
       "mountsAvailable": [],
       "sampleProducts": [
         {
           "name": "Insta360 Adaptateur de Micophone pour X5",
-          "price": 129,
+          "price": 139,
           "url": "https://www.gearshop.ma/product/5044-insta360-adaptateur-de-micophone-pour-x5"
         },
         {
           "name": "Insta360 Adaptateur de Micophone pour X4",
-          "price": 259,
+          "price": 269,
           "url": "https://www.gearshop.ma/product/5045-insta360-adaptateur-de-micophone-pour-x4"
         },
         {
           "name": "Insta360 Camera Luna Ultra Creator Bundle Cosmic Noir",
-          "price": 11599,
+          "price": 11890,
           "url": "https://www.gearshop.ma/product/5046-insta360-camera-luna-ultra-creator-bundle-cosmic-noir"
         },
         {
           "name": "Insta360 X5 Lens Cap CINSBAHL",
-          "price": 89,
+          "price": 99,
           "url": "https://www.gearshop.ma/product/5047-insta360-x5-lens-cap-cinsbahl"
         },
         {
@@ -297,7 +297,7 @@
     },
     {
       "name": "Nikon",
-      "count": 17,
+      "count": 23,
       "mountsAvailable": [
         "Nikon Z"
       ],
@@ -314,17 +314,17 @@
         },
         {
           "name": "Nikon Z30 Kit + Objectif Nikkor Z DX 16-50mm f/3.5-6.3 VR",
-          "price": 7499,
+          "price": 7990,
           "url": "https://www.gearshop.ma/product/5094-nikon-z30-kit-objectif-nikkor-z-dx-16-50mm-f-3-5-6-3-vr"
         },
         {
           "name": "Nikon Z50 II Kit + Objectif Nikkor Z DX 16-50mm VR",
-          "price": 10499,
+          "price": 11290,
           "url": "https://www.gearshop.ma/product/5095-nikon-z50-ii-kit-objectif-nikkor-z-dx-16-50mm-vr"
         },
         {
           "name": "Nikon Z5 II",
-          "price": 15099,
+          "price": 15990,
           "url": "https://www.gearshop.ma/product/5096-nikon-z5-ii"
         }
       ]
@@ -336,12 +336,12 @@
       "sampleProducts": [
         {
           "name": "PNY Lecteur Carte Mémoire R-TC-UA-3N1E01-RB USB-C",
-          "price": 229,
+          "price": 239,
           "url": "https://www.gearshop.ma/product/5109-pny-lecteur-carte-memoire-r-tc-ua-3n1e01-rb-usb-c"
         },
         {
           "name": "PNY Carte Mémoire SD 64GB C10 U3 ELITE-X",
-          "price": 150,
+          "price": 159,
           "url": "https://www.gearshop.ma/product/6027-pny-carte-memoire-sd-64gb-c10-u3-elite-x"
         },
         {
@@ -353,34 +353,34 @@
     },
     {
       "name": "Sony",
-      "count": 39,
+      "count": 40,
       "mountsAvailable": [
         "Sony E"
       ],
       "sampleProducts": [
         {
           "name": "Sony ZV-E10 Kit + Objectif 16-50mm f/3.5-5.6",
-          "price": 8590,
+          "price": 8890,
           "url": "https://www.gearshop.ma/product/5110-sony-zv-e10-kit-objectif-16-50mm-f-3-5-5-6"
         },
         {
           "name": "Sony ZV-E10 Mark II Kit + Objectif 16-50mm",
-          "price": 12999,
+          "price": 13890,
           "url": "https://www.gearshop.ma/product/5111-sony-zv-e10-mark-ii-kit-objectif-16-50mm"
         },
         {
           "name": "Sony Alpha 7 III",
-          "price": 13999,
+          "price": 14890,
           "url": "https://www.gearshop.ma/product/5112-sony-alpha-7-iii"
         },
         {
           "name": "Sony Alpha 7 V / ILCE-7M5",
-          "price": 33499,
+          "price": 35090,
           "url": "https://www.gearshop.ma/product/5113-sony-alpha-7-v-ilce-7m5"
         },
         {
           "name": "Sony Cinema Line FX30",
-          "price": 20499,
+          "price": 21690,
           "url": "https://www.gearshop.ma/product/5114-sony-cinema-line-fx30"
         }
       ]
@@ -397,7 +397,7 @@
         },
         {
           "name": "Vanguard Sac Photo VESTA ASPIRE 21Gris",
-          "price": 569,
+          "price": 590,
           "url": "https://www.gearshop.ma/product/5146-vanguard-sac-photo-vesta-aspire-21gris"
         },
         {
@@ -426,12 +426,12 @@
       "sampleProducts": [
         {
           "name": "Smallrig Mini Matte Box Lite",
-          "price": 1130,
+          "price": 1190,
           "url": "https://www.gearshop.ma/product/6029-smallrig-mini-matte-box-lite"
         },
         {
           "name": "Smallrig Cage Protege Camera Nikon ZR Kit",
-          "price": 1150,
+          "price": 1190,
           "url": "https://www.gearshop.ma/product/6030-smallrig-cage-protege-camera-nikon-zr-kit"
         },
         {
@@ -441,12 +441,12 @@
         },
         {
           "name": "Smallrig Cage Protege Camera Canon EOS C50 Kit",
-          "price": 1450,
+          "price": 1490,
           "url": "https://www.gearshop.ma/product/6032-smallrig-cage-protege-camera-canon-eos-c50-kit"
         },
         {
           "name": "Smallrig Support Objectif Universal 15mm LWS (Réf: BSL2681)",
-          "price": 290,
+          "price": 299,
           "url": "https://www.gearshop.ma/product/6033-smallrig-support-objectif-universal-15mm-lws-ref-bsl2681"
         }
       ]

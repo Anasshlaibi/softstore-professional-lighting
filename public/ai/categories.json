@@ -34,7 +34,7 @@
     }
   },
   "catalogSummary": {
-    "totalProducts": 283,
+    "totalProducts": 299,
     "categoriesCount": 7,
     "brandsCount": 14,
     "lastUpdated": "2026-11-08"
@@ -112,7 +112,7 @@
     },
     {
       "name": "Objectifs Photo",
-      "count": 96,
+      "count": 104,
       "sampleProducts": [
         {
           "name": "Atomos Ninja V 5\" 4K HDR + Pack Complet (SSD 500Go Lunchbox, Valise, Batterie, 2x HDMI) - Comme Neuf",
@@ -174,7 +174,7 @@
     },
     {
       "name": "Accessoires Photo & Vidéo",
-      "count": 127,
+      "count": 135,
       "sampleProducts": [
         {
           "name": "7Artisans Adaptateur PL 4-en-1 Universel (PL vers Sony E / L / RF / Nikon Z)",
@@ -250,17 +250,17 @@
         },
         {
           "name": "Insta360 Camera Luna Ultra Creator Bundle Cosmic Noir",
-          "price": 11599,
+          "price": 11890,
           "url": "https://www.gearshop.ma/product/5046-insta360-camera-luna-ultra-creator-bundle-cosmic-noir"
         },
         {
           "name": "Canon Camera Video XA60B",
-          "price": 13880,
+          "price": 13890,
           "url": "https://www.gearshop.ma/product/6010-canon-camera-video-xa60b"
         },
         {
           "name": "DJI Osmo Pocket 3 Creator Combo",
-          "price": 6650,
+          "price": 6690,
           "url": "https://www.gearshop.ma/product/6024-dji-osmo-pocket-3-creator-combo"
         }
       ]
