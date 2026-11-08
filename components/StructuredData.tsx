@@ -169,6 +169,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
   // ===== 4. Product Schema (when a product is selected) =====
   const isPreorder = product?.isPreorder === true;
   const hasRealPrice = product && product.price && product.price > 0;
+  const specsStr = product ? JSON.stringify(product.specs || '') + ' ' + (product.desc || '') : '';
+  const ean13Match = specsStr.match(/\b(\d{13})\b/);
 
   const productSchema = product ? {
     "@context": "https://schema.org/",
@@ -186,6 +188,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     "description": product.meta_description || product.desc || `Achetez ${product.name} chez GearShop Maroc. Produit garanti 1 an avec livraison express 24h à Casablanca et partout au Maroc.`,
     "sku": `GS-${product.id}`,
     "mpn": `MPN-${product.id}`,
+    ...(ean13Match ? { "gtin13": ean13Match[1] } : {}),
     ...(resolvedBrand ? {
       "brand": {
         "@type": "Brand",

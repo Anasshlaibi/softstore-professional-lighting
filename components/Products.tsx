@@ -7,8 +7,8 @@ import CatalogSidebar from './CatalogSidebar';
 import FilterDrawer from './FilterDrawer';
 import { extractProductAttributes, isProductMatchingCategory, smartFilterUpdate } from '../src/utils/productMetadata';
 import { useCart } from '../src/context/CartContext';
-import richDescriptions from '../src/data/richDescriptions.json';
 import { slugify } from '../src/utils/catalogEngine';
+import { trackSearch } from '../src/services/googleAnalytics';
 
 interface ProductsProps {
   products: Product[];
@@ -66,7 +66,7 @@ const Products: React.FC<ProductsProps> = ({
 
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [showAllBrands, setShowAllBrands] = useState(false);
-  const [displayLimit, setDisplayLimit] = useState(12);
+  const [displayLimit, setDisplayLimit] = useState(24);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>(() => {
     return (searchParams.get('view') as 'grid' | 'list') || 'grid';
   });
@@ -77,6 +77,9 @@ const Products: React.FC<ProductsProps> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchQuery(globalSearchQuery);
+      if (globalSearchQuery.trim().length >= 2) {
+        trackSearch(globalSearchQuery.trim());
+      }
     }, 250);
     return () => clearTimeout(timer);
   }, [globalSearchQuery]);
@@ -113,7 +116,7 @@ const Products: React.FC<ProductsProps> = ({
   }, [filters, viewMode, debouncedSearchQuery, setSearchParams]);
 
   useEffect(() => {
-    setDisplayLimit(12);
+    setDisplayLimit(24);
   }, [debouncedSearchQuery]);
 
   const categories = useMemo(() => {
@@ -141,9 +144,8 @@ const Products: React.FC<ProductsProps> = ({
 
       const searchTerms = normalize(debouncedSearchQuery).split(/\s+/).filter(Boolean);
       filtered = filtered.filter((p) => {
-        const richDesc = (richDescriptions as Record<string, string>)[p.id?.toString()] || '';
         const meta = extractProductAttributes(p);
-        const searchText = normalize(`${p.name} ${p.category} ${meta.mount} ${meta.brand} ${meta.lens_type || ''} ${p.desc} ${richDesc}`);
+        const searchText = normalize(`${p.name} ${p.category} ${meta.mount} ${meta.brand} ${meta.lens_type || ''} ${p.desc}`);
         return searchTerms.every((term) => searchText.includes(term));
       });
     }
@@ -209,31 +211,39 @@ const Products: React.FC<ProductsProps> = ({
       (p) => p.price >= filters.priceRange[0] && p.price <= filters.priceRange[1]
     );
 
-    // Curated rich audiovisual mix: DJI Osmo Pocket, Cameras, 7Artisans 135mm, Cinema Lenses, Photo Lenses, Bags, Filters & Lights
+    // Curated rich audiovisual mix: In-stock Cameras, New Arrivals, 7Artisans 135mm, Cinema Lenses, Photo Lenses, Bags, Filters & Lights
     const featuredBestsellers = [
-      'DJI Osmo Pocket 4 Pro',
+      'DJI Osmo Pocket 3 Creator Combo',
+      'Sony Alpha 6700 + Objectif E PZ 16-50mm f/3.5-5.6 OSS II',
+      'Canon EOS R6 Mark III (Boîtier)',
+      'Insta360 X5 Essentials Kit (Noir)',
       'Sony Alpha 7 IV Kit + Objectif 28-70mm',
       'AF135mm F1.8 Sony (E Mount) - Black',
       'Sony Cinema Line FX30',
+      'Nikon ZR',
+      'Canon EOS R5 Mark II',
+      'Fujifilm Instax Mini Evo Hybride (Noir)',
+      'Canon EOS R50 + Objectif RF-S 18-45mm IS STM',
+      'Canon EOS R10 + Objectif RF-S 18-45mm f/4.5-6.3 IS STM',
+      'Canon EOS R100 + Objectif RF-S 18-45mm f/4.5-6.3 IS STM',
+      'Nikon Z6 II (Boîtier)',
       'Vanguard Sac à Dos Photo VEO GO 42M Noir',
       '77mm True Color VND6-9 Filter - Black',
-      'DJI Osmo Pocket 3 Creator Combo',
       '35mm T2.0 Nikon (Z Mount) - Black',
       'Sony FE 50mm f/1.8',
       'K&F Concept 82mm 3-in-1 ND2-32 & CPL & Black Mist 1/4 Filter (Nano-Xcel)',
-      'Canon EOS R50 + Objectif RF-S 18-45mm IS STM',
       'Vanguard Sac Photo VEO SELECT 22S Noir',
       'AF135mm F1.8 Nikon (Z Mount) - Black',
       'YM 350',
       '55mm 1/8 Black Mist Filter - Black',
       'K&F Concept Sac Bandoulière Photo Étanche pour Caméra & Accessoires',
-      'Canon RF 50MM F1.8 STM',
       'Insta360 Flow 2 Standard Bundle / Summit White CINSABQA',
       '50mm T2.0 Sony (E Mount) - Black',
       'Vanguard Sac à Dos Photo Trolley VEO SELECT 55BT Noir',
       'YB-300R',
       'Nikon Z30 Kit + Objectif Nikkor Z DX 16-50mm f/3.5-6.3 VR',
       'Nikon Nikkor Z 50mm f/1.8 S',
+      'Nikon Nikkor Z MC 105mm f/2.8 VR S Macro',
       'Sony FE 24-70mm F2.8 GM II',
       'AF40mm F2.5 Sony (E Mount) - Black',
       'Autofocus adapter for Canon EF - Nikon Z - Black',
@@ -267,19 +277,19 @@ const Products: React.FC<ProductsProps> = ({
           return (b.id || 0) - (a.id || 0);
         case 'default':
         default: {
-          // 1. Featured Bestsellers Showcase First
-          const bIndexA = getBestsellerIndex(a);
-          const bIndexB = getBestsellerIndex(b);
-          if (bIndexA !== -1 && bIndexB !== -1) return bIndexA - bIndexB;
-          if (bIndexA !== -1) return -1;
-          if (bIndexB !== -1) return 1;
-
-          // 2. In-Stock and priced items take priority over 0-priced / out of stock
+          // 1. In-Stock and priced items ALWAYS take priority over 0-priced / out of stock
           const hasPriceA = (a.price || 0) > 0 ? 1 : 0;
           const hasPriceB = (b.price || 0) > 0 ? 1 : 0;
           if (hasPriceA !== hasPriceB) return hasPriceB - hasPriceA;
 
           if (a.inStock !== b.inStock) return a.inStock ? -1 : 1;
+
+          // 2. Featured Bestsellers Showcase First (among in-stock items)
+          const bIndexA = getBestsellerIndex(a);
+          const bIndexB = getBestsellerIndex(b);
+          if (bIndexA !== -1 && bIndexB !== -1) return bIndexA - bIndexB;
+          if (bIndexA !== -1) return -1;
+          if (bIndexB !== -1) return 1;
 
           // 3. Balanced Price-Tier Interleaving (sweet-spot accessibility first, not just 38,000 DH first)
           const getPriceTier = (p: Product) => {
@@ -304,7 +314,7 @@ const Products: React.FC<ProductsProps> = ({
   }, [products, debouncedSearchQuery, filters]);
 
   useEffect(() => {
-    setDisplayLimit(12);
+    setDisplayLimit(24);
   }, [filters, debouncedSearchQuery]);
 
   const resetAllFilters = useCallback(() => {
@@ -800,11 +810,11 @@ const Products: React.FC<ProductsProps> = ({
                   <div className="flex flex-col items-center justify-center pt-8 pb-4 gap-2">
                     <button
                       type="button"
-                      onClick={() => setDisplayLimit((prev) => prev + 12)}
+                      onClick={() => setDisplayLimit((prev) => prev + 24)}
                       className="px-8 py-3.5 bg-red-600 hover:bg-red-700 active:scale-98 text-white text-xs font-black tracking-wider uppercase rounded-2xl transition-all shadow-lg hover:shadow-red-600/30 cursor-pointer min-h-[48px] flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                     >
                       <i className="fa-solid fa-plus text-xs" />
-                      <span>Afficher 12 produits suivants</span>
+                      <span>Afficher 24 produits suivants</span>
                       <span className="bg-red-800/90 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">
                         ({filteredProducts.length - displayLimit} restants)
                       </span>

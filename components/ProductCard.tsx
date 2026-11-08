@@ -1,5 +1,5 @@
 import React from 'react';
-import { trackWhatsAppLead } from '../src/services/googleAnalytics';
+import { trackWhatsAppLead, trackSelectItem } from '../src/services/googleAnalytics';
 import { Link } from 'react-router-dom';
 import { Product } from '../App';
 import { slugify } from '../src/utils/catalogEngine';
@@ -45,7 +45,18 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
   }) => {
     const activeCurrency = currency || siteConfig?.currency || 'DH';
     const activePhone = siteConfig?.phone || '+212673011873';
+    const secondaryImage = Array.isArray(product.gallery)
+      ? product.gallery.find((img) => img && img !== product.image)
+      : undefined;
     const handleClick = (id: number) => {
+      trackSelectItem({
+        item_id: String(product.id),
+        item_name: product.name,
+        item_category: product.category || 'Photo & Vidéo',
+        item_brand: product.brand || 'GearShop',
+        price: product.price || 0,
+        quantity: 1,
+      });
       if (onProductClick) onProductClick(id);
       else if (onSelect) onSelect(id);
     };
@@ -118,9 +129,9 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             src={product.image}
             alt={`${product.name} - GearShop Maroc`}
             title={`${product.name} - GearShop Maroc`}
-            className={`max-w-full max-h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 drop-shadow-sm ${
-              !product.inStock ? 'grayscale opacity-75' : ''
-            }`}
+            className={`max-w-full max-h-full object-contain relative z-10 transition-all duration-500 group-hover:scale-105 drop-shadow-sm ${
+              secondaryImage ? 'group-hover:opacity-0' : ''
+            } ${!product.inStock ? 'grayscale opacity-75' : ''}`}
             loading="lazy"
             decoding="async"
             width={300}
@@ -133,6 +144,22 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               img.alt = 'Image non disponible';
             }}
           />
+          {secondaryImage && (
+            <img
+              src={secondaryImage}
+              alt={`${product.name} - Vue 2 - GearShop Maroc`}
+              className={`max-w-full max-h-full object-contain absolute inset-0 m-auto p-3 sm:p-5 z-10 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 drop-shadow-sm ${
+                !product.inStock ? 'grayscale opacity-75' : ''
+              }`}
+              loading="lazy"
+              decoding="async"
+              width={300}
+              height={300}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          )}
         </div>
 
         {/* Product Info & Action Section */}

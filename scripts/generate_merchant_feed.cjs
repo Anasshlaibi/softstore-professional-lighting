@@ -202,7 +202,11 @@ async function generateMerchantFeed() {
 
       const brand = detectBrand(product);
       const googleCat = getGoogleCategory(product);
-      const priceFormatted = Number(product.price).toFixed(2) + ' MAD';
+      const hasSale = product.oldPrice && Number(product.oldPrice) > Number(product.price);
+      const regularPriceVal = hasSale ? Number(product.oldPrice) : Number(product.price);
+      const priceFormatted = regularPriceVal.toFixed(2) + ' MAD';
+      const salePriceFormatted = hasSale ? Number(product.price).toFixed(2) + ' MAD' : null;
+
       const isOccasion = (product.category || '').toLowerCase().includes('occasion') || (product.name || '').toLowerCase().includes('occasion');
       const condition = isOccasion ? 'used' : 'new';
       const isPreorder = isOsmoPocket4 || product.isPreorder === true || product.ispreorder === true || product.status === 'Précommande';
@@ -210,18 +214,40 @@ async function generateMerchantFeed() {
 
       const shippingCost = Number(product.price) > 2000 ? '0.00 MAD' : '45.00 MAD';
 
+      // Extract real 11-14 digit EAN/GTIN from specs or description if available
+      const specsText = JSON.stringify(product.specs || '') + ' ' + (product.desc || '');
+      const eanMatch = specsText.match(/\b(\d{12,13})\b/);
+      const gtin = eanMatch ? eanMatch[1] : null;
+
+      // Secondary gallery images for <g:additional_image_link>
+      let galleryArr = [];
+      if (Array.isArray(product.gallery)) {
+        galleryArr = product.gallery;
+      } else if (typeof product.gallery === 'string') {
+        try { galleryArr = JSON.parse(product.gallery); } catch (e) { galleryArr = []; }
+      }
+      const additionalImages = galleryArr
+        .filter(img => img && img !== product.image)
+        .slice(0, 9)
+        .map(img => {
+          if (img.startsWith('//')) return 'https:' + img;
+          if (img.startsWith('/cdn/')) return 'https://7artisans.store' + img;
+          if (img.startsWith('/')) return BASE_URL + img;
+          return img;
+        });
+
       xml += `    <item>
       <g:id>${product.id}</g:id>
       <g:title>${escapedTitle}</g:title>
       <g:description>${escapedDesc}</g:description>
       <g:link>${productUrl}</g:link>
       <g:image_link>${escapeXml(imageUrl)}</g:image_link>
-      <g:condition>${condition}</g:condition>
+${additionalImages.map(u => `      <g:additional_image_link>${escapeXml(u)}</g:additional_image_link>`).join('\n')}${additionalImages.length > 0 ? '\n' : ''}      <g:condition>${condition}</g:condition>
       <g:availability>${availability}</g:availability>
-      <g:price>${priceFormatted}</g:price>
-      <g:brand>${escapeXml(brand)}</g:brand>
+${isPreorder ? `      <g:availability_date>2026-12-15T00:00:00Z</g:availability_date>\n` : ''}      <g:price>${priceFormatted}</g:price>
+${salePriceFormatted ? `      <g:sale_price>${salePriceFormatted}</g:sale_price>\n` : ''}      <g:brand>${escapeXml(brand)}</g:brand>
       <g:google_product_category>${googleCat}</g:google_product_category>
-      <g:identifier_exists>no</g:identifier_exists>
+${gtin ? `      <g:gtin>${gtin}</g:gtin>\n      <g:mpn>GS-${product.id}</g:mpn>\n      <g:identifier_exists>yes</g:identifier_exists>` : `      <g:identifier_exists>no</g:identifier_exists>`}
       <g:shipping>
         <g:country>MA</g:country>
         <g:service>Livraison Express Maroc</g:service>

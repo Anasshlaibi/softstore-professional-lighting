@@ -148,6 +148,22 @@ export function trackCheckoutStarted(
   });
 }
 
+export function trackSelectItem(item: GA4EcommerceItem, listName = 'Catalog') {
+  sendEvent('select_item', {
+    item_list_name: listName,
+    items: [{ ...item, quantity: item.quantity || 1 }],
+  });
+}
+
+export function trackSearch(searchTerm: string, resultCount?: number) {
+  const cleaned = searchTerm.trim();
+  if (!cleaned) return;
+  sendEvent('search', {
+    search_term: cleaned,
+    ...(typeof resultCount === 'number' ? { search_results_count: resultCount } : {}),
+  });
+}
+
 /** Capture ordinary WhatsApp links used in headers, footers, FAQs and pages. */
 export function initWhatsAppLeadTracking() {
   const handler = (event: MouseEvent) => {

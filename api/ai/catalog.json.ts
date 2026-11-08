@@ -48,7 +48,7 @@ export default async function handler(req: Request) {
         name: 'GearShop Maroc',
         alternate_names: ['Soft Store Maroc', 'GearShop Casablanca'],
         url: baseUrl,
-        description: 'Distributeur officiel et détaillant agréé au Maroc pour objectifs 7Artisans, filtres K&F Concept, matériel DJI et éclairage studio.',
+        description: 'Distributeur officiel et détaillant agréé au Maroc pour appareils photo et caméras Sony, Canon, Nikon, Fujifilm, DJI, Insta360, objectifs 7Artisans & Tamron, filtres K&F Concept, audio Hollyland et éclairage studio Godox.',
         location: {
           city: 'Casablanca',
           country: 'Morocco',
@@ -66,9 +66,9 @@ export default async function handler(req: Request) {
           currency: 'MAD (Dirham Marocain)',
           warranty: '1 year manufacturer warranty with local Casablanca service',
           shipping: {
-            casablanca: '24-48h express',
-            national: '2-4 business days across Morocco',
-            free_threshold_mad: 500
+            casablanca: '24-48h express (30 MAD)',
+            national: '24-48h express across Morocco (45 MAD)',
+            free_threshold_mad: 2001
           },
           payment_methods: ['Cash on Delivery (Paiement à la livraison)', 'Bank Transfer (Virement)', 'Credit Card (Carte Bancaire)']
         }

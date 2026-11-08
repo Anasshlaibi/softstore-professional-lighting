@@ -11,12 +11,14 @@
 - [XML Sitemap](https://www.gearshop.ma/sitemap.xml): Index complet de toutes les URLs du site web.
 
 ## Flagship Products & Key Categories
-- [DJI Osmo Pocket 4 Pro au Maroc](https://www.gearshop.ma/dji-osmo-pocket-4-pro): Caméra vlog 4K révolutionnaire à double objectif (20mm grand-angle et 60mm téléobjectif f/1.8), capteur 1" CMOS LOFIC 17 stops, D-Log 2 10-bit et stabilisation 3 axes. Prix officiel 8 000 DH avec garantie 1 an.
+- [Canon EOS R5 Mark II & EOS R6 Mark III au Maroc](https://www.gearshop.ma/marque/canon): Boîtiers hybrides plein format professionnels Canon EOS R5 Mark II (46 890 DH), Canon EOS R6 Mark III (34 990 DH), Canon EOS R6 Mark II (22 190 DH), Canon Cinema EOS C50, EOS R5 C, EOS R10 et EOS R100 en stock à Casablanca.
+- [Sony Alpha & Cinema Line au Maroc](https://www.gearshop.ma/marque/sony): Caméras Sony FX3, FX30, Alpha 7 V, Alpha 7S III, Alpha 7 IV, Alpha 6700 + 16-50mm II (18 390 DH), ZV-E10 Mark II et objectifs Sony G Master (FE 24-70mm f/2.8 GM II, 70-200mm GM II, 16-35mm GM II).
+- [Nikon Z Series & Cinéma RED au Maroc](https://www.gearshop.ma/marque/nikon): Caméra cinéma Nikon ZR (21 690 DH), Nikon Z9, Nikon Z6 III, Nikon Z6 II (15 790 DH), Nikon Z5 II et objectifs Nikkor Z S-Line (24-70mm f/2.8 S II, 70-200mm VR S II, MC 105mm f/2.8 Macro, 85mm f/1.8 S, 50mm f/1.4).
+- [Caméras d'Action & 360° Insta360 & DJI](https://www.gearshop.ma/marque/dji): DJI Osmo Pocket 3 Creator Combo, DJI Osmo Pocket 4 Pro, Insta360 X5 Essentials Kit (7 890 DH), Insta360 Luna Ultra, Insta360 Ace Pro 2 et microphones sans fil Insta360 Mic Pro & Hollyland Lark.
 - [Objectifs Photo Autofocus & Manuels 7Artisans](https://www.gearshop.ma/categorie/objectifs): Focales fixes lumineuses (AF 24mm, AF 35mm, AF 40mm, AF 50mm, AF 85mm, AF 135mm F1.8) pour Sony E, Nikon Z, Canon RF, Lumix L-Mount et Fujifilm X.
 - [Lentilles Cinéma Professionnelles Série Vision T2.0](https://www.gearshop.ma/cinema-lenses-maroc): Objectifs ciné plein format et APS-C (10mm, 16mm, 25mm, 35mm, 50mm T2.0/T2.1) avec bagues crantées standard 0.8 MOD pour follow-focus.
 - [Filtres Optiques K&F Concept](https://www.gearshop.ma/categorie/filtres): Filtres ND variables Nano-Xcel (ND2-ND32 / ND8-ND128), polarisants circulaires CPL, filtres de diffusion Black Mist 1/4 et bagues d'adaptation Step-Up / Step-Down.
-- [Éclairage Studio LED & Torches Vidéo](https://www.gearshop.ma/categorie/eclairage-studio): Projecteurs continus LED COB haute puissance (YM350, BKL400BI), panneaux bicolores et torches nomades RGB (YB-300R, YB-100R).
-- [Caméras & Matériel Vidéo au Maroc](https://www.gearshop.ma/camera-maroc): Guide d'achat complet pour caméras nomades, boîtiers hybrides et matériel de tournage.
+- [Éclairage Studio LED Godox & SoftStore](https://www.gearshop.ma/categorie/eclairage-studio): Projecteurs continus LED COB haute puissance, flashs studio Godox V1/AD200/AD600, tubes LED TL120, boîtes à lumière et torches nomades RGB.
 
 ## Camera Body & Lens Mount Compatibility
 - [Compatibilité Sony E-Mount (Plein Format & APS-C)](https://www.gearshop.ma/marque/sony): Objectifs et accessoires compatibles Sony Alpha A7 IV, A7R V, A7C II, FX3, FX30, A6700, ZV-E1, A7 III, A6400.

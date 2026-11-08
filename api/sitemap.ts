@@ -73,13 +73,21 @@ export default async function handler(req: Request) {
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>`;
           
+          const toAbsImg = (img: string) => {
+            if (!img) return '';
+            if (img.startsWith('http://') || img.startsWith('https://')) return img;
+            if (img.startsWith('//')) return `https:${img}`;
+            if (img.startsWith('/cdn/')) return `https://7artisans.store${img}`;
+            return `${baseUrl}${img.startsWith('/') ? '' : '/'}${img}`;
+          };
+
           // Add primary image to image sitemap (Google Image Search)
           if (product.image) {
             xml += `
     <image:image>
-      <image:loc>${product.image}</image:loc>
+      <image:loc>${toAbsImg(product.image)}</image:loc>
       <image:title><![CDATA[${product.name} - GearShop Maroc]]></image:title>
-      <image:caption><![CDATA[Achetez ${product.name} chez GearShop Maroc - Seul revendeur officiel 7Artisans au Maroc]]></image:caption>
+      <image:caption><![CDATA[Achetez ${product.name} chez GearShop Maroc - Livraison Express 24h-48h]]></image:caption>
     </image:image>`;
           }
           
@@ -89,11 +97,11 @@ export default async function handler(req: Request) {
               ? product.gallery
               : (() => { try { return JSON.parse(product.gallery); } catch { return []; } })();
             
-            gallery.slice(0, 3).forEach((imgUrl: string) => {
+            gallery.slice(0, 4).forEach((imgUrl: string) => {
               if (imgUrl && imgUrl !== product.image) {
                 xml += `
     <image:image>
-      <image:loc>${imgUrl}</image:loc>
+      <image:loc>${toAbsImg(imgUrl)}</image:loc>
       <image:title><![CDATA[${product.name} - Vue supplémentaire - GearShop Maroc]]></image:title>
     </image:image>`;
               }

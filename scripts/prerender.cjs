@@ -186,12 +186,16 @@ function generateProductHTML(product, baseTemplate) {
   }
 
   // Inject JSON-LD into head without fabricated SKUs or 0 MAD price
+  const specsStr = JSON.stringify(product.specs || '') + ' ' + (product.desc || '');
+  const ean13Match = specsStr.match(/\b(\d{13})\b/);
   const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": product.name,
     "image": galleryImages,
     "description": description,
+    "sku": `GS-${product.id}`,
+    ...(ean13Match ? { "gtin13": ean13Match[1] } : {}),
     ...(brand ? {
       "brand": {
         "@type": "Brand",

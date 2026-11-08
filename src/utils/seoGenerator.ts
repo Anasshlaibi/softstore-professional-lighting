@@ -315,6 +315,8 @@ export function generateProductSEOPackage(
   });
 
   const hasRealPrice = product.price && Number(product.price) > 0;
+  const specsStr = JSON.stringify(product.specs || '') + ' ' + (product.desc || '');
+  const ean13Match = specsStr.match(/\b(\d{13})\b/);
   const productSchema: Record<string, unknown> = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
@@ -324,6 +326,7 @@ export function generateProductSEOPackage(
     'description': metaDescription,
     'sku': `GS-${product.id}`,
     'mpn': `MPN-${product.id}`,
+    ...(ean13Match ? { 'gtin13': ean13Match[1] } : {}),
     ...(brand ? {
       'brand': {
         '@type': 'Brand',
