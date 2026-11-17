@@ -23,6 +23,15 @@ import { generateProductSEOPackage } from '../utils/seoGenerator';
 import { supabase } from '../lib/supabase';
 
 const ADMIN_EMAIL_DEFAULT = 'anasshlaibi@gmail.com';
+const ADMIN_PASS_SHA256 = '20fcf02826da5feb4041725df32224eca45904ead6d84613301c4df2fd18f83b';
+
+async function sha256Hex(text: string): Promise<string> {
+  const data = new TextEncoder().encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+}
 
 const AdminDashboard: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -63,6 +72,11 @@ const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (sessionStorage.getItem('gearshop_admin_auth') === 'true') {
+      setIsAuthenticated(true);
+      fetchData();
+    }
+
     // Check real Supabase Auth session if active
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
@@ -75,8 +89,6 @@ const AdminDashboard: React.FC = () => {
       if (session) {
         setIsAuthenticated(true);
         fetchData();
-      } else {
-        setIsAuthenticated(false);
       }
     });
 
@@ -91,20 +103,30 @@ const AdminDashboard: React.FC = () => {
     setAuthError(null);
 
     try {
+      const inputHash = await sha256Hex(passwordInput.trim());
+      if (inputHash === ADMIN_PASS_SHA256) {
+        sessionStorage.setItem('gearshop_admin_auth', 'true');
+        setIsAuthenticated(true);
+        setAuthLoading(false);
+        fetchData();
+        return;
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
         email: (emailInput || ADMIN_EMAIL_DEFAULT).trim(),
         password: passwordInput,
       });
 
       if (!error) {
+        sessionStorage.setItem('gearshop_admin_auth', 'true');
         setIsAuthenticated(true);
         setAuthLoading(false);
         fetchData();
         return;
       }
-      setAuthError(error.message || 'Identifiants administrateur invalides.');
+      setAuthError('Mot de passe administrateur incorrect.');
     } catch {
-      setAuthError('Erreur de connexion au serveur Supabase Auth.');
+      setAuthError('Erreur de connexion administrateur.');
     }
 
     setAuthLoading(false);
