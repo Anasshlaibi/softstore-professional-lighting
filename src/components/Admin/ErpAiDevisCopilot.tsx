@@ -52,6 +52,8 @@ interface ErpAiDevisCopilotProps {
   onGeneratePdfNow: () => void;
 }
 
+import { supabase } from '../../lib/supabase';
+
 const GEMINI_KEY_STORAGE = 'verdanove_gemini_api_key_v1';
 const EXTRA_CATALOG_STORAGE = 'verdanove_uploaded_supplier_items_v1';
 const AI_RULES_STORAGE = 'verdanove_ai_devis_rules_v1';
@@ -330,7 +332,7 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
 }) => {
   const [apiKey, setApiKey] = useState<string>(() => {
     try {
-      return localStorage.getItem(GEMINI_KEY_STORAGE) || (import.meta.env.VITE_GEMINI_API_KEY as string) || '';
+      return localStorage.getItem(GEMINI_KEY_STORAGE) || '';
     } catch {
       return '';
     }
@@ -861,22 +863,40 @@ ${catalogContext}`;
       text: userPrompt.trim() || 'Extrais toutes les lignes du tableau joint et prépare le devis professionnel complet.',
     });
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(
-        apiKey
-      )}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ role: 'user', parts }],
-          generationConfig: {
-            temperature: 0.1,
-            responseMimeType: 'application/json',
+    const { data: { session } } = await supabase.auth.getSession();
+    const accessToken = session?.access_token;
+
+    const response = accessToken
+      ? await fetch('/api/ai-devis', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
           },
-        }),
-      }
-    );
+          body: JSON.stringify({
+            contents: [{ role: 'user', parts }],
+            generationConfig: {
+              temperature: 0.1,
+              responseMimeType: 'application/json',
+            },
+          }),
+        })
+      : await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(
+            apiKey
+          )}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ role: 'user', parts }],
+              generationConfig: {
+                temperature: 0.1,
+                responseMimeType: 'application/json',
+              },
+            }),
+          }
+        );
 
     if (!response.ok) {
       throw new Error(`Gemini API (${response.status})`);

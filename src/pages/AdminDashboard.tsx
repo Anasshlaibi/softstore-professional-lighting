@@ -23,14 +23,18 @@ import { generateProductSEOPackage } from '../utils/seoGenerator';
 import { supabase } from '../lib/supabase';
 
 const ADMIN_EMAIL_DEFAULT = 'anasshlaibi@gmail.com';
-const ADMIN_PASS_SHA256 = '20fcf02826da5feb4041725df32224eca45904ead6d84613301c4df2fd18f83b';
+const ADMIN_ALLOWED_EMAILS = (
+  (import.meta.env.VITE_ADMIN_EMAILS as string) || 'anasshlaibi@gmail.com,verdanove@gmail.com'
+)
+  .split(',')
+  .map((e) => e.trim().toLowerCase())
+  .filter(Boolean);
 
-async function sha256Hex(text: string): Promise<string> {
-  const data = new TextEncoder().encode(text);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  return Array.from(new Uint8Array(hashBuffer))
-    .map((b) => b.toString(16).padStart(2, '0'))
-    .join('');
+function isAdminSession(session: { user?: { email?: string; app_metadata?: Record<string, unknown> } } | null): boolean {
+  if (!session?.user) return false;
+  if (session.user.app_metadata?.role === 'admin') return true;
+  const email = (session.user.email || '').trim().toLowerCase();
+  return Boolean(email && ADMIN_ALLOWED_EMAILS.includes(email));
 }
 
 const AdminDashboard: React.FC = () => {
@@ -72,23 +76,27 @@ const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (sessionStorage.getItem('gearshop_admin_auth') === 'true') {
-      setIsAuthenticated(true);
-      fetchData();
-    }
-
-    // Check real Supabase Auth session if active
+    // Check real Supabase Auth session and verify administrator identity
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
+      if (isAdminSession(session)) {
         setIsAuthenticated(true);
         fetchData();
+      } else if (session) {
+        setIsAuthenticated(false);
+        setAuthError('Accès refusé : ce compte client ne dispose pas des droits administrateur.');
       }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
+      if (isAdminSession(session)) {
+        setAuthError(null);
         setIsAuthenticated(true);
         fetchData();
+      } else {
+        setIsAuthenticated(false);
+        if (session) {
+          setAuthError('Accès refusé : ce compte client ne dispose pas des droits administrateur.');
+        }
       }
     });
 
@@ -103,28 +111,25 @@ const AdminDashboard: React.FC = () => {
     setAuthError(null);
 
     try {
-      const inputHash = await sha256Hex(passwordInput.trim());
-      if (inputHash === ADMIN_PASS_SHA256) {
-        sessionStorage.setItem('gearshop_admin_auth', 'true');
-        setIsAuthenticated(true);
+      const targetEmail = (emailInput || ADMIN_EMAIL_DEFAULT).trim().toLowerCase();
+      if (!ADMIN_ALLOWED_EMAILS.includes(targetEmail)) {
+        setAuthError('Email administrateur non autorisé.');
         setAuthLoading(false);
-        fetchData();
         return;
       }
 
-      const { error } = await supabase.auth.signInWithPassword({
-        email: (emailInput || ADMIN_EMAIL_DEFAULT).trim(),
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: targetEmail,
         password: passwordInput,
       });
 
-      if (!error) {
-        sessionStorage.setItem('gearshop_admin_auth', 'true');
+      if (!error && isAdminSession(data.session)) {
         setIsAuthenticated(true);
         setAuthLoading(false);
         fetchData();
         return;
       }
-      setAuthError('Mot de passe administrateur incorrect.');
+      setAuthError(error?.message || 'Identifiants administrateur incorrects.');
     } catch {
       setAuthError('Erreur de connexion administrateur.');
     }
@@ -137,8 +142,6 @@ const AdminDashboard: React.FC = () => {
       await supabase.auth.signOut();
     } catch {}
     setIsAuthenticated(false);
-    sessionStorage.removeItem('gearshop_admin_auth');
-    localStorage.removeItem('gearshop_admin_auth');
   };
 
   const fetchData = async () => {

@@ -396,10 +396,14 @@ export async function sendEmailCampaign(data: {
 
   if (recipients.length > 0) {
     try {
+      const { data: { session } } = await supabase.auth.getSession();
       const emailList = recipients.map(r => r.email);
       await fetch('/api/send-email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
+        },
         body: JSON.stringify({
           from: 'GearShop Maroc <newsletter@gearshop.ma>',
           to: emailList.slice(0, 50),
@@ -499,26 +503,47 @@ export async function lookupClientOrdersInSupabase(query: {
   email?: string;
   ref?: string;
 }): Promise<QuoteRequestItem[]> {
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    const res = await fetch('/api/client-orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(session?.access_token ? { Authorization: `Bearer ${session.access_token}` } : {}),
+      },
+      body: JSON.stringify({
+        phone: query.phone || '',
+        ref: query.ref || '',
+      }),
+    });
+
+    if (res.ok) {
+      const json = await res.json();
+      if (Array.isArray(json?.orders)) {
+        return json.orders as QuoteRequestItem[];
+      }
+    }
+  } catch {
+    // Fallback below only if serverless endpoint is unavailable in local Vite dev
+  }
+
+  // Fallback for authenticated sessions using strict server-side eq filter (never select('*').limit(150) unfiltered!)
+  const { data: { session } } = await supabase.auth.getSession();
+  const verifiedEmail = session?.user?.email?.trim().toLowerCase();
+  if (!verifiedEmail) return [];
+
   const { data, error } = await supabase
     .from('quote_requests')
-    .select('*')
+    .select('id,name,email,phone,product_name,quantity,message,status,deal_value,created_at')
+    .ilike('email', verifiedEmail)
     .order('created_at', { ascending: false })
-    .limit(150);
+    .limit(50);
 
   if (error || !data) return [];
-
-  const cleanPhone = (query.phone || '').replace(/[^0-9]/g, '').slice(-8); // Match last 8 digits (e.g. 661150961)
-  const cleanEmail = (query.email || '').trim().toLowerCase();
   const cleanRef = (query.ref || '').trim().toLowerCase();
-
   return (data as QuoteRequestItem[]).filter((row) => {
-    const rowPhone = (row.phone || '').replace(/[^0-9]/g, '');
-    const rowEmail = (row.email || '').trim().toLowerCase();
+    if (!cleanRef) return true;
     const rowText = `${row.product_name || ''} ${row.message || ''} ${row.id}`.toLowerCase();
-
-    if (cleanRef && rowText.includes(cleanRef)) return true;
-    if (cleanPhone && cleanPhone.length >= 6 && rowPhone.includes(cleanPhone)) return true;
-    if (cleanEmail && cleanEmail.includes('@') && rowEmail === cleanEmail) return true;
-    return false;
+    return rowText.includes(cleanRef);
   });
 }
