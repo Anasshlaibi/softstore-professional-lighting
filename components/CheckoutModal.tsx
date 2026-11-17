@@ -73,6 +73,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [linkClientAccount, setLinkClientAccount] = useState(true);
   const [accountPassword, setAccountPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [devisAccountGateMsg, setDevisAccountGateMsg] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const persistAccountAndEmail = async () => {
@@ -116,6 +117,15 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   };
 
   const handleDownloadInstantDevis = async () => {
+    setDevisAccountGateMsg(null);
+    if (!savedProfile && (!linkClientAccount || accountPassword.trim().length < 6 || !formData.email.trim().includes('@') || !formData.name.trim() || !formData.phone.trim())) {
+      setLinkClientAccount(true);
+      setDevisAccountGateMsg(
+        '🔐 Compte Client requis pour générer un Devis / Facture : remplissez votre Nom, Téléphone, Email et un Mot de passe (6 car. min.) ci-dessus pour créer votre compte en 1 clic, ou connectez-vous via Google / Gmail sur Mon Compte.'
+      );
+      return;
+    }
+
     const todayStr = new Date().toISOString().split('T')[0];
     const [, mm, dd] = todayStr.split('-');
     const validUntilStr = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
@@ -552,6 +562,18 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 >
                   {showPassword ? 'Masquer' : 'Afficher'}
                 </button>
+              </div>
+            )}
+            {devisAccountGateMsg && (
+              <div className="bg-amber-50 border border-amber-300 rounded-lg p-2.5 text-[11px] text-amber-950 space-y-1.5">
+                <p className="font-semibold">{devisAccountGateMsg}</p>
+                <a
+                  href="/mon-compte"
+                  onClick={onClose}
+                  className="inline-block font-bold text-emerald-700 hover:underline"
+                >
+                  👤 Ou me connecter avec Google / Gmail sur Mon Compte ➔
+                </a>
               </div>
             )}
           </div>

@@ -165,6 +165,7 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
   const [devisCity, setDevisCity] = useState<string>(savedProfile?.city || 'Casablanca');
   const [devisNotes, setDevisNotes] = useState<string>('');
   const [devisSaving, setDevisSaving] = useState<boolean>(false);
+  const [pendingDevisAfterAuth, setPendingDevisAfterAuth] = useState<boolean>(false);
   const [createdDevisInfo, setCreatedDevisInfo] = useState<{
     docNumber: string;
     totalTtc: number;
@@ -280,6 +281,10 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
       }
       if ((event === 'SIGNED_IN' || event === 'USER_UPDATED') && session?.user) {
         syncSupabaseUserToProfile(session.user, event === 'SIGNED_IN');
+        if (pendingDevisAfterAuth) {
+          setPendingDevisAfterAuth(false);
+          setActiveTab('devis');
+        }
       }
     });
 
@@ -501,7 +506,10 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
             : `📧 Compte créé ! Un email de confirmation vient d’être envoyé à ${cleanEmail}. Cliquez sur le lien dans votre boîte Gmail/Email pour confirmer votre compte.`
         );
         await runSearch(profile.phone, '', profile.email);
-        if (confirmedNow) {
+        if (pendingDevisAfterAuth) {
+          setPendingDevisAfterAuth(false);
+          setActiveTab('devis');
+        } else if (confirmedNow) {
           setActiveTab('orders');
         }
       } else {
@@ -521,7 +529,12 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
         if (data.user?.email) {
           await syncSupabaseUserToProfile(data.user, false);
           setAuthMessage('✅ Connexion réussie !');
-          setActiveTab('orders');
+          if (pendingDevisAfterAuth) {
+            setPendingDevisAfterAuth(false);
+            setActiveTab('devis');
+          } else {
+            setActiveTab('orders');
+          }
         }
       }
     } catch (err: any) {
@@ -642,6 +655,27 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
       alert('Veuillez sélectionner au moins un produit dans le catalogue ci-dessus.');
       return;
     }
+
+    // Gate: Require a Client Account before generating/downloading a Devis or Invoice
+    if (!savedProfile && !authUserEmail) {
+      if (devisName.trim()) setAuthNameInput(devisName.trim());
+      if (devisEmail.trim()) setEmailInput(devisEmail.trim());
+      if (devisPhone.trim()) setAuthPhoneInput(devisPhone.trim());
+      if (devisCompany.trim()) setAuthCompanyInput(devisCompany.trim());
+      if (devisIce.trim()) setAuthIceInput(devisIce.trim());
+      if (devisCity.trim()) setAuthCityInput(devisCity.trim());
+
+      setPendingDevisAfterAuth(true);
+      setAuthMode('register');
+      setAuthError(null);
+      setAuthMessage(
+        `🔐 Étape suivante : créez votre Compte Client (ou connectez-vous avec Google / Gmail) pour générer, sauvegarder et suivre votre Devis PDF (${devisItems.length} article${devisItems.length > 1 ? 's' : ''} sélectionné${devisItems.length > 1 ? 's' : ''}).`
+      );
+      setActiveTab('account');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     if (!devisName.trim() || !devisPhone.trim() || !devisEmail.trim()) {
       alert('Veuillez renseigner votre nom, email et numéro de téléphone.');
       return;
@@ -1652,6 +1686,30 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                   />
                 </div>
 
+                {!savedProfile && !authUserEmail && (
+                  <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 text-xs text-emerald-950 space-y-2">
+                    <div className="font-black flex items-center gap-1.5">
+                      <i className="fa-solid fa-user-lock text-emerald-700" />
+                      Compte Client requis pour générer votre Devis / Facture
+                    </div>
+                    <p className="text-[11px] text-emerald-900 leading-relaxed">
+                      Sélectionnez vos produits ci-dessus, puis créez votre compte (ou connectez-vous via Google / Gmail) pour télécharger votre Devis PDF, le faire valider et suivre votre livraison en direct.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPendingDevisAfterAuth(true);
+                        setAuthMode('register');
+                        setActiveTab('account');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-[11px] cursor-pointer transition"
+                    >
+                      👤 Créer mon Compte / Connexion Google ➔
+                    </button>
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   disabled={devisSaving || devisItems.length === 0}
@@ -1659,6 +1717,8 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                 >
                   {devisSaving
                     ? 'Enregistrement...'
+                    : !savedProfile && !authUserEmail
+                    ? '🔐 Créer un Compte & Générer mon Devis PDF'
                     : '✅ Enregistrer & Télécharger Devis PDF (À Confirmer)'}
                 </button>
 
