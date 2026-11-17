@@ -1,16 +1,18 @@
 /**
  * src/utils/devisInvoiceGenerator.ts
  *
- * Official VERDANOVE SARL Devis / Facture Proforma / Facture PDF Generator
- * Matches the exact VERDANOVE template layout:
- * - Top VERDANOVE Logo (/images/verdanove-header-logo.png)
- * - DEVIS / FACTURE + client : <Name>
- * - Metadata Table: | NUMERO | DATE | REFERENCE | (e.g. FA2600002 | 03/09/26 | DEMANDE DU 03/09)
- * - Items Table: | Désignation | Qté | Montant HT |
- * - « Validité de l'offre : 30 jours » + Cachet et Signature (VERDANOVE) with blue stamp (/images/verdanove-stamp.png)
- * - Totals Table: | Total Hors Taxes (HT) | Total TVA (20%) | Total Toutes Taxes Comprises (TTC) |
- * - Arrêté le présent devis à la somme de : [Montant en lettres]
- * - Official VERDANOVE Footer: 174 BD ZERKTOUNI ET MOUSA BNOU NOUSSAIR CASABLANCA | ICE: 003746027000044 | IF: 66987636 / RC: 680157 | Email : Verdanove@gmail.com | Tél : +212 661150961
+ * Exact 1:1 Replica of the Official VERDANOVE SARL Word (.docx) Devis Template:
+ * - Left-aligned VERDANOVE Logo (293px × 73px) (/images/verdanove-header-logo.png)
+ * - Times New Roman 21pt "DEVIS" on left & "client : <Name>" on right
+ * - Table 1 (54% width, left-aligned): | NUMERO (24.5%) | DATE (25.2%) | REFERENCE (50.3%) |
+ * - Table 2 (100% width): | Désignation (74.7%) | Qté (11.6%) | Montant HT (13.7%) |
+ * - Validity & Stamp Row + Left-aligned Table 3 (52% width) beside Cachet et Signature (VERDANOVE) blue stamp (/images/verdanove-stamp.png, 186px × 89px)
+ * - "Arrêté le présent devis à la somme de : ..."
+ * - Official VERDANOVE Footer:
+ *   VERDANOVE
+ *   174 BD ZERKTOUNI ET MOUSA BNOU NOUSSAIR CASABLANCA
+ *   ICE: 003746027000044 IF: 66987636 / RC: 680157
+ *   Email :Verdanove@gmail.com   Tél : +212 661150961
  */
 
 export type ErpDocumentType = 'DEVIS' | 'PROFORMA' | 'FACTURE';
@@ -20,7 +22,7 @@ export interface ErpLineItem {
   sku?: string;
   name: string;
   quantity: number;
-  unitPriceTtc: number; // Used as Montant unitaire (HT or TTC depending on taxMode)
+  unitPriceTtc: number;
 }
 
 export interface ErpCompanySettings {
@@ -64,17 +66,17 @@ export interface ErpDocumentPayload {
   companySettings?: Partial<ErpCompanySettings>;
 }
 
-const STORAGE_KEY_COMPANY = 'verdanove_erp_company_settings_v2';
+const STORAGE_KEY_COMPANY = 'verdanove_erp_company_settings_v3';
 
 export const DEFAULT_COMPANY_SETTINGS: ErpCompanySettings = {
   companyName: 'VERDANOVE',
-  legalName: 'VERDANOVE SARL — Importation & Exportation Matériel Audiovisuel',
-  address: '174 BD ZERKTOUNI ET MOUSA BNOU NOUSSAIR, ÉTG 7, APPT 16 (CENTER TWIN), CASABLANCA',
+  legalName: 'VERDANOVE SARL',
+  address: '174 BD ZERKTOUNI ET MOUSA BNOU NOUSSAIR CASABLANCA',
   phone: '+212 661150961',
   email: 'Verdanove@gmail.com',
   website: 'www.gearshop.ma',
   ice: '003746027000044',
-  rc: '680157 (Casablanca)',
+  rc: '680157',
   ifNumber: '66987636',
   tp: '',
   rib: '',
@@ -87,7 +89,13 @@ export function loadErpCompanySettings(): ErpCompanySettings {
   try {
     const raw = localStorage.getItem(STORAGE_KEY_COMPANY);
     if (!raw) return DEFAULT_COMPANY_SETTINGS;
-    return { ...DEFAULT_COMPANY_SETTINGS, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    return {
+      ...DEFAULT_COMPANY_SETTINGS,
+      ...parsed,
+      logoUrl: '/images/verdanove-header-logo.png',
+      stampUrl: '/images/verdanove-stamp.png',
+    };
   } catch {
     return DEFAULT_COMPANY_SETTINGS;
   }
@@ -101,10 +109,6 @@ export function saveErpCompanySettings(settings: ErpCompanySettings): void {
   }
 }
 
-/**
- * Converts a number into French words matching the exact Verdanove format:
- * "Soixante-dix-huit mille six cent neuf dirhams et soixante centimes"
- */
 function underThousandToFrench(n: number): string {
   const units = [
     '', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf',
@@ -281,7 +285,12 @@ export function calculateErpTotals(payload: ErpDocumentPayload) {
 }
 
 export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
-  const company = { ...loadErpCompanySettings(), ...(payload.companySettings || {}) };
+  const company = {
+    ...loadErpCompanySettings(),
+    ...(payload.companySettings || {}),
+    logoUrl: '/images/verdanove-header-logo.png',
+    stampUrl: '/images/verdanove-stamp.png',
+  };
   const calc = calculateErpTotals(payload);
   const { dateShort, refDefault } = formatShortDate(payload.issueDate);
   const referenceDisplay = payload.referenceText?.trim() || refDefault;
@@ -302,27 +311,28 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
   const docWord = docWordMap[payload.docType] || 'devis';
   const clientDisplay = [payload.clientCompany, payload.clientName].filter(Boolean).join(' - ') || 'Client';
 
-  const logoSrc = company.logoUrl || '/images/verdanove-header-logo.png';
-  const stampSrc = company.stampUrl || '/images/verdanove-stamp.png';
-
   const html = `<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <title>${escapeHtml(docTitle)} ${escapeHtml(payload.docNumber)} - ${escapeHtml(clientDisplay)}</title>
   <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       color: #000000;
       background: #e5e7eb;
       padding: 20px;
-      font-size: 13px;
-      line-height: 1.35;
+      font-size: 11pt;
+      line-height: 1.3;
     }
     .toolbar {
       max-width: 210mm;
-      margin: 0 auto 16px auto;
+      margin: 0 auto 14px auto;
       background: #111827;
       color: #fff;
       padding: 12px 20px;
@@ -366,60 +376,56 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
       min-height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 14mm 18mm 14mm 18mm;
+      padding: 12mm 14mm 12mm 14mm;
       box-shadow: 0 10px 30px rgba(0,0,0,0.12);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    /* Top Logo Banner */
+    /* 1. Top Left VERDANOVE Logo (Exact docx size: 293px x 73px) */
     .logo-container {
-      text-align: center;
-      margin-bottom: 14px;
+      text-align: left;
+      margin-bottom: 10px;
     }
     .logo-container img {
-      max-height: 82px;
-      width: auto;
+      width: 293px;
+      height: 73px;
       object-fit: contain;
+      display: block;
     }
 
-    /* Title & Client Row */
+    /* 2. DEVIS & client : Row (Times New Roman 21pt as in docx) */
     .title-client-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin: 6px 0 12px 0;
-      padding: 0 4px;
-    }
-    .doc-heading {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-    .client-heading {
-      font-size: 14.5px;
-      font-weight: 700;
-    }
-    .client-sub {
-      font-size: 11.5px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 21pt;
       font-weight: 400;
+      margin: 4px 0 18px 0;
+      padding: 0 12px;
+    }
+    .client-ice {
+      font-family: Arial, sans-serif;
+      font-size: 10pt;
       color: #333;
       text-align: right;
       margin-top: 2px;
     }
 
-    /* Standard Verdanove Bordered Tables */
+    /* Standard Verdanove Black-Bordered Tables */
     table.verdanove-table {
-      width: 100%;
       border-collapse: collapse;
-      margin-bottom: 14px;
+      border: 1.5px solid #000000;
     }
     table.verdanove-table th,
     table.verdanove-table td {
       border: 1px solid #000000;
-      padding: 5px 10px;
-      font-size: 12.5px;
+      padding: 5px 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      color: #000000;
     }
     table.verdanove-table th {
       font-weight: 700;
@@ -427,94 +433,117 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
       background: #ffffff;
     }
 
-    /* Meta Table */
+    /* 3. Table 1: NUMERO | DATE | REFERENCE (54% width, left-aligned as in docx) */
+    .meta-table {
+      width: 54%;
+      margin-bottom: 16px;
+    }
     .meta-table td {
       text-align: center;
-      font-weight: 500;
+      font-weight: 400;
     }
 
-    /* Items Table */
+    /* 4. Table 2: Désignation | Qté | Montant HT (100% width as in docx) */
+    .items-table {
+      width: 100%;
+      margin-bottom: 10px;
+    }
     .items-table td.designation {
       text-align: left;
+      width: 74.7%;
+      padding-left: 10px;
     }
     .items-table td.qty {
       text-align: center;
-      width: 75px;
+      width: 11.6%;
     }
     .items-table td.amount {
       text-align: center;
-      width: 135px;
+      width: 13.7%;
     }
 
-    /* Validity & Stamp Section */
-    .validity-stamp-row {
+    /* 5. Validity, Totals Table (Left) & Cachet/Stamp (Right) as in docx */
+    .bottom-grid {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin: 8px 0 14px 0;
+      margin-top: 4px;
+      gap: 20px;
+    }
+    .bottom-left {
+      width: 56%;
     }
     .validity-text {
-      font-size: 13px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 10pt;
       font-weight: 700;
+      margin-bottom: 24px;
     }
-    .stamp-block {
-      text-align: right;
-      min-width: 240px;
+
+    /* Table 3: Total HT | Total TVA (20%) | Total TTC (Left side box as in docx) */
+    .totals-table {
+      width: 100%;
+      margin-bottom: 14px;
+    }
+    .totals-table th {
+      font-size: 9.5pt;
+      font-weight: 700;
+      padding: 6px 6px;
+      text-align: center;
+    }
+    .totals-table td {
+      font-size: 10pt;
+      font-weight: 700;
+      padding: 7px 6px;
+      text-align: center;
+    }
+
+    .bottom-right {
+      width: 40%;
+      text-align: left;
     }
     .stamp-label {
-      font-size: 13px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 10.5pt;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
     .stamp-img {
-      max-width: 195px;
-      max-height: 115px;
+      width: 190px;
+      height: auto;
       object-fit: contain;
-      display: inline-block;
-      margin-right: 8px;
+      display: block;
+      margin-left: 18px;
     }
 
-    /* Totals Table */
-    .totals-table th,
-    .totals-table td {
-      text-align: center;
-      width: 33.33%;
-      padding: 6px 10px;
-    }
-    .totals-table td {
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    /* Amount in Words */
+    /* 6. Arrêté le présent devis à la somme de */
     .amount-words {
-      margin-top: 8px;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .amount-words strong {
-      font-weight: 700;
+      margin-top: 6px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11pt;
+      line-height: 1.4;
     }
 
-    /* Footer */
+    /* 7. Official VERDANOVE Footer */
     .footer {
-      margin-top: 22px;
+      margin-top: 24px;
       padding-top: 8px;
-      border-top: 1px solid #9ca3af;
+      border-top: 1px solid #d1d5db;
       text-align: center;
-      font-size: 10.5px;
-      color: #1f2937;
-      line-height: 1.45;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 10pt;
+      color: #666666;
+      line-height: 1.35;
     }
 
     @media print {
       body { background: #ffffff; padding: 0; }
       .toolbar { display: none !important; }
       .page {
-        width: 100%;
-        min-height: 275mm;
+        width: 210mm;
+        min-height: 297mm;
         box-shadow: none;
-        padding: 8mm 12mm;
+        padding: 12mm 14mm 12mm 14mm;
       }
     }
   </style>
@@ -522,8 +551,8 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
 <body>
   <div class="toolbar">
     <div class="toolbar-left">
-      <span class="toolbar-badge">VERDANOVE ERP</span>
-      <span>${escapeHtml(docTitle)} N° ${escapeHtml(payload.docNumber)} — Client : ${escapeHtml(clientDisplay)}</span>
+      <span class="toolbar-badge">VERDANOVE SARL</span>
+      <span>${escapeHtml(docTitle)} N° ${escapeHtml(payload.docNumber)} — client : ${escapeHtml(clientDisplay)}</span>
     </div>
     <div class="toolbar-actions">
       <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
@@ -533,28 +562,27 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
 
   <div class="page">
     <div>
-      <!-- Top VERDANOVE Logo -->
+      <!-- 1. Top Left VERDANOVE Logo -->
       <div class="logo-container">
-        <img src="${escapeHtml(logoSrc)}" alt="VERDANOVE" />
+        <img src="${escapeHtml(company.logoUrl || '/images/verdanove-header-logo.png')}" alt="VERDANOVE" />
       </div>
 
-      <!-- DEVIS & Client Row -->
+      <!-- 2. DEVIS & client Row -->
       <div class="title-client-row">
-        <div class="doc-heading">&nbsp;&nbsp;${escapeHtml(docTitle)}</div>
+        <div>&nbsp;&nbsp;${escapeHtml(docTitle)}</div>
         <div>
-          <div class="client-heading">client : ${escapeHtml(clientDisplay)}</div>
-          ${payload.clientIce ? `<div class="client-sub">ICE : ${escapeHtml(payload.clientIce)}</div>` : ''}
-          ${payload.clientCity ? `<div class="client-sub">${escapeHtml(payload.clientCity)}</div>` : ''}
+          <div>client : ${escapeHtml(clientDisplay)}</div>
+          ${payload.clientIce ? `<div class="client-ice">ICE : ${escapeHtml(payload.clientIce)}</div>` : ''}
         </div>
       </div>
 
-      <!-- NUMERO / DATE / REFERENCE Table -->
+      <!-- 3. NUMERO | DATE | REFERENCE Table (54% width, left-aligned) -->
       <table class="verdanove-table meta-table">
         <thead>
           <tr>
-            <th style="width: 32%;">NUMERO</th>
-            <th style="width: 30%;">DATE</th>
-            <th style="width: 38%;">REFERENCE</th>
+            <th style="width: 24.5%;">NUMERO</th>
+            <th style="width: 25.2%;">DATE</th>
+            <th style="width: 50.3%;">REFERENCE</th>
           </tr>
         </thead>
         <tbody>
@@ -566,13 +594,13 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
         </tbody>
       </table>
 
-      <!-- Désignation / Qté / Montant HT Table -->
+      <!-- 4. Désignation | Qté | Montant HT Table (100% width) -->
       <table class="verdanove-table items-table">
         <thead>
           <tr>
-            <th>Désignation</th>
-            <th style="width: 80px;">Qté</th>
-            <th style="width: 140px;">Montant HT</th>
+            <th class="designation" style="text-align:center;">Désignation</th>
+            <th class="qty">Qté</th>
+            <th class="amount">Montant HT</th>
           </tr>
         </thead>
         <tbody>
@@ -589,50 +617,53 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
         </tbody>
       </table>
 
-      <!-- Validité + Cachet et Signature (VERDANOVE) -->
-      <div class="validity-stamp-row">
-        <div class="validity-text">
-          « Validité de l'offre : ${payload.validityDays || 30} jours »
-          ${payload.notes ? `<div style="font-weight:400; font-size:11.5px; margin-top:4px;">${escapeHtml(payload.notes)}</div>` : ''}
+      <!-- 5. Validity + Totals Table (Left) & Cachet et Signature (Right) -->
+      <div class="bottom-grid">
+        <div class="bottom-left">
+          <div class="validity-text">
+            « Validité de l'offre : ${payload.validityDays || 30} jours »
+          </div>
+
+          <table class="verdanove-table totals-table">
+            <thead>
+              <tr>
+                <th style="width: 33%;">Total Hors Taxes (HT)</th>
+                <th style="width: 28%;">Total TVA (20%)</th>
+                <th style="width: 39%;">Total Toutes Taxes Comprises (TTC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${formatTableCurrency(calc.afterDiscountHt)}</td>
+                <td>${formatTableCurrency(calc.totalTva)}</td>
+                <td>${formatTableCurrency(calc.grandTotalTtc)}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="stamp-block">
+
+        <div class="bottom-right">
           <div class="stamp-label">Cachet et Signature (${escapeHtml(company.companyName)}):</div>
           ${
             showStamp
-              ? `<img class="stamp-img" src="${escapeHtml(stampSrc)}" alt="Cachet ${escapeHtml(company.companyName)}" />`
-              : `<div style="height: 85px;"></div>`
+              ? `<img class="stamp-img" src="${escapeHtml(company.stampUrl || '/images/verdanove-stamp.png')}" alt="Cachet VERDANOVE" />`
+              : `<div style="height: 90px;"></div>`
           }
         </div>
       </div>
 
-      <!-- Bottom Totals Table: HT | TVA (20%) | TTC -->
-      <table class="verdanove-table totals-table">
-        <thead>
-          <tr>
-            <th>Total Hors Taxes (HT)</th>
-            <th>Total TVA (20%)</th>
-            <th>Total Toutes Taxes Comprises (TTC)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>${formatTableCurrency(calc.afterDiscountHt)}</td>
-            <td>${formatTableCurrency(calc.totalTva)}</td>
-            <td>${formatTableCurrency(calc.grandTotalTtc)}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Arrêté le présent devis à la somme de -->
+      <!-- 6. Arrêté le présent devis à la somme de -->
       <div class="amount-words">
-        Arrêté le présent ${escapeHtml(docWord)} à la somme de : <strong>${escapeHtml(calc.amountInWords)}</strong>
+        Arrêté le présent ${escapeHtml(docWord)} à la somme de : ${escapeHtml(calc.amountInWords)}
       </div>
     </div>
 
-    <!-- Official VERDANOVE Footer -->
+    <!-- 7. Official VERDANOVE Footer (exact footer1.xml from docx) -->
     <div class="footer">
-      <strong>${escapeHtml(company.companyName)} SARL</strong> — ${escapeHtml(company.address)}<br/>
-      ICE: ${escapeHtml(company.ice)} &nbsp;|&nbsp; IF: ${escapeHtml(company.ifNumber)} &nbsp;/&nbsp; RC: ${escapeHtml(company.rc)} &nbsp;|&nbsp; Email : ${escapeHtml(company.email)} &nbsp;|&nbsp; Tél : ${escapeHtml(company.phone)}
+      <div>${escapeHtml(company.companyName)}</div>
+      <div>${escapeHtml(company.address)}</div>
+      <div>ICE: ${escapeHtml(company.ice)} IF: ${escapeHtml(company.ifNumber)} / RC: ${escapeHtml(company.rc)}</div>
+      <div>Email :${escapeHtml(company.email)} &nbsp;&nbsp;&nbsp; Tél : ${escapeHtml(company.phone)}</div>
     </div>
   </div>
 </body>
