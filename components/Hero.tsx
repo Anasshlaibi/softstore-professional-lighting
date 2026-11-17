@@ -29,8 +29,8 @@ const bhSlides = [
     title: 'Nikon ZR & Série Z',
     subtitle: 'High-end, full-frame performance in an easy-carry hybrid camera',
     desc: 'Capteur plein format ultra-sensible, vidéo 4K/60p 10-bit & monture Z professionnelle.',
-    bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/nikon-zr.webp',
+    bgImg: '/images/hero/banner-nikon-hero.webp',
+    cameraImg: '/images/hero/nikon-zr-hero.webp',
     learnMoreLink: '/product/5099-nikon-zr',
     orderLink: '/product/5099-nikon-zr',
     badgeColor: 'bg-red-600',
@@ -43,8 +43,8 @@ const bhSlides = [
     title: 'Sony Cinema FX3 & FX30 / A7 IV',
     subtitle: 'Full-frame 4K 10-Bit video reference with S-Cinetone & dual native ISO',
     desc: 'La caméra de cinéma compacte référence des directeurs photo et créateurs pro au Maroc.',
-    bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/sony-cinema-line-fx3.webp',
+    bgImg: '/images/hero/banner-nikon-hero.webp',
+    cameraImg: '/images/hero/sony-fx3-hero.webp',
     learnMoreLink: '/product/5120-sony-cinema-line-fx3',
     orderLink: '/product/5120-sony-cinema-line-fx3',
     badgeColor: 'bg-blue-600',
@@ -57,8 +57,8 @@ const bhSlides = [
     title: 'Canon EOS R5 Mark II & Gamme RF',
     subtitle: 'High-speed 45MP back-illuminated sensor with 8K RAW & Eye Control AF',
     desc: 'Performance hybride ultime avec stabilisation intégrée 8.5 stops et monture RF.',
-    bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/canon-eos-r5-mark-ii.webp',
+    bgImg: '/images/hero/banner-nikon-hero.webp',
+    cameraImg: '/images/hero/canon-r5m2-hero.webp',
     learnMoreLink: '/product/6004-canon-eos-r5-mark-ii',
     orderLink: '/product/6004-canon-eos-r5-mark-ii',
     badgeColor: 'bg-red-600',
@@ -71,8 +71,8 @@ const bhSlides = [
     title: 'DJI Osmo Pocket 3 & Godox Studio',
     subtitle: 'Complete 4K 120p gimbal stabilization & continuous studio LED lighting',
     desc: 'Tout le matériel professionnel pour équiper vos tournages, podcasts et studios au Maroc.',
-    bgImg: '/images/banners/banner_nikon.webp',
-    cameraImg: '/images/products/dji-osmo-pocket-3-creator-combo.webp',
+    bgImg: '/images/hero/banner-nikon-hero.webp',
+    cameraImg: '/images/hero/dji-pocket3-hero.webp',
     learnMoreLink: '/product/6024-dji-osmo-pocket-3-creator-combo',
     orderLink: '/product/6024-dji-osmo-pocket-3-creator-combo',
     badgeColor: 'bg-emerald-600',
@@ -81,7 +81,7 @@ const bhSlides = [
 ];
 
 const categoryIcons = [
-  { id: 'Appareils Photo', name: 'Appareils Photo', icon: 'fa-camera', sub: 'Hybrides & Reflex', img: '/images/products/nikon-zr.webp' },
+  { id: 'Appareils Photo', name: 'Appareils Photo', icon: 'fa-camera', sub: 'Hybrides & Reflex', img: '/images/hero/nikon-zr-hero.webp' },
   { id: 'Objectifs Photo', name: 'Objectifs Photo', icon: 'fa-circle-dot', sub: 'Sony, Canon, Nikon', img: '/images/products/nikon-nikkor-z-50mm-f-1-8-s.webp' },
   { id: 'cinema', name: 'Caméras Cinéma', icon: 'fa-film', sub: 'Sony FX, Canon EOS C', link: '/cinema-lenses-maroc', img: '/images/products/canon-cinema-eos-c50.webp' },
   { id: 'Éclairage', name: 'Éclairage Studio', icon: 'fa-lightbulb', sub: 'Godox, Softbox, LED', img: '/images/products/ym-350.webp' },
@@ -143,18 +143,20 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
             navigation={true}
             className="w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] hero-bh-swiper"
           >
-            {bhSlides.map((slide) => (
+            {bhSlides.map((slide, idx) => (
               <SwiperSlide key={slide.id}>
                 <div className="relative w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] flex items-center overflow-hidden">
                   
                   {/* Background Panoramic Image */}
                   <img
                     src={slide.bgImg}
-                    alt={slide.title}
-                    width={1920}
-                    height={600}
+                    alt=""
+                    aria-hidden="true"
+                    width={1280}
+                    height={480}
                     className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-screen scale-105"
-                    loading="eager"
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
                   />
                   
                   {/* Gradient Overlay for Text Readability */}
@@ -186,7 +188,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                         {slide.subtitle}
                       </p>
 
-                      <p className="text-xs sm:text-sm text-gray-400 mb-6 max-w-lg hidden sm:block">
+                      <p className="text-xs sm:text-sm text-gray-300 mb-6 max-w-lg hidden sm:block">
                         {slide.desc}
                       </p>
 
@@ -218,9 +220,11 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                           width={288}
                           height={288}
                           className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                          loading="eager"
+                          loading={idx === 0 ? 'eager' : 'lazy'}
+                          fetchPriority={idx === 0 ? 'high' : 'auto'}
+                          decoding={idx === 0 ? 'sync' : 'async'}
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/images/products/nikon-zr.webp';
+                            (e.target as HTMLImageElement).src = '/images/hero/nikon-zr-hero.webp';
                           }}
                         />
                         <span className="absolute bottom-2.5 right-2.5 bg-slate-900 text-white text-[9px] font-black px-2 py-0.5 rounded shadow">
@@ -239,9 +243,9 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
 
         {/* ── 3. Iconic B&H Category Icon Strip (Standardized & Snap Scroll) ── */}
         <nav aria-label="Rayons Principaux" className="border-t border-b border-gray-200 py-3.5 my-1">
-          <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2.5 px-1 flex items-center justify-between">
+          <div className="text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-2.5 px-1 flex items-center justify-between">
             <span>Explorer les Rayons Professionnels</span>
-            <span className="text-[10px] text-gray-400 font-normal lg:hidden">Faites glisser ↔</span>
+            <span className="text-[10px] text-gray-600 font-normal lg:hidden">Faites glisser ↔</span>
           </div>
 
           <div className="flex overflow-x-auto lg:grid lg:grid-cols-8 gap-2.5 pb-1.5 scrollbar-none snap-x snap-mandatory">

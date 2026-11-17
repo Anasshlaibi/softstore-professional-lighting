@@ -3,16 +3,16 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import BottomNav from './components/BottomNav';
-import Cart from './components/Cart';
-import CheckoutModal from './components/CheckoutModal';
-import PromoOverlay from './components/PromoOverlay';
 import Toast from './components/Toast';
 
 import Hero from './components/Hero';
 import StructuredData from './components/StructuredData';
 import LoadingSpinner from './components/LoadingSpinner';
 
-// Lazy loaded components for better FCP
+// Lazy loaded components for better FCP & TBT
+const Cart = React.lazy(() => import('./components/Cart'));
+const CheckoutModal = React.lazy(() => import('./components/CheckoutModal'));
+const PromoOverlay = React.lazy(() => import('./components/PromoOverlay'));
 const NewArrivals = React.lazy(() => import('./components/NewArrivals'));
 const Products = React.lazy(() => import('./components/Products'));
 const SEOContentSection = React.lazy(() => import('./components/SEOContentSection'));
@@ -47,13 +47,15 @@ const CityHubMaroc = React.lazy(() => import('./src/pages/CityHubMaroc'));
 const ProductDetailPage = React.lazy(() => import('./src/pages/ProductDetailPage'));
 const ClientOrderTrackingPage = React.lazy(() => import('./src/pages/ClientOrderTrackingPage'));
 
-import Newsletter from './src/components/Newsletter';
-import CookieConsentBanner from './src/components/CookieConsentBanner';
-import LeadPopup from './src/components/LeadPopup';
-import ProductRequestModal from './src/components/ProductRequestModal';
-import QuoteRequestModal from './src/components/QuoteRequestModal';
-import ProductAlertModal from './src/components/ProductAlertModal';
-import { SearchModal } from './src/components/Search/SearchModal';
+const Newsletter = React.lazy(() => import('./src/components/Newsletter'));
+const CookieConsentBanner = React.lazy(() => import('./src/components/CookieConsentBanner'));
+const LeadPopup = React.lazy(() => import('./src/components/LeadPopup'));
+const ProductRequestModal = React.lazy(() => import('./src/components/ProductRequestModal'));
+const QuoteRequestModal = React.lazy(() => import('./src/components/QuoteRequestModal'));
+const ProductAlertModal = React.lazy(() => import('./src/components/ProductAlertModal'));
+const SearchModal = React.lazy(() =>
+  import('./src/components/Search/SearchModal').then((m) => ({ default: m.SearchModal }))
+);
 
 import { initAttributionTracker } from './src/services/attributionTracker';
 import { trackSearch } from './src/services/metaCapiService';
@@ -523,87 +525,101 @@ const AppContent: React.FC<{
           <Footer siteConfig={siteConfig} />
         )}
 
-        <Cart
-          isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
-          siteConfig={siteConfig}
-          openCheckout={() => {
-            setIsCartOpen(false);
-            setIsCheckoutOpen(true);
-          }}
-          applyPromo={applyPromo}
-          appliedPromo={appliedPromo}
-        />
+        <React.Suspense fallback={null}>
+          {isCartOpen && (
+            <Cart
+              isOpen={isCartOpen}
+              onClose={() => setIsCartOpen(false)}
+              siteConfig={siteConfig}
+              openCheckout={() => {
+                setIsCartOpen(false);
+                setIsCheckoutOpen(true);
+              }}
+              applyPromo={applyPromo}
+              appliedPromo={appliedPromo}
+            />
+          )}
 
-        {isCheckoutOpen && (
-          <CheckoutModal
-            onClose={() => setIsCheckoutOpen(false)}
-            siteConfig={siteConfig}
-            appliedPromo={appliedPromo}
-            onSuccess={() => {
-              setIsCheckoutOpen(false);
-            }}
-          />
-        )}
+          {isCheckoutOpen && (
+            <CheckoutModal
+              onClose={() => setIsCheckoutOpen(false)}
+              siteConfig={siteConfig}
+              appliedPromo={appliedPromo}
+              onSuccess={() => {
+                setIsCheckoutOpen(false);
+              }}
+            />
+          )}
 
-        <ProductRequestModal
-          isOpen={isProductRequestOpen}
-          onClose={() => setIsProductRequestOpen(false)}
-        />
+          {isProductRequestOpen && (
+            <ProductRequestModal
+              isOpen={isProductRequestOpen}
+              onClose={() => setIsProductRequestOpen(false)}
+            />
+          )}
 
-        <QuoteRequestModal
-          isOpen={isQuoteRequestOpen}
-          product={quoteProduct}
-          onClose={() => {
-            setIsQuoteRequestOpen(false);
-            setQuoteProduct(null);
-          }}
-        />
+          {isQuoteRequestOpen && (
+            <QuoteRequestModal
+              isOpen={isQuoteRequestOpen}
+              product={quoteProduct}
+              onClose={() => {
+                setIsQuoteRequestOpen(false);
+                setQuoteProduct(null);
+              }}
+            />
+          )}
 
-        <ProductAlertModal
-          isOpen={isProductAlertOpen}
-          product={alertProduct}
-          onClose={() => {
-            setIsProductAlertOpen(false);
-            setAlertProduct(null);
-          }}
-        />
+          {isProductAlertOpen && (
+            <ProductAlertModal
+              isOpen={isProductAlertOpen}
+              product={alertProduct}
+              onClose={() => {
+                setIsProductAlertOpen(false);
+                setAlertProduct(null);
+              }}
+            />
+          )}
 
-        <SearchModal
-          isOpen={isSearchModalOpen}
-          products={products}
-          onClose={() => setIsSearchModalOpen(false)}
-          onSelectProduct={(id, query) => openProductModal(id, query)}
-          siteConfig={siteConfig}
-          initialQuery={searchHistoryQuery}
-          onSearchInCatalog={(searchQ) => {
-            setIsSearchModalOpen(false);
-            setGlobalSearchQuery(searchQ);
-            setSelectedCategory('all');
-            if (location.pathname !== '/') {
-              navigate('/');
-            }
-            setTimeout(() => {
-              const el = document.getElementById('products');
-              if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-              }
-            }, 120);
-          }}
-        />
+          {isSearchModalOpen && (
+            <SearchModal
+              isOpen={isSearchModalOpen}
+              products={products}
+              onClose={() => setIsSearchModalOpen(false)}
+              onSelectProduct={(id, query) => openProductModal(id, query)}
+              siteConfig={siteConfig}
+              initialQuery={searchHistoryQuery}
+              onSearchInCatalog={(searchQ) => {
+                setIsSearchModalOpen(false);
+                setGlobalSearchQuery(searchQ);
+                setSelectedCategory('all');
+                if (location.pathname !== '/') {
+                  navigate('/');
+                }
+                setTimeout(() => {
+                  const el = document.getElementById('products');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }, 120);
+              }}
+            />
+          )}
 
-        {/* New Arrivals Drawer */}
-        <NewArrivals
-          isOpen={isNewArrivalsOpen}
-          onClose={() => setIsNewArrivalsOpen(false)}
-          products={products}
-          onProductClick={(id) => {
-            setIsNewArrivalsOpen(false);
-            openProductModal(id);
-          }}
-        />
+          {/* New Arrivals Drawer */}
+          {isNewArrivalsOpen && (
+            <NewArrivals
+              isOpen={isNewArrivalsOpen}
+              onClose={() => setIsNewArrivalsOpen(false)}
+              products={products}
+              onProductClick={(id) => {
+                setIsNewArrivalsOpen(false);
+                openProductModal(id);
+              }}
+            />
+          )}
 
-        <CookieConsentBanner />
+          <CookieConsentBanner />
+        </React.Suspense>
         {/* Automatic lead popups disabled per user request */}
 
         {toastMessage && (
