@@ -284,7 +284,7 @@ export const CityHubMaroc: React.FC<CityHubMarocProps> = ({
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
               <a
-                href={`https://wa.me/212673011873?text=Bonjour,%20je%20souhaite%20commander%20du%20matériel%20photo/vidéo%20avec%20livraison%20à%20${encodeURIComponent(city.name)}`}
+                href={`https://wa.me/212724664656?text=Bonjour,%20je%20souhaite%20commander%20du%20matériel%20photo/vidéo%20avec%20livraison%20à%20${encodeURIComponent(city.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-xl shadow-lg shadow-red-600/25 transition flex items-center gap-2 text-sm"

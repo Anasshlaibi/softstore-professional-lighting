@@ -92,7 +92,7 @@ const categoryIcons = [
 ];
 
 const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand }) => {
-  const whatsappPhone = (siteConfig?.phone || '212673011873').replace(/[^0-9]/g, '');
+  const whatsappPhone = (siteConfig?.phone || '212724664656').replace(/[^0-9]/g, '');
 
   const handleCategoryClick = (cat: typeof categoryIcons[0]) => {
     if (cat.link) {
@@ -125,7 +125,7 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-1 font-bold text-amber-800 hover:text-amber-950 underline shrink-0 ml-2"
             >
-              <span>Conseil WhatsApp 06 73 01 18 73</span>
+              <span>Conseil WhatsApp 07 24 66 46 56</span>
               <i className="fa-brands fa-whatsapp text-emerald-600" />
             </a>
           </div>

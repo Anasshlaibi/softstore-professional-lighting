@@ -21,7 +21,7 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
       {/* Hidden schema metadata for Google */}
       <meta itemProp="name" content="GearShop Maroc" />
       <meta itemProp="url" content="https://www.gearshop.ma" />
-      <meta itemProp="telephone" content="+212673011873" />
+      <meta itemProp="telephone" content="+212724664656" />
       <meta itemProp="email" content="contact@gearshop.ma" />
       <meta itemProp="priceRange" content="$$" />
       <meta itemProp="image" content="https://www.gearshop.ma/banner_7artisans.jpg" />
@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
 
             <div className="flex gap-4 text-lg pt-2">
               <a
-                href="https://www.instagram.com/spidi8_8/"
+                href="https://www.instagram.com/gear_shope"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-black dark:hover:text-white transition transform hover:scale-110"
@@ -65,7 +65,7 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
                 <i className="fa-brands fa-instagram"></i>
               </a>
               <a
-                href="https://wa.me/212673011873"
+                href="https://wa.me/212724664656"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-emerald-500 transition transform hover:scale-110"

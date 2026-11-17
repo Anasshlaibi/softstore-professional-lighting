@@ -18,7 +18,7 @@ export const defaultSiteConfig = {
     'https://cdn-cloudflare.meidianbang.cn/comdata/69625/202401/20240124220814d82f21.webp',
   video1: 'LcdLz8-JmI0',
   video2: 't_leEVDR9Kc',
-  phone: '+212673011873',
+  phone: '+212724664656',
   displayPhone: '+212 6.73.01.18.73',
   email: 'contact@gearshop.ma',
   promo: {

@@ -230,7 +230,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       itemName: product.name,
       value: calculatedPrice * quantity,
     });
-    const phone = siteConfig.phone.replace(/[^0-9]/g, '') || '212673011873';
+    const phone = siteConfig.phone.replace(/[^0-9]/g, '') || '212724664656';
     const productUrl = `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`;
     const lensDetails = selectedLens
       ? `\n🔍 Objectif Compatible Ajouté : *${selectedLens.name}* (+${selectedLens.price.toLocaleString('fr-FR')} ${siteConfig.currency})`

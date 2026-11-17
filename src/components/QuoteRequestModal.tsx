@@ -154,7 +154,7 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
             </p>
             <div className="flex flex-col gap-2 pt-1">
               <a
-                href={`https://wa.me/212673011873?text=${encodeURIComponent(
+                href={`https://wa.me/212724664656?text=${encodeURIComponent(
                   `Bonjour Responsable VERDANOVE / GearShop,\n\nJe souhaite confirmer mon Devis N° *${successDocNumber}* pour : ${quantity}x ${productName}.\nClient : ${name} (${phone})\nLien : https://www.gearshop.ma/mon-compte?ref=${encodeURIComponent(successDocNumber)}`
                 )}`}
                 target="_blank"

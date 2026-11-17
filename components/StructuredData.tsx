@@ -81,7 +81,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
       "Cameras & Filmmaking Equipment Morocco"
     ],
     "url": baseUrl,
-    "telephone": "+212673011873",
+    "telephone": "+212724664656",
     "email": "contact@gearshop.ma",
     "foundingDate": "2019",
     "address": {
@@ -119,8 +119,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({ product, allProducts })
     ],
     "logo": `${baseUrl}/logo.png`,
     "sameAs": [
-      "https://www.instagram.com/spidi8_8/",
-      "https://wa.me/212673011873"
+      "https://www.instagram.com/gear_shope",
+      "https://wa.me/212724664656"
     ]
   };
 

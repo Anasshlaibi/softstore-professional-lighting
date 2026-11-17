@@ -93,7 +93,7 @@ const FAQ: React.FC = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
                             <a
-                                href="https://wa.me/212673011873"
+                                href="https://wa.me/212724664656"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors font-medium"

@@ -675,7 +675,7 @@ const AdminDashboard: React.FC = () => {
                                   href={`mailto:${encodeURIComponent(q.email)}?subject=${encodeURIComponent(
                                     `Suivi de votre Dossier #${q.id} — GearShop / VERDANOVE Maroc`
                                   )}&body=${encodeURIComponent(
-                                    `Bonjour ${q.name},\n\nNous faisons suite à votre dossier #${q.id} (${q.product_name}).\n\nVous pouvez consulter le statut en temps réel et télécharger votre Devis Officiel VERDANOVE PDF depuis votre Espace Client :\nhttps://www.gearshop.ma/mon-compte?tel=${encodeURIComponent(q.phone || '')}&ref=${q.id}\n\nCordialement,\nL'équipe VERDANOVE / GearShop Maroc\nTél : +212 673 01 18 73 | Verdanove@gmail.com`
+                                    `Bonjour ${q.name},\n\nNous faisons suite à votre dossier #${q.id} (${q.product_name}).\n\nVous pouvez consulter le statut en temps réel et télécharger votre Devis Officiel VERDANOVE PDF depuis votre Espace Client :\nhttps://www.gearshop.ma/mon-compte?tel=${encodeURIComponent(q.phone || '')}&ref=${q.id}\n\nCordialement,\nL'équipe VERDANOVE / GearShop Maroc\nTél : +212 724 66 46 56 | Verdanove@gmail.com`
                                   )}`}
                                   className="px-2.5 py-1 bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/30 text-sky-300 rounded-lg text-[10px] font-bold transition"
                                 >

@@ -412,7 +412,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         Prix sur demande
                       </span>
                       <a
-                        href={`https://wa.me/212673011873?text=${encodeURIComponent(`Bonjour GearShop, je souhaite connaître le prix et la disponibilité de : ${product.name} (https://www.gearshop.ma/product/${product.id}-${slugify(product.name)})`)}`}
+                        href={`https://wa.me/212724664656?text=${encodeURIComponent(`Bonjour GearShop, je souhaite connaître le prix et la disponibilité de : ${product.name} (https://www.gearshop.ma/product/${product.id}-${slugify(product.name)})`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm text-green-600 font-semibold hover:underline"

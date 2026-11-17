@@ -359,7 +359,7 @@ async function prerender() {
       "availability": "https://schema.org/PreOrder",
       "itemCondition": "https://schema.org/NewCondition",
       "areaServed": { "@type": "Country", "name": "Maroc" },
-      "seller": { "@type": "Organization", "name": "GearShop Maroc", "telephone": "+212673011873" },
+      "seller": { "@type": "Organization", "name": "GearShop Maroc", "telephone": "+212724664656" },
       "shippingDetails": {
         "@type": "OfferShippingDetails",
         "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "MAD" },

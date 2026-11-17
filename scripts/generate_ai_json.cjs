@@ -262,7 +262,7 @@ async function generate() {
       legalName: 'Soft Store Maroc',
       url: baseUrl,
       logo: `${baseUrl}/logo.png`,
-      telephone: '+212673011873',
+      telephone: '+212724664656',
       email: 'contact@gearshop.ma',
       country: 'MA',
       currency: 'MAD',

@@ -1503,7 +1503,7 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
               <i className="fa-solid fa-circle-info text-amber-600 text-base mt-0.5 shrink-0" />
               <div>
                 <span className="font-black uppercase">Mention « À Confirmer par le Responsable » :</span>{' '}
-                Sélectionnez les produits souhaités ci-dessous pour générer votre Devis PDF instantanément. Ce devis portera la mention <strong>« DEVIS EN ATTENTE DE CONFIRMATION »</strong> : veuillez ensuite l’envoyer au responsable (<strong>+212 673 01 18 73 / Verdanove@gmail.com</strong>) pour vérification du stock et validation définitive.
+                Sélectionnez les produits souhaités ci-dessous pour générer votre Devis PDF instantanément. Ce devis portera la mention <strong>« DEVIS EN ATTENTE DE CONFIRMATION »</strong> : veuillez ensuite l’envoyer au responsable (<strong>+212 724 66 46 56 / Verdanove@gmail.com</strong>) pour vérification du stock et validation définitive.
               </div>
             </div>
 
@@ -1750,7 +1750,7 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                     </p>
                     <div className="flex flex-col gap-1.5">
                       <a
-                        href={`https://wa.me/212673011873?text=${encodeURIComponent(
+                        href={`https://wa.me/212724664656?text=${encodeURIComponent(
                           `Bonjour Responsable VERDANOVE / GearShop,\n\nJe souhaite faire confirmer mon Devis N° *${createdDevisInfo.docNumber}* (${createdDevisInfo.totalTtc.toLocaleString('fr-FR')} DH TTC).\nClient : ${devisName} (${devisPhone})\nArticles : ${createdDevisInfo.summary}\nSuivi : https://www.gearshop.ma/suivi-commande?ref=${encodeURIComponent(createdDevisInfo.docNumber)}`
                         )}`}
                         target="_blank"
@@ -1936,7 +1936,7 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                                 </span>
                               </button>
                               <a
-                                href={`https://wa.me/212673011873?text=${encodeURIComponent(
+                                href={`https://wa.me/212724664656?text=${encodeURIComponent(
                                   order.status === 'New'
                                     ? `Bonjour Responsable VERDANOVE / GearShop,\n\nJe souhaite faire confirmer et vérifier mon devis / ma commande Dossier #${order.id} (${order.name}) : ${order.product_name}.\nLien suivi : https://www.gearshop.ma/suivi-commande?ref=${order.id}`
                                     : `Bonjour, je souhaite suivre mon dossier #${order.id} (${order.name}).`

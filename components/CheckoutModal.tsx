@@ -249,7 +249,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     msg += `Paiement: Cash à la livraison après vérification du colis.\n`;
     msg += `Merci pour votre confiance!`;
 
-    const phoneNum = (siteConfig.phone || '212673011873').replace(/[^0-9]/g, '');
+    const phoneNum = (siteConfig.phone || '212724664656').replace(/[^0-9]/g, '');
     const waUrl = `https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`;
 
     // Open WhatsApp synchronously in user click gesture so mobile Safari never blocks it

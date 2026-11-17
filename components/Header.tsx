@@ -19,7 +19,7 @@ const announcements = [
   { icon: 'fa-truck-fast', text: 'Livraison Rapide 24h/48h partout au Maroc • Gratuite > 2 000 DH' },
   { icon: 'fa-camera-retro', text: 'Nouvel Arrivage 2026 : Nikon ZR, Canon R5 II, Sony FX3 & A7 IV en stock' },
   { icon: 'fa-shield-halved', text: 'Matériel 100% Neuf & Garanti 1 An • Facture Pro & TVA Disponible' },
-  { icon: 'fa-brands fa-whatsapp', text: 'Devis & Conseils Express WhatsApp au 06 73 01 18 73 • Réponse immédiate' }
+  { icon: 'fa-brands fa-whatsapp', text: 'Devis & Conseils Express WhatsApp au 07 24 66 46 56 • Réponse immédiate' }
 ];
 
 const categoriesList = [
@@ -104,7 +104,7 @@ const Header: React.FC<HeaderProps> = React.memo(
       }
     };
 
-    const whatsappNumber = (siteConfig.phone || '212673011873').replace(/[^0-9]/g, '');
+    const whatsappNumber = (siteConfig.phone || '212724664656').replace(/[^0-9]/g, '');
 
     return (
       <>
@@ -134,7 +134,7 @@ const Header: React.FC<HeaderProps> = React.memo(
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-white hover:text-red-400 font-semibold transition"
               >
-                <i className="fa-brands fa-whatsapp text-sm text-red-500" /> WhatsApp: 06 73 01 18 73
+                <i className="fa-brands fa-whatsapp text-sm text-red-500" /> WhatsApp: 07 24 66 46 56
               </a>
               <span className="h-3 w-px bg-slate-700" />
               <Link
@@ -450,7 +450,7 @@ const Header: React.FC<HeaderProps> = React.memo(
               className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#25D366] text-white text-xs font-bold hover:brightness-110 transition shadow-md"
             >
               <i className="fa-brands fa-whatsapp text-sm" />
-              WhatsApp : 06 73 01 18 73
+              WhatsApp : 07 24 66 46 56
             </a>
           </div>
         </div>

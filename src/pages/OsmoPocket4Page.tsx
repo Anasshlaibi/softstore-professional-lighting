@@ -67,7 +67,7 @@ export const OsmoPocket4Page: React.FC<OsmoPocket4PageProps> = ({ products = [] 
       "seller": {
         "@type": "Organization",
         "name": "GearShop Maroc",
-        "telephone": "+212673011873",
+        "telephone": "+212724664656",
         "url": "https://www.gearshop.ma"
       },
       "shippingDetails": {
@@ -189,7 +189,7 @@ export const OsmoPocket4Page: React.FC<OsmoPocket4PageProps> = ({ products = [] 
             itemName: 'DJI Osmo Pocket 4 Pro',
             value: livePrice || 8000,
           });
-          window.open(`https://wa.me/212673011873?text=${encodeURIComponent(`Bonjour, je souhaite connaître le prix actuel et précommander le DJI Osmo Pocket 4 Pro (${priceText}).`)}`, '_blank');
+          window.open(`https://wa.me/212724664656?text=${encodeURIComponent(`Bonjour, je souhaite connaître le prix actuel et précommander le DJI Osmo Pocket 4 Pro (${priceText}).`)}`, '_blank');
         }}
         onContactWhatsApp={() => {
           trackWhatsAppLead({
@@ -198,7 +198,7 @@ export const OsmoPocket4Page: React.FC<OsmoPocket4PageProps> = ({ products = [] 
             itemName: 'DJI Osmo Pocket 4 Pro',
             value: livePrice || 8000,
           });
-          window.open('https://wa.me/212673011873?text=Bonjour,%20j%27ai%20une%20question%20sur%20la%20caméra%20DJI%20Osmo%20Pocket%204%20Pro%20au%20Maroc', '_blank');
+          window.open('https://wa.me/212724664656?text=Bonjour,%20j%27ai%20une%20question%20sur%20la%20caméra%20DJI%20Osmo%20Pocket%204%20Pro%20au%20Maroc', '_blank');
         }}
       />
     </div>

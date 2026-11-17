@@ -36,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
   ({
     product,
     onProductClick,
-    siteConfig = { currency: 'DH', phone: '+212673011873' },
+    siteConfig = { currency: 'DH', phone: '+212724664656' },
     openWhatsappReserve,
     generateStars = defaultGenerateStars,
     addToCart,
@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
     onSelect,
   }) => {
     const activeCurrency = currency || siteConfig?.currency || 'DH';
-    const activePhone = siteConfig?.phone || '+212673011873';
+    const activePhone = siteConfig?.phone || '+212724664656';
     const secondaryImage = Array.isArray(product.gallery)
       ? product.gallery.find((img) => img && img !== product.image)
       : undefined;
