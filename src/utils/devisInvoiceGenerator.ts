@@ -1,9 +1,16 @@
 /**
  * src/utils/devisInvoiceGenerator.ts
  *
- * IDURAR ERP/CRM-inspired Document Engine for GearShop.ma
- * Generates official Moroccan B2B/B2C Devis, Facture Proforma, and Facture Commerciale
- * with HT / TVA 20% / TTC breakdown, ICE/RC/IF legal fields, and French amount-in-words.
+ * Official VERDANOVE SARL Devis / Facture Proforma / Facture PDF Generator
+ * Matches the exact VERDANOVE template layout:
+ * - Top VERDANOVE Logo (/images/verdanove-header-logo.png)
+ * - DEVIS / FACTURE + client : <Name>
+ * - Metadata Table: | NUMERO | DATE | REFERENCE | (e.g. FA2600002 | 03/09/26 | DEMANDE DU 03/09)
+ * - Items Table: | Désignation | Qté | Montant HT |
+ * - « Validité de l'offre : 30 jours » + Cachet et Signature (VERDANOVE) with blue stamp (/images/verdanove-stamp.png)
+ * - Totals Table: | Total Hors Taxes (HT) | Total TVA (20%) | Total Toutes Taxes Comprises (TTC) |
+ * - Arrêté le présent devis à la somme de : [Montant en lettres]
+ * - Official VERDANOVE Footer: 174 BD ZERKTOUNI ET MOUSA BNOU NOUSSAIR CASABLANCA | ICE: 003746027000044 | IF: 66987636 / RC: 680157 | Email : Verdanove@gmail.com | Tél : +212 661150961
  */
 
 export type ErpDocumentType = 'DEVIS' | 'PROFORMA' | 'FACTURE';
@@ -13,7 +20,7 @@ export interface ErpLineItem {
   sku?: string;
   name: string;
   quantity: number;
-  unitPriceTtc: number;
+  unitPriceTtc: number; // Used as Montant unitaire (HT or TTC depending on taxMode)
 }
 
 export interface ErpCompanySettings {
@@ -29,13 +36,17 @@ export interface ErpCompanySettings {
   tp: string;
   rib: string;
   bankName: string;
+  logoUrl?: string;
+  stampUrl?: string;
 }
 
 export interface ErpDocumentPayload {
   docType: ErpDocumentType;
   docNumber: string;
   issueDate: string;
+  referenceText?: string;
   validUntilDate?: string;
+  validityDays?: number;
   clientName: string;
   clientCompany?: string;
   clientIce?: string;
@@ -46,27 +57,30 @@ export interface ErpDocumentPayload {
   items: ErpLineItem[];
   discountPercent?: number;
   shippingCostTtc?: number;
-  taxMode?: 'ttc_includes_20' | 'ht_plus_20' | 'exempt_0';
+  taxMode?: 'ht_plus_20' | 'ttc_includes_20' | 'exempt_0';
   paymentMethod?: string;
   notes?: string;
+  showStamp?: boolean;
   companySettings?: Partial<ErpCompanySettings>;
 }
 
-const STORAGE_KEY_COMPANY = 'gearshop_erp_company_settings_v1';
+const STORAGE_KEY_COMPANY = 'verdanove_erp_company_settings_v2';
 
 export const DEFAULT_COMPANY_SETTINGS: ErpCompanySettings = {
-  companyName: 'GEARSHOP MAROC',
-  legalName: 'Soft Store Maroc — Matériel Photo, Cinéma & Audiovisuel Pro',
-  address: 'Casablanca, Maroc',
-  phone: '+212 673 011 873',
-  email: 'contact@gearshop.ma',
+  companyName: 'VERDANOVE',
+  legalName: 'VERDANOVE SARL — Importation & Exportation Matériel Audiovisuel',
+  address: '174 BD ZERKTOUNI ET MOUSA BNOU NOUSSAIR, ÉTG 7, APPT 16 (CENTER TWIN), CASABLANCA',
+  phone: '+212 661150961',
+  email: 'Verdanove@gmail.com',
   website: 'www.gearshop.ma',
-  ice: '003198452000084',
-  rc: 'Casablanca',
-  ifNumber: '52849103',
-  tp: '34901827',
-  rib: 'Demander le RIB officiel sur WhatsApp (+212 673 011 873)',
-  bankName: 'Virement Bancaire / Chèque Certifié / Espèces à la livraison',
+  ice: '003746027000044',
+  rc: '680157 (Casablanca)',
+  ifNumber: '66987636',
+  tp: '',
+  rib: '',
+  bankName: 'Virement Bancaire / Chèque Certifié / Espèces',
+  logoUrl: '/images/verdanove-header-logo.png',
+  stampUrl: '/images/verdanove-stamp.png',
 };
 
 export function loadErpCompanySettings(): ErpCompanySettings {
@@ -88,8 +102,8 @@ export function saveErpCompanySettings(settings: ErpCompanySettings): void {
 }
 
 /**
- * Converts a number into French words for Moroccan financial documents
- * ("Arrêté le présent devis à la somme de : ...")
+ * Converts a number into French words matching the exact Verdanove format:
+ * "Soixante-dix-huit mille six cent neuf dirhams et soixante centimes"
  */
 function underThousandToFrench(n: number): string {
   const units = [
@@ -127,7 +141,7 @@ export function numberToFrenchWordsMAD(amount: number): string {
   const intPart = Math.floor(rounded);
   const cents = Math.round((rounded - intPart) * 100);
 
-  if (intPart === 0) return 'Zéro Dirham';
+  if (intPart === 0) return 'Zéro dirham';
 
   const millions = Math.floor(intPart / 1000000);
   const thousands = Math.floor((intPart % 1000000) / 1000);
@@ -146,8 +160,8 @@ export function numberToFrenchWordsMAD(amount: number): string {
 
   const words = parts.join(' ').trim();
   const capitalized = words.charAt(0).toUpperCase() + words.slice(1);
-  const centPart = cents > 0 ? ` et ${cents} centimes` : '';
-  return `${capitalized} Dirhams${centPart} TTC`;
+  const centWords = cents > 0 ? ` et ${underThousandToFrench(cents)} centime${cents > 1 ? 's' : ''}` : '';
+  return `${capitalized} dirhams${centWords}`;
 }
 
 function escapeHtml(str: string): string {
@@ -158,15 +172,48 @@ function escapeHtml(str: string): string {
     .replace(/"/g, '&quot;');
 }
 
-function formatMAD(n: number): string {
-  return n.toLocaleString('fr-MA', {
+function formatShortDate(isoOrDate: string): { dateShort: string; refDefault: string } {
+  try {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(isoOrDate)) {
+      const [yyyy, mm, dd] = isoOrDate.split('-');
+      return {
+        dateShort: `${dd}/${mm}/${yyyy.slice(2)}`,
+        refDefault: `DEMANDE DU ${dd}/${mm}`,
+      };
+    }
+    const d = new Date(isoOrDate);
+    if (!isNaN(d.getTime())) {
+      const dd = String(d.getDate()).padStart(2, '0');
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const yy = String(d.getFullYear()).slice(2);
+      return {
+        dateShort: `${dd}/${mm}/${yy}`,
+        refDefault: `DEMANDE DU ${dd}/${mm}`,
+      };
+    }
+  } catch {
+    // fallback
+  }
+  return { dateShort: isoOrDate, refDefault: 'DEMANDE CLIENT' };
+}
+
+function formatTableCurrency(n: number): string {
+  return n.toLocaleString('fr-FR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }) + ' DH';
+  });
+}
+
+function formatLineHt(n: number): string {
+  const isWhole = Math.abs(n - Math.round(n)) < 0.01;
+  if (isWhole) {
+    return `${Math.round(n)}dh`;
+  }
+  return `${n.toFixed(2).replace('.', ',')}dh`;
 }
 
 export function calculateErpTotals(payload: ErpDocumentPayload) {
-  const taxMode = payload.taxMode || 'ttc_includes_20';
+  const taxMode = payload.taxMode || 'ht_plus_20';
   const discountPct = Math.max(0, Math.min(100, payload.discountPercent || 0));
 
   const lines = payload.items.map((item, idx) => {
@@ -175,12 +222,12 @@ export function calculateErpTotals(payload: ErpDocumentPayload) {
 
     let unitHt = rawUnit;
     let unitTtc = rawUnit;
-    if (taxMode === 'ttc_includes_20') {
-      unitHt = rawUnit / 1.2;
-      unitTtc = rawUnit;
-    } else if (taxMode === 'ht_plus_20') {
+    if (taxMode === 'ht_plus_20') {
       unitHt = rawUnit;
       unitTtc = rawUnit * 1.2;
+    } else if (taxMode === 'ttc_includes_20') {
+      unitHt = rawUnit / 1.2;
+      unitTtc = rawUnit;
     } else {
       unitHt = rawUnit;
       unitTtc = rawUnit;
@@ -206,22 +253,15 @@ export function calculateErpTotals(payload: ErpDocumentPayload) {
   const subtotalHt = lines.reduce((s, l) => s + l.totalHt, 0);
   const subtotalTtc = lines.reduce((s, l) => s + l.totalTtc, 0);
 
-  const discountTtc = subtotalTtc * (discountPct / 100);
   const discountHt = subtotalHt * (discountPct / 100);
+  const discountTtc = subtotalTtc * (discountPct / 100);
 
   const afterDiscountHt = subtotalHt - discountHt;
-  const afterDiscountTtc = subtotalTtc - discountTtc;
-  const totalTva = afterDiscountTtc - afterDiscountHt;
+  const totalTva = taxMode === 'exempt_0' ? 0 : afterDiscountHt * 0.2;
+  const afterDiscountTtc = afterDiscountHt + totalTva;
 
-  // Shipping: strictly > 2000 DH is free unless explicitly overridden
   const shippingTtc =
-    typeof payload.shippingCostTtc === 'number'
-      ? payload.shippingCostTtc
-      : afterDiscountTtc > 2000
-      ? 0
-      : payload.clientCity?.toLowerCase() === 'casablanca'
-      ? 30
-      : 45;
+    typeof payload.shippingCostTtc === 'number' ? payload.shippingCostTtc : 0;
 
   const grandTotalTtc = afterDiscountTtc + shippingTtc;
 
@@ -243,37 +283,42 @@ export function calculateErpTotals(payload: ErpDocumentPayload) {
 export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
   const company = { ...loadErpCompanySettings(), ...(payload.companySettings || {}) };
   const calc = calculateErpTotals(payload);
+  const { dateShort, refDefault } = formatShortDate(payload.issueDate);
+  const referenceDisplay = payload.referenceText?.trim() || refDefault;
+  const showStamp = payload.showStamp !== false;
 
   const docTitleMap: Record<ErpDocumentType, string> = {
-    DEVIS: 'DEVIS OFFICIEL',
+    DEVIS: 'DEVIS',
     PROFORMA: 'FACTURE PROFORMA',
-    FACTURE: 'FACTURE COMMERCIALE',
+    FACTURE: 'FACTURE',
+  };
+  const docWordMap: Record<ErpDocumentType, string> = {
+    DEVIS: 'devis',
+    PROFORMA: 'facture proforma',
+    FACTURE: 'facture',
   };
 
-  const docLabelMap: Record<ErpDocumentType, string> = {
-    DEVIS: 'Devis',
-    PROFORMA: 'Facture Proforma',
-    FACTURE: 'Facture',
-  };
+  const docTitle = docTitleMap[payload.docType] || 'DEVIS';
+  const docWord = docWordMap[payload.docType] || 'devis';
+  const clientDisplay = [payload.clientCompany, payload.clientName].filter(Boolean).join(' - ') || 'Client';
 
-  const docTitle = docTitleMap[payload.docType] || 'DEVIS OFFICIEL';
-  const docLabel = docLabelMap[payload.docType] || 'Devis';
+  const logoSrc = company.logoUrl || '/images/verdanove-header-logo.png';
+  const stampSrc = company.stampUrl || '/images/verdanove-stamp.png';
 
   const html = `<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>${escapeHtml(docTitle)} ${escapeHtml(payload.docNumber)} - ${escapeHtml(company.companyName)}</title>
+  <title>${escapeHtml(docTitle)} ${escapeHtml(payload.docNumber)} - ${escapeHtml(clientDisplay)}</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #111827;
-      background: #f3f4f6;
-      padding: 24px;
-      font-size: 12px;
-      line-height: 1.45;
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      color: #000000;
+      background: #e5e7eb;
+      padding: 20px;
+      font-size: 13px;
+      line-height: 1.35;
     }
     .toolbar {
       max-width: 210mm;
@@ -281,11 +326,11 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
       background: #111827;
       color: #fff;
       padding: 12px 20px;
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      font-family: system-ui, -apple-system, sans-serif;
     }
     .toolbar-left {
       display: flex;
@@ -295,319 +340,181 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
       font-size: 13px;
     }
     .toolbar-badge {
-      background: #dc2626;
+      background: #16a34a;
       color: #fff;
       font-size: 10px;
       font-weight: 800;
       padding: 3px 8px;
-      border-radius: 6px;
+      border-radius: 5px;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
     }
-    .toolbar-actions {
-      display: flex;
-      gap: 10px;
-    }
+    .toolbar-actions { display: flex; gap: 10px; }
     .btn {
       border: none;
       padding: 8px 16px;
-      border-radius: 8px;
+      border-radius: 7px;
       font-weight: 700;
       font-size: 12px;
       cursor: pointer;
-      transition: all 0.15s ease;
     }
-    .btn-primary {
-      background: #dc2626;
-      color: #ffffff;
-    }
-    .btn-primary:hover { background: #b91c1c; }
-    .btn-secondary {
-      background: #374151;
-      color: #ffffff;
-    }
-    .btn-secondary:hover { background: #4b5563; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-secondary { background: #374151; color: #fff; }
 
     .page {
       width: 210mm;
       min-height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 16mm 16mm 14mm 16mm;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-      border-radius: 4px;
+      padding: 14mm 18mm 14mm 18mm;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      border-top: 6px solid #dc2626;
     }
 
-    /* Header */
-    .header {
+    /* Top Logo Banner */
+    .logo-container {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .logo-container img {
+      max-height: 82px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Title & Client Row */
+    .title-client-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding-bottom: 18px;
-      border-bottom: 2px solid #f3f4f6;
-      margin-bottom: 20px;
+      align-items: baseline;
+      margin: 6px 0 12px 0;
+      padding: 0 4px;
     }
-    .brand-title {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: #111827;
+    .doc-heading {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
-    .brand-title span { color: #dc2626; }
-    .brand-subtitle {
-      font-size: 11px;
-      font-weight: 600;
-      color: #6b7280;
+    .client-heading {
+      font-size: 14.5px;
+      font-weight: 700;
+    }
+    .client-sub {
+      font-size: 11.5px;
+      font-weight: 400;
+      color: #333;
+      text-align: right;
       margin-top: 2px;
     }
-    .company-meta {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #4b5563;
-      line-height: 1.5;
-    }
 
-    .doc-box {
-      text-align: right;
-    }
-    .doc-type-badge {
-      display: inline-block;
-      background: #fef2f2;
-      color: #dc2626;
-      border: 1px solid #fecaca;
-      font-size: 15px;
-      font-weight: 900;
-      padding: 6px 14px;
-      border-radius: 8px;
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
-    }
-    .doc-meta-table {
-      margin-left: auto;
+    /* Standard Verdanove Bordered Tables */
+    table.verdanove-table {
+      width: 100%;
       border-collapse: collapse;
-      font-size: 11px;
+      margin-bottom: 14px;
     }
-    .doc-meta-table td {
-      padding: 2px 0 2px 14px;
+    table.verdanove-table th,
+    table.verdanove-table td {
+      border: 1px solid #000000;
+      padding: 5px 10px;
+      font-size: 12.5px;
     }
-    .doc-meta-table td.label {
-      color: #6b7280;
-      font-weight: 600;
-    }
-    .doc-meta-table td.val {
-      color: #111827;
-      font-weight: 800;
-      font-family: monospace;
-      font-size: 12px;
+    table.verdanove-table th {
+      font-weight: 700;
+      text-align: center;
+      background: #ffffff;
     }
 
-    /* Parties Grid */
-    .parties {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 22px;
-    }
-    .party-card {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 12px 16px;
-    }
-    .party-card.client {
-      background: #fff;
-      border: 1.5px solid #111827;
-    }
-    .party-label {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #6b7280;
-      margin-bottom: 6px;
-    }
-    .party-name {
-      font-size: 14px;
-      font-weight: 800;
-      color: #111827;
-      margin-bottom: 4px;
-    }
-    .party-details {
-      font-size: 11px;
-      color: #374151;
-      line-height: 1.5;
+    /* Meta Table */
+    .meta-table td {
+      text-align: center;
+      font-weight: 500;
     }
 
     /* Items Table */
-    .items-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    .items-table th {
-      background: #111827;
-      color: #ffffff;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 9px 10px;
+    .items-table td.designation {
       text-align: left;
     }
-    .items-table th.num, .items-table td.num {
-      text-align: right;
-    }
-    .items-table th.center, .items-table td.center {
+    .items-table td.qty {
       text-align: center;
+      width: 75px;
     }
-    .items-table td {
-      padding: 10px 10px;
-      border-bottom: 1px solid #e5e7eb;
-      font-size: 11.5px;
-      vertical-align: middle;
-    }
-    .items-table tr:nth-child(even) td {
-      background: #f9fafb;
-    }
-    .sku-pill {
-      font-family: monospace;
-      font-size: 10px;
-      color: #6b7280;
-      background: #f3f4f6;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-    .item-title {
-      font-weight: 700;
-      color: #111827;
+    .items-table td.amount {
+      text-align: center;
+      width: 135px;
     }
 
-    /* Summary Row */
-    .summary-section {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 24px;
-      align-items: start;
-      margin-bottom: 22px;
+    /* Validity & Stamp Section */
+    .validity-stamp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 8px 0 14px 0;
     }
-    .words-box {
-      background: #f9fafb;
-      border: 1px dashed #d1d5db;
-      border-radius: 8px;
-      padding: 12px 14px;
-    }
-    .words-label {
-      font-size: 10px;
+    .validity-text {
+      font-size: 13px;
       font-weight: 700;
-      text-transform: uppercase;
-      color: #6b7280;
+    }
+    .stamp-block {
+      text-align: right;
+      min-width: 240px;
+    }
+    .stamp-label {
+      font-size: 13px;
+      font-weight: 700;
       margin-bottom: 4px;
     }
-    .words-value {
-      font-size: 12px;
-      font-weight: 800;
-      color: #111827;
-      font-style: italic;
-    }
-    .conditions-list {
-      margin-top: 10px;
-      font-size: 10.5px;
-      color: #4b5563;
-      line-height: 1.55;
+    .stamp-img {
+      max-width: 195px;
+      max-height: 115px;
+      object-fit: contain;
+      display: inline-block;
+      margin-right: 8px;
     }
 
-    .totals-table {
-      width: 100%;
-      border-collapse: collapse;
+    /* Totals Table */
+    .totals-table th,
+    .totals-table td {
+      text-align: center;
+      width: 33.33%;
+      padding: 6px 10px;
     }
     .totals-table td {
-      padding: 6px 10px;
-      font-size: 11.5px;
-      border-bottom: 1px solid #f3f4f6;
-    }
-    .totals-table td.label {
-      color: #4b5563;
-      font-weight: 600;
-    }
-    .totals-table td.val {
-      text-align: right;
       font-weight: 700;
-      color: #111827;
-    }
-    .totals-table tr.grand-total td {
-      background: #111827;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 900;
-      padding: 10px 12px;
-      border: none;
-    }
-    .totals-table tr.grand-total td.val {
-      color: #f87171;
+      font-size: 13px;
     }
 
-    /* Signatures */
-    .signatures {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 10px;
-      padding-top: 14px;
-      border-top: 1px solid #e5e7eb;
-    }
-    .sig-box {
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 10px 14px;
-      min-height: 85px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .sig-title {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #6b7280;
-    }
-    .sig-stamp {
-      font-size: 11px;
-      font-weight: 800;
-      color: #dc2626;
-      border: 1.5px dashed #fca5a5;
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 6px;
-      align-self: flex-start;
+    /* Amount in Words */
+    .amount-words {
       margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .amount-words strong {
+      font-weight: 700;
     }
 
     /* Footer */
     .footer {
-      margin-top: 18px;
-      padding-top: 10px;
-      border-top: 2px solid #111827;
+      margin-top: 22px;
+      padding-top: 8px;
+      border-top: 1px solid #9ca3af;
       text-align: center;
-      font-size: 10px;
-      color: #6b7280;
-      line-height: 1.5;
+      font-size: 10.5px;
+      color: #1f2937;
+      line-height: 1.45;
     }
 
     @media print {
-      body { background: #fff; padding: 0; }
+      body { background: #ffffff; padding: 0; }
       .toolbar { display: none !important; }
       .page {
         width: 100%;
-        min-height: auto;
+        min-height: 275mm;
         box-shadow: none;
-        padding: 10mm;
-        border-top: 4px solid #dc2626;
+        padding: 8mm 12mm;
       }
     }
   </style>
@@ -615,8 +522,8 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
 <body>
   <div class="toolbar">
     <div class="toolbar-left">
-      <span class="toolbar-badge">ERP GearShop</span>
-      <span>${escapeHtml(docTitle)} — N° ${escapeHtml(payload.docNumber)}</span>
+      <span class="toolbar-badge">VERDANOVE ERP</span>
+      <span>${escapeHtml(docTitle)} N° ${escapeHtml(payload.docNumber)} — Client : ${escapeHtml(clientDisplay)}</span>
     </div>
     <div class="toolbar-actions">
       <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
@@ -626,82 +533,46 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
 
   <div class="page">
     <div>
-      <!-- Top Header -->
-      <div class="header">
+      <!-- Top VERDANOVE Logo -->
+      <div class="logo-container">
+        <img src="${escapeHtml(logoSrc)}" alt="VERDANOVE" />
+      </div>
+
+      <!-- DEVIS & Client Row -->
+      <div class="title-client-row">
+        <div class="doc-heading">&nbsp;&nbsp;${escapeHtml(docTitle)}</div>
         <div>
-          <div class="brand-title">GEAR<span>SHOP</span>.MA</div>
-          <div class="brand-subtitle">${escapeHtml(company.legalName)}</div>
-          <div class="company-meta">
-            📍 ${escapeHtml(company.address)}<br/>
-            📞 ${escapeHtml(company.phone)} &nbsp;|&nbsp; ✉️ ${escapeHtml(company.email)}<br/>
-            🌐 ${escapeHtml(company.website)}
-          </div>
-        </div>
-
-        <div class="doc-box">
-          <div class="doc-type-badge">${escapeHtml(docTitle)}</div>
-          <table class="doc-meta-table">
-            <tr>
-              <td class="label">Référence :</td>
-              <td class="val">${escapeHtml(payload.docNumber)}</td>
-            </tr>
-            <tr>
-              <td class="label">Date d'émission :</td>
-              <td class="val">${escapeHtml(payload.issueDate)}</td>
-            </tr>
-            ${
-              payload.validUntilDate
-                ? `<tr>
-              <td class="label">Valable jusqu'au :</td>
-              <td class="val">${escapeHtml(payload.validUntilDate)}</td>
-            </tr>`
-                : ''
-            }
-            <tr>
-              <td class="label">Devise :</td>
-              <td class="val">MAD (Dirham Marocain)</td>
-            </tr>
-          </table>
+          <div class="client-heading">client : ${escapeHtml(clientDisplay)}</div>
+          ${payload.clientIce ? `<div class="client-sub">ICE : ${escapeHtml(payload.clientIce)}</div>` : ''}
+          ${payload.clientCity ? `<div class="client-sub">${escapeHtml(payload.clientCity)}</div>` : ''}
         </div>
       </div>
 
-      <!-- Seller & Client Cards -->
-      <div class="parties">
-        <div class="party-card">
-          <div class="party-label">Émetteur / Fournisseur</div>
-          <div class="party-name">${escapeHtml(company.companyName)}</div>
-          <div class="party-details">
-            ${escapeHtml(company.legalName)}<br/>
-            <strong>ICE :</strong> ${escapeHtml(company.ice)} &nbsp;|&nbsp; <strong>IF :</strong> ${escapeHtml(company.ifNumber)}<br/>
-            <strong>RC :</strong> ${escapeHtml(company.rc)} &nbsp;|&nbsp; <strong>TP :</strong> ${escapeHtml(company.tp)}<br/>
-            <strong>Support & Showroom :</strong> ${escapeHtml(company.phone)}
-          </div>
-        </div>
-
-        <div class="party-card client">
-          <div class="party-label">Client / Destinataire</div>
-          <div class="party-name">${escapeHtml(payload.clientCompany || payload.clientName || 'Client Professionnel')}</div>
-          <div class="party-details">
-            ${payload.clientCompany && payload.clientName ? `<strong>Contact :</strong> ${escapeHtml(payload.clientName)}<br/>` : ''}
-            ${payload.clientIce ? `<strong>ICE Client :</strong> ${escapeHtml(payload.clientIce)}<br/>` : ''}
-            ${payload.clientPhone ? `<strong>Tél :</strong> ${escapeHtml(payload.clientPhone)}<br/>` : ''}
-            ${payload.clientEmail ? `<strong>Email :</strong> ${escapeHtml(payload.clientEmail)}<br/>` : ''}
-            ${payload.clientCity || payload.clientAddress ? `<strong>Adresse :</strong> ${escapeHtml([payload.clientAddress, payload.clientCity, 'Maroc'].filter(Boolean).join(', '))}` : 'Maroc'}
-          </div>
-        </div>
-      </div>
-
-      <!-- Items Table -->
-      <table class="items-table">
+      <!-- NUMERO / DATE / REFERENCE Table -->
+      <table class="verdanove-table meta-table">
         <thead>
           <tr>
-            <th style="width: 34px;" class="center">#</th>
-            <th style="width: 90px;">Réf / SKU</th>
-            <th>Désignation de l'Équipement</th>
-            <th style="width: 55px;" class="center">Qté</th>
-            <th style="width: 105px;" class="num">P.U. HT</th>
-            <th style="width: 105px;" class="num">P.U. TTC</th>
-            <th style="width: 115px;" class="num">Total TTC</th>
+            <th style="width: 32%;">NUMERO</th>
+            <th style="width: 30%;">DATE</th>
+            <th style="width: 38%;">REFERENCE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>${escapeHtml(payload.docNumber)}</td>
+            <td>${escapeHtml(dateShort)}</td>
+            <td>${escapeHtml(referenceDisplay)}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Désignation / Qté / Montant HT Table -->
+      <table class="verdanove-table items-table">
+        <thead>
+          <tr>
+            <th>Désignation</th>
+            <th style="width: 80px;">Qté</th>
+            <th style="width: 140px;">Montant HT</th>
           </tr>
         </thead>
         <tbody>
@@ -709,89 +580,59 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
             .map(
               (line) => `
             <tr>
-              <td class="center">${line.index}</td>
-              <td><span class="sku-pill">${escapeHtml(line.sku)}</span></td>
-              <td>
-                <div class="item-title">${escapeHtml(line.name)}</div>
-                <div style="font-size: 10px; color: #6b7280;">Matériel neuf scellé — Garantie officielle 1 An Maroc</div>
-              </td>
-              <td class="center" style="font-weight: 800;">${line.quantity}</td>
-              <td class="num">${formatMAD(line.unitHt)}</td>
-              <td class="num">${formatMAD(line.unitTtc)}</td>
-              <td class="num" style="font-weight: 800;">${formatMAD(line.totalTtc)}</td>
+              <td class="designation">${escapeHtml(line.name)}</td>
+              <td class="qty">${line.quantity}</td>
+              <td class="amount">${escapeHtml(formatLineHt(line.totalHt))}</td>
             </tr>`
             )
             .join('')}
         </tbody>
       </table>
 
-      <!-- Summary & Totals -->
-      <div class="summary-section">
-        <div>
-          <div class="words-box">
-            <div class="words-label">Arrêté le présent ${escapeHtml(docLabel.toLowerCase())} à la somme de :</div>
-            <div class="words-value">${escapeHtml(calc.amountInWords)}</div>
-          </div>
-
-          <div class="conditions-list">
-            <strong>Conditions commerciales & Garantie :</strong><br/>
-            • <strong>Garantie :</strong> 1 an garantie constructeur avec SAV local à Casablanca.<br/>
-            • <strong>Règlement :</strong> ${escapeHtml(payload.paymentMethod || company.bankName)}.<br/>
-            • <strong>Livraison :</strong> Expédition sécurisée 24h-48h partout au Maroc (Gratuite dès 2 001 DH).<br/>
-            ${payload.notes ? `• <strong>Note :</strong> ${escapeHtml(payload.notes)}` : ''}
-          </div>
+      <!-- Validité + Cachet et Signature (VERDANOVE) -->
+      <div class="validity-stamp-row">
+        <div class="validity-text">
+          « Validité de l'offre : ${payload.validityDays || 30} jours »
+          ${payload.notes ? `<div style="font-weight:400; font-size:11.5px; margin-top:4px;">${escapeHtml(payload.notes)}</div>` : ''}
         </div>
-
-        <div>
-          <table class="totals-table">
-            <tr>
-              <td class="label">Total Hors Taxes (HT)</td>
-              <td class="val">${formatMAD(calc.afterDiscountHt)}</td>
-            </tr>
-            ${
-              calc.discountPct > 0
-                ? `<tr>
-              <td class="label" style="color:#dc2626;">Remise Commerciale (${calc.discountPct}%)</td>
-              <td class="val" style="color:#dc2626;">-${formatMAD(calc.discountTtc)}</td>
-            </tr>`
-                : ''
-            }
-            <tr>
-              <td class="label">TVA (20% incluse)</td>
-              <td class="val">${formatMAD(calc.totalTva)}</td>
-            </tr>
-            <tr>
-              <td class="label">Frais de Livraison</td>
-              <td class="val">${calc.shippingTtc === 0 ? 'GRATUIT (0,00 DH)' : formatMAD(calc.shippingTtc)}</td>
-            </tr>
-            <tr class="grand-total">
-              <td>NET À PAYER (TTC)</td>
-              <td class="val">${formatMAD(calc.grandTotalTtc)}</td>
-            </tr>
-          </table>
+        <div class="stamp-block">
+          <div class="stamp-label">Cachet et Signature (${escapeHtml(company.companyName)}):</div>
+          ${
+            showStamp
+              ? `<img class="stamp-img" src="${escapeHtml(stampSrc)}" alt="Cachet ${escapeHtml(company.companyName)}" />`
+              : `<div style="height: 85px;"></div>`
+          }
         </div>
+      </div>
+
+      <!-- Bottom Totals Table: HT | TVA (20%) | TTC -->
+      <table class="verdanove-table totals-table">
+        <thead>
+          <tr>
+            <th>Total Hors Taxes (HT)</th>
+            <th>Total TVA (20%)</th>
+            <th>Total Toutes Taxes Comprises (TTC)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>${formatTableCurrency(calc.afterDiscountHt)}</td>
+            <td>${formatTableCurrency(calc.totalTva)}</td>
+            <td>${formatTableCurrency(calc.grandTotalTtc)}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Arrêté le présent devis à la somme de -->
+      <div class="amount-words">
+        Arrêté le présent ${escapeHtml(docWord)} à la somme de : <strong>${escapeHtml(calc.amountInWords)}</strong>
       </div>
     </div>
 
-    <div>
-      <!-- Signatures -->
-      <div class="signatures">
-        <div class="sig-box">
-          <div class="sig-title">Cachet & Validation ${escapeHtml(company.companyName)}</div>
-          <div class="sig-stamp">✓ CERTIFIÉ CONFORME — GEARSHOP MAROC<br/>Tél: ${escapeHtml(company.phone)}</div>
-          <div style="font-size: 9.5px; color: #9ca3af; margin-top: 6px;">Document généré électroniquement le ${escapeHtml(payload.issueDate)}</div>
-        </div>
-        <div class="sig-box">
-          <div class="sig-title">Bon pour accord Client (Date, Cachet & Signature)</div>
-          <div style="font-size: 10px; color: #9ca3af; margin-top: 40px;">Mention "Lu et approuvé, bon pour commande"</div>
-        </div>
-      </div>
-
-      <!-- Legal Footer -->
-      <div class="footer">
-        <strong>${escapeHtml(company.companyName)}</strong> — ${escapeHtml(company.legalName)} | Adresse : ${escapeHtml(company.address)}<br/>
-        ICE : ${escapeHtml(company.ice)} | IF : ${escapeHtml(company.ifNumber)} | RC : ${escapeHtml(company.rc)} | TP : ${escapeHtml(company.tp)} | Tél : ${escapeHtml(company.phone)} | Web : ${escapeHtml(company.website)}
-      </div>
+    <!-- Official VERDANOVE Footer -->
+    <div class="footer">
+      <strong>${escapeHtml(company.companyName)} SARL</strong> — ${escapeHtml(company.address)}<br/>
+      ICE: ${escapeHtml(company.ice)} &nbsp;|&nbsp; IF: ${escapeHtml(company.ifNumber)} &nbsp;/&nbsp; RC: ${escapeHtml(company.rc)} &nbsp;|&nbsp; Email : ${escapeHtml(company.email)} &nbsp;|&nbsp; Tél : ${escapeHtml(company.phone)}
     </div>
   </div>
 </body>
@@ -809,6 +650,6 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
       } catch {
         // user can click print button in toolbar
       }
-    }, 450);
+    }, 500);
   }
 }

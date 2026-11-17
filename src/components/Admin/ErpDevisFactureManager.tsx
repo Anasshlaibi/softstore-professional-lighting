@@ -31,14 +31,17 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
   initialLead,
 }) => {
   const todayStr = new Date().toISOString().split('T')[0];
-  const validUntilDefault = new Date(Date.now() + 15 * 86400000).toISOString().split('T')[0];
+  const validUntilDefault = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
+  const [, mm, dd] = todayStr.split('-');
 
   const [docType, setDocType] = useState<ErpDocumentType>('DEVIS');
   const [docNumber, setDocNumber] = useState<string>(
-    `DEV-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`
+    `FA26${String(Math.floor(100 + Math.random() * 900)).padStart(5, '0')}`
   );
   const [issueDate, setIssueDate] = useState<string>(todayStr);
+  const [referenceText, setReferenceText] = useState<string>(`DEMANDE DU ${dd}/${mm}`);
   const [validUntilDate, setValidUntilDate] = useState<string>(validUntilDefault);
+  const [showStamp, setShowStamp] = useState<boolean>(true);
 
   const [clientName, setClientName] = useState<string>('');
   const [clientCompany, setClientCompany] = useState<string>('');
@@ -59,8 +62,8 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
   ]);
 
   const [discountPercent, setDiscountPercent] = useState<number>(0);
-  const [taxMode, setTaxMode] = useState<'ttc_includes_20' | 'ht_plus_20' | 'exempt_0'>('ttc_includes_20');
-  const [customShipping, setCustomShipping] = useState<string>('auto');
+  const [taxMode, setTaxMode] = useState<'ttc_includes_20' | 'ht_plus_20' | 'exempt_0'>('ht_plus_20');
+  const [customShipping, setCustomShipping] = useState<string>('0');
   const [paymentMethod, setPaymentMethod] = useState<string>(
     'Virement Bancaire / Chèque Certifié / Paiement à la livraison'
   );
@@ -215,7 +218,9 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
       docType,
       docNumber,
       issueDate,
+      referenceText,
       validUntilDate: docType === 'FACTURE' ? undefined : validUntilDate,
+      validityDays: 30,
       clientName,
       clientCompany,
       clientIce,
@@ -228,13 +233,15 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
       shippingCostTtc: shippingNum,
       taxMode,
       paymentMethod,
-      notes,
+      notes: '',
+      showStamp,
       companySettings,
     };
   }, [
     docType,
     docNumber,
     issueDate,
+    referenceText,
     validUntilDate,
     clientName,
     clientCompany,
@@ -249,6 +256,7 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
     taxMode,
     paymentMethod,
     notes,
+    showStamp,
     companySettings,
   ]);
 
@@ -492,7 +500,7 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <div>
-                <label className="block text-zinc-400 mb-1 font-semibold">N° du Document</label>
+                <label className="block text-zinc-400 mb-1 font-semibold">NUMERO (ex: FA2600002)</label>
                 <input
                   type="text"
                   value={docNumber}
@@ -501,25 +509,30 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
                 />
               </div>
               <div>
-                <label className="block text-zinc-400 mb-1 font-semibold">Date d'émission</label>
+                <label className="block text-zinc-400 mb-1 font-semibold">DATE</label>
                 <input
                   type="date"
                   value={issueDate}
-                  onChange={(e) => setIssueDate(e.target.value)}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setIssueDate(v);
+                    if (/^\d{4}-\d{2}-\d{2}$/.test(v)) {
+                      const [, m, d] = v.split('-');
+                      setReferenceText(`DEMANDE DU ${d}/${m}`);
+                    }
+                  }}
                   className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-white"
                 />
               </div>
-              {docType !== 'FACTURE' && (
-                <div>
-                  <label className="block text-zinc-400 mb-1 font-semibold">Valable jusqu'au</label>
-                  <input
-                    type="date"
-                    value={validUntilDate}
-                    onChange={(e) => setValidUntilDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-white"
-                  />
-                </div>
-              )}
+              <div>
+                <label className="block text-zinc-400 mb-1 font-semibold">REFERENCE (ex: DEMANDE DU 03/09)</label>
+                <input
+                  type="text"
+                  value={referenceText}
+                  onChange={(e) => setReferenceText(e.target.value)}
+                  className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-white font-semibold"
+                />
+              </div>
             </div>
           </div>
 
@@ -759,15 +772,15 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
                 />
               </div>
 
-              <div>
-                <label className="block text-zinc-400 mb-1">Note / Mention spéciale</label>
-                <textarea
-                  rows={2}
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-xl text-white"
+              <label className="flex items-center gap-2 pt-1 cursor-pointer text-zinc-200 font-semibold">
+                <input
+                  type="checkbox"
+                  checked={showStamp}
+                  onChange={(e) => setShowStamp(e.target.checked)}
+                  className="rounded accent-red-600"
                 />
-              </div>
+                <span>Inclure le Cachet & Signature officiel VERDANOVE</span>
+              </label>
             </div>
 
             {/* Totals Breakdown Box */}

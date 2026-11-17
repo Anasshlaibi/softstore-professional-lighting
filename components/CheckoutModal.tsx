@@ -59,15 +59,18 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   const handleDownloadInstantDevis = async () => {
     const todayStr = new Date().toISOString().split('T')[0];
-    const validUntilStr = new Date(Date.now() + 15 * 86400000).toISOString().split('T')[0];
-    const devisNum = `DEV-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const [, mm, dd] = todayStr.split('-');
+    const validUntilStr = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
+    const devisNum = `FA26${String(Math.floor(100 + Math.random() * 900)).padStart(5, '0')}`;
 
     openAndPrintDevisOrInvoice({
       docType: 'DEVIS',
       docNumber: devisNum,
       issueDate: todayStr,
+      referenceText: `DEMANDE DU ${dd}/${mm}`,
       validUntilDate: validUntilStr,
-      clientName: formData.name || 'Client GearShop',
+      validityDays: 30,
+      clientName: formData.name || 'Client',
       clientCompany: formData.company || undefined,
       clientIce: formData.ice || undefined,
       clientPhone: formData.phone || undefined,
@@ -81,9 +84,9 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
         unitPriceTtc: item.price,
       })),
       discountPercent: appliedPromo || 0,
-      shippingCostTtc: shipping,
-      taxMode: 'ttc_includes_20',
-      notes: formData.message || undefined,
+      shippingCostTtc: 0,
+      taxMode: 'ht_plus_20',
+      showStamp: true,
     });
 
     trackWhatsAppLead({

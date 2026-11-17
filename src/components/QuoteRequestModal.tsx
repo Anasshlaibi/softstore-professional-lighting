@@ -61,12 +61,15 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
 
       if (product && product.price && product.price > 0) {
         const todayStr = new Date().toISOString().split('T')[0];
-        const validUntilStr = new Date(Date.now() + 15 * 86400000).toISOString().split('T')[0];
+        const [, mm, dd] = todayStr.split('-');
+        const validUntilStr = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
         openAndPrintDevisOrInvoice({
           docType: 'DEVIS',
-          docNumber: `DEV-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
+          docNumber: `FA26${String(Math.floor(100 + Math.random() * 900)).padStart(5, '0')}`,
           issueDate: todayStr,
+          referenceText: `DEMANDE DU ${dd}/${mm}`,
           validUntilDate: validUntilStr,
+          validityDays: 30,
           clientName: name,
           clientCompany: company || undefined,
           clientPhone: phone,
@@ -80,8 +83,8 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
               unitPriceTtc: product.price,
             },
           ],
-          taxMode: 'ttc_includes_20',
-          notes: message || undefined,
+          taxMode: 'ht_plus_20',
+          showStamp: true,
         });
       }
 
