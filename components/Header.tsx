@@ -207,6 +207,16 @@ const Header: React.FC<HeaderProps> = React.memo(
                 <span>🔍</span> Demander un Matériel
               </button>
 
+              {/* Devis en Ligne CTA (Desktop) */}
+              <Link
+                to="/mon-compte?tab=devis"
+                className="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white transition text-xs font-extrabold shadow-sm"
+                title="Sélectionner des produits et générer votre Devis PDF en ligne"
+              >
+                <i className="fa-solid fa-file-invoice text-[11px]" />
+                <span>Devis en Ligne</span>
+              </Link>
+
               {/* Client Account & Live Tracking Link */}
               <Link
                 to="/mon-compte"
@@ -398,6 +408,15 @@ const Header: React.FC<HeaderProps> = React.memo(
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                 🔥 Nouveautés — New In
               </button>
+
+              <Link
+                to="/mon-compte?tab=devis"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-extrabold"
+              >
+                <i className="fa-solid fa-file-invoice text-white" />
+                Devis en Ligne (PDF)
+              </Link>
 
               <Link
                 to="/mon-compte"

@@ -625,6 +625,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <i className="fa-brands fa-whatsapp text-lg" />
                   <span>Commander Express par WhatsApp (Paiement Réception)</span>
                 </button>
+
+                {/* Online Devis / Proforma PDF CTA */}
+                <Link
+                  to={`/mon-compte?tab=devis&addProduct=${product.id}&qty=${quantity}`}
+                  className="w-full h-11 bg-slate-900 hover:bg-red-600 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-sm transition"
+                >
+                  <i className="fa-solid fa-file-invoice" />
+                  <span>Demander un Devis en Ligne (PDF Proforma)</span>
+                </Link>
               </div>
 
               {/* Shipping & Delivery Guarantee */}

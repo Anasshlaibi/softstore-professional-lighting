@@ -109,6 +109,8 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
   const initialRef = searchParams.get('ref') || '';
   const initialTel = searchParams.get('tel') || '';
   const initialTabParam = searchParams.get('tab');
+  const addProductParam = searchParams.get('addProduct');
+  const addQtyParam = Math.max(1, parseInt(searchParams.get('qty') || '1', 10) || 1);
 
   const [savedProfile, setSavedProfile] = useState<ClientProfile | null>(() =>
     loadSavedClientProfile()
@@ -216,12 +218,28 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
 
   // Auto-run search on mount if URL params or saved profile exist
   useEffect(() => {
+    if (initialTabParam === 'devis') {
+      setActiveTab('devis');
+    }
     if (initialRef || initialTel) {
       runSearch(initialTel, initialRef, '');
     } else if (savedProfile?.phone || savedProfile?.email) {
       runSearch(savedProfile.phone, '', savedProfile.email);
     }
-  }, [initialRef, initialTel]);
+  }, [initialRef, initialTel, initialTabParam]);
+
+  // Pre-select product when arriving from a Product Page ("Demander un Devis en Ligne")
+  useEffect(() => {
+    if (!addProductParam || products.length === 0) return;
+    const prodId = Number(addProductParam);
+    const found = products.find((p) => p.id === prodId);
+    if (!found) return;
+    setActiveTab('devis');
+    setDevisItems((prev) => {
+      if (prev.some((x) => x.product.id === found.id)) return prev;
+      return [...prev, { product: found, qty: addQtyParam }];
+    });
+  }, [addProductParam, addQtyParam, products]);
 
   const syncSupabaseUserToProfile = async (user: any, saveToCrmIfNew = false) => {
     if (!user?.email) return;
