@@ -293,6 +293,35 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
     setAuthMessage(null);
     setLoading(true);
     try {
+      const supabaseUrl =
+        import.meta.env.VITE_SUPABASE_URL || import.meta.env.SUPABASE_URL || '';
+      const supabaseKey =
+        import.meta.env.VITE_SUPABASE_ANON_KEY ||
+        import.meta.env.SUPABASE_PUBLISHABLE_KEY ||
+        import.meta.env.SUPABASE_ANON_KEY ||
+        '';
+
+      // Pre-check whether Google OAuth provider is enabled in Supabase so we never redirect to a 400 JSON page
+      if (supabaseUrl && supabaseKey) {
+        try {
+          const res = await fetch(`${supabaseUrl}/auth/v1/settings`, {
+            headers: { apikey: supabaseKey },
+          });
+          if (res.ok) {
+            const settings = await res.json();
+            if (settings?.external?.google === false) {
+              setAuthError(
+                'La connexion directe par bouton Google n’est pas encore activée côté Supabase (Provider Google désactivé). Saisissez votre Gmail ci-dessous et utilisez "Recevoir un lien de connexion Gmail" ou créez un compte.'
+              );
+              setLoading(false);
+              return;
+            }
+          }
+        } catch {
+          // If pre-check fails due to network, fall through to signInWithOAuth
+        }
+      }
+
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -309,6 +338,33 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
       } else {
         setAuthError(msg || 'Impossible de lancer la connexion Google.');
       }
+      setLoading(false);
+    }
+  };
+
+  const handleMagicLinkSignIn = async () => {
+    const cleanEmail = emailInput.trim().toLowerCase();
+    if (!cleanEmail || !cleanEmail.includes('@')) {
+      setAuthError('Saisissez d’abord votre adresse Gmail / Email ci-dessous pour recevoir votre lien de connexion instantanée.');
+      return;
+    }
+    setAuthError(null);
+    setAuthMessage(null);
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email: cleanEmail,
+        options: {
+          emailRedirectTo: `${window.location.origin}/mon-compte`,
+        },
+      });
+      if (error) throw error;
+      setAuthMessage(
+        `⚡ Lien de connexion directe envoyé à ${cleanEmail} ! Ouvrez votre boîte Gmail et cliquez sur le lien pour vous connecter sans mot de passe.`
+      );
+    } catch (err: any) {
+      setAuthError(err?.message || 'Impossible d’envoyer le lien de connexion par email.');
+    } finally {
       setLoading(false);
     }
   };
@@ -1091,6 +1147,16 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                         />
                       </svg>
                       Continuer directement avec Google / Gmail
+                    </button>
+
+                    <button
+                      type="button"
+                      disabled={loading}
+                      onClick={handleMagicLinkSignIn}
+                      className="w-full py-2.5 px-4 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl flex items-center justify-center gap-2 text-xs font-bold text-blue-900 transition cursor-pointer"
+                    >
+                      <i className="fa-solid fa-envelope-open-text text-blue-600" />
+                      Recevoir un lien de connexion directe sur mon Gmail (sans mot de passe)
                     </button>
 
                     <div className="relative flex items-center py-1">
