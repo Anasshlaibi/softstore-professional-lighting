@@ -685,7 +685,7 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
                  <div class="unconfirmed-box">
                    <div class="unconfirmed-title">⏳ DEVIS EN ATTENTE DE CONFIRMATION</div>
                    <div class="unconfirmed-body">
-                     Ce devis a été généré en ligne et doit être confirmé par le responsable. Veuillez envoyer ce devis au responsable VERDANOVE / GearShop (<strong>+212 661 15 09 61</strong> / <strong>Verdanove@gmail.com</strong>) afin de vérifier la disponibilité et valider définitivement votre commande.
+                     Ce devis a été généré en ligne et doit être confirmé par le responsable. Veuillez envoyer ce devis au responsable VERDANOVE / GearShop (<strong>+212 673 01 18 73</strong> / <strong>Verdanove@gmail.com</strong>) afin de vérifier la disponibilité et valider définitivement votre commande.
                    </div>
                  </div>`
               : `<div class="stamp-label">Cachet et Signature (${escapeHtml(company.companyName)}):</div>
