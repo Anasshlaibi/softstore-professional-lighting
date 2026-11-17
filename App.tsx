@@ -452,7 +452,7 @@ const AppContent: React.FC<{
                   }}
                 />
                 
-                <React.Suspense fallback={<LoadingSpinner />}>
+                <React.Suspense fallback={<div className="bg-white py-12 min-h-[420px]" />}>
                   <TrustBadges />
 
                   {error && !loading && (
@@ -464,21 +464,17 @@ const AppContent: React.FC<{
                     </div>
                   )}
 
-                  {loading ? (
-                    <LoadingSpinner />
-                  ) : (
-                    <Products
-                      products={products}
-                      onProductClick={openProductModal}
-                      siteConfig={siteConfig}
-                      globalSearchQuery={globalSearchQuery}
-                      setGlobalSearchQuery={setGlobalSearchQuery}
-                      initialCategory={selectedCategory}
-                      onCategoryConsumed={() => setSelectedCategory('all')}
-                      initialBrand={selectedBrand}
-                      onBrandConsumed={() => setSelectedBrand('all')}
-                    />
-                  )}
+                  <Products
+                    products={products}
+                    onProductClick={openProductModal}
+                    siteConfig={siteConfig}
+                    globalSearchQuery={globalSearchQuery}
+                    setGlobalSearchQuery={setGlobalSearchQuery}
+                    initialCategory={selectedCategory}
+                    onCategoryConsumed={() => setSelectedCategory('all')}
+                    initialBrand={selectedBrand}
+                    onBrandConsumed={() => setSelectedBrand('all')}
+                  />
 
                   {/* Brand logos strip — positioned after Products */}
                   <BrandLogos
