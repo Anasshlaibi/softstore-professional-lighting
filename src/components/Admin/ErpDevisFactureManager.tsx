@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Product } from '../../../App';
 import { QuoteRequestItem } from '../../services/leadService';
+import { ErpAiDevisCopilot } from './ErpAiDevisCopilot';
 import {
   ErpDocumentType,
   ErpLineItem,
@@ -312,6 +313,22 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
 
   return (
     <div className="space-y-6 animate-fadeIn">
+      {/* AI Devis Copilot with File/Photo Upload */}
+      <ErpAiDevisCopilot
+        products={products}
+        currentItems={items}
+        clientName={clientName}
+        onApplyDevisUpdate={(update) => {
+          if (update.items && update.items.length > 0) setItems(update.items);
+          if (update.clientName) setClientName(update.clientName);
+          if (update.clientCompany) setClientCompany(update.clientCompany);
+          if (update.clientIce) setClientIce(update.clientIce);
+          if (update.referenceText) setReferenceText(update.referenceText);
+          if (update.docType) handleDocTypeChange(update.docType);
+        }}
+        onGeneratePdfNow={handleGeneratePdf}
+      />
+
       {/* Top Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-zinc-900 border border-zinc-800 p-5 rounded-2xl">
         <div>
