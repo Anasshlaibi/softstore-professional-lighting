@@ -78,9 +78,9 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
 
           {/* Col 2: Categories */}
           <div>
-            <h5 className="text-black dark:text-white font-bold mb-4 uppercase tracking-wider text-xs">
+            <h2 className="text-black dark:text-white font-bold mb-4 uppercase tracking-wider text-xs">
               Catégories
-            </h5>
+            </h2>
             <ul className="space-y-2.5">
               <li>
                 <Link to="/categorie/objectifs" className="hover:text-red-600 transition">
@@ -117,9 +117,9 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
 
           {/* Col 3: Brands */}
           <div>
-            <h5 className="text-black dark:text-white font-bold mb-4 uppercase tracking-wider text-xs">
+            <h2 className="text-black dark:text-white font-bold mb-4 uppercase tracking-wider text-xs">
               Marques &amp; Montures
-            </h5>
+            </h2>
             <ul className="space-y-2.5">
               <li>
                 <Link to="/marque/7artisans" className="hover:text-red-600 transition font-medium">
@@ -171,9 +171,9 @@ const Footer: React.FC<FooterProps> = ({ siteConfig }) => {
 
           {/* Col 4: Guides & Support */}
           <div>
-            <h5 className="text-black dark:text-white font-bold mb-4 uppercase tracking-wider text-xs">
+            <h2 className="text-black dark:text-white font-bold mb-4 uppercase tracking-wider text-xs">
               Guides d'Achat
-            </h5>
+            </h2>
             <ul className="space-y-2.5">
               <li>
                 <Link to="/dji-osmo-pocket-4-pro" className="hover:text-red-600 transition font-medium">

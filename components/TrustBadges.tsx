@@ -34,10 +34,10 @@ const TrustBadges: React.FC = () => {
                 <i className={`fa-solid ${badge.icon} text-base`} aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">
+                <h2 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">
                   {badge.title}
-                </h3>
-                <p className="text-[11px] text-gray-500 leading-tight mt-0.5">
+                </h2>
+                <p className="text-[11px] text-gray-600 leading-tight mt-0.5">
                   {badge.subtitle}
                 </p>
               </div>

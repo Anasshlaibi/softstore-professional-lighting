@@ -375,7 +375,8 @@ const Header: React.FC<HeaderProps> = React.memo(
             <Logo theme="dark" className="h-8 w-auto" />
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-slate-700 transition-colors"
+              aria-label="Fermer le menu"
+              className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-slate-700 transition-colors"
             >
               <i className="fa-solid fa-xmark text-sm" />
             </button>

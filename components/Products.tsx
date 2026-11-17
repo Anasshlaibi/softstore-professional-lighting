@@ -374,12 +374,12 @@ const Products: React.FC<ProductsProps> = ({
               <span className="text-[10px] font-black uppercase tracking-[0.22em] text-red-600 block mb-0.5">
                 Boutique Audiovisuelle Pro
               </span>
-              <h1 id="catalogue-heading" className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 tracking-tight leading-tight">
+              <h2 id="catalogue-heading" className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 tracking-tight leading-tight">
                 Catalogue Équipements Pro &amp; Occasions
-              </h1>
+              </h2>
             </div>
           </div>
-          <p className="text-gray-400 text-xs font-medium hidden md:block">
+          <p className="text-gray-600 text-xs font-medium hidden md:block">
             Revendeur officiel au Maroc • Matériel neuf garanti &amp; Occasions vérifiées
           </p>
         </header>

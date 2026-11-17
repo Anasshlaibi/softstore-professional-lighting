@@ -206,7 +206,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
               </div>
 
               {product.oldPrice && product.oldPrice > product.price && (
-                <span className="text-[10px] sm:text-xs text-gray-400 line-through font-medium leading-none">
+                <span className="text-[10px] sm:text-xs text-gray-600 line-through font-medium leading-none">
                   {product.oldPrice.toLocaleString('fr-MA')} {activeCurrency}
                 </span>
               )}
@@ -215,7 +215,7 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(
             {/* Circular CTA Button */}
             <button
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-red-600 hover:bg-red-700 active:scale-90 text-white flex items-center justify-center shadow-md shadow-red-600/25 transition cursor-pointer shrink-0 min-h-[36px] min-w-[36px]"
+              className="w-11 h-11 rounded-xl bg-red-600 hover:bg-red-700 active:scale-90 text-white flex items-center justify-center shadow-md shadow-red-600/25 transition cursor-pointer shrink-0 min-h-[44px] min-w-[44px]"
               onClick={(e) => {
                 e.stopPropagation();
                 if (!product.inStock) {

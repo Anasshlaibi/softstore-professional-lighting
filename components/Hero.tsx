@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, EffectFade, Pagination, Navigation, A11y } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
 import 'swiper/css';
@@ -134,13 +134,19 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
         {/* ── 2. Full-Width Panoramic Widescreen Hero Banner Slider ───────── */}
         <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200 relative bg-[#090d16] mb-5">
           <Swiper
-            modules={[Autoplay, EffectFade, Pagination, Navigation]}
+            modules={[Autoplay, EffectFade, Pagination, Navigation, A11y]}
             effect="fade"
             fadeEffect={{ crossFade: true }}
             autoplay={{ delay: 6000, disableOnInteraction: false }}
             loop={true}
             pagination={{ clickable: true }}
             navigation={true}
+            a11y={{
+              enabled: true,
+              prevSlideMessage: 'Slide précédent',
+              nextSlideMessage: 'Slide suivant',
+              paginationBulletMessage: 'Aller au slide {{index}}',
+            }}
             className="w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] hero-bh-swiper"
           >
             {bhSlides.map((slide, idx) => (
@@ -179,9 +185,15 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
                       </div>
 
                       {/* Main Title */}
-                      <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 text-white leading-tight">
-                        {slide.title}
-                      </h2>
+                      {idx === 0 ? (
+                        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 text-white leading-tight">
+                          {slide.title}
+                        </h1>
+                      ) : (
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 text-white leading-tight">
+                          {slide.title}
+                        </h2>
+                      )}
 
                       {/* Subtitle */}
                       <p className="text-sm sm:text-base md:text-lg font-medium text-gray-200 mb-3 max-w-xl leading-snug">
