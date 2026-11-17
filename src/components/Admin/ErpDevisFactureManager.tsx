@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Product } from '../../../App';
-import { QuoteRequestItem } from '../../services/leadService';
+import { QuoteRequestItem, saveErpDocumentToSupabase } from '../../services/leadService';
 import { ErpAiDevisCopilot } from './ErpAiDevisCopilot';
 import {
   ErpDocumentType,
@@ -263,7 +263,7 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
 
   const totals = useMemo(() => calculateErpTotals(currentPayload), [currentPayload]);
 
-  const handleGeneratePdf = () => {
+  const handleGeneratePdf = async () => {
     if (items.length === 0) return;
     openAndPrintDevisOrInvoice(currentPayload);
 
@@ -280,23 +280,61 @@ export const ErpDevisFactureManager: React.FC<ErpDevisFactureManagerProps> = ({
     } catch {
       // ignore
     }
+
+    // Automatically sync to Supabase Client Account & Order Tracking table
+    try {
+      await saveErpDocumentToSupabase({
+        docNumber,
+        docType,
+        clientName: clientName || clientCompany || 'Client',
+        clientCompany,
+        clientPhone: clientPhone || '',
+        clientEmail,
+        totalTtc: totals.grandTotalTtc,
+        itemsSummary: items.map((i) => `${i.quantity}x ${i.name}`).join(', '),
+        totalQty: items.reduce((s, i) => s + i.quantity, 0),
+        fullPayloadJson: JSON.stringify(currentPayload),
+      });
+    } catch {
+      // non-blocking
+    }
   };
 
-  const handleSendWhatsAppToClient = () => {
+  const handleSendWhatsAppToClient = async () => {
+    // Also ensure saved in Supabase so the client tracking link works immediately
+    try {
+      await saveErpDocumentToSupabase({
+        docNumber,
+        docType,
+        clientName: clientName || clientCompany || 'Client',
+        clientCompany,
+        clientPhone: clientPhone || '',
+        clientEmail,
+        totalTtc: totals.grandTotalTtc,
+        itemsSummary: items.map((i) => `${i.quantity}x ${i.name}`).join(', '),
+        totalQty: items.reduce((s, i) => s + i.quantity, 0),
+        fullPayloadJson: JSON.stringify(currentPayload),
+      });
+    } catch {}
+
     const cleanPhone = (clientPhone || '').replace(/[^0-9]/g, '').replace(/^0/, '212');
+    const trackingUrl = `https://www.gearshop.ma/suivi-commande?ref=${encodeURIComponent(docNumber)}${
+      clientPhone ? `&tel=${encodeURIComponent(clientPhone)}` : ''
+    }`;
     const itemsList = totals.lines
-      .map((l) => `• ${l.quantity}x ${l.name} (${l.totalTtc.toLocaleString('fr-MA')} DH TTC)`)
+      .map((l) => `• ${l.quantity}x ${l.name} (${l.totalHt.toLocaleString('fr-MA')} DH HT)`)
       .join('\n');
 
     const msg =
       `Bonjour ${clientCompany || clientName || ''},\n\n` +
-      `Voici le récapitulatif de votre *${docType} N° ${docNumber}* chez *GearShop Maroc* :\n\n` +
+      `Voici le récapitulatif de votre *${docType} N° ${docNumber}* (*VERDANOVE / GearShop Maroc*) :\n\n` +
       `${itemsList}\n\n` +
       `💰 *Total HT :* ${totals.afterDiscountHt.toFixed(2)} DH\n` +
       `🏛️ *TVA (20%) :* ${totals.totalTva.toFixed(2)} DH\n` +
-      `🚚 *Livraison :* ${totals.shippingTtc === 0 ? 'GRATUITE' : totals.shippingTtc + ' DH'}\n` +
-      `✅ *NET À PAYER TTC : ${totals.grandTotalTtc.toLocaleString('fr-MA')} DH*\n\n` +
-      `Restant à votre entière disposition pour toute question ou validation.`;
+      `✅ *Total TTC : ${totals.grandTotalTtc.toLocaleString('fr-MA')} DH*\n\n` +
+      `📦 *Suivez l'avancement de votre commande et téléchargez votre Devis PDF Officiel sur votre Espace Client :*\n` +
+      `🔗 ${trackingUrl}\n\n` +
+      `Restant à votre entière disposition.`;
 
     const targetUrl = cleanPhone
       ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(msg)}`

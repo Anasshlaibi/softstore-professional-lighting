@@ -628,28 +628,47 @@ const AdminDashboard: React.FC = () => {
                                   : 'bg-zinc-900 border-zinc-700 text-zinc-300'
                               }`}
                             >
-                              <option value="New">🔴 Nouveau</option>
-                              <option value="Contacted">🟡 Contacté</option>
-                              <option value="Negotiating">🟠 En Négociation</option>
-                              <option value="Waiting">⏳ En Attente</option>
-                              <option value="Won">🟢 Gagné (Won) + CAPI Purchase</option>
-                              <option value="Lost">❌ Perdu (Lost)</option>
+                              <option value="New">🔴 Étape 1 : Reçue / Devis Créé</option>
+                              <option value="Contacted">🟡 Étape 2 : Confirmée par Téléphone</option>
+                              <option value="Negotiating">🟠 Étape 3 : En Préparation (Casablanca)</option>
+                              <option value="Waiting">🔵 Étape 4 : En Cours de Livraison Express</option>
+                              <option value="Won">🟢 Étape 5 : Livrée & Clôturée (Won)</option>
+                              <option value="Lost">❌ Annulée / Perdu (Lost)</option>
                             </select>
                             {q.status === 'Won' && (
                               <div className="text-[11px] font-bold text-emerald-400 mt-1">
                                 Deal: {q.deal_value} MAD
                               </div>
                             )}
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setSelectedLeadForErp(q);
-                                setActiveTab('erp_devis');
-                              }}
-                              className="mt-1.5 block px-2.5 py-1 bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-red-300 rounded-lg text-[10px] font-bold transition cursor-pointer"
-                            >
-                              📄 Créer Devis / Facture PDF
-                            </button>
+                            <div className="flex flex-wrap gap-1.5 mt-1.5">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setSelectedLeadForErp(q);
+                                  setActiveTab('erp_devis');
+                                }}
+                                className="px-2.5 py-1 bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-red-300 rounded-lg text-[10px] font-bold transition cursor-pointer"
+                              >
+                                📄 Devis PDF
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const cleanPhone = (q.phone || '').replace(/[^0-9]/g, '').replace(/^0/, '212');
+                                  const trackingLink = `https://www.gearshop.ma/suivi-commande?tel=${encodeURIComponent(q.phone || '')}&ref=${q.id}`;
+                                  const waMsg = `Bonjour ${q.name},\n\nVous pouvez suivre l'état d'avancement de votre commande / devis en temps réel et télécharger votre Devis PDF Officiel sur votre Espace Client GearShop :\n🔗 ${trackingLink}`;
+                                  window.open(
+                                    cleanPhone
+                                      ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(waMsg)}`
+                                      : `https://wa.me/?text=${encodeURIComponent(waMsg)}`,
+                                    '_blank'
+                                  );
+                                }}
+                                className="px-2.5 py-1 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-300 rounded-lg text-[10px] font-bold transition cursor-pointer"
+                              >
+                                📲 Lien Suivi Client
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))

@@ -137,6 +137,13 @@ const Header: React.FC<HeaderProps> = React.memo(
                 <i className="fa-brands fa-whatsapp text-sm text-red-500" /> WhatsApp: 06 73 01 18 73
               </a>
               <span className="h-3 w-px bg-slate-700" />
+              <Link
+                to="/suivi-commande"
+                className="text-slate-200 hover:text-red-400 font-semibold transition flex items-center gap-1.5"
+              >
+                <i className="fa-solid fa-box-open text-red-500" /> Suivi Commande & Compte
+              </Link>
+              <span className="h-3 w-px bg-slate-700" />
               <button
                 onClick={onOpenProductRequest}
                 className="text-slate-300 hover:text-white transition flex items-center gap-1"

@@ -45,6 +45,7 @@ const OsmoPocket4Page = React.lazy(() => import('./src/pages/OsmoPocket4Page'));
 const CameraMarocPage = React.lazy(() => import('./src/pages/CameraMarocPage'));
 const CityHubMaroc = React.lazy(() => import('./src/pages/CityHubMaroc'));
 const ProductDetailPage = React.lazy(() => import('./src/pages/ProductDetailPage'));
+const ClientOrderTrackingPage = React.lazy(() => import('./src/pages/ClientOrderTrackingPage'));
 
 import Newsletter from './src/components/Newsletter';
 import CookieConsentBanner from './src/components/CookieConsentBanner';
@@ -354,6 +355,16 @@ const AppContent: React.FC<{
             <Route path="/admin" element={
               <React.Suspense fallback={<LoadingSpinner />}>
                 <AdminDashboard />
+              </React.Suspense>
+            } />
+            <Route path="/suivi-commande" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <ClientOrderTrackingPage />
+              </React.Suspense>
+            } />
+            <Route path="/mon-compte" element={
+              <React.Suspense fallback={<LoadingSpinner />}>
+                <ClientOrderTrackingPage />
               </React.Suspense>
             } />
             <Route path="/cinema-lenses-maroc" element={

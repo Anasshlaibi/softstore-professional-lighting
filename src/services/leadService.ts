@@ -418,3 +418,107 @@ export async function sendEmailCampaign(data: {
     message: `Campagne "${data.subject}" enregistrée pour ${recipientCount} abonnés!`
   };
 }
+
+// ===== 9. CLIENT ACCOUNT & LIVE ORDER / DEVIS FOLLOW-UP (SUPABASE) =====
+export async function saveErpDocumentToSupabase(params: {
+  docNumber: string;
+  docType: string;
+  clientName: string;
+  clientCompany?: string;
+  clientPhone: string;
+  clientEmail?: string;
+  totalTtc: number;
+  itemsSummary: string;
+  totalQty: number;
+  fullPayloadJson: string;
+}): Promise<QuoteRequestItem | null> {
+  const cleanEmail = (params.clientEmail || `${(params.clientPhone || 'client').replace(/[^0-9]/g, '')}@gearshop.ma`)
+    .trim()
+    .toLowerCase();
+
+  const productTitle = `[${params.docType} #${params.docNumber}] ${params.itemsSummary}`.slice(0, 240);
+  const encodedMessage = `REF:${params.docNumber} | TOTAL:${Math.round(params.totalTtc)} DH ||ERP_JSON||${params.fullPayloadJson}`;
+
+  // Check if a quote_requests row with this docNumber already exists
+  const { data: existing } = await supabase
+    .from('quote_requests')
+    .select('*')
+    .ilike('product_name', `%#${params.docNumber}]%`)
+    .limit(1);
+
+  if (existing && existing.length > 0) {
+    const { data: updated, error: uErr } = await supabase
+      .from('quote_requests')
+      .update({
+        product_name: productTitle,
+        name: params.clientName || 'Client',
+        email: cleanEmail,
+        phone: params.clientPhone || 'Non renseigné',
+        company: params.clientCompany || '',
+        quantity: params.totalQty || 1,
+        deal_value: Math.round(params.totalTtc),
+        message: encodedMessage,
+      })
+      .eq('id', existing[0].id)
+      .select('*')
+      .single();
+
+    if (!uErr && updated) return updated as QuoteRequestItem;
+  }
+
+  const { data: inserted, error } = await supabase
+    .from('quote_requests')
+    .insert([
+      {
+        product_name: productTitle,
+        name: params.clientName || 'Client',
+        email: cleanEmail,
+        phone: params.clientPhone || 'Non renseigné',
+        company: params.clientCompany || '',
+        quantity: params.totalQty || 1,
+        message: encodedMessage,
+        score: 85,
+        score_label: 'Hot',
+        status: 'New',
+        deal_value: Math.round(params.totalTtc),
+        utm_source: 'erp_verdanove',
+      },
+    ])
+    .select('*')
+    .single();
+
+  if (error) {
+    console.error('Error saving ERP doc to Supabase:', error);
+    return null;
+  }
+  return inserted as QuoteRequestItem;
+}
+
+export async function lookupClientOrdersInSupabase(query: {
+  phone?: string;
+  email?: string;
+  ref?: string;
+}): Promise<QuoteRequestItem[]> {
+  const { data, error } = await supabase
+    .from('quote_requests')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(150);
+
+  if (error || !data) return [];
+
+  const cleanPhone = (query.phone || '').replace(/[^0-9]/g, '').slice(-8); // Match last 8 digits (e.g. 661150961)
+  const cleanEmail = (query.email || '').trim().toLowerCase();
+  const cleanRef = (query.ref || '').trim().toLowerCase();
+
+  return (data as QuoteRequestItem[]).filter((row) => {
+    const rowPhone = (row.phone || '').replace(/[^0-9]/g, '');
+    const rowEmail = (row.email || '').trim().toLowerCase();
+    const rowText = `${row.product_name || ''} ${row.message || ''} ${row.id}`.toLowerCase();
+
+    if (cleanRef && rowText.includes(cleanRef)) return true;
+    if (cleanPhone && cleanPhone.length >= 6 && rowPhone.includes(cleanPhone)) return true;
+    if (cleanEmail && cleanEmail.includes('@') && rowEmail === cleanEmail) return true;
+    return false;
+  });
+}
