@@ -3,6 +3,7 @@ import { useCart } from '../src/context/CartContext';
 import { createQuoteRequest } from '../src/services/leadService';
 import { sendMetaCapiEvent } from '../src/services/metaCapiService';
 import { trackCheckoutStarted, trackWhatsAppLead } from '../src/services/googleAnalytics';
+import { openAndPrintDevisOrInvoice } from '../src/utils/devisInvoiceGenerator';
 
 interface CheckoutModalProps {
   onClose: () => void;
@@ -48,11 +49,65 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    company: '',
+    ice: '',
     city: 'Casablanca',
     address: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleDownloadInstantDevis = async () => {
+    const todayStr = new Date().toISOString().split('T')[0];
+    const validUntilStr = new Date(Date.now() + 15 * 86400000).toISOString().split('T')[0];
+    const devisNum = `DEV-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    openAndPrintDevisOrInvoice({
+      docType: 'DEVIS',
+      docNumber: devisNum,
+      issueDate: todayStr,
+      validUntilDate: validUntilStr,
+      clientName: formData.name || 'Client GearShop',
+      clientCompany: formData.company || undefined,
+      clientIce: formData.ice || undefined,
+      clientPhone: formData.phone || undefined,
+      clientCity: formData.city,
+      clientAddress: formData.address || undefined,
+      items: cartItems.map((item) => ({
+        id: item.id,
+        sku: `GS-${item.id}`,
+        name: item.name,
+        quantity: item.qty,
+        unitPriceTtc: item.price,
+      })),
+      discountPercent: appliedPromo || 0,
+      shippingCostTtc: shipping,
+      taxMode: 'ttc_includes_20',
+      notes: formData.message || undefined,
+    });
+
+    trackWhatsAppLead({
+      source: 'instant_pdf_devis_checkout',
+      itemName: cartItems.map((i) => i.name).join(', '),
+      value: total,
+    });
+
+    if (formData.name || formData.phone) {
+      try {
+        await createQuoteRequest({
+          productName: `[DEVIS PDF ${devisNum}] ` + cartItems.map((i) => `${i.qty}x ${i.name}`).join(', '),
+          name: formData.name || 'Client Devis PDF',
+          email: `${(formData.phone || 'devis').replace(/[^0-9]/g, '')}@gearshop.ma`,
+          phone: formData.phone || 'Non renseigné',
+          company: [formData.company, formData.ice ? `ICE: ${formData.ice}` : '', formData.city].filter(Boolean).join(' | '),
+          quantity: cartItems.reduce((sum, item) => sum + item.qty, 0),
+          message: `Devis PDF généré #${devisNum} | Total TTC: ${total} DH`,
+        });
+      } catch {
+        // non-blocking
+      }
+    }
+  };
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.qty,
@@ -268,6 +323,37 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             ></textarea>
           </div>
 
+          <div className="grid grid-cols-2 gap-2.5">
+            <div>
+              <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                Société (Optionnel)
+              </label>
+              <input
+                type="text"
+                value={formData.company}
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-black text-xs focus:outline-none focus:border-black transition"
+                placeholder="Nom d'entreprise"
+              />
+            </div>
+            <div>
+              <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                N° ICE (Optionnel)
+              </label>
+              <input
+                type="text"
+                value={formData.ice}
+                onChange={(e) =>
+                  setFormData({ ...formData, ice: e.target.value })
+                }
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-black text-xs font-mono focus:outline-none focus:border-black transition"
+                placeholder="Pour facture / devis"
+              />
+            </div>
+          </div>
+
           <div>
             <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
               Instructions & Notes (Optionnel)
@@ -328,6 +414,15 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 <i className="fa-brands fa-whatsapp text-xl"></i> Confirmer par WhatsApp Express
               </>
             )}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleDownloadInstantDevis}
+            className="w-full bg-gray-900 hover:bg-black text-white py-3 rounded-xl font-bold transition flex justify-center items-center gap-2 text-xs cursor-pointer border border-gray-800"
+          >
+            <i className="fa-solid fa-file-pdf text-red-500 text-sm"></i>
+            <span>Télécharger un Devis PDF Officiel (Avec TVA 20% & ICE)</span>
           </button>
         </form>
       </div>

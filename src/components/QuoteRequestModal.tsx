@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createQuoteRequest } from '../services/leadService';
 import { Product } from '../../App';
 import { slugify } from '../utils/catalogEngine';
+import { openAndPrintDevisOrInvoice } from '../utils/devisInvoiceGenerator';
 
 interface QuoteRequestModalProps {
   isOpen: boolean;
@@ -57,6 +58,33 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
         quantity,
         message: fullMessage
       });
+
+      if (product && product.price && product.price > 0) {
+        const todayStr = new Date().toISOString().split('T')[0];
+        const validUntilStr = new Date(Date.now() + 15 * 86400000).toISOString().split('T')[0];
+        openAndPrintDevisOrInvoice({
+          docType: 'DEVIS',
+          docNumber: `DEV-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
+          issueDate: todayStr,
+          validUntilDate: validUntilStr,
+          clientName: name,
+          clientCompany: company || undefined,
+          clientPhone: phone,
+          clientEmail: email,
+          items: [
+            {
+              id: product.id,
+              sku: `GS-${product.id}`,
+              name: product.name,
+              quantity,
+              unitPriceTtc: product.price,
+            },
+          ],
+          taxMode: 'ttc_includes_20',
+          notes: message || undefined,
+        });
+      }
+
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

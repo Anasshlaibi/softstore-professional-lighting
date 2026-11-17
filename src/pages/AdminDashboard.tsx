@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { Product } from '../../App';
 import { fetchAdminProducts, createProductRecord, updateProductRecord, toggleProductStockStatus, deleteProductRecord, ProductFormData } from '../services/productService';
 import { ProductEditorModal } from '../components/Admin/ProductEditorModal';
+import { ErpDevisFactureManager } from '../components/Admin/ErpDevisFactureManager';
 import { generateProductSEOPackage } from '../utils/seoGenerator';
 
 import { supabase } from '../lib/supabase';
@@ -30,7 +31,8 @@ const AdminDashboard: React.FC = () => {
   const [authError, setAuthError] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(false);
 
-  const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'subscribers' | 'product_requests' | 'quotes' | 'attribution' | 'audiences' | 'settings'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'erp_devis' | 'subscribers' | 'product_requests' | 'quotes' | 'attribution' | 'audiences' | 'settings'>('overview');
+  const [selectedLeadForErp, setSelectedLeadForErp] = useState<QuoteRequestItem | null>(null);
 
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [productRequests, setProductRequests] = useState<ProductRequestItem[]>([]);
@@ -397,6 +399,7 @@ const AdminDashboard: React.FC = () => {
         <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-zinc-800 scrollbar-none">
           {[
             { id: 'overview', label: '📊 Vue d\'ensemble' },
+            { id: 'erp_devis', label: '📄 ERP Devis & Factures (PDF)' },
             { id: 'products', label: `📦 Catalogue Produits (${adminProducts.length})` },
             { id: 'quotes', label: `📝 Pipeline Devis & Leads (${quoteRequests.length})` },
             { id: 'subscribers', label: `📧 Abonnés (${subscribers.length})` },
@@ -615,6 +618,16 @@ const AdminDashboard: React.FC = () => {
                                 Deal: {q.deal_value} MAD
                               </div>
                             )}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setSelectedLeadForErp(q);
+                                setActiveTab('erp_devis');
+                              }}
+                              className="mt-1.5 block px-2.5 py-1 bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-red-300 rounded-lg text-[10px] font-bold transition cursor-pointer"
+                            >
+                              📄 Créer Devis / Facture PDF
+                            </button>
                           </td>
                         </tr>
                       ))
@@ -624,6 +637,15 @@ const AdminDashboard: React.FC = () => {
               </div>
             </div>
           </div>
+        )}
+
+        {/* TAB ERP DEVIS & FACTURES */}
+        {activeTab === 'erp_devis' && (
+          <ErpDevisFactureManager
+            products={adminProducts}
+            quoteRequests={quoteRequests}
+            initialLead={selectedLeadForErp}
+          />
         )}
 
         {/* TAB 3: ATTRIBUTION REPORT */}
