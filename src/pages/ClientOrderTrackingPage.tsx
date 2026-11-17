@@ -19,6 +19,8 @@ interface ClientProfile {
   phone: string;
   company?: string;
   ice?: string;
+  rcOrIf?: string;
+  billingAddress?: string;
   city?: string;
 }
 
@@ -139,11 +141,16 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
   const [authPhoneInput, setAuthPhoneInput] = useState<string>(savedProfile?.phone || '');
   const [authCompanyInput, setAuthCompanyInput] = useState<string>(savedProfile?.company || '');
   const [authIceInput, setAuthIceInput] = useState<string>(savedProfile?.ice || '');
+  const [authRcIfInput, setAuthRcIfInput] = useState<string>(savedProfile?.rcOrIf || '');
+  const [authBillingAddressInput, setAuthBillingAddressInput] = useState<string>(savedProfile?.billingAddress || '');
   const [authCityInput, setAuthCityInput] = useState<string>(savedProfile?.city || 'Casablanca');
   const [emailInput, setEmailInput] = useState<string>(savedProfile?.email || '');
   const [passwordInput, setPasswordInput] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [newPasswordInput, setNewPasswordInput] = useState<string>('');
   const [confirmNewPasswordInput, setConfirmNewPasswordInput] = useState<string>('');
+  const [showNewPassword, setShowNewPassword] = useState<boolean>(false);
+  const [profileSaving, setProfileSaving] = useState<boolean>(false);
   const [authMessage, setAuthMessage] = useState<string | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
 
@@ -186,10 +193,17 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
     }
   };
 
-  // Sync Devis builder fields when profile updates
+  // Sync Devis & Account profile fields when profile updates
   const applyProfileToForms = (prof: ClientProfile) => {
     setSavedProfile(prof);
     setAuthUserEmail(prof.email);
+    setAuthNameInput(prof.fullName);
+    setAuthPhoneInput(prof.phone);
+    setAuthCompanyInput(prof.company || '');
+    setAuthIceInput(prof.ice || '');
+    setAuthRcIfInput(prof.rcOrIf || '');
+    setAuthBillingAddressInput(prof.billingAddress || '');
+    setAuthCityInput(prof.city || 'Casablanca');
     setPhoneInput(prof.phone);
     setDevisName(prof.fullName);
     setDevisEmail(prof.email);
@@ -221,6 +235,8 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
       phone: meta.phone || savedProfile?.phone || '',
       company: meta.company || savedProfile?.company || '',
       ice: meta.ice || savedProfile?.ice || '',
+      rcOrIf: meta.rc_if || savedProfile?.rcOrIf || '',
+      billingAddress: meta.billing_address || savedProfile?.billingAddress || '',
       city: meta.city || savedProfile?.city || 'Casablanca',
     };
     persistClientProfile(prof);
@@ -379,6 +395,8 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
               phone: authPhoneInput.trim(),
               company: authCompanyInput.trim(),
               ice: authIceInput.trim(),
+              rc_if: authRcIfInput.trim(),
+              billing_address: authBillingAddressInput.trim(),
               city: authCityInput,
             },
           },
@@ -399,6 +417,8 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
           phone: authPhoneInput.trim(),
           company: authCompanyInput.trim(),
           ice: authIceInput.trim(),
+          rcOrIf: authRcIfInput.trim(),
+          billingAddress: authBillingAddressInput.trim(),
           city: authCityInput,
         };
         persistClientProfile(profile);
@@ -452,6 +472,60 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
       setAuthError(err?.message || 'Erreur lors de la connexion.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSaveCompanyProfile = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError(null);
+    setAuthMessage(null);
+    setProfileSaving(true);
+    try {
+      const cleanEmail = (savedProfile?.email || authUserEmail || emailInput).trim().toLowerCase();
+      const updatedProfile: ClientProfile = {
+        fullName: authNameInput.trim() || savedProfile?.fullName || cleanEmail.split('@')[0],
+        email: cleanEmail,
+        phone: authPhoneInput.trim(),
+        company: authCompanyInput.trim(),
+        ice: authIceInput.trim(),
+        rcOrIf: authRcIfInput.trim(),
+        billingAddress: authBillingAddressInput.trim(),
+        city: authCityInput.trim() || 'Casablanca',
+      };
+      persistClientProfile(updatedProfile);
+      applyProfileToForms(updatedProfile);
+
+      // Update Supabase Auth metadata if session exists & log update in CRM
+      await Promise.allSettled([
+        supabase.auth.updateUser({
+          data: {
+            full_name: updatedProfile.fullName,
+            phone: updatedProfile.phone,
+            company: updatedProfile.company,
+            ice: updatedProfile.ice,
+            rc_if: updatedProfile.rcOrIf,
+            billing_address: updatedProfile.billingAddress,
+            city: updatedProfile.city,
+          },
+        }),
+        createContactLead({
+          name: updatedProfile.fullName,
+          email: cleanEmail,
+          phone: updatedProfile.phone || '-',
+          message: `[MISE À JOUR FACTURATION PRO] Société: ${updatedProfile.company || '-'} | ICE: ${updatedProfile.ice || '-'} | IF/RC: ${updatedProfile.rcOrIf || '-'} | Adresse: ${updatedProfile.billingAddress || '-'} | Ville: ${updatedProfile.city}`,
+        }),
+      ]);
+
+      setAuthMessage(
+        '✅ Informations professionnelles et de facturation enregistrées ! Elles seront automatiquement utilisées pour vos prochains Devis et Factures.'
+      );
+      if (updatedProfile.phone || cleanEmail) {
+        await runSearch(updatedProfile.phone, '', cleanEmail);
+      }
+    } catch (err: any) {
+      setAuthError(err?.message || 'Erreur lors de la sauvegarde du profil.');
+    } finally {
+      setProfileSaving(false);
     }
   };
 
@@ -804,6 +878,125 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                   </p>
                 )}
 
+                <form
+                  onSubmit={handleSaveCompanyProfile}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-4 sm:p-5 space-y-3"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-sm font-black text-gray-900">
+                      🏢 Informations Professionnelles & Facturation (Société)
+                    </h3>
+                    <span className="text-[11px] font-semibold text-gray-500">
+                      Utilisées pour vos Devis & Factures VERDANOVE
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 mb-1">
+                        Nom Complet / Responsable
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={authNameInput}
+                        onChange={(e) => setAuthNameInput(e.target.value)}
+                        placeholder="Nom & Prénom"
+                        className="w-full px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs text-gray-900"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 mb-1">
+                        Téléphone / WhatsApp
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={authPhoneInput}
+                        onChange={(e) => setAuthPhoneInput(e.target.value)}
+                        placeholder="06 XX XX XX XX"
+                        className="w-full px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs text-gray-900"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 mb-1">
+                        Société / Raison Sociale
+                      </label>
+                      <input
+                        type="text"
+                        value={authCompanyInput}
+                        onChange={(e) => setAuthCompanyInput(e.target.value)}
+                        placeholder="Ex: Studio Atlas SARL"
+                        className="w-full px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs text-gray-900"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 mb-1">
+                        N° ICE (15 chiffres)
+                      </label>
+                      <input
+                        type="text"
+                        value={authIceInput}
+                        onChange={(e) => setAuthIceInput(e.target.value)}
+                        placeholder="001234567000089"
+                        className="w-full px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs font-mono text-gray-900"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 mb-1">
+                        N° IF / RC (Optionnel)
+                      </label>
+                      <input
+                        type="text"
+                        value={authRcIfInput}
+                        onChange={(e) => setAuthRcIfInput(e.target.value)}
+                        placeholder="IF / Registre de Commerce"
+                        className="w-full px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs font-mono text-gray-900"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="sm:col-span-2">
+                      <label className="block text-[11px] font-bold text-gray-700 mb-1">
+                        Adresse de Facturation / Siège Social
+                      </label>
+                      <input
+                        type="text"
+                        value={authBillingAddressInput}
+                        onChange={(e) => setAuthBillingAddressInput(e.target.value)}
+                        placeholder="N°, Rue, Quartier..."
+                        className="w-full px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs text-gray-900"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 mb-1">
+                        Ville
+                      </label>
+                      <input
+                        type="text"
+                        value={authCityInput}
+                        onChange={(e) => setAuthCityInput(e.target.value)}
+                        placeholder="Casablanca, Rabat..."
+                        className="w-full px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs text-gray-900"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={profileSaving}
+                    className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl cursor-pointer transition"
+                  >
+                    {profileSaving
+                      ? 'Enregistrement...'
+                      : '💾 Enregistrer mes informations de facturation'}
+                  </button>
+                </form>
+
                 <div className="flex flex-wrap gap-3 pt-2">
                   <button
                     type="button"
@@ -941,40 +1134,71 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
-                          Société / Studio (Optionnel)
-                        </label>
-                        <input
-                          type="text"
-                          value={authCompanyInput}
-                          onChange={(e) => setAuthCompanyInput(e.target.value)}
-                          placeholder="Nom d'entreprise"
-                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
-                        />
+                    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3.5 space-y-3">
+                      <div className="text-[11px] font-extrabold uppercase tracking-wider text-gray-700">
+                        🏢 Informations Facturation / Société (Professionnel)
                       </div>
-                      <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
-                          N° ICE (Optionnel)
-                        </label>
-                        <input
-                          type="text"
-                          value={authIceInput}
-                          onChange={(e) => setAuthIceInput(e.target.value)}
-                          placeholder="Pour devis / facture"
-                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-mono text-gray-900"
-                        />
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 mb-1">
+                            Société / Raison Sociale
+                          </label>
+                          <input
+                            type="text"
+                            value={authCompanyInput}
+                            onChange={(e) => setAuthCompanyInput(e.target.value)}
+                            placeholder="Nom d'entreprise"
+                            className="w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 mb-1">
+                            N° ICE (Facture)
+                          </label>
+                          <input
+                            type="text"
+                            value={authIceInput}
+                            onChange={(e) => setAuthIceInput(e.target.value)}
+                            placeholder="15 chiffres ICE"
+                            className="w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-mono text-gray-900"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 mb-1">
+                            N° IF / RC (Optionnel)
+                          </label>
+                          <input
+                            type="text"
+                            value={authRcIfInput}
+                            onChange={(e) => setAuthRcIfInput(e.target.value)}
+                            placeholder="IF / RC"
+                            className="w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-mono text-gray-900"
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">Ville</label>
-                        <input
-                          type="text"
-                          value={authCityInput}
-                          onChange={(e) => setAuthCityInput(e.target.value)}
-                          placeholder="Casablanca, Rabat..."
-                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
-                        />
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="sm:col-span-2">
+                          <label className="block text-xs font-bold text-gray-700 mb-1">
+                            Adresse de Facturation (Optionnel)
+                          </label>
+                          <input
+                            type="text"
+                            value={authBillingAddressInput}
+                            onChange={(e) => setAuthBillingAddressInput(e.target.value)}
+                            placeholder="N°, Boulevard, Quartier..."
+                            className="w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 mb-1">Ville</label>
+                          <input
+                            type="text"
+                            value={authCityInput}
+                            onChange={(e) => setAuthCityInput(e.target.value)}
+                            placeholder="Casablanca, Rabat..."
+                            className="w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-900"
+                          />
+                        </div>
                       </div>
                     </div>
                   </>
@@ -986,29 +1210,47 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                       <label className="block text-xs font-bold text-gray-700 mb-1">
                         Nouveau mot de passe <span className="text-red-600">*</span>
                       </label>
-                      <input
-                        type="password"
-                        required
-                        minLength={6}
-                        value={newPasswordInput}
-                        onChange={(e) => setNewPasswordInput(e.target.value)}
-                        placeholder="6 caractères minimum"
-                        className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showNewPassword ? 'text' : 'password'}
+                          required
+                          minLength={6}
+                          value={newPasswordInput}
+                          onChange={(e) => setNewPasswordInput(e.target.value)}
+                          placeholder="6 caractères minimum"
+                          className="w-full px-3.5 py-2.5 pr-20 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowNewPassword((prev) => !prev)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-600 hover:text-black cursor-pointer"
+                        >
+                          {showNewPassword ? 'Masquer' : 'Afficher'}
+                        </button>
+                      </div>
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-700 mb-1">
                         Confirmer le mot de passe <span className="text-red-600">*</span>
                       </label>
-                      <input
-                        type="password"
-                        required
-                        minLength={6}
-                        value={confirmNewPasswordInput}
-                        onChange={(e) => setConfirmNewPasswordInput(e.target.value)}
-                        placeholder="Répétez le mot de passe"
-                        className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showNewPassword ? 'text' : 'password'}
+                          required
+                          minLength={6}
+                          value={confirmNewPasswordInput}
+                          onChange={(e) => setConfirmNewPasswordInput(e.target.value)}
+                          placeholder="Répétez le mot de passe"
+                          className="w-full px-3.5 py-2.5 pr-20 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowNewPassword((prev) => !prev)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-600 hover:text-black cursor-pointer"
+                        >
+                          {showNewPassword ? 'Masquer' : 'Afficher'}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -1046,15 +1288,24 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                             </button>
                           )}
                         </div>
-                        <input
-                          type="password"
-                          required
-                          minLength={6}
-                          value={passwordInput}
-                          onChange={(e) => setPasswordInput(e.target.value)}
-                          placeholder="6 caractères minimum"
-                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
-                        />
+                        <div className="relative">
+                          <input
+                            type={showPassword ? 'text' : 'password'}
+                            required
+                            minLength={6}
+                            value={passwordInput}
+                            onChange={(e) => setPasswordInput(e.target.value)}
+                            placeholder="6 caractères minimum"
+                            className="w-full px-3.5 py-2.5 pr-20 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword((prev) => !prev)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-600 hover:text-black cursor-pointer"
+                          >
+                            {showPassword ? 'Masquer' : 'Afficher'}
+                          </button>
+                        </div>
                       </div>
                     )}
                   </div>

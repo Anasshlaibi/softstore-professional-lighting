@@ -67,11 +67,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     company: savedProfile?.company || '',
     ice: savedProfile?.ice || '',
     city: savedProfile?.city || 'Casablanca',
-    address: '',
+    address: savedProfile?.billingAddress || '',
     message: '',
   });
   const [linkClientAccount, setLinkClientAccount] = useState(true);
   const [accountPassword, setAccountPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const persistAccountAndEmail = async () => {
@@ -535,14 +536,23 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
               </span>
             </label>
             {linkClientAccount && !savedProfile && (
-              <input
-                type="password"
-                minLength={6}
-                value={accountPassword}
-                onChange={(e) => setAccountPassword(e.target.value)}
-                placeholder="Mot de passe du compte (optionnel, min 6 car.)"
-                className="w-full bg-white border border-slate-200 rounded-lg p-2 text-black text-xs focus:outline-none focus:border-black"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  minLength={6}
+                  value={accountPassword}
+                  onChange={(e) => setAccountPassword(e.target.value)}
+                  placeholder="Mot de passe du compte (optionnel, min 6 car.)"
+                  className="w-full bg-white border border-slate-200 rounded-lg p-2 pr-20 text-black text-xs focus:outline-none focus:border-black"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] font-bold text-slate-600 hover:text-black cursor-pointer"
+                >
+                  {showPassword ? 'Masquer' : 'Afficher'}
+                </button>
+              </div>
             )}
           </div>
 
