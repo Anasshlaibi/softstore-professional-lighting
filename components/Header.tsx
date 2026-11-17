@@ -202,10 +202,20 @@ const Header: React.FC<HeaderProps> = React.memo(
               {/* Demander un Matériel */}
               <button
                 onClick={onOpenProductRequest}
-                className="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-black hover:text-white transition text-xs font-semibold border border-gray-200"
+                className="hidden lg:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-black hover:text-white transition text-xs font-semibold border border-gray-200"
               >
                 <span>🔍</span> Demander un Matériel
               </button>
+
+              {/* Client Account & Live Tracking Link */}
+              <Link
+                to="/mon-compte"
+                className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900 hover:bg-red-600 text-white transition text-xs font-bold shadow-sm"
+                title="Créer un compte client, préparer un devis ou suivre ma commande"
+              >
+                <i className="fa-solid fa-user text-[11px]" />
+                <span>Mon Compte / Suivi</span>
+              </Link>
 
               {/* Cart Button */}
               <button
@@ -388,6 +398,15 @@ const Header: React.FC<HeaderProps> = React.memo(
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                 🔥 Nouveautés — New In
               </button>
+
+              <Link
+                to="/mon-compte"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-slate-800 text-white text-xs font-bold"
+              >
+                <i className="fa-solid fa-user text-emerald-400" />
+                Mon Compte Client / Suivi &amp; Devis
+              </Link>
 
               <button
                 onClick={() => {

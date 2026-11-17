@@ -557,8 +557,10 @@ const AdminDashboard: React.FC = () => {
           <div className="space-y-6 animate-fadeIn">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-lg font-extrabold">Gestion du Pipeline Devis & Leads</h3>
-                <p className="text-xs text-zinc-400">Le statut "Won" déclenche automatiquement la conversion CAPI Purchase</p>
+                <h3 className="text-lg font-extrabold">Gestion du Pipeline Devis, Paiements &amp; Suivi Client</h3>
+                <p className="text-xs text-zinc-400">
+                  Passer un dossier de « Étape 1 : À Confirmer » à « Étape 2 : Confirmé &amp; Validé » met à jour le compte client en direct et débloque le Devis Officiel VERDANOVE cacheté. (« Won » déclenche aussi Meta CAPI Purchase)
+                </p>
               </div>
 
               <input
@@ -628,11 +630,11 @@ const AdminDashboard: React.FC = () => {
                                   : 'bg-zinc-900 border-zinc-700 text-zinc-300'
                               }`}
                             >
-                              <option value="New">🔴 Étape 1 : Reçue / Devis Créé</option>
-                              <option value="Contacted">🟡 Étape 2 : Confirmée par Téléphone</option>
-                              <option value="Negotiating">🟠 Étape 3 : En Préparation (Casablanca)</option>
+                              <option value="New">🔴 Étape 1 : À Confirmer (Devis Provisoire)</option>
+                              <option value="Contacted">🟡 Étape 2 : Confirmé &amp; Validé (Débloque Cachet Officiel)</option>
+                              <option value="Negotiating">🟠 Étape 3 : Payé &amp; En Préparation</option>
                               <option value="Waiting">🔵 Étape 4 : En Cours de Livraison Express</option>
-                              <option value="Won">🟢 Étape 5 : Livrée & Clôturée (Won)</option>
+                              <option value="Won">🟢 Étape 5 : Payé &amp; Livré (Won)</option>
                               <option value="Lost">❌ Annulée / Perdu (Lost)</option>
                             </select>
                             {q.status === 'Won' && (
@@ -656,7 +658,7 @@ const AdminDashboard: React.FC = () => {
                                 onClick={() => {
                                   const cleanPhone = (q.phone || '').replace(/[^0-9]/g, '').replace(/^0/, '212');
                                   const trackingLink = `https://www.gearshop.ma/suivi-commande?tel=${encodeURIComponent(q.phone || '')}&ref=${q.id}`;
-                                  const waMsg = `Bonjour ${q.name},\n\nVous pouvez suivre l'état d'avancement de votre commande / devis en temps réel et télécharger votre Devis PDF Officiel sur votre Espace Client GearShop :\n🔗 ${trackingLink}`;
+                                  const waMsg = `Bonjour ${q.name},\n\nVotre dossier #${q.id} (${q.product_name}) a été mis à jour.\nSuivez l'avancement en temps réel et téléchargez votre Devis Officiel VERDANOVE PDF sur votre Espace Client :\n🔗 ${trackingLink}`;
                                   window.open(
                                     cleanPhone
                                       ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(waMsg)}`
@@ -668,6 +670,18 @@ const AdminDashboard: React.FC = () => {
                               >
                                 📲 Lien Suivi Client
                               </button>
+                              {q.email && q.email.includes('@') && (
+                                <a
+                                  href={`mailto:${encodeURIComponent(q.email)}?subject=${encodeURIComponent(
+                                    `Suivi de votre Dossier #${q.id} — GearShop / VERDANOVE Maroc`
+                                  )}&body=${encodeURIComponent(
+                                    `Bonjour ${q.name},\n\nNous faisons suite à votre dossier #${q.id} (${q.product_name}).\n\nVous pouvez consulter le statut en temps réel et télécharger votre Devis Officiel VERDANOVE PDF depuis votre Espace Client :\nhttps://www.gearshop.ma/mon-compte?tel=${encodeURIComponent(q.phone || '')}&ref=${q.id}\n\nCordialement,\nL'équipe VERDANOVE / GearShop Maroc\nTél : +212 661 15 09 61 | Verdanove@gmail.com`
+                                  )}`}
+                                  className="px-2.5 py-1 bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/30 text-sky-300 rounded-lg text-[10px] font-bold transition"
+                                >
+                                  ✉️ Email Client
+                                </a>
+                              )}
                             </div>
                           </td>
                         </tr>

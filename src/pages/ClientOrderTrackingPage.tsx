@@ -1,44 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { lookupClientOrdersInSupabase, QuoteRequestItem } from '../services/leadService';
+import { Product } from '../../App';
+import {
+  lookupClientOrdersInSupabase,
+  saveErpDocumentToSupabase,
+  subscribeNewsletter,
+  createContactLead,
+  QuoteRequestItem,
+} from '../services/leadService';
 import { openAndPrintDevisOrInvoice, ErpDocumentPayload } from '../utils/devisInvoiceGenerator';
+
+const CLIENT_PROFILE_KEY = 'gearshop_client_profile_v1';
+
+interface ClientProfile {
+  fullName: string;
+  email: string;
+  phone: string;
+  company?: string;
+  ice?: string;
+  city?: string;
+}
+
+interface ClientOrderTrackingPageProps {
+  products?: Product[];
+}
 
 const ORDER_STEPS = [
   {
     status: 'New',
     step: 1,
-    title: 'Commande / Devis Enregistré',
-    desc: 'Votre demande ou devis officiel a été créé dans notre système.',
-    icon: 'fa-file-signature',
+    title: '1. Devis / Commande à Confirmer',
+    desc: 'Enregistré. Veuillez envoyer ce devis au responsable pour validation.',
+    icon: 'fa-hourglass-half',
   },
   {
     status: 'Contacted',
     step: 2,
-    title: 'Validation & Confirmation',
-    desc: 'Votre commande a été confirmée par notre conseiller commercial.',
-    icon: 'fa-phone-volume',
+    title: '2. Confirmé & Validé par le Responsable',
+    desc: 'Stock vérifié et Devis Officiel VERDANOVE cacheté débloqué.',
+    icon: 'fa-circle-check',
   },
   {
     status: 'Negotiating',
     step: 3,
-    title: 'En Préparation (Showroom Casablanca)',
-    desc: 'Contrôle qualité, test et emballage sécurisé de votre matériel.',
-    icon: 'fa-box-open',
+    title: '3. Paiement Confirmé & En Préparation',
+    desc: 'Règlement validé, contrôle matériel et emballage à Casablanca.',
+    icon: 'fa-credit-card',
   },
   {
     status: 'Waiting',
     step: 4,
-    title: 'En Cours de Livraison Express',
-    desc: 'Expédié via transporteur express (24h-48h) vers votre ville.',
+    title: '4. En Cours de Livraison Express',
+    desc: 'Expédié via transporteur express (24h-48h) vers votre adresse.',
     icon: 'fa-truck-fast',
   },
   {
     status: 'Won',
     step: 5,
-    title: 'Livré & Garantie 1 An Active',
-    desc: 'Commande livrée avec succès. Votre garantie officielle est active.',
-    icon: 'fa-circle-check',
+    title: '5. Payé & Livré (Garantie 1 An Active)',
+    desc: 'Matériel livré et payé. Garantie constructeur 1 an active.',
+    icon: 'fa-award',
   },
 ];
 
@@ -61,38 +83,96 @@ function getStepNumber(status: string): number {
   }
 }
 
-export const ClientOrderTrackingPage: React.FC = () => {
+function loadSavedClientProfile(): ClientProfile | null {
+  try {
+    const raw = localStorage.getItem(CLIENT_PROFILE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function persistClientProfile(profile: ClientProfile): void {
+  try {
+    localStorage.setItem(CLIENT_PROFILE_KEY, JSON.stringify(profile));
+  } catch {
+    // ignore storage errors
+  }
+}
+
+export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = ({
+  products = [],
+}) => {
   const [searchParams] = useSearchParams();
   const initialRef = searchParams.get('ref') || '';
   const initialTel = searchParams.get('tel') || '';
+  const initialTabParam = searchParams.get('tab');
 
-  const [mode, setMode] = useState<'lookup' | 'account'>('lookup');
+  const [savedProfile, setSavedProfile] = useState<ClientProfile | null>(() =>
+    loadSavedClientProfile()
+  );
 
-  // Lookup state
-  const [phoneInput, setPhoneInput] = useState<string>(initialTel);
+  const [activeTab, setActiveTab] = useState<'account' | 'devis' | 'orders'>(() => {
+    if (initialRef || initialTel) return 'orders';
+    if (initialTabParam === 'devis') return 'devis';
+    if (initialTabParam === 'orders') return 'orders';
+    if (loadSavedClientProfile()) return 'orders';
+    return 'account';
+  });
+
+  // Lookup & Orders state
+  const [phoneInput, setPhoneInput] = useState<string>(initialTel || savedProfile?.phone || '');
   const [refInput, setRefInput] = useState<string>(initialRef);
   const [orders, setOrders] = useState<QuoteRequestItem[]>([]);
+  const [orderFilter, setOrderFilter] = useState<'all' | 'pending' | 'active' | 'won'>('all');
   const [loading, setLoading] = useState<boolean>(false);
   const [searchedOnce, setSearchedOnce] = useState<boolean>(false);
 
-  // Supabase Auth Client Account state
-  const [authUserEmail, setAuthUserEmail] = useState<string | null>(null);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
-  const [emailInput, setEmailInput] = useState<string>('');
+  // Client Account Login / Register state
+  const [authUserEmail, setAuthUserEmail] = useState<string | null>(
+    () => savedProfile?.email || null
+  );
+  const [authMode, setAuthMode] = useState<'register' | 'login'>('register');
+  const [authNameInput, setAuthNameInput] = useState<string>(savedProfile?.fullName || '');
+  const [authPhoneInput, setAuthPhoneInput] = useState<string>(savedProfile?.phone || '');
+  const [authCompanyInput, setAuthCompanyInput] = useState<string>(savedProfile?.company || '');
+  const [authIceInput, setAuthIceInput] = useState<string>(savedProfile?.ice || '');
+  const [authCityInput, setAuthCityInput] = useState<string>(savedProfile?.city || 'Casablanca');
+  const [emailInput, setEmailInput] = useState<string>(savedProfile?.email || '');
   const [passwordInput, setPasswordInput] = useState<string>('');
-  const [authPhoneInput, setAuthPhoneInput] = useState<string>('');
-  const [authNameInput, setAuthNameInput] = useState<string>('');
   const [authMessage, setAuthMessage] = useState<string | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
 
+  // Self-Service Devis Builder state (Tab 2)
+  const [productQuery, setProductQuery] = useState<string>('');
+  const [devisItems, setDevisItems] = useState<Array<{ product: Product; qty: number }>>([]);
+  const [devisName, setDevisName] = useState<string>(savedProfile?.fullName || '');
+  const [devisEmail, setDevisEmail] = useState<string>(savedProfile?.email || '');
+  const [devisPhone, setDevisPhone] = useState<string>(savedProfile?.phone || '');
+  const [devisCompany, setDevisCompany] = useState<string>(savedProfile?.company || '');
+  const [devisIce, setDevisIce] = useState<string>(savedProfile?.ice || '');
+  const [devisCity, setDevisCity] = useState<string>(savedProfile?.city || 'Casablanca');
+  const [devisNotes, setDevisNotes] = useState<string>('');
+  const [devisSaving, setDevisSaving] = useState<boolean>(false);
+  const [createdDevisInfo, setCreatedDevisInfo] = useState<{
+    docNumber: string;
+    totalTtc: number;
+    summary: string;
+  } | null>(null);
+
   const runSearch = async (phone?: string, ref?: string, email?: string) => {
+    const p = phone !== undefined ? phone : phoneInput;
+    const r = ref !== undefined ? ref : refInput;
+    const e = email !== undefined ? email : authUserEmail || savedProfile?.email || '';
+    if (!p && !r && !e) return;
+
     setLoading(true);
     setSearchedOnce(true);
     try {
       const results = await lookupClientOrdersInSupabase({
-        phone: phone ?? phoneInput,
-        ref: ref ?? refInput,
-        email,
+        phone: p,
+        ref: r,
+        email: e,
       });
       setOrders(results);
     } catch {
@@ -102,20 +182,44 @@ export const ClientOrderTrackingPage: React.FC = () => {
     }
   };
 
-  // Auto-run if URL has ?ref= or ?tel=
+  // Sync Devis builder fields when profile updates
+  const applyProfileToForms = (prof: ClientProfile) => {
+    setSavedProfile(prof);
+    setAuthUserEmail(prof.email);
+    setPhoneInput(prof.phone);
+    setDevisName(prof.fullName);
+    setDevisEmail(prof.email);
+    setDevisPhone(prof.phone);
+    setDevisCompany(prof.company || '');
+    setDevisIce(prof.ice || '');
+    setDevisCity(prof.city || 'Casablanca');
+  };
+
+  // Auto-run search on mount if URL params or saved profile exist
   useEffect(() => {
     if (initialRef || initialTel) {
-      runSearch(initialTel, initialRef);
+      runSearch(initialTel, initialRef, '');
+    } else if (savedProfile?.phone || savedProfile?.email) {
+      runSearch(savedProfile.phone, '', savedProfile.email);
     }
   }, [initialRef, initialTel]);
 
-  // Check active Supabase Auth session
+  // Also check active Supabase Auth session
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user?.email) {
-        setAuthUserEmail(session.user.email);
-        const savedPhone = session.user.user_metadata?.phone || '';
-        runSearch(savedPhone, '', session.user.email);
+        const meta = session.user.user_metadata || {};
+        const prof: ClientProfile = {
+          fullName: meta.full_name || savedProfile?.fullName || session.user.email.split('@')[0],
+          email: session.user.email,
+          phone: meta.phone || savedProfile?.phone || '',
+          company: meta.company || savedProfile?.company || '',
+          ice: meta.ice || savedProfile?.ice || '',
+          city: meta.city || savedProfile?.city || 'Casablanca',
+        };
+        persistClientProfile(prof);
+        applyProfileToForms(prof);
+        runSearch(prof.phone, initialRef, prof.email);
       }
     });
   }, []);
@@ -126,34 +230,87 @@ export const ClientOrderTrackingPage: React.FC = () => {
     setAuthMessage(null);
     setLoading(true);
 
+    const cleanEmail = emailInput.trim().toLowerCase();
+
     try {
       if (authMode === 'register') {
+        if (!authNameInput.trim() || !authPhoneInput.trim() || !cleanEmail || !passwordInput) {
+          throw new Error('Veuillez remplir votre nom, téléphone, email et mot de passe.');
+        }
+
         const { data, error } = await supabase.auth.signUp({
-          email: emailInput.trim(),
+          email: cleanEmail,
           password: passwordInput,
           options: {
             data: {
               full_name: authNameInput.trim(),
               phone: authPhoneInput.trim(),
+              company: authCompanyInput.trim(),
+              ice: authIceInput.trim(),
+              city: authCityInput,
             },
           },
         });
-        if (error) throw error;
-        if (data.user?.email) {
-          setAuthUserEmail(data.user.email);
-          setAuthMessage('Compte créé avec succès ! Voici vos commandes et devis associés.');
-          await runSearch(authPhoneInput, '', data.user.email);
+
+        if (error) {
+          if (/already registered/i.test(error.message)) {
+            throw new Error(
+              'Un compte existe déjà avec cet email. Basculez sur "Connexion" pour accéder à votre espace.'
+            );
+          }
+          throw error;
         }
+
+        const profile: ClientProfile = {
+          fullName: authNameInput.trim(),
+          email: cleanEmail,
+          phone: authPhoneInput.trim(),
+          company: authCompanyInput.trim(),
+          ice: authIceInput.trim(),
+          city: authCityInput,
+        };
+        persistClientProfile(profile);
+        applyProfileToForms(profile);
+
+        // Save customer in Supabase CRM & Subscriber database for email/WhatsApp follow-up
+        await Promise.allSettled([
+          subscribeNewsletter(cleanEmail),
+          createContactLead({
+            name: profile.fullName,
+            email: cleanEmail,
+            phone: profile.phone,
+            message: `[NOUVEAU COMPTE CLIENT] Société: ${profile.company || '-'} | ICE: ${profile.ice || '-'} | Ville: ${profile.city || 'Casablanca'}`,
+          }),
+        ]);
+
+        setAuthMessage(
+          data.user
+            ? '✅ Compte créé avec succès ! Vous pouvez maintenant demander des devis à confirmer et suivre vos commandes.'
+            : '✅ Profil enregistré ! Vous pouvez maintenant suivre vos commandes et créer un devis.'
+        );
+        await runSearch(profile.phone, '', profile.email);
+        setActiveTab('orders');
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({
-          email: emailInput.trim(),
+          email: cleanEmail,
           password: passwordInput,
         });
         if (error) throw error;
         if (data.user?.email) {
-          setAuthUserEmail(data.user.email);
-          const metaPhone = data.user.user_metadata?.phone || '';
-          await runSearch(metaPhone, '', data.user.email);
+          const meta = data.user.user_metadata || {};
+          const profile: ClientProfile = {
+            fullName: meta.full_name || data.user.email.split('@')[0],
+            email: data.user.email,
+            phone: meta.phone || '',
+            company: meta.company || '',
+            ice: meta.ice || '',
+            city: meta.city || 'Casablanca',
+          };
+          persistClientProfile(profile);
+          applyProfileToForms(profile);
+          setAuthMessage('✅ Connexion réussie !');
+          await runSearch(profile.phone, '', profile.email);
+          setActiveTab('orders');
         }
       }
     } catch (err: any) {
@@ -163,22 +320,167 @@ export const ClientOrderTrackingPage: React.FC = () => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch {
+      // ignore
+    }
+    try {
+      localStorage.removeItem(CLIENT_PROFILE_KEY);
+    } catch {}
+    setSavedProfile(null);
+    setAuthUserEmail(null);
+    setOrders([]);
+    setSearchedOnce(false);
+    setActiveTab('account');
+  };
+
+  // Tab 2 Catalog filtering
+  const filteredCatalog = useMemo(() => {
+    const priced = products.filter((p) => p.price && p.price > 0);
+    const q = productQuery.trim().toLowerCase();
+    if (!q) return priced.slice(0, 12);
+    return priced
+      .filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          (p.category || '').toLowerCase().includes(q) ||
+          (p.brand || '').toLowerCase().includes(q) ||
+          String(p.id).includes(q)
+      )
+      .slice(0, 18);
+  }, [products, productQuery]);
+
+  const addDevisProduct = (prod: Product) => {
+    setDevisItems((prev) => {
+      const idx = prev.findIndex((x) => x.product.id === prod.id);
+      if (idx > -1) {
+        const updated = [...prev];
+        updated[idx] = { ...updated[idx], qty: updated[idx].qty + 1 };
+        return updated;
+      }
+      return [...prev, { product: prod, qty: 1 }];
+    });
+  };
+
+  const devisSubtotalTtc = useMemo(
+    () => devisItems.reduce((sum, x) => sum + x.product.price * x.qty, 0),
+    [devisItems]
+  );
+  const devisSubtotalHt = devisSubtotalTtc / 1.2;
+  const devisTva = devisSubtotalTtc - devisSubtotalHt;
+
+  const handleCreateClientDevis = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (devisItems.length === 0) {
+      alert('Veuillez sélectionner au moins un produit dans le catalogue ci-dessus.');
+      return;
+    }
+    if (!devisName.trim() || !devisPhone.trim() || !devisEmail.trim()) {
+      alert('Veuillez renseigner votre nom, email et numéro de téléphone.');
+      return;
+    }
+
+    setDevisSaving(true);
+    try {
+      const todayStr = new Date().toISOString().split('T')[0];
+      const [, mm, dd] = todayStr.split('-');
+      const validUntilStr = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
+      const docNumber = `FA26${String(Math.floor(100 + Math.random() * 900)).padStart(5, '0')}`;
+
+      const payload: ErpDocumentPayload = {
+        docType: 'DEVIS',
+        docNumber,
+        issueDate: todayStr,
+        referenceText: `DEMANDE CLIENT ${dd}/${mm}`,
+        validUntilDate: validUntilStr,
+        validityDays: 30,
+        clientName: devisName.trim(),
+        clientCompany: devisCompany.trim() || undefined,
+        clientIce: devisIce.trim() || undefined,
+        clientPhone: devisPhone.trim(),
+        clientEmail: devisEmail.trim().toLowerCase(),
+        clientCity: devisCity,
+        items: devisItems.map((x) => ({
+          id: x.product.id,
+          sku: `GS-${x.product.id}`,
+          name: x.product.name,
+          quantity: x.qty,
+          unitPriceTtc: x.product.price,
+        })),
+        taxMode: 'ttc_includes_20',
+        shippingCostTtc: 0,
+        notes: devisNotes.trim() || undefined,
+        isConfirmedByOwner: false,
+        showStamp: false,
+      };
+
+      const profile: ClientProfile = {
+        fullName: devisName.trim(),
+        email: devisEmail.trim().toLowerCase(),
+        phone: devisPhone.trim(),
+        company: devisCompany.trim(),
+        ice: devisIce.trim(),
+        city: devisCity,
+      };
+      persistClientProfile(profile);
+      applyProfileToForms(profile);
+
+      const itemsSummary = devisItems.map((x) => `${x.qty}x ${x.product.name}`).join(', ');
+      const totalQty = devisItems.reduce((sum, x) => sum + x.qty, 0);
+
+      await Promise.allSettled([
+        saveErpDocumentToSupabase({
+          docNumber,
+          docType: 'DEVIS',
+          clientName: profile.fullName,
+          clientCompany: profile.company || profile.city,
+          clientPhone: profile.phone,
+          clientEmail: profile.email,
+          totalTtc: devisSubtotalTtc,
+          itemsSummary,
+          totalQty,
+          fullPayloadJson: JSON.stringify(payload),
+        }),
+        subscribeNewsletter(profile.email),
+      ]);
+
+      openAndPrintDevisOrInvoice(payload);
+      setCreatedDevisInfo({
+        docNumber,
+        totalTtc: devisSubtotalTtc,
+        summary: itemsSummary,
+      });
+
+      await runSearch(profile.phone, '', profile.email);
+    } finally {
+      setDevisSaving(false);
+    }
+  };
+
   const handleDownloadOrderPdf = (order: QuoteRequestItem) => {
-    // Check if order.message contains ||ERP_JSON||
+    const isConfirmed = order.status !== 'New' && order.status !== 'Lost';
     const rawMsg = order.message || '';
+
     if (rawMsg.includes('||ERP_JSON||')) {
       try {
         const jsonPart = rawMsg.split('||ERP_JSON||')[1];
         const parsed: ErpDocumentPayload = JSON.parse(jsonPart);
-        openAndPrintDevisOrInvoice(parsed);
+        openAndPrintDevisOrInvoice({
+          ...parsed,
+          isConfirmedByOwner: isConfirmed,
+          showStamp: isConfirmed,
+        });
         return;
       } catch {
         // fallback below
       }
     }
 
-    // Fallback: Build a clean VERDANOVE Devis PDF from the order fields
-    const refMatch = (order.product_name + ' ' + rawMsg).match(/\b(FA26\d+|DEV-[\w-]+|GS-\d+)\b/i);
+    const refMatch = (order.product_name + ' ' + rawMsg).match(
+      /\b(FA26\d+|DEV-[\w-]+|GS-\d+)\b/i
+    );
     const docNum = refMatch ? refMatch[1] : `FA26${String(order.id).padStart(5, '0')}`;
     const issueDate = (order.created_at || new Date().toISOString()).split('T')[0];
 
@@ -195,348 +497,804 @@ export const ClientOrderTrackingPage: React.FC = () => {
           sku: `GS-${order.id}`,
           name: order.product_name.replace(/^\[.*?\]\s*/, ''),
           quantity: order.quantity || 1,
-          unitPriceTtc: order.deal_value > 0 ? Math.round(order.deal_value / 1.2) : 1500,
+          unitPriceTtc: order.deal_value > 0 ? order.deal_value : 1500,
         },
       ],
-      taxMode: 'ht_plus_20',
-      showStamp: true,
+      taxMode: 'ttc_includes_20',
+      isConfirmedByOwner: isConfirmed,
+      showStamp: isConfirmed,
     });
   };
 
+  const filteredOrders = useMemo(() => {
+    if (orderFilter === 'pending') return orders.filter((o) => o.status === 'New');
+    if (orderFilter === 'active')
+      return orders.filter((o) => ['Contacted', 'Negotiating', 'Waiting'].includes(o.status));
+    if (orderFilter === 'won') return orders.filter((o) => o.status === 'Won');
+    return orders;
+  }, [orders, orderFilter]);
+
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        {/* Top Breadcrumb & Title */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl shadow-sm border border-gray-200/80">
-          <div>
-            <Link
-              to="/"
-              className="text-xs font-bold text-red-600 hover:underline flex items-center gap-1.5 mb-2"
-            >
-              <i className="fa-solid fa-arrow-left" /> Retour à la boutique GearShop.ma
-            </Link>
-            <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
-              📦 Espace Client & Suivi de Commande / Devis
-            </h1>
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">
-              Suivez l'état d'avancement de votre commande ou téléchargez votre Devis Officiel VERDANOVE en temps réel.
-            </p>
+    <div className="min-h-screen bg-gray-50 py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto space-y-6">
+        {/* Top Header & Navigation Tabs */}
+        <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-200/80 space-y-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <Link
+                to="/"
+                className="text-xs font-bold text-red-600 hover:underline flex items-center gap-1.5 mb-2"
+              >
+                <i className="fa-solid fa-arrow-left" /> Retour à la boutique GearShop.ma
+              </Link>
+              <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
+                👤 Espace Client, Devis & Suivi de Commande
+              </h1>
+              <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                Créez votre compte client, préparez un devis à confirmer par le responsable, et suivez vos commandes et paiements en temps réel.
+              </p>
+            </div>
           </div>
 
-          <div className="flex bg-gray-100 p-1 rounded-2xl shrink-0 self-start">
+          {/* Persistent Logged-In Profile Banner */}
+          {(savedProfile || authUserEmail) && (
+            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-black text-sm shrink-0">
+                  {(savedProfile?.fullName || authUserEmail || 'C').charAt(0).toUpperCase()}
+                </div>
+                <div className="text-xs text-emerald-950">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-black text-sm">
+                      {savedProfile?.fullName || authUserEmail}
+                    </span>
+                    <span className="px-2 py-0.5 bg-emerald-600 text-white rounded-full text-[10px] font-bold">
+                      ✓ Compte Actif
+                    </span>
+                  </div>
+                  <div className="text-emerald-800 mt-0.5">
+                    {savedProfile?.email || authUserEmail}
+                    {savedProfile?.phone ? ` • 📱 ${savedProfile.phone}` : ''}
+                    {savedProfile?.company ? ` • 🏢 ${savedProfile.company}` : ''}
+                    {savedProfile?.ice ? ` • ICE: ${savedProfile.ice}` : ''}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('devis')}
+                  className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold cursor-pointer transition"
+                >
+                  + Nouveau Devis
+                </button>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="px-3 py-1.5 bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 rounded-xl text-xs font-bold cursor-pointer transition"
+                >
+                  Déconnexion
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* 3 Navigation Tabs */}
+          <div className="flex flex-wrap gap-2 bg-gray-100 p-1.5 rounded-2xl">
             <button
               type="button"
-              onClick={() => setMode('lookup')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                mode === 'lookup' ? 'bg-red-600 text-white shadow' : 'text-gray-600 hover:text-black'
+              onClick={() => setActiveTab('orders')}
+              className={`flex-1 min-w-[180px] px-4 py-2.5 rounded-xl text-xs font-extrabold transition cursor-pointer ${
+                activeTab === 'orders'
+                  ? 'bg-red-600 text-white shadow'
+                  : 'text-gray-700 hover:text-black'
               }`}
             >
-              🔍 Suivi Rapide
+              📦 Mes Commandes, Devis & Paiements ({orders.length})
             </button>
             <button
               type="button"
-              onClick={() => setMode('account')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                mode === 'account' ? 'bg-red-600 text-white shadow' : 'text-gray-600 hover:text-black'
+              onClick={() => setActiveTab('devis')}
+              className={`flex-1 min-w-[180px] px-4 py-2.5 rounded-xl text-xs font-extrabold transition cursor-pointer ${
+                activeTab === 'devis'
+                  ? 'bg-red-600 text-white shadow'
+                  : 'text-gray-700 hover:text-black'
               }`}
             >
-              👤 {authUserEmail ? 'Mon Compte' : 'Connexion / Compte'}
+              📋 Créer un Devis en Ligne (À Confirmer)
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('account')}
+              className={`flex-1 min-w-[180px] px-4 py-2.5 rounded-xl text-xs font-extrabold transition cursor-pointer ${
+                activeTab === 'account'
+                  ? 'bg-red-600 text-white shadow'
+                  : 'text-gray-700 hover:text-black'
+              }`}
+            >
+              👤 {savedProfile || authUserEmail ? 'Profil Compte Client' : 'Créer un Compte / Connexion'}
             </button>
           </div>
         </div>
 
-        {/* Mode 1: Quick Lookup by Phone or Order/Devis Reference */}
-        {mode === 'lookup' && (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              runSearch();
-            }}
-            className="bg-white p-6 rounded-3xl shadow-sm border border-gray-200/80 space-y-4"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-extrabold text-gray-700 uppercase tracking-wider mb-1.5">
-                  📱 Votre Numéro de Téléphone (WhatsApp)
-                </label>
-                <input
-                  type="tel"
-                  value={phoneInput}
-                  onChange={(e) => setPhoneInput(e.target.value)}
-                  placeholder="Ex: 06 61 15 09 61"
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 focus:border-red-600 outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-extrabold text-gray-700 uppercase tracking-wider mb-1.5">
-                  📄 Ou N° de Devis / Commande (Optionnel)
-                </label>
-                <input
-                  type="text"
-                  value={refInput}
-                  onChange={(e) => setRefInput(e.target.value)}
-                  placeholder="Ex: FA2600330 ou GS-..."
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-mono focus:border-red-600 outline-none"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full sm:w-auto px-8 py-3.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/20 transition cursor-pointer"
-            >
-              {loading ? 'Recherche en cours...' : '🔍 Rechercher ma Commande / mon Devis'}
-            </button>
-          </form>
-        )}
-
-        {/* Mode 2: Client Account Login / Register */}
-        {mode === 'account' && (
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-200/80">
-            {authUserEmail ? (
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <span className="inline-block px-2.5 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[11px] font-bold mb-1">
-                    ✓ Connecté à votre Espace Client
-                  </span>
-                  <h3 className="text-lg font-extrabold text-gray-900">{authUserEmail}</h3>
-                  <p className="text-xs text-gray-500">
-                    Retrouvez ci-dessous l'historique complet de vos devis et commandes.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={async () => {
-                    await supabase.auth.signOut();
-                    setAuthUserEmail(null);
-                  }}
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-xs font-bold cursor-pointer"
-                >
-                  Se déconnecter
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleAuthSubmit} className="space-y-4 max-w-md mx-auto">
-                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-                  <h3 className="text-base font-black text-gray-900">
-                    {authMode === 'login' ? 'Connexion Compte Client' : 'Créer un Compte Client'}
-                  </h3>
+        {/* ── TAB 1: MON COMPTE CLIENT (INSCRIPTION / CONNEXION) ───────────────── */}
+        {activeTab === 'account' && (
+          <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-200/80">
+            {savedProfile || authUserEmail ? (
+              <div className="space-y-4">
+                <h2 className="text-xl font-black text-gray-900">
+                  ✅ Votre Compte Client est enregistré dans notre base de données
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-600">
+                  Toutes vos demandes de devis, commandes, factures et mises à jour de livraison/paiement sont automatiquement rattachées à votre email (<strong>{savedProfile?.email || authUserEmail}</strong>) et à votre numéro (<strong>{savedProfile?.phone || '-'}</strong>).
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2">
                   <button
                     type="button"
-                    onClick={() => setAuthMode(authMode === 'login' ? 'register' : 'login')}
-                    className="text-xs font-bold text-red-600 hover:underline cursor-pointer"
+                    onClick={() => setActiveTab('orders')}
+                    className="px-6 py-3 bg-gray-900 hover:bg-black text-white font-bold text-xs rounded-xl cursor-pointer"
                   >
-                    {authMode === 'login' ? 'Créer un compte ➔' : 'Déjà inscrit ? Se connecter'}
+                    📦 Voir Mes Commandes & Paiements
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('devis')}
+                    className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl cursor-pointer"
+                  >
+                    📋 Préparer un Devis en Ligne
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleAuthSubmit} className="space-y-4 max-w-xl mx-auto">
+                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                  <div>
+                    <h2 className="text-lg font-black text-gray-900">
+                      {authMode === 'register'
+                        ? 'Créer votre Compte Client GearShop / VERDANOVE'
+                        : 'Connexion à votre Compte Client'}
+                    </h2>
+                    <p className="text-xs text-gray-500">
+                      {authMode === 'register'
+                        ? 'Suivez vos commandes, paiements, devis et recevez les validations par email.'
+                        : 'Accédez à l’historique complet de vos commandes et devis.'}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAuthMode(authMode === 'register' ? 'login' : 'register');
+                      setAuthError(null);
+                    }}
+                    className="text-xs font-bold text-red-600 hover:underline shrink-0 cursor-pointer"
+                  >
+                    {authMode === 'register' ? 'Déjà un compte ? Se connecter ➔' : 'Créer un compte ➔'}
                   </button>
                 </div>
 
                 {authMode === 'register' && (
                   <>
-                    <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1">
-                        Nom Complet ou Société
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={authNameInput}
-                        onChange={(e) => setAuthNameInput(e.target.value)}
-                        placeholder="Ex: Aya Toraif / Studio Prod"
-                        className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm"
-                      />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                          Nom Complet <span className="text-red-600">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={authNameInput}
+                          onChange={(e) => setAuthNameInput(e.target.value)}
+                          placeholder="Ex: Aya Toraif / Mohamed Alami"
+                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                          Téléphone / WhatsApp <span className="text-red-600">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          value={authPhoneInput}
+                          onChange={(e) => setAuthPhoneInput(e.target.value)}
+                          placeholder="06 XX XX XX XX"
+                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1">
-                        Numéro de Téléphone (pour lier vos commandes)
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        value={authPhoneInput}
-                        onChange={(e) => setAuthPhoneInput(e.target.value)}
-                        placeholder="06 XX XX XX XX"
-                        className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm"
-                      />
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                          Société / Studio (Optionnel)
+                        </label>
+                        <input
+                          type="text"
+                          value={authCompanyInput}
+                          onChange={(e) => setAuthCompanyInput(e.target.value)}
+                          placeholder="Nom d'entreprise"
+                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                          N° ICE (Optionnel)
+                        </label>
+                        <input
+                          type="text"
+                          value={authIceInput}
+                          onChange={(e) => setAuthIceInput(e.target.value)}
+                          placeholder="Pour devis / facture"
+                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-mono text-gray-900"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">Ville</label>
+                        <input
+                          type="text"
+                          value={authCityInput}
+                          onChange={(e) => setAuthCityInput(e.target.value)}
+                          placeholder="Casablanca, Rabat..."
+                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                        />
+                      </div>
                     </div>
                   </>
                 )}
 
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">Email</label>
-                  <input
-                    type="email"
-                    required
-                    value={emailInput}
-                    onChange={(e) => setEmailInput(e.target.value)}
-                    placeholder="client@exemple.ma"
-                    className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">
+                      Email <span className="text-red-600">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={emailInput}
+                      onChange={(e) => setEmailInput(e.target.value)}
+                      placeholder="client@exemple.ma"
+                      className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">
+                      Mot de passe <span className="text-red-600">*</span>
+                    </label>
+                    <input
+                      type="password"
+                      required
+                      minLength={6}
+                      value={passwordInput}
+                      onChange={(e) => setPasswordInput(e.target.value)}
+                      placeholder="6 caractères minimum"
+                      className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">Mot de passe</label>
-                  <input
-                    type="password"
-                    required
-                    value={passwordInput}
-                    onChange={(e) => setPasswordInput(e.target.value)}
-                    placeholder="••••••••"
-                    className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm"
-                  />
-                </div>
-
-                {authError && <p className="text-xs text-red-600 font-semibold">{authError}</p>}
-                {authMessage && <p className="text-xs text-emerald-600 font-semibold">{authMessage}</p>}
+                {authError && (
+                  <p className="text-xs text-red-600 bg-red-50 border border-red-200 p-3 rounded-xl font-semibold">
+                    {authError}
+                  </p>
+                )}
+                {authMessage && (
+                  <p className="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 p-3 rounded-xl font-semibold">
+                    {authMessage}
+                  </p>
+                )}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase rounded-xl cursor-pointer"
+                  className="w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/20 transition cursor-pointer"
                 >
-                  {authMode === 'login' ? 'Accéder à mes commandes' : 'Créer mon compte client'}
+                  {loading
+                    ? 'Traitement...'
+                    : authMode === 'register'
+                    ? '✅ Créer mon Compte & Accéder au Suivi'
+                    : 'Se Connecter à mon Compte'}
                 </button>
               </form>
             )}
           </div>
         )}
 
-        {/* Results Section */}
-        {searchedOnce && (
+        {/* ── TAB 2: CRÉER UN DEVIS EN LIGNE (À CONFIRMER PAR LE RESPONSABLE) ──── */}
+        {activeTab === 'devis' && (
           <div className="space-y-6">
-            {orders.length === 0 ? (
-              <div className="bg-white p-8 rounded-3xl border border-gray-200 text-center space-y-2">
-                <div className="text-3xl">🔎</div>
-                <h3 className="text-base font-bold text-gray-900">
-                  Aucune commande ou devis trouvé pour ces informations
-                </h3>
-                <p className="text-xs text-gray-500 max-w-md mx-auto">
-                  Vérifiez votre numéro de téléphone (ex: 06...) ou votre numéro de référence (ex: FA26...), ou contactez notre service client sur WhatsApp au +212 673 011 873.
-                </p>
+            <div className="bg-amber-50 border border-amber-300 rounded-2xl p-4 flex items-start gap-3 text-xs text-amber-950">
+              <i className="fa-solid fa-circle-info text-amber-600 text-base mt-0.5 shrink-0" />
+              <div>
+                <span className="font-black uppercase">Mention « À Confirmer par le Responsable » :</span>{' '}
+                Sélectionnez les produits souhaités ci-dessous pour générer votre Devis PDF instantanément. Ce devis portera la mention <strong>« DEVIS EN ATTENTE DE CONFIRMATION »</strong> : veuillez ensuite l’envoyer au responsable (<strong>+212 661 15 09 61 / Verdanove@gmail.com</strong>) pour vérification du stock et validation définitive.
               </div>
-            ) : (
-              orders.map((order) => {
-                const currentStep = getStepNumber(order.status);
-                const dateFormatted = new Date(order.created_at).toLocaleDateString('fr-FR', {
-                  day: '2-digit',
-                  month: 'long',
-                  year: 'numeric',
-                });
+            </div>
 
-                return (
-                  <div
-                    key={order.id}
-                    className="bg-white rounded-3xl shadow-sm border border-gray-200/90 p-6 sm:p-8 space-y-6"
-                  >
-                    {/* Order Header */}
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 pb-4">
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="px-3 py-1 bg-red-50 text-red-600 border border-red-200 rounded-lg text-xs font-black font-mono">
-                            Réf #{order.id}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Left: Product Selection Catalog */}
+              <div className="lg:col-span-2 bg-white p-6 rounded-3xl shadow-sm border border-gray-200/80 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <h2 className="text-base font-black text-gray-900">
+                    1. Sélectionnez vos Produits ({products.length} références)
+                  </h2>
+                  <input
+                    type="text"
+                    value={productQuery}
+                    onChange={(e) => setProductQuery(e.target.value)}
+                    placeholder="🔍 Rechercher (Canon R6, Sony FX30, DJI, Godox...)"
+                    className="w-full sm:w-72 px-3.5 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-900 focus:border-red-600 outline-none"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[420px] overflow-y-auto pr-1">
+                  {filteredCatalog.map((prod) => (
+                    <div
+                      key={prod.id}
+                      className="flex items-center gap-3 p-3 rounded-2xl border border-gray-200 hover:border-red-400 transition bg-gray-50/50"
+                    >
+                      <img
+                        src={prod.image}
+                        alt={prod.name}
+                        className="w-12 h-12 object-contain rounded-lg bg-white border border-gray-100 shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-gray-900 line-clamp-2">
+                          {prod.name}
+                        </div>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <span className="text-xs font-black text-red-600 font-mono">
+                            {prod.price.toLocaleString('fr-FR')} DH
                           </span>
-                          <span className="text-xs text-gray-500 font-medium">
-                            Créé le {dateFormatted}
+                          <span
+                            className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                              prod.inStock
+                                ? 'bg-emerald-100 text-emerald-700'
+                                : 'bg-amber-100 text-amber-700'
+                            }`}
+                          >
+                            {prod.inStock ? 'En stock' : 'Sur commande'}
                           </span>
                         </div>
-                        <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mt-1.5">
-                          {order.product_name.replace(/\|\|ERP_JSON\|\|.*$/, '')}
-                        </h3>
-                        <p className="text-xs text-gray-500 mt-0.5">
-                          Client : <strong>{order.name}</strong>{' '}
-                          {order.company ? `(${order.company})` : ''} • Tél : {order.phone}
-                        </p>
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => addDevisProduct(prod)}
+                        className="px-3 py-2 bg-gray-900 hover:bg-red-600 text-white rounded-xl text-xs font-bold shrink-0 cursor-pointer transition"
+                      >
+                        + Ajouter
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-                      <div className="flex flex-col sm:items-end gap-2 shrink-0">
-                        {order.deal_value > 0 && (
-                          <div className="text-lg font-black text-gray-900 font-mono">
-                            {order.deal_value.toLocaleString('fr-FR')} DH TTC
+              {/* Right: Selected Lines + Client Info + Generate */}
+              <form
+                onSubmit={handleCreateClientDevis}
+                className="bg-white p-6 rounded-3xl shadow-sm border border-gray-200/80 space-y-4"
+              >
+                <h2 className="text-base font-black text-gray-900">
+                  2. Votre Sélection ({devisItems.length})
+                </h2>
+
+                {devisItems.length === 0 ? (
+                  <div className="p-4 bg-gray-50 border border-dashed border-gray-300 rounded-2xl text-xs text-gray-500 text-center">
+                    Cliquez sur <strong>« + Ajouter »</strong> à gauche pour ajouter des équipements à votre devis.
+                  </div>
+                ) : (
+                  <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                    {devisItems.map(({ product, qty }) => (
+                      <div
+                        key={product.id}
+                        className="p-2.5 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-between gap-2 text-xs"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <div className="font-bold text-gray-900 truncate">{product.name}</div>
+                          <div className="text-[11px] text-gray-500 font-mono">
+                            {product.price.toLocaleString('fr-FR')} DH × {qty} ={' '}
+                            <strong>{(product.price * qty).toLocaleString('fr-FR')} DH</strong>
                           </div>
-                        )}
-                        <div className="flex flex-wrap gap-2">
+                        </div>
+                        <div className="flex items-center gap-1 shrink-0">
+                          <input
+                            type="number"
+                            min={1}
+                            value={qty}
+                            onChange={(e) => {
+                              const nextQty = Math.max(1, parseInt(e.target.value, 10) || 1);
+                              setDevisItems((prev) =>
+                                prev.map((it) =>
+                                  it.product.id === product.id ? { ...it, qty: nextQty } : it
+                                )
+                              );
+                            }}
+                            className="w-12 px-1.5 py-1 bg-white border border-gray-300 rounded text-center font-bold"
+                          />
                           <button
                             type="button"
-                            onClick={() => handleDownloadOrderPdf(order)}
-                            className="px-4 py-2 bg-gray-900 hover:bg-black text-white rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition"
+                            onClick={() =>
+                              setDevisItems((prev) =>
+                                prev.filter((it) => it.product.id !== product.id)
+                              )
+                            }
+                            className="text-gray-400 hover:text-red-600 p-1 font-bold cursor-pointer"
                           >
-                            <i className="fa-solid fa-file-pdf text-red-500" />
-                            <span>Télécharger Devis / Facture PDF</span>
+                            ✕
                           </button>
-                          <a
-                            href={`https://wa.me/212673011873?text=${encodeURIComponent(
-                              `Bonjour GearShop / Verdanove, je souhaite suivre ma commande / mon devis Réf #${order.id} (${order.name}).`
-                            )}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition"
-                          >
-                            <i className="fa-brands fa-whatsapp" />
-                            <span>Assistance WhatsApp</span>
-                          </a>
                         </div>
                       </div>
-                    </div>
+                    ))}
+                  </div>
+                )}
 
-                    {/* 5-Step Progress Tracker */}
-                    {currentStep === -1 ? (
-                      <div className="p-4 bg-red-50 border border-red-200 rounded-2xl text-xs text-red-700 font-bold">
-                        ❌ Ce dossier / devis est marqué comme annulé ou expiré. Contactez-nous sur WhatsApp pour le réactiver.
-                      </div>
-                    ) : (
-                      <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-2">
-                        {ORDER_STEPS.map((st) => {
-                          const isCompleted = currentStep >= st.step;
-                          const isCurrent = currentStep === st.step;
-                          return (
-                            <div
-                              key={st.step}
-                              className={`p-3.5 rounded-2xl border transition flex flex-col justify-between ${
-                                isCurrent
-                                  ? 'bg-red-50/70 border-red-500 shadow-sm'
-                                  : isCompleted
-                                  ? 'bg-emerald-50/40 border-emerald-300'
-                                  : 'bg-gray-50 border-gray-200 opacity-60'
-                              }`}
-                            >
-                              <div className="flex items-center justify-between mb-2">
-                                <span
-                                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${
+                {devisItems.length > 0 && (
+                  <div className="bg-gray-900 text-white rounded-2xl p-3.5 text-xs space-y-1">
+                    <div className="flex justify-between text-gray-300">
+                      <span>Total HT estimé :</span>
+                      <span className="font-mono">
+                        {devisSubtotalHt.toLocaleString('fr-FR', { maximumFractionDigits: 2 })} DH
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-gray-300">
+                      <span>TVA (20%) :</span>
+                      <span className="font-mono">
+                        {devisTva.toLocaleString('fr-FR', { maximumFractionDigits: 2 })} DH
+                      </span>
+                    </div>
+                    <div className="flex justify-between font-black text-sm pt-1 border-t border-gray-800">
+                      <span>TOTAL TTC :</span>
+                      <span className="text-red-400 font-mono">
+                        {devisSubtotalTtc.toLocaleString('fr-FR')} DH
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                <div className="space-y-2.5 text-xs pt-1">
+                  <input
+                    type="text"
+                    required
+                    value={devisName}
+                    onChange={(e) => setDevisName(e.target.value)}
+                    placeholder="Nom Complet *"
+                    className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900"
+                  />
+                  <input
+                    type="email"
+                    required
+                    value={devisEmail}
+                    onChange={(e) => setDevisEmail(e.target.value)}
+                    placeholder="Email (pour suivi & validation) *"
+                    className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900"
+                  />
+                  <input
+                    type="tel"
+                    required
+                    value={devisPhone}
+                    onChange={(e) => setDevisPhone(e.target.value)}
+                    placeholder="Téléphone / WhatsApp *"
+                    className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900"
+                  />
+                  <div className="grid grid-cols-2 gap-2">
+                    <input
+                      type="text"
+                      value={devisCompany}
+                      onChange={(e) => setDevisCompany(e.target.value)}
+                      placeholder="Société (Opt.)"
+                      className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900"
+                    />
+                    <input
+                      type="text"
+                      value={devisIce}
+                      onChange={(e) => setDevisIce(e.target.value)}
+                      placeholder="N° ICE (Opt.)"
+                      className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl font-mono text-gray-900"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    value={devisCity}
+                    onChange={(e) => setDevisCity(e.target.value)}
+                    placeholder="Ville"
+                    className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900"
+                  />
+                  <textarea
+                    rows={2}
+                    value={devisNotes}
+                    onChange={(e) => setDevisNotes(e.target.value)}
+                    placeholder="Précisions ou délai souhaité (Optionnel)..."
+                    className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={devisSaving || devisItems.length === 0}
+                  className="w-full py-3.5 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white font-black text-xs uppercase rounded-xl shadow-lg shadow-red-600/20 transition cursor-pointer"
+                >
+                  {devisSaving
+                    ? 'Enregistrement...'
+                    : '✅ Enregistrer & Télécharger Devis PDF (À Confirmer)'}
+                </button>
+
+                {createdDevisInfo && (
+                  <div className="bg-emerald-50 border border-emerald-300 rounded-2xl p-3.5 space-y-2 text-xs text-emerald-950">
+                    <div className="font-black">
+                      ✅ Devis #{createdDevisInfo.docNumber} enregistré !
+                    </div>
+                    <p className="text-[11px] text-emerald-800">
+                      Votre devis (en attente de confirmation) a été enregistré sur votre compte. Envoyez-le au responsable pour validation finale :
+                    </p>
+                    <div className="flex flex-col gap-1.5">
+                      <a
+                        href={`https://wa.me/212661150961?text=${encodeURIComponent(
+                          `Bonjour Responsable VERDANOVE / GearShop,\n\nJe souhaite faire confirmer mon Devis N° *${createdDevisInfo.docNumber}* (${createdDevisInfo.totalTtc.toLocaleString('fr-FR')} DH TTC).\nClient : ${devisName} (${devisPhone})\nArticles : ${createdDevisInfo.summary}\nSuivi : https://www.gearshop.ma/suivi-commande?ref=${encodeURIComponent(createdDevisInfo.docNumber)}`
+                        )}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full py-2 bg-[#25D366] text-white font-bold rounded-xl text-center hover:brightness-105 transition"
+                      >
+                        📨 Envoyer au Responsable sur WhatsApp
+                      </a>
+                      <a
+                        href={`mailto:Verdanove@gmail.com?subject=${encodeURIComponent(
+                          `Confirmation Devis #${createdDevisInfo.docNumber} - ${devisName}`
+                        )}&body=${encodeURIComponent(
+                          `Bonjour,\n\nJe souhaite confirmer le Devis N° ${createdDevisInfo.docNumber} d'un montant TTC de ${createdDevisInfo.totalTtc} DH.\n\nClient : ${devisName}\nTél : ${devisPhone}\nArticles : ${createdDevisInfo.summary}`
+                        )}`}
+                        className="w-full py-2 bg-gray-900 text-white font-bold rounded-xl text-center hover:bg-black transition"
+                      >
+                        ✉️ Envoyer par Email à Verdanove@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* ── TAB 3: MES COMMANDES, DEVIS & PAIEMENTS (SUIVI EN DIRECT) ─────────── */}
+        {activeTab === 'orders' && (
+          <div className="space-y-6">
+            {/* Search Lookup Box */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                runSearch();
+              }}
+              className="bg-white p-6 rounded-3xl shadow-sm border border-gray-200/80 space-y-4"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+                <div>
+                  <label className="block text-xs font-extrabold text-gray-700 uppercase tracking-wider mb-1.5">
+                    📱 Téléphone (WhatsApp)
+                  </label>
+                  <input
+                    type="tel"
+                    value={phoneInput}
+                    onChange={(e) => setPhoneInput(e.target.value)}
+                    placeholder="Ex: 06 61 15 09 61"
+                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 focus:border-red-600 outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-extrabold text-gray-700 uppercase tracking-wider mb-1.5">
+                    📄 Ou N° Devis / Commande
+                  </label>
+                  <input
+                    type="text"
+                    value={refInput}
+                    onChange={(e) => setRefInput(e.target.value)}
+                    placeholder="Ex: FA26... ou GS-..."
+                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 font-mono focus:border-red-600 outline-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/20 transition cursor-pointer"
+                >
+                  {loading ? 'Recherche...' : '🔍 Actualiser / Rechercher'}
+                </button>
+              </div>
+            </form>
+
+            {/* Summary KPI Strip & Filters */}
+            {orders.length > 0 && (
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { id: 'all', label: `Tous (${orders.length})` },
+                    { id: 'pending', label: `⏳ À Confirmer (${orders.filter((o) => o.status === 'New').length})` },
+                    {
+                      id: 'active',
+                      label: `🚚 Confirmées / En Cours (${orders.filter((o) => ['Contacted', 'Negotiating', 'Waiting'].includes(o.status)).length})`,
+                    },
+                    { id: 'won', label: `🎉 Payées & Livrées (${orders.filter((o) => o.status === 'Won').length})` },
+                  ].map((f) => (
+                    <button
+                      key={f.id}
+                      type="button"
+                      onClick={() => setOrderFilter(f.id as any)}
+                      className={`px-3.5 py-2 rounded-xl text-xs font-bold border transition cursor-pointer ${
+                        orderFilter === f.id
+                          ? 'bg-gray-900 text-white border-gray-900'
+                          : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
+                      }`}
+                    >
+                      {f.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Orders List */}
+            {searchedOnce && (
+              <div className="space-y-5">
+                {filteredOrders.length === 0 ? (
+                  <div className="bg-white p-8 rounded-3xl border border-gray-200 text-center space-y-3">
+                    <div className="text-3xl">📦</div>
+                    <h3 className="text-base font-bold text-gray-900">
+                      Aucune commande ou devis trouvé
+                    </h3>
+                    <p className="text-xs text-gray-500 max-w-md mx-auto">
+                      Créez votre premier devis en ligne dans l'onglet « Créer un Devis en Ligne », ou vérifiez votre numéro de téléphone ci-dessus.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab('devis')}
+                      className="px-5 py-2.5 bg-red-600 text-white text-xs font-bold rounded-xl cursor-pointer"
+                    >
+                      📋 Créer un Devis maintenant
+                    </button>
+                  </div>
+                ) : (
+                  filteredOrders.map((order) => {
+                    const currentStep = getStepNumber(order.status);
+                    const isConfirmed = order.status !== 'New' && order.status !== 'Lost';
+                    const dateFormatted = new Date(order.created_at).toLocaleDateString('fr-FR', {
+                      day: '2-digit',
+                      month: 'long',
+                      year: 'numeric',
+                    });
+
+                    return (
+                      <div
+                        key={order.id}
+                        className="bg-white rounded-3xl shadow-sm border border-gray-200/90 p-6 sm:p-8 space-y-5"
+                      >
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-gray-100 pb-4">
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="px-3 py-1 bg-gray-900 text-white rounded-lg text-xs font-black font-mono">
+                                Dossier #{order.id}
+                              </span>
+                              {order.status === 'New' && (
+                                <span className="px-3 py-1 bg-amber-100 text-amber-800 border border-amber-300 rounded-lg text-xs font-extrabold">
+                                  ⏳ À CONFIRMER — Envoyez ce devis au responsable pour validation
+                                </span>
+                              )}
+                              {isConfirmed && (
+                                <span className="px-3 py-1 bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-lg text-xs font-extrabold">
+                                  ✅ CONFIRMÉ PAR LE RESPONSABLE — Devis Officiel Validé
+                                </span>
+                              )}
+                              <span className="text-xs text-gray-500">Le {dateFormatted}</span>
+                            </div>
+
+                            <h3 className="text-base sm:text-lg font-extrabold text-gray-900">
+                              {order.product_name.replace(/\|\|ERP_JSON\|\|.*$/, '')}
+                            </h3>
+                            <p className="text-xs text-gray-500">
+                              Client : <strong>{order.name}</strong>{' '}
+                              {order.company ? `(${order.company})` : ''} • Tél : {order.phone} • Email : {order.email}
+                            </p>
+                          </div>
+
+                          <div className="flex flex-col sm:items-end gap-2 shrink-0">
+                            {order.deal_value > 0 && (
+                              <div className="text-lg font-black text-gray-900 font-mono">
+                                {order.deal_value.toLocaleString('fr-FR')} DH TTC
+                              </div>
+                            )}
+                            <div className="flex flex-wrap gap-2">
+                              <button
+                                type="button"
+                                onClick={() => handleDownloadOrderPdf(order)}
+                                className="px-4 py-2 bg-gray-900 hover:bg-black text-white rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition"
+                              >
+                                <i className="fa-solid fa-file-pdf text-red-500" />
+                                <span>
+                                  {isConfirmed
+                                    ? 'Télécharger Devis Officiel Cacheté (PDF)'
+                                    : 'Télécharger Devis PDF (À Confirmer)'}
+                                </span>
+                              </button>
+                              <a
+                                href={`https://wa.me/212661150961?text=${encodeURIComponent(
+                                  order.status === 'New'
+                                    ? `Bonjour Responsable VERDANOVE / GearShop,\n\nJe souhaite faire confirmer et vérifier mon devis / ma commande Dossier #${order.id} (${order.name}) : ${order.product_name}.\nLien suivi : https://www.gearshop.ma/suivi-commande?ref=${order.id}`
+                                    : `Bonjour, je souhaite suivre mon dossier #${order.id} (${order.name}).`
+                                )}`}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="px-3.5 py-2 bg-[#25D366] hover:brightness-105 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition"
+                              >
+                                <i className="fa-brands fa-whatsapp" />
+                                <span>
+                                  {order.status === 'New'
+                                    ? 'Envoyer au Responsable (Confirmation)'
+                                    : 'Contacter sur WhatsApp'}
+                                </span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* 5-Step Progress & Payment Tracker */}
+                        {currentStep === -1 ? (
+                          <div className="p-4 bg-red-50 border border-red-200 rounded-2xl text-xs text-red-700 font-bold">
+                            ❌ Ce dossier / devis est annulé ou expiré.
+                          </div>
+                        ) : (
+                          <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-1">
+                            {ORDER_STEPS.map((st) => {
+                              const isCompleted = currentStep >= st.step;
+                              const isCurrent = currentStep === st.step;
+                              return (
+                                <div
+                                  key={st.step}
+                                  className={`p-3.5 rounded-2xl border transition flex flex-col justify-between ${
                                     isCurrent
-                                      ? 'bg-red-600 text-white'
+                                      ? 'bg-red-50/70 border-red-500 shadow-sm'
                                       : isCompleted
-                                      ? 'bg-emerald-600 text-white'
-                                      : 'bg-gray-200 text-gray-600'
+                                      ? 'bg-emerald-50/40 border-emerald-300'
+                                      : 'bg-gray-50 border-gray-200 opacity-60'
                                   }`}
                                 >
-                                  {isCompleted && !isCurrent ? '✓' : st.step}
-                                </span>
-                                <i
-                                  className={`fa-solid ${st.icon} text-sm ${
-                                    isCurrent
-                                      ? 'text-red-600'
-                                      : isCompleted
-                                      ? 'text-emerald-600'
-                                      : 'text-gray-400'
-                                  }`}
-                                />
-                              </div>
-                              <div>
-                                <div className="text-xs font-extrabold text-gray-900 leading-snug">
-                                  {st.title}
+                                  <div className="flex items-center justify-between mb-2">
+                                    <span
+                                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${
+                                        isCurrent
+                                          ? 'bg-red-600 text-white'
+                                          : isCompleted
+                                          ? 'bg-emerald-600 text-white'
+                                          : 'bg-gray-200 text-gray-600'
+                                      }`}
+                                    >
+                                      {isCompleted && !isCurrent ? '✓' : st.step}
+                                    </span>
+                                    <i
+                                      className={`fa-solid ${st.icon} text-sm ${
+                                        isCurrent
+                                          ? 'text-red-600'
+                                          : isCompleted
+                                          ? 'text-emerald-600'
+                                          : 'text-gray-400'
+                                      }`}
+                                    />
+                                  </div>
+                                  <div>
+                                    <div className="text-xs font-extrabold text-gray-900 leading-snug">
+                                      {st.title}
+                                    </div>
+                                    <div className="text-[11px] text-gray-500 mt-1 leading-relaxed">
+                                      {st.desc}
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className="text-[11px] text-gray-500 mt-1 leading-relaxed">
-                                  {st.desc}
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })}
+                              );
+                            })}
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                );
-              })
+                    );
+                  })
+                )}
+              </div>
             )}
           </div>
         )}

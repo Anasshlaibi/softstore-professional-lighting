@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../src/context/CartContext';
-import { createQuoteRequest } from '../src/services/leadService';
+import { supabase } from '../src/lib/supabase';
+import { saveErpDocumentToSupabase, subscribeNewsletter } from '../src/services/leadService';
 import { sendMetaCapiEvent } from '../src/services/metaCapiService';
 import { trackCheckoutStarted, trackWhatsAppLead } from '../src/services/googleAnalytics';
-import { openAndPrintDevisOrInvoice } from '../src/utils/devisInvoiceGenerator';
+import { openAndPrintDevisOrInvoice, ErpDocumentPayload } from '../src/utils/devisInvoiceGenerator';
 
 interface CheckoutModalProps {
   onClose: () => void;
@@ -12,6 +14,8 @@ interface CheckoutModalProps {
   onSuccess: () => void;
 }
 
+const CLIENT_PROFILE_KEY = 'gearshop_client_profile_v1';
+
 const CheckoutModal: React.FC<CheckoutModalProps> = ({
   onClose,
   siteConfig,
@@ -19,6 +23,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   onSuccess,
 }) => {
   const { cart: cartItems, clearCart } = useCart();
+  const navigate = useNavigate();
 
   // Fire InitiateCheckout when modal opens
   useEffect(() => {
@@ -46,16 +51,67 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     }
   }, [cartItems]);
 
+  const savedProfile = (() => {
+    try {
+      const raw = localStorage.getItem(CLIENT_PROFILE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  })();
+
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    company: '',
-    ice: '',
-    city: 'Casablanca',
+    name: savedProfile?.fullName || '',
+    email: savedProfile?.email || '',
+    phone: savedProfile?.phone || '',
+    company: savedProfile?.company || '',
+    ice: savedProfile?.ice || '',
+    city: savedProfile?.city || 'Casablanca',
     address: '',
     message: '',
   });
+  const [linkClientAccount, setLinkClientAccount] = useState(true);
+  const [accountPassword, setAccountPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const persistAccountAndEmail = async () => {
+    const cleanEmail = formData.email.trim().toLowerCase();
+    const profileObj = {
+      fullName: formData.name.trim(),
+      email: cleanEmail,
+      phone: formData.phone.trim(),
+      company: formData.company.trim(),
+      ice: formData.ice.trim(),
+      city: formData.city,
+    };
+    if (linkClientAccount && (profileObj.fullName || profileObj.email || profileObj.phone)) {
+      try {
+        localStorage.setItem(CLIENT_PROFILE_KEY, JSON.stringify(profileObj));
+      } catch {}
+    }
+    if (cleanEmail && cleanEmail.includes('@')) {
+      try {
+        await subscribeNewsletter(cleanEmail);
+      } catch {}
+      if (linkClientAccount && accountPassword.trim().length >= 6) {
+        try {
+          await supabase.auth.signUp({
+            email: cleanEmail,
+            password: accountPassword.trim(),
+            options: {
+              data: {
+                full_name: profileObj.fullName,
+                phone: profileObj.phone,
+                company: profileObj.company,
+                ice: profileObj.ice,
+                city: profileObj.city,
+              },
+            },
+          });
+        } catch {}
+      }
+    }
+  };
 
   const handleDownloadInstantDevis = async () => {
     const todayStr = new Date().toISOString().split('T')[0];
@@ -63,7 +119,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     const validUntilStr = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
     const devisNum = `FA26${String(Math.floor(100 + Math.random() * 900)).padStart(5, '0')}`;
 
-    openAndPrintDevisOrInvoice({
+    const devisPayload: ErpDocumentPayload = {
       docType: 'DEVIS',
       docNumber: devisNum,
       issueDate: todayStr,
@@ -74,6 +130,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
       clientCompany: formData.company || undefined,
       clientIce: formData.ice || undefined,
       clientPhone: formData.phone || undefined,
+      clientEmail: formData.email || undefined,
       clientCity: formData.city,
       clientAddress: formData.address || undefined,
       items: cartItems.map((item) => ({
@@ -85,26 +142,35 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
       })),
       discountPercent: appliedPromo || 0,
       shippingCostTtc: 0,
-      taxMode: 'ht_plus_20',
-      showStamp: true,
-    });
+      taxMode: 'ttc_includes_20',
+      isConfirmedByOwner: false,
+      showStamp: false,
+    };
+
+    openAndPrintDevisOrInvoice(devisPayload);
 
     trackWhatsAppLead({
       source: 'instant_pdf_devis_checkout',
       itemName: cartItems.map((i) => i.name).join(', '),
-      value: total,
+      value: subtotal - discountAmount,
     });
 
-    if (formData.name || formData.phone) {
+    if (formData.name || formData.phone || formData.email) {
       try {
-        await createQuoteRequest({
-          productName: `[DEVIS PDF ${devisNum}] ` + cartItems.map((i) => `${i.qty}x ${i.name}`).join(', '),
-          name: formData.name || 'Client Devis PDF',
-          email: `${(formData.phone || 'devis').replace(/[^0-9]/g, '')}@gearshop.ma`,
-          phone: formData.phone || 'Non renseigné',
-          company: [formData.company, formData.ice ? `ICE: ${formData.ice}` : '', formData.city].filter(Boolean).join(' | '),
-          quantity: cartItems.reduce((sum, item) => sum + item.qty, 0),
-          message: `Devis PDF généré #${devisNum} | Total TTC: ${total} DH`,
+        await persistAccountAndEmail();
+        await saveErpDocumentToSupabase({
+          docNumber: devisNum,
+          docType: 'DEVIS (À CONFIRMER)',
+          clientName: formData.name || 'Client Devis PDF',
+          clientCompany: [formData.company, formData.ice ? `ICE: ${formData.ice}` : '', formData.city]
+            .filter(Boolean)
+            .join(' | '),
+          clientPhone: formData.phone || 'Non renseigné',
+          clientEmail: formData.email || undefined,
+          totalTtc: subtotal - discountAmount,
+          itemsSummary: cartItems.map((i) => `${i.qty}x ${i.name}`).join(', '),
+          totalQty: cartItems.reduce((sum, item) => sum + item.qty, 0),
+          fullPayloadJson: JSON.stringify(devisPayload),
         });
       } catch {
         // non-blocking
@@ -177,17 +243,48 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     // Open WhatsApp synchronously in user click gesture so mobile Safari never blocks it
     window.open(waUrl, '_blank');
 
-    // 1. Record lead / order safely in Supabase
+    // 1. Record lead / order & client account safely in Supabase
     try {
-      const itemsList = cartItems.map(i => `${i.name} (x${i.qty}) [https://www.gearshop.ma/product/${i.id}-${slugify(i.name)}]`).join('\n');
-      await createQuoteRequest({
-        productName: `Panier (${cartItems.length} art.): ` + cartItems.map(i => `${i.name} (x${i.qty})`).join(', '),
-        name: formData.name,
-        email: `${formData.phone.replace(/[^0-9]/g, '') || 'client'}@gearshop.ma`,
-        phone: formData.phone,
-        company: `COMMANDE CLIENT (${cityName} - ${formData.address})`,
-        quantity: cartItems.reduce((sum, item) => sum + item.qty, 0),
-        message: `Commande #${commandId} | Total: ${total} DH (Livraison: ${isFreeShipping ? 'Gratuite > 2000 DH' : shipping + ' DH'}) | ` + (formData.message ? `${formData.message}\n\n` : '') + `Articles:\n${itemsList}`
+      await persistAccountAndEmail();
+      const todayStr = new Date().toISOString().split('T')[0];
+      const [, mm, dd] = todayStr.split('-');
+      const orderPayload: ErpDocumentPayload = {
+        docType: 'DEVIS',
+        docNumber: commandId,
+        issueDate: todayStr,
+        referenceText: `COMMANDE DU ${dd}/${mm}`,
+        validityDays: 30,
+        clientName: formData.name,
+        clientCompany: formData.company || undefined,
+        clientIce: formData.ice || undefined,
+        clientPhone: formData.phone,
+        clientEmail: formData.email.trim().toLowerCase(),
+        clientCity: cityName,
+        clientAddress: formData.address,
+        items: cartItems.map((item) => ({
+          id: item.id,
+          sku: `GS-${item.id}`,
+          name: item.name,
+          quantity: item.qty,
+          unitPriceTtc: item.price,
+        })),
+        discountPercent: appliedPromo || 0,
+        shippingCostTtc: shipping,
+        taxMode: 'ttc_includes_20',
+        isConfirmedByOwner: false,
+        showStamp: false,
+      };
+      await saveErpDocumentToSupabase({
+        docNumber: commandId,
+        docType: 'COMMANDE',
+        clientName: formData.name,
+        clientCompany: [formData.company, cityName, formData.address].filter(Boolean).join(' — '),
+        clientPhone: formData.phone,
+        clientEmail: formData.email.trim().toLowerCase(),
+        totalTtc: total,
+        itemsSummary: cartItems.map((i) => `${i.qty}x ${i.name}`).join(', '),
+        totalQty: cartItems.reduce((sum, item) => sum + item.qty, 0),
+        fullPayloadJson: JSON.stringify(orderPayload),
       });
     } catch (dbErr) {
       console.warn('Database lead record non-blocking error:', dbErr);
@@ -200,6 +297,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
         value: total,
         currency: 'MAD',
         phone: formData.phone,
+        email: formData.email.trim().toLowerCase(),
         customData: {
           content_name: 'WhatsApp E-commerce Order',
           content_ids: cartItems.map(i => i.id.toString()),
@@ -220,6 +318,9 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     clearCart();
     setIsSubmitting(false);
     onSuccess();
+    if (linkClientAccount) {
+      navigate(`/mon-compte?ref=${encodeURIComponent(commandId)}&tel=${encodeURIComponent(formData.phone)}`);
+    }
   };
 
   return (
@@ -268,20 +369,37 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-              Numéro de Téléphone (WhatsApp)
-            </label>
-            <input
-              type="tel"
-              required
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-black text-sm focus:outline-none focus:border-black transition"
-              placeholder="06 XX XX XX XX"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div>
+              <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                Téléphone (WhatsApp) *
+              </label>
+              <input
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-black text-sm focus:outline-none focus:border-black transition"
+                placeholder="06 XX XX XX XX"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                Email (Suivi &amp; Facture) *
+              </label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-2.5 text-black text-sm focus:outline-none focus:border-black transition"
+                placeholder="client@exemple.ma"
+              />
+            </div>
           </div>
 
           <div>
@@ -403,6 +521,30 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             </div>
           </div>
 
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
+            <label className="flex items-start gap-2 cursor-pointer text-xs text-slate-800 font-semibold">
+              <input
+                type="checkbox"
+                checked={linkClientAccount}
+                onChange={(e) => setLinkClientAccount(e.target.checked)}
+                className="mt-0.5 accent-red-600 rounded"
+              />
+              <span>
+                Créer / lier mon <strong>Compte Client</strong> pour suivre ma commande, mes devis et mes paiements en ligne
+              </span>
+            </label>
+            {linkClientAccount && !savedProfile && (
+              <input
+                type="password"
+                minLength={6}
+                value={accountPassword}
+                onChange={(e) => setAccountPassword(e.target.value)}
+                placeholder="Mot de passe du compte (optionnel, min 6 car.)"
+                className="w-full bg-white border border-slate-200 rounded-lg p-2 text-black text-xs focus:outline-none focus:border-black"
+              />
+            )}
+          </div>
+
           <button
             type="submit"
             disabled={isSubmitting}
@@ -425,7 +567,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             className="w-full bg-gray-900 hover:bg-black text-white py-3 rounded-xl font-bold transition flex justify-center items-center gap-2 text-xs cursor-pointer border border-gray-800"
           >
             <i className="fa-solid fa-file-pdf text-red-500 text-sm"></i>
-            <span>Télécharger un Devis PDF Officiel (Avec TVA 20% & ICE)</span>
+            <span>Télécharger un Devis PDF (À Confirmer par le Responsable)</span>
           </button>
         </form>
       </div>

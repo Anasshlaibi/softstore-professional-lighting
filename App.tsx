@@ -359,12 +359,12 @@ const AppContent: React.FC<{
             } />
             <Route path="/suivi-commande" element={
               <React.Suspense fallback={<LoadingSpinner />}>
-                <ClientOrderTrackingPage />
+                <ClientOrderTrackingPage products={products} />
               </React.Suspense>
             } />
             <Route path="/mon-compte" element={
               <React.Suspense fallback={<LoadingSpinner />}>
-                <ClientOrderTrackingPage />
+                <ClientOrderTrackingPage products={products} />
               </React.Suspense>
             } />
             <Route path="/cinema-lenses-maroc" element={

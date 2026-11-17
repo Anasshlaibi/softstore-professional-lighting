@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { createQuoteRequest } from '../services/leadService';
+import { Link } from 'react-router-dom';
+import { saveErpDocumentToSupabase, subscribeNewsletter } from '../services/leadService';
 import { Product } from '../../App';
-import { slugify } from '../utils/catalogEngine';
-import { openAndPrintDevisOrInvoice } from '../utils/devisInvoiceGenerator';
+import { openAndPrintDevisOrInvoice, ErpDocumentPayload } from '../utils/devisInvoiceGenerator';
+
+const CLIENT_PROFILE_KEY = 'gearshop_client_profile_v1';
 
 interface QuoteRequestModalProps {
   isOpen: boolean;
@@ -11,15 +13,25 @@ interface QuoteRequestModalProps {
 }
 
 const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, onClose }) => {
+  const savedProfile = (() => {
+    try {
+      const raw = localStorage.getItem(CLIENT_PROFILE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  })();
+
   const [productName, setProductName] = useState(product?.name || '');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [company, setCompany] = useState('');
+  const [name, setName] = useState(savedProfile?.fullName || '');
+  const [email, setEmail] = useState(savedProfile?.email || '');
+  const [phone, setPhone] = useState(savedProfile?.phone || '');
+  const [company, setCompany] = useState(savedProfile?.company || '');
+  const [ice, setIce] = useState(savedProfile?.ice || '');
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [successDocNumber, setSuccessDocNumber] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   React.useEffect(() => {
@@ -41,58 +53,78 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
 
     setLoading(true);
     try {
-      const productUrl = product?.id
-        ? `https://www.gearshop.ma/product/${product.id}-${slugify(product.name)}`
-        : '';
-      const fullMessage = productUrl
-        ? (message ? `${message}\n\n🔗 Lien produit : ${productUrl}` : `🔗 Lien produit : ${productUrl}`)
-        : message;
+      const cleanEmail = email.trim().toLowerCase();
+      const todayStr = new Date().toISOString().split('T')[0];
+      const [, mm, dd] = todayStr.split('-');
+      const validUntilStr = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
+      const docNumber = `FA26${String(Math.floor(100 + Math.random() * 900)).padStart(5, '0')}`;
 
-      await createQuoteRequest({
-        productId: product?.id,
-        productName: productName || product?.name || 'Matériel Pro',
-        name,
-        email,
-        phone,
-        company,
-        quantity,
-        message: fullMessage
-      });
+      const unitPrice = product && product.price > 0 ? product.price : 0;
+      const totalTtc = unitPrice * quantity;
+
+      const devisPayload: ErpDocumentPayload = {
+        docType: 'DEVIS',
+        docNumber,
+        issueDate: todayStr,
+        referenceText: `DEMANDE DU ${dd}/${mm}`,
+        validUntilDate: validUntilStr,
+        validityDays: 30,
+        clientName: name.trim(),
+        clientCompany: company.trim() || undefined,
+        clientIce: ice.trim() || undefined,
+        clientPhone: phone.trim(),
+        clientEmail: cleanEmail,
+        items: [
+          {
+            id: product?.id,
+            sku: product?.id ? `GS-${product.id}` : 'GS-SUR-MESURE',
+            name: productName || product?.name || 'Matériel Pro',
+            quantity,
+            unitPriceTtc: unitPrice,
+          },
+        ],
+        taxMode: 'ttc_includes_20',
+        shippingCostTtc: 0,
+        notes: message.trim() || undefined,
+        isConfirmedByOwner: false,
+        showStamp: false,
+      };
+
+      try {
+        localStorage.setItem(
+          CLIENT_PROFILE_KEY,
+          JSON.stringify({
+            fullName: name.trim(),
+            email: cleanEmail,
+            phone: phone.trim(),
+            company: company.trim(),
+            ice: ice.trim(),
+            city: savedProfile?.city || 'Casablanca',
+          })
+        );
+      } catch {}
+
+      await Promise.allSettled([
+        saveErpDocumentToSupabase({
+          docNumber,
+          docType: 'DEVIS (À CONFIRMER)',
+          clientName: name.trim(),
+          clientCompany: [company.trim(), ice.trim() ? `ICE: ${ice.trim()}` : ''].filter(Boolean).join(' | '),
+          clientPhone: phone.trim(),
+          clientEmail: cleanEmail,
+          totalTtc,
+          itemsSummary: `${quantity}x ${productName || product?.name || 'Matériel Pro'}`,
+          totalQty: quantity,
+          fullPayloadJson: JSON.stringify(devisPayload),
+        }),
+        subscribeNewsletter(cleanEmail),
+      ]);
 
       if (product && product.price && product.price > 0) {
-        const todayStr = new Date().toISOString().split('T')[0];
-        const [, mm, dd] = todayStr.split('-');
-        const validUntilStr = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
-        openAndPrintDevisOrInvoice({
-          docType: 'DEVIS',
-          docNumber: `FA26${String(Math.floor(100 + Math.random() * 900)).padStart(5, '0')}`,
-          issueDate: todayStr,
-          referenceText: `DEMANDE DU ${dd}/${mm}`,
-          validUntilDate: validUntilStr,
-          validityDays: 30,
-          clientName: name,
-          clientCompany: company || undefined,
-          clientPhone: phone,
-          clientEmail: email,
-          items: [
-            {
-              id: product.id,
-              sku: `GS-${product.id}`,
-              name: product.name,
-              quantity,
-              unitPriceTtc: product.price,
-            },
-          ],
-          taxMode: 'ht_plus_20',
-          showStamp: true,
-        });
+        openAndPrintDevisOrInvoice(devisPayload);
       }
 
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-        onClose();
-      }, 1800);
+      setSuccessDocNumber(docNumber);
     } catch (err: any) {
       setError(err?.message || 'Erreur lors de la demande de devis');
     } finally {
@@ -111,15 +143,47 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
           ✕
         </button>
 
-        {success ? (
-          <div className="py-8 text-center space-y-3">
-            <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl">
-              ✓
+        {successDocNumber ? (
+          <div className="py-6 text-center space-y-4">
+            <div className="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto text-3xl">
+              ⏳
             </div>
-            <h3 className="text-xl font-bold">Demande de devis envoyée!</h3>
-            <p className="text-sm text-zinc-400">
-              Notre équipe commerciale étudiera votre demande et vous répondra sous 24h ouvrées.
+            <h3 className="text-xl font-bold">Devis #{successDocNumber} généré (À Confirmer)</h3>
+            <p className="text-xs text-zinc-300 leading-relaxed">
+              Ce devis est enregistré dans votre Compte Client. Pour validation définitive du stock et du prix, veuillez l'envoyer au responsable VERDANOVE / GearShop :
             </p>
+            <div className="flex flex-col gap-2 pt-1">
+              <a
+                href={`https://wa.me/212661150961?text=${encodeURIComponent(
+                  `Bonjour Responsable VERDANOVE / GearShop,\n\nJe souhaite confirmer mon Devis N° *${successDocNumber}* pour : ${quantity}x ${productName}.\nClient : ${name} (${phone})\nLien : https://www.gearshop.ma/mon-compte?ref=${encodeURIComponent(successDocNumber)}`
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-2.5 bg-[#25D366] text-white font-bold text-xs rounded-xl"
+              >
+                📨 Envoyer au Responsable sur WhatsApp
+              </a>
+              <Link
+                to={`/mon-compte?ref=${encodeURIComponent(successDocNumber)}&tel=${encodeURIComponent(phone)}`}
+                onClick={() => {
+                  setSuccessDocNumber(null);
+                  onClose();
+                }}
+                className="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl"
+              >
+                📦 Suivre mon Devis dans Mon Compte Client
+              </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  setSuccessDocNumber(null);
+                  onClose();
+                }}
+                className="text-xs text-zinc-400 hover:text-white pt-1 cursor-pointer"
+              >
+                Fermer
+              </button>
+            </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -190,15 +254,27 @@ const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({ isOpen, product, 
               </div>
             </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-zinc-300 mb-1">Quantité souhaitée</label>
-              <input
-                type="number"
-                min={1}
-                value={quantity}
-                onChange={e => setQuantity(parseInt(e.target.value) || 1)}
-                className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-sm text-white outline-none"
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-semibold text-zinc-300 mb-1">N° ICE (Optionnel)</label>
+                <input
+                  type="text"
+                  value={ice}
+                  onChange={e => setIce(e.target.value)}
+                  placeholder="Pour devis B2B / entreprise"
+                  className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-sm font-mono text-white placeholder-zinc-500 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-zinc-300 mb-1">Quantité souhaitée</label>
+                <input
+                  type="number"
+                  min={1}
+                  value={quantity}
+                  onChange={e => setQuantity(parseInt(e.target.value) || 1)}
+                  className="w-full px-3.5 py-2.5 bg-zinc-800 border border-zinc-700 focus:border-red-500 rounded-xl text-sm text-white outline-none"
+                />
+              </div>
             </div>
 
             <div>

@@ -63,6 +63,7 @@ export interface ErpDocumentPayload {
   paymentMethod?: string;
   notes?: string;
   showStamp?: boolean;
+  isConfirmedByOwner?: boolean;
   companySettings?: Partial<ErpCompanySettings>;
 }
 
@@ -294,7 +295,8 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
   const calc = calculateErpTotals(payload);
   const { dateShort, refDefault } = formatShortDate(payload.issueDate);
   const referenceDisplay = payload.referenceText?.trim() || refDefault;
-  const showStamp = payload.showStamp !== false;
+  const isConfirmedByOwner = payload.isConfirmedByOwner !== false;
+  const showStamp = isConfirmedByOwner && payload.showStamp !== false;
 
   const docTitleMap: Record<ErpDocumentType, string> = {
     DEVIS: 'DEVIS',
@@ -308,6 +310,7 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
   };
 
   const docTitle = docTitleMap[payload.docType] || 'DEVIS';
+  const docTitleWithStatus = isConfirmedByOwner ? docTitle : `${docTitle} (À CONFIRMER)`;
   const docWord = docWordMap[payload.docType] || 'devis';
   const clientDisplay = [payload.clientCompany, payload.clientName].filter(Boolean).join(' - ') || 'Client';
 
@@ -315,7 +318,7 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>${escapeHtml(docTitle)} ${escapeHtml(payload.docNumber)} - ${escapeHtml(clientDisplay)}</title>
+  <title>${escapeHtml(docTitleWithStatus)} ${escapeHtml(payload.docNumber)} - ${escapeHtml(clientDisplay)}</title>
   <style>
     @page {
       size: A4 portrait;
@@ -515,6 +518,39 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
       display: block;
       margin-left: 18px;
     }
+    .unconfirmed-box {
+      border: 1.5px solid #dc2626;
+      background: #fffbeb;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-top: 4px;
+    }
+    .unconfirmed-title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      font-weight: 800;
+      color: #b91c1c;
+      margin-bottom: 4px;
+    }
+    .unconfirmed-body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 8pt;
+      line-height: 1.35;
+      color: #78350f;
+    }
+    .unconfirmed-badge {
+      display: inline-block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      font-weight: 800;
+      color: #b91c1c;
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
 
     /* 6. Arrêté le présent devis à la somme de */
     .amount-words {
@@ -551,8 +587,8 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
 <body>
   <div class="toolbar">
     <div class="toolbar-left">
-      <span class="toolbar-badge">VERDANOVE SARL</span>
-      <span>${escapeHtml(docTitle)} N° ${escapeHtml(payload.docNumber)} — client : ${escapeHtml(clientDisplay)}</span>
+      <span class="toolbar-badge" style="background: ${isConfirmedByOwner ? '#16a34a' : '#d97706'};">${isConfirmedByOwner ? 'VERDANOVE SARL' : 'À CONFIRMER'}</span>
+      <span>${escapeHtml(docTitleWithStatus)} N° ${escapeHtml(payload.docNumber)} — client : ${escapeHtml(clientDisplay)}</span>
     </div>
     <div class="toolbar-actions">
       <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
@@ -569,7 +605,7 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
 
       <!-- 2. DEVIS & client Row -->
       <div class="title-client-row">
-        <div>&nbsp;&nbsp;${escapeHtml(docTitle)}</div>
+        <div>&nbsp;&nbsp;${escapeHtml(docTitle)}${!isConfirmedByOwner ? '<span class="unconfirmed-badge">(À CONFIRMER)</span>' : ''}</div>
         <div>
           <div>client : ${escapeHtml(clientDisplay)}</div>
           ${payload.clientIce ? `<div class="client-ice">ICE : ${escapeHtml(payload.clientIce)}</div>` : ''}
@@ -643,11 +679,21 @@ export function openAndPrintDevisOrInvoice(payload: ErpDocumentPayload): void {
         </div>
 
         <div class="bottom-right">
-          <div class="stamp-label">Cachet et Signature (${escapeHtml(company.companyName)}):</div>
           ${
-            showStamp
-              ? `<img class="stamp-img" src="${escapeHtml(company.stampUrl || '/images/verdanove-stamp.png')}" alt="Cachet VERDANOVE" />`
-              : `<div style="height: 90px;"></div>`
+            !isConfirmedByOwner
+              ? `<div class="stamp-label">Validation &amp; Confirmation (${escapeHtml(company.companyName)}):</div>
+                 <div class="unconfirmed-box">
+                   <div class="unconfirmed-title">⏳ DEVIS EN ATTENTE DE CONFIRMATION</div>
+                   <div class="unconfirmed-body">
+                     Ce devis a été généré en ligne et doit être confirmé par le responsable. Veuillez envoyer ce devis au responsable VERDANOVE / GearShop (<strong>+212 661 15 09 61</strong> / <strong>Verdanove@gmail.com</strong>) afin de vérifier la disponibilité et valider définitivement votre commande.
+                   </div>
+                 </div>`
+              : `<div class="stamp-label">Cachet et Signature (${escapeHtml(company.companyName)}):</div>
+                 ${
+                   showStamp
+                     ? `<img class="stamp-img" src="${escapeHtml(company.stampUrl || '/images/verdanove-stamp.png')}" alt="Cachet VERDANOVE" />`
+                     : `<div style="height: 90px;"></div>`
+                 }`
           }
         </div>
       </div>
