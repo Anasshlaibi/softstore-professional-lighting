@@ -128,11 +128,13 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
   const [loading, setLoading] = useState<boolean>(false);
   const [searchedOnce, setSearchedOnce] = useState<boolean>(false);
 
-  // Client Account Login / Register state
+  // Client Account Login / Register / Forgot / Reset state
   const [authUserEmail, setAuthUserEmail] = useState<string | null>(
     () => savedProfile?.email || null
   );
-  const [authMode, setAuthMode] = useState<'register' | 'login'>('register');
+  const [authMode, setAuthMode] = useState<'register' | 'login' | 'forgot' | 'reset_password'>('register');
+  const [isEmailConfirmed, setIsEmailConfirmed] = useState<boolean>(false);
+  const [needsEmailConfirmation, setNeedsEmailConfirmation] = useState<boolean>(false);
   const [authNameInput, setAuthNameInput] = useState<string>(savedProfile?.fullName || '');
   const [authPhoneInput, setAuthPhoneInput] = useState<string>(savedProfile?.phone || '');
   const [authCompanyInput, setAuthCompanyInput] = useState<string>(savedProfile?.company || '');
@@ -140,6 +142,8 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
   const [authCityInput, setAuthCityInput] = useState<string>(savedProfile?.city || 'Casablanca');
   const [emailInput, setEmailInput] = useState<string>(savedProfile?.email || '');
   const [passwordInput, setPasswordInput] = useState<string>('');
+  const [newPasswordInput, setNewPasswordInput] = useState<string>('');
+  const [confirmNewPasswordInput, setConfirmNewPasswordInput] = useState<string>('');
   const [authMessage, setAuthMessage] = useState<string | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
 
@@ -204,36 +208,163 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
     }
   }, [initialRef, initialTel]);
 
-  // Also check active Supabase Auth session
+  const syncSupabaseUserToProfile = async (user: any, saveToCrmIfNew = false) => {
+    if (!user?.email) return;
+    const meta = user.user_metadata || {};
+    const confirmed = Boolean(user.email_confirmed_at || user.confirmed_at || user.app_metadata?.provider === 'google');
+    setIsEmailConfirmed(confirmed);
+    setNeedsEmailConfirmation(!confirmed);
+
+    const prof: ClientProfile = {
+      fullName: meta.full_name || meta.name || savedProfile?.fullName || user.email.split('@')[0],
+      email: user.email,
+      phone: meta.phone || savedProfile?.phone || '',
+      company: meta.company || savedProfile?.company || '',
+      ice: meta.ice || savedProfile?.ice || '',
+      city: meta.city || savedProfile?.city || 'Casablanca',
+    };
+    persistClientProfile(prof);
+    applyProfileToForms(prof);
+
+    if (saveToCrmIfNew && !savedProfile?.email) {
+      await Promise.allSettled([
+        subscribeNewsletter(user.email),
+        createContactLead({
+          name: prof.fullName,
+          email: user.email,
+          phone: prof.phone || 'Google OAuth',
+          message: `[CONNEXION GOOGLE / EMAIL CONFIRMÉ] Email: ${user.email}`,
+        }),
+      ]);
+    }
+    runSearch(prof.phone, initialRef, prof.email);
+  };
+
+  // Also check active Supabase Auth session & listen for OAuth / Email Confirmation / Password Recovery redirects
   useEffect(() => {
+    const hashOrSearch = `${window.location.hash}${window.location.search}`;
+    if (hashOrSearch.includes('type=recovery')) {
+      setActiveTab('account');
+      setAuthMode('reset_password');
+    }
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user?.email) {
-        const meta = session.user.user_metadata || {};
-        const prof: ClientProfile = {
-          fullName: meta.full_name || savedProfile?.fullName || session.user.email.split('@')[0],
-          email: session.user.email,
-          phone: meta.phone || savedProfile?.phone || '',
-          company: meta.company || savedProfile?.company || '',
-          ice: meta.ice || savedProfile?.ice || '',
-          city: meta.city || savedProfile?.city || 'Casablanca',
-        };
-        persistClientProfile(prof);
-        applyProfileToForms(prof);
-        runSearch(prof.phone, initialRef, prof.email);
+        syncSupabaseUserToProfile(session.user, false);
       }
     });
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        setActiveTab('account');
+        setAuthMode('reset_password');
+        setAuthError(null);
+        setAuthMessage('🔐 Choisissez maintenant votre nouveau mot de passe ci-dessous.');
+        return;
+      }
+      if ((event === 'SIGNED_IN' || event === 'USER_UPDATED') && session?.user) {
+        syncSupabaseUserToProfile(session.user, event === 'SIGNED_IN');
+      }
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
   }, []);
+
+  const handleGoogleSignIn = async () => {
+    setAuthError(null);
+    setAuthMessage(null);
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/mon-compte`,
+        },
+      });
+      if (error) throw error;
+    } catch (err: any) {
+      const msg = err?.message || '';
+      if (/not enabled|unsupported provider/i.test(msg)) {
+        setAuthError(
+          'La connexion directe Google/Gmail nécessite l’activation du fournisseur Google dans Supabase Auth (Authentication → Providers → Google).'
+        );
+      } else {
+        setAuthError(msg || 'Impossible de lancer la connexion Google.');
+      }
+      setLoading(false);
+    }
+  };
+
+  const handleResendConfirmation = async (targetEmail?: string) => {
+    const cleanEmail = (targetEmail || emailInput || authUserEmail || savedProfile?.email || '')
+      .trim()
+      .toLowerCase();
+    if (!cleanEmail) {
+      setAuthError('Veuillez saisir votre adresse Gmail/Email pour renvoyer le lien.');
+      return;
+    }
+    setAuthError(null);
+    setAuthMessage(null);
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: cleanEmail,
+        options: {
+          emailRedirectTo: `${window.location.origin}/mon-compte`,
+        },
+      });
+      if (error) throw error;
+      setAuthMessage(
+        `📧 Email de confirmation renvoyé à ${cleanEmail} ! Vérifiez votre boîte de réception (et le dossier Spam/Promotions).`
+      );
+    } catch (err: any) {
+      setAuthError(err?.message || 'Erreur lors du renvoi de l’email de confirmation.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError(null);
     setAuthMessage(null);
+    setNeedsEmailConfirmation(false);
     setLoading(true);
 
     const cleanEmail = emailInput.trim().toLowerCase();
 
     try {
-      if (authMode === 'register') {
+      if (authMode === 'forgot') {
+        if (!cleanEmail) {
+          throw new Error('Veuillez saisir votre adresse email.');
+        }
+        const { error } = await supabase.auth.resetPasswordForEmail(cleanEmail, {
+          redirectTo: `${window.location.origin}/mon-compte`,
+        });
+        if (error) throw error;
+        setAuthMessage(
+          `📧 Un lien de réinitialisation de mot de passe vient d’être envoyé à ${cleanEmail}. Ouvrez votre boîte Gmail/Email et cliquez sur le lien pour définir un nouveau mot de passe.`
+        );
+      } else if (authMode === 'reset_password') {
+        if (!newPasswordInput || newPasswordInput.length < 6) {
+          throw new Error('Le nouveau mot de passe doit contenir au moins 6 caractères.');
+        }
+        if (newPasswordInput !== confirmNewPasswordInput) {
+          throw new Error('Les deux mots de passe ne correspondent pas.');
+        }
+        const { error } = await supabase.auth.updateUser({
+          password: newPasswordInput,
+        });
+        if (error) throw error;
+        setNewPasswordInput('');
+        setConfirmNewPasswordInput('');
+        setAuthMode('login');
+        setAuthMessage('✅ Votre mot de passe a été mis à jour avec succès !');
+        setActiveTab('orders');
+      } else if (authMode === 'register') {
         if (!authNameInput.trim() || !authPhoneInput.trim() || !cleanEmail || !passwordInput) {
           throw new Error('Veuillez remplir votre nom, téléphone, email et mot de passe.');
         }
@@ -242,6 +373,7 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
           email: cleanEmail,
           password: passwordInput,
           options: {
+            emailRedirectTo: `${window.location.origin}/mon-compte`,
             data: {
               full_name: authNameInput.trim(),
               phone: authPhoneInput.trim(),
@@ -255,7 +387,7 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
         if (error) {
           if (/already registered/i.test(error.message)) {
             throw new Error(
-              'Un compte existe déjà avec cet email. Basculez sur "Connexion" pour accéder à votre espace.'
+              'Un compte existe déjà avec cet email. Basculez sur "Connexion" ou cliquez sur "Mot de passe oublié".'
             );
           }
           throw error;
@@ -283,33 +415,36 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
           }),
         ]);
 
+        const confirmedNow = Boolean(data.user?.email_confirmed_at || data.session);
+        setIsEmailConfirmed(confirmedNow);
+        setNeedsEmailConfirmation(!confirmedNow);
+
         setAuthMessage(
-          data.user
-            ? '✅ Compte créé avec succès ! Vous pouvez maintenant demander des devis à confirmer et suivre vos commandes.'
-            : '✅ Profil enregistré ! Vous pouvez maintenant suivre vos commandes et créer un devis.'
+          confirmedNow
+            ? '✅ Compte créé et confirmé avec succès ! Vous pouvez maintenant demander des devis et suivre vos commandes.'
+            : `📧 Compte créé ! Un email de confirmation vient d’être envoyé à ${cleanEmail}. Cliquez sur le lien dans votre boîte Gmail/Email pour confirmer votre compte.`
         );
         await runSearch(profile.phone, '', profile.email);
-        setActiveTab('orders');
+        if (confirmedNow) {
+          setActiveTab('orders');
+        }
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({
           email: cleanEmail,
           password: passwordInput,
         });
-        if (error) throw error;
+        if (error) {
+          if (/email not confirmed/i.test(error.message)) {
+            setNeedsEmailConfirmation(true);
+            throw new Error(
+              'Votre adresse email n’est pas encore confirmée. Vérifiez votre boîte Gmail ou cliquez sur "Renvoyer l’email de confirmation" ci-dessous.'
+            );
+          }
+          throw error;
+        }
         if (data.user?.email) {
-          const meta = data.user.user_metadata || {};
-          const profile: ClientProfile = {
-            fullName: meta.full_name || data.user.email.split('@')[0],
-            email: data.user.email,
-            phone: meta.phone || '',
-            company: meta.company || '',
-            ice: meta.ice || '',
-            city: meta.city || 'Casablanca',
-          };
-          persistClientProfile(profile);
-          applyProfileToForms(profile);
+          await syncSupabaseUserToProfile(data.user, false);
           setAuthMessage('✅ Connexion réussie !');
-          await runSearch(profile.phone, '', profile.email);
           setActiveTab('orders');
         }
       }
@@ -618,17 +753,57 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
           </div>
         </div>
 
-        {/* ── TAB 1: MON COMPTE CLIENT (INSCRIPTION / CONNEXION) ───────────────── */}
+        {/* ── TAB 1: MON COMPTE CLIENT (INSCRIPTION / CONNEXION / GOOGLE / MOT DE PASSE) ── */}
         {activeTab === 'account' && (
           <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-200/80">
-            {savedProfile || authUserEmail ? (
+            {(savedProfile || authUserEmail) && authMode !== 'reset_password' ? (
               <div className="space-y-4">
-                <h2 className="text-xl font-black text-gray-900">
-                  ✅ Votre Compte Client est enregistré dans notre base de données
-                </h2>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h2 className="text-xl font-black text-gray-900">
+                    ✅ Votre Compte Client est enregistré dans notre base de données
+                  </h2>
+                  {isEmailConfirmed ? (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-extrabold">
+                      <i className="fa-solid fa-circle-check" /> Email / Gmail vérifié
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-extrabold">
+                      <i className="fa-solid fa-envelope" /> En attente de confirmation par email
+                    </span>
+                  )}
+                </div>
+
                 <p className="text-xs sm:text-sm text-gray-600">
                   Toutes vos demandes de devis, commandes, factures et mises à jour de livraison/paiement sont automatiquement rattachées à votre email (<strong>{savedProfile?.email || authUserEmail}</strong>) et à votre numéro (<strong>{savedProfile?.phone || '-'}</strong>).
                 </p>
+
+                {!isEmailConfirmed && (
+                  <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 text-xs text-amber-950">
+                    <div>
+                      <strong>Confirmez votre adresse Gmail / Email :</strong> Ouvrez le lien reçu dans votre boîte mail pour valider définitivement votre compte.
+                    </div>
+                    <button
+                      type="button"
+                      disabled={loading}
+                      onClick={() => handleResendConfirmation(savedProfile?.email || authUserEmail || '')}
+                      className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl cursor-pointer shrink-0"
+                    >
+                      📩 Renvoyer l’email de confirmation
+                    </button>
+                  </div>
+                )}
+
+                {authMessage && (
+                  <p className="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 p-3 rounded-xl font-semibold">
+                    {authMessage}
+                  </p>
+                )}
+                {authError && (
+                  <p className="text-xs text-red-600 bg-red-50 border border-red-200 p-3 rounded-xl font-semibold">
+                    {authError}
+                  </p>
+                )}
+
                 <div className="flex flex-wrap gap-3 pt-2">
                   <button
                     type="button"
@@ -644,34 +819,96 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                   >
                     📋 Préparer un Devis en Ligne
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAuthMode('reset_password');
+                      setAuthError(null);
+                      setAuthMessage(null);
+                    }}
+                    className="px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs rounded-xl cursor-pointer"
+                  >
+                    🔑 Changer mon mot de passe
+                  </button>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleAuthSubmit} className="space-y-4 max-w-xl mx-auto">
-                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                <div className="flex items-center justify-between border-b border-gray-100 pb-3 gap-3">
                   <div>
                     <h2 className="text-lg font-black text-gray-900">
                       {authMode === 'register'
                         ? 'Créer votre Compte Client GearShop / VERDANOVE'
-                        : 'Connexion à votre Compte Client'}
+                        : authMode === 'login'
+                        ? 'Connexion à votre Compte Client'
+                        : authMode === 'forgot'
+                        ? 'Mot de passe oublié'
+                        : 'Définir un nouveau mot de passe'}
                     </h2>
                     <p className="text-xs text-gray-500">
                       {authMode === 'register'
-                        ? 'Suivez vos commandes, paiements, devis et recevez les validations par email.'
-                        : 'Accédez à l’historique complet de vos commandes et devis.'}
+                        ? 'Suivez vos commandes, paiements, devis et confirmez votre email.'
+                        : authMode === 'login'
+                        ? 'Accédez à l’historique complet de vos commandes et devis.'
+                        : authMode === 'forgot'
+                        ? 'Recevez un lien par Gmail / Email pour réinitialiser votre mot de passe.'
+                        : 'Saisissez votre nouveau mot de passe sécurisé (6 caractères min.).'}
                     </p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setAuthMode(authMode === 'register' ? 'login' : 'register');
-                      setAuthError(null);
-                    }}
-                    className="text-xs font-bold text-red-600 hover:underline shrink-0 cursor-pointer"
-                  >
-                    {authMode === 'register' ? 'Déjà un compte ? Se connecter ➔' : 'Créer un compte ➔'}
-                  </button>
+                  {authMode !== 'reset_password' && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthMode(authMode === 'register' ? 'login' : 'register');
+                        setAuthError(null);
+                        setAuthMessage(null);
+                        setNeedsEmailConfirmation(false);
+                      }}
+                      className="text-xs font-bold text-red-600 hover:underline shrink-0 cursor-pointer"
+                    >
+                      {authMode === 'register' ? 'Déjà un compte ? Se connecter ➔' : 'Créer un compte ➔'}
+                    </button>
+                  )}
                 </div>
+
+                {(authMode === 'register' || authMode === 'login') && (
+                  <>
+                    <button
+                      type="button"
+                      disabled={loading}
+                      onClick={handleGoogleSignIn}
+                      className="w-full py-3 px-4 bg-white hover:bg-gray-50 border border-gray-300 rounded-xl shadow-sm flex items-center justify-center gap-3 text-xs sm:text-sm font-bold text-gray-800 transition cursor-pointer"
+                    >
+                      <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          fill="#4285F4"
+                          d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"
+                        />
+                        <path
+                          fill="#34A853"
+                          d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"
+                        />
+                        <path
+                          fill="#FBBC05"
+                          d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"
+                        />
+                        <path
+                          fill="#EA4335"
+                          d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"
+                        />
+                      </svg>
+                      Continuer directement avec Google / Gmail
+                    </button>
+
+                    <div className="relative flex items-center py-1">
+                      <div className="flex-grow border-t border-gray-200" />
+                      <span className="shrink mx-3 text-[11px] font-bold uppercase text-gray-400">
+                        ou avec votre adresse email
+                      </span>
+                      <div className="flex-grow border-t border-gray-200" />
+                    </div>
+                  </>
+                )}
 
                 {authMode === 'register' && (
                   <>
@@ -743,35 +980,85 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                   </>
                 )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1">
-                      Email <span className="text-red-600">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={emailInput}
-                      onChange={(e) => setEmailInput(e.target.value)}
-                      placeholder="client@exemple.ma"
-                      className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
-                    />
+                {authMode === 'reset_password' ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">
+                        Nouveau mot de passe <span className="text-red-600">*</span>
+                      </label>
+                      <input
+                        type="password"
+                        required
+                        minLength={6}
+                        value={newPasswordInput}
+                        onChange={(e) => setNewPasswordInput(e.target.value)}
+                        placeholder="6 caractères minimum"
+                        className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">
+                        Confirmer le mot de passe <span className="text-red-600">*</span>
+                      </label>
+                      <input
+                        type="password"
+                        required
+                        minLength={6}
+                        value={confirmNewPasswordInput}
+                        onChange={(e) => setConfirmNewPasswordInput(e.target.value)}
+                        placeholder="Répétez le mot de passe"
+                        className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1">
-                      Mot de passe <span className="text-red-600">*</span>
-                    </label>
-                    <input
-                      type="password"
-                      required
-                      minLength={6}
-                      value={passwordInput}
-                      onChange={(e) => setPasswordInput(e.target.value)}
-                      placeholder="6 caractères minimum"
-                      className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
-                    />
+                ) : (
+                  <div className={`grid grid-cols-1 ${authMode === 'forgot' ? '' : 'sm:grid-cols-2'} gap-3`}>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 mb-1">
+                        Email / Gmail <span className="text-red-600">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={emailInput}
+                        onChange={(e) => setEmailInput(e.target.value)}
+                        placeholder="client@gmail.com"
+                        className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                      />
+                    </div>
+                    {authMode !== 'forgot' && (
+                      <div>
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="block text-xs font-bold text-gray-700">
+                            Mot de passe <span className="text-red-600">*</span>
+                          </label>
+                          {authMode === 'login' && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setAuthMode('forgot');
+                                setAuthError(null);
+                                setAuthMessage(null);
+                              }}
+                              className="text-[11px] font-bold text-red-600 hover:underline cursor-pointer"
+                            >
+                              Mot de passe oublié ?
+                            </button>
+                          )}
+                        </div>
+                        <input
+                          type="password"
+                          required
+                          minLength={6}
+                          value={passwordInput}
+                          onChange={(e) => setPasswordInput(e.target.value)}
+                          placeholder="6 caractères minimum"
+                          className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900"
+                        />
+                      </div>
+                    )}
                   </div>
-                </div>
+                )}
 
                 {authError && (
                   <p className="text-xs text-red-600 bg-red-50 border border-red-200 p-3 rounded-xl font-semibold">
@@ -784,17 +1071,52 @@ export const ClientOrderTrackingPage: React.FC<ClientOrderTrackingPageProps> = (
                   </p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/20 transition cursor-pointer"
-                >
-                  {loading
-                    ? 'Traitement...'
-                    : authMode === 'register'
-                    ? '✅ Créer mon Compte & Accéder au Suivi'
-                    : 'Se Connecter à mon Compte'}
-                </button>
+                {needsEmailConfirmation && (
+                  <div className="flex items-center justify-between gap-2 bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs">
+                    <span className="text-amber-900 font-semibold">
+                      Vous n’avez pas reçu l’email de confirmation ?
+                    </span>
+                    <button
+                      type="button"
+                      disabled={loading}
+                      onClick={() => handleResendConfirmation()}
+                      className="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg cursor-pointer shrink-0"
+                    >
+                      📩 Renvoyer le lien
+                    </button>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="flex-1 py-3.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/20 transition cursor-pointer"
+                  >
+                    {loading
+                      ? 'Traitement...'
+                      : authMode === 'register'
+                      ? '✅ Créer mon Compte & Confirmer par Email'
+                      : authMode === 'login'
+                      ? 'Se Connecter à mon Compte'
+                      : authMode === 'forgot'
+                      ? '📧 Envoyer le lien de réinitialisation'
+                      : '🔐 Enregistrer le nouveau mot de passe'}
+                  </button>
+                  {(authMode === 'forgot' || authMode === 'reset_password') && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthMode('login');
+                        setAuthError(null);
+                        setAuthMessage(null);
+                      }}
+                      className="px-5 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs rounded-xl cursor-pointer"
+                    >
+                      ← Retour
+                    </button>
+                  )}
+                </div>
               </form>
             )}
           </div>

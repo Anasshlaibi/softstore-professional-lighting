@@ -99,6 +99,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             email: cleanEmail,
             password: accountPassword.trim(),
             options: {
+              emailRedirectTo: `${window.location.origin}/mon-compte`,
               data: {
                 full_name: profileObj.fullName,
                 phone: profileObj.phone,
