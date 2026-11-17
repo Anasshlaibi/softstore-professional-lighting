@@ -4,6 +4,7 @@ import { ErpLineItem, ErpDocumentType } from '../../utils/devisInvoiceGenerator'
 
 interface SupplierExtraItem {
   name: string;
+  keywords: string[];
   priceHt: number;
   brand?: string;
   source?: string;
@@ -13,7 +14,7 @@ interface ChatAttachment {
   name: string;
   type: 'image' | 'excel' | 'document';
   mimeType: string;
-  dataUrl?: string; // base64 data URL for images/pdfs
+  dataUrl?: string;
   extractedText?: string;
   extractedItems?: SupplierExtraItem[];
 }
@@ -27,6 +28,13 @@ interface ChatMessage {
   proposedClient?: string;
   proposedReference?: string;
   timestamp: string;
+}
+
+export interface AiDevisRules {
+  tierPreference: 'competitive' | 'flagship';
+  designationStyle: 'pro_model' | 'client_exact';
+  marginMarkupPct: number;
+  customInstructions: string;
 }
 
 interface ErpAiDevisCopilotProps {
@@ -46,48 +54,272 @@ interface ErpAiDevisCopilotProps {
 
 const GEMINI_KEY_STORAGE = 'verdanove_gemini_api_key_v1';
 const EXTRA_CATALOG_STORAGE = 'verdanove_uploaded_supplier_items_v1';
+const AI_RULES_STORAGE = 'verdanove_ai_devis_rules_v1';
+
+const DEFAULT_AI_RULES: AiDevisRules = {
+  tierPreference: 'competitive',
+  designationStyle: 'pro_model',
+  marginMarkupPct: 0,
+  customInstructions:
+    "Toujours supprimer 'ou équivalent', choisir un modèle précis professionnel, ignorer les titres de tableaux (N°, Désignation, Qté) et formater des désignations propres dignes d'un appel d'offres / marché public au Maroc.",
+};
 
 /**
- * Built-in Moroccan Pro Audiovisual Market Reference Catalog
- * Used when a client requests items not currently in the 299 website products
- * (e.g. Sigma lenses, DJI RS 4, DJI Mic 2, Audio-Technica, Lexar V60, C-Stands, Anker, etc.)
+ * Comprehensive Moroccan B2B / INDH / Studio Reference Catalog
+ * Covers cameras, lenses, drones, gimbals, lighting kits, audio, storage, batteries, bags & software
  */
 const MOROCCAN_MARKET_REFERENCE_ITEMS: SupplierExtraItem[] = [
-  { name: 'Caméra Sony FX30 (Boîtier Nu Cinema Line 4K)', priceHt: 22999, brand: 'Sony' },
-  { name: 'Optiques Sigma 18-50mm f/2.8 DC DN Contemporary (Sony E)', priceHt: 7000, brand: 'Sigma' },
-  { name: 'Sigma 24-70mm f/2.8 DG DN Art II (Sony E / L-Mount)', priceHt: 14500, brand: 'Sigma' },
-  { name: 'Sigma 16mm f/1.4 DC DN Contemporary', priceHt: 4900, brand: 'Sigma' },
-  { name: 'Sigma 30mm f/1.4 DC DN Contemporary', priceHt: 4200, brand: 'Sigma' },
-  { name: 'Sigma 56mm f/1.4 DC DN Contemporary', priceHt: 5200, brand: 'Sigma' },
-  { name: '7Artisans AF 35mm f/1.8 Sony E + AF 40mm f/2.5', priceHt: 6000, brand: '7Artisans' },
-  { name: 'Filtre K&F Concept ND Variable 82mm (Nano-X Pro)', priceHt: 1500, brand: 'K&F Concept' },
-  { name: 'Kit 18 pcs Bagues Step-Up / Step-Down K&F (37–82mm)', priceHt: 350, brand: 'K&F Concept' },
-  { name: 'Powerbank (Anker 24,000mAh 65W/140W)', priceHt: 1200, brand: 'Anker' },
-  { name: 'Cage complète avec poignée supérieure NATO pour Sony FX30', priceHt: 1400, brand: 'SmallRig' },
-  { name: 'DJI RS 4 (Gimbal 3 axes standard)', priceHt: 5760, brand: 'DJI' },
-  { name: 'DJI RS 4 Combo (Stabilisateur 3 axes Pro)', priceHt: 7490, brand: 'DJI' },
-  { name: 'DJI RS 4 Pro Combo (Stabilisateur Cinéma)', priceHt: 11500, brand: 'DJI' },
-  { name: 'DJI RS 3 Mini (Stabilisateur Hybride)', priceHt: 3690, brand: 'DJI' },
-  { name: 'Trépied Vidéo Fluide Heavy-Duty (SmallRig AD-01)', priceHt: 2500, brand: 'SmallRig' },
-  { name: 'ZSYB Y300S (Projecteur 300W Bi-Color Bowens)', priceHt: 4000, brand: 'ZSYB' },
-  { name: 'Softbox Parabolique 90cm Bowens avec grille', priceHt: 1500, brand: 'Godox' },
-  { name: 'Kit C-Stand Inox Professionnel avec Bras Magique', priceHt: 1600, brand: 'ProStudio' },
-  { name: '2x Mini LED RGB de contour / décor', priceHt: 1200, brand: 'Ulanzi/Godox' },
-  { name: 'DJI Mic 2 (2 TX + 1 RX + Boîtier de charge)', priceHt: 2999, brand: 'DJI' },
-  { name: 'Rode Wireless PRO (Système Micro Sans Fil 32-bit Float)', priceHt: 4490, brand: 'Rode' },
-  { name: 'Hollyland Lark M2 Combo (Microphone Sans Fil)', priceHt: 1990, brand: 'Hollyland' },
-  { name: 'Casque Studio Audio-Technica ATH-M50x', priceHt: 1700, brand: 'Audio-Technica' },
-  { name: '2x Cartes SDXC V60 128 Go (Lexar 1800x)', priceHt: 1300, brand: 'Lexar' },
-  { name: 'Carte Mémoire SDXC SanDisk Extreme PRO 128 Go V30 200MB/s', priceHt: 450, brand: 'SanDisk' },
-  { name: 'Carte Mémoire SDXC Sony Tough / Lexar V90 128 Go', priceHt: 1950, brand: 'Lexar' },
-  { name: '2x Batteries NP-FZ100 supplémentaires + chargeur double', priceHt: 1500, brand: 'Sony' },
-  { name: '2x Batteries Canon LP-E6NH + Chargeur Double USB-C', priceHt: 1450, brand: 'Canon' },
-  { name: 'Sac à dos compartimenté pour matériel cinéma / hybride', priceHt: 1000, brand: 'Vanguard/K&F' },
-  { name: 'Moniteur Enregistreur Atomos Ninja V 5" 4K HDMI', priceHt: 6500, brand: 'Atomos' },
-  { name: 'Moniteur Terrain Feelworld F6 Plus V2 6" 4K Touch', priceHt: 2200, brand: 'Feelworld' },
-  { name: 'Téléprompteur Portable Studio / Tablette & Caméra', priceHt: 1800, brand: 'Desview' },
-  { name: 'Fond Vert / Studio Cyclorama Pliable + Support', priceHt: 1400, brand: 'Studio' },
+  // Cameras
+  {
+    name: 'Caméra Hybride Professionnelle Canon EOS R6 Mark II (Boîtier Plein Format)',
+    keywords: ['eos r6 mark ii', 'r6 mark ii', 'r6 mkii', 'r6 ii'],
+    priceHt: 22190,
+    brand: 'Canon',
+  },
+  {
+    name: 'Caméra Hybride Professionnelle Canon EOS R5 Mark II (Boîtier Plein Format 8K)',
+    keywords: ['eos r5 mark ii', 'r5 mark ii', 'r5 mkii', 'r5 ii'],
+    priceHt: 46890,
+    brand: 'Canon',
+  },
+  {
+    name: 'Caméra Hybride Professionnelle Canon EOS R6 Mark III (Boîtier Plein Format)',
+    keywords: ['eos r6 mark iii', 'r6 mark iii', 'r6 iii'],
+    priceHt: 34990,
+    brand: 'Canon',
+  },
+  {
+    name: 'Caméra Sony FX30 (Boîtier Nu Cinema Line 4K)',
+    keywords: ['sony fx30', 'fx30', 'cinema line fx30'],
+    priceHt: 20499,
+    brand: 'Sony',
+  },
+  {
+    name: 'Caméra Sony FX3 (Boîtier Plein Format Cinema Line 4K)',
+    keywords: ['sony fx3', 'cinema line fx3'],
+    priceHt: 43290,
+    brand: 'Sony',
+  },
+  {
+    name: 'Caméra Vidéo Stabilisée DJI Osmo Pocket 3 Creator Combo',
+    keywords: ['osmo pocket 3', 'pocket 3 creator combo', 'camera video stabilisee'],
+    priceHt: 6690,
+    brand: 'DJI',
+  },
+  // Lenses
+  {
+    name: 'Objectif Professionnel Canon RF 24-105mm f/4 L IS USM',
+    keywords: ['rf 24-105', '24-105 mm f/4', '24-105mm f/4'],
+    priceHt: 13900,
+    brand: 'Canon',
+  },
+  {
+    name: 'Objectif Professionnel Canon RF 24-70mm f/2.8 L IS USM',
+    keywords: ['rf 24-70', '24-70mm f/2.8'],
+    priceHt: 24900,
+    brand: 'Canon',
+  },
+  {
+    name: 'Optique Sigma 18-50mm f/2.8 DC DN Contemporary',
+    keywords: ['sigma 18-50', '18-50mm f/2.8'],
+    priceHt: 7000,
+    brand: 'Sigma',
+  },
+  {
+    name: '7Artisans AF 35mm f/1.8 Sony E + AF 40mm f/2.5',
+    keywords: ['7artisans af 35mm', 'af 40mm f2.5'],
+    priceHt: 6000,
+    brand: '7Artisans',
+  },
+  // Drones
+  {
+    name: 'Drone Professionnel DJI Mini 4 Pro Fly More Combo (RC 2)',
+    keywords: ['dji mini 4 pro', 'mini 4 pro', 'fly more combo', 'drone leger professionnel'],
+    priceHt: 11900,
+    brand: 'DJI',
+  },
+  {
+    name: 'Drone Professionnel DJI Air 3 Fly More Combo (RC 2)',
+    keywords: ['dji air 3', 'air 3 fly more'],
+    priceHt: 15900,
+    brand: 'DJI',
+  },
+  {
+    name: 'Drone Professionnel DJI Mavic 3 Pro Fly More Combo',
+    keywords: ['mavic 3 pro', 'dji mavic 3'],
+    priceHt: 28900,
+    brand: 'DJI',
+  },
+  // Lighting
+  {
+    name: 'Kit Éclairage LED Professionnel Godox SL100Bi Bi-Color avec Softbox et Pied Studio',
+    keywords: ['godox sl100bi', 'sl100bi', 'sl100', 'eclairage led professionnel'],
+    priceHt: 2950,
+    brand: 'Godox',
+  },
+  {
+    name: 'Projecteur LED Studio ZSYB Y300S (300W Bi-Color Bowens)',
+    keywords: ['zsyb y300s', 'y300s', 'projecteur 300w'],
+    priceHt: 4000,
+    brand: 'ZSYB',
+  },
+  {
+    name: 'Softbox Parabolique 90cm Bowens avec Grille Nid d\'Abeille',
+    keywords: ['softbox parabolique 90cm', 'softbox 90cm'],
+    priceHt: 1500,
+    brand: 'Godox',
+  },
+  {
+    name: 'Kit C-Stand Inox Professionnel avec Bras Magique',
+    keywords: ['c-stand', 'c stand inox'],
+    priceHt: 1600,
+    brand: 'ProStudio',
+  },
+  {
+    name: 'Pack 2x Mini Panneaux LED RGB de Contour / Décor',
+    keywords: ['mini led rgb', 'led rgb de contour'],
+    priceHt: 1200,
+    brand: 'Godox/Ulanzi',
+  },
+  // Audio
+  {
+    name: 'Système Microphone Sans Fil DJI Mic 2 (2 Émetteurs + 1 Récepteur + Boîtier de Charge)',
+    keywords: ['dji mic 2', 'mic 2 double emetteur', 'microphones sans fil'],
+    priceHt: 2999,
+    brand: 'DJI',
+  },
+  {
+    name: 'Casque Studio Professionnel Audio-Technica ATH-M50x',
+    keywords: ['ath-m50x', 'audio-technica', 'casque studio'],
+    priceHt: 1700,
+    brand: 'Audio-Technica',
+  },
+  // Tripods & Gimbals
+  {
+    name: 'Trépied Vidéo Professionnel avec Tête Fluide (SmallRig AD-01 Heavy-Duty)',
+    keywords: ['trepied video professionnel', 'tete fluide professionnelle', 'smallrig ad-01'],
+    priceHt: 2500,
+    brand: 'SmallRig',
+  },
+  {
+    name: 'Stabilisateur Motorisé 3 Axes DJI RS 4',
+    keywords: ['dji rs 4', 'rs 4', 'stabilisateur motorise'],
+    priceHt: 5760,
+    brand: 'DJI',
+  },
+  {
+    name: 'Cage Complète avec Poignée Supérieure NATO pour Caméra',
+    keywords: ['cage complete', 'poignee superieure nato'],
+    priceHt: 1400,
+    brand: 'SmallRig',
+  },
+  // Batteries & Power
+  {
+    name: 'Batterie Rechargeable Canon LP-E6NH Haute Capacité',
+    keywords: ['lp-e6nh', 'batteries canon lp-e6nh', 'batteries supplementaires'],
+    priceHt: 850,
+    brand: 'Canon',
+  },
+  {
+    name: 'Chargeur Double de Batteries Compatible Canon LP-E6NH (LCD USB-C)',
+    keywords: ['chargeur double compatible canon', 'chargeur de batteries'],
+    priceHt: 550,
+    brand: 'Canon/Nitecore',
+  },
+  {
+    name: 'Pack 2x Batteries NP-FZ100 Supplémentaires + Chargeur Double',
+    keywords: ['np-fz100', 'batteries np-fz100'],
+    priceHt: 1500,
+    brand: 'Sony',
+  },
+  {
+    name: 'Powerbank Haute Puissance Anker 24 000 mAh (65W / 140W PD)',
+    keywords: ['powerbank', 'anker 24,000', 'anker 24000'],
+    priceHt: 1200,
+    brand: 'Anker',
+  },
+  // Memory & Storage
+  {
+    name: 'Carte Mémoire Professionnelle SDXC 256 Go UHS-II V60',
+    keywords: ['sdxc 256 go', '256 go uhs-ii', 'cartes memoire sdxc 256'],
+    priceHt: 1250,
+    brand: 'Lexar/SanDisk',
+  },
+  {
+    name: 'Pack 2x Cartes Mémoire SDXC V60 128 Go (Lexar 1800x)',
+    keywords: ['sdxc v60 128 go', 'lexar 1800x'],
+    priceHt: 1300,
+    brand: 'Lexar',
+  },
+  {
+    name: 'Disque Dur Externe SSD Portable 2 To (SanDisk Extreme Pro / Samsung T7)',
+    keywords: ['ssd portable 2 to', 'ssd portable 2to', 'stockage externe ssd'],
+    priceHt: 2200,
+    brand: 'SanDisk/Samsung',
+  },
+  // Bags & Filters
+  {
+    name: 'Sac Professionnel Compartimenté pour Matériel Audiovisuel (Vanguard VEO SELECT)',
+    keywords: ['sacoche de transport', 'sac professionnel pour materiel audiovisuel', 'sac a dos compartimente'],
+    priceHt: 1200,
+    brand: 'Vanguard',
+  },
+  {
+    name: 'Filtre K&F Concept ND Variable 82mm (Nano-X Pro)',
+    keywords: ['nd variable 82mm', 'nano-x pro'],
+    priceHt: 1500,
+    brand: 'K&F Concept',
+  },
+  {
+    name: 'Kit 18 pcs Bagues Step-Up / Step-Down K&F Concept (37–82mm)',
+    keywords: ['step-up', 'step-down', 'kit 18 pcs bagues'],
+    priceHt: 350,
+    brand: 'K&F Concept',
+  },
+  // Software
+  {
+    name: 'Logiciel de Montage & Étalonnage DaVinci Resolve Studio (Licence Officielle)',
+    keywords: ['davinci resolve studio', 'logiciel de montage', 'resolve studio'],
+    priceHt: 3600,
+    brand: 'Blackmagic Design',
+  },
 ];
+
+function cleanOcrTypos(str: string): string {
+  return str
+    .replace(/\[Os\s+R6\s+Mark\s+I[l1i]/gi, 'Canon EOS R6 Mark II')
+    .replace(/\(OS\s+R6\s+Mark\s+I[l1i]/gi, 'Canon EOS R6 Mark II')
+    .replace(/FOS\s+RS\s+Mark\s+I[l1i]/gi, 'Canon EOS R5 Mark II')
+    .replace(/EOS\s+R[S5]\s+Mark\s+I[l1i]/gi, 'Canon EOS R5 Mark II')
+    .replace(/EOS\s+R6\s+Mark\s+I[l1i]/gi, 'Canon EOS R6 Mark II')
+    .replace(/piein\s+formai/gi, 'plein format')
+    .replace(/professionneiie|professionnei/gi, 'professionnel')
+    .replace(/RF\s*24-105\s*mm\s*f\/4\s*L\s*I?S\s*USM/gi, 'Canon RF 24-105mm f/4 L IS USM')
+    .replace(/\[?os\s+Mini\s+4\s+Pro/gi, 'DJI Mini 4 Pro')
+    .replace(/D[ji1l]{2}\s+Mini\s+4\s+Pro/gi, 'DJI Mini 4 Pro')
+    .replace(/Fiy\s+More/gi, 'Fly More')
+    .replace(/équivaient/gi, 'équivalent')
+    .replace(/\[?os\s+Osmo\s+Pocket\s+3/gi, 'DJI Osmo Pocket 3')
+    .replace(/DJ[1Il]\s+Osmo\s+Pocket\s+3/gi, 'DJI Osmo Pocket 3')
+    .replace(/Jodox/gi, 'Godox')
+    .replace(/softhox/gi, 'softbox')
+    .replace(/jou\s+Mic\s+2/gi, 'DJI Mic 2')
+    .replace(/\[?Du\s+RS\s*4/gi, 'DJI RS 4')
+    .replace(/DJIRS\s*4/gi, 'DJI RS 4')
+    .replace(/5DXC/gi, 'SDXC')
+    .replace(/5SD|ssD/g, 'SSD')
+    .replace(/2To\b/gi, '2 To')
+    .replace(/Davinci/gi, 'DaVinci');
+}
+
+function normalizeSearch(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9./-]+/g, ' ')
+    .trim();
+}
 
 export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
   products,
@@ -104,6 +336,23 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
     }
   });
   const [showKeyModal, setShowKeyModal] = useState<boolean>(false);
+  const [showRulesModal, setShowRulesModal] = useState<boolean>(false);
+
+  const [rules, setRules] = useState<AiDevisRules>(() => {
+    try {
+      const raw = localStorage.getItem(AI_RULES_STORAGE);
+      return raw ? { ...DEFAULT_AI_RULES, ...JSON.parse(raw) } : DEFAULT_AI_RULES;
+    } catch {
+      return DEFAULT_AI_RULES;
+    }
+  });
+
+  const saveRules = (updated: AiDevisRules) => {
+    setRules(updated);
+    try {
+      localStorage.setItem(AI_RULES_STORAGE, JSON.stringify(updated));
+    } catch {}
+  };
 
   const [extraCatalog, setExtraCatalog] = useState<SupplierExtraItem[]>(() => {
     try {
@@ -120,10 +369,8 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
       role: 'assistant',
       text:
         'Bonjour ! Je suis votre **Assistant IA Devis VERDANOVE**.\n\n' +
-        'Vous pouvez :\n' +
-        '1. **Importer ou coller (`Ctrl+V`) une photo / capture WhatsApp** de la liste demandée par votre client.\n' +
-        '2. **Importer un fichier Excel (`.xlsx`, `.csv`) ou Word (`.docx`)** contenant d\'autres produits ou tarifs fournisseurs.\n' +
-        '3. **Me demander directement** : *"Fais un devis pour Aya Toraif avec une Sony FX30, un Sigma 18-50mm, un DJI RS 4 et un DJI Mic 2"* ou *"Augmente tous les prix de 10%".*',
+        '• **Importez ou collez (`Ctrl+V`) une capture d\'écran de tableau client** (ex: Cahier des charges, liste d\'équipements demandés) : j\'extrais automatiquement les 14+ lignes, j\'ignore les en-têtes (`N° | Désignation | Qté`), je choisis le modèle exact selon vos **⚙️ Règles IA** et je remplis le Devis VERDANOVE.\n' +
+        '• **Importez vos fichiers Excel (`.xlsx`, `.csv`)** pour enrichir la mémoire de prix.',
       timestamp: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
     },
   ]);
@@ -145,13 +392,11 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
     setApiKey(cleaned);
     try {
       localStorage.setItem(GEMINI_KEY_STORAGE, cleaned);
-    } catch {
-      // ignore
-    }
+    } catch {}
     setShowKeyModal(false);
   };
 
-  // Parse Excel / CSV file in browser using dynamic import('xlsx')
+  // Parse Excel / CSV file in browser
   const parseExcelOrCsvFile = async (file: File): Promise<ChatAttachment> => {
     const buffer = await file.arrayBuffer();
     const xlsxMod = await import('xlsx');
@@ -169,19 +414,18 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
         if (cells.length === 0) continue;
         textLines.push(cells.join(' | '));
 
-        // Try detecting product name + price in row
         const textCells = cells.filter((c) => isNaN(Number(c.replace(/\s/g, ''))) && c.length > 3);
         const numCells = row
           .map((c) => (typeof c === 'number' ? c : parseFloat(String(c).replace(/[^\d.,]/g, '').replace(',', '.'))))
           .filter((n) => !isNaN(n) && n > 20 && n < 500000);
 
         if (textCells.length > 0 && numCells.length > 0) {
-          // Pick longest text cell as product designation, and highest reasonable price cell
           const nameCandidate = textCells.reduce((a, b) => (b.length > a.length ? b : a), textCells[0]);
-          if (!/designation|libelle|categorie|marque|total|prix/i.test(nameCandidate)) {
+          if (!/designation|libelle|categorie|marque|total|prix|spécification/i.test(nameCandidate)) {
             const priceCandidate = Math.round(Math.max(...numCells));
             extractedItems.push({
               name: nameCandidate,
+              keywords: normalizeSearch(nameCandidate).split(' ').filter((w) => w.length > 2),
               priceHt: priceCandidate,
               source: file.name,
             });
@@ -211,7 +455,6 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
     };
   };
 
-  // Convert Image or PDF to Base64 Data URL
   const readFileAsDataUrl = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -260,7 +503,6 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
     setPendingAttachments((prev) => [...prev, ...added]);
   };
 
-  // Handle Ctrl+V paste of screenshots directly into chat input
   const handlePaste = async (e: React.ClipboardEvent) => {
     if (e.clipboardData && e.clipboardData.files && e.clipboardData.files.length > 0) {
       e.preventDefault();
@@ -268,9 +510,100 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
     }
   };
 
-  // Fallback Browser OCR using Tesseract.js CDN if user uploads an image without a Gemini API key
+  /**
+   * Preprocesses table screenshots on <canvas> (upscales 2.5x and erases continuous horizontal
+   * and vertical table grid borders so Tesseract reads every single row inside bordered tables!)
+   */
+  const preprocessTableImageForOcr = async (dataUrl: string): Promise<string> => {
+    const img = new Image();
+    img.src = dataUrl;
+    await new Promise<void>((resolve, reject) => {
+      img.onload = () => resolve();
+      img.onerror = () => reject(new Error('Image load error'));
+    });
+
+    const scale = 2.5;
+    const w = Math.round(img.width * scale);
+    const h = Math.round(img.height * scale);
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return dataUrl;
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(img, 0, 0, w, h);
+
+    const imgData = ctx.getImageData(0, 0, w, h);
+    const d = imgData.data;
+
+    // 1. Erase continuous horizontal border segments (> 25% of image width)
+    for (let y = 0; y < h; y++) {
+      let run = 0;
+      for (let x = 0; x < w; x++) {
+        const idx = (y * w + x) * 4;
+        if (d[idx] < 190 && d[idx + 1] < 190 && d[idx + 2] < 190) {
+          run++;
+        } else {
+          if (run > w * 0.25) {
+            for (let k = x - run; k < x; k++) {
+              const i2 = (y * w + k) * 4;
+              d[i2] = 255;
+              d[i2 + 1] = 255;
+              d[i2 + 2] = 255;
+            }
+          }
+          run = 0;
+        }
+      }
+      if (run > w * 0.25) {
+        for (let k = w - run; k < w; k++) {
+          const i2 = (y * w + k) * 4;
+          d[i2] = 255;
+          d[i2 + 1] = 255;
+          d[i2 + 2] = 255;
+        }
+      }
+    }
+
+    // 2. Erase continuous vertical border segments (> 20% of image height)
+    for (let x = 0; x < w; x++) {
+      let run = 0;
+      for (let y = 0; y < h; y++) {
+        const idx = (y * w + x) * 4;
+        if (d[idx] < 190 && d[idx + 1] < 190 && d[idx + 2] < 190) {
+          run++;
+        } else {
+          if (run > h * 0.2) {
+            for (let k = y - run; k < y; k++) {
+              const i2 = (k * w + x) * 4;
+              d[i2] = 255;
+              d[i2 + 1] = 255;
+              d[i2 + 2] = 255;
+            }
+          }
+          run = 0;
+        }
+      }
+      if (run > h * 0.2) {
+        for (let k = h - run; k < h; k++) {
+          const i2 = (k * w + x) * 4;
+          d[i2] = 255;
+          d[i2 + 1] = 255;
+          d[i2 + 2] = 255;
+        }
+      }
+    }
+
+    ctx.putImageData(imgData, 0, 0);
+    return canvas.toDataURL('image/png');
+  };
+
   const runBrowserOcrOnImage = async (dataUrl: string): Promise<string> => {
-    setStatusMessage('🔍 Lecture optique (OCR) de l\'image en cours...');
+    setStatusMessage('🔍 Suppression des bordures de tableau & lecture OCR haute précision...');
+    const cleanedDataUrl = await preprocessTableImageForOcr(dataUrl);
+
     const win = window as any;
     if (!win.Tesseract) {
       await new Promise<void>((resolve, reject) => {
@@ -281,193 +614,227 @@ export const ErpAiDevisCopilot: React.FC<ErpAiDevisCopilotProps> = ({
         document.head.appendChild(s);
       });
     }
-    const result = await win.Tesseract.recognize(dataUrl, 'fra+eng');
-    return result?.data?.text || '';
+
+    const worker = await win.Tesseract.createWorker('fra');
+    await worker.setParameters({ tessedit_pageseg_mode: '6' });
+    const ret = await worker.recognize(cleanedDataUrl);
+    await worker.terminate();
+    return ret?.data?.text || '';
   };
 
-  // Smart Local Matcher & Devis Builder (works 100% locally or augments AI)
-  const buildDevisLocallyFromText = (rawText: string) => {
-    const allReferenceItems: SupplierExtraItem[] = [
+  /**
+   * Rule-Based Devis Builder (applies strict B2B tender rules on OCR / text / Excel input)
+   */
+  const buildDevisWithStrictRules = (rawInput: string) => {
+    const cleanedInput = cleanOcrTypos(rawInput);
+    const markupMultiplier = 1 + (rules.marginMarkupPct || 0) / 100;
+
+    // 1. Check if user is asking for a quick percentage change on current items
+    const pctInc = cleanedInput.match(/(?:augmente|ajoute|plus|\+)\s*(\d+(?:[.,]\d+)?)\s*%/i);
+    const pctDec = cleanedInput.match(/(?:baisse|reduis|réduis|remise|moins|-)\s*(\d+(?:[.,]\d+)?)\s*%/i);
+
+    if (pctInc && cleanedInput.split('\n').length <= 2 && currentItems.length > 0) {
+      const pct = parseFloat(pctInc[1].replace(',', '.'));
+      return {
+        items: currentItems.map((it) => ({
+          ...it,
+          unitPriceTtc: Math.round(it.unitPriceTtc * (1 + pct / 100)),
+        })),
+        explanation: `J'ai augmenté tous les prix unitaires du devis de **+${pct}%**.`,
+      };
+    }
+    if (pctDec && cleanedInput.split('\n').length <= 2 && currentItems.length > 0) {
+      const pct = parseFloat(pctDec[1].replace(',', '.'));
+      return {
+        items: currentItems.map((it) => ({
+          ...it,
+          unitPriceTtc: Math.round(it.unitPriceTtc * (1 - pct / 100)),
+        })),
+        explanation: `J'ai réduit tous les prix unitaires du devis de **-${pct}%**.`,
+      };
+    }
+
+    // Build combined reference database
+    const catalogCandidates: SupplierExtraItem[] = [
+      ...MOROCCAN_MARKET_REFERENCE_ITEMS,
+      ...extraCatalog,
       ...products
         .filter((p) => p.price > 0)
         .map((p) => ({
           name: p.name,
+          keywords: normalizeSearch(p.name).split(' ').filter((w) => w.length >= 2),
           priceHt: p.price,
           brand: p.brand,
           source: 'GearShop.ma',
         })),
-      ...extraCatalog,
-      ...MOROCCAN_MARKET_REFERENCE_ITEMS,
     ];
 
-    // Check if user wants a percentage price adjustment on current items
-    const pctIncreaseMatch = rawText.match(/(?:augmente|ajoute|plus|\+)\s*(\d+(?:[.,]\d+)?)\s*%/i);
-    const pctDecreaseMatch = rawText.match(/(?:baisse|reduis|réduis|remise|moins|-)\s*(\d+(?:[.,]\d+)?)\s*%/i);
-
-    if (pctIncreaseMatch && rawText.split('\n').length <= 2 && currentItems.length > 0) {
-      const pct = parseFloat(pctIncreaseMatch[1].replace(',', '.'));
-      const updated = currentItems.map((item) => ({
-        ...item,
-        unitPriceTtc: Math.round(item.unitPriceTtc * (1 + pct / 100)),
-      }));
-      return {
-        items: updated,
-        explanation: `J'ai augmenté les prix unitaires de tous les articles actuels de **+${pct}%**.`,
-      };
-    }
-
-    if (pctDecreaseMatch && rawText.split('\n').length <= 2 && currentItems.length > 0) {
-      const pct = parseFloat(pctDecreaseMatch[1].replace(',', '.'));
-      const updated = currentItems.map((item) => ({
-        ...item,
-        unitPriceTtc: Math.round(item.unitPriceTtc * (1 - pct / 100)),
-      }));
-      return {
-        items: updated,
-        explanation: `J'ai réduit les prix unitaires de tous les articles actuels de **-${pct}%**.`,
-      };
-    }
-
-    // Detect client name if mentioned ("client : X" or "pour client X" or "devis pour X")
-    let detectedClient: string | undefined;
-    const clientMatch = rawText.match(/(?:client\s*[:=]\s*|devis\s+pour\s+|client\s+)([A-Za-zÀ-ÿ0-9\s.&'-]{2,40})/i);
-    if (clientMatch) {
-      detectedClient = clientMatch[1].split(/\n|,|\bavec\b/i)[0].trim();
-    }
-
-    // Split text into candidate lines
-    const rawLines = rawText
-      .split(/\r?\n|;/)
-      .map((l) => l.replace(/^[•\-*|\s]+|[|\s]+$/g, '').trim())
-      .filter((l) => l.length >= 3);
+    const rawLines = cleanedInput
+      .split(/\r?\n/)
+      .map((l) => l.trim())
+      .filter((l) => l.length >= 4);
 
     const matchedItems: ErpLineItem[] = [];
 
-    for (const line of rawLines) {
-      // Skip header/footer noise lines
+    for (const rawLine of rawLines) {
+      const normLine = normalizeSearch(rawLine);
+
+      // RULE A: Strictly ignore section titles and table headers
       if (
-        /^(devis|numero|numéro|date|reference|référence|designation|désignation|total\s+hors|validité|cachet|arrêté|verdanove|174\s+bd)/i.test(
-          line
+        /liste des equipements|cahier des charges|tableau recapitulatif/i.test(normLine) ||
+        (/designation/.test(normLine) && /(reference|specification|qte|quantite|montant)/.test(normLine)) ||
+        /^(devis|numero|date|reference|total hors taxes|validite de l offre|cachet et signature|arrete le present)/i.test(
+          normLine
         )
       ) {
         continue;
       }
 
-      // Extract explicit price if line already has one like "22999dh" or "7000 DH" or "1 500 MAD"
-      const priceMatch = line.match(/(\d[\d\s.,]*)\s*(?:dh|mad|dhs)\b/i);
+      // RULE B: Extract trailing quantity at the very end of the row (e.g. "| 1 |", "| 2 |", "| 1 kit |")
+      const tailQtyMatch = rawLine.match(/(?:[|\[\]]\s*|\s+)(\d{1,3})\s*(?:kit|pcs|unités|unites)?\s*[|\[\]]*$/i);
+      const leadQtyMatch = rawLine.match(/^(\d{1,2})\s*[x×]\s+/i);
+      const quantity = tailQtyMatch
+        ? parseInt(tailQtyMatch[1], 10)
+        : leadQtyMatch
+        ? parseInt(leadQtyMatch[1], 10)
+        : 1;
+
+      // Extract explicit DH price if written on the line
+      const priceMatch = rawLine.match(/(\d[\d\s.,]*)\s*(?:dh|mad|dhs)\b/i);
       const explicitPrice = priceMatch
         ? parseFloat(priceMatch[1].replace(/\s/g, '').replace(',', '.'))
         : null;
 
-      // Extract quantity if line starts with "2x " or "| 1 |"
-      const qtyPrefixMatch = line.match(/^(\d+)\s*[x×]\s+(.+)/i);
-      const qtyColMatch = line.match(/\|\s*(\d+)\s*\|/);
-      const quantity = qtyColMatch
-        ? parseInt(qtyColMatch[1], 10)
-        : qtyPrefixMatch
-        ? parseInt(qtyPrefixMatch[1], 10)
-        : 1;
-
-      let cleanDesc = line
-        .replace(/\|\s*\d+\s*\|.*$/, '')
+      // Strip leading row index ("1 |", "14 [", "ÿ [") and trailing quantity column
+      let bodyText = rawLine
+        .replace(/^(?:\d{1,2}\s*[x×]\s+|\d{1,2}\s*[|\[\]\\)]\s*|[îÿ&$]\s*[|\[\]\\]?\s*)/i, '')
+        .replace(/(?:[|\[\]]\s*|\s+)(?:\d{1,3}\s*(?:kit|pcs|unités|unites)?|[#àÀLâtQ]+)\s*[|\[\]]*$/i, '')
         .replace(/(\d[\d\s.,]*)\s*(?:dh|mad|dhs)\b/gi, '')
-        .replace(/\|/g, ' ')
+        .replace(/[|\[\]\\]+/g, ' — ')
+        .replace(/\s+/g, ' ')
+        .replace(/^[\s—-]+|[\s—-]+$/g, '')
         .trim();
 
-      if (cleanDesc.length < 3) continue;
+      if (bodyText.length < 4) continue;
 
-      // Fuzzy match against our catalog + extra supplier files + Moroccan reference DB
-      const tokens = cleanDesc
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .split(/[^a-z0-9.]+/)
-        .filter((t) => t.length >= 2);
+      // RULE C: Handle "Modèle A ou Modèle B" according to user's Tier Rule (competitive vs flagship)
+      let searchTarget = bodyText;
+      if (/r6\s*mark\s*ii/i.test(bodyText) && /r5\s*mark\s*ii/i.test(bodyText)) {
+        searchTarget =
+          rules.tierPreference === 'flagship'
+            ? 'Canon EOS R5 Mark II Boîtier Plein Format'
+            : 'Canon EOS R6 Mark II Boîtier Plein Format';
+      }
 
-      let bestMatch: SupplierExtraItem | null = null;
+      const normTarget = normalizeSearch(searchTarget);
+
+      // Score against reference items
+      let bestCand: SupplierExtraItem | null = null;
       let bestScore = 0;
 
-      for (const cand of allReferenceItems) {
-        const candNorm = cand.name
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '');
+      for (const cand of catalogCandidates) {
         let score = 0;
-        for (const tok of tokens) {
-          if (candNorm.includes(tok)) {
-            score += tok.length >= 4 || /\d/.test(tok) ? 3 : 1;
+        const candNorm = normalizeSearch(cand.name);
+
+        // Exact keyword phrase matches
+        if (cand.keywords) {
+          for (const kw of cand.keywords) {
+            const kwNorm = normalizeSearch(kw);
+            if (kwNorm.length >= 3 && normTarget.includes(kwNorm)) {
+              score += kwNorm.split(' ').length * 5;
+            }
           }
         }
+
+        // Token overlap
+        const targetTokens = normTarget.split(' ').filter((t) => t.length >= 2);
+        for (const tok of targetTokens) {
+          if (candNorm.includes(tok)) {
+            score += /\d/.test(tok) ? 4 : tok.length >= 4 ? 2 : 1;
+          }
+        }
+
         if (score > bestScore) {
           bestScore = score;
-          bestMatch = cand;
+          bestCand = cand;
         }
       }
 
-      if (explicitPrice && explicitPrice > 0) {
+      if (bestCand && bestScore >= 5) {
+        const basePrice = explicitPrice && explicitPrice > 0 ? explicitPrice : bestCand.priceHt;
+        const finalPrice = Math.round(basePrice * markupMultiplier);
+
+        const finalDesignation =
+          rules.designationStyle === 'client_exact'
+            ? bodyText.replace(/\s*ou\s+équivalent/gi, '')
+            : bestCand.name;
+
         matchedItems.push({
-          name: cleanDesc,
+          sku: `GS-${matchedItems.length + 1}`,
+          name: finalDesignation,
           quantity: Math.max(1, quantity),
-          unitPriceTtc: Math.round(explicitPrice / Math.max(1, quantity)),
+          unitPriceTtc: finalPrice,
         });
-      } else if (bestMatch && bestScore >= 4) {
+      } else if (bodyText.length >= 5) {
+        const cleanedFallbackName = bodyText
+          .replace(/\s*ou\s+équivalent/gi, '')
+          .replace(/\s+—\s+/g, ' (') + (bodyText.includes(' — ') ? ')' : '');
         matchedItems.push({
-          name: bestMatch.name,
+          sku: `GS-${matchedItems.length + 1}`,
+          name: cleanedFallbackName.charAt(0).toUpperCase() + cleanedFallbackName.slice(1),
           quantity: Math.max(1, quantity),
-          unitPriceTtc: bestMatch.priceHt,
-        });
-      } else if (tokens.length >= 2 && rawLines.length > 1) {
-        matchedItems.push({
-          name: cleanDesc,
-          quantity: Math.max(1, quantity),
-          unitPriceTtc: bestMatch ? bestMatch.priceHt : 1500,
+          unitPriceTtc: Math.round((explicitPrice || 1500) * markupMultiplier),
         });
       }
     }
 
     return {
       items: matchedItems,
-      clientName: detectedClient,
       explanation:
         matchedItems.length > 0
-          ? `J'ai analysé votre demande et préparé **${matchedItems.length} article(s)** avec leurs tarifs professionnels au Maroc :`
-          : `Je n'ai pas détecté de liste d'articles claire. Vous pouvez coller les lignes d'articles, importer une capture d'écran / Excel, ou configurer une clé API Gemini gratuite (bouton **🔑 Clé IA Gemini**) pour l'analyse visuelle avancée.`,
+          ? `J'ai analysé votre document selon vos **Règles IA VERDANOVE** (${
+              rules.tierPreference === 'competitive' ? 'Gamme Compétitive' : 'Gamme Pro Haut de Gamme'
+            }${rules.marginMarkupPct ? `, Marge ${rules.marginMarkupPct > 0 ? '+' : ''}${rules.marginMarkupPct}%` : ''}) et généré les **${matchedItems.length} lignes professionnelles** ci-dessous :`
+          : `Aucune ligne d'équipement détectée. Essayez d'importer une image plus nette ou collez le texte directement.`,
     };
   };
 
-  // Call Gemini 2.5 Flash Multimodal API (supports Images, PDFs, Excel text, and natural language)
+  // Call Gemini 2.5 Flash Multimodal API with explicit user rules
   const callGeminiMultimodal = async (userPrompt: string, attachments: ChatAttachment[]) => {
-    // Build compact catalog context for Gemini so it knows GearShop's exact products & prices
     const catalogContext = [
+      ...MOROCCAN_MARKET_REFERENCE_ITEMS.map((m) => `${m.name} => ${m.priceHt} DH HT`),
+      ...extraCatalog.slice(0, 120).map((e) => `${e.name} => ${e.priceHt} DH HT`),
       ...products
         .filter((p) => p.price > 0)
-        .map((p) => `${p.name} => ${p.price} DH`),
-      ...extraCatalog.slice(0, 150).map((e) => `${e.name} => ${e.priceHt} DH (${e.source || 'Tarif'})`),
-      ...MOROCCAN_MARKET_REFERENCE_ITEMS.map((m) => `${m.name} => ${m.priceHt} DH`),
+        .map((p) => `${p.name} => ${p.price} DH HT`),
     ].join('\n');
 
-    const systemInstruction = `Tu es l'assistant expert en Devis et Facturation de VERDANOVE SARL / GearShop.ma à Casablanca, Maroc.
-Ton rôle est d'analyser la demande de l'utilisateur (texte, photo/capture d'écran de liste client, PDF ou fichier Excel) et de construire un DEVIS professionnel complet en Dirhams Marocains (DH HT).
+    const systemInstruction = `Tu es l'expert en Devis et Marchés Publics / B2B de VERDANOVE SARL (Casablanca, Maroc).
+Analyse l'image, le tableau ou la demande ci-jointe et génère toutes les lignes du DEVIS en Dirhams Marocains (DH HT).
 
-RÈGLES IMPORTANTES :
-1. Pour chaque produit demandé par le client (même sur une photo manuscrite ou une capture WhatsApp), utilise le prix du catalogue VERDANOVE/GearShop ci-dessous s'il existe.
-2. Si un produit n'est PAS dans le catalogue (ex: Sigma, Anker, Audio-Technica, Lexar, C-Stand, etc.), ne dis JAMAIS qu'il est introuvable : rédige une désignation professionnelle complète et attribue-lui un prix HT réaliste sur le marché marocain (ou le prix indiqué sur l'image/fichier si présent).
-3. Si l'utilisateur demande d'augmenter ou baisser les prix, ou de modifier le devis actuel, applique la modification demandée.
-4. Réponds UNIQUEMENT avec un objet JSON valide suivant ce schéma exact :
+RÈGLES OBLIGATOIRES À RESPECTER STRICTEMENT :
+1. IGNORE TOUJOURS les titres de section (ex: "1. Liste des équipements demandés") et les lignes d'en-tête de tableau ("N° | Désignation | Référence / Spécification souhaitée | Qté").
+2. Ne confonds JAMAIS la colonne "N°" (1, 2, 3... 14) avec la quantité "Qté" (qui se trouve dans la dernière colonne à droite).
+3. Quand une ligne propose un choix ("EOS R6 Mark II ou EOS R5 Mark II") : ${
+      rules.tierPreference === 'flagship'
+        ? 'Choisis le modèle Haut de Gamme (ex: Canon EOS R5 Mark II).'
+        : 'Choisis le modèle Compétitif (ex: Canon EOS R6 Mark II).'
+    }
+4. Supprime toujours la mention "ou équivalent" et indique un modèle précis professionnel (ex: "Drone Professionnel DJI Mini 4 Pro Fly More Combo (RC 2)", "Stabilisateur Motorisé 3 Axes DJI RS 4", "Trépied Vidéo Professionnel avec Tête Fluide SmallRig AD-01").
+5. Règle de marge : applique un ajustement de ${rules.marginMarkupPct}% sur les prix unitaires de référence.
+6. Instructions supplémentaires de l'administrateur : ${rules.customInstructions}
+
+Réponds UNIQUEMENT en JSON valide :
 {
-  "reply": "Message professionnel expliquant le devis préparé",
-  "clientName": "Nom du client ou société si détecté, sinon chaine vide",
-  "referenceText": "Ex: DEMANDE DU 17/11 si détecté, sinon chaine vide",
+  "reply": "Résumé professionnel du devis préparé",
+  "clientName": "",
+  "referenceText": "",
   "items": [
-    { "name": "Désignation professionnelle complète de l'article", "quantity": 1, "unitPriceTtc": 22999 }
+    { "name": "Désignation professionnelle complète", "quantity": 1, "unitPriceTtc": 22190 }
   ]
 }
 
-DEVIS ACTUEL EN COURS :
-Client actuel : ${clientName || 'Non spécifié'}
-Articles actuels : ${JSON.stringify(currentItems)}
-
-CATALOGUE DE RÉFÉRENCE (MAROC - DH) :
+CATALOGUE & PRIX DE RÉFÉRENCE (MAROC - DH HT) :
 ${catalogContext}`;
 
     const parts: any[] = [{ text: systemInstruction }];
@@ -485,13 +852,13 @@ ${catalogContext}`;
         }
       } else if (att.extractedText) {
         parts.push({
-          text: `Contenu du fichier joint (${att.name}) :\n${att.extractedText}`,
+          text: `Contenu du fichier (${att.name}) :\n${att.extractedText}`,
         });
       }
     }
 
     parts.push({
-      text: userPrompt.trim() || 'Analyse les fichiers/images joints et prépare le devis complet professionnel.',
+      text: userPrompt.trim() || 'Extrais toutes les lignes du tableau joint et prépare le devis professionnel complet.',
     });
 
     const response = await fetch(
@@ -504,7 +871,7 @@ ${catalogContext}`;
         body: JSON.stringify({
           contents: [{ role: 'user', parts }],
           generationConfig: {
-            temperature: 0.2,
+            temperature: 0.1,
             responseMimeType: 'application/json',
           },
         }),
@@ -512,8 +879,7 @@ ${catalogContext}`;
     );
 
     if (!response.ok) {
-      const errText = await response.text();
-      throw new Error(`Gemini API Error (${response.status}): ${errText}`);
+      throw new Error(`Gemini API (${response.status})`);
     }
 
     const data = await response.json();
@@ -528,7 +894,7 @@ ${catalogContext}`;
     const userMsg: ChatMessage = {
       id: `user-${Date.now()}`,
       role: 'user',
-      text: inputPrompt.trim() || `📎 Fichier(s) envoyé(s) : ${pendingAttachments.map((a) => a.name).join(', ')}`,
+      text: inputPrompt.trim() || `📎 Analyse de : ${pendingAttachments.map((a) => a.name).join(', ')}`,
       attachments: [...pendingAttachments],
       timestamp: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
     };
@@ -540,7 +906,7 @@ ${catalogContext}`;
     setInputPrompt('');
     setPendingAttachments([]);
     setIsProcessing(true);
-    setStatusMessage('🤖 Analyse de la demande et tarification en cours...');
+    setStatusMessage('🤖 Application des règles métier & extraction des équipements...');
 
     try {
       let proposedItems: ErpLineItem[] = [];
@@ -551,41 +917,40 @@ ${catalogContext}`;
       const hasValidGeminiKey = apiKey && apiKey.length > 20 && !apiKey.startsWith('PLACEHOLDER');
 
       if (hasValidGeminiKey) {
-        const aiResult = await callGeminiMultimodal(currentPrompt, currentAtts);
-        proposedItems = Array.isArray(aiResult.items)
-          ? aiResult.items.map((it: any, i: number) => ({
-              sku: `GS-${i + 1}`,
-              name: String(it.name || 'Équipement Audiovisuel'),
-              quantity: Math.max(1, Number(it.quantity) || 1),
-              unitPriceTtc: Math.max(0, Number(it.unitPriceTtc || it.price || 0)),
-            }))
-          : [];
-        proposedClient = aiResult.clientName || undefined;
-        proposedReference = aiResult.referenceText || undefined;
-        replyText = aiResult.reply || `J'ai généré un devis avec **${proposedItems.length} article(s)**.`;
-      } else {
-        // Zero-config local fallback (with automatic Browser OCR for images!)
+        try {
+          const aiResult = await callGeminiMultimodal(currentPrompt, currentAtts);
+          proposedItems = Array.isArray(aiResult.items)
+            ? aiResult.items.map((it: any, i: number) => ({
+                sku: `GS-${i + 1}`,
+                name: String(it.name || 'Équipement Audiovisuel'),
+                quantity: Math.max(1, Number(it.quantity) || 1),
+                unitPriceTtc: Math.max(0, Number(it.unitPriceTtc || it.price || 0)),
+              }))
+            : [];
+          proposedClient = aiResult.clientName || undefined;
+          proposedReference = aiResult.referenceText || undefined;
+          replyText = aiResult.reply || `J'ai généré un devis avec **${proposedItems.length} article(s)**.`;
+        } catch {
+          // Fallback to enhanced canvas grid-removal OCR + Strict Rules Engine if API key fails
+        }
+      }
+
+      if (proposedItems.length === 0) {
         let combinedText = currentPrompt;
         for (const att of currentAtts) {
           if (att.extractedText) {
             combinedText += '\n' + att.extractedText;
           } else if (att.type === 'image' && att.dataUrl) {
-            try {
-              const ocrText = await runBrowserOcrOnImage(att.dataUrl);
-              combinedText += '\n' + ocrText;
-            } catch {
-              // OCR fallback
-            }
+            const ocrText = await runBrowserOcrOnImage(att.dataUrl);
+            combinedText += '\n' + ocrText;
           }
         }
 
-        const localResult = buildDevisLocallyFromText(combinedText);
+        const localResult = buildDevisWithStrictRules(combinedText);
         proposedItems = localResult.items;
-        proposedClient = localResult.clientName;
         replyText = localResult.explanation;
       }
 
-      // Automatically apply the proposed items & client to the live Devis editor!
       if (proposedItems.length > 0 || proposedClient) {
         onApplyDevisUpdate({
           ...(proposedItems.length > 0 ? { items: proposedItems } : {}),
@@ -594,24 +959,25 @@ ${catalogContext}`;
         });
       }
 
-      const assistantMsg: ChatMessage = {
-        id: `ai-${Date.now()}`,
-        role: 'assistant',
-        text: replyText,
-        proposedItems: proposedItems.length > 0 ? proposedItems : undefined,
-        proposedClient,
-        proposedReference,
-        timestamp: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
-      };
-
-      setMessages((prev) => [...prev, assistantMsg]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: `ai-${Date.now()}`,
+          role: 'assistant',
+          text: replyText,
+          proposedItems: proposedItems.length > 0 ? proposedItems : undefined,
+          proposedClient,
+          proposedReference,
+          timestamp: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+        },
+      ]);
     } catch (err: any) {
       setMessages((prev) => [
         ...prev,
         {
           id: `err-${Date.now()}`,
           role: 'assistant',
-          text: `⚠️ Erreur lors de l'analyse : ${err?.message || 'Veuillez vérifier votre clé API ou réessayer.'}`,
+          text: `⚠️ Erreur lors de l'analyse : ${err?.message || 'Veuillez réessayer.'}`,
           timestamp: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
         },
       ]);
@@ -630,26 +996,32 @@ ${catalogContext}`;
             🤖
           </div>
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <h4 className="text-sm font-black text-white uppercase tracking-wide">
-                Assistant IA Devis VERDANOVE (Vision + Excel + Catalogue)
+                Assistant IA Devis VERDANOVE (Lecture Tableaux, Photos & Excel)
               </h4>
               <span className="px-2 py-0.5 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold rounded-full">
-                {apiKey && !apiKey.startsWith('PLACEHOLDER') ? 'Gemini 2.5 Vision Actif' : 'OCR + Moteur Local Actif'}
+                ✓ Anti-Bordures OCR + Règles Appels d'Offres Actives
               </span>
             </div>
             <p className="text-[11px] text-zinc-400">
-              Envoyez une photo/capture de la demande client, un fichier Excel/PDF ou écrivez vos instructions : l'IA remplit le devis automatiquement.
+              Importez la photo/capture d'écran de votre client : l'IA ignore les en-têtes, choisit les modèles exacts et chiffre les 14+ lignes automatiquement.
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          {extraCatalog.length > 0 && (
-            <span className="px-2.5 py-1 bg-zinc-800 border border-zinc-700 rounded-lg text-[10px] text-zinc-300 font-mono">
-              📚 +{extraCatalog.length} réf. fichiers mémorisées
-            </span>
-          )}
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            type="button"
+            onClick={() => setShowRulesModal(!showRulesModal)}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer ${
+              showRulesModal
+                ? 'bg-red-600 text-white border-red-500'
+                : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border-zinc-700'
+            }`}
+          >
+            ⚙️ Règles IA du Devis
+          </button>
           <button
             type="button"
             onClick={() => setShowKeyModal(!showKeyModal)}
@@ -660,12 +1032,101 @@ ${catalogContext}`;
         </div>
       </div>
 
+      {/* Configurable AI Rules Panel */}
+      {showRulesModal && (
+        <div className="bg-zinc-950 border border-red-500/40 p-4 rounded-xl space-y-3 text-xs animate-fadeIn">
+          <div className="flex items-center justify-between">
+            <span className="font-bold text-white text-sm">
+              ⚙️ Règles Métier & Stratégie de Chiffrage IA (Sauvegardées automatiquement)
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label className="block text-zinc-400 mb-1 font-semibold">
+                1. Quand le client écrit "Modèle A ou Modèle B" :
+              </label>
+              <select
+                value={rules.tierPreference}
+                onChange={(e) =>
+                  saveRules({ ...rules, tierPreference: e.target.value as 'competitive' | 'flagship' })
+                }
+                className="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white font-semibold"
+              >
+                <option value="competitive">
+                  Choisir le modèle Compétitif (ex: Canon EOS R6 Mark II)
+                </option>
+                <option value="flagship">
+                  Choisir le modèle Haut de Gamme (ex: Canon EOS R5 Mark II)
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-zinc-400 mb-1 font-semibold">
+                2. Format des Désignations sur le Devis :
+              </label>
+              <select
+                value={rules.designationStyle}
+                onChange={(e) =>
+                  saveRules({
+                    ...rules,
+                    designationStyle: e.target.value as 'pro_model' | 'client_exact',
+                  })
+                }
+                className="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white font-semibold"
+              >
+                <option value="pro_model">
+                  Désignation Pro Complète + Modèle Exact (Recommandé)
+                </option>
+                <option value="client_exact">
+                  Garder le texte exact écrit par le client
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-zinc-400 mb-1 font-semibold">
+                3. Marge Supplémentaire Automatique (%) :
+              </label>
+              <select
+                value={rules.marginMarkupPct}
+                onChange={(e) =>
+                  saveRules({ ...rules, marginMarkupPct: Number(e.target.value) || 0 })
+                }
+                className="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white font-semibold"
+              >
+                <option value={-10}>-10% (Remise Marché / Appel d'offres)</option>
+                <option value={-5}>-5% (Prix Compétitif)</option>
+                <option value={0}>0% (Prix Officiel de Référence)</option>
+                <option value={5}>+5% (Marge Sécurisée)</option>
+                <option value={10}>+10% (Marge Confort)</option>
+                <option value={15}>+15% (Marge Marché Public / INDH)</option>
+                <option value={20}>+20% (Marge Haute)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-zinc-400 mb-1 font-semibold">
+              4. Instructions permanentes pour l'IA :
+            </label>
+            <textarea
+              rows={2}
+              value={rules.customInstructions}
+              onChange={(e) => saveRules({ ...rules, customInstructions: e.target.value })}
+              className="w-full px-3 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white"
+            />
+          </div>
+        </div>
+      )}
+
       {/* Optional Gemini API Key Input Drawer */}
       {showKeyModal && (
         <div className="bg-zinc-950 border border-zinc-800 p-4 rounded-xl space-y-2 text-xs">
           <div className="flex items-center justify-between">
             <span className="font-bold text-white">
-              Configurer la Clé API Google Gemini (pour lecture ultra-précise des photos & manuscrits)
+              Clé API Google Gemini Vision (Optionnelle — pour manuscrits complexes)
             </span>
             <a
               href="https://aistudio.google.com/apikey"
@@ -696,7 +1157,7 @@ ${catalogContext}`;
       )}
 
       {/* Chat Messages Area */}
-      <div className="max-h-80 overflow-y-auto space-y-3 pr-1">
+      <div className="max-h-96 overflow-y-auto space-y-3 pr-1">
         {messages.map((m) => (
           <div
             key={m.id}
@@ -711,7 +1172,6 @@ ${catalogContext}`;
             >
               <div className="whitespace-pre-line leading-relaxed">{m.text}</div>
 
-              {/* Attachments Preview */}
               {m.attachments && m.attachments.length > 0 && (
                 <div className="flex flex-wrap gap-2 pt-1">
                   {m.attachments.map((att, i) => (
@@ -732,7 +1192,7 @@ ${catalogContext}`;
                         <div className="font-bold text-[11px] truncate max-w-[180px]">{att.name}</div>
                         {att.extractedItems && att.extractedItems.length > 0 && (
                           <div className="text-[10px] text-emerald-300">
-                            ✓ {att.extractedItems.length} produits importés
+                            ✓ {att.extractedItems.length} produits mémorisés
                           </div>
                         )}
                       </div>
@@ -741,7 +1201,6 @@ ${catalogContext}`;
                 </div>
               )}
 
-              {/* Proposed Devis Preview inside Assistant Bubble */}
               {m.proposedItems && m.proposedItems.length > 0 && (
                 <div className="bg-zinc-950/90 border border-zinc-700 rounded-xl p-3 mt-2 space-y-2">
                   <div className="flex items-center justify-between border-b border-zinc-800 pb-1.5">
@@ -756,14 +1215,14 @@ ${catalogContext}`;
                       DH
                     </span>
                   </div>
-                  <div className="max-h-36 overflow-y-auto divide-y divide-zinc-800/60 text-[11px]">
+                  <div className="max-h-52 overflow-y-auto divide-y divide-zinc-800/60 text-[11px]">
                     {m.proposedItems.map((it, idx) => (
-                      <div key={idx} className="py-1 flex justify-between gap-2">
-                        <span className="text-zinc-200 truncate">
+                      <div key={idx} className="py-1 flex justify-between gap-3">
+                        <span className="text-zinc-200">
                           <strong>{it.quantity}x</strong> {it.name}
                         </span>
-                        <span className="font-mono text-zinc-300 shrink-0">
-                          {it.quantity * it.unitPriceTtc} dh
+                        <span className="font-mono text-emerald-300 font-bold shrink-0">
+                          {(it.quantity * it.unitPriceTtc).toLocaleString('fr-FR')} dh
                         </span>
                       </div>
                     ))}
@@ -772,7 +1231,7 @@ ${catalogContext}`;
                     <button
                       type="button"
                       onClick={onGeneratePdfNow}
-                      className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg text-[11px] cursor-pointer flex items-center gap-1.5"
+                      className="px-3.5 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg text-xs cursor-pointer flex items-center gap-1.5 shadow"
                     >
                       <span>🖨️</span>
                       <span>Imprimer / Télécharger ce Devis PDF maintenant</span>
@@ -822,7 +1281,7 @@ ${catalogContext}`;
         </div>
       )}
 
-      {/* Input Form with File Upload & Paste Support */}
+      {/* Input Form */}
       <form onSubmit={handleSend} className="flex flex-col sm:flex-row gap-2">
         <input
           ref={fileInputRef}
@@ -842,7 +1301,6 @@ ${catalogContext}`;
           type="button"
           onClick={() => fileInputRef.current?.click()}
           className="px-3.5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shrink-0 cursor-pointer transition"
-          title="Importer une image, capture WhatsApp, Excel (.xlsx) ou PDF"
         >
           <span>📎</span>
           <span>Joindre Photo / Excel / PDF</span>
@@ -859,7 +1317,7 @@ ${catalogContext}`;
               handleSend();
             }
           }}
-          placeholder="Collez une capture d'écran (Ctrl+V), une liste d'articles, ou écrivez ex: 'Fais un devis pour Aya Toraif avec Sony FX30, Sigma 18-50mm, DJI RS4...'"
+          placeholder="Collez la capture d'écran du tableau client (Ctrl+V) ou cliquez sur Joindre Photo, puis cliquez sur 'Créer le Devis'..."
           className="flex-1 px-3.5 py-2 bg-zinc-950 border border-zinc-700 focus:border-red-500 rounded-xl text-xs text-white placeholder-zinc-500 outline-none resize-none"
         />
 
