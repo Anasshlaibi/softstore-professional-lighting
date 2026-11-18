@@ -159,24 +159,13 @@ async function generate() {
     console.warn(`⚠️ Supabase fetch error: ${err.message}`);
   }
 
-  // Ensure DJI Osmo Pocket 4 Pro is present in structured products list
-  const hasOsmo = rawProducts.some(p => p.id === 3001 || (p.name || '').toLowerCase().includes('pocket 4'));
-  if (!hasOsmo) {
-    rawProducts.push({
-      id: 3001,
-      name: 'DJI Osmo Pocket 4 Pro',
-      price: 8000,
-      category: 'Caméras & Stabilisateurs',
-      brand: 'DJI',
-      desc: 'Caméra compacte de vlog 4K avec double objectif (20mm & 60mm), capteur CMOS 1 pouce LOFIC (17 stops de plage dynamique), D-Log 2 10-bit et stabilisation 3 axes avec ActiveTrack 8.0.',
-       image: 'https://www.gearshop.ma/images/products/dji-osmo-pocket-4-pro.webp',
-      inStock: false,
-      isPreorder: true
-    });
-  }
+  // Validate DB rows strictly — never fabricate unconfirmed products or prices
+  const validProducts = rawProducts.filter(
+    (p) => p && p.id !== undefined && typeof p.name === 'string' && p.name.trim().length > 0
+  );
 
   // Transform products into rich, structured format
-  const structuredProducts = rawProducts.map(p => {
+  const structuredProducts = validProducts.map(p => {
     const brand = detectBrand(p);
     const mount = detectMount(p);
     const category = detectCategory(p);
@@ -316,5 +305,5 @@ async function generate() {
 
 generate().catch(err => {
   console.error('Error generating AI JSON:', err);
-  process.exit(0);
+  process.exit(1);
 });
