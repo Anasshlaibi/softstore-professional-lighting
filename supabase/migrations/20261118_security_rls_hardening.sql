@@ -20,17 +20,15 @@ AS $$
 $$;
 
 DO $$
+DECLARE
+  pol record;
 BEGIN
-  -- 1. newsletter_subscribers
+  -- 1. newsletter_subscribers (Drop any legacy permissive policies before recreating strict ones)
   IF to_regclass('public.newsletter_subscribers') IS NOT NULL THEN
     EXECUTE 'ALTER TABLE public.newsletter_subscribers ENABLE ROW LEVEL SECURITY';
-    EXECUTE 'DROP POLICY IF EXISTS "Allow public read newsletter" ON public.newsletter_subscribers';
-    EXECUTE 'DROP POLICY IF EXISTS "Enable read access for all users" ON public.newsletter_subscribers';
-    EXECUTE 'DROP POLICY IF EXISTS "Allow public insert newsletter" ON public.newsletter_subscribers';
-    EXECUTE 'DROP POLICY IF EXISTS "Admin full access newsletter" ON public.newsletter_subscribers';
-    EXECUTE 'DROP POLICY IF EXISTS "newsletter_public_insert" ON public.newsletter_subscribers';
-    EXECUTE 'DROP POLICY IF EXISTS "newsletter_admin_select" ON public.newsletter_subscribers';
-    EXECUTE 'DROP POLICY IF EXISTS "newsletter_admin_update_delete" ON public.newsletter_subscribers';
+    FOR pol IN SELECT policyname FROM pg_policies WHERE schemaname = 'public' AND tablename = 'newsletter_subscribers' LOOP
+      EXECUTE format('DROP POLICY IF EXISTS %I ON public.newsletter_subscribers', pol.policyname);
+    END LOOP;
 
     EXECUTE 'CREATE POLICY "newsletter_public_insert" ON public.newsletter_subscribers FOR INSERT TO anon, authenticated WITH CHECK (true)';
     EXECUTE 'CREATE POLICY "newsletter_admin_select" ON public.newsletter_subscribers FOR SELECT TO authenticated USING (public.is_gearshop_admin())';
