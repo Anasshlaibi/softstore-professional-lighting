@@ -1,12 +1,5 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination, Navigation, A11y } from 'swiper/modules';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 interface HeroProps {
   siteConfig?: {
@@ -92,7 +85,23 @@ const categoryIcons = [
 ];
 
 const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand }) => {
+  const [activeSlide, setActiveSlide] = useState(0);
   const whatsappPhone = (siteConfig?.phone || '212724664656').replace(/[^0-9]/g, '');
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % bhSlides.length);
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, [activeSlide]);
+
+  const handlePrevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + bhSlides.length) % bhSlides.length);
+  };
+
+  const handleNextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % bhSlides.length);
+  };
 
   const handleCategoryClick = (cat: typeof categoryIcons[0]) => {
     if (cat.link) {
@@ -133,124 +142,151 @@ const Hero: React.FC<HeroProps> = ({ siteConfig, onSelectCategory, onSelectBrand
 
         {/* ── 2. Full-Width Panoramic Widescreen Hero Banner Slider ───────── */}
         <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200 relative bg-[#090d16] mb-5">
-          <Swiper
-            modules={[Autoplay, EffectFade, Pagination, Navigation, A11y]}
-            effect="fade"
-            fadeEffect={{ crossFade: true }}
-            autoplay={{ delay: 6000, disableOnInteraction: false }}
-            loop={true}
-            pagination={{ clickable: true }}
-            navigation={true}
-            a11y={{
-              enabled: true,
-              prevSlideMessage: 'Slide précédent',
-              nextSlideMessage: 'Slide suivant',
-              paginationBulletMessage: 'Aller au slide {{index}}',
-            }}
-            className="w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] hero-bh-swiper"
-          >
-            {bhSlides.map((slide, idx) => (
-              <SwiperSlide key={slide.id}>
-                <div className="relative w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] flex items-center overflow-hidden">
-                  
-                  {/* Background Panoramic Image */}
-                  <img
-                    src={slide.bgImg}
-                    alt=""
-                    aria-hidden="true"
-                    width={1280}
-                    height={480}
-                    className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-screen scale-105"
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
-                  
-                  {/* Gradient Overlay for Text Readability */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-0" />
+          {(() => {
+            const slide = bhSlides[activeSlide];
+            const idx = activeSlide;
+            return (
+              <div
+                key={slide.id}
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Nouveautés et offres phares"
+                className="w-full min-h-[360px] sm:min-h-[400px] md:min-h-[460px] relative flex items-center overflow-hidden"
+              >
+                {/* Background Panoramic Image */}
+                <img
+                  src={slide.bgImg}
+                  alt=""
+                  aria-hidden="true"
+                  width={1280}
+                  height={480}
+                  className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-screen scale-105"
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
 
-                  {/* Slide Content Grid */}
-                  <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    
-                    {/* Left Column: Typography & CTAs */}
-                    <div className="md:col-span-7 flex flex-col items-start text-white">
-                      
-                      {/* Tag & Brand */}
-                      <div className="flex items-center gap-2.5 mb-3">
-                        <span className={`${slide.badgeColor} text-white text-[11px] font-black px-2.5 py-1 rounded tracking-wider uppercase shadow-md`}>
-                          {slide.tag}
-                        </span>
-                        <span className="text-white font-black tracking-widest text-xs uppercase opacity-90 border-l border-white/20 pl-2.5">
-                          {slide.brandLogo}
-                        </span>
-                      </div>
+                {/* Gradient Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-0" />
 
-                      {/* Main Title */}
-                      {idx === 0 ? (
-                        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 text-white leading-tight">
-                          {slide.title}
-                        </h1>
-                      ) : (
-                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 text-white leading-tight">
-                          {slide.title}
-                        </h2>
-                      )}
+                {/* Slide Content Grid */}
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
 
-                      {/* Subtitle */}
-                      <p className="text-sm sm:text-base md:text-lg font-medium text-gray-200 mb-3 max-w-xl leading-snug">
-                        {slide.subtitle}
-                      </p>
+                  {/* Left Column: Typography & CTAs */}
+                  <div className="md:col-span-7 flex flex-col items-start text-white">
 
-                      <p className="text-xs sm:text-sm text-gray-300 mb-6 max-w-lg hidden sm:block">
-                        {slide.desc}
-                      </p>
-
-                      {/* B&H Action Buttons */}
-                      <div className="flex flex-wrap items-center gap-3">
-                        <Link
-                          to={slide.learnMoreLink}
-                          className="px-6 py-2.5 bg-black hover:bg-gray-800 text-white font-bold text-xs rounded-lg border border-white/30 transition shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] flex items-center"
-                        >
-                          En Savoir Plus
-                        </Link>
-                        <Link
-                          to={slide.orderLink}
-                          className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-lg transition shadow-lg flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 min-h-[44px]"
-                        >
-                          <span>Commander</span>
-                          <i className="fa-solid fa-arrow-right text-xs" />
-                        </Link>
-                      </div>
-
+                    {/* Tag & Brand */}
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <span className={`${slide.badgeColor} text-white text-[11px] font-black px-2.5 py-1 rounded tracking-wider uppercase shadow-md`}>
+                        {slide.tag}
+                      </span>
+                      <span className="text-white font-black tracking-widest text-xs uppercase opacity-90 border-l border-white/20 pl-2.5">
+                        {slide.brandLogo}
+                      </span>
                     </div>
 
-                    {/* Right Column: Studio Camera Showcase */}
-                    <div className="md:col-span-5 flex items-center justify-center">
-                      <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-2xl bg-white/95 p-5 shadow-2xl flex items-center justify-center border border-white/20 relative group">
-                        <img
-                          src={slide.cameraImg}
-                          alt={slide.title}
-                          width={288}
-                          height={288}
-                          className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                          loading={idx === 0 ? 'eager' : 'lazy'}
-                          fetchPriority={idx === 0 ? 'high' : 'auto'}
-                          decoding={idx === 0 ? 'sync' : 'async'}
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/images/hero/nikon-zr-hero.webp';
-                          }}
-                        />
-                        <span className="absolute bottom-2.5 right-2.5 bg-slate-900 text-white text-[9px] font-black px-2 py-0.5 rounded shadow">
-                          EN STOCK
-                        </span>
-                      </div>
+                    {/* Main Title */}
+                    {idx === 0 ? (
+                      <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 text-white leading-tight">
+                        {slide.title}
+                      </h1>
+                    ) : (
+                      <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 text-white leading-tight">
+                        {slide.title}
+                      </h2>
+                    )}
+
+                    {/* Subtitle */}
+                    <p className="text-sm sm:text-base md:text-lg font-medium text-gray-200 mb-3 max-w-xl leading-snug">
+                      {slide.subtitle}
+                    </p>
+
+                    <p className="text-xs sm:text-sm text-gray-300 mb-6 max-w-lg hidden sm:block">
+                      {slide.desc}
+                    </p>
+
+                    {/* B&H Action Buttons */}
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Link
+                        to={slide.learnMoreLink}
+                        className="px-6 py-2.5 bg-black hover:bg-gray-800 text-white font-bold text-xs rounded-lg border border-white/30 transition shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px] flex items-center"
+                      >
+                        En Savoir Plus
+                      </Link>
+                      <Link
+                        to={slide.orderLink}
+                        className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-lg transition shadow-lg flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 min-h-[44px]"
+                      >
+                        <span>Commander</span>
+                        <i className="fa-solid fa-arrow-right text-xs" />
+                      </Link>
                     </div>
 
                   </div>
 
+                  {/* Right Column: Studio Camera Showcase */}
+                  <div className="md:col-span-5 flex items-center justify-center">
+                    <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-2xl bg-white/95 p-5 shadow-2xl flex items-center justify-center border border-white/20 relative group">
+                      <img
+                        src={slide.cameraImg}
+                        alt={slide.title}
+                        width={288}
+                        height={288}
+                        className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        loading={idx === 0 ? 'eager' : 'lazy'}
+                        fetchPriority={idx === 0 ? 'high' : 'auto'}
+                        decoding={idx === 0 ? 'sync' : 'async'}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = '/images/hero/nikon-zr-hero.webp';
+                        }}
+                      />
+                      <span className="absolute bottom-2.5 right-2.5 bg-slate-900 text-white text-[9px] font-black px-2 py-0.5 rounded shadow">
+                        EN STOCK
+                      </span>
+                    </div>
+                  </div>
+
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+
+                {/* Previous / Next Controls */}
+                <button
+                  type="button"
+                  onClick={handlePrevSlide}
+                  aria-label="Slide précédent"
+                  className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white items-center justify-center border border-white/20 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                >
+                  <i className="fa-solid fa-chevron-left text-sm" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNextSlide}
+                  aria-label="Slide suivant"
+                  className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white items-center justify-center border border-white/20 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+                >
+                  <i className="fa-solid fa-chevron-right text-sm" />
+                </button>
+
+                {/* Pagination Dots */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1">
+                  {bhSlides.map((s, i) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => setActiveSlide(i)}
+                      aria-label={`Aller au slide ${i + 1}`}
+                      aria-current={i === activeSlide ? 'true' : undefined}
+                      className="min-h-[44px] min-w-[28px] flex items-center justify-center cursor-pointer focus:outline-none"
+                    >
+                      <span
+                        className={`block h-2 rounded-full transition-all ${
+                          i === activeSlide ? 'w-6 bg-white' : 'w-2 bg-white/40 hover:bg-white/70'
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </div>
 
         {/* ── 3. Iconic B&H Category Icon Strip (Standardized & Snap Scroll) ── */}

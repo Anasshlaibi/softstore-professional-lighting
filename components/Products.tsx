@@ -66,7 +66,7 @@ const Products: React.FC<ProductsProps> = ({
 
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [showAllBrands, setShowAllBrands] = useState(false);
-  const [displayLimit, setDisplayLimit] = useState(24);
+  const [displayLimit, setDisplayLimit] = useState(12);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>(() => {
     return (searchParams.get('view') as 'grid' | 'list') || 'grid';
   });
@@ -116,7 +116,7 @@ const Products: React.FC<ProductsProps> = ({
   }, [filters, viewMode, debouncedSearchQuery, setSearchParams]);
 
   useEffect(() => {
-    setDisplayLimit(24);
+    setDisplayLimit(12);
   }, [debouncedSearchQuery]);
 
   const categories = useMemo(() => {
@@ -314,7 +314,7 @@ const Products: React.FC<ProductsProps> = ({
   }, [products, debouncedSearchQuery, filters]);
 
   useEffect(() => {
-    setDisplayLimit(24);
+    setDisplayLimit(12);
   }, [filters, debouncedSearchQuery]);
 
   const resetAllFilters = useCallback(() => {
